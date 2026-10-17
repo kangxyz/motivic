@@ -1,0 +1,4 @@
+Source SHA256: 9709d832cd221081a17e505628c8f44b9654e5e2fe75ba942419aaf8b534a6ed  Motivic/Cohomology/Motivic/DiagonalMilnorEquivalenceNaturality.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/Motivic/DiagonalMilnorEquivalenceNaturality.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/Motivic/DiagonalMilnorEquivalenceNaturality.ilean Motivic/Cohomology/Motivic/DiagonalMilnorEquivalenceNaturality.lean
+Exit status: 0

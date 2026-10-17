@@ -1,0 +1,5 @@
+Source SHA256: 2db329c87fadf53b73a9e9c6a738f5b55160a6f4b03f242eea0e117b0d727649  Tests/DiagonalMilnorEquivalenceNaturality.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/DiagonalMilnorEquivalenceNaturality.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/DiagonalMilnorEquivalenceNaturality.ilean Tests/DiagonalMilnorEquivalenceNaturality.lean
+Actual diagonal equivalence field-map and transfer squares: standard foundations only.
+Exit status: 0

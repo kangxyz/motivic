@@ -1,0 +1,11 @@
+name = "MotivicClient"
+version = "0.1.0"
+defaultTargets = ["MotivicClient"]
+
+[[lean_lib]]
+name = "MotivicClient"
+leanOptions = {autoImplicit = false, warningAsError = true}
+
+[[require]]
+name = "Motivic"
+path = "../.."

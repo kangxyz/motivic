@@ -1,0 +1,17 @@
+module
+import Motivic.Aglib.RingTheory.Etale.FiniteSmoothCurveProjection
+
+/-! # Direct consumer: the same finite closed projection supplies the curve charts -/
+open Module TensorProduct KaehlerDifferential MvPolynomial
+
+example (k R : Type) [Field k] [Infinite k] [CommRing R] [Algebra k R]
+    [Algebra.Smooth k R] (I : Ideal R) (d : ℕ)
+    (htr : Algebra.trdeg k (R ⧸ I) ≤ d)
+    {ι : Type} [Finite ι] (p : ι → Ideal R) [∀ i, (p i).IsPrime]
+    (hd : ∀ i, Module.finrank (IsLocalRing.ResidueField (Localization.AtPrime (p i)))
+      (IsLocalRing.ResidueField (Localization.AtPrime (p i)) ⊗[R] Ω[R⁄k]) = d + 1) :
+    ∃ ψ : MvPolynomial (Fin d) k →ₐ[k] R,
+      ((Ideal.Quotient.mkₐ k I).comp ψ).Finite ∧ ∀ i, ∃ r ∉ p i,
+        RingHom.IsStandardSmoothOfRelativeDimension 1
+          ((algebraMap R (Localization.Away r)).comp ψ.toRingHom) :=
+  Algebra.exists_finite_closed_projection_smooth_relative_one k R I d htr p hd

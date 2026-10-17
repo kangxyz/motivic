@@ -1,0 +1,5 @@
+Source SHA256: cd0e945dcded92e52e45c26cb046d01a437b36b69c7f456792d84925dc1ad668  Tests/WeightOneHypercohomology.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/WeightOneHypercohomology.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/WeightOneHypercohomology.ilean Tests/WeightOneHypercohomology.lean
+All-smooth-source weight-one cohomology comparison uses only standard Lean foundations.
+Exit status: 0

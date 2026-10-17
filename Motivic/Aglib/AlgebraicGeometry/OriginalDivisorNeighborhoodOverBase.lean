@@ -1,0 +1,92 @@
+/-
+Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+
+public import Motivic.Aglib.AlgebraicGeometry.AffineCylinderIsoOverBase
+public import Motivic.Aglib.AlgebraicGeometry.EtaleNeighborhoodTransport
+
+/-! # Retaining the original restricted closed scheme in an étale comparison -/
+
+@[expose] public noncomputable section
+set_option backward.defeqAttrib.useBackward true
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
+universe u
+namespace AlgebraicGeometry.Scheme
+
+/-- An affine presentation of a closed fiber transports a polynomial comparison
+to the original restricted closed scheme and its literal cylinder. -/
+theorem exists_original_open_divisor_comparison_over_base
+    {k B D : Type u} [CommRing k] [CommRing B] [CommRing D]
+    {Z X V : Scheme.{u}} (i : Z ⟶ X) (p : X ⟶ Spec (.of k))
+    (u : Spec (.of B) ⟶ X) [IsOpenImmersion u]
+    (d : Spec (.of D) ⟶ Spec (.of B)) (s : Spec (.of D) ⟶ Z)
+    (h : IsPullback d s u i) (z : Z) (hz : i z ∈ Set.range u)
+    (a : V ⟶ Spec (.of B)) (b : V ⟶ Spec (.of (Polynomial D)))
+    [Etale a] [Etale b] [IsSeparated a] [IsSeparated b]
+    [QuasiCompact a] [QuasiCompact b] (j : Spec (.of D) ⟶ V)
+    (ha : IsPullback j (𝟙 _) a d)
+    (hb : IsPullback j (𝟙 _) b
+      (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : D)))))
+    (hbase : a ≫ u ≫ p = b ≫
+      Spec.map (CommRingCat.ofHom (Polynomial.C : D →+* Polynomial D)) ≫ s ≫ i ≫ p) :
+    ∃ U : X.Opens, IsAffineOpen U ∧ i z ∈ U ∧
+      ∃ (a' : V ⟶ U.toScheme)
+        (b' : V ⟶ Scheme.Hom.cylinder k ((i ⁻¹ᵁ U).ι ≫ i ≫ p))
+        (j' : (i ⁻¹ᵁ U).toScheme ⟶ V),
+        Etale a' ∧ Etale b' ∧
+        IsPullback j' (𝟙 _) a' (i ∣_ U) ∧
+        IsPullback j' (𝟙 _) b'
+          (Scheme.Hom.cylinderZeroSection k ((i ⁻¹ᵁ U).ι ≫ i ≫ p)) ∧
+        a' ≫ U.ι ≫ p = b' ≫ pullback.snd _ _ ≫ (i ⁻¹ᵁ U).ι ≫ i ≫ p ∧
+        IsSeparated a' ∧ IsSeparated b' ∧ QuasiCompact a' ∧ QuasiCompact b' := by
+  let U := u.opensRange
+  let eX : Spec (.of B) ≅ U.toScheme :=
+    IsOpenImmersion.isoOfRangeEq u U.ι (by simp [U])
+  have heX : eX.hom ≫ U.ι = u := IsOpenImmersion.isoOfRangeEq_hom_fac ..
+  have h' : IsPullback (d ≫ eX.hom) s U.ι i := by
+    apply h.of_iso (Iso.refl _) eX (Iso.refl _) (Iso.refl _)
+    · simp
+    · simp
+    · simpa using heX.symm
+    · simp
+  let eZ : (i ⁻¹ᵁ U).toScheme ≅ Spec (.of D) :=
+    (isPullback_morphismRestrict i U).isoPullback ≪≫ h'.isoPullback.symm
+  have heZ : eZ.hom ≫ d = (i ∣_ U) ≫ eX.inv := by
+    apply (cancel_mono eX.hom).mp
+    simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
+    dsimp only [eZ, Iso.trans_hom, Iso.symm_hom]
+    rw [Category.assoc, h'.isoPullback_inv_fst]
+    exact (isPullback_morphismRestrict i U).isoPullback_hom_fst
+  let f : k →+* D := (Spec.preimage
+    (eZ.inv ≫ (i ⁻¹ᵁ U).ι ≫ i ≫ p)).hom
+  have hf : (i ⁻¹ᵁ U).ι ≫ i ≫ p =
+      eZ.hom ≫ Spec.map (CommRingCat.ofHom f) := by
+    simp [f]
+  let eY := Scheme.Hom.affineCylinderIso k D f eZ _ hf
+  have heY := Scheme.Hom.cylinderZeroSection_affineCylinderIso k D f eZ _ hf
+  obtain ⟨ha', hb', hpa, hpb⟩ := transport_common_etale_neighborhood
+    a b j d (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : D))))
+    ha hb eZ eX.symm eY (i ∣_ U)
+    (Scheme.Hom.cylinderZeroSection k ((i ⁻¹ᵁ U).ι ≫ i ≫ p)) heZ heY.symm
+  have heZs : eZ.hom ≫ s = (i ⁻¹ᵁ U).ι := by
+    dsimp only [eZ, Iso.trans_hom, Iso.symm_hom]
+    rw [Category.assoc, h'.isoPullback_inv_snd]
+    exact (isPullback_morphismRestrict i U).isoPullback_hom_snd
+  have heYbase : eY.hom ≫
+      Spec.map (CommRingCat.ofHom (Polynomial.C : D →+* Polynomial D)) ≫ s ≫ i ≫ p =
+      pullback.snd _ _ ≫ (i ⁻¹ᵁ U).ι ≫ i ≫ p := by
+    rw [Scheme.Hom.affineCylinderIso_hom_projection_assoc, reassoc_of% heZs]
+  refine ⟨U, isAffineOpen_opensRange u, hz, _, _, _, ha', hb', hpa, hpb, ?_,
+    inferInstance, inferInstance, inferInstance, inferInstance⟩
+  change (a ≫ eX.hom) ≫ U.ι ≫ p = (b ≫ eY.inv) ≫ _
+  rw [Category.assoc, reassoc_of% heX, ← heYbase]
+  simpa only [Category.assoc, Iso.inv_hom_id_assoc] using hbase
+
+
+end AlgebraicGeometry.Scheme

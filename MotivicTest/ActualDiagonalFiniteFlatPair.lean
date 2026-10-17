@@ -1,0 +1,29 @@
+/-
+Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
+module
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualDiagonalFiniteFlatPair
+
+/-! The whole prescribed boundary is constructed on the original compactification. -/
+@[expose] public noncomputable section
+set_option linter.hashCommand false
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
+open Scheme.AffineLineEtaleCompactification
+universe u
+example (k : Type u) [Field k] {Y : Scheme.{u}} {R : Type u} [CommRing R] [IsNoetherianRing R]
+    (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
+    (r : Spec (.of R) ⟶ Y) [IsOpenImmersion r]
+    (B : Type u) [CommRing B] (z : Polynomial k →+* B)
+    [IsClosedImmersion (Scheme.Hom.boundaryCoordinateMap k B z)]
+    [IsFinite (Scheme.Hom.boundaryCoordinateMap k B z ≫ Scheme.Hom.boundaryLineProjection k)]
+    (s : Spec (.of B) ⟶ Spec (.of R))
+    (hs : s ≫ (r ≫ p) = Scheme.Hom.boundaryCoordinateMap k B z)
+    (H : IsPullback s (𝟙 _) (r ≫ p) (Scheme.Hom.boundaryCoordinateMap k B z))
+    (U : (Spec (.of (Polynomial k))).Opens)
+    (H0 : IsPullback (s ≫ r) (𝟙 _) p (Scheme.Hom.boundaryCoordinateMap k B z))
+    (hz : Set.range (Scheme.Hom.boundaryCoordinateMap k B z) =
+      (U : Set (Spec (.of (Polynomial k))))ᶜ) :=
+  exists_actualDiagonalFiniteFlatSectionPair k p r B z s hs H U H0 hz
+#print axioms exists_actualDiagonalFiniteFlatSectionPair

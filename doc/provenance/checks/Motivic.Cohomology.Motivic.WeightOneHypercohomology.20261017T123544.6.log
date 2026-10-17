@@ -1,0 +1,4 @@
+Source SHA256: 1d9ce4d514bf78b2104f1d57087ace076f322cf453d64166d3ed4d9977f53b81  Motivic/Cohomology/Motivic/WeightOneHypercohomology.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/Motivic/WeightOneHypercohomology.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/Motivic/WeightOneHypercohomology.ilean Motivic/Cohomology/Motivic/WeightOneHypercohomology.lean
+Exit status: 0

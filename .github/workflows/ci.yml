@@ -1,0 +1,184 @@
+# Authors: kangxyz
+name: Motivic CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      targets:
+        description: Space-separated existing Motivic or MotivicTest module targets
+        required: true
+        default: Motivic MotivicTest
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
+
+jobs:
+  source:
+    runs-on: ubuntu-24.04
+    outputs:
+      lean: ${{ steps.scope.outputs.lean }}
+      targets: ${{ steps.scope.outputs.targets }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Select affected validation and Lean targets
+        id: scope
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          MANUAL_TARGETS: ${{ inputs.targets }}
+        run: |
+          python3 scripts/ci_targets.py --github-output "$GITHUB_OUTPUT"
+      - name: Check affected source structure and pins
+        if: steps.scope.outputs.structural == 'true'
+        run: python3 scripts/check_repository.py
+      - name: Run affected tool fixtures at the CI acceptance boundary
+        if: steps.scope.outputs.tool_tests != ''
+        env:
+          TOOL_TESTS: ${{ steps.scope.outputs.tool_tests }}
+        run: |
+          read -r -a patterns <<< "$TOOL_TESTS"
+          for pattern in "${patterns[@]}"; do
+            python3 -m unittest discover -s scripts -p "$pattern"
+          done
+
+  lean:
+    needs: source
+    if: needs.source.outputs.lean == 'true'
+    outputs:
+      native-artifact: ${{ steps.native-stage.outputs.artifact-name }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 360
+    env:
+      LEAN_NUM_THREADS: 1
+      MOTIVIC_BUILD_THREADS: 2
+      MOTIVIC_LEAN_MEMORY_MB: 12800
+      MOTIVIC_RSS_LIMIT_MB: 13824
+      MOTIVIC_TOOLING_ROOT: ${{ github.workspace }}/.cache-tooling
+      SELECTED_TARGETS: ${{ needs.source.outputs.targets }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - name: Check out independently pinned shared tooling
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: kangxyz/aglib
+          ref: c9863095f90b8bd312af807dbf0e378df82403b5
+          path: .cache-tooling
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Install the pinned Lean toolchain
+        env:
+          ELAN_HOME: ${{ runner.temp }}/elan
+        run: |
+          set -euo pipefail
+          echo "ELAN_HOME=$ELAN_HOME" >> "$GITHUB_ENV"
+          curl -fsSL --retry 3 https://raw.githubusercontent.com/leanprover/elan/v4.2.4/elan-init.sh -o "$RUNNER_TEMP/elan-init.sh"
+          sh "$RUNNER_TEMP/elan-init.sh" -y --default-toolchain none
+          echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
+          "$ELAN_HOME/bin/elan" toolchain install "$(cat lean-toolchain)"
+      - name: Restore pinned dependencies
+        id: dependencies
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/packages
+          key: dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
+      - name: Fetch focused matching Mathlib artifacts
+        id: proof-cache
+        run: |
+          read -r -a targets <<< "$SELECTED_TARGETS"
+          python3 scripts/cache.py --guarded --resolve-deps "${targets[@]}"
+      - name: Restore shared native and public Aglib artifacts
+        id: native
+        uses: ./.cache-tooling/.github/actions/lake-cache
+        with:
+          mode: restore
+          repositories: kangxyz/aglib
+      - name: Restore incremental project outputs
+        id: project
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: motivic-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-${{ hashFiles('*.lean', 'Motivic/**/*.lean', 'MotivicTest/**/*.lean') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            motivic-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
+      - name: Build changed targets and affected public consumers with current native traces
+        id: build
+        run: |
+          read -r -a targets <<< "$SELECTED_TARGETS"
+          python3 scripts/build.py --receipt-dir .lake/verification/ci \
+            --outputs "$RUNNER_TEMP/native-outputs.jsonl" "${targets[@]}"
+      - name: Export current core and selected-target native mappings
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        run: |
+          read -r -a targets <<< "$SELECTED_TARGETS"
+          export_targets=(Motivic MotivicTest)
+          for target in "${targets[@]}"; do
+            case "$target" in
+              Motivic|MotivicTest) ;;
+              *) export_targets+=("$target") ;;
+            esac
+          done
+          # The shared helper first probes --rehash --no-build and exports cached
+          # mappings. A miss builds only this required core/selected closure.
+          python3 scripts/build.py --receipt-dir .lake/verification/native-export \
+            --outputs "$RUNNER_TEMP/native-outputs.jsonl" "${export_targets[@]}"
+      - name: Stage native artifacts for downstream dependencies
+        id: native-stage
+        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        uses: ./.cache-tooling/.github/actions/lake-cache
+        with:
+          mode: publish
+          mappings: ${{ runner.temp }}/native-outputs.jsonl
+      - name: Save dependency progress
+        if: ${{ always() && steps.proof-cache.outcome == 'success' && steps.dependencies.outputs.cache-primary-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/packages
+          key: ${{ steps.dependencies.outputs.cache-primary-key }}
+      - name: Save incremental project progress
+        if: ${{ always() && steps.build.outcome != 'skipped' && steps.project.outputs.cache-primary-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: .lake/build
+          key: ${{ steps.project.outputs.cache-primary-key }}
+      - name: Save native progress
+        if: ${{ always() && steps.native.outputs.cache-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.native.outputs.cache-path }}
+          key: ${{ steps.native.outputs.cache-key }}
+
+  publish-cache:
+    needs: lean
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      actions: read
+    steps:
+      - name: Check out independently pinned shared tooling
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: kangxyz/aglib
+          ref: c9863095f90b8bd312af807dbf0e378df82403b5
+          path: .cache-tooling
+          persist-credentials: false
+      - name: Publish immutable public native cache asset
+        uses: ./.cache-tooling/.github/actions/lake-cache
+        with:
+          mode: release
+          artifact: ${{ needs.lean.outputs.native-artifact }}

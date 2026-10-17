@@ -1,0 +1,5 @@
+Source SHA256: 117cc9e2fcd245eb78c7b55d47688cc6127b58f35c553c3a9f9ac3b733b3ae05  Tests/OrdinaryCohomologyTransfers.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/OrdinaryCohomologyTransfers.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/OrdinaryCohomologyTransfers.ilean Tests/OrdinaryCohomologyTransfers.lean
+Original ordinary H with signed transfers: standard foundations only.
+Exit status: 0
