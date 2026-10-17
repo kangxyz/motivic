@@ -50,4 +50,6 @@ run_cmd do
         throwError "{name} depends on unsupported assumption {dependency}"
   logInfo "Ordinary H^(n+2) and HI rank-zero H^(n+1): standard foundations only."
 
+end
+
 end MotivicTest.SheafCohomologyAffineLineHigherVanishing

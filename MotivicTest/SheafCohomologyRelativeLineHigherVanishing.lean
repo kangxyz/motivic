@@ -60,4 +60,6 @@ run_cmd do
         throwError "{name} depends on unsupported assumption {dependency}"
   logInfo "Original relative-line H^(n+2), base shrinking only: standard foundations only."
 
+end
+
 end MotivicTest.SheafCohomologyRelativeLineHigherVanishing
