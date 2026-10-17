@@ -29,8 +29,8 @@ def neighborhoodResolutionHomologyMap (n : ℕ) :
   ShortComplex.homologyMap ((directImagePointDiagramFunctor b Φ).mapShortComplex.map
     ((HomologicalComplex.shortComplexFunctor _ _ n).map φ))
 
-/-- Evaluating the actual resolution-homology diagram respects coefficient comparison maps. -/
 include hφ in
+/-- Evaluating the actual resolution-homology diagram respects coefficient comparison maps. -/
 @[reassoc]
 theorem derivedNeighborhoodSectionsIso_coeff (n : ℕ) (V : Φ.fiber.Elementsᵒᵖ) :
     ((pulledBackNeighborhoodSections b V.unop.obj).rightDerived n).map g ≫
@@ -48,6 +48,7 @@ theorem derivedNeighborhoodSectionsIso_coeff (n : ℕ) (V : Φ.fiber.Elementsᵒ
       ((HomologicalComplex.shortComplexFunctor _ _ n).map φ))
     ((CategoryTheory.evaluation _ _).obj V)
 
+attribute [local irreducible] InjectiveResolution.extRightDerivedAddEquiv
 variable [HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1})]
 
 /-- The coefficient morphism in the original ordinary cohomology diagram. -/
@@ -57,8 +58,8 @@ def ordinaryPointCohomologyMap (n : ℕ) :
   Functor.whiskerLeft ((Functor.Elements.π Φ.fiber).op ⋙ (baseChange b).op)
     ((SheafCohomology.presheafFunctor (nisnevichTopology T) n).map g)
 
-/-- The diagram comparison commutes with original ordinary coefficient maps. -/
 include hφ in
+/-- The diagram comparison commutes with original ordinary coefficient maps. -/
 @[reassoc]
 theorem ordinaryPointHomologyIso_naturality (n : ℕ) :
     ordinaryPointCohomologyMap b Φ g n ≫ (ordinaryPointHomologyIso b Φ J n).hom =
@@ -73,8 +74,8 @@ theorem ordinaryPointHomologyIso_naturality (n : ℕ) :
   exact ConcreteCategory.congr_hom (derivedNeighborhoodSectionsIso_coeff b Φ g I J φ hφ n V)
     (ordinaryNeighborhoodDerivedSections b V.unop.obj I n x)
 
-/-- The final comparison preserves actual derived and original ordinary coefficient maps. -/
 include hφ in
+/-- The final comparison preserves actual derived and original ordinary coefficient maps. -/
 @[reassoc]
 theorem derivedDirectImagePointOrdinaryColimitIso_naturality (n : ℕ) :
     Φ.sheafFiber.map (((directImage b).rightDerived n).map g) ≫
@@ -90,7 +91,7 @@ theorem derivedDirectImagePointOrdinaryColimitIso_naturality (n : ℕ) :
   congr 1
   apply (cancel_epi (ordinaryPointHomologyIso b Φ I n).hom).1
   simp only [← Category.assoc, Iso.hom_inv_id, Category.id_comp]
-  rw [← ordinaryPointHomologyIso_naturality b Φ g I J φ hφ n,
+  erw [← ordinaryPointHomologyIso_naturality b Φ g I J φ hφ n,
     Category.assoc, Iso.hom_inv_id, Category.comp_id]
 
 end Motivic.FiniteEtaleSite

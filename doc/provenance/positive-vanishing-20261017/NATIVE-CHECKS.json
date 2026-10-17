@@ -1,0 +1,1547 @@
+{
+  "schema_version": 1,
+  "prepared_by": "kangxyz",
+  "source_basis": {
+    "protected_baseline_git": "04569be2fd9324b1911696fb1e67fd90441673c4",
+    "old_archive_sha256": "8e87391f4926200cf6a6b16f22da99bda98948cf2424b5c88aa40b08b9bce670",
+    "new_archive_sha256": "3f5e1eed50f393d1345c753582fd25a4850cf7084befcbca6414a4472fb000c9",
+    "lean": "4.34.1",
+    "lean_commit": "5045d0056413266e57c625dcd7c365b10e377c52",
+    "Aglib": "25c37780264f0da94f5bb6bd31cc089d26f2da80",
+    "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+  },
+  "scope": "Finalized partial native checks plus retained hash-matched historical evidence; not a fresh full pinned Lake build.",
+  "coverage": {
+    "original_selected_project_targets": 316,
+    "accepted_native_project_targets": 84,
+    "unaccepted_original_project_targets": 232,
+    "bound_baseline_modules": 436,
+    "project_modules_compiled_in_this_runner": 82,
+    "project_repaired_modules_reused_from_accepted_handoffs": 2,
+    "provider_fresh_compilations": 76,
+    "provider_recovered": 36,
+    "provider_accepted_total": 112,
+    "provider_original_requested_total": 152,
+    "provider_unaccepted": 40,
+    "fresh_native_final_consumers": 1,
+    "final_consumers_not_freshly_native_run": 2,
+    "defining_module_lint_prefixes": 6
+  },
+  "baseline_conditions": "Controlled earlier native successes; exact first-license-header/body equivalence; actual pre-normalization text hashes and all five imported artifact-part native hashes matched saved traces.",
+  "current_project_checks": {
+    "Motivic.Aglib.CategoryTheory.Sites.AbelianCechDescent": {
+      "source_sha256": "3151a95160e4b84ecf05dc51ef03014e0078e552e274792804a366c6bcee01dd",
+      "setup_sha256": "f617977de28f9680440b99d2c5106ad8015bcffe498907cdd05bec7d20bfcfdf",
+      "output_sha256": {
+        "olean": "6077eecc671c31ebd50bbd227b99ac642449d39f0e3e5ce420c164c74565cc34",
+        "olean.server": "fbc87e9c3c424fcbd08bdf14877153c671870fc1b56e7bb590ef8040c4c2ecf3",
+        "olean.private": "47bafda8511a71c6e7e6603cb7c533fa47db6f4f62b7fd8390e6d144f42da28d",
+        "ir.sig": "be05e24e6d4b2049da3c1bdfdacc5b812a7c36b0853232243e22e236197288f6",
+        "ir": "fef5f2a6cd1c458c4b12dd2d6dce3d696dde313e161c3172c4255446f7cca993",
+        "ilean": "9456b878f62a4bea304a90776707c5eafb4c3315e4143073de195f8ebb931d9c",
+        "c": "5df56b5b1cde9b9f693798880949e126566008ed44b68c26c39fa5e8f1186ba8"
+      },
+      "guard_receipt_sha256": "c04f6c0449c2098d58561d5488f50863024f75f8c8d61c3244cafe38ee4547ea",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyH1Descent": {
+      "source_sha256": "ed0cd1dea8f821b606aceb4f3bedc4dcc4aea61a66351e2369708430e68c5003",
+      "setup_sha256": "9cc274736ec3fd990dad6062af45739b56962c758c4e1c8c6acc130131dc3cec",
+      "output_sha256": {
+        "olean": "e2db20c95f9d97d0db773219c63e7bb31f9e6d9bf7615517affeeb3dd6b88315",
+        "olean.server": "7e7983c509a1311ac69474c6504c473f64e9a01c4bb07a7eea8ddca3292dbc98",
+        "olean.private": "62aefa682a491c5f1ffe121841e770e6b5f281035bdd1ec8f425e45671b997a8",
+        "ir.sig": "4ce04ae411809d6a9d40ff13d7735f194e7e21c792f04b05f5335b2ec66b2469",
+        "ir": "219ebc5f17d57977c8e64c8df93596271671bd344d330f7f2a479db784ed696d",
+        "ilean": "b618bb08d9ad79357d9932a28736ff013097bb240c7327436f10a11f1b764544",
+        "c": "7ba29ec682e731285848d43eec473e49217b3cc25c487cec69c1fc9180e8df4f"
+      },
+      "guard_receipt_sha256": "c6ce1f0f95479d1a6be97df220321b8c18d8d7d8e17c527d3ae656f0209f7c23",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.RingTheory.HenselianEtaleSections": {
+      "source_sha256": "b6f75b188f7a63a96596680a6cf8943cf12fa381eb1a763f03e21f108d631816",
+      "setup_sha256": "a5fc73799bb0e9dd4faa501fbd45160b20ac0c32f162c81322ff5d8fbafb9443",
+      "output_sha256": {
+        "olean": "b953a06b399b24437660291c4b37609432ae6b6a401eeedb22466bf3c2adb45e",
+        "olean.server": "669273829a9ff5392d08228a6849656be12cc024cc2d01e0565ac8129d416791",
+        "olean.private": "fb972c9006f3ac34912e6f72771620afdd853c47ef11dc3419f73bf2909557ba",
+        "ir.sig": "fa8af27c90ebbbfaba986f9bb0ef40cb8862b4fa23d28a028a590df3ed4166cb",
+        "ir": "fcc8ba10836b60b9038fb6d24cedf4f11ddb96df0355de4b2d3b6734b4903447",
+        "ilean": "a2385db6a2e79b25a9520e7ac984057490bc6548505a598d278c3bc112cc6ae8",
+        "c": "89d0f9d612e50b7bea2f831107ab6e3e0e4cd7c727e358b995950fc04eb12d6f"
+      },
+      "guard_receipt_sha256": "5a0115a0e7a8f6b1e8769bf63d153dab1eafb0e6e84abca27dbe08c811665dc8",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.HenselianEtaleSections": {
+      "source_sha256": "c2611cc9b3e487eb25fc83dc6b3f220e5671b7832d5473efeed2e6c998a05111",
+      "setup_sha256": "d2a48b88e02edecb033274b4313491b95b4ecc99050ce567795c601314ec9895",
+      "output_sha256": {
+        "olean": "cbd7fd29e1b0fec933b0423d1fb68277bb94834c18bdaecbc491d4822c332fd3",
+        "olean.server": "a01a948fa600ed107284fed0209c0fe0d9fda3f3674d7904e672b89d41d2fec8",
+        "olean.private": "7d2af970ced380b23ebdee403327fca198a09dd068800e5b07d4d781e5ae5135",
+        "ir.sig": "0b6b6149b3add9115da5ae5ed80776bd87fc589616971af2cd82b1ee983ad6b6",
+        "ir": "2f424b92c3c4c6b5d5d8c8cff0f44b0333434cb847bd33d4f36c84bd1a9d6142",
+        "ilean": "e655c70ea4d035e893ce54cc5ebd79b7dd549eff0ac6f784976b43318e9d647b",
+        "c": "8c05743393c085e7afef1afca5e540bed82a9f8dbdfb862616bdbba918f20000"
+      },
+      "guard_receipt_sha256": "7c34b05d2744350d9687a72c4ff68e0bdc31d70320e27a92142f8d6478d9b21b",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.ArtinianEtaleSections": {
+      "source_sha256": "695ca6797c93e16737e05cf29f0d4aed94b58670e4c6e35c7e866b5285bc4d22",
+      "setup_sha256": "f903489345cc7abd34af95851d78dbf4c0633598bba4b3c2006bee2b36ea2366",
+      "output_sha256": {
+        "olean": "2c6eff675bcc2a713a532ade0428aa994c5d3f56654db738343fdd8b1d186b51",
+        "olean.server": "104fbeebdb7f65fc6b84877cbc383f86cc88684dedbb25d31f887f79622c8217",
+        "olean.private": "df6f45cfaad5997c6ce1e03ce60ed9a99b2417edceec091ff19fb19ed71dfd09",
+        "ir.sig": "3ff0e182be14c537e840cad0b31b44af7b49a6cc53a08384841c4e6ddb665239",
+        "ir": "5e0645092fc15cf7af34f335813e7b6822d60190a923310a0da02c419328e0bb",
+        "ilean": "ba86f13d2c74c789a574f27e85a3c43278be043d331131694b772cf802ab5cb0",
+        "c": "a5622f1f03e012d4d9157ccc362760e4914a38077430f685152f6acf2dcbf52c"
+      },
+      "guard_receipt_sha256": "8c1973a97ff230c7f1a991aa191085eeaa968c2d00f1edacda631f0fa86ec2f9",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EtaleNeighborhoodFromClosedSection": {
+      "source_sha256": "95a46f9df3cf415552c62c3e3d2bae46129f6ceaecc6390705b00a88c1901fb4",
+      "setup_sha256": "1e9449b043fa1d4469b8e30544ffea3cb4bfbd0df7f301a1c90457f0e1a41958",
+      "output_sha256": {
+        "olean": "8b5e948e124f867f5b6cc898a919af0d3d3296ae518f064b01b09fc2c36e30c1",
+        "olean.server": "7c25bdc6453256caa237b11ff7e124c6568955249aea9191e5c7f67e45c5a14e",
+        "olean.private": "412c9c093e364cf46a9071529b92f36f68b5a5e13cea933dac925ee8ae378d60",
+        "ir.sig": "ba0ffe25b1bea961b6f644c1a9b0f5cdca22d6108a2897872b19b810d837949e",
+        "ir": "c7dc895a214b5218614b1be4f32f4ab2be057c02e87461b6db363728a4e52bc9",
+        "ilean": "5774b1a2712c2c6faa461c3483901375012831ebeb80fa112ac59b016b701a0a",
+        "c": "798a842b555ab4be612959bf265f0224c228dab46bb059310b3c7ff8d3fb0da9"
+      },
+      "guard_receipt_sha256": "076c950115e2118d9daafda5495f02940228dd7d8dd7985ff201186a30d922ee",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.NisnevichArtinianNeighborhood": {
+      "source_sha256": "9f0a686b77eeb02880044393bb6d3da14913e5a257d8b5a9261f78734fd53631",
+      "setup_sha256": "8e28a0c66fc31602ab458eb0e0cf1d25201290661c979825dbf6ef99a7dc792d",
+      "output_sha256": {
+        "olean": "bc7e724456c88f9d0b7b107dad9ad91350775845591512b5d5e1d5f943854ec0",
+        "olean.server": "c7deb09ead4c59edde6c913efda14ca47d2ce33bdad9aa4c5a2736af9fd8edb0",
+        "olean.private": "15a78fc7ba5a1a45a67c0ef52594d044379f77fb4dd6a5c074957806a63810fc",
+        "ir.sig": "0b38d22c2659d105c3d8ba78d1cd170c556383727d3c51153296c8bf51683184",
+        "ir": "4ed5a367698137432445ad145ecf841ddd33e04721021fac43fd0f78acec5101",
+        "ilean": "87091b7051e9e4bd757ac06cbc3a81e455e36e3dd0c4335d0a53052f7f4d2206",
+        "c": "3407892341842e0ba8e2c5d27032348a471da035fd1ce80b5b4770041daab313"
+      },
+      "guard_receipt_sha256": "9b64e13e3ed63de564393d9f153381f24f4b45fb4ed0f10c030859dedb3ed796",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyArtinianNeighborhoodLift": {
+      "source_sha256": "a8a315427b8364b2703a434ab45a1fdc5be031022dc5ad2d1622eb469ad54f3e",
+      "setup_sha256": "3b9041be4cc91773d7bf7c65bd583c7dabd37d16abc840ab19fcaf5401e23656",
+      "output_sha256": {
+        "olean": "4701fd72dc7310835257e7680e462e11424a26d4bba169a8b4e56c7aef4428db",
+        "olean.server": "e3dcfecc9933b0a156de0de61f8f07d22e5a8150a50a35a4d00fec4329a73835",
+        "olean.private": "4017d1eed769971af65bcf7b717511695e6b507e71b91875b319b98a9f7dc15d",
+        "ir.sig": "985be7b998650ca7e78c2a3d01ec4dc768597eb2d13a884395e6c7830df2e533",
+        "ir": "ca0dba1c24b315a3aee3d2c2f0b743cb6191c61c9a1585363072601479cdce11",
+        "ilean": "8f8a53fc1f6de33fb2b3c9d6188a383735ee7bfdbccd134a4c9e53cf2e13ad8d",
+        "c": "db109e6c54770ebfa3875fed2ff86237efe17270fccd841046c103673a7b62bc"
+      },
+      "guard_receipt_sha256": "cc7ff237c5de3d2da359478224cfab3d46952e4ee6bf1d447e21f7322c247259",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.SmoothSiteInjectives": {
+      "source_sha256": "f426376a7a16191bf2f200964cad91f8e5d0d395d1f6d02387b50cc98ec59dcb",
+      "setup_sha256": "e09a02769302bf24eb309b75fc3e4106c4d0a93c4674f3e07ba77abd1d4dfb90",
+      "output_sha256": {
+        "olean": "656b07606cd0f1dca8e432681068431818f0fff541721f38ef14016c13c0b7c6",
+        "olean.server": "35ce8682b7abbf173fd1a0faa467a19ba9634a0403ae89127cfbc2ea41db6dcc",
+        "olean.private": "bae56fa692404b6d357f822ecb96966eeeff06a16379afdbf145cd630b9d6b17",
+        "ir.sig": "7e04328647de971e4823af596962011f3e4e19e6345c669f80c9374ec0185dd2",
+        "ir": "56d7f91ccb10556fe4ef6707bd1a8e9d6833815fae781ed94def26c34ffdc687",
+        "ilean": "6cc63ff06e4bbc7e346daf02c1ad42c6b751bcf775fcc6eac91d2da9b468e84d",
+        "c": "b865f3cba6262a968936d3fa147feb8502fb7a8ce937f57ef54f0353b2f88f91"
+      },
+      "guard_receipt_sha256": "1592f0ae351afc8eb59ce89ceb88fda73f14b74d9005580f9b8699244ac00a01",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyArtinianNeighborhoodZero": {
+      "source_sha256": "5422d78e7709038f3fd36a16031f385450cdb3e111bc87adee9ce8a439ee4c1c",
+      "setup_sha256": "e2c76204e3bbe9469eca6296a12fe29a026b4c313aac069d4cf5fcefc97363dd",
+      "output_sha256": {
+        "olean": "77778837afa5f3b6c278115de0598b0ac91078bd82dcc67084d9514936ed60af",
+        "olean.server": "f5b85e99c66fb510d3945ec2937524c2b2d6b19ba7ea56f082b88841cfbba74d",
+        "olean.private": "596244e7774daacf18630fbe5c71df452ed642ff84209184cfc5bbc5713dbf1e",
+        "ir.sig": "854b366e987c16544ef18731850cc52ef71d4ad5f2931f428e436240a7c57b69",
+        "ir": "95c57bcdb63970c97f64fa4685692df3b7cca67176b715c2232fe336c1132c18",
+        "ilean": "19f4b6366fb8940362a34274d216b6373544b28b06d039033717c3e1f12f96f6",
+        "c": "79eee134ca71dd4c85a2df2a969b7fef0e36f7bd309ab449fc329b77c53c07b0"
+      },
+      "guard_receipt_sha256": "754eb94dd92ad8a0363125a385b29c29521eecb51b9630fcc8df0304b8da6020",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyH1GenericOpenLift": {
+      "source_sha256": "0d6add143abd3d18ccd813077eba6abecd0c34ad1239fad6e547b68236492bb9",
+      "setup_sha256": "c812d79916c9a411851668765b6e77a221647bf23a56be61e0c110357e15c79a",
+      "output_sha256": {
+        "olean": "0b3b1e501187e345e0b1fecff83f06e4e7629ef61a815444542f372ca2e49c39",
+        "olean.server": "8cccf67013cb6c4f0f9c5997ff173dd9c84d9038583bc1c16092772277804288",
+        "olean.private": "a92c32ee3d2c44fb596fb5dca1f76c3c9df7c4f55a1f0a75af1f18a0626f8a7e",
+        "ir.sig": "41d455df226377d7a2a35175f1395cc5735478af6d3b5b6988641da28e2e702d",
+        "ir": "b8ec1cac1709364516f2d5cbd407951429cc62588c2819814b7e0579d8429697",
+        "ilean": "fb1f828fe986137963792aced0097f2bee672ea92b38d89ee8c439674584236c",
+        "c": "12163048b3503a5ecbb1104da9af1ba38068d8a3c37663f25006b8ffa34fc280"
+      },
+      "guard_receipt_sha256": "e87509b35183a307333ca32c47608f3d263818079d2ec4904d37cd362a8a0e12",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.A1.Projection": {
+      "source_sha256": "a2846a0868c8721a8c8af353cff088ffe541638b27d8b8fd02f5986d26a05c8f",
+      "setup_sha256": "6a46733252cf070c6652dd0a71dec398206d9663b7b68d8c327383bb9291118b",
+      "output_sha256": {
+        "olean": "f447f138fe8c44c40a93a8a267652a4d9fd8f39675505aa58bc4b41fc23d4051",
+        "olean.server": "3875bbe6b712d29ce251002884919393d01bbfe72094a44db04328158a25f981",
+        "olean.private": "7be039e35ca709e84afdfe9979260c73f588ab06bc8862bfb39aa8c67f634e6b",
+        "ir.sig": "725b39291c153ce520a20ae28f5e337f078e15568ae963c56305683bce341e4a",
+        "ir": "f594013012b98cce155a0a7fe65ba77b4a091e13801802c27b3f8898471d029a",
+        "ilean": "8eb330736927425c1072798cdbc0e009e3f52ccb035c03cefbc58a8d2d042526",
+        "c": "628e0c784a605b51bf14a6547de9001119a1aef2530aa765b4e43bfaa11c50cf"
+      },
+      "guard_receipt_sha256": "9a01fc7922f4a7725c82f96320b16c32e59fd853587dd52a219cfad39d5a69b8",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.AffineLineReducedComplement": {
+      "source_sha256": "5ac28eb2d2387a0387ca5fdbc95f511cef5ba71ee10a8e000904df0e8feb7196",
+      "setup_sha256": "2a2f11857aec51b68062b92590895eff5826077645e2c437002b9037cc83033f",
+      "output_sha256": {
+        "olean": "1c5db4a728ab24da696f2f126d905155855aecc73dce6a0937659b7dbe436b48",
+        "olean.server": "65a2cacdffe474befe14575e41f9a3a135bedccb17f9881e7792781700e90fe1",
+        "olean.private": "8916d002c235d2235a3c64e5d791f14c2f8d34797e4c1cba82b6394d1933f322",
+        "ir.sig": "1887cf5791823a9e48c754d19f4fd7646d349405e52dbb0d0872f2fca6b4fa8c",
+        "ir": "4bad5ba024be2cd13618ab9d2a289f9e910eaacc9db6bcd164a48cb8c1a5c34f",
+        "ilean": "9cd4108ce7a1e33a50288f8f12548223367285e102014db976b7a022ee52ccba",
+        "c": "7aafe23958c82f0ebf47b3783c16c034269365365dfa0df904e5dffbcd542137"
+      },
+      "guard_receipt_sha256": "c4c48ab522d568927a2dab3fe113281f95bf11b51c4cef2124bcc5c39ee48b09",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyH1AffineLineLocalLifts": {
+      "source_sha256": "fe58f8fa166b8101ce6f168c17896fa1eab6232e934480d9c8183487afa2859a",
+      "setup_sha256": "6ae64f81046524f9994ad80819dfa58926320680add991a0e13e7c65b71dba61",
+      "output_sha256": {
+        "olean": "2f05824654fabe7abde925bb39b4dacc3559c88522e245bafeab02ddd3c9d7cd",
+        "olean.server": "7bd47742cd0a7ef8914bd044e776f69032a21615c55e64765d78506d879b4b34",
+        "olean.private": "72d0def092cbe05d8e717fefab6dfa73dad681f190e5bcff86ede8a1456ccbac",
+        "ir.sig": "dba6e4ae3a06544b3351719b02148ff7540447058d7e6ca14b60cb626125f6b1",
+        "ir": "9adb3b319c1913699ac1ca28a611461d6090012e14e917f5a83d00095e91014a",
+        "ilean": "cd5f241750df1af5f64f022969aa5fcf16f59ba95017ac0a78df58fc7c9bd498",
+        "c": "62d06737bf75fd61c5ae092dbb6886a6bbf2906864cf82aec4705440c76e3600"
+      },
+      "guard_receipt_sha256": "75b7ab58df167bafc187d64c839ff4e6258acf2d7611d9eb9efb4ae618df594c",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyGenericOpen": {
+      "source_sha256": "3b5d0f45163b69034d6321bcdadd692f64131e33237c18a73175dc00faeb92ee",
+      "setup_sha256": "7f5bbde2fb7a7a43ec651043056773d46dc98aae07b1eb3ae715e075c62af3af",
+      "output_sha256": {
+        "olean": "1fcf066c9a2fd37f5e9479532bbcb2218108319ca36ffb94e3d74e8a09bb6a62",
+        "olean.server": "02d1c0b10b118064c91ab6da12033210a2fef0f6b5c9aed15bcbde5913d91d4e",
+        "olean.private": "cee43e2376f6113d74f9ecc2eefafe1f3e11668ddc33137673cc4a20c2fee22d",
+        "ir.sig": "c4d05ad0314b9fc84b9a035b01758f87bfe1cd7f2675d9891e004c1e988dbc77",
+        "ir": "ddce6976ad1c63c8f1c286cd7e4926df456cccedfbf02bc457f6d289ebca0e0f",
+        "ilean": "796a5e1fe28ef1cb0e1a03d7d7c59e5ff74d6440d1502d84073128645946abb9",
+        "c": "8bd453601a35f909fc9bd150b97feff52e7395fec7f6e070ca21f1363e9a07d3"
+      },
+      "guard_receipt_sha256": "bd6260d6a60376f5dd6cc5aada713787e42f8cb545382f6353bcc45407bb78b4",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyAffineLinePositiveSquare": {
+      "source_sha256": "32c26167cb651c1832518601cdccc689a8695aa0ffb64e2cb34f0034f531f52c",
+      "setup_sha256": "3b5889dc5a13c3197253aee69caf73eafc224c38037d0554476839f8896d97b5",
+      "output_sha256": {
+        "olean": "e45c1b35c4b89a965d87d9bbb23e0dced6dfd9d3e62444cade4f24da8f075dd7",
+        "olean.server": "bb5d1dbbb44fac2b9f25bb3b06d943cff805dcc2caaae36f7ae5566088d8927e",
+        "olean.private": "0a0ee3d3970b1d4c24f7039659ee64f222a2d1c4bbb999b457b28e757442b526",
+        "ir.sig": "4cc121e04499556eb392988311086db86feb4c3bf82f5c56667eef41c54b1130",
+        "ir": "75dc56758f55e6fba186d69be92003decb2cfc2ca56492ee636c425fec9f8038",
+        "ilean": "3526c0735852085e280142070b061a3fd662548120ee033a0bff99a13bf8b655",
+        "c": "26ced649055fa0c920e0f3e2896fdba5a94cb75806664bcbfff2611122f25759"
+      },
+      "guard_receipt_sha256": "a75c8d2ec1fd081547c66153ddc5380f09b0d3b95e966c386f658f584212c7f6",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.SheafGenericOpenSectionLift": {
+      "source_sha256": "3cafb3f74f42d9c239e17916916bbb41b095cf8e5066ae6a342576abdd987c5b",
+      "setup_sha256": "883bc584c3bd152ce7a43eb378f473447fec4101ccd3f410abf53b4261afcbc6",
+      "output_sha256": {
+        "olean": "077d9fd4b3768739c0ac6318b15c51793e44b296bb5377cec65ecd928aa450ea",
+        "olean.server": "bfdfeebaa3e006cddfdf58b5d473fe8efe9931c2cb55cf745f647c5b3130c101",
+        "olean.private": "34bb7421a970e9bc1b3d92767ad3e04fe977c9008fdde4614b6c0391af1de0e3",
+        "ir.sig": "5d1006c77e51cc3c21a9961906b8e48693dcb12f48c5c1585da9ac1ddac38bde",
+        "ir": "50845dcc8757a90a46a93963dc8f02818e48e9696b84a87e538c7af102a328f4",
+        "ilean": "a6f82ae4f226aae32510be5922dbd3a87bb6198f6133e26454a3dc72d8ca35f0",
+        "c": "029ad6b06a7dc50cb52e8dd212e1510c99e490b82199d8a915dbc498f19dd084"
+      },
+      "guard_receipt_sha256": "091fafa0be64aac2cc6d1b2fc84f130baf47dff5b26a7363c68105a96d8dade0",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyAllGenericOpen": {
+      "source_sha256": "77633df1214794a048ce7daf152ddd1f9aa63554ff29b32b417da3e2752d2db8",
+      "setup_sha256": "1d3897ac2ec8f0b17eddde863bad78863852901d4d71f4575c50009cd38239dc",
+      "output_sha256": {
+        "olean": "bf42b302955692daa224fd24a10ac6f8432b1b4d0aafbdcfbc86c68c68eb357b",
+        "olean.server": "a4b8d4c880dbdfc13019011854a0a9323e99fc02c8f8bbcca595ee15f2c7805d",
+        "olean.private": "ed2c6ce0c17295ce3ffd81c67b2598492a6336ca8337c7a5ad84666b19c85677",
+        "ir.sig": "e47130648cb11f04233c6e8b4ba91fab6b13e4ad9394979df63eb5afae784a3a",
+        "ir": "82bf6db5bd553f1546c79e87295b06503dae17f88f31735156de39519b924307",
+        "ilean": "fc9cb656c27e23f45faacbf873c15a7efebf305bf6b74fe6fe58efb4e4ae3123",
+        "c": "cee065001531bf0a0c16d98179d54af8b76e709591cbd440abe1157752f73825"
+      },
+      "guard_receipt_sha256": "64b59eb109dcbbdde011fe0818c66a6ccaa249042bdbb213b381a1876fed52d1",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.CategoryTheory.Sites.FreeAbelianSheafPushout": {
+      "source_sha256": "a23cbf2cbb4a620c04f033868f73cfcd274164ae443227baac03743b746aecde",
+      "setup_sha256": "2af06578c15d94f66d1e5be7e708ca1464e8f24c870894dbcee1e6f02074296f",
+      "output_sha256": {
+        "olean": "87bec9be2bdb0d3e72e176dc66d11d28a7bf1048602feab141222be2f71fa2db",
+        "olean.server": "6af2d80a19c01435ba08d929779c8b8e9178b2df9b7c6acd9ed3a35bde212aa2",
+        "olean.private": "07dda496ddc481a55f2eb5caeb4614df92bd504c83b022fbb189df030dfd6bc7",
+        "ir.sig": "f75a676b30ec539823fbdc611986e12fd12eb416d71f66c220745b290e73c5ed",
+        "ir": "f3a35af23092a8cc4cbfa0c5325c47108fc77d67c4554fd6b76880384aa26e99",
+        "ilean": "5ca3c27311466aee6d22d0fd08886e8ceccdf8c5f7b8188a295db1b3784ef55f",
+        "c": "00c612ad588bd8941fc40c9442381cbbb10d427f7f97e54e191306a1b9ec4b5f"
+      },
+      "guard_receipt_sha256": "a580feae2e1c08e98b662d692cb57f82797658dbb80595a48432765a5210e5b5",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.CategoryTheory.Sites.DistinguishedSquare": {
+      "source_sha256": "5a0fdbf754a9a81377dff11f5f80bbfbffe77a7e6532a142de21393080fe6254",
+      "setup_sha256": "bf23197e539fb22ede3f5a0dec768da27f4423c8839efb19e231d226b1570c3c",
+      "output_sha256": {
+        "olean": "b68d8e65cd7054dbeeb2b126e6359ee3851682afbf97d3f7dcbb3749e1865207",
+        "olean.server": "fdb1d40787f76d70d721a0f6306989ac1e479549d079694793da3234d18b713b",
+        "olean.private": "ead4ce594f4e0b7d526c8e48d4fa2e1c0c39b5baea653bc58c5545d881ceda4f",
+        "ir.sig": "37086db422c9bc05567c647f52f9df6e64aaf46be8d7dc6f61d1841bd064bac1",
+        "ir": "8eda39e5cf05bb75e1bf0a24c728e7abe809365e0733dc2848aa4d296fbd5385",
+        "ilean": "ec6dc30048eeb01a7129f0b9552c308cec007f83965aa06db2bf9d3f470d240d",
+        "c": "fe52ca1c463d596d3393feb2e20f377c6c099849afbcdb8e15d7a849e0af0b7f"
+      },
+      "guard_receipt_sha256": "a5267fd68959235903087e0bf07b447c6cee2c6217ac9fdfb8fa18b0ec677252",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.NisnevichDistinguishedSquare": {
+      "source_sha256": "1d3ca86bdebc68d3488c0cc102c945aa04ff99a75081ce7990a26ac3889f35c9",
+      "setup_sha256": "8638caac8cf68fda017346b53954a821d8cf1707e47925fe0ce37248fb4d568c",
+      "output_sha256": {
+        "olean": "4b12e3bf4b23f41ac49069bc61fa80888fb1a1fe824c48c6f1aedb0ed566f429",
+        "olean.server": "17858b3a5976d8a6a5eea3b31932d2a1b9ca7dc9a52e42c0e8ec01d4a64b51ba",
+        "olean.private": "5cea2a856bc31317e72ba8451ec69b5e8029b6e8ed090aafad762f19965074fe",
+        "ir.sig": "60b240c17b34ef20db8b033939e37b7c8ce35d84bc9cf21fe57bab2a0ce48c70",
+        "ir": "354cbc9529297360feeaeda0b92f21df74cc44397029af2f339642321b4bd3d5",
+        "ilean": "7e741819355594655602d3bc9b30debe95eee7809293d5c27829ceedae0d73a0",
+        "c": "effa3132e85bd766853d0eb56ecf8ec30dcee511c17ba0819e7b7a4102c87ba8"
+      },
+      "guard_receipt_sha256": "d799ac22961f4583524a00427f3c49408a1b1033daf61f8e02432a64ea5d98b1",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichDistinguishedSquare": {
+      "source_sha256": "3dad5d9607e0abd2e359f4f54e43cf445673816f4e03d0242aec525b898f661a",
+      "setup_sha256": "caf3d649e29eb65b2fe01cdb5566bf6df25bdad4fc94dc3a265207c2160a5eb1",
+      "output_sha256": {
+        "olean": "dc6d32a0145b74533f96920cbe5f9972c191d7d1e70c4906c6f823f7b409bcbb",
+        "olean.server": "efe65542ba2e26b791f30a3e1ba2e9a9f70a88ed1f5c950c7ec82083a29ea471",
+        "olean.private": "8edae29bbe7894de54be87da76dfb59abf0af1738ebea6f1cf32659e16066fb7",
+        "ir.sig": "4cee5be9a6b4bba868c8a7a4fd3e3b28e05edf8babcf5a0c11b51a5cef173f77",
+        "ir": "8211a1534e1c8e2672ed96d643509eaa8af9c489563a42b10d2ebf7bb91ad892",
+        "ilean": "d554563536a9cc9f52d944a0a11d8a43d3b89de734af4f7a31a550cb18d19ca7",
+        "c": "6fdc9fbe817a26c34a59cda52f0caed4f7a39cd7b59258a4e78d07320cda1a98"
+      },
+      "guard_receipt_sha256": "4bda6498caed205c5e5b1159008912ec5905c38b4520896924e32fd970dcfe34",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.RelativeSheafCohomologyExcision": {
+      "source_sha256": "47f7b7f438e1dcf681626588b60c8a9e0dd13912250f45540b84116c0d157cc3",
+      "setup_sha256": "890a46a2ec5ab066f6d0ca7688f3fbbb0eddb503fe4943c07887bc8c298d076d",
+      "output_sha256": {
+        "olean": "b7a134b8c133c4d6f7631abfe01eeaf1b227d8a90ca16cec76646b01120c2efa",
+        "olean.server": "b7e5c9fb2e41ad9ea5b7cc10b327e98cf644bee14ffb442863153e99a4dea707",
+        "olean.private": "bed3a0b25796097fbfc54534a32f744251d7a5c7997b8ca63e3871cf2d8d5f3a",
+        "ir.sig": "bc763deb02fa7d812c6fd93eb0a10e2481092eb0e7c0cdc3fc3a421dec0cc4e1",
+        "ir": "d52064d352d1cdcba7bf287d90ac98a98baa082e09a11a3fca31fc3db6d1ea04",
+        "ilean": "5a0baba353c3b649f512f6285f33bc7278ef515aa33f63d57e66962aa2732f29",
+        "c": "ef98d6eecc968a6f392e74a24000865f226c5335768afa36ba0d82ef9aebe011"
+      },
+      "guard_receipt_sha256": "0cbe4203f20d30e142927845e619d72f76e69ad96d1c62d5136e88b9128744ca",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyNisnevichOverlapLift": {
+      "source_sha256": "5b15060d9382eb6bce0051eff864227e4955ea13fc520a5ad5007001eb54d8ca",
+      "setup_sha256": "5112148c1ce7f25736df5d712d4de2a915f6e5780f9ef84de16e69c8ce81d923",
+      "output_sha256": {
+        "olean": "9cedf0703838fdb7d8669feb806c825e081056b88a782155820cadc2deb7cbca",
+        "olean.server": "cd6d0b836f7d0d3980dcfde6dacfa6fe0726fb4ac53930700ace82c33578c641",
+        "olean.private": "298c8f6a2210e09b7850decb8a2fa73d4fa904e4172e69f0e3747735555b9ef1",
+        "ir.sig": "f70ec8580863089da99ef53b0f040cbc4ac6fd42f3fb8169c87bd1c07bd6bb17",
+        "ir": "0f87a980a117498f13e5db6fb241d4923411e5efdb2f3feedef0c9ce858bcbbb",
+        "ilean": "3357ed6f1e2d1a782e730272b59a9beb9abb34273fc62601e5950f0d004e5c47",
+        "c": "be4031fdca6536bfb4ab1735ae99aaf831a82827c6b049f4bb0fbd4fe8526f41"
+      },
+      "guard_receipt_sha256": "90ee455eb51a72a439fda423115b09a00a176d1364bf7576c0b9d387eea8617f",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.RelativeSheafCohomologyComposition": {
+      "source_sha256": "d589e8838664d601b28c81f4bb418d7b02d61d76cfd047a85c022716b213d8a4",
+      "setup_sha256": "897cc74a10ec99a3dcd72aa31defd67d3287f0f72d176b39efb2f1d8101e9820",
+      "output_sha256": {
+        "olean": "11cac9ba543f8c15bf9b6585b5d34d10159ff97bdf50888ff930eba48501a014",
+        "olean.server": "39aa09ad9f3e549cebf4953332a303577c72923b443b77e0d3de6aae1b6a7dbc",
+        "olean.private": "2f000332dede5f79897bf478b56ed15fd827024b254cb406d02ea2d9e93bdb21",
+        "ir.sig": "625241efa5721f53e8a9acbc48f93196051bd5ea78b1df5763009ee8213e5916",
+        "ir": "006f12a03ad052e734ffe7fbd343067c7d69ac6e8182b4f17f49c96781f5b96a",
+        "ilean": "26370816aad2ed6047410fe7855522b2c32a08d8d9dc3f752bc91b47fb4ea433",
+        "c": "1ef8d651bcaf9ea0effd5eb0271573d170ef9415911e702c6d1485aa3c9e3ad7"
+      },
+      "guard_receipt_sha256": "211dfba2949c688581cc49818a0533800b0197dc8075f66316e09b4c4581f18c",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyNisnevichOverlapShrink": {
+      "source_sha256": "36956cf4369af0f8aa22babd0bce98abb4fe11264ce2316efb725be64eb7e8c6",
+      "setup_sha256": "b758d5399ef4080cca99e2505acaddab97131b8c4b6ae4efe6947821b7833ff7",
+      "output_sha256": {
+        "olean": "3b59f2e70e98a61eb2bd327ab82771b92aba042897e81de054986b575fc9c199",
+        "olean.server": "c5d2f434ec3360870b42747b48373a5056e4f82e8a825ca4bec489661769eedc",
+        "olean.private": "9ced2bfd66628f2e5ab843bfd3469125dcde91e186bbc376dacc87b0010b3b5e",
+        "ir.sig": "f59b86eb8e5311479604d65d17ac9d529f247d0bed648a1daa8b6e13c98677f5",
+        "ir": "3aaa36b172dbdacdc1b315d1a54baab109d120adf29d7196b955edf5873f79f7",
+        "ilean": "3b536d64b372b53e661eb83c2cbb0fbb8864c11b8968be926444ff0ff0853b05",
+        "c": "fd36f749fa6cea8889ec13b8664430f28d413c326287b1702005bb85cd9701f5"
+      },
+      "guard_receipt_sha256": "5050c18884be1ad78df8e086a03d08692493fa4194922aa05e2ebf317ba280d2",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.CurveOpenShrinking": {
+      "source_sha256": "9269079cc94bf7e64bb9ba664d77320955ffae0c6da9541980d99d4ed2beee9b",
+      "setup_sha256": "6a251359d466acd7e86afe83237dd04addb26c3c890dcd1ea9ab6de72d956e0c",
+      "output_sha256": {
+        "olean": "02bc4389c8398b2833fd973dc32132ee169e1e9cd2b06686fdc33f9bdcde8ac7",
+        "olean.server": "1fd964331802f24886976ae74f98191779da7dba0075210c2bc7e3b19b9b2f81",
+        "olean.private": "9298956474d2b89b1d585f322aec9b38ee26942fa8378df41e3087ec9a6574ed",
+        "ir.sig": "0ec47f7536c76e4ab5dbc1d98c90b9ffbfeaef6e8cc7b1681f5bdf8af76ead73",
+        "ir": "1f3a5cec372b09ac9932b4d5d0fff240339ece8f97a5d555ee772f00e3c3be2d",
+        "ilean": "33640966c67f3a374accbb124377f0a0554e44031333159402320b6991a2b388",
+        "c": "68eb56de2b6b6eb80ca651f094d410ffc7fd5e0508754b8dfddd4df942bc92dd"
+      },
+      "guard_receipt_sha256": "0f3b2de6555cb565da569ae54c4c6298f755fb2104797f3636727eb494ea4910",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.OpenImmersionCurveShrinking": {
+      "source_sha256": "46c39699694015d6d7c3d961af44cfe02fdb7674fdbe72a0b0b68b5cde928681",
+      "setup_sha256": "8752f41f76a9b00ecc1e904c93d9358274a8837a91614da6d32673250d8fa8ae",
+      "output_sha256": {
+        "olean": "785d6fe5a22318baeaacc8a8b1b5cbb36e77d083f2b6d9c11179aa55aad666d4",
+        "olean.server": "2f3b264b1d6f2f4fa888140f22ba37188f4a509dcaa2a5bd3b2ea0ba5a7a7fc9",
+        "olean.private": "69a86f70e0c7daeec7a54cd96d59dcc14d15b47991bc72bcfcce1d748787e102",
+        "ir.sig": "09918189ea5e281e2bd02f92113472b2700b169d9614c30b9a40ca0e5df9b844",
+        "ir": "9d6731735a2eff5663933872c551bdb125124c16a21fbdf007df35891e1585a3",
+        "ilean": "3be5b9c9dd62444f12bfa1f681f014d126dc4e8512300817d9144102e40cc130",
+        "c": "22b45a3426e94b9863ee44648bfc6f88031225b545f17426de25c9618e5d411b"
+      },
+      "guard_receipt_sha256": "2ee4d1f509712520f21075817b3e0d637826340d8c411932cae9c03c563f5f4b",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.OpenFiberShrinking": {
+      "source_sha256": "6668e20464ea59596119d34ddad0a48d23b1869e589151233816d1e88bb17fc9",
+      "setup_sha256": "b87088dfd74613f62772bf59f6702fc63ab0f99237d1c762f9610bc98d0feba3",
+      "output_sha256": {
+        "olean": "a0341977a55ccfac5e3ad594e6ba0fb9eb6dd0feebcda406710da86981ec4369",
+        "olean.server": "bb5d408146e42d9a07d46adb384774461e4197d98f93d35b48c8e452bb4710d8",
+        "olean.private": "abee04579bc2d804aea76961132fe13bd07960822afcdf6de5ccbc5fc6d5acb0",
+        "ir.sig": "0a36537a3ae93d9bbc15fa7f000d3fcde6bdbfe2111ec94e98e34528ce7cd017",
+        "ir": "1e911a29c519831c8c8fd17ad4a667b09198bc1260708d4898fd6082102fd744",
+        "ilean": "7e322b897c817094ab2d12aea8e342f226987b143d0a04d5709ec5d589ccf1b9",
+        "c": "ef73d41c48b5ea45fead03581abd6e5c3e672c047a3c1e915b2b79a1f40d5d7c"
+      },
+      "guard_receipt_sha256": "702e3d4f490e6916e634234d5c6f5429540c13545430fe9a9c1f4831bd81594f",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EtaleCurveDimension": {
+      "source_sha256": "5657b47582f97bd102d3cb94f590f814eca12a4ea1f8a595a3c5d20ccc57dc9c",
+      "setup_sha256": "d8fa9ae9118bcf4f87f3270bb549a0071a7bd4b1b5c372f4b837eb9cf4874604",
+      "output_sha256": {
+        "olean": "cf9895396995bf6c65c4a6ea7185bdb21e35e53ffe38e6558acae82c021b2fdc",
+        "olean.server": "b548acf150a336f30f5a7208e3701724bc760161e7438f966407a4c5a1657e0e",
+        "olean.private": "be8707770c4489af20aff52d3c5a8fbecfde367f1bd3f29a0ec0d5bedf9ef46c",
+        "ir.sig": "92ae0004faed14de5edc3943c008264538c341de0a65d965a89463994ef4cd36",
+        "ir": "86a8a941db5bf38d105481794fbd0be6a95d5c547d2340be46fb82507392875d",
+        "ilean": "a93ca60e2503a6b7f401aed56eaa6d7a2fbfd63c77498d24d177bda79491175f",
+        "c": "6f965a2eebcbc95ef1298f8f9b8a40d3eeed026de00496ed222161e1b68737d0"
+      },
+      "guard_receipt_sha256": "7a663a101fcded96b62a0e74c572ac613a31643ea924d7120ae59a5d8d67e746",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyAffineLineOverlapZero": {
+      "source_sha256": "e668f160f1434b503ea537a6a8caaf7a2417e27a6945052d2fe25f35b29389b1",
+      "setup_sha256": "4722d5e670a0084549e09adda07338d5fc552a4710e73e145b1f436f06f9db6a",
+      "output_sha256": {
+        "olean": "2d84c5f388c498566c24a3807af0348623f6a1e9600558e78c35e400ee93e5cd",
+        "olean.server": "ced1a55a2e33cb109030fd66a4cd7c2025068041f4404fce6aa25d2e1f5ac873",
+        "olean.private": "dd30891e34e3e77f3771692565bb9f83bd02b36af44ec31694fd566da60409e3",
+        "ir.sig": "a17e77498516be9632ce22ee7d8e5a12510263ad7a0c078a71ff0489d3d1e44f",
+        "ir": "326799967a3dfd60b0418715dcb7ee7b7dfdfcbecfda8fe9091ff0b06274060d",
+        "ilean": "2edcbcc3a68ca9e5d0b36cb6a8e5fd8bca9bf3866f78935b9ae36f7303c9d101",
+        "c": "904eb7447859254525ec297a11863c0f5ac58e74bb3c09a6c238c538afbce3fb"
+      },
+      "guard_receipt_sha256": "1060be58e98a4e1b01d7d4e346c5e73826b9d89489969a17e039d013ecdd791e",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyAffineLineHigherVanishing": {
+      "source_sha256": "d837dc4a1389380ae2b44a0a9f727e10fa629f5a0f8373e20364472df98453f6",
+      "setup_sha256": "6b2918a7d2d0039e33ad898b01928daefb99d4d6143a584974fd04b428f36490",
+      "output_sha256": {
+        "olean": "172b6c5ad862d972e0e887d890b727302b45f65cdb84d8758250ef54ee01d15f",
+        "olean.server": "9b5ee19cfb48d59d0f30df11144efd8a6da7b5256d9385b2df6b102fae32f244",
+        "olean.private": "b2af5a939c217bd7d17f6bbcdb4fc6a0061d1ab796ed6069c4e92cd771a93a6c",
+        "ir.sig": "a1f1c5f689b55a2a5cc4b68508c8048e890ddd731fdb3b0a9b52e1a997b98cc6",
+        "ir": "bd8706ae47f4c609352949e5aeed56b64c80fe505c92493ed3f1bde6ca8a49b2",
+        "ilean": "59f860b6e584944aaa8db5f6d5e0b15777f3902b5a73ff42603afbdecc1fa022",
+        "c": "1e5118cb07b964b1f53247c7749bcd02fd25c25548050b35bcc6a06b0bd1a982"
+      },
+      "guard_receipt_sha256": "3705cda227ece8d0d9fbb779f277ff66d5ffea8ff9b9acfd8e9b831e5eb83016",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.CategoryTheory.Sites.AbelianSquareDescent": {
+      "source_sha256": "015f35f0f1c92b25db8605c95dfc26f586e4d9c595751c2ddfc7a68bb4f6e9c2",
+      "setup_sha256": "264f01967d122c76c1bb88899723149c8ec9243f2d88ee58ef58851d127ef30a",
+      "output_sha256": {
+        "olean": "5381d40b34d0b0bcb90e95e584971dba5e8bc0a272a35d4a9b53c6970c239a91",
+        "olean.server": "ae3c0d8fc927ad359f732422532ff92e7644e523b9639363707d9ea16b7e16e5",
+        "olean.private": "fcce092172ab5ba0aeb862ae0cf99c60fb0b1edb0a233d73e77012e66dbbbd1b",
+        "ir.sig": "1278a4f8cf2a991a77f5ce64e1ab1165ea80dac29f83debe868bbb1eaaabdcf1",
+        "ir": "7629761a76c9be4f5ff941b3a3cccd843597a76e5fc48928efbf9222a50245cf",
+        "ilean": "56aaa2c1e83fdd98bdd6d4c91c21f66b99e9caa499475b347c392ae9b026760d",
+        "c": "55e4c4fde6d267191b11b30ec4c29eef0769011ee5cb18cf3e4fed70e22b3d4c"
+      },
+      "guard_receipt_sha256": "537897d3c4abfff5b54426e28a27ddf80d2377ea41fec66614f75a42309e4a77",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyH1SquareDescent": {
+      "source_sha256": "c5ff9b1ef92a82eec26594a0651cbca0e96bfcdeb1ad1c2b953624399361c7e4",
+      "setup_sha256": "cf16e99b477efb4f3d5a1ebee80e6163ddee727f3099ce34bb6663e7ba04d440",
+      "output_sha256": {
+        "olean": "fe0994f9a12bb19bad2ecce04a1dbb902378ae48265c2073d66aaf08fed1688c",
+        "olean.server": "fe3fb93cb42b9dd0f91a214cd717bd07baa69a4860a857d3f0e3dc02a1a8c16c",
+        "olean.private": "89b25733fddd247a17fed2103eed18aa1490c1ba29a5ab77165c46cd0ff96ee1",
+        "ir.sig": "b7bd2c814cda4298ca2fdba9992857d5886dc3e060791c64b8ba4589539fa887",
+        "ir": "a0b8004eb402ae640872305c26390b8b7837655415deb26c9705b712d00ea3b8",
+        "ilean": "42a33fa029abf0980aa37960a0bb8baf30152cc14657948c7a72d13ae4bbbbc0",
+        "c": "a5effd4d5bd25fc78112e480f766e24eb8582403da66431b87e1218d72f26d54"
+      },
+      "guard_receipt_sha256": "eb084eab4622c755f2d24a377313b7d4b55ebd28c834c933911abf257d44aac7",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.A1.Basic": {
+      "source_sha256": "750c4cdb46c67c79688371e62f617f0fd6da56b0ee26890069827005e4fec8ac",
+      "setup_sha256": "93f2fe6e0d9939b5fe2db8a6a35252f4073e76da2d14187a107cff681eda49f3",
+      "output_sha256": {
+        "olean": "4363d4b3eac66bd3a1f267d2b6a5bca56485c89d411053e2b0cf153e2b292a4b",
+        "olean.server": "3c186dc6d3bca3916dc77c8f0317abb2d21c47979591be4a377ca86cbcd2270b",
+        "olean.private": "39067ba5460432dd352dc6b906d28b7d8285bf41d403915e9f22bccccd38298f",
+        "ir.sig": "2407308c0b5a0fdbfd2eec10d38fb405eaedcd463f1913de46d74e06556f011b",
+        "ir": "29c33c927769bb08135150fffbb57f7bf6f189d5eb8b06f82eb396d0fbed3fd1",
+        "ilean": "32c9afe561b73dc1bee434c041b6c05714d317b185a93269853a4c6143fb488f",
+        "c": "bf866dab623c14568ffc8d28f3742baa4941b4c39036ddf324a2d32551379e77"
+      },
+      "guard_receipt_sha256": "3cdfa442956a42f27a024f53a66fced144f2fff3a23ebaff344dcd892e4b3557",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.A1.SquareDifferenceActions": {
+      "source_sha256": "172362d3b8d3ad64ab0e10ea716b6a84beaaf60d18b5aad176d3e4820e44793e",
+      "setup_sha256": "3fab8bb723088b91a9bab15e0ea3ac6e59a188d134b1151e991839723c7999b4",
+      "output_sha256": {
+        "olean": "22177d5d8bcea7d19fb039f93b91ba59e71ee79110195e73b0ea8542b7ffcae1",
+        "olean.server": "65121729fdfb77046290afac390946b9cbdb776398cf00b2c61cf061f1ec91c6",
+        "olean.private": "b316c3dfab227e4ae83d1a8de8eae403fa0bf7178f07156dc69577eddf32a483",
+        "ir.sig": "3d64b18c38eead88667fc7dad9bb55040b24c2c5cbc8e349942944ecad43a187",
+        "ir": "c818c34f394d517225006bce05abcc46f2c3fb2ab0be7bf898337e2f5b68182a",
+        "ilean": "338f360f1eea525c6689a933b77837c0fb0b6dfa5b716b3e1cdab7200c5c75da",
+        "c": "d90c89f1463da3791104a70120db8a3b76dcfca14a402e82f3304787803dc613"
+      },
+      "guard_receipt_sha256": "236f520bcf86d51818a8c24be31d99ad7f2a10b9396e33af592645e530ee9814",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyH1NisnevichSquareDescent": {
+      "source_sha256": "2752e6e9cb23345dcf876a2a9ff6259249206cdec6a3cbc580b889f7ce642587",
+      "setup_sha256": "4a348b7d9aafb1535b1cd2b7a2c8a570f5ddc21af38648bb84ad83541228bbeb",
+      "output_sha256": {
+        "olean": "731101d9f1a1a6125344e7a3dc16cfbe42c44dbc2dc0478621d00d07dcdd25c6",
+        "olean.server": "784be4e1f4f4f3cbbd79437a9c5a4223b8f259fda2a976e7b37b7710de5008fe",
+        "olean.private": "3ab51a6fdb86058bc7c0dd3d314ea50d23a6bb12c8b5e363ff7cae76519c98d0",
+        "ir.sig": "e3c699e7a895175821c62b8c3c1cf083cee0d89e327d64bac88cbb820ecf1d0c",
+        "ir": "de7533ceb65632877bc67bd7288687dbc340eb24ee76531f72bed75c9a1f5103",
+        "ilean": "7304fd2c11715d739f7895c5508043ad397a744960d696f943f74201ddd6ca53",
+        "c": "a5a0e7e3fb1d1985b0d9b56e26e419a16a507191f1188f04ebea27d41f21b757"
+      },
+      "guard_receipt_sha256": "c6ccc7c93f7d3ed0db44b850fd52073fe23fd334b0e824bf847dceb73f59e17b",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.SheafCohomologyH1AffineLineGeometryConsumer": {
+      "source_sha256": "66dc7ea7c879b3fbb2aa3cf02a12225f32b8c50f2d5e71b46a110aaf990ba417",
+      "setup_sha256": "1a932818e1602b10ab432132c98b8735d447e8b24a555bcccaf1d6cc9efdf8e2",
+      "output_sha256": {
+        "olean": "97ed892fdc25393674406ff649449efcfa96447ae995072bf43efc8d07432098",
+        "olean.server": "842cdbb5b5e6e17a537ac10cc7819caf141aae3314b249cfa56dfc8032dd307c",
+        "olean.private": "20e1e26361e94bb576e426ab0648f378cb6068d7e9da7da6040d45fb69b0da73",
+        "ir.sig": "39ffa2bfb0a5fccae6a59b9c602414671a6764bb5abfff7a6be69a6d0b0b7c9b",
+        "ir": "918f7a12a12f254ea862e75ce2761afb73d93474fb716203e54a529f7e415c5c",
+        "ilean": "428c5241b76bc2655a53847dbec296e3f37ce2794b12020ee7210da09622dc3e",
+        "c": "2f77016a31e8254eec21bc256cdfab361dd7ddce646201c3513141b965df05dc"
+      },
+      "guard_receipt_sha256": "5d23ca740f12309857f59661e620318ed8dde6b1336c11ca4563bb3a069eb7a5",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleCompactification": {
+      "source_sha256": "b98242ba89d00f865ddd781a0ce39d8f3d889334f7321874e4d82919c18cdc42",
+      "setup_sha256": "a0d1009b647f66402072969cea622f856137723d3d5292c85d35324d6c168e3d",
+      "output_sha256": {
+        "olean": "2938aa890ef668fca1833b9abea3c12ae37cdd326f2424b56df4df0f1ca98b84",
+        "olean.server": "ef3f05449c08c036825dfd4e9e775eab3402d123ad378725df540fd8b363f15b",
+        "olean.private": "d0905629e36553c16e9ae6e88ba41049adac17b81905947b583cbc807e6eddd0",
+        "ir.sig": "a51a96fcf6127fea0c2564b5b7d352a960836589dbc7697f4f42128d6a2ff5d6",
+        "ir": "d60cbf090a00226543412fa1bacf582512eb15e0e4ed7e85ff68e9b00aa9c62c",
+        "ilean": "92a5bfba8d81a455c804ad8dcaf35283e57a3babfc704dd101af383c07149d8d",
+        "c": "364ae6e1cdca6ef4b42eda4d27582eec36b1a5e38590e535fbdfd2ec54ff76db"
+      },
+      "guard_receipt_sha256": "ddb4f3894acfb9b42bc9bb66a58f84382881e78459b6f7dcbdd15f6b64b38ce3",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleQuasiAffine": {
+      "source_sha256": "91e203a653fbe370fecf79d4f8648df9a8b58893dc789200c4989ad67d045ab0",
+      "setup_sha256": "f2d52a0253db945919eec808091a05d641260df47a5f019102dfd13c5858f12b",
+      "output_sha256": {
+        "olean": "68824f7a733ce643b66847ea9b103dff4d620dd62b12f10b1baae6cacb3746b2",
+        "olean.server": "12534c80f19a311a374bc7d60075c5dce85af5df9896aae2877558db1156c98b",
+        "olean.private": "8a1387b9dcba1fd2e626309c8f08a8947e4528017c60666ccff0687bbf2acc50",
+        "ir.sig": "3d0c63bdb3e174fe3e97013350b7a47dca9ec86cc21b41e3ceb38b564a026b8f",
+        "ir": "07e24d5408536f59f01836f809e57883287c8ce54632f68719be149d59eb2c44",
+        "ilean": "77fe7b3ccbda109946fc79b54a05026c205bdd528b29d900e418989307059a24",
+        "c": "0bef64121d7a27cebb9f1d5de943a26aeadd8afa64ea8c205209f7d7bc713585"
+      },
+      "guard_receipt_sha256": "6c71e185bcdf0c4e1c8588ab312021b41fa7da05ba4e75ce1ca9bfc2d4362887",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.QuasiAffine.FiniteNeighborhood": {
+      "source_sha256": "906ae5401342f6c6b80fd6d774a3cf127e0c0866a5b422a434355bb0c181328d",
+      "setup_sha256": "1ce22f8f27e9fd849f7f8c93e5ad8c233b1f43582e424e4025b2521295fb7d22",
+      "output_sha256": {
+        "olean": "581e643f1e50a8551d1dc40d50c28c5c42431c3314f306de0bde7e9bf4405f14",
+        "olean.server": "b2760b7f5dc7cbc0a14a2445f95e96fe000f1d9c8a9154bf72465f3f9fd052fa",
+        "olean.private": "77d9c34762ad6ee8b6347722ab73d409de0c4f750b9a201235cdfab2a9ff02a7",
+        "ir.sig": "f039939d70fa9b6760e50c670972f7b34d377272090cd8c8337827a34e4cb549",
+        "ir": "c80c3bd2ae0830c9a819ac1b828412f363adffffa6f116c42446a28f90158e29",
+        "ilean": "2bba9dcf97dffeaa59872c9619a0ce1bbb27ec183f35d35078bce51014c9bdd5",
+        "c": "a190c2e3008814ba12b425302c41e24adc62ea87cab4247866a64b9cdce3ac9f"
+      },
+      "guard_receipt_sha256": "571a829521f5dea8213071453cbf0eebadccb13d91b3d0a9b37215e963ee41ff",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.AffineEtaleBoundaryRefinement": {
+      "source_sha256": "86291014f4d1d7125d0a77767d329764609dc77bdfa3cdfed57a3c803e143e46",
+      "setup_sha256": "deff2dba2e254c1eb16ddbeb9cf465d033b7ff9885f2ad2a08fcf04d9fb0690e",
+      "output_sha256": {
+        "olean": "57940be69bc8f58172fa845fe449bb3408fb37d1dab5463ebad87d21223b4a8a",
+        "olean.server": "776753d54cf62fa96984c9bd99422c3892209a6bff67ca36df4ad1233b85ebbe",
+        "olean.private": "9f257d08f09d7e79300ca87a93379ff424524793a51898c7f1f3cf56b29b6f82",
+        "ir.sig": "ca5e95173926d4dc61900e4acddb76eb96a8332f63d02e5d10eec7c6c0c12854",
+        "ir": "8f4a3a2def890ed7bde4afddebbadd797839449e2a025cca0f011cd8d883d5b0",
+        "ilean": "89b39c404873c35dcda51f1bb3872a3e8b9bd1b268152a9338c28fad870389c7",
+        "c": "ba15f0351c7ce61cd1789209f634351708667f28054b65ce5b80d79e90ffe723"
+      },
+      "guard_receipt_sha256": "9687bb1201db0110259c99f18c1a074d14438a70f0cb1f39ee76d4bcc8d9f2d8",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.AffineEtaleBoundarySpec": {
+      "source_sha256": "adc7656976ff334ab0d26fd7b05db41c13fdd9030ce713a7e2fa34b9fe87469e",
+      "setup_sha256": "6076c79828d041d158e64d7140d994e019e519d97c0a0abd475c76244f2be4ea",
+      "output_sha256": {
+        "olean": "877c95a1adfc3c0a12d4c0218bb1b1cde2660fe9f0ac52b07fc74721ba2c157f",
+        "olean.server": "043ea86a780d53dad039178603ff95c33903f7bf34c84c7e5e8f9fe0a0c38291",
+        "olean.private": "c16294649fe8e2e9938ce84003940ba500543f45d713c72eb1395b91faf39667",
+        "ir.sig": "0037c71a5ec3463c4027e08eb392ed583b3e1fda38c4970b9dcafdc79cf34d1b",
+        "ir": "0641fca764f16af497c58248160abea7e53f2f7995e134d8275718079fad1394",
+        "ilean": "e2b302694711304015c2e7d32cd781c9f2c75572c2e9b4919d0ddb56634cfe5b",
+        "c": "ded414816af13117103b350542e2f789c17678655b1167588de34e58394efbce"
+      },
+      "guard_receipt_sha256": "ce405030ed4a5bf72fc73c5ceb063ea1b48a9bb3652166172c4811a91e4fcafb",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Cohomology.AffineLineH1AffineGeometry": {
+      "source_sha256": "29ae7608a23ee7f612bc03ebf82b87fa339ffec4ed397e4d470e30dc0e99e3ce",
+      "setup_sha256": "63fd84c34c33af48b63d6ce16d3d14218360467b5058fb181e68352c46fdd6cf",
+      "output_sha256": {
+        "olean": "e5f6dfd5fc1c8774608e577eb44a1a742400ef28ddf19e671f7e121039c73a6a",
+        "olean.server": "01de9b2caeaaff731de90d049c29efa1aaf6b22a838ef836fbdaf792eacc5017",
+        "olean.private": "5ac38889ca04be8312ef321abeb2bf4eb5e430bc7688d482a4205ae7a3c673f8",
+        "ir.sig": "a20f0f1229f56f3a4d21e3bfbe390e143d42bdd1e50c69b1816a662454565fb8",
+        "ir": "548111df29b0a6d5a9168c0763f6e8a55cfa5ae229f1791a12549a4109c978c3",
+        "ilean": "7a2e18b5bebe84294722bd7bd9db352ff71ee80c5166bf3618b263cd47c6deb9",
+        "c": "9ecaa4d6293d46540b0a3e755004b525dcdf4646d27d824dc0f179a913a8c443"
+      },
+      "guard_receipt_sha256": "92f22e3a701ea799bc1e7a0660f525f4685461086eaced5d47c14980b7ef9a71",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleInfinityBoundary": {
+      "source_sha256": "2d6f1bff320c2d048847730ba37aa7a71e9e26a5feaae40dcaef50fc87b98bfc",
+      "setup_sha256": "a2efd9cac6bcca41f5a0df314a8bd46ea30e1308eac2fc4a94f577d62344f175",
+      "output_sha256": {
+        "olean": "6622abcfc04c57122e4e5fd2da63999184bb5ee31fb7efb916916b7660531cde",
+        "olean.server": "cfd3f53f7d1d6d4029e042c3e238695a80f92116067e626be3c03dc3237e5ca9",
+        "olean.private": "1211cef52fc011be832d501e5f3f2a5f9815a65918609aa968ec34c9da38d8ce",
+        "ir.sig": "543e4c414035bebd645cde8d3943ce6a73e90908507eadb9c18a2ebc3a8f65ff",
+        "ir": "c2e9defc3dd27e3d3e0793429d51a3ed6069e7f57f156c6c85221504f982cd61",
+        "ilean": "9cb77b80d1b0c3f62abfea8504c0dc22596c87ce1f06ddb9fca51bdfd9aa9dc5",
+        "c": "62e10835e5c46268e617c2ad8987cbfdc2828ea5e43652d602ff55e76e9bddee"
+      },
+      "guard_receipt_sha256": "7b7a4f04c650add09d4c50da4269dc0ef0dbd612c29816b8b4c0c70167f20687",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NormalCharts": {
+      "source_sha256": "829676057a509185cf495900e5efe1f665095adf0038645ab6881422e9700742",
+      "setup_sha256": "1ab0db7febbdae451387ef2b669cd2ad075bfc2ca7866d7888a1b994c3968999",
+      "output_sha256": {
+        "olean": "fee33fa728c0d1a789fa1a7c721b1b6b90e34af7a6a1dd8508b7ebca5492be8f",
+        "olean.server": "402156f9ff898c9ff9e8c83f94d16e1c61d23cede1199fcf2818231bd7598555",
+        "olean.private": "29d965678f4185b765c014c67f7c5394adc522923522efdbd8cd2a164035f99c",
+        "ir.sig": "4df34a996102222f0bb273de3e14e0220e085aedc57d92865913d3e4712d1d25",
+        "ir": "b112a3d58a1db943cc89b5f324924b02625c7a5f0fcc2aacf271fc54ca94e316",
+        "ilean": "0ffff1dd1ce28bbfe9c0b6603a61d8b932c664dc428100c39544ffb5913d859e",
+        "c": "f61c469caccf8ecffddea2dd5e38697c21d442daac0384beb8e536f84df18cac"
+      },
+      "guard_receipt_sha256": "3654635088428325cda77ada99d3ec1057617c71180c80a09ff25e70531f57da",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Coheight": {
+      "source_sha256": "2bb3adcbde7a303557592d14851bc2bb7733085a059ac0519413eb2984d5689f",
+      "setup_sha256": "5bafbb209cce269a52b093b5e8e1fe106b03da3c34b6435f23e35b0c013c7ac5",
+      "output_sha256": {
+        "olean": "ac0982fb421283402ac88e88b6c425ba30eacb1c7105f45e7ebe58dd0090591d",
+        "olean.server": "91f4930ef6241cd4a9708a82445e4e0127135bbade2afb3be88ddc21e818141b",
+        "olean.private": "86dbd7db1fb9b0c7cc8d44058e9cb4de2b4c73c5f14ee53d5d004c4f791e568a",
+        "ir.sig": "f338084626045209b9fafa72355b98a86996baded2f8c7e86f8ea35c35f79b06",
+        "ir": "e692df5121252d7cbb58ff684d559b042f7e3b33b8a8c2212911b04a9c50439a",
+        "ilean": "ce9b58e49336be1f1bd323447c846a8b501b75e9fd484f907a0f0f3d49c190d7",
+        "c": "9bfd4a19c46afcc0d3062ea26f15aeb1cabc7c37c0489b046ca06fca460559d4"
+      },
+      "guard_receipt_sha256": "3ba1578a76850c8e9523d064359a26529bd0286b8f6d68806bece9be90aee0ce",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.AffineLineEtaleCompactification": {
+      "source_sha256": "c04e9e2ad8fa4f575dc56dd40b44c06ed1571cd5815355111d2197706eb5ab1a",
+      "setup_sha256": "565fadb41cf33be3f3e567d465d6b866dad735c7eada378966e9a1de950e04ca",
+      "output_sha256": {
+        "olean": "dc354c2ad144089bef72637276d625fae50241a467c3c496d0dfa4373516e1e2",
+        "olean.server": "508e3f62ead96ae682d238808b03fc7b47488158bedbb645873fadce3b97591b",
+        "olean.private": "efcdd5c85705893e362ebafd969a768bb935747a7ca0c5f125da0573c273f193",
+        "ir.sig": "ed3ff37a1a270d92fc636d758b62c4949f28565338d37a57397a2e6ec8b925eb",
+        "ir": "38be43d9ed69b52e09cd46cb3cb7541208070e148cdd5c5714b83dbe257f39df",
+        "ilean": "beb9d175deb2689a6e24753a2a861c24a1ea81964d7072a7439edba95030da05",
+        "c": "20caf31837e6b169e36698dee8667591253a872f10e2e503b19c9864c3d908f4"
+      },
+      "guard_receipt_sha256": "e535b12b9933703bc170c6c3b38595ed07a22b8e9be66661b16ee73e94db8f27",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Diagonal": {
+      "source_sha256": "cbd2bca207fb5f529e6a4af2e121777188c983263a660bb842be1b2bddb37ea5",
+      "setup_sha256": "15519825d3ad4ee87923dc3195e3552e919e24d531a45414b471f0032af14704",
+      "output_sha256": {
+        "olean": "5a1944501eda70e14ee7c41410a6603fbe954ddd40ced4c96f7403caacddfdad",
+        "olean.server": "538aedfd8afe42cd18687aa99af8d34d21f3a59c48722cc208d5ee1bfa420ed2",
+        "olean.private": "4338b1ba000080918abbdd768a7b9bd7b8a8f6a97cade5dfc8099f74359a7495",
+        "ir.sig": "b3597ed895c07840d47923fe3223712dd15f4d750e34ce354c6a24810cc8e22e",
+        "ir": "828efe326982de19ccb813a7ef69d36090bd73c7532e1685050e8ad8e12b3544",
+        "ilean": "72a596dd050116a55add13d1686f068f373e3232e3fcce55fd53be9e6d25bc0a",
+        "c": "fcefdd4f2a48b447150ee56f283b9ddeb8526ff2b7d8398b8f9e755fe2d62e8d"
+      },
+      "guard_receipt_sha256": "e311802113a41b3e1d6619643b42f2b6c2ac7e7076c7f64d808fd460026952cf",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Modules.ZeroBaseChange": {
+      "source_sha256": "0fd859b333ec212f2b71a87ad1a1b2372b738765165d69a239bbe81663a9130c",
+      "setup_sha256": "3d6690a37d3a43e699f6a4df81199e850b88a1890e6aea441e1705783c20ca49",
+      "output_sha256": {
+        "olean": "e2af3b5835e762a2740c50d496f7743d68e2dc03a263e8ff66726f767d64b9d3",
+        "olean.server": "f0634143233c64c5d794acb8fec25dcf646b4e6d6a6c4cbe2bb9de53b84b0dcd",
+        "olean.private": "89343be7897c004bbc049e85b21ddde13f6608d8ab3aa0bc9d23bdadb41fa01b",
+        "ir.sig": "47bc231a0aca02d455b11f46af7452fc7f22691e4493cdebdcd280e5c4773f81",
+        "ir": "b8d14a71b01b9de4651cbbb973774eeaf4aff42d07f40dac70828a02138b337a",
+        "ilean": "47d2f77aac93d5eb106936b272e43ddfe5f66bf95aa1ba032637cd33867cdc42",
+        "c": "8098bc721780254504e6b7aa4f8889b7e3d50d5057f2e0611a18e5d4c0e45116"
+      },
+      "guard_receipt_sha256": "f3de2edfb023048e1063d4fdfaa3536362450112b0192a3e9a6b006cad167979",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.DiagonalBoundary": {
+      "source_sha256": "43144cf073f7285042fb3e6ecc97beabbab23728c0b3685a9fb51316d478c1c3",
+      "setup_sha256": "bd95b1035c31cd86c028fd1f58c21adcf4eb185f5081c09199395886c385313f",
+      "output_sha256": {
+        "olean": "e6817f80aff5bbd0a6e5bc2a5a2276ae8600f864355db2384b971ed5f0cb6475",
+        "olean.server": "6ac52fb2a6c12f169d6d5f087859624be0ce4156d87f86547d87a163d23629e4",
+        "olean.private": "ec43377eb8dbf7b8ceadf8471f5f35d21fe99534dbd894e0a9983817e24ef44e",
+        "ir.sig": "1c72ed781829ed7384c98a4b42795a4047a3da8e78a56367c95834dac9869fd8",
+        "ir": "12cee083b13189a7c93d475a15f2654f824afe5d64e205228ffcf45b8d140d8d",
+        "ilean": "cd341404a24a382dd4b24ad3057a97e95636c7bc079435fc807e8530f7912622",
+        "c": "3bc3b70565dbf88d5c53d85a6d123e3148c0e19b309ec185c737b21f04be9421"
+      },
+      "guard_receipt_sha256": "d4e3c9d382f79677f2ba71494757d5df1df60e6937f26026245d0413991a0b39",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.CoordinateGraphIdeal": {
+      "source_sha256": "9fa3c5972c46d018e1677dcf517250b43310c6b13fdcecb6870c554678aefb29",
+      "setup_sha256": "1db4fb414930f4d8509274770848b6a698f50c870a199488c1033ee0a2fefdb7",
+      "output_sha256": {
+        "olean": "3329393646606e383d1d0f7465a35e1ae1385e2ce6819b39695a0d93be13b63a",
+        "olean.server": "0a0174c30843f2a86af9d576842f379fa15bf1122bc2f720abd5e5ec38f36e30",
+        "olean.private": "d4b1d8145d4906afc6f1f3d83ba9ae52e5adf0add198b3c65783fb28ba9511b3",
+        "ir.sig": "d7d540d267a81cf9a18ede3c5b38658923d4b9b6fa19f5b35e727e33c6d823a8",
+        "ir": "05d7036bf34d284f330d23de17ee8d3936aaf6c4568fc1330f68d32e7aa557f7",
+        "ilean": "c356b367f93ab89eaa11cf6aee043210ce55cff0176d2837ee63650d6c2228bc",
+        "c": "33e4e92837762e64610237586f0e72b3163b5d3ba3d406313a51998ad415c389"
+      },
+      "guard_receipt_sha256": "1d53ff03e04e80e2a7bc782a781434ffb4bee14039fae924cf39e4f5d3801e82",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.GraphBoundaryRestriction": {
+      "source_sha256": "2af4607956d18bbefdba236cd8311fe41031f5d17306d0176f6de43aa0b63035",
+      "setup_sha256": "40d18ca47e39d490801aa438cf6a68623ccb0cf1d2421a3d00613a78512ee04e",
+      "output_sha256": {
+        "olean": "ecdef266ca6582f34d0bbe6d8b83201263559ea9896546e4112fc0f0bf0d7570",
+        "olean.server": "a5fc1b38ed917f7fe61ed7c9e97b77ae65825f363aa253ba3e827d0ec2db8003",
+        "olean.private": "d13cf93ba437bcab7caad7f340b6f1f222c5378c2ecd1bd8eec1127d1d787d0a",
+        "ir.sig": "f275e31e2bbadd24ee1f73a4e6d3793f5b65c0e2d1100c50c90a28ee0a40fa82",
+        "ir": "167b68378425b70da8034f58dbd1c356ab8f4720b1af560e879463a429942ae2",
+        "ilean": "51de1cabce0f1c45951264e5aa50ae46f88a6aa7e3ef67f7119013aab2035a49",
+        "c": "8e32c814a2c648d687a1ae605b05214848b6fd0015679f6cbbcb6438fba87ccb"
+      },
+      "guard_receipt_sha256": "a64f8bff73eb52d721fae76496e50b9b786dd8493ad6e3305d626674c5f5a229",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantEtaleCurve": {
+      "source_sha256": "1ed22932ec2a35defdf5c8af2031a95e95d219d833e8dd64e1cd2b94a253629b",
+      "setup_sha256": "808b3503982e682e2e1f5da3ca7a25d25eeb4ab52b3b410c3c8b20a9c6c35b62",
+      "output_sha256": {
+        "olean": "559484ccdb8d9cee88f724fca0ae8019e9f53fc94583179ab9c2a9e5e2e01e95",
+        "olean.server": "c1c788adf03714d633c977ab42c6d7751a72a3c79629539f9603363d07cf0f7e",
+        "olean.private": "967fa5b1843074994c3cb92c87c2a56839201655e8dfbdd3f0b8a8f95a8371c3",
+        "ir.sig": "c5cde005a1051566a38d779b424d692df4579ea615bf138e365046211de60db6",
+        "ir": "98b78ea9c36866e79478d1e02abb605a292324f684b3023e37ea09c6e30f5dd4",
+        "ilean": "1bacd9a4556dc0b38047c19bb12f6dffd85a9a5a8cca15229017ed1a034f8b8d",
+        "c": "db8ac3e48b69af71724ab85673ce81784a5606751b171bf8abbab6ad8d256c5b"
+      },
+      "guard_receipt_sha256": "12d07aad7778c045e50bdee151211616211efcce9f3bbe9daf09d186dac5d5b5",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.AffineLineRetainedTarget": {
+      "source_sha256": "17a7d17bf8581673378babb8f1b1f274c25cec3295288333002d1ac8b0bd0d75",
+      "setup_sha256": "53a611f1853e6c9fd86acef413014b75acedddd21c794cfa311497482523d578",
+      "output_sha256": {
+        "olean": "2520e5c9eab52df11efac19dc49280b02dbfc8174084ad2a72ef64fedccb8a3e",
+        "olean.server": "d4e82b65bc89e2efefd3ad5499bfc436da0215c46656e4337613ad71bee19a9d",
+        "olean.private": "8be95486d72f39a4f9f4fc82af93ff35a6649d9e695b7b78b89d2337a114d205",
+        "ir.sig": "88303f4ffbf3521ff4ae233d5db1188b1f2cb8d9a5c527592a52ff90858e6299",
+        "ir": "f2f5ea176762b55fa1ec2b7e972ba9685f866b843bcd35e5e74a7fa0e101176c",
+        "ilean": "4541feaa593cb507b94b666fb4101a1f6fbf1cda08254e2607d5d8c659d24445",
+        "c": "af0bfd687fd7d0f8c30cb7e3e080da0b2d813725d84f0ce9dd52a8a376c34b67"
+      },
+      "guard_receipt_sha256": "ca4a94072e318e255e07913b1985018962f64652fa2b3bb488f5f752fde979a4",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantRetainedTarget": {
+      "source_sha256": "c4bfeca25d9d9af4e25b6d32f484752da0cc9a92ca740e473de859456753b1e2",
+      "setup_sha256": "cf3c5ffd51add10f15ae554e1714101c08d5595168cf1f40a7ba6fc4f2ef0dc1",
+      "output_sha256": {
+        "olean": "98aa1e77f2119d8957fd2aacbd9ec99273e75e0cdab16ce9fc5ff25aa53685e1",
+        "olean.server": "a4f4d02ac4f26ba49e5ad24434ee86ba50491a6c048b6f28f84998eb32d84350",
+        "olean.private": "1e651395f2489245be20c5d7d91a5aa838cf2d99aec575df53b6b6e849903e3b",
+        "ir.sig": "8807067130f7ec6a29696b035336218e644afd9f96f51eac400efd45420aa9c3",
+        "ir": "6cedc8f7a143a3bd5997498c7dc24f87b1e865c4610625254b882eda1c7d75a4",
+        "ilean": "4d236df62e39a68fdfb408184948aa3aabd702c81ab7298b46fe54e4fc2beb9b",
+        "c": "0030140f33c097ee0466839d83549dbabab9ccbe1bed20527a99d69d33afbc9d"
+      },
+      "guard_receipt_sha256": "dd4e4ff0a6ab64cf6d0539f904669f29a7f6dfafc3a5f8492c2879720089e813",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantCurveSourceChange": {
+      "source_sha256": "b86fe855ddbecf071a86079a47c94b4cb3542403e604164a887653eff97ae7c8",
+      "setup_sha256": "4811297f9dc8c965775160cd0b62d523af49cba23ddafefb70c6733239a72a73",
+      "output_sha256": {
+        "olean": "ad70a583c52ae8a53c88bc0e0331e24a3ff069b115933535fd4ea2a49a5b673f",
+        "olean.server": "ef85a037d2ffcd50a9f7d7384020e47e5606d28150b2eada39ca178e49eaab5c",
+        "olean.private": "6bea8aa6bf873105052084d40d273d820aeb7337ef7545f52d06a400475f0f3c",
+        "ir.sig": "a5637972ae1cb00ee1fce2052530846f100f2d59035bef7b208a00b784095d80",
+        "ir": "0049decba3fbf0fa7c65bc2bd4ac670fbcec7b7be46d12d574de093461c8d2b6",
+        "ilean": "1b6a954a0b45ee11db0b94ef723073e9afdffcbf2c201aad1f9df2360546e9d6",
+        "c": "1efaccc3db12eb706f7c7abf6739c07b1a49a740ddad2a1ce83c9fabbf5ee5d6"
+      },
+      "guard_receipt_sha256": "aaf4a36f82a3f48ac9971960026c3357b37ea7b90448f0c9a1b340b1acb4808a",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantBoundarySourceChange": {
+      "source_sha256": "641b83c818bb438ce58b7ef80034d61a1bb03f6303786cd47f7fd8765ac30188",
+      "setup_sha256": "c5052575ea63cdf37a27299a5ec3d0bd31b010f5b9ff37725bcc3a51e128685a",
+      "output_sha256": {
+        "olean": "4b41ebf3933190cd33ab34b5ed50c601d3aa54b6cdb24f647d285882bb0a3179",
+        "olean.server": "1b3edf23b97b66eba5914d2fc0ce9c129bc25553ca67ecfbd34454710799a694",
+        "olean.private": "daf9ec90f41811e45c350971278dd72865905ca27c3a1b9a12468297d92169fa",
+        "ir.sig": "dad60e6ccaed3f36c5db40ca51eabcbe8c46d6d6cd18a19bdfb770a50d9f26d6",
+        "ir": "68bf962524f7f90ab3068153792ad7d4d4290d8670289767e9ae658e80d4dd2a",
+        "ilean": "fa819c81903d1c1214bcd38fe2d0c1ee3bf82a7ab09336f06ea4465859c840be",
+        "c": "78eb643d6319120464d826a75aab3d64904b4b1c1acc7764ac4f040ea1fcd078"
+      },
+      "guard_receipt_sha256": "502dc8e6c2caddc9d98d7985178d8609fcfd78c9be2a28c1264457583c3d486e",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.EtaleBoundaryIdeal": {
+      "source_sha256": "7ff8365e61459d07076128f2bea63173a33bb087f98461c32411960c50a406dd",
+      "setup_sha256": "63548bcd8a060147c98babb9d27b7f4728047860280d95c36823e0b70e36119a",
+      "output_sha256": {
+        "olean": "6eb6772fee54188c30394a212a64da6e4c47bcbf1f623e6a841df042d9532a67",
+        "olean.server": "ae7312ee185705ec323993b99b7161e31e58ebb06430a83374e5f25c786a9b3e",
+        "olean.private": "bdb0d03af73c02e9118b1c9b844b1741139a6ef204e578dfab6f1ee0eae8c73a",
+        "ir.sig": "631a47462cd13c5567ae2c2d8874e1f5fd86fb703d4966089d60e2c9c7b94d35",
+        "ir": "1a708685c1e3384d43b8c0d589462193313a04a09e64a504efbcc7dca567e07b",
+        "ilean": "130ede74e95a4e74652230d2d18e2a1dd6236dde8b5ceaf8673122053c88c7b7",
+        "c": "64f94b8ad1837a966d5b7fa9a9fcca189c080ffce29a55fb30cc5807725fb35a"
+      },
+      "guard_receipt_sha256": "d1bf9952af40aeb01e1d2cc464b51346fa5debfc3686d54f273e903a0ceea7aa",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.CoproductRestriction": {
+      "source_sha256": "e7c2ea3c06ab222e3246c65ab21bf473d098c297b6c2b101fea8816a4d2d80d0",
+      "setup_sha256": "884f0fba554106b851353fa91a763b35d7d169cf20e2d6b69edd09678fbd674f",
+      "output_sha256": {
+        "olean": "72f7343d46314db158da00cdfe8aa0e3754e1772ed6091c8064b44731d37b59b",
+        "olean.server": "339e58f8a3ec6ab0e1c82a4be2a5b6c9f148cc486c5f649403bb9103385a2b3c",
+        "olean.private": "d463a1fc5cffad0636024f58524ce72dfafe7cd9b86895cf8c043b1da65499d2",
+        "ir.sig": "763637c251ef520e106b215f4296f75ddb7fd4b30befca886b1b4e454298da6f",
+        "ir": "b0211f715662340c493e7c49025ccac079e5474448a6a0bfc961d1285326ebf5",
+        "ilean": "d025b640d43db9e4a593425b56ba662862d8ff70dcc92ea0b83876e8f046398a",
+        "c": "f0f3bd8242fabd817fc42afb25e317912c0b98fcd39c7233c8cf13bb018ce15b"
+      },
+      "guard_receipt_sha256": "890a06df4f84984a2e124727186667d7252a6e9c62cf093d44cd5f97aeabb60e",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineRetainedImage": {
+      "source_sha256": "79496b7a62a3c860fcb96483a7dcd1cdb3ebdf0df08fcac12dc6d86a83e35bd4",
+      "setup_sha256": "436d8b1970c6c3bb5fb9a3a7e5a62ab8e534c72d83dba32682ef01c32a3c7fdb",
+      "output_sha256": {
+        "ilean": "648267058c271ad714321350f81953bfadcc2e4c87408223c4b03d2891370e5e",
+        "ir": "36ba7100c387c13d9f3796ae064100b19e406cc609d3866afbe6ff4adbf0ee71",
+        "ir.sig": "0325c08cdc996e5972a4221350bc0c30eaafb90b953badf4ab0c8665ace78557",
+        "olean": "5b91cbdab1dba532285bf1b6ec97ad57b0651871eba9c3571312393b3e210b5b",
+        "olean.private": "40c3b15f654dc69bebf00665df61b33fc406a710a3b287bd946f67e4ecd194ca",
+        "olean.server": "38535921547811a64687764e2726de86d5320903ae977c7f78cabe777a5d6adb",
+        "c": "15d554a02c96e596e7227a9fca2c97eb141cc55ded6e572525de5c7693fad336"
+      },
+      "guard_receipt_sha256": "dabcecd9f31658a4c5050b626d2aa96399032b8db0d86437ad4ca4bf2249d595",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteEnvelopeGoodOpen": {
+      "source_sha256": "e6fdfef1922cdb37e862b67452e3ec3fa8e78b495ddbc32b9cd6797bb5fcace8",
+      "setup_sha256": "b65f9de6ac453705bd91fa7770e938d538ecbbaf6f984f4ae22d058e09113257",
+      "output_sha256": {
+        "olean": "cae2d93c9161eb0f02a4fc02c56e1bd938cc0431081504f8511ab10f58d2fb6f",
+        "olean.server": "f1619639d77c85eba8b855aae926b8009ac0ab0e53e42c8e51fdb67692bc2fc6",
+        "olean.private": "09989c8ebcb69e308128e9eedf7d2d52427e203861ae990c5fc52719fc5917d6",
+        "ir.sig": "8a5f5ef1d97340725478132120ff980a8c73664b08567839dfd8f5277298148e",
+        "ir": "c9009767de6144616ced1e4ee4ed26629613f264a4f17e41a8ef5ea7c4e9acf9",
+        "ilean": "5204ac91ba6de133587dcbae8ac8fa6366aa6c4c09748e643821d72b6f568c66",
+        "c": "591d2ce7c67290f8207656234f841784374c389725d2b4ef4fffec5f41fb38a2"
+      },
+      "guard_receipt_sha256": "f1aa82d0130767f0d78c7fceadbb0496b0aea8fd4a1adb5a251210edcf5c63a2",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedBoundaryNeighborhood": {
+      "source_sha256": "87db67700eee7d555a14312ea46e10008ca0425c9a424f69f94cd589b989e20c",
+      "setup_sha256": "07d232aab8bfba73b257969625f193dff367874622f3b066c13f5211c931efee",
+      "output_sha256": {
+        "olean": "deb7aa79191a5107d3837421096b46898e0984ad5cb545c7bc3fc73ffaf78083",
+        "olean.server": "d6ad3a9a75f91c5d23f344ebcefe6ab16054a3f0d5fd786538c57bf2b994526d",
+        "olean.private": "7e7350bead6782d2fa4d461a567324a0a8a1d40ee7a493e3102707e3e16fc8d3",
+        "ir.sig": "6e8182b010e5d7ab8059ac1ad78e710bb59b21db92cb8acabb94529eb26aee0f",
+        "ir": "1e0bfe5fb105925844cfdc6b6b0326071ed457cf8139a68a80e60b47607aaf3e",
+        "ilean": "3c8eeb6ce3f84f34f196fb87157b9b8e52d0137c802ac95cb29ff33cd0c830d3",
+        "c": "d4cde6776083b8f13420240b9ca72725310e3c0bf9572c8670ea18cf3f47b8e1"
+      },
+      "guard_receipt_sha256": "35d8e984c7b235b52216c5cca98d3908ac71e7c96d09323432caff6e58bf16b2",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedBoundaryPrescribedScheme": {
+      "source_sha256": "8a49fe4feec14081944e841934b9d7cdff3100831483ea563e92886c5c52163d",
+      "setup_sha256": "4aa81cd42c56a0940d7ae20dadf6ea82dbeaf8df970e0726388ca88ef1d98fa3",
+      "output_sha256": {
+        "olean": "2e8389c79d4abcb75144a44b855097cf7957665607f907ca011748545db4419e",
+        "olean.server": "378f6e7f921cfae78fc9cbc2117626cc1d7189efb5b634ce20e2d8d9cc68a7cd",
+        "olean.private": "d4ebe32ca92a470015f374aba7322826ab0bbc8586618f56040ef072c7f7c934",
+        "ir.sig": "e3b59d192a62745485ce1f752153f3bce7f9156b7a039bc9debd7c022bdbf179",
+        "ir": "42d2bfff9b1b28cfd881ff868311a8d74731cd80ee0b84a431977937bbf47c87",
+        "ilean": "b1d6dfc0f8fc75d5148742faae29936d78378c39ad95a1725f9d09af3bf9bd05",
+        "c": "813055e31d84885c1a2ce31dd3e77858aaf4d11883a0b4cb7b26f069f6f0ce17"
+      },
+      "guard_receipt_sha256": "703787b5dea102c9a1364dc05bace0c46959819b3df1420007dd9fe2ed7a56df",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.AlgebraicGeometry.Normalization.FixedFiniteLocusBadIdeal": {
+      "source_sha256": "b7166da1048a1b50310e2d041ea27433b715aae8d8aa62f62e0c16f8e93888bc",
+      "setup_sha256": "0d0899fc2ac45e4a1b0ef0a450c71e2ade619196fae7eea584403a828e82fa02",
+      "output_sha256": {
+        "ilean": "8ff11311853b9aee36996dea4f54e523ae9c2bdb9eac933d7dd7edb32a7daf6d",
+        "ir": "fa7e5125ea6ff66b2813aa321f6d86e0702703ba051e4399c15dab329b1ccdc2",
+        "ir.sig": "be0351a5157e29ccedf975e675e12a3e07196329a0e1673a700b500b1cc730ea",
+        "olean": "9bf74293a9d2812dcd74a669cc7feb9e7cc395260043a417098a1097b09e0f80",
+        "olean.private": "8f5996ae96726d6af493c18f3a75577b1d0ce15cdde85d1d6e077493e42f0283",
+        "olean.server": "071ec7414df8beae42bf316dd5c10382e73154b2a2eb80becfedb7a466351196",
+        "c": "967953be4719a77b92078e8925ca9e29a29a1eed694886515443984cfae48e03"
+      },
+      "guard_receipt_sha256": "c878648307231594b568a8a3984fe874890c5ff6f7d09d585bc01ef3512e0140",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.RingTheory.AlgebraicIndependent.FractionImageTrdeg": {
+      "source_sha256": "791aa4fa6881d4c69da9713c977b1b2e1661412765fe756d338217f9f426c7b8",
+      "setup_sha256": "aefda0e2fcf01298fb4248814475c8292e70a5f4fc0aca7c9343e623727999bb",
+      "output_sha256": {
+        "olean": "1c25cf3469bd0ec6e1e9e5e177850bd5b4d0af1a40aad61854200e2b5646c37c",
+        "olean.server": "bfa60b8479f64562d5790c7e202cf1323deec3e8c70840df3baaf6e8f0fdfe9c",
+        "olean.private": "c51107955a39999f5043b282148692447cdadc951038367763da2949f293ac5a",
+        "ir.sig": "50f8d19d0fe785fb6a930097b30a7b5d6db849f802a3e6e240fedff627aed31c",
+        "ir": "95ffa9d0b910925f30c1ba662ab70b3534b24795873eec64e5ada2d170848993",
+        "ilean": "1de5fa269d94a26500f4ac9654b326b5865092410666805c480a1fc566bc879c",
+        "c": "685bfeffb4960ae58e4c6342c42ca5e210fa8625d0fabaa60b30b69c05cf9230"
+      },
+      "guard_receipt_sha256": "98713bf340f711fb6547328dcf46e8eac0f65d9d1ea1845f7e34719942ec9251",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.RingTheory.AlgebraicIndependent.PolynomialQuotientFractionTrdeg": {
+      "source_sha256": "ed019ea7ebbcb2f36820ccf45c5241174355f81d5a7060a7f65b5400a35cad38",
+      "setup_sha256": "e54350d994ed95ab911f9dad2162563fef3e36e2f7611ab51824bc0f7e321815",
+      "output_sha256": {
+        "olean": "da13e4e971f6de8aa7e5527f474530ac847392c8d1f7ff8a3d03ed5607e67f19",
+        "olean.server": "94691c9da9cc44ec06af509d8f468b2b021dcc056006ee4dc154166e3e081f4b",
+        "olean.private": "3430bc631f4138e99853d27a2d6e245b367fc7e6054294c7863dbd6b746034b2",
+        "ir.sig": "4cc007acabb8ac692f3f20f974d6ea1cee514a3b727c6e1e33af7401ca1edcb8",
+        "ir": "75b86bfd2aee4e39b44e93db3835b451f5dc57701d290d53383042e4da958b9e",
+        "ilean": "0e0db628d2931daef3e04f7b8f46181c454f8f12531abe06fb4e6ec4711a43cf",
+        "c": "893486abb96ad680abbf4dadeb7e1e92731603d35565706386d4fbcb2bdeaa23"
+      },
+      "guard_receipt_sha256": "6be9f14b70b8504a673f76acc5982d832e1cf524476e63c8e4b3e5b76c1dd1bf",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtaleDerivedPointFiber": {
+      "source_sha256": "9878bcafdd458ef184ba7cf7ffaadb10311bd2a644c85728988ad98e9040b85b",
+      "setup_sha256": "c928a3211f1106677dd007b734903475f7a716e8c74c9cf616edd0fca9abc1ca",
+      "output_sha256": {
+        "olean": "fa850b448954a096e5e2070debbbec322e9880d5ac8b5c1e95e7e25095235506",
+        "olean.server": "cca356abcb35f6c8fcc9534f35ba22dc1eba9ede0608a783fe146192bb306e72",
+        "olean.private": "74469356b7d0938d31e1b0cbdd3ba3bd391a439c8f403c7dd452ae0db27598dd",
+        "ir.sig": "e2c0d121a073dfd8e08c89147531edc164895892f912535ba821939ccd52dacc",
+        "ir": "65ac5f71360a1ab09739b8b7c7b2995e9eec7242c092313c150aba467f339aef",
+        "ilean": "6993bdc10bc082b41117f244b1203efc9af6d5855b82ce1020d5f0fa7f56f085",
+        "c": "e50bab4914709d9fa1c54d26d6a099c08720098df76f69888f5284c038fe66d0"
+      },
+      "guard_receipt_sha256": "5208cd1212768fe4eb31b19514e5dbc445f9e08107892cd897307b78f59566ef",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointFilteredHomology": {
+      "source_sha256": "1ff23ecdc9ea9c67391100cbd3e9f1f60746bf964732ebe7c4c93fd2bb29bc70",
+      "setup_sha256": "f0ba744bb8a1187aff92a1640013a41c6f5e2426b290ff54bf8e2a9a986c3700",
+      "output_sha256": {
+        "olean": "85131ac6aaf8a94c803e4cba66c1bdeb28027d3dd8ec0472cc0558858f57e12b",
+        "olean.server": "6265579afffc895888387b530d064db79ffc6746259a3994593d7a67132738d9",
+        "olean.private": "88a855b2c4df6259fc155270ec28033fb21878d5b73970ab39d4e9437ccc42a8",
+        "ir.sig": "040cb856e445a0b950640b89a954e5aac9c4d14128f7a9916ace3e077d637f37",
+        "ir": "30f565cf7548f464063e5fb7e0b9020e529b96d28c87631c70d15046932f7443",
+        "ilean": "29913e6ecd3f0409a7f9c4b6c4225cad0b5d24d70acc3672bd36f29b36e63d29",
+        "c": "65e6a9076c246bd339703a3886d99d6dec6b196c041da253ea31e6075c77ca0a"
+      },
+      "guard_receipt_sha256": "423e5cc8bf1e3953cf664d85151ae7123be171cdbb64e8d28ef9a2c87b3ef215",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.HomotopyCategory.HomComplexNaturality": {
+      "source_sha256": "7b7fcceaab56054f88053b7a02439c89a7786f8e96488da8f2ba4e0200013c80",
+      "setup_sha256": "aeff003b66a761c05f495cc7fc66d441df2d7fc026b2241a14b4f2c51a35f47a",
+      "output_sha256": {
+        "olean": "922720dae4d9277edc5b6ca6e408525a7ca20b40c6e78574836a31b903cda0d9",
+        "olean.server": "22144219def057328ad82dbf3b4b2f9247c37b3fe0bb67735fc952b442d601ca",
+        "olean.private": "c90e3eba139b71101dc81eb0726d713892d38ac3d1ba45d67ee906cf5249b8b3",
+        "ir.sig": "def557dc3336d232c9551190eef86857424fe48bf1674a57d2dc73b78415262c",
+        "ir": "fe5125b4953bf1746cef70ec7f3c832ada157bc60ce44a15a533b5858bc6e683",
+        "ilean": "eae3424782e0493e46b5d1f1bf8f9e79e5554a89ff1e862af4918d52105b112e",
+        "c": "b496034c8688f00cc4d8b876f98de1ca1841e0dedd283c1e46c45f81d1b6a823"
+      },
+      "guard_receipt_sha256": "64c588274b2807d39b48af95849922ecc72dfc3d425869ca5c3180fee7f7e1b7",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.HomotopyCategory.HomComplexSingleIso": {
+      "source_sha256": "4de54a23652351d8b899126c7092df93eca4cacbd1fe76aebde5fe279964754a",
+      "setup_sha256": "d17c5a68ecb86aa5867cf76bf8e100d56167f31e0794bfb5274997df60e71afc",
+      "output_sha256": {
+        "olean": "10c0e6bdc585712c246d402a4eccb7b230a7b661dd6061281b7ef12f7414e7ff",
+        "olean.server": "2b7cd1e2bbb0d8a4c2e5dfa267232fb2b300645e527880a5c74e8c62c2377c2e",
+        "olean.private": "6770455189aec716afcfae4d3b5615e3c1fc3b368ac93b844cadf6f27d2c7b68",
+        "ir.sig": "b7194a5926f4c47a32a95d2a89d04d1aa93246f623b9b511c2a5f81045289f1f",
+        "ir": "f28f637faf875da2148d2ab5489fb4ec01667048365fcef66e048f33e8de0b7c",
+        "ilean": "01ecdb5ec0113eeee0cce3f0056052952bf7486024fa415c1955e2d6538cacd6",
+        "c": "dbcc15520766feba54c58c2116c0d3bbf4b7062dad89451e51dfa158d24ba58a"
+      },
+      "guard_receipt_sha256": "577645412efbb5ad422aea446783618cc3356cba3fe7d10440b9f51b37abaf48",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.Embedding.MapExtend": {
+      "source_sha256": "1e519b3cda16d976a305bf550091499ed833254d05071b8ad358b12e5b308aa8",
+      "setup_sha256": "db331005ac9b181479951fd76c7a066f58ee1e373fca31b355748890a6ac4d62",
+      "output_sha256": {
+        "olean": "60da278ac3e9fc0633dc9b3559b4b1ef7258c79084d80093daa143e74b3b0a84",
+        "olean.server": "d663d94d67a426f1d891c9f04e2bc0ec6c2dd1867f15a6da9a434da0687f817e",
+        "olean.private": "2605ecf85bf5a0dac384cea0c9d9074fa883795d14ce92d51d1019d48960f105",
+        "ir.sig": "bd5e0fab55ab365372395ed98c6c60dc5c9f1b9b0da28327008481f79189583e",
+        "ir": "e230cb2b2a01d13fcca8d9fed7891df2b67bf0adcde1b9a09bbe3ce0980c2d38",
+        "ilean": "f09e46292b2c29f23ef5290e7e0f5e205baf81be831f4c94b5c43a1fdf67060f",
+        "c": "b7f853a735c27b234db29bb49f40ed226a8008332bda6667428b0ac33c559f3f"
+      },
+      "guard_receipt_sha256": "1711385bff01b7b4a1fb2cf6e051cf432d97bf13edebd278adc1282c80b0c8c8",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived": {
+      "source_sha256": "484852c4e4383bbf78a3219f9b32ea3fdef4e8f0d2e14f4e289f9d2f0d1f977d",
+      "setup_sha256": "1335b14fb43157bfdf39257a57936bf7c557e3bb7b10defa495492f12905520b",
+      "output_sha256": {
+        "olean": "1dd79fed9d2674d53867c14e48aab120b4c7e93d05526be1f3b4b281f0902b17",
+        "olean.server": "4e86c660aa173b563d68967f6149f8354ea5c2a72ac811a887dbff1cc9103d47",
+        "olean.private": "88f004c9a41a16d834352d851b03bc5631be70ff0bfed9fa12ff0a766e4ca0c5",
+        "ir.sig": "30acec1e6c72b084e00e1f02062f3e4fa16967dd18778745d7438aca41d8e036",
+        "ir": "c3b4f2b062ec17d4df12f06cb3ba3263adbce57b123a5c2e7218658e20f5fcec",
+        "ilean": "9be1d7d0d435c8b8e7c1edc33b25ddb843661c6a70cff51802dc471a90455e0e",
+        "c": "e9c0a4582b0a45c3c2fe6aa623b4fa7eccffdf15a67fcee8fbecd8217e35511c"
+      },
+      "guard_receipt_sha256": "0d72304dc1e54bc0da8b633015ac8b9009e3ef24f145c2bb97141a019d28faf0",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryDerivedSections": {
+      "source_sha256": "de5b7c01e809262cf3db29978d721d82f6b985cd5bc097edbb0321e8cba6574f",
+      "setup_sha256": "316dc541a29b8628b36692b6110bdcd0c40c550a16ac8a6b55da2498c17e629e",
+      "output_sha256": {
+        "olean": "99498b60cd258523fe7aa4f7311d28dff1f6141ae616bf547c223593267cb979",
+        "olean.server": "c63f7fa301315f89f7091af950745e413bf928dfabbbb8e4873ea05e59793894",
+        "olean.private": "f9dc9e9edbfabe02953a243f2b60839dd063736eab5ee2ea00ae93cd804bfaaf",
+        "ir.sig": "35bf24b8e575e41bafcb37de5f458776b5e64488c7a47984cc05f32f2b0e6192",
+        "ir": "d86abc6e277f094e58b93b8ae480ee41238ff3e798c7abeb6c28ac39a64c2c10",
+        "ilean": "b174aa517da00ddf2861e95fe1e72580be82603368595a9586a0dc6c4db0b1c1",
+        "c": "2bd122aa7d633a74886231af34f2857c68a8801602b47cee67f6576d1220c9c6"
+      },
+      "guard_receipt_sha256": "85ed90d4c21e278cb2e245c21ddbd3589fd3b905f45956ef56f4fd7a9497204a",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedNaturality": {
+      "source_sha256": "fa245dacddc95a9de82f63fa8f4334f52a506f99705426a8d3d0f4d356e10f24",
+      "setup_sha256": "3d6a3c04c695c22a4d5eab64e1eb4869b64817b89ff449a35e8f40aed1af9d3f",
+      "output_sha256": {
+        "olean": "a1f6e0ad33f53b81c94b2e395a3697863f95c2af155256c52579286e7d321c2e",
+        "olean.server": "91d550ce1cce4fecb3896b10f0c36c97c74ee2a3ffa11ad76906e76cc4e73f77",
+        "olean.private": "f32a42c529f373e082bf4e93ad35ba3635fdd32062c5258005256658b63ebde0",
+        "ir.sig": "fcd5976efafd4937f4bbb854cdfccbdb9e9b6de00fd76ec07dd8bebaff8b99d9",
+        "ir": "75910159b84d5bd78cf6baed138b5f6357d63f173ac79843a3cf5db5e2e135ae",
+        "ilean": "f22221acb8571989204708d0966a8f3f32577d613c21152492e77507b939220a",
+        "c": "70244456c206e558f0b00c538b516132df8181f41e65089dac6534a137d3d4b4"
+      },
+      "guard_receipt_sha256": "ebc0d07b4dfdad0dffe8ff0d14919d04fd4dd3f150dc454d711c8c8ae39b0080",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedMap": {
+      "source_sha256": "9fca5a6e6c753d48106523fa1ffa2556b8795a972a8ffa2ca656cf9531d76afe",
+      "setup_sha256": "73e0cb7ab11a7ad8290eaa0d8377cfb556bf8012890f6f6153042652553bf5df",
+      "output_sha256": {
+        "olean": "5e6aa2cb6b994f09d9667e7533c30a0c533e34d82f4d3998577ec5163835dcee",
+        "olean.server": "ae03d4b2da6653f99259c23c28f55931123b9a17ed1568c0ed5437264ca2028e",
+        "olean.private": "4abd5ec8c0f1ddff5c4e1c20249bedec720b1ed2198f0f0c560044c773016433",
+        "ir.sig": "27fc24b06a4c4236a1292cad092616cd05905888b20aca14042f131450c10f4a",
+        "ir": "55f6175178817bdefe3744f97946dc684c3001b77166dd4804d8e535e4ec036d",
+        "ilean": "0050f6c7d52dfa6337158bb7a067407db54d4438b3325778e1c018416cbe13ce",
+        "c": "ea8c684d26bc1440eaf2a724e935d3b80da0f80a5a8553581ca5db3699317e82"
+      },
+      "guard_receipt_sha256": "0dc983562ba649e8695da0298a09219be534f252e39d7e6d1cfd907df0bda5a4",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedFunctoriality": {
+      "source_sha256": "e58c4462826e36053ebc48d1303355f0769754cd8a87a3ad8f8fd03d1213ecc9",
+      "setup_sha256": "97dc6bff5680a0e950267416d3ef0a53d995a08703f1fafee4538eeb720aa6cf",
+      "output_sha256": {
+        "olean": "981ff41d9af81188f8177b02e390e4335843ebd22f2cacdbb580fcc46b7466a7",
+        "olean.server": "2c49ee557702d6cf69e98f7d49bef969d88d10c72a7f098c00fe7c130a49b4cf",
+        "olean.private": "cd0f52fbda521c0c792d098310d5116c3fee6758fd1b87966fdcb875bfc35dbd",
+        "ir.sig": "8b5f5f1d83ab9cd2d222193b9b8aa5c596267628614f5782c0d0d53ef4c8b8c0",
+        "ir": "3711c68c745f2a849298ae8e416388981841195794ed7f1afb422be41d406f23",
+        "ilean": "d0c01e8aeb1f72eca0d659b6c83e6c37f9f7c5ec4f52915441556015a7a89eb6",
+        "c": "47d7d388caf8cdef019645ae07668dd9784fe330eba53ab1bcc34fd20b83698c"
+      },
+      "guard_receipt_sha256": "b50426aa8255a94f07a559ac4dcacc8f48716bca5c6a5eddc7aa725db12dd0b1",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryDerivedSectionsNaturality": {
+      "source_sha256": "aa089d78eea22f98785bc4acdda8d07f414f31682092c84c863e7ce82f4fadad",
+      "setup_sha256": "63f2d985f734cfef721e9bf3534bc614a8071d2dbc482f7332ba156af7473113",
+      "output_sha256": {
+        "olean": "3a5c310c5f0942445324c8197c5006679a31e42a053cef68c3e0634a4e24079d",
+        "olean.server": "0fa6bcf638cef550679ae81def085df13d60b18a1d305435f3060d43aff078be",
+        "olean.private": "28def64eb8887776adbf173d5d35fb8fba02dcfcea643bea6b1dfd9bc8d92066",
+        "ir.sig": "7ed37af5df8026001fedb997c5752fce81e4d5d9c941c6b04230eb591769ac10",
+        "ir": "7f4409daa2cd216cb7be1abf1d7d762e4d6418a6a764968c270574bde07b2bec",
+        "ilean": "01c2858e697d24ed9e6ddad5325e77fa679000da33df475cacab03cd839f4310",
+        "c": "3a10844bcb76605dfa17f455f5780ca70aee473005f0bfbd9181deba31ecdf64"
+      },
+      "guard_receipt_sha256": "ccab5b7969539bda97a89e2a0058e26c5cc83fec1c580a1d7b6cfff7ea387018",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOrdinaryColimit": {
+      "source_sha256": "0134b5b881531443b49703170d2e0b236448214a02b4a0e49e71a1579c800e97",
+      "setup_sha256": "6a0046f60fc27e4de229a1d352775d7164e43e741df13a0058de990cc09db8a3",
+      "output_sha256": {
+        "olean": "075da3f35f87ebd04cfe3d45397ee79b4584817061ecbf0afa52b59e52b53919",
+        "olean.server": "6967b81a712c51895ece2b957a676a3760310040d91bf91b8fac77ffcff3e843",
+        "olean.private": "633392c9a4133c81638e86b87ee9c7062ecd5aec1386d78383b2399049f24f0d",
+        "ir.sig": "cd052f19651188f7d861ec78a758bf13e9e07de90d88422d229e138f7e84b913",
+        "ir": "ee21b2927f7a9ba6051a80485a4a8ac32005ffb73aa9c014392b53a67f76d23d",
+        "ilean": "af225197f60e45a458670eb0cecf0089ee4af524bdcb0e7cd598155c5305ff2a",
+        "c": "a34fec3d002a01eda8b5b2fa21d45a66ca81752b9d6d74cd1e8b71fea1729007"
+      },
+      "guard_receipt_sha256": "c8fe876da8ff66ac9591851a2e2f182f882bb3cea6458ab19073f1a7a08767a0",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.DerivedCategory.ResolutionExtendedMap": {
+      "source_sha256": "e3dcc14c21a18c5d087f0856e318db764a77c172c62e6099a8d3a0cd12b416e8",
+      "setup_sha256": "9de6e936a55489e73d42e1731de33cdd6228682657c98d98116a8c72937c34d9",
+      "output_sha256": {
+        "olean": "a9b684bb8e3c89faf902f2876d4d6aa46d28946f4ec4e6bf92f562f65b94ed2c",
+        "olean.server": "eee4c4d736310b7e4dfeaeb71e31e9cb75e0ed03637f65f85e3cfcb3551cb1aa",
+        "olean.private": "d886be0c3678b5c105d242bfdd1c43c30bc3ddc493194427e60c634aa1571cc0",
+        "ir.sig": "68f0c03a1fa587ad7d83881e444b6e129803ec06e0b108faa74ebf08fe0ef156",
+        "ir": "81b36ba34be2212650b7cda9e939ea495433a60eaf8ba28288e4ffb79cd87f63",
+        "ilean": "22c6b1b30f0a0780356b022148f47067228d0f3347e5e8577c845de280e0b89a",
+        "c": "bc35208ac7facc59016da99112da6385cbcc87c1beff05b60e49e59e893e1c35"
+      },
+      "guard_receipt_sha256": "9874b16b80f0733e5973bf4e374aa2fd787b1e9a586578912d7419084b7dc8c8",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedCoefficient": {
+      "source_sha256": "d8e496a71bcd5348eade2315ce2a3cd3a0504f908c40f50209a3eed41667aac4",
+      "setup_sha256": "6e78847110c55ecb70b0b03a1340584f64bd9018202d39094d174a175a8ebd82",
+      "output_sha256": {
+        "olean": "c5e680797de963faf9f71593e1c1522e40c438de6fef669ca03f6c1c0bc91ff8",
+        "olean.server": "c7d442fbee97359cee0ed8232edf00700dfb2548f14189dc61b68ee6de28fbe1",
+        "olean.private": "934ca0ab273137524a39b91f488a53ffb8738f0095423d57442e6ba6ce028a1c",
+        "ir.sig": "5c352e2a73fdc5e2ebe3c6fc35200a9a87d338fddc848fd90b3c0823f54e7e94",
+        "ir": "f60e3d2a898b011f06be6afcb1b5bdab3136137fa69e33cc4e78e587eb924578",
+        "ilean": "2fe71c45d39b820431376cbe96b9840824cf6ad85a9b6958f131b0a5a74f91c1",
+        "c": "250833c59dd1901d5a7e67e21f0400de7f84426ed7cb987eb535f69e50efc9c8"
+      },
+      "guard_receipt_sha256": "718833437ae40265bd65ea1ad39c24d0d7dc937ba7a133c81b5fb2c26a6dc263",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryDerivedSectionsCoefficient": {
+      "source_sha256": "862c47e4ab8b3ab051f13cf89078697ea94b261eb20a9113163fcbe66e92b53d",
+      "setup_sha256": "54be37e6131e43a523ca8bd34151a3033d0306ef8f1404ff5c6ca195848e57d5",
+      "output_sha256": {
+        "olean": "c702c2e4e4314057a02d6143c8f108341b4f37810acf0b264573792bd9464639",
+        "olean.server": "74b7b346b778ed3e3015048651c5866c59dd5528086dbab9f3cef6261a1aa2f7",
+        "olean.private": "85dc5fbeb823f3e1b1d6f8a3d4218ae617b74d9ed8d767d039ef48156d9e9edb",
+        "ir.sig": "d7840eceb3d451fc7b7fb3cdbe9e05f8df79888b7b2975b341c55e6c206167ab",
+        "ir": "1c5a1afccbb7adc433e93afcfce8ff71dcc9323dcde61e08dddae9a2e4cd8fa7",
+        "ilean": "c8ba3320e0833bd6dd60c1c887302d00254eb053af19126c2befd115e086d00f",
+        "c": "6fadca7826a2397698bd67455372742436b195766d5eb5111a451fde2cb53ac1"
+      },
+      "guard_receipt_sha256": "2d4f2a4eaf5ada51a98d44ef1c7498c678a68584c4ea505bf6b4e9f187c83a17",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOrdinaryColimitNaturality": {
+      "source_sha256": "9bf5a15da2769287d51986a2f0db47b6f4afa41e8c1ff12b7bd520fe898b78ae",
+      "setup_sha256": "5fea2e6c1f63c30d1427bf88f14831be665a9201f045024d635f7fcba5e64a5b",
+      "output_sha256": {
+        "olean": "77c65687855e27892fcf82d9d4fb76e15dc67570af571df43c130cf45c3e4ea6",
+        "olean.server": "96a44fe0a56bb8ebb5ccaf38ceef5de3cf7bd01e75bcb7668cb7a4b5b2dcf1fd",
+        "olean.private": "92851baa5cf1a4922f5bc0cb15dd903f81f7e1fff5c9c6a79a345b4bc248420e",
+        "ir.sig": "f2ab876285ffc89fad9cb5cc08f19422da44ca2188f181b50853871c5dcd86d7",
+        "ir": "eddb5390a33fbc0321625c78630108c3fabc05d219b7fc0de6c845ee83c36585",
+        "ilean": "16bfcf30afd4f2bdb13d9cda0a6fff844fd9895a0d447f026b5a5752f3ae442d",
+        "c": "0ed58bc2da76820c0e455a4492275ce1c54f7914149135697e7e22403f9f4e6f"
+      },
+      "guard_receipt_sha256": "a6e26639184b23f692f1a944e1879e598afb65e373c285ba38a847846ebd671d",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    },
+    "MotivicTest.FiniteEtalePointOrdinaryColimit": {
+      "source_sha256": "0b3fcf86911c202339dc48d4f1fdaa5567ebc0411fb49c1bb45c0a3d8bcbc49d",
+      "setup_sha256": "9f3b1652fee3472b465eec23d1fb34f90e6606f33425ea7b70424a7957bca941",
+      "output_sha256": {
+        "olean": "d36e1cf2d140fab1a6f13e5cb6e472036631255f70280de1b5178dcccfea1adc",
+        "olean.server": "e308f14bfe2d32de0129024a4b96a8e4ab1a923e5b85c7a29ae676b3f99a408e",
+        "olean.private": "b1eca2cf2e63d446329549a9e63875b96e7ae74dfe5eed6c0a30fd9207a01c2b",
+        "ir.sig": "609e865c7be9f3b512a6e8541d9dbd85924918153611ae185b41b50087a3150a",
+        "ir": "b3cb5a7d7f0b4854b7226f7545c5108ac078503103c30cdf1890b860d0c1dd98",
+        "ilean": "d494c3ccc0918889dd9f26cc064364555d90b75b7a4a47f1436f7ff0cff0e4e2",
+        "c": "c439a0e43a21d50090fed1b2754c287c46fd419b8f24c6654103e6e754748707"
+      },
+      "guard_receipt_sha256": "e181ee737a7781018a563618060593470455b5420411faf0f74112ed2c5ec5d6",
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true
+    }
+  },
+  "consumer_audits": {
+    "MotivicTest.SheafCohomologyAffineLineHigherVanishing": {
+      "fresh_native_run": false,
+      "remaining_status": "not executed under final revised native scope",
+      "retained_evidence_boundary": "Principal accepts exact original strict Linux source/log evidence and source-independent review; current namespace/facade adaptations are not a fresh native consumer run."
+    },
+    "MotivicTest.BoundaryBaseSourceBoundary": {
+      "fresh_native_run": false,
+      "remaining_status": "not executed under final revised native scope",
+      "retained_evidence_boundary": "Principal accepts exact original strict Linux source/log evidence and source-independent review; current namespace/facade adaptations are not a fresh native consumer run."
+    },
+    "MotivicTest.FiniteEtalePointOrdinaryColimit": {
+      "fresh_native_run": true,
+      "compiled": true,
+      "standard_axioms_only": true,
+      "source_sha256": "0b3fcf86911c202339dc48d4f1fdaa5567ebc0411fb49c1bb45c0a3d8bcbc49d",
+      "log_sha256": "9b12840522f61bc23a2dd72d85bc454256417fff963e398a92205215e9cc6d24",
+      "audit_message": "Actual residue fibers and original ordinary cohomology colimits: standard axioms."
+    }
+  },
+  "declaration_lint": {
+    "passed_defining_modules": [
+      "Motivic.Cohomology.SheafCohomologyAffineLineHigherVanishing",
+      "Motivic.Aglib.RingTheory.AlgebraicIndependent.PolynomialQuotientFractionTrdeg",
+      "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOrdinaryColimit",
+      "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOrdinaryColimitNaturality",
+      "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineRetainedImage",
+      "Motivic.Aglib.AlgebraicGeometry.Normalization.FixedFiniteLocusBadIdeal"
+    ],
+    "linters_per_module": 15,
+    "unresolved_diagnostics": 0,
+    "intentional_exception": "AlgHom.trdeg_fractionRing_le_of_integral_localization_surjective retains its explicit quotient-domain hypothesis with a documented declaration-local unusedArguments exception.",
+    "retention": "Five successful module reports retained from the first control; only the failed polynomial prefix was refreshed."
+  },
+  "text_style_lint": {
+    "files": 256,
+    "status": "passed with affected-file rechecks",
+    "receipts": [
+      {
+        "receipt_sha256": "323f7da9feff78bdd0e8afc265f25f28f6b2c4757d10a511c741c52f2d6a7234",
+        "coverage": "initial 256-file pass except one trailing-space finding",
+        "exit_code": 1
+      },
+      {
+        "receipt_sha256": "244e193466c839896b61ef1c62c7aa95947d701152076aae09edd7bcc317fc0f",
+        "coverage": "successful one-file retry for PolynomialQuotientChangeBase",
+        "exit_code": 0
+      },
+      {
+        "receipt_sha256": "87ed40c87a1c498f9c250095e68ef94ca8d5494eb70940fcaf8c2659468aa6b2",
+        "coverage": "successful one-file recheck after the polynomial domain-API lint annotation",
+        "exit_code": 0
+      }
+    ]
+  },
+  "other_checks": {
+    "project_and_client_source_structure": 2948,
+    "projection_entries": 255,
+    "affected_target_fixture_tests": 9,
+    "real_graph_changed_lean_files": 256,
+    "real_graph_ci_targets": 258
+  },
+  "retained_primary_linux_evidence": {
+    "remaining_original_mathematical_leaves": 180,
+    "unchanged_older_prerequisites": 179,
+    "new_rank_zero_leaf": 1,
+    "all_source_hash_matched_and_exit_zero": true,
+    "original_terminal_consumer_standard_foundations_audit": true,
+    "conditions": "Author-header-only equivalence for original mathematical leaves; test namespace/facade projections are separately identified, not fresh full-entry native executions."
+  },
+  "stopped_probe": {
+    "module": "Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.PullbackSections",
+    "source_sha256": "123c88c2fb47e256d6517f225eaf175c75404f95a3a89d2540f9795809935bcc",
+    "exit_code": 1,
+    "guard_failure": null,
+    "owned_group_gone": true
+  },
+  "external_basis_caveat": "PullbackSections native probe found absent affine API identifiers in a stale/incompatible fallback GlobalSections artifact. Correct public names exist in pinned source (principal/integration diagnosis); no pinned-source-broken verdict. Earlier84 native project checks used their actual accepted external basis; do not generalize to a fresh successful whole current-pinned graph.",
+  "full_positive_entry_current_native_build_completed": false,
+  "evidence_boundary": "Native execution evidence against the recorded controlled artifacts, with author-header body-equivalent baseline reuse and an identified external-cache caveat. The current RankZero/facade consumer was not freshly run locally. Independent endpoint review is recorded separately in doc/VERIFICATION.md. This is not a successful fresh whole current-pinned rehashed Lake build, an established-status assignment, or strict A1 closure.",
+  "initial_ci": {
+    "url": "https://github.com/kangxyz/motivic/actions/runs/39045875580",
+    "conclusion": "success",
+    "cache_publication": "success"
+  },
+  "merge_push_ci": "Current facade/terminal and all changed leaves selected by CI; this record does not claim that future run has passed."
+}

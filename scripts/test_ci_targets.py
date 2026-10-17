@@ -47,6 +47,29 @@ public import
         self.assertEqual(select_targets(self.root, ['Motivic/Optional/Computation.lean']),
                          ['Motivic.NormEndpoint', 'Motivic.Optional.Computation'])
 
+    def test_optional_endpoint_and_facade_select_terminal_test_without_default_expansion(self):
+        self.write('Motivic/Optional/AffineLineEndpoint.lean',
+                   'import Mathlib.Algebra.Group.Basic\nexample : True := by trivial\n')
+        self.write('Motivic/AffineLine.lean', 'import Motivic.Optional.AffineLineEndpoint\n')
+        self.write('MotivicTest/SheafCohomologyAffineLineHigherVanishing.lean',
+                   'import Motivic.AffineLine\nexample : True := by trivial\n#print axioms True.intro\n')
+        self.write('MotivicTest/Unrelated.lean',
+                   'import Motivic.Public\nexample : True := by trivial\n')
+        terminal = 'MotivicTest.SheafCohomologyAffineLineHigherVanishing'
+        for changed, expected in (
+                ('Motivic/Optional/AffineLineEndpoint.lean',
+                 ['Motivic.AffineLine', 'Motivic.Optional.AffineLineEndpoint', terminal]),
+                ('Motivic/AffineLine.lean', ['Motivic.AffineLine', terminal])):
+            with self.subTest(changed=changed):
+                self.assertEqual(select_targets(self.root, [changed]), expected)
+
+    def test_mixed_config_or_tool_change_retains_changed_optional_leaf(self):
+        for infrastructure in ('lake-manifest.json', 'scripts/build.py'):
+            with self.subTest(infrastructure=infrastructure):
+                self.assertEqual(select_targets(self.root, [infrastructure,
+                                  'Motivic/Optional/Computation.lean']),
+                                 ['Motivic', 'Motivic.Optional.Computation', 'MotivicTest'])
+
     def test_docs_only_selects_no_lean(self):
         self.assertEqual(select_targets(self.root, ['README.md', 'doc/INTERFACES.md']), [])
 

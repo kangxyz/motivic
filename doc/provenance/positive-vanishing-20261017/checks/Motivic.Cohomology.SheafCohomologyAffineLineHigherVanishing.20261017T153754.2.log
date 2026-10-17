@@ -1,0 +1,4 @@
+Source SHA256: ec655d4e2c7bab2a6ed30fc89f9f33b5094c525d5a6a239e325e6c7f9821218a  Motivic/Cohomology/SheafCohomologyAffineLineHigherVanishing.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/SheafCohomologyAffineLineHigherVanishing.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/SheafCohomologyAffineLineHigherVanishing.ilean Motivic/Cohomology/SheafCohomologyAffineLineHigherVanishing.lean
+Exit status: 0

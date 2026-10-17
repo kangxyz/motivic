@@ -19,6 +19,7 @@ when working on one subject:
 | `Motivic.Transfers` | Signed transfers on the original ordinary Nisnevich cohomology in every nonnegative degree |
 | `Motivic.Cohomology` | Ordinary/relative cohomology and motivic complexes with integral/finite coefficients |
 | `Motivic.Cohomology.Motivic` | Canonical motivic complexes and hypercohomology |
+| `Motivic.Cohomology.AffineLine` | Optional ordinary higher vanishing and positive-degree vanishing for HI sheaves with transfers |
 | `Motivic.KTheory.MilnorK` | Milnor groups, products, field maps and residues |
 | `Motivic.KTheory.MilnorK.Norms` | Optional characteristic-zero finite-extension norm and tower laws |
 | `Motivic.Cohomology.Motivic.Diagonal` | Optional characteristic-zero diagonal comparison |
@@ -62,14 +63,22 @@ the original ordinary `HasExt` bookkeeping; graph action agrees with original
 restriction, and original coefficient maps respect transfers. It does not
 assume homotopy invariance.
 
+The 17 October 2026 affine-line milestone proves vanishing of original ordinary
+`H^(n+2)(A1_k,F)` for arbitrary ordinary abelian Nisnevich coefficients on the
+smooth site over any field, and `H^(n+1)(A1_k,F)` for homotopy-invariant
+Nisnevich sheaves with transfers. The original ordinary `HasExt` and coefficient
+universes remain explicit. Use `Motivic.Cohomology.AffineLine` for this optional
+computation. Its [source/evidence record](doc/provenance/positive-vanishing-20261017/README.md)
+records the exact scope and preserved boundaries.
+
 Strict A1 invariance remains open. The diagonal Milnor comparison retains its
 characteristic-zero and derived-category hypotheses. The weight-one comparison
 uses ordinary Nisnevich sheaves. General higher-Chow, motives and spectrum
 comparisons are future work with separate proof obligations.
 
-All 1,665 production leaves and 1,022 test leaves from the supplied snapshot
-are retained. A focused umbrella is a usable import selection, not a claim
-that every retained source or every open programme is complete. Original
+The initial snapshot and the subsequent affine-line milestone sources are
+retained, including their exact input and evidence records. A focused umbrella
+is a usable import selection, not a claim that every retained source or every open programme is complete. Original
 hash-matched Linux check records and exact migration details are in
 [provenance](doc/provenance/README.md). They are historical evidence, not a new
 aggregate build or independent proof review. See [verification](doc/VERIFICATION.md)

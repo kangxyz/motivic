@@ -1,0 +1,4 @@
+Source SHA256: a76aa50898d75ca405aee5a0a53fe73153bba2074bdf4657da5c7c6ddb98a4f6  Motivic/Cohomology/SheafCohomologyAffineLineRankZero.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/SheafCohomologyAffineLineRankZero.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/SheafCohomologyAffineLineRankZero.ilean Motivic/Cohomology/SheafCohomologyAffineLineRankZero.lean
+Exit status: 0

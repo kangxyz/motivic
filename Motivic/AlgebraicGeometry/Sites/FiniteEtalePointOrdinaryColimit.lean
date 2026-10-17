@@ -34,7 +34,7 @@ theorem derivedNeighborhoodSectionsIso_naturality (n : ℕ)
   simp only [Category.assoc]
   erw [Iso.inv_hom_id_assoc]
   apply (cancel_epi (I.isoRightDerivedObj
-    (pulledBackNeighborhoodSections b V.unop.obj) n).hom).1
+    (pulledBackNeighborhoodSections b V.unop.obj) n).hom).2
   change ShortComplex.homologyMap
       ((directImageResolutionNeighborhoodStep b Φ I n).mapNatTrans
         ((CategoryTheory.evaluation _ _).map f)) ≫ _ = _

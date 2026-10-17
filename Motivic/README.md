@@ -8,6 +8,7 @@ or exact implementation leaf for development.
 | [Cor](Cor.lean) | [Correspondences](AlgebraicGeometry/Correspondences/README.md), presheaves and smooth Nisnevich sites |
 | [Transfers](Transfers.lean) | [Ordinary cohomology transfers](Transfers/README.md) |
 | [Cohomology](Cohomology.lean) | [Ordinary and motivic cohomology](Cohomology/README.md) |
+| [Affine-line cohomology](Cohomology/AffineLine.lean) | Optional ordinary higher/positive-degree vanishing over fields |
 | [Milnor K](KTheory/MilnorK.lean) | [Integral symbol groups](KTheory/MilnorK/README.md) |
 | [Milnor norms](KTheory/MilnorK/Norms.lean) | Optional characteristic-zero finite-extension norms |
 | [Diagonal](Cohomology/Motivic/Diagonal.lean) | Optional characteristic-zero comparison |

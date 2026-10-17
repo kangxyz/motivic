@@ -89,11 +89,13 @@ reruns. Independent tool fixtures run at the final task/CI acceptance boundary.
 existing changed local Lean module, including optional leaves outside curated
 roots. Reverse import reachability adds affected public directory facades,
 comment-aware import-only facades regardless of directory layout, and
-production/test roots. Unrelated roots are omitted; subject names require no
-manual public-facade list.
+production/test roots and all reachable `MotivicTest` consumers, including
+modules with declarations and axiom audits. Unrelated roots and tests are omitted;
+subject names require no manual public-facade list.
 First pushes, dependency/toolchain pins, tooling/workflow changes and default
-manual dispatch select `Motivic MotivicTest`; an explicit manual selection must
-name existing local modules. Documentation-only changes avoid the Lean job.
+manual dispatch select `Motivic MotivicTest`. Simultaneously changed Lean leaves
+and their affected consumers remain selected alongside those roots. An explicit
+manual selection must name existing local modules. Documentation-only changes avoid the Lean job.
 Client sources receive structural checks; separate client compilation remains
 an independently selected acceptance action. CI restores matching
 Mathlib dependencies, public Aglib native artifacts and incremental outputs;

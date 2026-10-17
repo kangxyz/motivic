@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseCoproduct
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FullBoundaryTwistFrames
@@ -98,4 +103,42 @@ def boundaryBaseSourceBoundaryFrame (M : (boundaryBaseCompactification π V).Mod
       (boundaryBaseWholeMap π (coprod.desc d (s ≫ j)) V)).symm.app M ≪≫
     (Modules.pullback (boundaryBaseSourceBoundaryToFull q p z s hs π j hj d V)).mapIso e ≪≫
       Modules.pullbackUnitIso (boundaryBaseSourceBoundaryToFull q p z s hs π j hj d V)
+/-- The full original zero support, not merely a subset, is retained over the base open. -/
+theorem mem_range_boundaryBaseSourceZero_iff (x : boundaryBaseCompactification π V) :
+    x ∈ Set.range (boundaryBaseCoverLift q p z s hs U V h ≫
+      boundaryBaseCoverInclusion q p π j hj U V) ↔
+      pullback.snd V.ι π x ∈ Set.range (s ≫ j) := by
+  constructor
+  · rintro ⟨t, rfl⟩
+    refine ⟨t.val, ?_⟩
+    simpa only [Scheme.Hom.comp_apply, Scheme.Opens.ι_apply] using
+      (congrArg (fun f => f t)
+        (show (boundaryBaseCoverLift q p z s hs U V h ≫
+          boundaryBaseCoverInclusion q p π j hj U V) ≫ pullback.snd V.ι π =
+          (boundaryBaseClosedOpen q z V).ι ≫ s ≫ j by simp)).symm
+  · rintro ⟨t, ht⟩
+    have hx : π (pullback.snd V.ι π x) ∈ V := by
+      have he := congrArg (fun f => f x) (pullback.condition (f := V.ι) (g := π))
+      change V.ι (pullback.fst V.ι π x) = π (pullback.snd V.ι π x) at he
+      rw [← he]
+      exact (pullback.fst V.ι π x).property
+    have hm : (z ≫ q) t ∈ V := by
+      rw [← hs, Category.assoc, ← hj, ← Category.assoc]
+      change π ((s ≫ j) t) ∈ V
+      rwa [ht]
+    refine ⟨⟨t, hm⟩, ?_⟩
+    apply (pullback.snd V.ι π).isOpenEmbedding.injective
+    change ((boundaryBaseCoverLift q p z s hs U V h ≫
+      boundaryBaseCoverInclusion q p π j hj U V) ≫ pullback.snd V.ι π) ⟨t, hm⟩ = _
+    simpa using ht
+/-- The original retained target plus the original full boundary covers after refinement. -/
+theorem boundaryBaseSourceBoundary_cover {T : Scheme.{u}} (v : T ⟶ C)
+    (hc : ∀ c : C, c ∈ Set.range v ∨ c ∈ Set.range d ∨ c ∈ Set.range (s ≫ j))
+    (x : boundaryBaseCompactification π V) :
+    x ∈ Set.range (boundaryBaseRetainedTarget π V v) ∨
+      x ∈ Set.range (boundaryBaseWholeMap π d V) ∨
+      x ∈ Set.range (boundaryBaseCoverLift q p z s hs U V h ≫
+        boundaryBaseCoverInclusion q p π j hj U V) := by
+  simpa only [boundaryBaseRetainedTarget, mem_range_boundaryBaseWholeMap_iff,
+    mem_range_boundaryBaseSourceZero_iff] using hc (pullback.snd V.ι π x)
 end AlgebraicGeometry.Scheme.Hom

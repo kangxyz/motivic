@@ -59,18 +59,19 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
         if missing:
             raise ValueError('Expected existing local Motivic/MotivicTest targets: ' + ', '.join(missing))
         return targets
-    if any(path in CONFIG_INPUTS or (
+    needs_defaults = any(path in CONFIG_INPUTS or (
             path.startswith('.github/') and path.endswith(('.yml', '.yaml', '.py', '.sh'))) or (
             path.startswith('scripts/') and path.endswith(('.py', '.sh')))
-           for path in changed):
-        return select_targets(root, [], full=True)
+           for path in changed)
+    defaults = set(select_targets(root, [], full=True)) if needs_defaults else set()
     selected = {module_name(path) for path in changed if path.endswith('.lean')
                 and module_name(path) in sources}
     if not selected:
-        return []
+        return sorted(defaults)
     texts = {name: path.read_text() for name, path in sources.items()}
     public = {name for name, path in sources.items()
-              if name in DEFAULTS or path.with_suffix('').is_dir()
+              if name in DEFAULTS or name.startswith('MotivicTest.')
+              or path.with_suffix('').is_dir()
               or is_import_surface(texts[name])}
     reverse = {}
     for name, path in sources.items():
@@ -84,7 +85,7 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
             if consumer not in affected:
                 affected.add(consumer)
                 pending.append(consumer)
-    return sorted(selected | (affected & public))
+    return sorted(defaults | selected | (affected & public))
 
 
 def main() -> int:

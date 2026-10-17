@@ -1,0 +1,5 @@
+Source SHA256: 307707e5f8f9c7414dc3854415a3b152fb0ecc6c5d2ccd532836993797b648d1  Tests/SheafCohomologyAffineLineHigherVanishing.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/SheafCohomologyAffineLineHigherVanishing.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/SheafCohomologyAffineLineHigherVanishing.ilean Tests/SheafCohomologyAffineLineHigherVanishing.lean
+Ordinary H^(n+2) and HI rank-zero H^(n+1): standard foundations only.
+Exit status: 0

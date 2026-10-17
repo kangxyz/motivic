@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseSourceBoundary
 /-! # Full original Z and original target boundary after the actual parameter shrink -/
@@ -30,6 +35,8 @@ example : boundaryBaseSourceBoundaryToFull q p z s hs π j hj d V ≫
         (boundaryBaseCoverLift q p z s hs U V h ≫
           boundaryBaseCoverInclusion q p π j hj U V) :=
   boundaryBaseSourceBoundaryToFull_boundary q p z s hs π j hj d U V h
+#print axioms boundaryBaseSourceBoundary_cover
+#print axioms mem_range_boundaryBaseSourceZero_iff
 #print axioms boundaryBaseSourceZero_isPullback
 #print axioms boundaryBaseSourceZero_closed
 #print axioms boundaryBaseSourceZero_finite

@@ -33,3 +33,12 @@ license/author comment is unchanged. Test-root migration and author metadata
 change raw source hashes, so the index stores original and current hashes
 separately. These identities preserve provenance and do not claim a new proof
 execution for a comment-only change.
+
+## Subsequent milestone
+
+The [affine-line positive-vanishing snapshot](positive-vanishing-20261017/README.md)
+records the subsequent source archive, its actual delta and selected check
+records. The `repository_source_sha256` fields in this initial snapshot index
+identify the initial imported repository at commit `04569be`; they are not a
+mutable assertion about every later working-tree version. Source changes in
+later snapshots have their own identities and verification coverage.

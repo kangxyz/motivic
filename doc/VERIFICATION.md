@@ -4,7 +4,10 @@ This bootstrap preserves the supplied mathematical implementation and changes
 package organization, public import selection, test-root names and developer
 tooling. It does not assign a new mathematical proof status.
 
-## Source and integration checks
+The bootstrap observations below apply to initial repository commit `04569be`.
+Later source changes and their selected coverage are recorded separately below.
+
+## Initial bootstrap source and integration checks
 
 - All 1,665 original production Lean bodies are preserved. Generic author
   labels were normalized to `kangxyz`; bytes after each first license/author
@@ -27,7 +30,7 @@ tooling. It does not assign a new mathematical proof status.
   whitespace is preserved with its source bytes rather than silently changing
   historical source identities.
 
-## Native compilation
+## Initial bootstrap native compilation
 
 The local compiler is Lean 4.34.1, `arm64-apple-darwin24.6.0`, commit
 `5045d0056413266e57c625dcd7c365b10e377c52`. Mathlib and Aglib retain the exact
@@ -82,3 +85,79 @@ changes. The producer exports current core and selected-target native mappings o
 successful main push and releases the same-run staged artifact from a separate
 write-permission job. Configuration alone does not claim a successful GitHub
 Actions run or a published cache release.
+
+## Affine-line positive-vanishing milestone
+
+Source archive SHA256:
+`3f5e1eed50f393d1345c753582fd25a4850cf7084befcbca6414a4472fb000c9`.
+The source delta from the first archive adds 184 production and 65 test leaves,
+changes four production and two test leaves, and deletes none. Toolchain,
+mathematical dependency pins, curated default entries and native-cache transport
+are unchanged. Their applicable existing evidence is reused. The new optional
+entry is `Motivic.Cohomology.AffineLine`.
+
+CI target selection now includes declaration-containing `MotivicTest` consumers
+reachable from changed modules. Mixed tool/configuration and Lean edits retain
+changed optional leaves alongside required default roots. The nine affected
+`TargetSelectionTests` passed, including two new regressions for these cases.
+The unchanged check-scope fixtures and other tooling results are retained.
+
+Independent ordinary mathematical/source review accepted the two exact endpoint
+statements and their original cohomology objects: `H^(n+2)` vanishes for arbitrary
+ordinary abelian coefficients on the big smooth Nisnevich site over any field;
+`H^(n+1)` vanishes for homotopy-invariant sheaves with transfers. Coefficient
+universe and ordinary `HasExt` remain explicit. Review covered all 13 changed
+local modules in the higher-vanishing closure and traced supporting unchanged
+interfaces; the entire existing H1 closure has no changed modules. This is an
+ordinary result-specific review, not an established-status assignment.
+
+The [delta provenance](provenance/positive-vanishing-20261017/README.md) records
+253 matching supplied strict Linux checks for 255 added/changed leaves. Two
+new leaves lack supplied check logs and are explicitly identified there.
+These source records are separate from selected current native checks.
+
+The protected previously validated core has no implementation changes or
+affected consumers in this source delta. Lake's raw hashes differ after the
+previous author-header normalization; old traces remain untouched. Selected
+native compilation used an explicit bound baseline and current-source artifact
+overlay. It does not constitute a successful current-source rehashed Lake build.
+
+The higher-vanishing endpoint and its 32-module extension compiled successfully.
+Current native checks also covered the two statement-preserving repairs to
+unlogged helpers, the changed polynomial transcendence-degree module, both
+finite-etale colimit modules and their standard-foundations consumer. The
+651-module core was retained; 436 baseline modules in the selected closure were
+bound to their controlled outputs and author-header-only source equivalence.
+
+The full all-positive native entry was not completed locally. At the scope
+review, all 180 remaining original mathematical leaves (179 older prerequisites
+and the new `RankZero` module) had matching successful supplied Linux logs. The
+original terminal consumer also had a matching standard-foundations audit.
+Those records and the independent endpoint review were retained rather than
+continuing the long native H1 replay. The new import-only facade and its migrated
+consumer have structural/selection coverage; their full current-byte build is
+left to the push CI.
+
+One stopped prerequisite probe,
+`Aglib.AlgebraicGeometry.Modules.BaseChange.Affine.PullbackSections`, failed to
+find three public identifiers present in pinned `GlobalSections` source. Its
+fallback cached dependency had no source/compiler/options binding and differed
+from a same-source producer artifact. This is evidence of an imported-cache/API
+mismatch, not a verdict that the pinned source is broken. The controlled local
+successes retain their external-artifact basis; no fresh whole-pinned-graph
+certificate is claimed. CI uses native `--rehash` to compare current inputs.
+The failed diagnostic is retained separately from successful leaf results.
+
+The structural checker passed for 2,948 Lean sources (2,947 project and one
+downstream). All 256 delta/facade files passed exact-file text/style lint after
+one trailing space was removed; affected files were checked separately after
+repairs. Six selected compiled production modules passed 15 declaration linters
+each, with the explicit domain-API exception recorded in the provenance index.
+The [fixed native-check record](provenance/positive-vanishing-20261017/NATIVE-CHECKS.json)
+stores exact current source/output identities, successful receipt hashes, retained
+evidence conditions and the stopped diagnostic. The initial bootstrap
+[CI run](https://github.com/kangxyz/motivic/actions/runs/39045875580) succeeded,
+including cache publication; the subsequent merge run is not asserted here.
+
+General small-site coefficient comparison, generic-cylinder continuity and
+strict A1 invariance on arbitrary smooth schemes remain outside this milestone.
