@@ -230,3 +230,18 @@ the active/new run. No cache repair or healthy-run restart was indicated.
 Finite-field detection, nonintegral smooth targets, the final zero-sheaf consumer,
 arbitrary-class generic-base H1, the all-positive generic rank-zero join and full
 strict A1 invariance remain outside these entries.
+
+## Hosted endpoint test correction
+
+The [corrected hosted run](https://github.com/kangxyz/motivic/actions/runs/39072227872)
+at [ff4ff6d](https://github.com/kangxyz/motivic/commit/ff4ff6d73b49e5ea6c05ab55f4e5665b249e3a9f)
+passed source checks, Lean validation and public cache publication. The two
+endpoint tests needed an explicit `end` for their anonymous noncomputable
+sections before closing their test namespaces. Statements and proof bodies
+were unchanged; earlier provenance hashes retain the pre-correction snapshots.
+
+The completed log reports exactly two newly compiled proof modules, both
+corrected tests, with both standard-foundations audits passing. Dependency,
+native and project caches were restored from the previous failed run's saved
+progress. Core/selected-target native export reported a cache hit with no
+compilation needed. No cache deletion or production proof replay was required.
