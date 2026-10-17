@@ -1,0 +1,2864 @@
+{
+  "source_archive_sha256": "972401892b0b3753d3b3538cdfdb37a6b9ac72991b5c176dfd78219b249267c7",
+  "previous_archive_sha256": "3f5e1eed50f393d1345c753582fd25a4850cf7084befcbca6414a4472fb000c9",
+  "repository_baseline_head": "04dba9fcfe14ac83ec2a5ef70e533ccc50a01de5",
+  "counts": {
+    "incoming_delta_source_files": 181,
+    "new_admitted_production": 153,
+    "new_admitted_tests": 20,
+    "unverified_archival_only": 6,
+    "preserved_changed_helpers": 2,
+    "historical_matching_successful_logs": 175
+  },
+  "admission_boundary": {
+    "unlogged_sources_are_archival_only": true,
+    "primary_endpoint_or_consumer_depends_on_unlogged": false,
+    "logged_consumers_requiring_quarantine": []
+  },
+  "selected_primary_targets": {
+    "Motivic/Cohomology/A1/DenseOpenAffineDetection.lean": {
+      "source_sha256": "aafdf16084b494f26ee592b157d70e9c2cd61987590119e9009ea52902b8d77d",
+      "source_log_filename": "Motivic.Cohomology.A1.DenseOpenAffineDetection.20261017T164831.2.log",
+      "source_log_sha256": "747050a54c60494d07d2535a0a608c1b735ac0bf5aa0af17303ab21512aae4b3",
+      "exit_status": 0
+    },
+    "Motivic/Cohomology/SheafCohomologyRelativeLineHigherVanishing.lean": {
+      "source_sha256": "9aa716f4c437bd83ed6646a6c6efb03e699a8e92bbdc7fd346bbee936ec95d02",
+      "source_log_filename": "Motivic.Cohomology.SheafCohomologyRelativeLineHigherVanishing.20261017T164819.2.log",
+      "source_log_sha256": "59b66db7daf93d7fd4ea359a5e2c8199a86733b7a12ea39ae90ba1e39d6ea2ef",
+      "exit_status": 0
+    },
+    "Tests/DenseOpenAffineDetection.lean": {
+      "source_sha256": "0a34d7dafb65ab40564915491eca232a397983e130e582a89c00949e31df3584",
+      "source_log_filename": "Tests.DenseOpenAffineDetection.20261017T164922.2.log",
+      "source_log_sha256": "407bebc2af352fb9aa5378b731ffe8646b0def9884c770cd1d27f855b8879b41",
+      "exit_status": 0
+    },
+    "Tests/SheafCohomologyRelativeLineHigherVanishing.lean": {
+      "source_sha256": "a3004ed8ac50220ea909f41ac66b415fbae77ffdc8554a59e7a3b03cc2c0860c",
+      "source_log_filename": "Tests.SheafCohomologyRelativeLineHigherVanishing.20261017T164853.2.log",
+      "source_log_sha256": "cad7da45a40c907f6382af99debaad88583ef5d70cefbba23e9caaaad073d1a6",
+      "exit_status": 0
+    }
+  },
+  "preserved_other_repository_repairs": [
+    {
+      "path": "Motivic/Aglib/AlgebraicGeometry/PolynomialQuotientChangeBase.lean",
+      "projection": "left untouched; prior whitespace repair retained"
+    },
+    {
+      "path": "Motivic/Aglib/RingTheory/AlgebraicIndependent/PolynomialQuotientFractionTrdeg.lean",
+      "projection": "left untouched; prior documented no-lint exception retained"
+    }
+  ],
+  "unverified_sources": [
+    {
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean",
+      "archive_source_sha256": "b1cc549a7c2ca26c8b58dfcb998acc38370b093598bcc61a0f5995005056fa7e",
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean",
+      "current_repository_sha256": "b1cc549a7c2ca26c8b58dfcb998acc38370b093598bcc61a0f5995005056fa7e",
+      "status": "archived byte-exact; not executed or admitted; no proof-failure inference"
+    },
+    {
+      "original_source_path": "Motivic/Cohomology/A1/ContractionBoundaryMarkedExtension.lean",
+      "archive_source_sha256": "1300ba19c33d269ed8eb4f63939e01a3616bbde654058d19bc5c6aeeaf5076f5",
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryMarkedExtension.lean",
+      "current_repository_sha256": "1300ba19c33d269ed8eb4f63939e01a3616bbde654058d19bc5c6aeeaf5076f5",
+      "status": "archived byte-exact; not executed or admitted; no proof-failure inference"
+    },
+    {
+      "original_source_path": "Motivic/Cohomology/RelativeGenericBaseH1Zero.lean",
+      "archive_source_sha256": "bf0fd95b9fdbadaaa148c8cba821f2a78ff5ba903f88967d86281377ca762b91",
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/RelativeGenericBaseH1Zero.lean",
+      "current_repository_sha256": "bf0fd95b9fdbadaaa148c8cba821f2a78ff5ba903f88967d86281377ca762b91",
+      "status": "archived byte-exact; not executed or admitted; no proof-failure inference"
+    },
+    {
+      "original_source_path": "Motivic/Cohomology/RelativeGenericBasePositiveZero.lean",
+      "archive_source_sha256": "36321eae2f3d60c4c6665ca777838ae27bef281115a4a0e51f17248eae0b85f0",
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/RelativeGenericBasePositiveZero.lean",
+      "current_repository_sha256": "36321eae2f3d60c4c6665ca777838ae27bef281115a4a0e51f17248eae0b85f0",
+      "status": "archived byte-exact; not executed or admitted; no proof-failure inference"
+    },
+    {
+      "original_source_path": "Motivic/Cohomology/RelativeMonicH1BaseZero.lean",
+      "archive_source_sha256": "ff8ff97e4f2d8e7a00ee4ada2c96baa71a62e200e98b697198ab52d2b3393808",
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/RelativeMonicH1BaseZero.lean",
+      "current_repository_sha256": "ff8ff97e4f2d8e7a00ee4ada2c96baa71a62e200e98b697198ab52d2b3393808",
+      "status": "archived byte-exact; not executed or admitted; no proof-failure inference"
+    },
+    {
+      "original_source_path": "Tests/RelativeGenericBaseH1Zero.lean",
+      "archive_source_sha256": "1153828471c9d0440c48c08137e0410ecb1e08bd80d3b733be11ef3b5eeb14ef",
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Tests/RelativeGenericBaseH1Zero.lean",
+      "current_repository_sha256": "1153828471c9d0440c48c08137e0410ecb1e08bd80d3b733be11ef3b5eeb14ef",
+      "status": "archived byte-exact; not executed or admitted; no proof-failure inference"
+    }
+  ],
+  "entries": [
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/AdjunctionExtFirstObstruction.lean",
+      "original_module": "Motivic.Aglib.Algebra.Homology.DerivedCategory.AdjunctionExtFirstObstruction",
+      "source_sha256": "e74d022b68a68184d86ce69c59651254557da46e697eececf1071961db0a7917",
+      "source_log_filename": "Motivic.Aglib.Algebra.Homology.DerivedCategory.AdjunctionExtFirstObstruction.20261017T155726.2.log",
+      "source_log_sha256": "d2c4c741ee924e6c30cc1c6da40de3c59468bec029fcc1fd8189df8afdbc6beb",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/AdjunctionExtFirstObstruction.lean",
+      "current_repository_sha256": "1eaf5afbb5c97f62addbda7df91ed27c030d160505366a1c31ffe31beb84ea68",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/AdjunctionExtFirstObstructionNaturality.lean",
+      "original_module": "Motivic.Aglib.Algebra.Homology.DerivedCategory.AdjunctionExtFirstObstructionNaturality",
+      "source_sha256": "cdcbcfc05af5ae153d15a8423cd6fd4c1ed277f846d1126b49ce7bb7519db2c9",
+      "source_log_filename": "Motivic.Aglib.Algebra.Homology.DerivedCategory.AdjunctionExtFirstObstructionNaturality.20261017T160258.2.log",
+      "source_log_sha256": "e2ec3f65fb75e37ca642e63ef571cb746c9ee98395c636f51e24fe78e6369584",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/AdjunctionExtFirstObstructionNaturality.lean",
+      "current_repository_sha256": "796627ac6d99ac7846b04315a568fa98feac72202df6051605729639e43c68ad",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/FirstHomologyDetection.lean",
+      "original_module": "Motivic.Aglib.Algebra.Homology.DerivedCategory.FirstHomologyDetection",
+      "source_sha256": "39c1f793abfb64f085accea8917a4e1aab560fc2d238aa701f0793b083a9ccbe",
+      "source_log_filename": "Motivic.Aglib.Algebra.Homology.DerivedCategory.FirstHomologyDetection.20261017T154713.2.log",
+      "source_log_sha256": "94e61779bbfc9f5fc8255f164cf859414f9ee6f51a9eb4d38d5615452ca9bb01",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/FirstHomologyDetection.lean",
+      "current_repository_sha256": "0c0dd924e1027e921ff4e5b85f5e8d98b27d9951b963305cdbd0add45558cd4d",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/ImageFirstObstruction.lean",
+      "original_module": "Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageFirstObstruction",
+      "source_sha256": "6e7d52ccb84d54fed73260213397d5c221c61ee71ce2f906d59f9296938d6a38",
+      "source_log_filename": "Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageFirstObstruction.20261017T155155.6.log",
+      "source_log_sha256": "35b553014508a67a3a37c7fb0729028fb24e581bef40f5c0b9b892d1efd6d938",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/ImageFirstObstruction.lean",
+      "current_repository_sha256": "4bd6216fac125fca287a44fb4ab4b255c5f7fd4af7b754c67716f2967071319e",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/ImageResolutionExtCoordinates.lean",
+      "original_module": "Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageResolutionExtCoordinates",
+      "source_sha256": "deb9b1e31799de7bb9fd3d0ed171d9463324a83337f792fd8447ad4df5b4f110",
+      "source_log_filename": "Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageResolutionExtCoordinates.20261017T155723.6.log",
+      "source_log_sha256": "e88200b91a411d6208e661f56d378f63392f49991e8d8e1ea498c749e3bb09fa",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/ImageResolutionExtCoordinates.lean",
+      "current_repository_sha256": "89f75e3e57596746ad4087df21c0b783e131f40775cf688551ce3d8150aa4ef6",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/ImageResolutionExtNaturality.lean",
+      "original_module": "Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageResolutionExtNaturality",
+      "source_sha256": "f7e0efe3e6982d4ace1d03c8aa007c34f4431d62c4d1fbbd3db5742464635f31",
+      "source_log_filename": "Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageResolutionExtNaturality.20261017T160237.2.log",
+      "source_log_sha256": "87bf64d8927a954f56b747de14e44bb31a7f2f76b1e8c2e878bef14b643bbd81",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Algebra/Homology/DerivedCategory/ImageResolutionExtNaturality.lean",
+      "current_repository_sha256": "4f82b49500cd91c9540a402ed42d26657f25084278bdad048bd4b5869e2e3098",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/AffineEtaleClosedSectionNeighborhood.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.AffineEtaleClosedSectionNeighborhood",
+      "source_sha256": "df882baa38a074d9651180671e358fe6f464ecc924ef270ab3b4ae291ab8874c",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.AffineEtaleClosedSectionNeighborhood.20261017T161606.2.log",
+      "source_log_sha256": "fbeb04fa67c454233939ba20c8a72dfcf5cb599eeb9ee699ef02c341fe7e83a4",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/AffineEtaleClosedSectionNeighborhood.lean",
+      "current_repository_sha256": "c397c851e1df1f2fd130326ceaad5375331326cb1e0fde74bcd386514d2723c9",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/AffineLineZeroNeighborhoodBaseShrink.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.AffineLineZeroNeighborhoodBaseShrink",
+      "source_sha256": "c61d905e19806ffda200997aebdc4a54a724cee301b42bbfd9e3ce76c057d8dd",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.AffineLineZeroNeighborhoodBaseShrink.20261017T164717.6.log",
+      "source_log_sha256": "cfbbb1acf20eff8693cb693d3ac2fc197336bc0cda8dd922245984c3e55ab3fb",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/AffineLineZeroNeighborhoodBaseShrink.lean",
+      "current_repository_sha256": "fb26c65b16437145db3308d338295dc95f0bbf8c56a5e56ff6dca0229fb98b1b",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal",
+      "source_sha256": "c6e22413dc74254fa672eb07a8b4d3b8ab0d96ae5d4b881952e3cbf07f0c172e",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal.20261017T164748.6.log",
+      "source_log_sha256": "f12d6b893297c3c841db283583c88f8e59f134b000be2eae93a7265ba794b000",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.lean",
+      "current_repository_sha256": "a15b6a6443d7d58ad5ec68e330e647cf44ae12ca70f2cb716889c1237f0ee774",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes",
+      "current_native_validation": {
+        "record": "CHECKS.json",
+        "exit_code": 0,
+        "source_sha256": "a15b6a6443d7d58ad5ec68e330e647cf44ae12ca70f2cb716889c1237f0ee774",
+        "scope": "This Mathlib-only leaf; all 15 default declaration linters also passed."
+      }
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/DisjointOpenSectionGlue.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.DisjointOpenSectionGlue",
+      "source_sha256": "37f4b8d76c09be96072cce7d067ab4d25258f24183133995df81d0c40a5f0bcf",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.DisjointOpenSectionGlue.20261017T160314.6.log",
+      "source_log_sha256": "0438a9e2d3c108ca8c2233957965d0e1b763412af205bcee356353a31580bfa2",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/DisjointOpenSectionGlue.lean",
+      "current_repository_sha256": "045bf12df4f0fed869ac60dd7e541c78b0697c4cd5c31fec2b379b965de626a0",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/EtaleLineZeroFiber.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.EtaleLineZeroFiber",
+      "source_sha256": "8a03745e2ab78b4d92ccbd2ecd40ca8368843202751ae5657699dad94d5dcb8c",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.EtaleLineZeroFiber.20261017T164849.2.log",
+      "source_log_sha256": "b3cab20272a7b093b3d04dec144d46389b01990f5ced2db3f0d1415e7a644014",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/EtaleLineZeroFiber.lean",
+      "current_repository_sha256": "bca5fe24e3a65796ecccaaf0f7400337d6a45366724d959533d74434083e9d2d",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/EtaleLineZeroFiberGeometry.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.EtaleLineZeroFiberGeometry",
+      "source_sha256": "07b84b8d35bd8a67790e5d59afd65d06579024d4936feca7078292a1412bf026",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.EtaleLineZeroFiberGeometry.20261017T165129.6.log",
+      "source_log_sha256": "275531e341c4ba123204f3474262a11b93a0a5e776a04299a5772aa16814b04e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/EtaleLineZeroFiberGeometry.lean",
+      "current_repository_sha256": "24bcc874c070156009c0fe1f896bdca2e209444a38a092afe0958738c5e6e16f",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/EtaleZeroFiberWholeNeighborhood.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.EtaleZeroFiberWholeNeighborhood",
+      "source_sha256": "8b3ab8a700eaff7b6acce7b28307f6e2ab53e43ffe0d93d3542bcd5dbd8c40d2",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.EtaleZeroFiberWholeNeighborhood.20261017T163626.2.log",
+      "source_log_sha256": "9a52aaddc5583332b84c931cd431c4ec0de4b002dffea25970d0f1efd762c850",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/EtaleZeroFiberWholeNeighborhood.lean",
+      "current_repository_sha256": "dbad6c9e7fce251aef93c744ae256bf3b68cf6fa142fd67375a148a43e116212",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/FiniteFlatGenericFiber.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.FiniteFlatGenericFiber",
+      "source_sha256": "15f39ec9e9e192a750878b9152dc57e3445c35d7dbcf14d3ff6b77d4687f99d4",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.FiniteFlatGenericFiber.20261017T160553.6.log",
+      "source_log_sha256": "d42cda3b79adc2d9abe151ce32bf03d8759660c1dce684c28ddcc90695b68099",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/FiniteFlatGenericFiber.lean",
+      "current_repository_sha256": "fb40616dcd2406d879d71a4673c2f4d92c9d2166aa2925dd8f75cd88ef9ae3f3",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/FiniteGenericSectionOpen.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.FiniteGenericSectionOpen",
+      "source_sha256": "d96bd8c227cf32004533fb444d4271b9a90fdc5e76338759c5080e6bc65c15fa",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.FiniteGenericSectionOpen.20261017T160635.2.log",
+      "source_log_sha256": "fc624d46f35c469c7ccfba7aa908406398a070b5af4330ab6d7c98d090a69a3a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/FiniteGenericSectionOpen.lean",
+      "current_repository_sha256": "260276d2b69d109e76d19fb9c8e78fbdbc093e7c5df3f5280c11ace609d16f11",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/FiniteGenericSectionPrincipalSpread.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.FiniteGenericSectionPrincipalSpread",
+      "source_sha256": "24375caf709d5b5cf28ec026421e651a4dbd21d309cb750f52f56a0f85bcded6",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.FiniteGenericSectionPrincipalSpread.20261017T160713.2.log",
+      "source_log_sha256": "1721e3777e6236f7a8c9ec55c60bc5902bb2513210dd685816e3729d1bc068d1",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/FiniteGenericSectionPrincipalSpread.lean",
+      "current_repository_sha256": "19e6462261e8e852d84947b0a359cfb282b9c19242293205ae99216b8a5576d8",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/GenericFiniteSectionSpread.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.GenericFiniteSectionSpread",
+      "source_sha256": "f21c936f5754f44614d911bb114262d58340e72a4610150312d4be8956be9f76",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.GenericFiniteSectionSpread.20261017T160028.2.log",
+      "source_log_sha256": "a501a826fb1ced603310013e5ab1e269a5cb9ff99151913376b198fee22ba993",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/GenericFiniteSectionSpread.lean",
+      "current_repository_sha256": "467d279b5d60370f2f59b5a809efd7f034cb256992264dd70262d3994c38eb42",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/GenericStalkSectionGlue.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.GenericStalkSectionGlue",
+      "source_sha256": "32d4429971b7a58fdb521e7e5cdcfa9886cabb61703e00fa6bddfe725db84db7",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.GenericStalkSectionGlue.20261017T160400.2.log",
+      "source_log_sha256": "b2d4310d761fdba987f618b48da31a4f0b668b945e037805bda7457acf1f556c",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/GenericStalkSectionGlue.lean",
+      "current_repository_sha256": "a183b85fd167a4c7b3be3af1e44dd96a5dd6ac2ec4f2ec07b29c33a14604de6d",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/ProperFiniteFiberFrame.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.ProperFiniteFiberFrame",
+      "source_sha256": "a2d97fc44fa9a006d45b95ffe198c5278faefebb238a171392b8dd5717fc0d87",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.ProperFiniteFiberFrame.20261017T161318.2.log",
+      "source_log_sha256": "e8ff1dc4a0b9965f8851eee671c33f35f9b1e0318e091e70aa428467343a9b87",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/ProperFiniteFiberFrame.lean",
+      "current_repository_sha256": "4445cbd1a5c8bab56cc3ef4577a2022bd36a83d8197bcbfc25d9f36d365540f2",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/MonicAffineNisnevichNeighborhood.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.MonicAffineNisnevichNeighborhood",
+      "source_sha256": "7804776158fb852716c8bd399cc5b6838f992cba00a807e35a381ec789cf58d2",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.MonicAffineNisnevichNeighborhood.20261017T161749.2.log",
+      "source_log_sha256": "ce3d2d796c27b7b2287dcb8ef0ef38eaf1240f42f5afab96d780c38c07f67cde",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/MonicAffineNisnevichNeighborhood.lean",
+      "current_repository_sha256": "f18925e74276ad09cd62b72f5773ae17289e1c8ba9fa83c34c3a10eaed8be47e",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/MonicGenericSectionSpread.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.MonicGenericSectionSpread",
+      "source_sha256": "000ee167f8b88c9acbbad633b381f4a41da54826dbde1f03e7c2e5b4fbeb673d",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.MonicGenericSectionSpread.20261017T160807.7.log",
+      "source_log_sha256": "33b92c8d944dba92bed9edfaae74037d3acedc3c254bc125e73ad45780b43e7b",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/MonicGenericSectionSpread.lean",
+      "current_repository_sha256": "7b6e890067fa2dc97f0134ef4f1821959d7b1b563b6d851a940a71f5e4a4181a",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/MonicNisnevichSectionSpread.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.MonicNisnevichSectionSpread",
+      "source_sha256": "a30f2737efba99c55830d8e9e2cb541666728d4342e1938a30ae6b9da43dfe4b",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.MonicNisnevichSectionSpread.20261017T161716.2.log",
+      "source_log_sha256": "41e5cecac0927e886f7f1b2e47d8acb6c934f2f11d84b1b0d68f986dc49b3065",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/MonicNisnevichSectionSpread.lean",
+      "current_repository_sha256": "50d3bc5d25c1c53e2aa631c60d325c82f7ce5b984c85af65b9fc8aef14f9dace",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedAffineSections.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedAffineSections",
+      "source_sha256": "c09c363d66a6c96c857729207a567926afea0d4b3bb4a2c46b772f5cba0b0a8a",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedAffineSections.20261017T161025.2.log",
+      "source_log_sha256": "50cd4a678e3bbe00b249982468662114780c49f7edb23d9881723abf9092845d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedAffineSections.lean",
+      "current_repository_sha256": "0c1cf596ff36a550ef75f52dc79a134022d8694e5e36748d6f4919f287b690aa",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedBaseRefinement.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedBaseRefinement",
+      "source_sha256": "c2e4bf1b16592b1f0bf0e5eccaae5e2a88d7ea6d361be71dcdca1869736e4f33",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedBaseRefinement.20261017T162025.2.log",
+      "source_log_sha256": "2121929166c33a6585310504fcdad570a326fbc190a3e8aa3603899ad66695bc",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedBaseRefinement.lean",
+      "current_repository_sha256": "c3df2b2b250661179df760a57285aa3c6247225bdd520a179b198425ec58b941",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedPencil.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedPencil",
+      "source_sha256": "cbb0ffaaff069d47302f0fc4216d981be08c89c6fe6d471a79bf2a5a076c9874",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedPencil.20261017T154418.2.log",
+      "source_log_sha256": "26b7ea900eb453dee9e9facd09c51346c0ec11d5550945d92b7b7fa4c5f9cc01",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedPencil.lean",
+      "current_repository_sha256": "4184cdf8d2da3860be2b1bc1e492b2564f379c2b990b4e3218b227c56a5b07d3",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedProductGeometry.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedProductGeometry",
+      "source_sha256": "194f6e1053dc733990e4bde1a2ea046cf3b20ed69a24a00662983b7ea64f1b9d",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedProductGeometry.20261017T161213.2.log",
+      "source_log_sha256": "ae1a22d7626f8c5419a4be0b9157d846054b123bd71c8d337ba8492a2d5d1827",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedProductGeometry.lean",
+      "current_repository_sha256": "089d87a75941d0f0ddcca19ea2b2ede7ab37f89206b7a9cc073d45833dcbad1e",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRefinedFrames.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRefinedFrames",
+      "source_sha256": "e896b43e8b5940f746f70bfc6f43ceb533fb90c1ebbc1d3fae7d4a0b2e69d861",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRefinedFrames.20261017T162129.6.log",
+      "source_log_sha256": "db56082968ed6868e8c837bf00a85a3f45aa590f3a1db4437a4eb838fe80cc2b",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRefinedFrames.lean",
+      "current_repository_sha256": "9c993ba1816508ed7f95b2bbbccaf1471f5de7e8716d3fcd05ee384b55f25a2e",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRefinedSites.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRefinedSites",
+      "source_sha256": "4eb1ec0ca53dcd917711a21111fdce5aaacf8add8047850e7d84be0cbb2cf71f",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRefinedSites.20261017T162431.6.log",
+      "source_log_sha256": "a1274754e0e17dfc93571971725b9380fcf1dc7e7014f4c09b1cef1e751c5462",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRefinedSites.lean",
+      "current_repository_sha256": "dd2ea54461e36d5f0da4a6f7465e188fbc9f4ab38595068b82ce6bf9c98d75e4",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRelativeSections.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRelativeSections",
+      "source_sha256": "ae1a60c56abc64e26cee1b9a01be841c93f7b01d184eb92be4f3fb78f8d27791",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRelativeSections.20261017T161346.2.log",
+      "source_log_sha256": "0757a757d816202158d9e84fa1c17428de37e5934d7895fabafe17fbf8d0299f",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRelativeSections.lean",
+      "current_repository_sha256": "c82bad7de6355e089e571a003d2c795fd099852b85c3cdc51d0b9504f68921bd",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRetainedFactors.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRetainedFactors",
+      "source_sha256": "6f5666f36c5ed9764e75cf4bf885b967d91c9260ea5297eac191613d6e3d37fb",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedRetainedFactors.20261017T160326.2.log",
+      "source_log_sha256": "04a24367ef238798e6ce76c61bef0af402b6cad668c48d7bcd448664e6ae4e88",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedRetainedFactors.lean",
+      "current_repository_sha256": "e42b774444f71d17678e74516202316f9ff772f1ce804758aca4ff6253ed24e0",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedSectionTransport.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedSectionTransport",
+      "source_sha256": "4f9e42ded44f08841ad0d2712f1b2afab6761f22d70d7d4fc6c82bbef621d992",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedSectionTransport.20261017T155239.2.log",
+      "source_log_sha256": "d265df386450b11069c281914d0e7dd816998f1127ac64b138df6627162bab1c",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedSectionTransport.lean",
+      "current_repository_sha256": "75f0362f6b8c5243c36f442da894c6e464db89e57aaf1c9552702c4e1a6a7f11",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedSerreSections.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedSerreSections",
+      "source_sha256": "e307eade21ed05cc736cde499770e372de2b694aec84b9e3801733850de63225",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedSerreSections.20261017T154704.2.log",
+      "source_log_sha256": "017efb3236fcf8f924db46b41fee7ea219f16fefa184fbd8826175a7fbf6bf98",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OneSidedSerreSections.lean",
+      "current_repository_sha256": "0a029e2bf5321e1956779ea4bcdc7d9f46f7bcba398cae9344336be7945ff129",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OpenGraphLine.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.OpenGraphLine",
+      "source_sha256": "0fdbc1b21f6c61ced193e2422fc55cf876c914488d4b017cf91cc8a18d356727",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.OpenGraphLine.20261017T154750.2.log",
+      "source_log_sha256": "c93d0fc90fab500d51dd3159647939feb60b041cf4e6a98a61a0d5ce6aa0e171",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/OpenGraphLine.lean",
+      "current_repository_sha256": "c8c61d39a8dd83140555fc28ad1a1f19008cd574eaf9389b6d6ab7bbc78bb6e7",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Moving/ZeroSupportOpen.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Moving.ZeroSupportOpen",
+      "source_sha256": "ff8130b1f6bdb27b8aabeb86b638d81efa4c3d57b835b8d0f6101138fc735e0a",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Moving.ZeroSupportOpen.20261017T154905.2.log",
+      "source_log_sha256": "77d771df981fd564eaed859429522245552ff0f86c7be8f89e264b3fa284fd77",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Moving/ZeroSupportOpen.lean",
+      "current_repository_sha256": "d5dcd639dd42160438a12abb1d9afb098fa0c56d8361856b488da18867311a01",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FiniteTargetChartBoundary.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteTargetChartBoundary",
+      "source_sha256": "8c70307fdb3d916942b6e427780de23f16ee17430873e63e65afd9a311097c46",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteTargetChartBoundary.20261017T155847.2.log",
+      "source_log_sha256": "38103c9538e3faf9e69aeea3100639f9fd4c53a3f0288ad7a9c4e56ce562e64a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FiniteTargetChartBoundary.lean",
+      "current_repository_sha256": "7ca327132b2dfbf4d89a7e0983c102bb0f5e5caf1a3b23dc3ec3178142709151",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "changed-helper-preserved",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FixedFiniteLocusBadIdeal.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Normalization.FixedFiniteLocusBadIdeal",
+      "source_sha256": "2d6edf93ce4bb71d5e3f33d28bac266a5174e3de15c898ad3fa7712212958710",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Normalization.FixedFiniteLocusBadIdeal.20261017T154502.2.log",
+      "source_log_sha256": "6eb36018c16010aa2f8ad522b941e8308ea6f926dbfe0e44b2f51ebb1576be69",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FixedFiniteLocusBadIdeal.lean",
+      "current_repository_sha256": "b7166da1048a1b50310e2d041ea27433b715aae8d8aa62f62e0c16f8e93888bc",
+      "projection_transforms": [
+        "preserved existing repaired repository source; incoming archive bytes not copied"
+      ],
+      "evidence_status": "incoming Linux log covers incoming archive bytes only; current repaired source has separate prior native evidence",
+      "preserved_current_native_previous_commit_evidence": {
+        "current_source_sha256": "b7166da1048a1b50310e2d041ea27433b715aae8d8aa62f62e0c16f8e93888bc",
+        "prior_native_evidence_document": "../positive-vanishing-20261017/NATIVE-CHECKS.json",
+        "prior_native_record": "Motivic.Aglib.AlgebraicGeometry.Normalization.FixedFiniteLocusBadIdeal",
+        "prior_native_exit_code": 0,
+        "prior_native_guard_receipt_sha256": "c878648307231594b568a8a3984fe874890c5ff6f7d09d585bc01ef3512e0140",
+        "prior_native_setup_sha256": "0d0899fc2ac45e4a1b0ef0a450c71e2ade619196fae7eea584403a828e82fa02",
+        "incoming_archive_source_is_not_currently_written": true
+      }
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/RelativeAffineLineFullOverlap.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeAffineLineFullOverlap",
+      "source_sha256": "fb89cd6b128c56d9bb4ccb975262e4d41f9f3e2c9f2a191f9912f2f5571824b7",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeAffineLineFullOverlap.20261017T162526.6.log",
+      "source_log_sha256": "202ab15a2d20dcbdf17f71ef7d6d86dba1f006444adf829b0e359a63bdca1d1b",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/RelativeAffineLineFullOverlap.lean",
+      "current_repository_sha256": "44fc4f23d757c467b789b70a1ba6126d5ecc27b54c4179c9f08af532b479618b",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/RelativeFullBoundaryBaseFrames.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeFullBoundaryBaseFrames",
+      "source_sha256": "0def48fe2d73c81d569b31103341b8b57ffe62f6cc8868cae54af3ebc36b45e7",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeFullBoundaryBaseFrames.20261017T161740.2.log",
+      "source_log_sha256": "28ce18f93506cfd768629a24989e42c9b9fe73f31ffea17838463b8283437d6b",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/RelativeFullBoundaryBaseFrames.lean",
+      "current_repository_sha256": "ba6f7d05b08aae75aeeb9f60bfbb68a159189368aa5505999d833d02e90b5af4",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/RelativeInfinityFiniteBaseOpen.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeInfinityFiniteBaseOpen",
+      "source_sha256": "a47b9dd82009be3501ae262b9306b7ce43c8128492f6bf8b277963fb90e915b8",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeInfinityFiniteBaseOpen.20261017T161225.2.log",
+      "source_log_sha256": "15d08635bfc5c4f6479689e321c1a73a107b02b2e21f7737d1d6f9960992b02a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/RelativeInfinityFiniteBaseOpen.lean",
+      "current_repository_sha256": "881e4a12a9a82101d1301eb32aa2a55d8085426bd5416feda6017d643d021a62",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/OpenBaseFiberShrinking.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.OpenBaseFiberShrinking",
+      "source_sha256": "2a9697ddcbd420bf398b10d9ceea47900a8e79b23a1b579bff5a1c6803b298ff",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.OpenBaseFiberShrinking.20261017T163514.2.log",
+      "source_log_sha256": "0c041cc4a43b841ce398a753d120b961f8a10e615dc2c7c51a263f539921e036",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/OpenBaseFiberShrinking.lean",
+      "current_repository_sha256": "c66e7e1c81405af68de2c9fb8b5ca71962baab63c05109590ab9d3e3d21ea67a",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/PolynomialQuotientComplement.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.PolynomialQuotientComplement",
+      "source_sha256": "1f19a905f3a8fe6084d0fa29750ee51bb6c5208aad29e3f2b7514410a3047fec",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.PolynomialQuotientComplement.20261017T164606.6.log",
+      "source_log_sha256": "a371f30ac8578ee4ddb39bdf96d517aaec40f600a22b9afeb6c69acd0b6d0e88",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/PolynomialQuotientComplement.lean",
+      "current_repository_sha256": "890f507372b6289659411703f2dae7d6bf57934b6656f47ce6e00a285562a2b0",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/FixedBadLocusRetainedPresentation.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.FixedBadLocusRetainedPresentation",
+      "source_sha256": "5dbec80777a57ccd3f6c23aa7dea65709653343622fb158a42ca8192c4528b1b",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.FixedBadLocusRetainedPresentation.20261017T154811.2.log",
+      "source_log_sha256": "d602cea47b9d356ec62a8d7a7ff4bb97285cf668fac96412b038ad7b7f36c12f",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/FixedBadLocusRetainedPresentation.lean",
+      "current_repository_sha256": "98ff0963653b83d7ba7c9ee8aa71f57865244880392f65e41178ff7cdc5911d9",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/QuadraticOriginalEtalePresentation.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticOriginalEtalePresentation",
+      "source_sha256": "f3eee711c02a3e82efadd79ba85174a85b40855da52792c88f1b5aa731806d99",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticOriginalEtalePresentation.20261017T162310.6.log",
+      "source_log_sha256": "ee42e974b8b62294f33d136c9319e47d844f65b09c2bc1c22b22c36669c07bba",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/QuadraticOriginalEtalePresentation.lean",
+      "current_repository_sha256": "890be1b2ee9d1ba713c5375d36db041a3a84209d0f4c96b9847c817d1494cd8c",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/SimultaneousRetainedPresentation.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SimultaneousRetainedPresentation",
+      "source_sha256": "eb45726b79575a7df39e8a207b3e058a4e4cdb3e6042913f948d04de60c7bd96",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SimultaneousRetainedPresentation.20261017T154808.6.log",
+      "source_log_sha256": "54b94b99198777d4cb4945c9fc672fcc01e14266aa1af00336961ac4ed478c9d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/SimultaneousRetainedPresentation.lean",
+      "current_repository_sha256": "2869ff8de043056165b7059b0caffd691cfcf820e30e25ba2eb35b628ffc4b64",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "changed-helper-preserved",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/AffineRetainedImage.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineRetainedImage",
+      "source_sha256": "a6a8f754213c2e3f7d3a6115f7d8b60a6c43b545f3addd5ee10cd7ef6fb146f0",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineRetainedImage.20261017T154500.2.log",
+      "source_log_sha256": "6afe36c83fdce9089e4b885e6d9e968b3147001a73f6237a78b4fbb086405adc",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/AffineRetainedImage.lean",
+      "current_repository_sha256": "79496b7a62a3c860fcb96483a7dcd1cdb3ebdf0df08fcac12dc6d86a83e35bd4",
+      "projection_transforms": [
+        "preserved existing repaired repository source; incoming archive bytes not copied"
+      ],
+      "evidence_status": "incoming Linux log covers incoming archive bytes only; current repaired source has separate prior native evidence",
+      "preserved_current_native_previous_commit_evidence": {
+        "current_source_sha256": "79496b7a62a3c860fcb96483a7dcd1cdb3ebdf0df08fcac12dc6d86a83e35bd4",
+        "prior_native_evidence_document": "../positive-vanishing-20261017/NATIVE-CHECKS.json",
+        "prior_native_record": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineRetainedImage",
+        "prior_native_exit_code": 0,
+        "prior_native_guard_receipt_sha256": "dabcecd9f31658a4c5050b626d2aa96399032b8db0d86437ad4ca4bf2249d595",
+        "prior_native_setup_sha256": "436d8b1970c6c3bb5fb9a3a7e5a62ab8e534c72d83dba32682ef01c32a3c7fdb",
+        "incoming_archive_source_is_not_currently_written": true
+      }
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/BoundaryBaseWholeComplement.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseWholeComplement",
+      "source_sha256": "435155a58d744300f561e96c884b09bbaacb85738f4cadde67cbd5c9a6b25c4b",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseWholeComplement.20261017T163404.2.log",
+      "source_log_sha256": "dc6749744c20ced9c8e2ff1382d3538dd3d6ae3ce1688cbf2316638b59103bbd",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/BoundaryBaseWholeComplement.lean",
+      "current_repository_sha256": "58920de95dbcb1a3c5ca5dcdb2d3673e6d2443c3fc56d84b0eb582333bae22ef",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CompactRetainedPrincipalNeighborhood.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CompactRetainedPrincipalNeighborhood",
+      "source_sha256": "24ad22ee53801bf13c8f580b462dfb996a9c061de0ebff880d298265b5fb9512",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CompactRetainedPrincipalNeighborhood.20261017T154553.2.log",
+      "source_log_sha256": "2a40b8ae4cc5312b0729a23611112656fe174cf0cc8f07d195ee1aa465233b6e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CompactRetainedPrincipalNeighborhood.lean",
+      "current_repository_sha256": "6222a481fe6d6611ee13d34e471af2200ef300ae76a58b8a901f1cda3487595d",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/FiniteProjectiveBaseRestriction.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FiniteProjectiveBaseRestriction",
+      "source_sha256": "76c7c468f17ac6de7ab836e2abbcef6d4bf57835855e2f7e158996bcf715448d",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FiniteProjectiveBaseRestriction.20261017T155312.2.log",
+      "source_log_sha256": "7255eb18b0219e996854d76bcd5f01b2c52ad44be81e993032480f22acc393fc",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/FiniteProjectiveBaseRestriction.lean",
+      "current_repository_sha256": "dea56337928334b48656c9a649eb14b0af0207bcf8843f802221e97f63486bdb",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NormalRetainedBaseRestriction.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalRetainedBaseRestriction",
+      "source_sha256": "c968162d61c91c7ff2c59d7adb89eb457bc4b71eec4a29b8334c7aac302a3a1b",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalRetainedBaseRestriction.20261017T155528.2.log",
+      "source_log_sha256": "b048e905548074d25bf380be335f62ca61b9ece18a15b9156f5c0215f5b83452",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NormalRetainedBaseRestriction.lean",
+      "current_repository_sha256": "a448566cf81c369d712662f1c13692fa388f9eb5725cf54eaf00246abb41b0e7",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalEtalePresentation.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalEtalePresentation",
+      "source_sha256": "cb437c4b5383c862a444f179fdefe556509886b604b9b22a79a283dab337215c",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalEtalePresentation.20261017T161534.2.log",
+      "source_log_sha256": "29a7c575cdd74316cbdf32420ba72a78f56b0ec145b1c91eef6aa35f0cfe5f7d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalEtalePresentation.lean",
+      "current_repository_sha256": "1bcd1f37d5918ef8403e4f14374ba7574196d3132830048e2ec61c05d93c87ae",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalEtaleSquareBaseChange.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalEtaleSquareBaseChange",
+      "source_sha256": "7dadfabd3ff8a721d01558c4f4bcd85ac157b564c71ff1ba104cf327af03a755",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalEtaleSquareBaseChange.20261017T160237.2.log",
+      "source_log_sha256": "2841cc2315e5980579429a2d4f6c3b4e22b74f6e18fc5561b2e09da2ebf73158",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalEtaleSquareBaseChange.lean",
+      "current_repository_sha256": "0e15d251df90437bd433bfd4862b36e3447e5aafb891d69c4684d65e7106bf63",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/PrescribedSubquotient.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PrescribedSubquotient",
+      "source_sha256": "25e0bd4ce9a406454a7c0b06dce8fe8f2d1e62ea3600996d60d9b50606d96469",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PrescribedSubquotient.20261017T161209.6.log",
+      "source_log_sha256": "b8528678060c494b7c478d08038c2d8dfbb97fe1bb65d928af0cc2ff0b82ef9d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/PrescribedSubquotient.lean",
+      "current_repository_sha256": "6320b002aaff5f1044760c69068bf868db7525194b27a499430eb021bd2566ff",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/PresentationMissingBoundary.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PresentationMissingBoundary",
+      "source_sha256": "7297a0ddceca08ca0050dd0f08f192ddd0522fc53550f7e714fc693903e94be4",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PresentationMissingBoundary.20261017T163406.2.log",
+      "source_log_sha256": "152b19461c11d1c5a5e48778480bf29459946f95ca7786844196366e17307ff9",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/PresentationMissingBoundary.lean",
+      "current_repository_sha256": "6dd94ae319b3f25e7ad6fc98e398dda55f42587d072524dfc3580eec2b614955",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/QuotientRetainedBadCover.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.QuotientRetainedBadCover",
+      "source_sha256": "a5cbcadaf72578c9b03bf8c487cd6624c68e511775961aa26e778a571c70689f",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.QuotientRetainedBadCover.20261017T155512.2.log",
+      "source_log_sha256": "f4cac6bad0469256f2c4225e73550e7b1c5945b9cb355b723899bffc768dce10",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/QuotientRetainedBadCover.lean",
+      "current_repository_sha256": "057042ef9f360984815f67d29bf91a91eb00b717f448f211c389510dbbd549a7",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedBaseBadChart.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedBaseBadChart",
+      "source_sha256": "b54ee401121c20ae00d7ec988f0fd7a90dd9931fe4b51c1a72d17b8c89017fcb",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedBaseBadChart.20261017T160409.2.log",
+      "source_log_sha256": "2439c4292220e081723e2f1ef73c579e61cabe0f6e1d1d5f1d849b5c66060abe",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedBaseBadChart.lean",
+      "current_repository_sha256": "fd829b6ae36b398b0a0044d2d6c94dc8c5c126123c2c6d3f1758eaf21ed7eb2e",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedEtaleClosedSquare.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedEtaleClosedSquare",
+      "source_sha256": "46a5f5b089fa464886828ffa42aa96bc0aa1e2bca10670f4bb4614df2ad5e72f",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedEtaleClosedSquare.20261017T161025.2.log",
+      "source_log_sha256": "01032780533e627ec7228054d895f367ee726668bb3fccd25b13b6f3f685f924",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedEtaleClosedSquare.lean",
+      "current_repository_sha256": "073335ba55554f1988eb599dd3d74a5590d244e27e66b5a52b3c91e7b30a9fac",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedOriginalEtaleMap.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedOriginalEtaleMap",
+      "source_sha256": "5ec321b38ad7cadc5ee47e1031797e8ca1af002934e77a25408137797e07b2c8",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedOriginalEtaleMap.20261017T160234.6.log",
+      "source_log_sha256": "89d11c6a325e550d5cb234ced20f190163779a6933e943ffc2703e81c1177c93",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedOriginalEtaleMap.lean",
+      "current_repository_sha256": "3760e8f03646fb74f7bbba312c6d011ddeda4c349e5df89f5d61725e53419ef3",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPrescribedBoundary.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPrescribedBoundary",
+      "source_sha256": "a974b1035f24f4c311a7968547c4b7e08aec6b1ee942dcaa169d93da80154cae",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPrescribedBoundary.20261017T155148.2.log",
+      "source_log_sha256": "92c91b1bc422a7c9938558fe9128716675409a5e3b8ca989795aed8421399c51",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPrescribedBoundary.lean",
+      "current_repository_sha256": "1ee22677784cebcc2bb7dc973ea1b2c7d08f317ed611141ac011876995d3b8a9",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPrescribedCartesian.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPrescribedCartesian",
+      "source_sha256": "5d73005be4365856aeda3a5ba65c10e43673d4ffd60892583cd6b5b73a4a6f1b",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPrescribedCartesian.20261017T161325.2.log",
+      "source_log_sha256": "c623fd3f1c8610978c1af252d7de24e8e70951cebada83163e9c3d7e84623253",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPrescribedCartesian.lean",
+      "current_repository_sha256": "7625bf46dc04e25d34cfc3dff0d3d5286c564a010cb55b2fe400ce96c6d43830",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPrescribedLift.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPrescribedLift",
+      "source_sha256": "e1cacc1f10415377d72815a9db775cb2e56875f192e982d338b07ac31b7915bf",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPrescribedLift.20261017T161022.6.log",
+      "source_log_sha256": "efc89a46307d0c8888e74a326c67063787ba0ed025a357209eee52e450f98856",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPrescribedLift.lean",
+      "current_repository_sha256": "00a93a3313d007b6911516ede6f44e0766e09065a2551e9c8acb110811c13bce",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPuncturedCover.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPuncturedCover",
+      "source_sha256": "d91103512e7f77beb34091f2cd45534e83556f91fb8125a792d0b17dfae35ad6",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPuncturedCover.20261017T161212.2.log",
+      "source_log_sha256": "3b945c296cb6dc0ca4e04854aaf9deacbfc2b5ac64487ed8c8b58fb9552ee639",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/RetainedPuncturedCover.lean",
+      "current_repository_sha256": "80c271ecb0ceff4e00f1ce9ab7dc72842bb6e9402b126af2c99d29410c4db563",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SmoothAffineBaseRestriction.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SmoothAffineBaseRestriction",
+      "source_sha256": "cafb6c51f3a6c9a93b2b81a0385825903b5a85aa5f82aafa7f01b9f9414926a6",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SmoothAffineBaseRestriction.20261017T155919.2.log",
+      "source_log_sha256": "9e40a318a3b6d36c98e7307a760f75d8fc1c263066dc61714608a4008ddd0a85",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SmoothAffineBaseRestriction.lean",
+      "current_repository_sha256": "783d1e242ec43b82e9510025d06d5835dd7d2c9a30da94cda9f692b77a986704",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurveOverlapShrinking.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurveOverlapShrinking",
+      "source_sha256": "9ebce1a94d9bbccceb3354f3085fdbf94d09d3bad057fb64cbfde0c12722a1dc",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeCurveOverlapShrinking.20261017T160903.2.log",
+      "source_log_sha256": "c6993af8b301907afab8c9871ef0f809dbe24623d76f30ce513e9c5b040d49bd",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurveOverlapShrinking.lean",
+      "current_repository_sha256": "2d7ffd70d2627f6efeb5160547cac39ee643fcb9289147b54053dbc6a4f87479",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeOpenImmersionOverlapShrinking.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.RelativeOpenImmersionOverlapShrinking",
+      "source_sha256": "33f1e415df24034949550d6416b630671e746fa3fe5e3aa3de663d9b6f8311c0",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.RelativeOpenImmersionOverlapShrinking.20261017T163217.2.log",
+      "source_log_sha256": "d907f6bc682c269ac997e848b2fe8da2e3fceaaede64e7eae8d9c74b6a469949",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeOpenImmersionOverlapShrinking.lean",
+      "current_repository_sha256": "3c6b02e09ff9a2e5b9d391d7f611ba0d072d76200d95a920400922d1e40af787",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.SmoothCartierAtPrime",
+      "source_sha256": "b1cc549a7c2ca26c8b58dfcb998acc38370b093598bcc61a0f5995005056fa7e",
+      "source_log_filename": null,
+      "source_log_sha256": null,
+      "historical_exit_status": null,
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean",
+      "current_repository_sha256": "b1cc549a7c2ca26c8b58dfcb998acc38370b093598bcc61a0f5995005056fa7e",
+      "projection_transforms": [
+        "raw archive bytes preserved exactly in unverified-source; not admitted to production/test roots"
+      ],
+      "evidence_status": "archive-only unverified source; no compiler failure or proof failure inferred"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/SmoothPrimeParameterChart.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.SmoothPrimeParameterChart",
+      "source_sha256": "fe7813fa22f6fb2afb72f7293915d0f11433ba3aa06e8cfb99296d0551dae6ce",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.SmoothPrimeParameterChart.20261017T164523.8.log",
+      "source_log_sha256": "344ad4f9e11958a6632c2205f89d1e2065adeb10f7a27a12b15e8577fd08af39",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/SmoothPrimeParameterChart.lean",
+      "current_repository_sha256": "5ab3c8fa3ee57b0f07d10cf9a9a1b16cea1ab6cdcc7e76f4b2633f40145b7515",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/SmoothPrimeParameterLine.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.SmoothPrimeParameterLine",
+      "source_sha256": "648a277e062f275d98df1c2cae7ad0eea0fe110f46ab3ea5c9f932bb9f5f23fa",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.SmoothPrimeParameterLine.20261017T164952.9.log",
+      "source_log_sha256": "8a6beb30658a34c2ca3e8c98192d2647c139584f81d4858c109a010cd77257e2",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/SmoothPrimeParameterLine.lean",
+      "current_repository_sha256": "5939d80397d55eb6c36541bf4a120e030cfbae69565b18ec53380ee2d2036ecc",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/StalkRankGenerization.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.StalkRankGenerization",
+      "source_sha256": "e0626da9e66a91c17ec2a40ee753f7e56e9df6084a1378bcf9c0fdc1a14a481c",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.StalkRankGenerization.20261017T163432.5.log",
+      "source_log_sha256": "ae60d558e8df174ade17a807b3bc60f99869cdd73562096de00804db8af21755",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/StalkRankGenerization.lean",
+      "current_repository_sha256": "7a70e2d99356399001dc92dc4e90ee3154475204ea2af496a9d6dc5f8ef4bea7",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/AlgebraicGeometry/StalkRankZero.lean",
+      "original_module": "Motivic.Aglib.AlgebraicGeometry.StalkRankZero",
+      "source_sha256": "b4a1bc0e36cbd5fd3f46900b63fea6234d1d0ec5422cbf6db58558984cc60ce8",
+      "source_log_filename": "Motivic.Aglib.AlgebraicGeometry.StalkRankZero.20261017T165043.6.log",
+      "source_log_sha256": "e818c146d5033823a087aa395bcbcdc2821966699172f196e9c030c96c9492ae",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/StalkRankZero.lean",
+      "current_repository_sha256": "ad44f8d2aff016deec646fcd44d336f4623d0d06e2deb2b8ef0d60bf9c017b25",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/RingTheory/Etale/PrescribedLineCoordinate.lean",
+      "original_module": "Motivic.Aglib.RingTheory.Etale.PrescribedLineCoordinate",
+      "source_sha256": "c125260288ebbb14d6b0083e957a4de7bbf31290190a38f8f22f6f7fabb9d125",
+      "source_log_filename": "Motivic.Aglib.RingTheory.Etale.PrescribedLineCoordinate.20261017T164905.7.log",
+      "source_log_sha256": "f28ba08e697d79a760354da04b08f0812cbc5bbdafd79c9a1fc4024c838c3a88",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/RingTheory/Etale/PrescribedLineCoordinate.lean",
+      "current_repository_sha256": "a311a3a4be32249be4d854a332965ac374e589d18aed7d709212ea173aa84e15",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/RingTheory/Etale/PrescribedResidueCoordinate.lean",
+      "original_module": "Motivic.Aglib.RingTheory.Etale.PrescribedResidueCoordinate",
+      "source_sha256": "61ec05ebb618ad822bb9965ca2ffaf257236537f157cab6c186496a365cb23d4",
+      "source_log_filename": "Motivic.Aglib.RingTheory.Etale.PrescribedResidueCoordinate.20261017T164158.2.log",
+      "source_log_sha256": "23b0d4b4c6e0fa60e0e67176991d35a31a08cb55f3f996b5dc0fb5126713c600",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/RingTheory/Etale/PrescribedResidueCoordinate.lean",
+      "current_repository_sha256": "04efe777224c53223fb2cc935867498cafc194ff5b1c474d480af750b7dac161",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/RingTheory/Kaehler/LocalParameterDifferential.lean",
+      "original_module": "Motivic.Aglib.RingTheory.Kaehler.LocalParameterDifferential",
+      "source_sha256": "824e5a3a86c4138929d54635295134673e1f329d05cf53466cd10fa66c5d8de5",
+      "source_log_filename": "Motivic.Aglib.RingTheory.Kaehler.LocalParameterDifferential.20261017T163933.2.log",
+      "source_log_sha256": "3d70fccbb48ebaa473311928b7d559d97e292ffdfd435cfb1a17bddc17622974",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/RingTheory/Kaehler/LocalParameterDifferential.lean",
+      "current_repository_sha256": "8362d9ee6feb97c7162a5a3363b577f9008dbfeab91ebe47e67360aec099a2e8",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/RingTheory/Kaehler/PrescribedResidueFunctionBasis.lean",
+      "original_module": "Motivic.Aglib.RingTheory.Kaehler.PrescribedResidueFunctionBasis",
+      "source_sha256": "e4c015863b669f7a23130be13fb08c348150f1778ec8efbfef41ab557fa2d079",
+      "source_log_filename": "Motivic.Aglib.RingTheory.Kaehler.PrescribedResidueFunctionBasis.20261017T163918.2.log",
+      "source_log_sha256": "8f7e96fbc0ac8bf56e20e59a51f0199048d699ae5210977421283be9220850b2",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/RingTheory/Kaehler/PrescribedResidueFunctionBasis.lean",
+      "current_repository_sha256": "4cc7590044758b24ec1b050cc6c6b86a5a8cf7905f823e08272d789eac2f1a5f",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/RingTheory/Kaehler/PrimeParameterDifferential.lean",
+      "original_module": "Motivic.Aglib.RingTheory.Kaehler.PrimeParameterDifferential",
+      "source_sha256": "1ba73be17cdc9d6ed57a2052dfcec3e6859e3cd0c2c89e6174d5f9f843120c8e",
+      "source_log_filename": "Motivic.Aglib.RingTheory.Kaehler.PrimeParameterDifferential.20261017T164311.2.log",
+      "source_log_sha256": "0260dba2e4d7e9b154a30f553e093515b333ea70eba2f863d8d03ec729761ac0",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/RingTheory/Kaehler/PrimeParameterDifferential.lean",
+      "current_repository_sha256": "478bb7fe94f279b3a055b8a0b9f52f2987d495084adfcb919731b6cd06f241c6",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Aglib/Topology/GenericComponentOpens.lean",
+      "original_module": "Motivic.Aglib.Topology.GenericComponentOpens",
+      "source_sha256": "6b420b94e9ca804f2f150c02b77e0c0aee53eab915dcac1bc7342d29f5dfde15",
+      "source_log_filename": "Motivic.Aglib.Topology.GenericComponentOpens.20261017T160134.2.log",
+      "source_log_sha256": "c5056775a80ad2ae6f53b08f0e7adabd24ebb9f9be38cdf08109209ecfbf3d97",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Aglib/Topology/GenericComponentOpens.lean",
+      "current_repository_sha256": "1df8fdd49a98c454faeeed6cef50a17e679ebc85e04fd96b289785e0ccd7de83",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes",
+      "current_native_validation": {
+        "record": "CHECKS.json",
+        "exit_code": 0,
+        "source_sha256": "1df8fdd49a98c454faeeed6cef50a17e679ebc85e04fd96b289785e0ccd7de83",
+        "scope": "This Mathlib-only leaf; all 15 default declaration linters also passed."
+      }
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Correspondences/MovingEndpointsPostcompose.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Correspondences.MovingEndpointsPostcompose",
+      "source_sha256": "50fdb59ee1dade74fcd79e0fed63e27bf0c0378fa8d33c7561cf0fc73ab2671f",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Correspondences.MovingEndpointsPostcompose.20261017T162132.2.log",
+      "source_log_sha256": "2cb3f408ae53e37fdb2c58b077bd1363176ca890ec0fff23f84008971e5fb56f",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Correspondences/MovingEndpointsPostcompose.lean",
+      "current_repository_sha256": "fa37a83c4470cdb1768c1bd9ffd544c40a782bbae2cd233f64e5942cb38c7acc",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedLocalMoving.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Correspondences.OneSidedLocalMoving",
+      "source_sha256": "d439897519b4d04c3ff75f414cd3d94f162d2af49dfe6341a2455560f5c14f1f",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Correspondences.OneSidedLocalMoving.20261017T162516.2.log",
+      "source_log_sha256": "855beda97890d633a2605e03ab2082b3b93896203d8ccacb71209b002bb04b5f",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedLocalMoving.lean",
+      "current_repository_sha256": "26793154a35c6de7a6724a389e18fa417a1dfe2d30cd8c436a9c6d3064a4c9a2",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedMovingEndpoints.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Correspondences.OneSidedMovingEndpoints",
+      "source_sha256": "6ba670ef49ce9bffaae04fd8f2ead9e9260838edf9fee868733d0c15cea9dd58",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Correspondences.OneSidedMovingEndpoints.20261017T155739.2.log",
+      "source_log_sha256": "435a359e24b751186541498a397ce89b94eab41ce9fc334c08749632f392c8ad",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedMovingEndpoints.lean",
+      "current_repository_sha256": "298228f265d237a38a61eefa750fbc9282c32695051cdc832fd9ebeadc5069ec",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedRelativeMoving.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Correspondences.OneSidedRelativeMoving",
+      "source_sha256": "632e45b4ea94b2c3a0474eb74d469d33d31165e6a2a588ee1c6bd8791cd2f76b",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Correspondences.OneSidedRelativeMoving.20261017T161627.2.log",
+      "source_log_sha256": "1829600cedb0e784747f62606302b6326f775ead5c4835b667a54c26ef70cd66",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedRelativeMoving.lean",
+      "current_repository_sha256": "2b430d27443e44ab9b5f69f862cc2adcb6de5270f9563cd08612ac7781166af5",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedSectionProducer.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Correspondences.OneSidedSectionProducer",
+      "source_sha256": "a84e67b5495134ba84fa7192062ed0c16778e9e15a329349e0f7fdb2af40c5f7",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Correspondences.OneSidedSectionProducer.20261017T160418.2.log",
+      "source_log_sha256": "ba83feaa213e6baedf41b4867f982eaf36656d4e58d3a1a0b3292a8adfe74194",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedSectionProducer.lean",
+      "current_repository_sha256": "ad241504d0ea3cd15eadf69bc0a3ddc6b3684c3084391ae5c26a3699fafa9910",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedSerreMoving.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Correspondences.OneSidedSerreMoving",
+      "source_sha256": "5ee5dce4d7230ab5f48d63676b4ebf2ba758d30cf7af80d4790cb4ac266606c6",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Correspondences.OneSidedSerreMoving.20261017T160902.6.log",
+      "source_log_sha256": "54cbd3a26ad1978c5b65ade48634a970d593e89856c407f6553416f5283b3d71",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Correspondences/OneSidedSerreMoving.lean",
+      "current_repository_sha256": "50bdd5de157a162c69a554d268ee098fb31eb09faccc89ed82787489ae824f1c",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleBaseOpenPuncture.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleBaseOpenPuncture",
+      "source_sha256": "f7daf5192d0094427d27de2c620e7c2c6b1b21740f1f8889f54f2f8b8453d082",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleBaseOpenPuncture.20261017T162001.6.log",
+      "source_log_sha256": "b2646295f376545d3bb09a01ce21c49cd3fff1d1f710ba9aa094bafda7080d5f",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleBaseOpenPuncture.lean",
+      "current_repository_sha256": "34b1879548ec67e1cdefbd4c912f5191dd16afc09abfbb5ab3bc67abeeb4f255",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleJacobsonOpenCover.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleJacobsonOpenCover",
+      "source_sha256": "d32610ef92458f5e66b5ba1d339ddb71bbf6b6b90123af346e9394dec76504f4",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleJacobsonOpenCover.20261017T164423.6.log",
+      "source_log_sha256": "9e1e44564197ccece8eb0d3e88ea8633371b6f35ee3075b7749c29e7edd483b1",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleJacobsonOpenCover.lean",
+      "current_repository_sha256": "df45ff3052b085e65b6b8a69c9d58b1a12df72075bcb82484e07f67a19fc6c70",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleMarkedNeighborhoodSlice.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleMarkedNeighborhoodSlice",
+      "source_sha256": "d8b0113f3fc1ad6e882902c8ae370bddb580aad29a8259edb7262eecd39a3ea6",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleMarkedNeighborhoodSlice.20261017T162504.2.log",
+      "source_log_sha256": "ee436e728ac80f0a9c91e415d9f3590c7668ae3c25f71651156f61ad4d500437",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleMarkedNeighborhoodSlice.lean",
+      "current_repository_sha256": "c02ec5fb6616eb3036ea70c351d989096c3bf6ba4ca46f0e6274dd1cc1add977",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleMarkedPointDetection.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleMarkedPointDetection",
+      "source_sha256": "5bb94daf284e5f763891e01fa79fd82f7314c3e40a2a1bd14e23f3da4c759a71",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleMarkedPointDetection.20261017T155918.6.log",
+      "source_log_sha256": "06129257e3fc529609cef52eb9295bc4479c89d1460eaea18718ca1a36a00963",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleMarkedPointDetection.lean",
+      "current_repository_sha256": "d8482bff94361693d17d354ec18484dca3a45846952ad2cb5064a2ba5e2f2b08",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleMarkedResidueGerms.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleMarkedResidueGerms",
+      "source_sha256": "be777871d7c9417222198ff43a2d147984f04b97ad477f12ec4e2d807ff22422",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleMarkedResidueGerms.20261017T155632.2.log",
+      "source_log_sha256": "e53086f33d9d7706f932e0c27f82f2ece4e334aaa4c738d67414affbc9d73aa7",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleMarkedResidueGerms.lean",
+      "current_repository_sha256": "28c3346fb266e035c1a6a304c4f3869076b0414147308176d93d946d473893dd",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOpenZeroFamily.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOpenZeroFamily",
+      "source_sha256": "7d3f5f05fc37d0cf11de8c1839411de8ccb41b0945491155bbd5bfa8cc861019",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOpenZeroFamily.20261017T155155.6.log",
+      "source_log_sha256": "9bd1394a5d755e7c3999baaeff829de4fdd6bcbf0284db538e823db35e0abdb3",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOpenZeroFamily.lean",
+      "current_repository_sha256": "c5086e0396c460de25f242b03de3ef7e296dd6b479a308c3700fddc8c0ebc12e",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOrdinaryFirstObstruction.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryFirstObstruction",
+      "source_sha256": "d751f867eaf452af6f17d746e36db1752b07548704ec04301104530d5b2565bc",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryFirstObstruction.20261017T155828.2.log",
+      "source_log_sha256": "cbbd57dd7c687b6b4f31947e57b3db2ed9dcc0f03790fd58eb3172ecb65c2027",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOrdinaryFirstObstruction.lean",
+      "current_repository_sha256": "5ce66873e5fd17090b7f403bb9ae2f3ed2588b33337aab9abd8480ea65f3a146",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOrdinaryFirstObstructionNaturality.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryFirstObstructionNaturality",
+      "source_sha256": "6bfd3177e36cc814f0c98a4b2181de694a7b6b4a5a6c3d000128dade2d2fba18",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryFirstObstructionNaturality.20261017T160420.6.log",
+      "source_log_sha256": "2cd96fd483e055811a88f58ebd80f931782a0a781a89f5485c37780f050d0fca",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOrdinaryFirstObstructionNaturality.lean",
+      "current_repository_sha256": "0f21d87618ddadf4fd521647751078603e35a0ba3877abc52e902feaabd30f9d",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOriginalFirstObstruction.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOriginalFirstObstruction",
+      "source_sha256": "66aa32d4d22ab4feccc6dbe8d87f42b87326623c0834e1f817a1a3eed23f80d1",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOriginalFirstObstruction.20261017T160613.2.log",
+      "source_log_sha256": "a79fb20922e545e70e17f1b50e68c69d905d67011389657436e2b3a892440c14",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOriginalFirstObstruction.lean",
+      "current_repository_sha256": "c6e5df4865371fc0c1ceb9d6fa3f63eba8bd4147a9d12e73a947140289fd894d",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOriginalFirstObstructionNaturality.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOriginalFirstObstructionNaturality",
+      "source_sha256": "e1c742b877ab48461a93c93c69edb8586c86496edb8970ffd74a75718e82fbb1",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleOriginalFirstObstructionNaturality.20261017T160734.2.log",
+      "source_log_sha256": "0c8c08baaec8f224babb87c0122947bab8038339688b994897f06a2118a64a40",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleOriginalFirstObstructionNaturality.lean",
+      "current_repository_sha256": "96dea65b26b88218e47aa26768b2ac458fb21491dbf4949164b79b7dfec3e33f",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePersistentMarkedSection.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentMarkedSection",
+      "source_sha256": "3deefcd6141a9aca904f70d762d84c9fc1872bbb98b7ed17fb974d9cea3fcc13",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentMarkedSection.20261017T160123.2.log",
+      "source_log_sha256": "808d0e56ea5dd4a527465afa15ac2ebe4eaec96fee286b270e37473405d33d78",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePersistentMarkedSection.lean",
+      "current_repository_sha256": "cc76ecef344594d5e44e3b887bf10f570bc7897357a95fe3c5fdd55513eb1870",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePersistentObstructionLift.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentObstructionLift",
+      "source_sha256": "47c5cad674d6054deb193076c50c079dd92b67b6c07797c0df7366e01bea9a7e",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentObstructionLift.20261017T160439.2.log",
+      "source_log_sha256": "ba17be5214116e9f02dbe550ad8f8a0aa5970d33bbc00355ec7cfb87681e65e1",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePersistentObstructionLift.lean",
+      "current_repository_sha256": "2ad6736ac84bceb75c99d4ff8aa08ca97aa4a78d95b8ce0c5bf427c670c6cc63",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePersistentSectionVanishing.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentSectionVanishing",
+      "source_sha256": "c386fef79006df033d6137803a703d48c7d57c0a900d2d756513c1166ff20136",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentSectionVanishing.20261017T155158.2.log",
+      "source_log_sha256": "6626de405fb09ee759ac3953bf0abe56a38dcfe53026c7753d63a24a1229bcc8",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePersistentSectionVanishing.lean",
+      "current_repository_sha256": "645b4dd71289c469ef8d8b63695eec6356819ffc5ce93f985a2985b527f836d6",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointCokernelLifting.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointCokernelLifting",
+      "source_sha256": "d52ce56c3ad501591710363ff66ab8c00a12918da1f2b1764d633b835bcf470c",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointCokernelLifting.20261017T164715.6.log",
+      "source_log_sha256": "b2f1271ce26a4811ee57853426fd952d6e022a581f615abd9a52a929177a8d12",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointCokernelLifting.lean",
+      "current_repository_sha256": "153c8afa545970dae14b36f9838e2111c3ebef3d88973ab369b6d4daae838b2b",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointInverseImageUnit.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageUnit",
+      "source_sha256": "41152f1d1b7f0c6752fb7413a030621aa9ecd42faf81d04f0b899fc503a70c82",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageUnit.20261017T164805.2.log",
+      "source_log_sha256": "c2cf6807d623ae029a2b0278d12179d1a01416a909ef0385d174cf6af283264e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointInverseImageUnit.lean",
+      "current_repository_sha256": "57117600c493150a2a83f6f6341043d0f1954a7dbc6e428157aa2354bf816e09",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointOpenRefinement.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOpenRefinement",
+      "source_sha256": "1ed77e34e1b6fda10bb1d48e0497561d893e4ba1ccdaa7001b874b531f875a86",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOpenRefinement.20261017T161328.2.log",
+      "source_log_sha256": "f50dd105d3536130126a13ad55ed97bc8e73d60d29b4929dda7719332ca3fe25",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointOpenRefinement.lean",
+      "current_repository_sha256": "998828f7be1152b9a3b4a434d2f9bd0bedb926e833483f690c6d224dc7426463",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleResidueGerms.lean",
+      "original_module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleResidueGerms",
+      "source_sha256": "5fe212d9e0bab9eff3f1f7f32b2e4ed74898fb4ac10156836028eb8817d87e81",
+      "source_log_filename": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleResidueGerms.20261017T155005.6.log",
+      "source_log_sha256": "ed6f603fe75a6b98f6049334d4ca157c12dc95d8f17382fa7f0f50e7cb0954ce",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleResidueGerms.lean",
+      "current_repository_sha256": "83d251506e8d17e7e0c4edb618f295ee1c4bd772225773a22b9ea1a64c65a21f",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/SmoothSiteAffineLineCoordinates.lean",
+      "original_module": "Motivic.AlgebraicGeometry.SmoothSiteAffineLineCoordinates",
+      "source_sha256": "8619ea36d9e28c5f9c2bceebb19e565d5e496efb519d319ca5b196229045602f",
+      "source_log_filename": "Motivic.AlgebraicGeometry.SmoothSiteAffineLineCoordinates.20261017T165144.2.log",
+      "source_log_sha256": "e5711f2259a94badd131880b4a4188d30907e23c037d567bb177a0a44ab6ea0d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteAffineLineCoordinates.lean",
+      "current_repository_sha256": "43e70fd23f1138bf87e6abeb4403318e50bdb3d2f292f6e248991ae906c05401",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/AlgebraicGeometry/SmoothSiteRankZeroOpen.lean",
+      "original_module": "Motivic.AlgebraicGeometry.SmoothSiteRankZeroOpen",
+      "source_sha256": "26146e06928813b089baaa18f1a30c8eea03bff80cae0e9df0ea4ea972bfec0f",
+      "source_log_filename": "Motivic.AlgebraicGeometry.SmoothSiteRankZeroOpen.20261017T165045.2.log",
+      "source_log_sha256": "75c3bf27565ea2cb66a41c97ba33a321c83fd160d6899417193a9e6530b711f5",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteRankZeroOpen.lean",
+      "current_repository_sha256": "0bca75013dbae6b7e35fe2d4170b650f41e106eae38a3384e5d23c8c0f61c66e",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ContractionBoundaryMarkedExtension.lean",
+      "original_module": "Motivic.Cohomology.A1.ContractionBoundaryMarkedExtension",
+      "source_sha256": "1300ba19c33d269ed8eb4f63939e01a3616bbde654058d19bc5c6aeeaf5076f5",
+      "source_log_filename": null,
+      "source_log_sha256": null,
+      "historical_exit_status": null,
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryMarkedExtension.lean",
+      "current_repository_sha256": "1300ba19c33d269ed8eb4f63939e01a3616bbde654058d19bc5c6aeeaf5076f5",
+      "projection_transforms": [
+        "raw archive bytes preserved exactly in unverified-source; not admitted to production/test roots"
+      ],
+      "evidence_status": "archive-only unverified source; no compiler failure or proof failure inferred"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ContractionBoundarySheafKernel.lean",
+      "original_module": "Motivic.Cohomology.A1.ContractionBoundarySheafKernel",
+      "source_sha256": "a265f7980c0fdb51fe83bb3f0963f240d07eba34a156a75e2ea206f4687420a2",
+      "source_log_filename": "Motivic.Cohomology.A1.ContractionBoundarySheafKernel.20261017T164720.2.log",
+      "source_log_sha256": "1c48417c7dd499e7875ffa772cfe21c7ccbd12bb77266f1df5e62a22c6b9dbce",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionBoundarySheafKernel.lean",
+      "current_repository_sha256": "f3b1e01b4aa967b47b4262565e2bed2d64f9b0eeb2d8c94ada0d0efcb9611808",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ContractionBoundaryZeroRepresentative.lean",
+      "original_module": "Motivic.Cohomology.A1.ContractionBoundaryZeroRepresentative",
+      "source_sha256": "2c6d263576dca812a3b732dcdd2fa545393feacbded695355f9d41de298a06f1",
+      "source_log_filename": "Motivic.Cohomology.A1.ContractionBoundaryZeroRepresentative.20261017T164909.2.log",
+      "source_log_sha256": "aeeae413d0ba55fb9cb4791e59ae751c5d1a444f85e1cec1f4c29e67f384b7d1",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionBoundaryZeroRepresentative.lean",
+      "current_repository_sha256": "2a6ca4eed9b430bb8ed190f62a533fe69d01172252e33e750dff11803e463568",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ContractionWholeZeroRefinement.lean",
+      "original_module": "Motivic.Cohomology.A1.ContractionWholeZeroRefinement",
+      "source_sha256": "5361026b54f1325d60bfdeaf079748717662926242fffe085d4c9fe7c2a3d58f",
+      "source_log_filename": "Motivic.Cohomology.A1.ContractionWholeZeroRefinement.20261017T164217.2.log",
+      "source_log_sha256": "685e5a5cf0c7e8b6444514c89d5de7ab8110059d2574ab161df0649f06510c33",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionWholeZeroRefinement.lean",
+      "current_repository_sha256": "9b8cae4bce5f90103f01469eda88cc126260b21062a78100ae565aa1d89af6cc",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/DenseOpenAffineDetection.lean",
+      "original_module": "Motivic.Cohomology.A1.DenseOpenAffineDetection",
+      "source_sha256": "aafdf16084b494f26ee592b157d70e9c2cd61987590119e9009ea52902b8d77d",
+      "source_log_filename": "Motivic.Cohomology.A1.DenseOpenAffineDetection.20261017T164831.2.log",
+      "source_log_sha256": "747050a54c60494d07d2535a0a608c1b735ac0bf5aa0af17303ab21512aae4b3",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/DenseOpenAffineDetection.lean",
+      "current_repository_sha256": "6e3991f963fb6b938eeb2e800f5958f5e7efe62d5073afe024e76815329cd4f1",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/DenseOpenLocalDetection.lean",
+      "original_module": "Motivic.Cohomology.A1.DenseOpenLocalDetection",
+      "source_sha256": "f8ce71e8dd105f8e2345b7058c1f702c9e076ba4e0ef6777abec47cdb52fbbe0",
+      "source_log_filename": "Motivic.Cohomology.A1.DenseOpenLocalDetection.20261017T165135.2.log",
+      "source_log_sha256": "8680cf6cab80c6c217e349879bde378e5de000f435e11ce4bb2def6fd3f99c7a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/DenseOpenLocalDetection.lean",
+      "current_repository_sha256": "4265c8bf7664e3d4657f4ef291f7b8e241afd1bf714bec1fa1f9bb6f0c6addf5",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/FirstObstructionCylinderLiftHI.lean",
+      "original_module": "Motivic.Cohomology.A1.FirstObstructionCylinderLiftHI",
+      "source_sha256": "2e628fd8a52bac7f48b28eb31aa39b0e3e3fd7eab533f4b21559dc852e799f01",
+      "source_log_filename": "Motivic.Cohomology.A1.FirstObstructionCylinderLiftHI.20261017T162207.6.log",
+      "source_log_sha256": "ac655dcb746ab7776f2ee174b906e13723dbcc9f041841638548c2efc3f48b61",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/FirstObstructionCylinderLiftHI.lean",
+      "current_repository_sha256": "eaefe3c00ad153ffdb98130c4e14003ae3d314978e77ac9f491d3b2e7e3b117d",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/FirstObstructionLiftHI.lean",
+      "original_module": "Motivic.Cohomology.A1.FirstObstructionLiftHI",
+      "source_sha256": "a9bea3ef906a8a1680c865be22a410c3b3ffbca356c58f95bd988660088e43ae",
+      "source_log_filename": "Motivic.Cohomology.A1.FirstObstructionLiftHI.20261017T160830.2.log",
+      "source_log_sha256": "9907643a0fdfce36b8256191872bcd652ff70cad6fd1538c0e1ca064f254eb35",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/FirstObstructionLiftHI.lean",
+      "current_repository_sha256": "7d8fec909364c425a432b9c276315c5ac201683c4b6df1608526142d791acc7e",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/FixedTargetFiniteChartLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.FixedTargetFiniteChartLifting",
+      "source_sha256": "a7564784c99df67b6b8345eb4eed98c89d5e977370c7f630f6c379b513380ce8",
+      "source_log_filename": "Motivic.Cohomology.A1.FixedTargetFiniteChartLifting.20261017T160037.2.log",
+      "source_log_sha256": "f468f54dbb71cf74ced10682da62ccd09da59f799a331b105d695a051e6b4db6",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/FixedTargetFiniteChartLifting.lean",
+      "current_repository_sha256": "417f8f4f3bb8ad8c351ac154c5e35f23a5513d35142e15cbc109cbe0e5dc026f",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/GeneralOpenImageVanishing.lean",
+      "original_module": "Motivic.Cohomology.A1.GeneralOpenImageVanishing",
+      "source_sha256": "0600f1809fbfc93800b47b2cadfeab0702f809d3a6c56e3fc512ac49d80534b0",
+      "source_log_filename": "Motivic.Cohomology.A1.GeneralOpenImageVanishing.20261017T165046.2.log",
+      "source_log_sha256": "75b296abd0b95f0fba38aade9d0a03563290f4c62d60684bab05a1ebcc8ec04a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/GeneralOpenImageVanishing.lean",
+      "current_repository_sha256": "b9bb3e7851b7d2340ab9186bb00e08d99f144c5e32d1036110780d425102308d",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/IntegralAffineDetection.lean",
+      "original_module": "Motivic.Cohomology.A1.IntegralAffineDetection",
+      "source_sha256": "dffb6bad268e9b55b3dc86da43f63b5350d08946f27d8eec8ef071340d452f66",
+      "source_log_filename": "Motivic.Cohomology.A1.IntegralAffineDetection.20261017T164956.2.log",
+      "source_log_sha256": "3054c0b4bdfcb74b6757c7443f24b62283b872fa92c327632399039a154f4700",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/IntegralAffineDetection.lean",
+      "current_repository_sha256": "c3b82fb89e47b0760eb0b7173cf70e937fb719536ac49e31baf4ddd930d20c1f",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/LowerRankPersistentPuncture.lean",
+      "original_module": "Motivic.Cohomology.A1.LowerRankPersistentPuncture",
+      "source_sha256": "ebd9cae2fdfc5e31342a885f6f19f613656a2929b83c7a9c42f04a98b611f1ca",
+      "source_log_filename": "Motivic.Cohomology.A1.LowerRankPersistentPuncture.20261017T163618.6.log",
+      "source_log_sha256": "ee726f29f663830e1fd1a8b2c244a211deb7b91f54d6a433c768be6851794002",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/LowerRankPersistentPuncture.lean",
+      "current_repository_sha256": "a80c0679e11e19bc1fcafe722048121cae9abc91d6f5cfcec5de4a13430e9fe2",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OneSidedLocalVanishing.lean",
+      "original_module": "Motivic.Cohomology.A1.OneSidedLocalVanishing",
+      "source_sha256": "23601ad16ed223200435c66f28478157709e513d79441080e32881318edf97e7",
+      "source_log_filename": "Motivic.Cohomology.A1.OneSidedLocalVanishing.20261017T162552.2.log",
+      "source_log_sha256": "c24aa63bd46563e98aa888afbba87eb4dc2ce3a7526da1b7a8ab91094191f1fb",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OneSidedLocalVanishing.lean",
+      "current_repository_sha256": "eb2d0fc9b448d236212f89e5a36a2b5c31f0bdab1ed85ac3f2e15b9c93a2b086",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OneSidedMovingAction.lean",
+      "original_module": "Motivic.Cohomology.A1.OneSidedMovingAction",
+      "source_sha256": "167794e01ffc2b4b9ddb8a72cf039b15769047d55cee7dd82f83eb96211d1bad",
+      "source_log_filename": "Motivic.Cohomology.A1.OneSidedMovingAction.20261017T160906.23.log",
+      "source_log_sha256": "d342f7ea509c1c32e3924c2627b5d78bf80aeaaacd4d0c7d28308a71ff569888",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OneSidedMovingAction.lean",
+      "current_repository_sha256": "bfb46a881cad7b82554330fb40ef11d363382fed5f4463de0a62c704fa01a1c5",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OpenImageVanishing.lean",
+      "original_module": "Motivic.Cohomology.A1.OpenImageVanishing",
+      "source_sha256": "ffbb0a1f88f0ed51ef410b7adaa65bbd4d3f83e5d33989b09bdf61cf3c2b1d53",
+      "source_log_filename": "Motivic.Cohomology.A1.OpenImageVanishing.20261017T163945.6.log",
+      "source_log_sha256": "b2286ede72614c9fec5b95f6362238f936d167ef7caed22d617d49d393844950",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OpenImageVanishing.lean",
+      "current_repository_sha256": "7996c3e66c906c083f2d0adc74de0d1e7b79454940f43126d5f54cb061441ba0",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalAffineDetection.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalAffineDetection",
+      "source_sha256": "a7d1af37a210abdab5109ee20b57d48e2fccffa3becada628b1bebb58ebb08f6",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalAffineDetection.20261017T164632.2.log",
+      "source_log_sha256": "9edd9374365280aafae2679959ecff30f692f44ca69a430342c7047334146a22",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalAffineDetection.lean",
+      "current_repository_sha256": "459777b670b00a3305ec62b4239c80abecde4f61f14a84fbd49ad58a06183119",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalAffineLocalVanishing.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalAffineLocalVanishing",
+      "source_sha256": "edd0171a3d098e9fae4d67241e0977fe9c16896998195331eaf86758de065180",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalAffineLocalVanishing.20261017T164051.2.log",
+      "source_log_sha256": "949aec99feec71de1e494867698b3d953f3844796ef62d08d552ff9337a54093",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalAffineLocalVanishing.lean",
+      "current_repository_sha256": "2cfac07d9f4c97a4ea2f68dde5c5f5e848249b2f2021ce9edcec8b7cbce698e9",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalAffineOpenDetection.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalAffineOpenDetection",
+      "source_sha256": "60139e25c917ce70848289d72d6a67a3531d2201dc49a54cf5f9916705ad0a75",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalAffineOpenDetection.20261017T164750.2.log",
+      "source_log_sha256": "d63da4b3686b053ba94749d492a61c15ad7903b484d90982585960e8c03312b1",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalAffineOpenDetection.lean",
+      "current_repository_sha256": "e6d8c6bcbe114617765a083ab9f3769bf0af932f546e6278b09a3090ae6faf30",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalAffineZeroCover.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalAffineZeroCover",
+      "source_sha256": "b88ecd51fc84027792edf71fe64b9b0983e50e642f71b316cb3a0ea0e33f5429",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalAffineZeroCover.20261017T164244.6.log",
+      "source_log_sha256": "66cfdeca016e34614c9957be867d644ba399351c5f436e3c2f16cc43e412fa9a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalAffineZeroCover.lean",
+      "current_repository_sha256": "8d31cbbb2591d03dc749f64e5639e578a2a3e71e8ce9399aeec4099f58a564c4",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalEtaleLocalLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalEtaleLocalLifting",
+      "source_sha256": "bf18fd5776340d66571b88a197de33fc12d5452c55a7bf1cfbaf0fa732572b93",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalEtaleLocalLifting.20261017T162334.6.log",
+      "source_log_sha256": "46999e53fbe4a2ad87e80ed949a0ca72a8e2b39d57d918d6b89fbee125e53f0b",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalEtaleLocalLifting.lean",
+      "current_repository_sha256": "96839e36ddbbbdd76790ee72113b9f2a5baa844d8d299d21e43084e74efc6758",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalEtalePresentationLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalEtalePresentationLifting",
+      "source_sha256": "1106be7ec6a6fe9724c3ca2bb21d818d2b2610f59876a2aabbbc311b08ee5e5f",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalEtalePresentationLifting.20261017T162231.5.log",
+      "source_log_sha256": "ea909d2e41eda0db9e763ce17385d1b61680413f2ad55d962bfa6deb223ded19",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalEtalePresentationLifting.lean",
+      "current_repository_sha256": "3d64a170abafa335c4e80b1c118b3146cdbd31617745d552c7a5bfa30ee22025",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalOverlapSectionLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalOverlapSectionLifting",
+      "source_sha256": "d752db365a12aec4f4ce6c35418f545aadf456d444516e7509bf29e2505f60c2",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalOverlapSectionLifting.20261017T164027.6.log",
+      "source_log_sha256": "cf80d7114b2556024bb275720280d6dd4fa4296286d6d7f10aacf3ac74ab5254",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalOverlapSectionLifting.lean",
+      "current_repository_sha256": "54fb9b397608331e88bb5a455f9251747ebd123cb1bb6c289ddd1fc11d241e10",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean",
+      "original_module": "Motivic.Cohomology.A1.OriginalPresentationSiteMaps",
+      "source_sha256": "d3313e20cf7bd16778ae34e7c52473c8ef7a83ebd52f810886f77cb6a459ca7e",
+      "source_log_filename": "Motivic.Cohomology.A1.OriginalPresentationSiteMaps.20261017T164402.6.log",
+      "source_log_sha256": "dcf5267589caa4b021e8437671c8932d6d59864e2ec9dae0241d2a6867407c8a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean",
+      "current_repository_sha256": "819c25642ec83f3132b3446651c6e5f51d55801613d0e510a40d127f73538694",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PersistentPuncturePointVanishing.lean",
+      "original_module": "Motivic.Cohomology.A1.PersistentPuncturePointVanishing",
+      "source_sha256": "3780eac1833fad9a4a1d5c78edb54fbed5f9a0d11453d6d99faa5d40e0cd9162",
+      "source_log_filename": "Motivic.Cohomology.A1.PersistentPuncturePointVanishing.20261017T162512.24.log",
+      "source_log_sha256": "c2d5b10d27dea1b5ef98d4ce023217b3871a261dc3a8fca4ad78ee2bacf19ea5",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PersistentPuncturePointVanishing.lean",
+      "current_repository_sha256": "dfcc67fadfe2e42cfe06cdf6b6b6a849441a67850d8f75395f50b311c8ef77ad",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PointedMarkedCylinderComparison.lean",
+      "original_module": "Motivic.Cohomology.A1.PointedMarkedCylinderComparison",
+      "source_sha256": "bbfb716f92d7c42485cea192759b5104ce0f1fb3308fc13ae7b4fd5f069aec35",
+      "source_log_filename": "Motivic.Cohomology.A1.PointedMarkedCylinderComparison.20261017T162743.2.log",
+      "source_log_sha256": "9ac61332889a34a5302be4bc1a767c66488e26698ffb965ba82d40c610e56411",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PointedMarkedCylinderComparison.lean",
+      "current_repository_sha256": "03c639b0e376b1f014019caa97d3807e7d54cdbbd1d062009b259705ea8e0034",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PointedPunctureProjectionColimit.lean",
+      "original_module": "Motivic.Cohomology.A1.PointedPunctureProjectionColimit",
+      "source_sha256": "ba81d668812926ded8d97274f779dc694986ed1e478d69a0b378a2f5b714bf40",
+      "source_log_filename": "Motivic.Cohomology.A1.PointedPunctureProjectionColimit.20261017T162504.7.log",
+      "source_log_sha256": "b303eb52bd02157952773573d77c4d778b97313b5a49fb1c0081bdcf18f02a3d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PointedPunctureProjectionColimit.lean",
+      "current_repository_sha256": "9b32b13db35b83d925ca468d92061e613b8de0891f65a91e87c9c2c81bcb3253",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PointedPunctureProjectionLifts.lean",
+      "original_module": "Motivic.Cohomology.A1.PointedPunctureProjectionLifts",
+      "source_sha256": "8241504a32480754710bc3fa39fd79f6b1ada6727c51720e019026e5cd584667",
+      "source_log_filename": "Motivic.Cohomology.A1.PointedPunctureProjectionLifts.20261017T162309.6.log",
+      "source_log_sha256": "375a228e900d121e305301cc0698dd690d981a874be2d1e4051a8070c0e52187",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PointedPunctureProjectionLifts.lean",
+      "current_repository_sha256": "85e386d868f5d49e92b40978be36845c46008b65aa7141da813a6e5d064faa45",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresentationLocalVanishing.lean",
+      "original_module": "Motivic.Cohomology.A1.PresentationLocalVanishing",
+      "source_sha256": "9fe60fefdec26be37d0e0fd5ec7a54171991e3845ae266919a16877b1d0e8e48",
+      "source_log_filename": "Motivic.Cohomology.A1.PresentationLocalVanishing.20261017T163755.2.log",
+      "source_log_sha256": "a8536913dcd3488ae9e59ff52494ec6257f2f80634686c5872ae92050114cb1f",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresentationLocalVanishing.lean",
+      "current_repository_sha256": "bbff8f19df6a602a44c37dfa537fc13a826b2178c4b16c8598ef5da0d1804bf1",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafBoundaryCokernel.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafBoundaryCokernel",
+      "source_sha256": "3a5ef56e658889710a27ccda979999b8ce58ad8837adcae1e6e49dd211e2dec5",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafBoundaryCokernel.20261017T162831.6.log",
+      "source_log_sha256": "e4a82c9ba5b3e14a7e911c924cac579297deba871da5c8b85a730b49ce0fe71c",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryCokernel.lean",
+      "current_repository_sha256": "2bfda7eec03d95f1b402ecc86eb8f827ac55265c240793f93c729048f95579a4",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafBoundaryGeneratorEpi",
+      "source_sha256": "092fdb8f5b208c02d68623234f4ae1eae0f75d3baabd3be35b73630f814a0c71",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafBoundaryGeneratorEpi.20261017T163206.6.log",
+      "source_log_sha256": "dabbc94a795f890bcae641216d4d76850b3595e0404c42229626ca90e644650c",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean",
+      "current_repository_sha256": "622d70d9642c6f88d74baef0b55bf19b372e29a67f637c8fba429eb9e4ad9655",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafBoundaryGenerators.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafBoundaryGenerators",
+      "source_sha256": "5a985a978c806037681233b67cd457448ed83442cca2ba1ab5dcea7788a7a7fb",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafBoundaryGenerators.20261017T163050.6.log",
+      "source_log_sha256": "da415c4ac947ed89e9972785b628587bf840318cb57daebb4a7f9ae917b77952",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryGenerators.lean",
+      "current_repository_sha256": "b742188742512f893462e45f51c8c33d8b0b48e374c212af2c26cac7c2f22a2a",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafBoundaryLaurentImage.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafBoundaryLaurentImage",
+      "source_sha256": "49427de38001ce8d4f020285c71317cd472787b39cbacc8c39c2a724c5bda9b5",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafBoundaryLaurentImage.20261017T163709.6.log",
+      "source_log_sha256": "b1b18a9b7eb17b60bcd3267a3f7180ca8bf2e7e31f3b67ef60761bebb474d07d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryLaurentImage.lean",
+      "current_repository_sha256": "92275e1c883818a4483459bd46de95ba44e2e7864e4fbeaeee2b651b4b698d4e",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafBoundaryLiftingRelation.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafBoundaryLiftingRelation",
+      "source_sha256": "2a5b11db91c956d040c0013a58f0dbb8b358a6584d93c1d1c120e593cd433e25",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafBoundaryLiftingRelation.20261017T163610.6.log",
+      "source_log_sha256": "f79f4789d27d3c29e3017ff40a55d6a58fa3aa04bee3f48d3a3d15abd74b35a1",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryLiftingRelation.lean",
+      "current_repository_sha256": "05bc1a312c946fb878154a360fb6d13943da6445858599266c922ac9562ebc5b",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafBoundaryRefinementImage.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafBoundaryRefinementImage",
+      "source_sha256": "5ffa8846ff4d0e1995974024a4babc2f364b15098d0ece079ab6edc3ef746b61",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafBoundaryRefinementImage.20261017T163839.6.log",
+      "source_log_sha256": "a95d136b7c3567233c1a878c0a2c058a7970458a916f4f3c3e0148e610bc0cb2",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryRefinementImage.lean",
+      "current_repository_sha256": "e4896de958df680d120a485db03b3af4cad41dfdad4c1083683c99641d4b024e",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafContractionBoundary.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafContractionBoundary",
+      "source_sha256": "a0509688b2824ef7aa8be5fdc3c5c7c1592ef3687cca392d56e6be7890302d6c",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafContractionBoundary.20261017T162909.6.log",
+      "source_log_sha256": "4a1092f5438fea2fcc3ad1774d13c9ef003a5697e1aa053f38dbf15453a211cf",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafContractionBoundary.lean",
+      "current_repository_sha256": "d6bda27e78642f87c960bf6d6e625b4ab8dd07f5e4e21b150a1e4f2152efacc8",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/PresheafContractionBoundaryRepresentatives.lean",
+      "original_module": "Motivic.Cohomology.A1.PresheafContractionBoundaryRepresentatives",
+      "source_sha256": "87d80a34d8d6f57faf5aa89edc19db3b5a20d5179f616f1bf6e59944d7f0497e",
+      "source_log_filename": "Motivic.Cohomology.A1.PresheafContractionBoundaryRepresentatives.20261017T163401.6.log",
+      "source_log_sha256": "dcadd154189caecb6b876d0c8fa437b4cd1c45c0212e936ad83208ba887ce361",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafContractionBoundaryRepresentatives.lean",
+      "current_repository_sha256": "65c2f77e080b5264fbe9bb98b035d044c011497979ca73208891ea940ac0cee2",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ProjectionHigherImageHI.lean",
+      "original_module": "Motivic.Cohomology.A1.ProjectionHigherImageHI",
+      "source_sha256": "f03c29e28c2ea6c97be39bb0fe6522d299e731f74ca254760eac74a85f2c0027",
+      "source_log_filename": "Motivic.Cohomology.A1.ProjectionHigherImageHI.20261017T155920.23.log",
+      "source_log_sha256": "70f81e391d246f8b455ba72fc54810f05d48bf7e663de9d7226d0928e726c567",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/ProjectionHigherImageHI.lean",
+      "current_repository_sha256": "9759a006be00db800a013afa28f254ba344e336471b5c40ef83989dbaf2c536c",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ProjectionPointFiberHI.lean",
+      "original_module": "Motivic.Cohomology.A1.ProjectionPointFiberHI",
+      "source_sha256": "487d4c6fec994eac782deb6fc093a4baf6f27a5688f736538c57051d8e868b6d",
+      "source_log_filename": "Motivic.Cohomology.A1.ProjectionPointFiberHI.20261017T155534.2.log",
+      "source_log_sha256": "fab79d5fcea3de2f0724734272837eaaa5a2bd00a5e5e0e857821de235981734",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/ProjectionPointFiberHI.lean",
+      "current_repository_sha256": "c37c1de15b83391108f5e222b92e45f3f98ef12f8208591ec7eff491e6ba5f15",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/RelativeCurveBaseOnlyLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.RelativeCurveBaseOnlyLifting",
+      "source_sha256": "07e34a5be19c60ade58f7abb96507256b485c4d932ce97c57b43e4f3f0d1467b",
+      "source_log_filename": "Motivic.Cohomology.A1.RelativeCurveBaseOnlyLifting.20261017T161648.2.log",
+      "source_log_sha256": "7e0142a7837ac725268e0d3fcac88b1ae0f06c5f929714c079e906c3b6fb4451",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/RelativeCurveBaseOnlyLifting.lean",
+      "current_repository_sha256": "ba2fa75b054812f6e07714bc6a79fcf01a9374f895a67a31342b4c0c264eeda2",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/WholeAffineLineBaseLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.WholeAffineLineBaseLifting",
+      "source_sha256": "3d33c2f2c33e7e8da288df02162f8462acf1b4c3ef5dbcaa78c87caaca764393",
+      "source_log_filename": "Motivic.Cohomology.A1.WholeAffineLineBaseLifting.20261017T161944.2.log",
+      "source_log_sha256": "d682c87799c4ee1746ca3e8d2e4f24ef2f803fc6a39b5f23a67a93eb7734f788",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/WholeAffineLineBaseLifting.lean",
+      "current_repository_sha256": "44431a88a35773117bdbfccef950e4d8ce363a3b904ae9706abad0580425b8ec",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/WholeAffineLineNisnevichLifting.lean",
+      "original_module": "Motivic.Cohomology.A1.WholeAffineLineNisnevichLifting",
+      "source_sha256": "9d7bd365336fee6c6a2f17b04971b76942c48b265b7b0155bd57b42183eaf27f",
+      "source_log_filename": "Motivic.Cohomology.A1.WholeAffineLineNisnevichLifting.20261017T162529.2.log",
+      "source_log_sha256": "28e7746efa313ad7e1c0fb3b9a3ed9e4425a594120a8a1165301d8c9e6f1cbe2",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/WholeAffineLineNisnevichLifting.lean",
+      "current_repository_sha256": "9aed776ed7e0829c4968e78b5b3a3cc7a977c341179597ec4efa80259ae7e655",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/A1/ZeroDimensionalMoving.lean",
+      "original_module": "Motivic.Cohomology.A1.ZeroDimensionalMoving",
+      "source_sha256": "335ddb328a078ceba771116b55528387f1d7495fa429b9ff442f10ee506e5c01",
+      "source_log_filename": "Motivic.Cohomology.A1.ZeroDimensionalMoving.20261017T164549.6.log",
+      "source_log_sha256": "351090b84d4d598104419a2587831606aed161f287fa6c3000780a578623e47d",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/A1/ZeroDimensionalMoving.lean",
+      "current_repository_sha256": "7d5f88036767433ad1aaf2360c8b45bdf1fa5671bc47b4c1fe38e6bcb702b92d",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/OrdinaryEpiAffineNisnevichLift.lean",
+      "original_module": "Motivic.Cohomology.OrdinaryEpiAffineNisnevichLift",
+      "source_sha256": "ccca747d25aad6b94eb7f9e3c0163ae454dcbaf1d6a27c5ee9bf16fbef68c64f",
+      "source_log_filename": "Motivic.Cohomology.OrdinaryEpiAffineNisnevichLift.20261017T161500.2.log",
+      "source_log_sha256": "47e8a9f97fc27c69fbf3d9f92a71a8fca043a000fd8dd94881eb06d59bb1ee3e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/OrdinaryEpiAffineNisnevichLift.lean",
+      "current_repository_sha256": "c68841ad62b1ffa671f19f1324cd9feef854c7cf0fd6f202bb178933078a83bb",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/OrdinaryOpenBaseRefinementSquare.lean",
+      "original_module": "Motivic.Cohomology.OrdinaryOpenBaseRefinementSquare",
+      "source_sha256": "1582831e8a695c423ace905ef86e2ed0843b5a124aacf4f875925a87f932158a",
+      "source_log_filename": "Motivic.Cohomology.OrdinaryOpenBaseRefinementSquare.20261017T163734.2.log",
+      "source_log_sha256": "379ff50de80d2bfc5daede9c9cbb829c760d38919cb3f47b963bc5b3d4c3add8",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/OrdinaryOpenBaseRefinementSquare.lean",
+      "current_repository_sha256": "526cd61700366323d36b0e990c8561650e3694cfe4b2834a5174114675d45193",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/RelativeGenericBaseH1Zero.lean",
+      "original_module": "Motivic.Cohomology.RelativeGenericBaseH1Zero",
+      "source_sha256": "bf0fd95b9fdbadaaa148c8cba821f2a78ff5ba903f88967d86281377ca762b91",
+      "source_log_filename": null,
+      "source_log_sha256": null,
+      "historical_exit_status": null,
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/RelativeGenericBaseH1Zero.lean",
+      "current_repository_sha256": "bf0fd95b9fdbadaaa148c8cba821f2a78ff5ba903f88967d86281377ca762b91",
+      "projection_transforms": [
+        "raw archive bytes preserved exactly in unverified-source; not admitted to production/test roots"
+      ],
+      "evidence_status": "archive-only unverified source; no compiler failure or proof failure inferred"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/RelativeGenericBasePositiveZero.lean",
+      "original_module": "Motivic.Cohomology.RelativeGenericBasePositiveZero",
+      "source_sha256": "36321eae2f3d60c4c6665ca777838ae27bef281115a4a0e51f17248eae0b85f0",
+      "source_log_filename": null,
+      "source_log_sha256": null,
+      "historical_exit_status": null,
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/RelativeGenericBasePositiveZero.lean",
+      "current_repository_sha256": "36321eae2f3d60c4c6665ca777838ae27bef281115a4a0e51f17248eae0b85f0",
+      "projection_transforms": [
+        "raw archive bytes preserved exactly in unverified-source; not admitted to production/test roots"
+      ],
+      "evidence_status": "archive-only unverified source; no compiler failure or proof failure inferred"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/RelativeMonicH1BaseZero.lean",
+      "original_module": "Motivic.Cohomology.RelativeMonicH1BaseZero",
+      "source_sha256": "ff8ff97e4f2d8e7a00ee4ada2c96baa71a62e200e98b697198ab52d2b3393808",
+      "source_log_filename": null,
+      "source_log_sha256": null,
+      "historical_exit_status": null,
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Motivic/Cohomology/RelativeMonicH1BaseZero.lean",
+      "current_repository_sha256": "ff8ff97e4f2d8e7a00ee4ada2c96baa71a62e200e98b697198ab52d2b3393808",
+      "projection_transforms": [
+        "raw archive bytes preserved exactly in unverified-source; not admitted to production/test roots"
+      ],
+      "evidence_status": "archive-only unverified source; no compiler failure or proof failure inferred"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/RelativeMonicNeighborhoodLift.lean",
+      "original_module": "Motivic.Cohomology.RelativeMonicNeighborhoodLift",
+      "source_sha256": "60d6593ddc1590b8c5ffc0913065e54e55c8476d135c05c55f973aa6ac4f7640",
+      "source_log_filename": "Motivic.Cohomology.RelativeMonicNeighborhoodLift.20261017T161850.6.log",
+      "source_log_sha256": "0c016a9fc8c045ca275b3f01d90f0091458f4ad2f091c1f30dd4136939e7f59b",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/RelativeMonicNeighborhoodLift.lean",
+      "current_repository_sha256": "92525ad26c2eee80352f5f22375641063044aaf4cfedab395428c2a7a301eccf",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/RelativeMonicNeighborhoodZero.lean",
+      "original_module": "Motivic.Cohomology.RelativeMonicNeighborhoodZero",
+      "source_sha256": "bf4e6c137b227f260d4636d9a40510c12c22029313fbd3b9e5e139c497cf7ae0",
+      "source_log_filename": "Motivic.Cohomology.RelativeMonicNeighborhoodZero.20261017T161931.6.log",
+      "source_log_sha256": "258d4d816b76518e1c10341c632884fe0bc339c3e04739b3b0e3d8a7a1411082",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/RelativeMonicNeighborhoodZero.lean",
+      "current_repository_sha256": "1159a775899313d107433bdbd95b7055e738e035a723071d638d034701d0f045",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/SheafCohomologyNisnevichSquareRefinement.lean",
+      "original_module": "Motivic.Cohomology.SheafCohomologyNisnevichSquareRefinement",
+      "source_sha256": "83f827e9c3360db1209a52a3195fee93d92874232a375415353b240efda5372f",
+      "source_log_filename": "Motivic.Cohomology.SheafCohomologyNisnevichSquareRefinement.20261017T163516.2.log",
+      "source_log_sha256": "5132493092700393b3c3b4a9c245128bc3638aa9183ea484da225aa35b1c372e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/SheafCohomologyNisnevichSquareRefinement.lean",
+      "current_repository_sha256": "4bdad2d7a3b980dc8297a0469622dba6f4ae5e2a0326a4c6263677c34cb63318",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/SheafCohomologyRelativeLineHigherVanishing.lean",
+      "original_module": "Motivic.Cohomology.SheafCohomologyRelativeLineHigherVanishing",
+      "source_sha256": "9aa716f4c437bd83ed6646a6c6efb03e699a8e92bbdc7fd346bbee936ec95d02",
+      "source_log_filename": "Motivic.Cohomology.SheafCohomologyRelativeLineHigherVanishing.20261017T164819.2.log",
+      "source_log_sha256": "59b66db7daf93d7fd4ea359a5e2c8199a86733b7a12ea39ae90ba1e39d6ea2ef",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/SheafCohomologyRelativeLineHigherVanishing.lean",
+      "current_repository_sha256": "644ff249e4199c3af57faa6b9109cd35bcaffde542796310b4c4277ea6fbcbb1",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/SheafCohomologyRelativeLineOverlapZero.lean",
+      "original_module": "Motivic.Cohomology.SheafCohomologyRelativeLineOverlapZero",
+      "source_sha256": "fcf6ac3ac089ea8e0f79df1f2b397989416ffe5686193cd563f5df7852695a42",
+      "source_log_filename": "Motivic.Cohomology.SheafCohomologyRelativeLineOverlapZero.20261017T164649.6.log",
+      "source_log_sha256": "85c8fa32caa8faf164051a59e83fcf7a65193928b489632d513c73d8e9118ae6",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/SheafCohomologyRelativeLineOverlapZero.lean",
+      "current_repository_sha256": "09862b0d6a9871fda352a278cb74bc912f13ab89435d15a1a15e90a3c6614fd4",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/SheafCohomologyRelativeMonicZeroSquare.lean",
+      "original_module": "Motivic.Cohomology.SheafCohomologyRelativeMonicZeroSquare",
+      "source_sha256": "6b71272d3f224d11c62233867f04746dc1473a6849fb8429047901328e102ad3",
+      "source_log_filename": "Motivic.Cohomology.SheafCohomologyRelativeMonicZeroSquare.20261017T163250.2.log",
+      "source_log_sha256": "4828275069ec15af19b3be85709e5a70d344b702db45f270cc9db7f39aab075e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/SheafCohomologyRelativeMonicZeroSquare.lean",
+      "current_repository_sha256": "5110c109cb7a2efbc3f65f4e28f29f800f16fd97ae74a1e507421460cd6d41e8",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/WholeAffineLineBaseCorrection.lean",
+      "original_module": "Motivic.Cohomology.WholeAffineLineBaseCorrection",
+      "source_sha256": "9a960772122c7c3b4f98006a5d316f64675e9dc4720172b6e6eb5ad67df87921",
+      "source_log_filename": "Motivic.Cohomology.WholeAffineLineBaseCorrection.20261017T163450.6.log",
+      "source_log_sha256": "ce01f557b8879ecb4f19392b30ce083b9e0b9c044fac690066c3980857aebf6a",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineBaseCorrection.lean",
+      "current_repository_sha256": "b70a1372e19af8b2afafbb5b6dc278a7a0142a5ee1fceb322bdfddc31fcf78a6",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/WholeAffineLineBaseSquare.lean",
+      "original_module": "Motivic.Cohomology.WholeAffineLineBaseSquare",
+      "source_sha256": "0f5f9a59294af8b1b1b1cd3dc5c5fce4bcd4ed78a6a1404e0babde59ac49be8c",
+      "source_log_filename": "Motivic.Cohomology.WholeAffineLineBaseSquare.20261017T162851.2.log",
+      "source_log_sha256": "9af52355d3c5da23979f9ff77d8ed9c7b921a6f8d9c848344a8491ffb0577270",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineBaseSquare.lean",
+      "current_repository_sha256": "317ceaed804cd90df7eb33cfb153150b32b7b55b6f0b88c800174eb980072266",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/WholeAffineLineBaseSquareMaps.lean",
+      "original_module": "Motivic.Cohomology.WholeAffineLineBaseSquareMaps",
+      "source_sha256": "4a3e8a186a424787991455dc241c6db3e0acad2de960d7e90bd865d7bde69e04",
+      "source_log_filename": "Motivic.Cohomology.WholeAffineLineBaseSquareMaps.20261017T163044.2.log",
+      "source_log_sha256": "f4599a6521da334c031f603129e7c13e160e813bcd1f66572d41940948d56b14",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineBaseSquareMaps.lean",
+      "current_repository_sha256": "cf5dea0981d5df22d63b4819c99d144b8d116e2277fb41f9dc5a5182e07ea85a",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/WholeAffineLineBaseTarget.lean",
+      "original_module": "Motivic.Cohomology.WholeAffineLineBaseTarget",
+      "source_sha256": "783de141e6e09b367ca8ff7b9c22fd2f2c9e0b6cf91648a9324db4451d4043e3",
+      "source_log_filename": "Motivic.Cohomology.WholeAffineLineBaseTarget.20261017T163223.2.log",
+      "source_log_sha256": "9755bdbbc73d8474ad0b8a89ed393651a728bda8bd7f8736665bcd83ab4a9f94",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineBaseTarget.lean",
+      "current_repository_sha256": "c5a7599972af5eb9147d6919368d0c7d909d68b42521b65985483ddecff56c78",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/WholeAffineLineH1BaseZero.lean",
+      "original_module": "Motivic.Cohomology.WholeAffineLineH1BaseZero",
+      "source_sha256": "2c5714729bdf4a1dfc5a99cbff79b0ffea8a924559ab5a587aaec4deec3cbc85",
+      "source_log_filename": "Motivic.Cohomology.WholeAffineLineH1BaseZero.20261017T163628.6.log",
+      "source_log_sha256": "16011382d77aaae056517ad4464061fe99a5fd3e5675e8439e7ee80e412f7c39",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineH1BaseZero.lean",
+      "current_repository_sha256": "5754ab04642251992c5839e7cb43285f816b272a2ffe37ce2e3398cdb0c998a7",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Cohomology/WholeAffineLineH1Correction.lean",
+      "original_module": "Motivic.Cohomology.WholeAffineLineH1Correction",
+      "source_sha256": "99496589556ed7fdc34e6dce9b72119bc336a7d6ef11be8302932f17a48120c0",
+      "source_log_filename": "Motivic.Cohomology.WholeAffineLineH1Correction.20261017T162558.2.log",
+      "source_log_sha256": "7761d5d45aaed5a69162c732648910ececc6e4daf8abf5eafab499b3fdb6f47e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineH1Correction.lean",
+      "current_repository_sha256": "6dd11f617c77740e5c453be9affe3d0554a64e97bfeea0a635bd94476a0384b0",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source",
+        "trailing whitespace removed from line103 after final exact-file text/style lint; declarations/imports/proofs unchanged"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes",
+      "projected_repository_sha256": "c32da47e68c09a1b2fa3345b32dcf1584b74cb9b163f8e2bf1df7e8f9ca7bc9c"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Motivic/Topology/JacobsonOpenCover.lean",
+      "original_module": "Motivic.Topology.JacobsonOpenCover",
+      "source_sha256": "ff684895bb4be4789c4833a72284a5311af6bbb5a0823f506d4fbec305e1de68",
+      "source_log_filename": "Motivic.Topology.JacobsonOpenCover.20261017T163638.2.log",
+      "source_log_sha256": "8760aabb2b856759895c8e8840a900dd3d4222324ca1908c6a86e9dddb7f2a9e",
+      "historical_exit_status": 0,
+      "current_repository_path": "Motivic/Topology/JacobsonOpenCover.lean",
+      "current_repository_sha256": "72bc0741e5a2dd22a20f71803657923110ec2053ec4ee7c507e18b7e439c30eb",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes",
+      "current_native_validation": {
+        "record": "CHECKS.json",
+        "exit_code": 0,
+        "source_sha256": "72bc0741e5a2dd22a20f71803657923110ec2053ec4ee7c507e18b7e439c30eb",
+        "scope": "This Mathlib-only leaf; all 15 default declaration linters also passed."
+      }
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/DenseOpenAffineDetection.lean",
+      "original_module": "Tests.DenseOpenAffineDetection",
+      "source_sha256": "0a34d7dafb65ab40564915491eca232a397983e130e582a89c00949e31df3584",
+      "source_log_filename": "Tests.DenseOpenAffineDetection.20261017T164922.2.log",
+      "source_log_sha256": "407bebc2af352fb9aa5378b731ffe8646b0def9884c770cd1d27f855b8879b41",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/DenseOpenAffineDetection.lean",
+      "current_repository_sha256": "c766ebf0d679259043be53b4ad6d72c2c07abe89a23848f6e65ed69b0e486ed6",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source",
+        "terminal test import -> planned Motivic.Cohomology.A1.GenericDetection facade"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/FiniteEtaleOrdinaryFirstObstruction.lean",
+      "original_module": "Tests.FiniteEtaleOrdinaryFirstObstruction",
+      "source_sha256": "1aadb2e819c69459ca31edc81daa45afd83ddfcff4a02367381842f96d4f2701",
+      "source_log_filename": "Tests.FiniteEtaleOrdinaryFirstObstruction.20261017T155910.2.log",
+      "source_log_sha256": "114dca486c452fcc3da7334ed15c33efe4af30c6e5ddd652ca1a330e9092cf0f",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/FiniteEtaleOrdinaryFirstObstruction.lean",
+      "current_repository_sha256": "c5bbcd3b6eb0f9e7f31f61a93957edfebb9508cb6bfa33c9e7ade44a1a69e4fc",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz",
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/FiniteEtalePersistentMarkedSection.lean",
+      "original_module": "Tests.FiniteEtalePersistentMarkedSection",
+      "source_sha256": "2ce3e08b9bb3f75b08d2a92e836b6f8906366c0e592c183c31fabdb93f68110b",
+      "source_log_filename": "Tests.FiniteEtalePersistentMarkedSection.20261017T160207.2.log",
+      "source_log_sha256": "36053b453c50b8562f3585e1edfe3c2a75a714d5a94ef31479c178717f786791",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/FiniteEtalePersistentMarkedSection.lean",
+      "current_repository_sha256": "3598cc962e72e39a8f522e376c1b596e2aa82a5a8975e3d2297c22ac4f6754a7",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/FiniteEtalePersistentObstructionLift.lean",
+      "original_module": "Tests.FiniteEtalePersistentObstructionLift",
+      "source_sha256": "ef7ee6fa78c6f0c55fc4e4aac8a47b3336afff6e46f976f9fe3f2a375024593f",
+      "source_log_filename": "Tests.FiniteEtalePersistentObstructionLift.20261017T160623.2.log",
+      "source_log_sha256": "7e8aa30871bd7c04ed642207eb9c0de69878cce1f1f77eb0d6a4cefe263bd4fa",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/FiniteEtalePersistentObstructionLift.lean",
+      "current_repository_sha256": "0f47d8b7a6766c8c2dc46b19eb9f7b62ef1b9331b16c66a8158d9e6c3d4bfdac",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz",
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/FiniteEtalePersistentSectionVanishing.lean",
+      "original_module": "Tests.FiniteEtalePersistentSectionVanishing",
+      "source_sha256": "52e09f79e10f4638644fe0d50b602ea9d9d963eb494ba77b59af21daeddf4ea8",
+      "source_log_filename": "Tests.FiniteEtalePersistentSectionVanishing.20261017T155211.2.log",
+      "source_log_sha256": "9f60e7e1f73db034e1194e755f0db55841d0040585548e60dcaf027e77854072",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/FiniteEtalePersistentSectionVanishing.lean",
+      "current_repository_sha256": "eaa926b0711e4d4a8c344923a7254d98eae265b796dd667e61bb74c7b9d2d1bf",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/FirstObstructionLiftHI.lean",
+      "original_module": "Tests.FirstObstructionLiftHI",
+      "source_sha256": "55c9c10800124baf6ae65266b885fe87ff23344fbeaf0baeb3499862665f4a59",
+      "source_log_filename": "Tests.FirstObstructionLiftHI.20261017T160901.2.log",
+      "source_log_sha256": "2970916925a44030a3b7e732a3710250db1f4733029fec0d3088e80b257fcbef",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/FirstObstructionLiftHI.lean",
+      "current_repository_sha256": "4f3dd96cb86b890fb15b00535a1c44ccfaaca85faa228ef5dc7db5a5e4c3c4e3",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz",
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/FixedBadLocusRetainedPresentation.lean",
+      "original_module": "Tests.FixedBadLocusRetainedPresentation",
+      "source_sha256": "30cb2c2d3177735468cc144bc4762ed413fbe4daa409e3c1a4d8533963dfd542",
+      "source_log_filename": "Tests.FixedBadLocusRetainedPresentation.20261017T155655.2.log",
+      "source_log_sha256": "5dae1d7baa7d6a60ec9fda2135f4b257a5ab2e57008877f5c5c4447856f6297a",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/FixedBadLocusRetainedPresentation.lean",
+      "current_repository_sha256": "69450bed31192826456349ead42d3b4aee8dabf06b11d63dc23836000d4b5d85",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/LowerRankPersistentPuncture.lean",
+      "original_module": "Tests.LowerRankPersistentPuncture",
+      "source_sha256": "aaa9dd1e916f6c9ce914b34e733a7f4c48d79a9b26368f46989d4d1ec7f6b201",
+      "source_log_filename": "Tests.LowerRankPersistentPuncture.20261017T163656.2.log",
+      "source_log_sha256": "56911f4714708f17a782a9024a90078524f63d5c756e7cf24913efaa6564843f",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/LowerRankPersistentPuncture.lean",
+      "current_repository_sha256": "b1db94787c45cbd23a1c4712b7698a8a74cd9fb92486a1ce9877946f327e423c",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz",
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/MonicGenericSectionSpread.lean",
+      "original_module": "Tests.MonicGenericSectionSpread",
+      "source_sha256": "0a3f8a701ebe98399bb5562f1664575aeb4897fd48425fc75a93c6443eab6db0",
+      "source_log_filename": "Tests.MonicGenericSectionSpread.20261017T160818.6.log",
+      "source_log_sha256": "bea0323956fe2ba27972b4629af2d5f11fd766f0b12f7ac9909b15cec085ae84",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/MonicGenericSectionSpread.lean",
+      "current_repository_sha256": "a555a061a826f7372309c8042540caeaa74ff6b1aa4a4b7b2b8e1288aa7e15af",
+      "projection_transforms": [
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest",
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/OneSidedLocalVanishing.lean",
+      "original_module": "Tests.OneSidedLocalVanishing",
+      "source_sha256": "50829376aac2a131b8658e077156596a4048eb98fd6fa5af7b91e22f093f295d",
+      "source_log_filename": "Tests.OneSidedLocalVanishing.20261017T162633.2.log",
+      "source_log_sha256": "6cb21169a8913f29337db32c8cd7a1fbdd3cc5c83e3654ea7924d12925156530",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/OneSidedLocalVanishing.lean",
+      "current_repository_sha256": "d6cd71e9b58dffa0eef57e3994418e226364f8861ba0dc4fb67f9f21579b6c21",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/OneSidedRelativeMoving.lean",
+      "original_module": "Tests.OneSidedRelativeMoving",
+      "source_sha256": "230f94d99a304041f11dfa8b5e965a3ed47679fe694dd9ff50c4a13d4ed402cd",
+      "source_log_filename": "Tests.OneSidedRelativeMoving.20261017T161720.2.log",
+      "source_log_sha256": "6cc7fc2a46d0b4bc31c9d669508b80d3af08826305172ce452e85ef7f1baa7f6",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/OneSidedRelativeMoving.lean",
+      "current_repository_sha256": "5cabbf78157a673c5b6b6f1b77893eee6749f6670dfe011b9c4a5ed3c9f425aa",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/OneSidedSerreMoving.lean",
+      "original_module": "Tests.OneSidedSerreMoving",
+      "source_sha256": "714a4d5c5eb792a208a8d54d17218f6d234c9598bda847623aa196a2bcc0cf93",
+      "source_log_filename": "Tests.OneSidedSerreMoving.20261017T160915.2.log",
+      "source_log_sha256": "7c7dc34e31eeb4d72a0039b3b04632b2192924464372b3e3ffcfa759ee3910c4",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/OneSidedSerreMoving.lean",
+      "current_repository_sha256": "a53fb00ac3640e151a07190571b61cce05db79798da380488addc18b0799eae2",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/OriginalAffineLocalVanishing.lean",
+      "original_module": "Tests.OriginalAffineLocalVanishing",
+      "source_sha256": "1929071f3372138235774a9c0a6399fc791970eaa0bbfa25a09e040fe7fade2e",
+      "source_log_filename": "Tests.OriginalAffineLocalVanishing.20261017T164247.2.log",
+      "source_log_sha256": "4135584f8ce780f29a928eef56085e3f8705cd42c2ad1b3d8ca5b253aaee4a53",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/OriginalAffineLocalVanishing.lean",
+      "current_repository_sha256": "7b8842351da436069945c8f4f86e55c39194ed41bb5fed4bc4eed04cba7e5acb",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/OriginalEtaleLocalLifting.lean",
+      "original_module": "Tests.OriginalEtaleLocalLifting",
+      "source_sha256": "9fdd3c08c9f60866da3fbd9ba56e9d97f6d5211e640755fa1b8409d8e877606c",
+      "source_log_filename": "Tests.OriginalEtaleLocalLifting.20261017T162336.22.log",
+      "source_log_sha256": "0b00585a7899b60e0d9918c05eb1cbd65f6f8c5bf94b636514256c67399b02ad",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/OriginalEtaleLocalLifting.lean",
+      "current_repository_sha256": "74edbc9b6859b77bf5fec6de90fe84350850e83db87a69e05819db8fc34edfda",
+      "projection_transforms": [
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/PersistentPuncturePointVanishing.lean",
+      "original_module": "Tests.PersistentPuncturePointVanishing",
+      "source_sha256": "1efd998a5033395f4857dea86b826595716c65e0d400ed2cb3deeeb55d86cee0",
+      "source_log_filename": "Tests.PersistentPuncturePointVanishing.20261017T162518.2.log",
+      "source_log_sha256": "dc95dc44db59f4ab7e3dc95ded633cf54b510ad9aa34d14a5160be64366dedba",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/PersistentPuncturePointVanishing.lean",
+      "current_repository_sha256": "2a18daa281e3269d4bfb0fe994e5219d22bbf949e31ca9d7d05720bf678fd2f2",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz",
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/ProjectionHigherImageHI.lean",
+      "original_module": "Tests.ProjectionHigherImageHI",
+      "source_sha256": "97d770c4098afe9d242bc39b85c9a44f29d330bd05024644346df7e763a651da",
+      "source_log_filename": "Tests.ProjectionHigherImageHI.20261017T155926.2.log",
+      "source_log_sha256": "45ab316103978a13ae95ba4b611165cda32169fe3945b1047a32b84058978c33",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/ProjectionHigherImageHI.lean",
+      "current_repository_sha256": "8bd81e2a764d0319cdb9664b1cf2f1f680dda1bce5e46503bedc0a974ba7e8b7",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/RelativeGenericBaseH1Zero.lean",
+      "original_module": "Tests.RelativeGenericBaseH1Zero",
+      "source_sha256": "1153828471c9d0440c48c08137e0410ecb1e08bd80d3b733be11ef3b5eeb14ef",
+      "source_log_filename": null,
+      "source_log_sha256": null,
+      "historical_exit_status": null,
+      "current_repository_path": "doc/provenance/generic-detection-20261017/unverified-source/Tests/RelativeGenericBaseH1Zero.lean",
+      "current_repository_sha256": "1153828471c9d0440c48c08137e0410ecb1e08bd80d3b733be11ef3b5eeb14ef",
+      "projection_transforms": [
+        "raw archive bytes preserved exactly in unverified-source; not admitted to production/test roots"
+      ],
+      "evidence_status": "archive-only unverified source; no compiler failure or proof failure inferred"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/RelativeMonicNeighborhoodZero.lean",
+      "original_module": "Tests.RelativeMonicNeighborhoodZero",
+      "source_sha256": "e8f0873fbb04a92944ba735eb7ba0086777247bfe4acfc66bfb6241c41deb373",
+      "source_log_filename": "Tests.RelativeMonicNeighborhoodZero.20261017T162006.2.log",
+      "source_log_sha256": "3880b981253ae465e2a6bd8221d065009a78aa89ae784c13b5e408a4ba9ffaba",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/RelativeMonicNeighborhoodZero.lean",
+      "current_repository_sha256": "d80b524696e4576b7bd71e6c9cc1212a3468cdef268fdb3b619b9493c56a121c",
+      "projection_transforms": [
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest",
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/SheafCohomologyRelativeLineHigherVanishing.lean",
+      "original_module": "Tests.SheafCohomologyRelativeLineHigherVanishing",
+      "source_sha256": "a3004ed8ac50220ea909f41ac66b415fbae77ffdc8554a59e7a3b03cc2c0860c",
+      "source_log_filename": "Tests.SheafCohomologyRelativeLineHigherVanishing.20261017T164853.2.log",
+      "source_log_sha256": "cad7da45a40c907f6382af99debaad88583ef5d70cefbba23e9caaaad073d1a6",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/SheafCohomologyRelativeLineHigherVanishing.lean",
+      "current_repository_sha256": "4931f7681c0220bd82a9c24ace70521766921f31e58a43e47fbac6fed09eb2c4",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz",
+        "terminal test import -> planned Motivic.Cohomology.AffineLine.GenericBase facade",
+        "post-import test body wrapped in MotivicTest.SheafCohomologyRelativeLineHigherVanishing"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/WholeAffineLineH1BaseZero.lean",
+      "original_module": "Tests.WholeAffineLineH1BaseZero",
+      "source_sha256": "b1e4f0bb66779fb777754aeb2e071f7403725e8f6590a6983737a182da13d016",
+      "source_log_filename": "Tests.WholeAffineLineH1BaseZero.20261017T163703.2.log",
+      "source_log_sha256": "62fe235f6d22f55bdcdf3b305553b16287ef34dcd38b7db82acc3d46ced9c1a1",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/WholeAffineLineH1BaseZero.lean",
+      "current_repository_sha256": "0b375a69c4d46cf8877b79415ef9e42d2f6271890df97bcdeed54a8772ba61df",
+      "projection_transforms": [
+        "test-only Tests|MotivicTests module/namespace tokens -> MotivicTest",
+        "standard Apache 2.0/Authors header added to headerless source"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    },
+    {
+      "change": "added",
+      "original_source_path": "Tests/WholeAffineLineNisnevichLifting.lean",
+      "original_module": "Tests.WholeAffineLineNisnevichLifting",
+      "source_sha256": "89f7c4a46d607c8e480ba59cb179d64c2788e638c93de6c7b37c1a3fddb08263",
+      "source_log_filename": "Tests.WholeAffineLineNisnevichLifting.20261017T162634.2.log",
+      "source_log_sha256": "76e676cae6be19f51603253bc335f88e70ad873b8b21a626e120fc59f76ba0c6",
+      "historical_exit_status": 0,
+      "current_repository_path": "MotivicTest/WholeAffineLineNisnevichLifting.lean",
+      "current_repository_sha256": "d5a8c4e00603f52d65ec0ec5ea7efbfe30274bc6da9c2b8007f856aa1805fd0c",
+      "projection_transforms": [
+        "generic Authors label -> kangxyz"
+      ],
+      "evidence_status": "successful historical Linux source log; source hash matches incoming archive bytes"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "question": "Does the requested hosted CI run behave normally, and do its caches actually take effect?",
+  "observed_at_utc": "2026-10-17T17:36:25.574857+00:00",
+  "input_basis": {
+    "active_run": 39052789364,
+    "active_head": "04dba9fcfe14ac83ec2a5ef70e533ccc50a01de5",
+    "bootstrap_run": 39045875580,
+    "bootstrap_head": "04569be2fd9324b1911696fb1e67fd90441673c4",
+    "new_generic_detection_merge": "Not the head tested by these observations."
+  },
+  "current_jobs": [
+    {
+      "completed_at": "2026-10-17T17:13:32Z",
+      "conclusion": "success",
+      "current_steps": [],
+      "id": 117454589755,
+      "name": "source",
+      "started_at": "2026-10-17T17:13:17Z",
+      "status": "completed"
+    },
+    {
+      "completed_at": null,
+      "conclusion": null,
+      "current_steps": [
+        {
+          "name": "Build changed targets and affected public consumers with current native traces",
+          "started_at": "2026-10-17T17:14:41Z"
+        }
+      ],
+      "id": 117454654765,
+      "name": "lean",
+      "started_at": "2026-10-17T17:13:35Z",
+      "status": "in_progress"
+    }
+  ],
+  "cross_run_cache_hits": [
+    {
+      "id": 9095263073,
+      "key": "motivic-build-v1-Linux-X64-29586bffbc7a589c0fb935b13d01c10192dc2ccda3657b4f8e18fce9cc8b1dce-d7a7605c048c46b389972162166a22f583e67dba8606f4b304142e030ffdf1f3-39045875580-1",
+      "ref": "refs/heads/main",
+      "size_in_bytes": 106827334,
+      "created_at": "2026-10-17T16:36:31.163570Z",
+      "last_accessed_at": "2026-10-17T17:14:38.514302Z"
+    },
+    {
+      "id": 9095267147,
+      "key": "lake-native-v1-Linux-X64-leanprover-lean4-v4.34.1-39045875580-1",
+      "ref": "refs/heads/main",
+      "size_in_bytes": 982664991,
+      "created_at": "2026-10-17T16:36:43.701663Z",
+      "last_accessed_at": "2026-10-17T17:14:22.482914Z"
+    },
+    {
+      "id": 9095260759,
+      "key": "dependencies-v1-Linux-X64-ea95aea523764f2e362bfa48db438053e7737372784c9d1c54e5c01d5dc5a6f1-39045875580-1",
+      "ref": "refs/heads/main",
+      "size_in_bytes": 1524682750,
+      "created_at": "2026-10-17T16:36:26.788970Z",
+      "last_accessed_at": "2026-10-17T17:13:52.328411Z"
+    }
+  ],
+  "cross_run_hit_reason": "All three earlier-main cache entries were accessed during the active run respective successful dependency/native/project restoration step windows. This establishes cache lookup/restoration, not per-proof current build reuse.",
+  "active_build_log_access": {
+    "http_status": 404,
+    "boundary": "GitHub did not provide the running lean job log; current Built/Replayed/module-level cache decisions are unobserved."
+  },
+  "completed_bootstrap_evidence": {
+    "selected_lines": [
+      {
+        "line": 575,
+        "text": "2026-10-17T15:39:50.2656817Z Aglib: imported producer 25c37780264f0da94f5bb6bd31cc089d26f2da80 for configured pin 25c37780264f0da94f5bb6bd31cc089d26f2da80; current Lake input checks decide reuse (https://github.com/kangxyz/aglib/releases/download/cache-25c37780264f0da94f5bb6bd31cc089d26f2da80/lake-native-v1-Linux-x86_64-leanprover-lean4-v4.34.1-25c37780264f0da94f5bb6bd31cc089d26f2da80.tar.gz)"
+      },
+      {
+        "line": 1286,
+        "text": "2026-10-17T16:36:04.7375888Z Build completed successfully (4198 jobs)."
+      },
+      {
+        "line": 1317,
+        "text": "2026-10-17T16:36:08.6792563Z Build cache hit; no compilation needed (probe log: /home/runner/work/motivic/motivic/.lake/verification/native-export/cached-check.log)."
+      }
+    ],
+    "fresh_Built_line_counts": {
+      "Cache": 36,
+      "Batteries": 2,
+      "cache": 1,
+      "Motivic": 651,
+      "MotivicTest": 3
+    },
+    "boundary": "The log imports the exact pinned Aglib public asset, fetches matching Mathlib cache, completes the selected build with no Built Aglib.* or Mathlib.* lines, and explicitly reports no-compilation cache hit during native export. Cache-tool compilation is distinct from mathematical-module compilation."
+  },
+  "published_assets": [
+    {
+      "tag": "cache-04569be2fd9324b1911696fb1e67fd90441673c4",
+      "target_commitish": "04569be2fd9324b1911696fb1e67fd90441673c4",
+      "html_url": "https://github.com/kangxyz/motivic/releases/tag/cache-04569be2fd9324b1911696fb1e67fd90441673c4",
+      "published_at": "2026-10-17T16:36:56Z",
+      "assets": [
+        {
+          "name": "lake-native-v1-Linux-x86_64-leanprover-lean4-v4.34.1-04569be2fd9324b1911696fb1e67fd90441673c4.tar.gz",
+          "size": 13702774,
+          "created_at": "2026-10-17T16:36:57Z",
+          "download_count": 0
+        }
+      ]
+    },
+    {
+      "tag": "cache-25c37780264f0da94f5bb6bd31cc089d26f2da80",
+      "target_commitish": "25c37780264f0da94f5bb6bd31cc089d26f2da80",
+      "html_url": "https://github.com/kangxyz/aglib/releases/tag/cache-25c37780264f0da94f5bb6bd31cc089d26f2da80",
+      "published_at": "2026-10-17T04:16:37Z",
+      "assets": [
+        {
+          "name": "lake-native-v1-Linux-x86_64-leanprover-lean4-v4.34.1-25c37780264f0da94f5bb6bd31cc089d26f2da80.tar.gz",
+          "size": 21243345,
+          "created_at": "2026-10-17T04:16:38Z",
+          "download_count": 10
+        }
+      ]
+    }
+  ],
+  "conclusion": "Actual cross-run cache hits are demonstrated, and completed historical CI demonstrates working native cache reuse/publication. No current evidence indicates a broken cache. Active Lean completion and current per-proof reuse remain unknown; no source patch, restart or new build is justified by this evidence.",
+  "mutations": "Only investigation files written in assigned scratch; no source/workflow/Git/build/cache mutation or job restart."
+}

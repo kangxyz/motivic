@@ -20,6 +20,8 @@ when working on one subject:
 | `Motivic.Cohomology` | Ordinary/relative cohomology and motivic complexes with integral/finite coefficients |
 | `Motivic.Cohomology.Motivic` | Canonical motivic complexes and hypercohomology |
 | `Motivic.Cohomology.AffineLine` | Optional ordinary higher vanishing and positive-degree vanishing for HI sheaves with transfers |
+| `Motivic.Cohomology.A1.GenericDetection` | Affine local-zero detection for HI presheaves with transfers over infinite fields |
+| `Motivic.Cohomology.AffineLine.GenericBase` | Classwise eventual higher vanishing over a generic base open, retaining the whole relative line |
 | `Motivic.KTheory.MilnorK` | Milnor groups, products, field maps and residues |
 | `Motivic.KTheory.MilnorK.Norms` | Optional characteristic-zero finite-extension norm and tower laws |
 | `Motivic.Cohomology.Motivic.Diagonal` | Optional characteristic-zero diagonal comparison |
@@ -70,6 +72,13 @@ Nisnevich sheaves with transfers. The original ordinary `HasExt` and coefficient
 universes remain explicit. Use `Motivic.Cohomology.AffineLine` for this optional
 computation. Its [source/evidence record](doc/provenance/positive-vanishing-20261017/README.md)
 records the exact scope and preserved boundaries.
+
+The next [generic-detection snapshot](doc/provenance/generic-detection-20261017/README.md)
+adds local-zero affine neighborhoods covering every point of a smooth integral
+affine scheme over an infinite field, for HI presheaves with transfers. It also
+proves classwise eventual higher ordinary cohomology vanishing after generic
+base restrictions of a relative affine line over any field. Six unlogged source
+leaves are preserved as archival inputs outside the maintained build graph.
 
 Strict A1 invariance remains open. The diagonal Milnor comparison retains its
 characteristic-zero and derived-category hypotheses. The weight-one comparison

@@ -1,0 +1,5 @@
+Source SHA256: a3004ed8ac50220ea909f41ac66b415fbae77ffdc8554a59e7a3b03cc2c0860c  Tests/SheafCohomologyRelativeLineHigherVanishing.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/SheafCohomologyRelativeLineHigherVanishing.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/SheafCohomologyRelativeLineHigherVanishing.ilean Tests/SheafCohomologyRelativeLineHigherVanishing.lean
+Original relative-line H^(n+2), base shrinking only: standard foundations only.
+Exit status: 0

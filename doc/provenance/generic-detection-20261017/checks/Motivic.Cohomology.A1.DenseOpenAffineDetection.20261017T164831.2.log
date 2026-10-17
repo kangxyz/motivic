@@ -1,0 +1,4 @@
+Source SHA256: aafdf16084b494f26ee592b157d70e9c2cd61987590119e9009ea52902b8d77d  Motivic/Cohomology/A1/DenseOpenAffineDetection.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/A1/DenseOpenAffineDetection.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Motivic/Cohomology/A1/DenseOpenAffineDetection.ilean Motivic/Cohomology/A1/DenseOpenAffineDetection.lean
+Exit status: 0

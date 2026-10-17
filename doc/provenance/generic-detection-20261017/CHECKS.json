@@ -1,0 +1,338 @@
+{
+  "source_archive_sha256": "972401892b0b3753d3b3538cdfdb37a6b9ac72991b5c176dfd78219b249267c7",
+  "repository_baseline": "04dba9fcfe14ac83ec2a5ef70e533ccc50a01de5",
+  "prepared_by": "kangxyz",
+  "source_structure": {
+    "checked_lean_sources": 3123,
+    "project": 3122,
+    "downstream": 1,
+    "status": "passed"
+  },
+  "admission": {
+    "new_production": 153,
+    "new_tests": 20,
+    "new_facades": 2,
+    "unlogged_archival_only": 6,
+    "preserved_existing_helpers": 2,
+    "incoming_matching_successful_delta_logs": 175
+  },
+  "ordinary_endpoint_review": {
+    "generic_detection_new_changed_closure": 51,
+    "relative_line_new_closure": 23,
+    "verdict": "Both exact endpoints accepted; no established-status assignment. See doc/VERIFICATION.md."
+  },
+  "native_leaf_certificate": {
+    "question": "Native compilation and final declaration lint of only the three assigned projected Mathlib-only leaves",
+    "assignment_complete": true,
+    "repository_head_declared_by_principal": "04dba9f",
+    "source_basis": "Actual projected repository bytes with Authors:kangxyz; no raw archive source compilation",
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "dependency_pins": {
+      "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "Aglib": "25c37780264f0da94f5bb6bd31cc089d26f2da80"
+    },
+    "options": {
+      "autoImplicit": false,
+      "maxHeartbeats": 200000,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true
+    },
+    "modules": [
+      {
+        "module": "Motivic.Topology.JacobsonOpenCover",
+        "source": "Motivic/Topology/JacobsonOpenCover.lean",
+        "source_sha256_before": "72bc0741e5a2dd22a20f71803657923110ec2053ec4ee7c507e18b7e439c30eb",
+        "source_sha256_after": "72bc0741e5a2dd22a20f71803657923110ec2053ec4ee7c507e18b7e439c30eb",
+        "author_header": "Authors: kangxyz",
+        "direct_imports": [
+          "Mathlib.Topology.JacobsonSpace",
+          "Mathlib.Topology.Sets.Opens"
+        ],
+        "setup": {
+          "path": "setup/compile-Motivic.Topology.JacobsonOpenCover.json",
+          "sha256": "88a16705244da31aa653bc0033c8d07eddedabd6dcac8d84726abadcbd4c28fc"
+        },
+        "artifacts": {
+          "olean": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.olean",
+            "sha256": "7e6c501f5a0fc521a995ba980299e05b9b5c650782571e79d43b42768b0e35ca"
+          },
+          "olean.server": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.olean.server",
+            "sha256": "2018766736f04e71ddacff172ef8b2071bc6e837c4bd9fc678f43b99ebcda096"
+          },
+          "olean.private": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.olean.private",
+            "sha256": "bdbef0b4c132d893d9ff714e011dd1e348f7e56e0651afd5cdcacd8eb0cfed41"
+          },
+          "ir.sig": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.ir.sig",
+            "sha256": "7afb4a4d5239cb2ca58eab89e1aeedbd824db73eb07f87b9b4b6ec4c24e2499b"
+          },
+          "ir": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.ir",
+            "sha256": "098c8ccbd39c16e73cb15f61e4be01803f615e27f4781bf29fbb98d0164c1b30"
+          },
+          "ilean": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.ilean",
+            "sha256": "c45c5f73c8d24f4bd6a84e3c3978cf7969e9cc5d64e07f7cfa08b0cd81f972b8"
+          },
+          "c": {
+            "path": "outputs/72bc0741e5a2dd22/Motivic/Topology/JacobsonOpenCover.c",
+            "sha256": "574b320fb774eb2025784033ff0bb310f72ab418a8243c8710033bab075850d7"
+          }
+        },
+        "receipt": "receipts/compile-Motivic.Topology.JacobsonOpenCover.guard.json",
+        "receipt_sha256": "ec3484285ce58bc662c92c2685c70ec74b8f3ed0a6d39b5f6fbb3ce9b4420273"
+      },
+      {
+        "module": "Motivic.Aglib.Topology.GenericComponentOpens",
+        "source": "Motivic/Aglib/Topology/GenericComponentOpens.lean",
+        "source_sha256_before": "1df8fdd49a98c454faeeed6cef50a17e679ebc85e04fd96b289785e0ccd7de83",
+        "source_sha256_after": "1df8fdd49a98c454faeeed6cef50a17e679ebc85e04fd96b289785e0ccd7de83",
+        "author_header": "Authors: kangxyz",
+        "direct_imports": [
+          "Mathlib.Topology.NoetherianSpace",
+          "Mathlib.Topology.Sober"
+        ],
+        "setup": {
+          "path": "setup/compile-Motivic.Aglib.Topology.GenericComponentOpens.json",
+          "sha256": "b74e0b3ad79db4c787fbe71c8b72c7d58d4b35425f4e2f7a07a1c7d3ac18f27d"
+        },
+        "artifacts": {
+          "olean": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.olean",
+            "sha256": "90ca5924a8479999827496ff18ba705efd4083b6b0a30220a5dee1fb941495ae"
+          },
+          "olean.server": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.olean.server",
+            "sha256": "8edb9c8c3d1281344959093c1953c0762490df0893d1705c5edc0aa2660eb8c3"
+          },
+          "olean.private": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.olean.private",
+            "sha256": "e9d25774e68e5df6305ca010aaf0d499d3a100be262c8e61e138aa2751cf3535"
+          },
+          "ir.sig": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.ir.sig",
+            "sha256": "6e78a994164cc420dfbab58f089112f61f56b07b763ac3049cf4ee6d075840ef"
+          },
+          "ir": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.ir",
+            "sha256": "812ddf107630805f5f4ae7c2d6a91b0a11a9e96ee519d19133570daf03604ec4"
+          },
+          "ilean": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.ilean",
+            "sha256": "b66248e8f42a917b033f02e79094df5322a04360f84c2c6252ef44a3522222c8"
+          },
+          "c": {
+            "path": "outputs/1df8fdd49a98c454/Motivic/Aglib/Topology/GenericComponentOpens.c",
+            "sha256": "2da9db5076e05e54540b37cd7ea40e5659c29a84e63755d8cda1d12167612bf7"
+          }
+        },
+        "receipt": "receipts/compile-Motivic.Aglib.Topology.GenericComponentOpens.guard.json",
+        "receipt_sha256": "d99dea8b822c65393c54cf2807ffd714bca6eb552046be87a5bf686a8b1cc705"
+      },
+      {
+        "module": "Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal",
+        "source": "Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.lean",
+        "source_sha256_before": "a15b6a6443d7d58ad5ec68e330e647cf44ae12ca70f2cb716889c1237f0ee774",
+        "source_sha256_after": "a15b6a6443d7d58ad5ec68e330e647cf44ae12ca70f2cb716889c1237f0ee774",
+        "author_header": "Authors: kangxyz",
+        "direct_imports": [
+          "Mathlib.AlgebraicGeometry.Morphisms.ClosedImmersion"
+        ],
+        "setup": {
+          "path": "setup/compile-Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal.json",
+          "sha256": "2eaee59c1739c7015cd4e07c01783966505e8ff352d8b38976d31fe0c2a8c08c"
+        },
+        "artifacts": {
+          "olean": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.olean",
+            "sha256": "61a5e2f6757e2f6f608dcc7d6f009df6ec0b811cbfde75712936febd2c141dfa"
+          },
+          "olean.server": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.olean.server",
+            "sha256": "83075cae3b42adfc67fbac9c775cb687e6dd84eaae0c7fd4439d5cadb9ca170b"
+          },
+          "olean.private": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.olean.private",
+            "sha256": "1776bf147517d1845f5151c9f3cabd2b691db5fc30e78df558816afe1157bb43"
+          },
+          "ir.sig": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.ir.sig",
+            "sha256": "1bf033b08528ac4976a220c22c1f6c482434c298faf287f741dd04f6391e60d9"
+          },
+          "ir": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.ir",
+            "sha256": "430f70433215e903726552274409192767c0e34ac5efc5c79a76282950059a2e"
+          },
+          "ilean": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.ilean",
+            "sha256": "40fdd26d90d5ea22369490d240b30371748377c089f4ab22d7c58e1aee8075a9"
+          },
+          "c": {
+            "path": "outputs/a15b6a6443d7d58a/Motivic/Aglib/AlgebraicGeometry/AffineOpenComplementIdeal.c",
+            "sha256": "eccfc16b7d199e057545a045052c8a5ebd170762c0805dfba51357cd6ac6d048"
+          }
+        },
+        "receipt": "receipts/compile-Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal.guard.json",
+        "receipt_sha256": "5c42ec48bad6199c2e607cc0091257d4f75369bc8cc6deb74eb8af320b157750"
+      }
+    ],
+    "declaration_lint": {
+      "complete": true,
+      "defining_module_count": 3,
+      "reports": [
+        {
+          "module": "Motivic.Topology.JacobsonOpenCover",
+          "errors": 0,
+          "declarations": 2,
+          "automatically_generated": 0,
+          "linters": 15
+        },
+        {
+          "module": "Motivic.Aglib.Topology.GenericComponentOpens",
+          "errors": 0,
+          "declarations": 3,
+          "automatically_generated": 1,
+          "linters": 15
+        },
+        {
+          "module": "Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal",
+          "errors": 0,
+          "declarations": 4,
+          "automatically_generated": 0,
+          "linters": 15
+        }
+      ],
+      "control_source": "FinalDeclarationLint.lean",
+      "control_source_sha256": "c9dfbc68169e862f4540f278f62284955c30d0016519da7d0765fb5fb649644d",
+      "scope": "Module-origin filtering; modern module with import all of only the three fresh leaves; declaration-free control with module docstring",
+      "nolint_exceptions_added": false
+    },
+    "raw_successful_receipts": [
+      {
+        "path": "receipts/compile-Motivic.Topology.JacobsonOpenCover.guard.json",
+        "sha256": "ec3484285ce58bc662c92c2685c70ec74b8f3ed0a6d39b5f6fbb3ce9b4420273",
+        "log": "logs/compile-Motivic.Topology.JacobsonOpenCover.jsonl",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 1457012736,
+        "duration_seconds": 4.104949958040379,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      },
+      {
+        "path": "receipts/compile-Motivic.Aglib.Topology.GenericComponentOpens.guard.json",
+        "sha256": "d99dea8b822c65393c54cf2807ffd714bca6eb552046be87a5bf686a8b1cc705",
+        "log": "logs/compile-Motivic.Aglib.Topology.GenericComponentOpens.jsonl",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 1458847744,
+        "duration_seconds": 2.7118740839650854,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      },
+      {
+        "path": "receipts/compile-Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal.guard.json",
+        "sha256": "5c42ec48bad6199c2e607cc0091257d4f75369bc8cc6deb74eb8af320b157750",
+        "log": "logs/compile-Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal.jsonl",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 2045509632,
+        "duration_seconds": 5.2356318339006975,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      },
+      {
+        "path": "receipts/final-declaration-lint-three.guard.json",
+        "sha256": "073d2ad3019f6f55c2c86f64997ae4610e1ce28d3ffc0c6877e92c58f61885ef",
+        "log": "logs/final-declaration-lint-three.jsonl",
+        "log_sha256": "e821b9874e99d12a94848a8a09b5607633b6990124ec2aae0e1d1f192d6fefb3",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 2027782144,
+        "duration_seconds": 4.591544291935861,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      }
+    ],
+    "execution_source": {
+      "path": "native_three.py",
+      "sha256": "dd3445c1d57a1a353a56a921e39b05208fd7f3e1e6b2f6a5690b120d3e28c507"
+    },
+    "source_dependency_boundary": "All three production direct imports are Mathlib.* only. Current pinned Mathlib cache is the accepted external basis; no local mathematical baseline or Aglib mathematical provider dependency was used/rebuilt/fingerprinted. Final lint additionally imports cached Mathlib.Tactic.Linter.Lint and the three current fresh outputs. No dependency builds, old H1/provider replay, or source/Git/.lake mutations.",
+    "outside_scope": "No new tests or terminal/full-facade/native-root checks; retained Linux records/review/CI remain with principal. Exact175-file text/style check separately owned by principal.",
+    "mathematical_status_claim": false,
+    "remaining_gap": null
+  },
+  "native_evidence_paths": "Relative paths in the certificate describe private validation scratch. Build binaries are not versioned. Source and artifact/receipt/log hashes identify the controlled runs.",
+  "text_style": {
+    "files": 175,
+    "status": "Passed: 174 unaffected results retained; one failed file rechecked after removing trailing whitespace.",
+    "controls": [
+      {
+        "receipt_sha256": "4356df4cb2c7d08314c106487b32453ccceaf091b6fb75dd8fc9ad705b32df9e",
+        "exit_code": 1,
+        "coverage": "175 files; one whitespace finding"
+      },
+      {
+        "receipt_sha256": "affca4f50768173ea3cb0a555423046b5fb03478129c056bd269bfc8998bdb32",
+        "exit_code": 0,
+        "coverage": "one affected file passed"
+      }
+    ]
+  },
+  "ci_selection": {
+    "maintained_changed_lean": 175,
+    "selected": 175,
+    "quarantined_excluded": 6,
+    "generic_facade_consumer": [
+      "Motivic.Cohomology.A1.GenericDetection",
+      "MotivicTest.DenseOpenAffineDetection"
+    ],
+    "relative_facade_consumer": [
+      "Motivic.Cohomology.AffineLine.GenericBase",
+      "MotivicTest.SheafCohomologyRelativeLineHigherVanishing"
+    ],
+    "structural": true,
+    "tool_tests": []
+  },
+  "full_new_endpoint_native_replay": false,
+  "retained_evidence_boundary": "Matching supplied Linux source checks and standard-foundations audits are retained for both primary closures; author/test/facade projections are separately identified. Full current-source public entries are selected by CI. No whole-library replay was run."
+}

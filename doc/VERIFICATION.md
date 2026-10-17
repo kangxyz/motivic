@@ -161,3 +161,72 @@ including cache publication; the subsequent merge run is not asserted here.
 
 General small-site coefficient comparison, generic-cylinder continuity and
 strict A1 invariance on arbitrary smooth schemes remain outside this milestone.
+
+## Affine generic detection and relative-line generic base
+
+The next archive has SHA256
+`972401892b0b3753d3b3538cdfdb37a6b9ac72991b5c176dfd78219b249267c7`.
+The raw delta adds 158 production and 21 test leaves and changes two helpers.
+There are 175 matching successful incoming Linux logs for 181 delta sources.
+The maintained admission is 153 new production leaves and 20 tests, plus two
+optional public facades. Exactly six unlogged sources are preserved unchanged
+under the [provenance archive](provenance/generic-detection-20261017/README.md),
+outside production/test discovery. They form their complete reverse dependency
+closure; no admitted consumer or either primary endpoint depends on them.
+
+The two already-repaired helper implementations are retained. Their statements
+match incoming source, but current proofs use their previous bounded native
+checks; incoming logs are not relabeled as checks of those different bytes.
+Toolchain, dependency pins, default imports and tooling are unchanged. Matching
+prior evidence is retained, including affected-test selection fixtures.
+
+Independent ordinary review accepted both exact primary endpoints. Affine
+local-zero detection requires an infinite field, smooth domain and HI presheaf
+with transfers. It uses the original nonempty open, section, inclusion graph
+and coefficient universe; no sheaf, presentation or closed-point hypothesis is
+supplied. The review covered all 51 new/changed imports, dimension-zero and
+positive-dimensional branches, full prescribed schemes and the Jacobson passage
+from closed-point neighborhoods to an all-point open cover. It does not infer
+global zero for arbitrary presheaves.
+
+The relative-line endpoint, over any field and smooth domain base, gives
+classwise eventual vanishing of original ordinary `H^(n+2)` after the stated
+base restrictions, with the whole line retained. Its review covered all 23 new
+production dependencies, the direct Ext consumer and unchanged interfaces.
+The original ordinary coefficient universe and `HasExt` remain explicit. No
+fraction-field coefficient object or cohomological continuity is substituted.
+The generic-fiber dimension bound is not imposed on the total space. Both
+ordinary reviews retain matching individual source/log coverage and the original
+standard-foundations audits; neither assigns established status.
+
+Current structural checks passed for 3,123 Lean sources. All 175 new maintained
+sources/facades passed exact-file text/style lint after a one-file whitespace
+correction; the unaffected results were retained. Three new Mathlib-only leaves
+were selected for native checks. Their actual module names are
+`Motivic.Topology.JacobsonOpenCover`, `Motivic.Aglib.Topology.GenericComponentOpens`
+and `Motivic.Aglib.AlgebraicGeometry.AffineOpenComplementIdeal`; all compiled and
+passed 15 declaration linters each, with no exceptions or findings. No dependency
+builds were needed. The [fixed check record](provenance/generic-detection-20261017/CHECKS.json)
+stores source/output identities and guarded receipts. These are the actual native
+checks; neither full new endpoint was replayed locally. Their matching Linux
+records and ordinary source reviews remain the evidence for the larger closures.
+
+The real import-graph selection includes all 175 maintained changed Lean modules
+and excludes all six archival sources. Changing either new facade alone selects
+its terminal test as well. Existing target-selector fixtures remain applicable;
+unchanged tools were not retested. The public facade/test projections are
+selected for the push CI.
+
+The previous `04dba9f` [CI run](https://github.com/kangxyz/motivic/actions/runs/39052789364)
+had successful source/tool checks and an active Lean build when inspected. All
+three prior cache entries were actually accessed in its restore windows, about
+1.52 GB dependencies, 983 MB native artifacts and 107 MB project outputs. The
+completed bootstrap run imported pinned Aglib artifacts, built no Aglib/Mathlib
+source modules and reported a native export cache hit. The
+[cache observation](provenance/generic-detection-20261017/CI-CACHE-CHECK.json)
+distinguishes those facts from unverified per-module reuse or final success of
+the active/new run. No cache repair or healthy-run restart was indicated.
+
+Finite-field detection, nonintegral smooth targets, the final zero-sheaf consumer,
+arbitrary-class generic-base H1, the all-positive generic rank-zero join and full
+strict A1 invariance remain outside these entries.

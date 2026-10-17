@@ -1,0 +1,11 @@
+Source SHA256: 0a34d7dafb65ab40564915491eca232a397983e130e582a89c00949e31df3584  Tests/DenseOpenAffineDetection.lean
+Compiler: Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)
+Command: lean -j1 -DautoImplicit=false -DmaxHeartbeats=200000 -DwarningAsError=true -Dweak.linter.mathlibStandardSet=true -o /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/DenseOpenAffineDetection.olean -i /workspace/scratch/ab4c8cd79b02/latest-upload/extracted/motivic-cohomology/.lake/build/lib/lean/Tests/DenseOpenAffineDetection.ilean Tests/DenseOpenAffineDetection.lean
+'Motivic.PresheafWithTransfers.exists_zero_neighborhood_of_nonempty_open' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Motivic.PresheafWithTransfers.iSup_zero_opens_of_nonempty_open' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'Motivic.PresheafWithTransfers.section_zero_of_trdeg_zero' depends on axioms: [propext, Classical.choice, Quot.sound]
+Exit status: 0

@@ -53,3 +53,19 @@ Boundary-avoiding moving-divisor construction is still a separate geometric inpu
 
 Upstream extraction needs the relevant general prerequisites moved or replaced
 first. Motivic correspondence assembly and strict-A¹ consumers remain downstream.
+
+## Generic-base and original-open geometry
+
+[AffineEtaleClosedSectionNeighborhood](AffineEtaleClosedSectionNeighborhood.lean)
+constructs a principal refinement preserving the full original closed base
+change and its section. [RelativeCurveOverlapShrinking](RelativeCurveOverlapShrinking.lean)
+and [RelativeOpenImmersionOverlapShrinking](RelativeOpenImmersionOverlapShrinking.lean)
+keep the prescribed scheme while shrinking over an actual generic base open.
+The relative-line application is in the optional
+[generic-base cohomology entry](../../Cohomology/AffineLine/GenericBase.lean).
+Dimension-one bounds concern the actual generic fiber.
+
+The original étale presentation and one-sided moving constructions feed the
+[affine local-zero detection entry](../../Cohomology/A1/GenericDetection.lean).
+The [source record](../../../doc/provenance/generic-detection-20261017/README.md)
+separates admitted results from unlogged archival inputs.

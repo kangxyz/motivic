@@ -42,3 +42,8 @@ records. The `repository_source_sha256` fields in this initial snapshot index
 identify the initial imported repository at commit `04569be`; they are not a
 mutable assertion about every later working-tree version. Source changes in
 later snapshots have their own identities and verification coverage.
+
+The [generic-detection snapshot](generic-detection-20261017/README.md) records
+the next source delta, checked admissions and six unlogged archival inputs.
+Existing repaired helper implementations are retained with their separate
+source/evidence identities.
