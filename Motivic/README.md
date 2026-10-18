@@ -10,6 +10,7 @@ or exact implementation leaf for development.
 | [Cohomology](Cohomology.lean) | [Ordinary and motivic cohomology](Cohomology/README.md) |
 | [Affine-line cohomology](Cohomology/AffineLine.lean) | Optional ordinary higher/positive-degree vanishing over fields |
 | [Affine generic detection](Cohomology/A1/GenericDetection.lean) | Local-zero neighborhoods for HI presheaves with transfers over infinite fields |
+| [Strict affine-line invariance](Cohomology/A1/StrictInvariancePerfectField.lean) | All-degree ordinary Nisnevich invariance for HI transfer sheaves over every perfect field |
 | [Relative affine-line generic base](Cohomology/AffineLine/GenericBase.lean) | Classwise generic-base vanishing: ordinary higher degrees and all positive degrees for HI transfer sheaves |
 | [Cartier boundaries](Cohomology/A1/CartierBoundary.lean) | Original boundary and higher open direct-image zero, with explicit current-degree HI and boundary Epi inputs |
 | [Milnor K](KTheory/MilnorK.lean) | [Integral symbol groups](KTheory/MilnorK/README.md) |

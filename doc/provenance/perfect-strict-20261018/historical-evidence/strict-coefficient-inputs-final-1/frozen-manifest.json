@@ -1,0 +1,36 @@
+{
+  "scope": "Perfect-field strict NST invariance conditional on original integral-affine local zero D and canonical boundary Epi E. Actual finite-field D is supplied by its frozen producer; finite-field ordinary projection consumer retains E only. Full K-valued marks, literal ordinary projection, original HasExt and coefficient universe preserved. No actual finite E or unconditional finite strict invariance claim.",
+  "status": "Final accepted: exact-origin declaration lint and standard-three foundation audit; exact-nine text/style checks; source hashes/pins/DAG rechecked unchanged.",
+  "exact_origin_declarations_audited": 135,
+  "final_receipt": ".lake/verification/strict-coefficient-inputs-final-1",
+  "source_files": {
+    "Motivic/Cohomology/A1/CoefficientLocalZero.lean": "13533136aad5441a755cba850c0f515698fd152c9be4e12271fce0981ce1b0c4",
+    "Motivic/Cohomology/A1/FiniteCoefficientLocalZero.lean": "598d2194475dad1ddfc07bf976753f0a48579a549c0c159b06acf6c663f415a7",
+    "Motivic/Cohomology/A1/ContractionBoundaryInputs.lean": "f3432154da1b42f83ee2d1c78fb70d5b9f292b5bbf8690810d3db64744203a11",
+    "Motivic/Cohomology/A1/ContractionCohomologyInputs.lean": "4a42f97811b73aa2da3cfb7de5212ded61750dc07dd8c03ce75bd7164675dba7",
+    "Motivic/Cohomology/A1/PointedCartierH1RestrictionInputs.lean": "ad0e28c3442810dff9ca7564caa1b7846ec1005585c2e7391269a4d4a0f5de40",
+    "Motivic/Cohomology/A1/ContractionChartHigherImageInputs.lean": "e2a98703c30e25171735bc69a258a2ef905aec49efc3ac255fb37a1255227c78",
+    "Motivic/Cohomology/A1/PointedCartierPositiveRestrictionInputs.lean": "53c13cfdbe4f3e343c8f740626dd5c0cd16ed24109d4e4c4cfa8c5e1835b8010",
+    "Motivic/Cohomology/A1/StrictInvarianceCoefficientInputs.lean": "444d9506c1e0a7270e10ad74d6c29a92f5f8d1fe0fc82b3e2c8dc60d1200679c",
+    "MotivicTest/StrictA1CoefficientInputs.lean": "658381bda647ea5730dceadf44ccf941019bcd657fcd8e04135c03598177ced9"
+  },
+  "pins": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+    "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8"
+  },
+  "source_checks": {
+    "no_placeholders_or_unsafe": true,
+    "no_heartbeat_or_linter_changes": true,
+    "no_production_test_import": true,
+    "local_import_closure_acyclic": true,
+    "local_import_closure_count": 1541
+  },
+  "meaningful_consumers": [
+    "original_projection_isIso: perfect-field actual ordinary projection in every degree from explicit D/E",
+    "original_H1_puncture_mono: any field, full K marks, empty HI window",
+    "original_H2_puncture_mono: any field, only degree-one HI for all HI coefficients",
+    "finite_original_projection_isIso_of_boundary_epi: actual finite D, only E conditional"
+  ],
+  "completed_utc": "2026-10-18T09:44:54Z"
+}

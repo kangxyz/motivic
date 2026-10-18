@@ -1,0 +1,62 @@
+{
+  "status": "FINAL_PASS",
+  "exact_origin_declarations": 52,
+  "scope": "Eight local principal-face/Euler production leaves and two actual consumers in one test; local signed face cancellation and original no-flat Cor endpoint linearization. Not a global principal A1 theorem.",
+  "files": [
+    {
+      "path": "Motivic/Aglib/RingTheory/Multiplicity/PrincipalEuler/FaceDifference.lean",
+      "sha256": "a1c51afd27fb8a128a40220893ae7664b0d35afec11d79a87e8fa77fc2e00cce"
+    },
+    {
+      "path": "Motivic/AlgebraicGeometry/Correspondences/FinitePointCycleEndpoints.lean",
+      "sha256": "a8e7ee55c191305ce96e7c6ab9134e77b85cafa9456718a85b4ae34de756feed"
+    },
+    {
+      "path": "Motivic/Aglib/RingTheory/PrincipalKoszulEuler.lean",
+      "sha256": "7d8ff2720780ba9f6f0f76a38af6675f186958b0dedf97ce3d5ac12b95ca6d59"
+    },
+    {
+      "path": "Motivic/Aglib/AlgebraicGeometry/PrincipalFaceCoefficient.lean",
+      "sha256": "2feb39550b1cce7c81f67146a2b2a1ac27152d686afb024480f01ea2f3685d47"
+    },
+    {
+      "path": "Motivic/Aglib/RingTheory/Multiplicity/PrincipalEuler/Surjective.lean",
+      "sha256": "6d1f83faa01522705b465d81342f25b17ff5f30d64b96201b8adc2d25ae44560"
+    },
+    {
+      "path": "Motivic/Aglib/AlgebraicGeometry/PrincipalDivisorFaceCoefficient.lean",
+      "sha256": "217162c539b72d161d0b3734450abd2a95f979a6742f43b7f6c6448e1bd2ce93"
+    },
+    {
+      "path": "Motivic/Aglib/AlgebraicGeometry/PrincipalDivisorFaceSupport.lean",
+      "sha256": "2a27a65d4774bb3e592ac1651056e65af0be2982d178ed7ac7b9f9de150d314a"
+    },
+    {
+      "path": "Motivic/Aglib/AlgebraicGeometry/SignedPrincipalFaceCoefficient.lean",
+      "sha256": "5fe949c348eee45190557d7ed5c205c80d82dabb87532557444d2038a6d19c4f"
+    },
+    {
+      "path": "MotivicTest/PrincipalFaceConsumers.lean",
+      "sha256": "5d331b3198e416cce9fdce98673ccdada4adbf4b452ec796c51641c0568f65ff"
+    }
+  ],
+  "successful_build_receipt": ".lake/verification/principal-face-final-current-2/graph-build.json",
+  "source_trust_receipt": ".lake/verification/principal-face-final-current-2/source-check.json",
+  "text_and_declaration_checks": "Compiler test passed exact-origin transitive standard axioms, declaration lints, exact-file text/style/casing/filename checks.",
+  "pins": {
+    "mathlib": [
+      "https://github.com/leanprover-community/mathlib4.git",
+      "d13f23b723b8a846827a245b89c10fc7d3f11612"
+    ],
+    "Aglib": [
+      "https://github.com/kangxyz/aglib.git",
+      "b11b71d11bf03cf231f0e06b947a7b63d4344a9e"
+    ]
+  },
+  "lean": "4.34.1",
+  "separate_exclusions": [
+    "PrincipalFamilyUnitOpen",
+    "PrincipalFamily"
+  ],
+  "frozen_at_utc": "2026-10-18T07:43:15Z"
+}

@@ -9,9 +9,12 @@ The [transfer endpoint](../Transfers/SheafCohomologyWithTransfers.lean) acts
 on its original groups, restrictions and coefficient maps. Degree conventions,
 coefficient universes and `HasExt` inputs stay explicit.
 
-`A1/` and the geometric H1/descent leaves retain their individual scopes.
-They do not supply general strict A1 invariance. The imported roadmap and
-source-check evidence live in [provenance](../../doc/provenance/README.md).
+The optional [perfect-field strict-invariance entry](A1/StrictInvariancePerfectField.lean)
+proves all-degree invariance of the original ordinary projections for HI transfer
+sheaves over every perfect field. It retains ordinary `HasExt.{u+1}` and
+coefficient universe `u + 1`. The [A1 guide](A1/README.md) records its finite and
+infinite suppliers. Other geometric H1/descent leaves retain their individual
+scopes; historical roadmaps live in [provenance](../../doc/provenance/README.md).
 
 ## Affine-line vanishing
 
@@ -27,8 +30,8 @@ HI result; the higher-degree proof uses actual generic-open section lifting,
 Artinian neighborhoods, relative Ext excision and finite closed overlap-support
 deletion. The exact [milestone record](../../doc/provenance/positive-vanishing-20261017/README.md)
 and [verification record](../../doc/VERIFICATION.md) distinguish archived checks,
-source review and current checks. Generic-cylinder continuity and full strict
-A1 invariance remain separate obligations. Arbitrary small-site coefficients
+source review and current checks. The perfect-field strict theorem has its own
+entry and proof; general derived continuity remains separate. Arbitrary small-site coefficients
 are not identified with arbitrary big-site coefficients by this entry.
 
 ## Generic neighborhoods
@@ -74,6 +77,7 @@ pair is supplied. Quotient, small sheafification, genuine closed inverse image
 and original punctured representatives remain the actual constructions.
 
 The [source record](../../doc/provenance/cartier-boundary-rj-20261018/README.md)
-distinguishes checked admissions from archived candidates. The original Epi
-producer, the remaining marked restriction-Mono joins, finite-field generic
-detection and full strict A1 invariance remain open. Default imports are unchanged.
+distinguishes checked admissions from archived candidates. The later perfect-field
+strict proof supplies its original Epi and marked restriction-Mono joins, including
+finite-field local-zero and boundary constructions. The conditional Cartier
+interface above keeps its stated hypotheses. Default imports are unchanged.

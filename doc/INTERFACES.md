@@ -13,7 +13,9 @@ review or a theorem-status assignment.
 | `Motivic.Cohomology.AffineLine` | Original ordinary big-smooth Nisnevich `H^(n+2)(A1,F)=0` for arbitrary abelian coefficients; `H^(n+1)=0` for HI sheaves with transfers over any field. Ordinary `HasExt` and coefficient universe `u+1` remain explicit. This does not supply a general small-site comparison or strict invariance on arbitrary smooth schemes. |
 | `Motivic.Cohomology.A1.GenericDetection` | Over infinite fields, original nonempty-open vanishing for HI presheaves with transfers on smooth integral affine schemes gives actual affine zero-neighborhoods covering all points. No sheaf premise; local-zero conclusion. |
 | `Motivic.Cohomology.AffineLine.GenericBase` | Over any field and smooth domain base: classwise eventual higher vanishing for arbitrary ordinary coefficients, plus all-positive vanishing for HI transfer sheaves. Whole line, original maps, coefficient universe and `HasExt` retained; class-dependent open. |
-| `Motivic.Cohomology.A1.StrictInvariance` | Every original ordinary Nisnevich cohomology projection is an isomorphism in every natural degree for HI `SheafWithTransfers.{u+1}` coefficients over an infinite perfect field. Retains ordinary `HasExt.{u+1}` and the original groups/maps; no supplied positive-HI or puncture-Mono family. |
+| `Motivic.Cohomology.A1.StrictInvariancePerfectField` | Every original ordinary Nisnevich cohomology projection is an isomorphism in every natural degree for HI `SheafWithTransfers.{u+1}` coefficients over any perfect field, including finite fields. Retains ordinary `HasExt.{u+1}` and the original groups/maps; no cardinality or supplied local-zero/boundary-Epi family. The finite and infinite branches remain separately importable. |
+| `Motivic.Cohomology.A1.FiniteIntegralAffineLocalZero` | Original integral-affine local-zero neighborhoods over finite fields for HI presheaves with transfers, with arbitrary coefficient universe. No sheaf premise or supplied presentation family. |
+| `Motivic.Cohomology.A1.FinitePresheafContractionBoundaryEpi` | The actual canonical contraction-to-boundary morphism is epimorphic over finite fields for arbitrary original HI `PresheafWithTransfers.{u+1}` coefficients; no HasExt, transfer-sheaf or supplied geometry-family premise. |
 | `Motivic.Cohomology.A1.CartierBoundary` | Genuine positive `Rj_*` vanishes for a supplied smooth Cartier complement over an infinite field, assuming current-degree original cohomology HI and the original contraction-to-boundary Epi for every smooth object. Ordinary `HasExt.{u+1}`, coefficients `u+1`, locally rank-one ideal and actual complement equality retained. |
 | Motivic complexes | Sheafified reduced-torus singular complexes in weight `q`, with singular chain degree `r` in cochain degree `q-r`; differential/shift signs are explicit. |
 | Motivic finite coefficients | Derived coefficient construction and the original multiplication/coefficient triangle. A termwise replacement needs its own comparison. |
@@ -26,7 +28,8 @@ sheaves with transfers. Sheaf cokernels are genuine sheaf cokernels; section
 values need not be objectwise cokernels. Exactness of a forgetful functor alone
 does not establish acyclicity: use the actual supplied comparison proofs.
 
-Finite-field strict A1 descent, henselian/essentially-smooth derived continuity, full
+General HI-presheaf sheafification, nonperfect-field strict invariance,
+henselian/essentially-smooth derived continuity, full
 canonical purity, positive-characteristic diagonal comparison, and general
 higher-Chow/DM/spectrum comparisons retain separate proof obligations. The
 [imported roadmap](provenance/strict-a1-proof-roadmap-20261017.md) records the
@@ -35,9 +38,11 @@ computation does not close an unsupplied input.
 
 The retained Cartier theorem states its original current-degree HI and boundary
 Epi inputs. `Motivic.FiniteEtaleSite.OriginalPresheaf.contractionToBoundary_epi` now supplies
-the genuine Epi for HI original presheaves over infinite fields. The strict
-invariance theorem supplies higher HI over infinite perfect fields by lower-degree
-induction over all HI coefficients, including their actual contractions. Its
-puncture-Mono family is constructed rather than assumed. Earlier conditional
+the genuine Epi for HI original presheaves over infinite fields;
+`contractionToBoundary_epi_of_finite` supplies the finite-field branch. The
+perfect-field strict theorem combines both cardinalities, using actual local-zero
+and boundary suppliers and lower-degree induction over all HI coefficients,
+including their actual contractions. Its puncture-Mono family is constructed
+rather than assumed. Earlier conditional
 rank interfaces retain their exact statements; coefficient-section dense-open
 Mono remains a different morphism.

@@ -1,0 +1,79 @@
+{
+  "archive_sha256": "ce21c765247500593c20e3ef916ecc616448bfa2f0607a48be629088954b4815",
+  "archive_base": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+  "integration_base": "0e3d1088fa47def228957f913ddcb28414fa2d9d",
+  "admission": {
+    "new_production": 131,
+    "new_tests": 21,
+    "existing_production_updates": 1,
+    "exact_archive_byte_sources": 153,
+    "retained_twisting_api": "The current twistingSectionsEquiv_eqToHom_opens theorem and caller remain unchanged; the archive uses an equivalent nominal variant.",
+    "outside_production_candidates": 18,
+    "candidate_boundary": "Independent sources without current frozen/hash-bound acceptance. Some have narrative or historical production success; absence of a binding does not establish a compile failure."
+  },
+  "pins": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+    "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8"
+  },
+  "ordinary_review": {
+    "status": "PASS for perfect-field strict invariance, finite canonical Epi and finite original local zero.",
+    "theorem": "Motivic.SheafWithTransfers.isStrictA1Invariant_of_perfect",
+    "conditions": [
+      "k : Type u; Field k; PerfectField k",
+      "F : SheafWithTransfers.{u+1} k; F.obj.IsA1Invariant",
+      "HasExt.{u+1} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u+1})"
+    ],
+    "source_correspondence": "All 51 primary, 40 additional and 92 reused source hashes match the integrated tree.",
+    "review_bindings_sha256": "a4bf363909e203d024df689e15c5e84b75660b337fa733a3a7987d371233b077",
+    "status_boundary": "Ordinary result-specific review; no established-expose status is assigned."
+  },
+  "supplied_runtime": {
+    "finite_endpoint": {
+      "sources": 19,
+      "exact_origin_declarations": 322,
+      "completed_compile_exit": 0,
+      "evidence": "historical-evidence/finite-strict-actual-final-3/"
+    },
+    "perfect_endpoint": {
+      "sources": 2,
+      "exact_origin_declarations": 4,
+      "completed_compile_exit": 0,
+      "evidence": "historical-evidence/perfect-strict-final/"
+    },
+    "boundary": "Supplied Linux checks bind their exact source and package pins. They are not relabeled as a fresh current native-platform or hosted run. Other final scopes and the explicitly superseded affine-Weil hash are indexed in SOURCE-INDEX.json."
+  },
+  "current_source": {
+    "checked_sources": 3252,
+    "project": 3251,
+    "independent_client": 1,
+    "import_DAG_and_source_policy": "PASS",
+    "exact_delta_text_style": {
+      "sources": 153,
+      "exit_code": 0,
+      "guard_failure": null,
+      "owned_group_gone": true,
+      "receipt_sha256": "a66dcb1f46ab576ada20af945d7970061537e3e7fbb736c3e883821a10ec0d1c"
+    },
+    "selected_CI_targets": 556,
+    "perfect_terminal_selected": true
+  },
+  "current_hosted_validation": "Affected-source compilation and selected consumers remain pending the integration CI. No local Darwin full-closure replay is claimed.",
+  "scope_boundaries": [
+    "Original ordinary Nisnevich groups and projection maps; coefficient universe u+1 and ordinary HasExt retained.",
+    "No cardinality or supplied D/E geometric-family premise in the perfect-field endpoint.",
+    "General HI-PST sheafification, nonperfect fields, global principal-family/norm/Picard, full purity and motivic model comparisons retain their separate boundaries."
+  ],
+  "supporting_review": {
+    "status": "Accepted for the stated supporting conclusions and consumer correspondence; no material defect identified.",
+    "reviewed_new_sources": 41,
+    "existing_coherence_update": 1,
+    "archive_source_and_status_hash_matches": 42,
+    "byte_identical_existing_direct_dependencies": 19,
+    "coherence_boundary": "All four public signatures are unchanged; a private abstract-module lemma factors the original composition derivation.",
+    "scope": "Local principal-face, prescribed frame/graph, actual correspondence and Weil/scalar statements retain their explicit hypotheses. No global principal-A1, non-flat norm or Picard completion is claimed.",
+    "review_sha256": "cf00d316625241ce9fff7dbcee8f1c6dd0f45d57b1eca04261a0a77c5a37cb85",
+    "source_identity_sha256": "564b85be95360193b4b6da2df3f6f75de6521b6434102450d3d9cc63972ccc9f",
+    "runtime_boundary": "Existing identified evidence reused; the independent review ran no compiler."
+  }
+}

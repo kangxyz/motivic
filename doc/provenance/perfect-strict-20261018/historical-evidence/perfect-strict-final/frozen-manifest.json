@@ -1,0 +1,30 @@
+{
+  "scope": "Strict A1 invariance over arbitrary perfect fields, combining accepted finite and infinite branches while retaining original ordinary HasExt, coefficient universe u+1, HI and literal ordinary projection maps.",
+  "status": "PASS",
+  "source_count": 2,
+  "exact_origin_declarations_audited": 4,
+  "final_receipt": ".lake/verification/perfect-strict-final",
+  "source_files": {
+    "Motivic/Cohomology/A1/StrictInvariancePerfectField.lean": "fff5038fc33a4b3a7d76042e3c3b04f558446ed45626df92a6cf670c970c0be1",
+    "MotivicTest/PerfectFieldStrictA1Invariance.lean": "1c926669970beff06970371b50ad9a07f0c325954dd26c13f4bd3ae23470abed"
+  },
+  "pins": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+    "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8"
+  },
+  "repository_head": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+  "aglib_head": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
+  "source_checks": {
+    "no_placeholders_or_unsafe": true,
+    "no_heartbeat_or_linter_changes": true,
+    "no_production_test_import": true,
+    "local_import_closure_acyclic": true,
+    "local_import_closure_count": 1592
+  },
+  "assumption_contracts": {
+    "strict": "Field k, PerfectField k, ordinary HasExt.{u+1}, NST.{u+1} and HI; no cardinality or geometric family premise"
+  },
+  "accepted_branch_receipt": ".lake/verification/finite-strict-actual-final-3/frozen-manifest.json",
+  "frozen_sources_changed": []
+}

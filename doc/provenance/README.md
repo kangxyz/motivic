@@ -68,3 +68,10 @@ The archive has matching historical Linux compilation and scoped lint/audit
 evidence; ordinary independent mathematical/source review passed. Eleven
 unbound candidates remain archived outside production. Current integration
 checks are recorded separately in [verification](../VERIFICATION.md).
+
+The later [perfect-field strict-invariance package](perfect-strict-20261018/README.md)
+constructs the finite local-zero and canonical boundary suppliers and joins the
+finite and infinite branches. Its general endpoint retains ordinary `HasExt`,
+coefficient universe `u + 1` and HI, with no cardinality or supplied geometry
+family. The source record separates admitted results, exact supplied checks,
+ordinary independent review and the independent candidates outside production.

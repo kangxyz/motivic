@@ -1,0 +1,46 @@
+{
+  "status": "FINAL_PASS",
+  "scope": [
+    {
+      "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.TwistFrameTransport",
+      "source": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/TwistFrameTransport.lean",
+      "sha256": "1a947943927cf0dc33902549f79bc33822a2fa7973f3238a568cfb0ef6457a5f",
+      "original_backup": "/workspace/scratch/ab4c8cd79b02/proof-backups/TwistFrameTransport.original.lean",
+      "original_sha256": "53717f1f3174b6d5e512a9b1a84854ed546171b1ab03db1bc01695e1b20f4479",
+      "inverse_rename_byte_equal": true,
+      "replacement_count": 1
+    },
+    {
+      "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.TwistRestrictedFrames",
+      "source": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/TwistRestrictedFrames.lean",
+      "sha256": "607fab6bc274768ec12c06aaf85211ec35dcdd82edfd881b9359b261f6dd3b82",
+      "original_backup": "/workspace/scratch/ab4c8cd79b02/proof-backups/TwistRestrictedFrames.original.lean",
+      "original_sha256": "e8d408c78cdc6d76dc67272cf79580c83b5da0aa12e5b1f5e36851a7f1ddcb5b",
+      "inverse_rename_byte_equal": true,
+      "replacement_count": 1
+    }
+  ],
+  "old_identifier": "twistingSectionsEquiv_eqToHom",
+  "new_identifier": "twistingSectionsEquiv_open_eqToHom",
+  "change": "Only one local open-equality declaration identifier and its sole caller were renamed, avoiding collision with upstream degree-equality transport. All other bytes are identical to preserved originals.",
+  "audit_sha256": "33b7dcefc38d9ec525d98cccb7247cb6421c8c32c4ee51d2f4bcd77cd270624d",
+  "coverage": "Exact two production origins, including private/generated declarations; standard-three axiom audit and declaration lint; exact two-file text/style. Existing actual consumer twistingBaseChangePushforward_restrict_apply belongs to the second audited origin. Separate from coherence proof repair and geometry new-origin audits.",
+  "axiom_allowlist": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "original_prepared_audit_sha256": "b26a3f409f836c2b4ecd68f2dbbd7d82ddef30038e5f4bef1e80fda7ef8c0a97",
+  "audit_header_repair": "Added required modern module header for import all; production sources unchanged.",
+  "audit_receipt": ".lake/verification/twist-open-transport-alignment-final/audit-run.json",
+  "checked_declarations": 15,
+  "checks": [
+    "exact-origin standard-three axioms and all declaration lint",
+    "pinned exact-source text/style",
+    "source and backup provenance checks"
+  ],
+  "base": {
+    "Motivic": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+    "Aglib": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "scope": [
+    "Motivic/Aglib/AlgebraicGeometry/AffineScalarPullback.lean",
+    "Motivic/Aglib/AlgebraicGeometry/AffineFiniteFreeWeilRestrictionScalar.lean",
+    "Motivic/Aglib/AlgebraicGeometry/AffineWeilRestrictionWitness.lean",
+    "Motivic/Aglib/AlgebraicGeometry/AffineWeilRestrictionActualPair.lean",
+    "Motivic/Aglib/AlgebraicGeometry/AffineScalarChart.lean",
+    "Motivic/Aglib/AlgebraicGeometry/AffineWeilRestrictionNativePair.lean",
+    "Motivic/AlgebraicGeometry/Sites/FiniteEtaleAffineWeilRefinement.lean",
+    "Motivic/AlgebraicGeometry/SmoothSiteAffineWeilRefinement.lean",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/RestrictionDifferenceRefinement.lean",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/FiniteScalarRefinementDifference.lean",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/FiniteScalarEtaleCorrection.lean",
+    "Motivic/Cohomology/A1/PresheafBoundaryFiniteSeparableDescent.lean",
+    "Motivic/Cohomology/A1/PresheafBoundaryAffineWeilDescent.lean",
+    "MotivicTest/AffineWeilBoundaryDescent.lean"
+  ],
+  "sha256": {
+    "Motivic/Aglib/AlgebraicGeometry/AffineScalarPullback.lean": "cabe9095bee1ebb13b26378b42689327698e0f26838cdc4442312d47c77a2e4a",
+    "Motivic/Aglib/AlgebraicGeometry/AffineFiniteFreeWeilRestrictionScalar.lean": "a21aec2388241f12e22f6a41453d328c45f30e7d3b87e2afe1673a7cc69c0889",
+    "Motivic/Aglib/AlgebraicGeometry/AffineWeilRestrictionWitness.lean": "381c2547b2963dbb875cec93098c83fe995c9dbf56f2d95565c26e3c311be632",
+    "Motivic/Aglib/AlgebraicGeometry/AffineWeilRestrictionActualPair.lean": "a7ac49442ec25f0d14af852f9b4380980832a49465d7dde0e46e57865fdeb2d6",
+    "Motivic/Aglib/AlgebraicGeometry/AffineScalarChart.lean": "85fe525aab1012f5aca5c4b3473e92521196dcf1fa711592429236dbece8baf0",
+    "Motivic/Aglib/AlgebraicGeometry/AffineWeilRestrictionNativePair.lean": "88cb0d29b89e5a6ab6f85813ba74256a9523a20ad2ea04e173d374feedebd730",
+    "Motivic/AlgebraicGeometry/Sites/FiniteEtaleAffineWeilRefinement.lean": "2539d8c6e01ad8d3c3ae366f1c5c3c05a6de5e1751637edc5d91c25599a0af73",
+    "Motivic/AlgebraicGeometry/SmoothSiteAffineWeilRefinement.lean": "a8599e8027dd882140bac0df68a2e98ba04035d5308c6152d328e5e77b3ddc9c",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/RestrictionDifferenceRefinement.lean": "997d6cc7db2cbfd3705173651d39bb9a02eea5d5eedd204844d9ecf4c509c38c",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/FiniteScalarRefinementDifference.lean": "ad7143d033b5c73e1a0689eb2ff9a093dfa3783ab408c6e3eceafa0a52a66503",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/FiniteScalarEtaleCorrection.lean": "7782062178c3f485f8078de4234d9f0c04de835aec994efef2b1836dedb65d7c",
+    "Motivic/Cohomology/A1/PresheafBoundaryFiniteSeparableDescent.lean": "57907cd2b1ebc6a623663b3791cfe9ee79c16f71ff4d0f820b265b2ba0daa82c",
+    "Motivic/Cohomology/A1/PresheafBoundaryAffineWeilDescent.lean": "011f58b04a6cddc49e687069f627676706c5f560ad25f80cfb239d1464bda4c7",
+    "MotivicTest/AffineWeilBoundaryDescent.lean": "aa7311c4c3540dd333ad329b87224b12936b943f5bea94aa924219cebefc0915"
+  },
+  "checks": [
+    "exact selected module headers",
+    "selected proof/unsafe tokens",
+    "selected budget/lint/quotation options",
+    "selected import existence and boundaries",
+    "reachable actual local import cycles",
+    "fixed mathematical pins and compiler identity"
+  ],
+  "reachable_local_modules": 732,
+  "errors": [],
+  "passed": true,
+  "reused_evidence": [
+    "Frozen affine finite-free single and pair Weil sources reused unchanged; original scalar trace and native scalar coefficient sources reused unchanged. Their historical receipts are not represented as current-pin replays."
+  ],
+  "text_scope": "Pinned Lean text-based lint is separately recorded by the exact fourteen-file application consumer; this script does not assert that compiler result."
+}

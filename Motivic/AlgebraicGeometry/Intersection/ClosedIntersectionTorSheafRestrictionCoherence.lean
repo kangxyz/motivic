@@ -26,6 +26,37 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 universe u
 
+namespace Motivic.AffineOpenTilde
+
+set_option backward.defeqAttrib.useBackward true in
+set_option backward.isDefEq.respectTransparency false in
+set_option backward.isDefEq.respectTransparency.types false in
+/-- Factor the chart-sheaf cocycle through abstract coordinate modules, keeping
+large concrete Tor objects out of the categorical rewrite proof. -/
+private theorem restrictionMap_comp {X : Scheme.{u}} {U V L : X.affineOpens}
+    (h : U ≤ V) (k : V ≤ L)
+    {M : ModuleCat.{u} Γ(X, L)} {N : ModuleCat.{u} Γ(X, V)}
+    {Q : ModuleCat.{u} Γ(X, U)}
+    (f : (ModuleCat.extendScalars (sectionRestriction k).hom).obj M ⟶ N)
+    (g : (ModuleCat.extendScalars (sectionRestriction h).hom).obj N ⟶ Q)
+    (d : (ModuleCat.extendScalars (sectionRestriction (h.trans k)).hom).obj M ⟶ Q)
+    (e : (scalarCompositionIso h k M).hom ≫
+      (ModuleCat.extendScalars (sectionRestriction h).hom).map f ≫ g = d) :
+    (openCompositionIso (X := X) (U := U.1) (V := V.1) (L := L.1) h k).hom.app
+        ((chartTilde L).obj M) ≫
+      (Scheme.Modules.restrictFunctor (X.homOfLE h)).map
+        ((restrictionIso k).hom.app M ≫ (chartTilde V).map f) ≫
+      ((restrictionIso h).hom.app N ≫ (chartTilde U).map g) =
+    (restrictionIso (h.trans k)).hom.app M ≫ (chartTilde U).map d := by
+  simp only [CategoryTheory.Functor.map_comp, Category.assoc]
+  erw [restrictionIso_naturality_assoc h f]
+  erw [restrictionIso_hom_comp_assoc h k M]
+  have hm := congrArg (chartTilde U).map e
+  simp only [CategoryTheory.Functor.map_comp] at hm
+  exact congrArg (fun φ => (restrictionIso (h.trans k)).hom.app M ≫ φ) hm
+
+end Motivic.AffineOpenTilde
+
 namespace Motivic.Intersection
 
 variable {P T D W : Scheme.{u}} (i : T ⟶ P) (j : D ⟶ P)
@@ -91,28 +122,20 @@ theorem closedIntersectionTorSheafRestrictionIso_hom_comp
         (closedIntersectionTorSheafRestrictionIso i j a b sq k n).hom ≫
       (closedIntersectionTorSheafRestrictionIso i j a b sq h n).hom =
     (closedIntersectionTorSheafRestrictionIso i j a b sq (h.trans k) n).hom := by
-  simp only [closedIntersectionTorSheafRestrictionIso_hom,
-    CategoryTheory.Functor.map_comp, Category.assoc]
-  erw [AffineOpenTilde.restrictionIso_naturality_assoc
-    (U := closedIntersectionAffineOpen i a b j sq U)
-    (V := closedIntersectionAffineOpen i a b j sq V)
-    ((a ≫ j).preimage_mono h)
-    (closedIntersectionAffineTorRestrictionIso i j a b sq k n).hom]
-  erw [AffineOpenTilde.restrictionIso_hom_comp_assoc
+  rw [closedIntersectionTorSheafRestrictionIso_hom,
+    closedIntersectionTorSheafRestrictionIso_hom,
+    closedIntersectionTorSheafRestrictionIso_hom]
+  exact AffineOpenTilde.restrictionMap_comp
     (U := closedIntersectionAffineOpen i a b j sq U)
     (V := closedIntersectionAffineOpen i a b j sq V)
     (L := closedIntersectionAffineOpen i a b j sq L)
+    (M := closedIntersectionAffineTor i a b j sq L n)
+    (N := closedIntersectionAffineTor i a b j sq V n)
+    (Q := closedIntersectionAffineTor i a b j sq U n)
     ((a ≫ j).preimage_mono h) ((a ≫ j).preimage_mono k)
-    (closedIntersectionAffineTor i a b j sq L n)]
-  have hm := congrArg
-    (AffineOpenTilde.chartTilde (closedIntersectionAffineOpen i a b j sq U)).map
+    (closedIntersectionAffineTorRestrictionIso i j a b sq k n).hom
+    (closedIntersectionAffineTorRestrictionIso i j a b sq h n).hom
+    (closedIntersectionAffineTorRestrictionIso i j a b sq (h.trans k) n).hom
     (closedIntersectionAffineTorRestrictionIso_hom_scalarComposition i j a b sq h k n)
-  simp only [CategoryTheory.Functor.map_comp] at hm
-  exact congrArg (fun φ =>
-    (AffineOpenTilde.restrictionIso
-      (U := closedIntersectionAffineOpen i a b j sq U)
-      (V := closedIntersectionAffineOpen i a b j sq L)
-      ((a ≫ j).preimage_mono (h.trans k))).hom.app
-        (closedIntersectionAffineTor i a b j sq L n) ≫ φ) hm
 
 end Motivic.Intersection

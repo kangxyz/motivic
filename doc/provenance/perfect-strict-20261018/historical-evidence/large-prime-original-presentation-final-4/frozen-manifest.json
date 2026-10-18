@@ -1,0 +1,33 @@
+{
+  "scope": "Actual same-two-prime scalar original etale presentations from explicit original generators, positive transcendence degree and residue cotangent basis. Produces integral scalar algebras and unique nonempty whole closed fibers; retains literal original p/a pullbacks, full mapped nonreduced J quotient and canonical closed lift. No supplied geometry family. Not boundary Epi or finite-field strict A1.",
+  "exact_origin_declarations_audited": 66,
+  "final_receipt": ".lake/verification/large-prime-original-presentation-final-4",
+  "source_files": {
+    "Motivic/Aglib/RingTheory/Bertini/SelectedMinorFieldExtension.lean": "fa798677ec495b81f764d2e559171865eb7afa98a90e19e8df567cc7378223f3",
+    "Motivic/Aglib/RingTheory/Bertini/ScalarWholeFiberParameterIndependence.lean": "b429f6c5b3e6090516639d415bb1ec0647e5b2180ccdd4ab4e72221fe982ed04",
+    "Motivic/Aglib/RingTheory/Bertini/ScalarMovingCoefficientMap.lean": "044e7b84648ebe454b92386325b31e9895fbfc88da8189db2a0c3c9f3c44958f",
+    "Motivic/Aglib/RingTheory/Bertini/ScalarWholeFiberDifferentialIndependence.lean": "44a1dd67d0229aae360f40efd6c4846138f21fe2bd26d6866f9ba06299dd06f1",
+    "Motivic/Aglib/RingTheory/FiniteScalarExtensionTrdeg.lean": "de5ede87f5bc93a0ad5c21d9405ee99694f2205543585411af1e9af4ba51d370",
+    "Motivic/Aglib/RingTheory/Bertini/ScalarWholeFiberSmoothProjection.lean": "2225c73ff262a656af0ddfacd50d6666bf430330ae6424ba7f9240a224a6f9dc",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/ChosenQuadraticCompactification.lean": "4f5fc982914fac9a40c482f65e0d0b61b161407e4d71202e660cd35a5fc6d1fc",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/LargePrimeQuadraticCompactification.lean": "7f528a6b4c6052a4353cbc4b6b3f98f2656edb380476afa82f36b59f691f7642",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/ChosenRetainedPresentation.lean": "fde8b23bba09ab9ff9ca362ae91e8fa1afdc2d992656e57685827739c17dc9e1",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/ChosenOriginalEtalePresentation.lean": "7f9a9eee4c51d624e790dcd91550188d553960c5795160542e96f32c2fe751ea",
+    "Motivic/Aglib/AlgebraicGeometry/AffineEtaleScalarClosedSquare.lean": "bbc929d014c36b9b31fd6088746d16b2c330d5c9c0a2b536c0937e18b7a6206e",
+    "Motivic/AlgebraicGeometry/SmoothSiteAffineScalarCoordinates.lean": "8446e5aedfb95672626a95d711aacf09ad6a08262fa0ae9e9bb834543012414e",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/LargePrimeOriginalEtalePresentation.lean": "99d8f5122a8460277c9c9cc41d840760bfb28c1952c40959b9f6d95c9804daa6",
+    "MotivicTest/LargePrimeOriginalEtalePresentation.lean": "c80afc644575f9d3550d09dafd85f84dda2b3ffb4e217ae1edcf96ffff831cc5"
+  },
+  "pins": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+    "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8"
+  },
+  "source_checks": {
+    "no_placeholders_or_unsafe": true,
+    "no_heartbeat_or_linter_changes": true,
+    "no_production_test_import": true,
+    "local_import_closure_acyclic": true,
+    "local_import_closure_count": 618
+  }
+}

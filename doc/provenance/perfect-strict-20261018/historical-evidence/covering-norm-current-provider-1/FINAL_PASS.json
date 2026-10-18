@@ -1,0 +1,38 @@
+{
+  "status": "FINAL_PASS",
+  "exact_origin_declarations": 11,
+  "scope": "Two import/namespace-migrated norm production leaves and their original actual consumer; no global non-flat scheme norm theorem.",
+  "files": [
+    {
+      "path": "Motivic/Aglib/RingTheory/FiniteAlgebraMarkedNorm.lean",
+      "sha256": "275954416138866c2fe2fb08bb684d3797c21286609e00d19072deef7062b81d"
+    },
+    {
+      "path": "Motivic/Aglib/RingTheory/DVRNormCartierLength.lean",
+      "sha256": "d6b5cb1d190a1a627e8656a18c6353cee809b16fc7441ede4975ed9bc99aec4f"
+    },
+    {
+      "path": "MotivicTest/CoveringNormLengths.lean",
+      "sha256": "617db1130d1b2b32911983d684f5c3dce216d94eb7c2d485c317ee025a99bf45"
+    }
+  ],
+  "successful_build_receipt": ".lake/verification/covering-norm-current-provider-1/graph-build.json",
+  "source_trust_receipt": ".lake/verification/covering-norm-current-provider-1/source-check.json",
+  "text_and_declaration_checks": "Compiler test passed exact-origin transitive standard axioms, declaration lints, exact-file text/style/casing/filename checks.",
+  "pins": {
+    "mathlib": [
+      "https://github.com/leanprover-community/mathlib4.git",
+      "d13f23b723b8a846827a245b89c10fc7d3f11612"
+    ],
+    "Aglib": [
+      "https://github.com/kangxyz/aglib.git",
+      "b11b71d11bf03cf231f0e06b947a7b63d4344a9e"
+    ]
+  },
+  "lean": "4.34.1",
+  "separate_exclusions": [
+    "PrincipalFamilyUnitOpen",
+    "PrincipalFamily"
+  ],
+  "frozen_at_utc": "2026-10-18T07:43:15Z"
+}

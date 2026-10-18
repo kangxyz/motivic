@@ -1,0 +1,30 @@
+{
+  "scope": "Actual finite-field original integral-affine local zero for arbitrary HI presheaves with transfers and arbitrary coefficient universe w. Every original point receives an affine Zariski zero neighborhood; zero-dimensional and already-good-point branches included. Actual two-prime scalar presentations and common original open are constructed internally. No supplied geometry family, no presheaf sheaf-separation premise, no boundary Epi or full strict-A1 completion claim.",
+  "exact_origin_declarations_audited": 28,
+  "final_receipt": ".lake/verification/finite-integral-local-zero-final-1",
+  "source_files": {
+    "Motivic/AlgebraicGeometry/SmoothSiteFiniteScalarMarkedOpen.lean": "b7cf6ec58eaf7e2b3797efb6cb81466d7ec060e0e0ace1882e9b2cde230dc7bb",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/FiniteScalarLocalZero.lean": "53ccd75a31ee9d037be2e430a53efaec4bc41db89e609a000e5c3fb082e91b58",
+    "Motivic/Cohomology/A1/PresentationOriginalOpenVanishing.lean": "66567fed22bc54d3c1eeb4943504bec612dcf2f2ef2af16f198cd76ff7bad670",
+    "Motivic/Cohomology/A1/FiniteScalarPresentationLocalZero.lean": "88ee02993fcb24553fbfd716baf752081f86a51401bc22234b2fe861df21bfe1",
+    "Motivic/Cohomology/A1/FiniteAffineLocalVanishing.lean": "946cbd3500d25b67ea687578b372de0b3e16c3d5f3c1acdbcb4416ae988c7fa5",
+    "Motivic/Cohomology/A1/FiniteIntegralAffineLocalZero.lean": "3de296d8078fa7fcea1b2c9a24ff72fa9fedcc080515c219050ae686a20eba2b",
+    "MotivicTest/FiniteIntegralAffineLocalZero.lean": "af3bca6ed49497b7dba376a11c407d671dcfaeff115e1e98bf103c6c2656db56"
+  },
+  "pins": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+    "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8"
+  },
+  "source_checks": {
+    "no_placeholders_or_unsafe": true,
+    "no_heartbeat_or_linter_changes": true,
+    "no_production_test_import": true,
+    "local_import_closure_acyclic": true,
+    "local_import_closure_count": 987
+  },
+  "meaningful_consumers": [
+    "MotivicTest.FiniteIntegralAffineLocalZero.original_affine_zero_neighborhood: actual original open at arbitrary w and arbitrary original point",
+    "MotivicTest.FiniteIntegralAffineLocalZero.actual_integralAffineLocalZero: exact existing upper contract at u+1"
+  ]
+}

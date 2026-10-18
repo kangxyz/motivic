@@ -422,3 +422,36 @@ their 25 defining modules. All 417 audit entries and all non-import source bytes
 are preserved. Dependency, project and native progress were saved; no Aglib or
 Mathlib module compiled. The aggregate audit is selected for cached hosted
 acceptance after this import repair.
+
+## Perfect-field strict invariance, 18 October 2026
+
+The later archive adds the finite-field local-zero and canonical boundary-Epi
+producers, their ordinary-cohomology induction assembly, and the general entry
+`Motivic.Cohomology.A1.StrictInvariancePerfectField`. Its theorem
+`Motivic.SheafWithTransfers.isStrictA1Invariant_of_perfect` gives the literal
+ordinary Nisnevich projection isomorphism in every degree over every perfect
+field. It retains HI, `SheafWithTransfers.{u+1}` and ordinary `HasExt.{u+1}`;
+no cardinality or supplied D/E geometric-family premise remains.
+
+Independent ordinary review accepted the finite original-presheaf Epi, the
+arbitrary-coefficient-universe finite local-zero construction and the perfect-field
+strict endpoint. The finite boundary theorem itself requires neither HasExt nor
+sheafness. The existing infinite-field branch and its reviewed background are
+retained. Other admitted supporting families keep their explicit local
+principal-face conditions and supplied correction/frame witnesses; no global
+principal-A1, non-flat norm, Picard or general HI-presheaf sheafification result
+is inferred.
+
+The admitted delta contains 131 new production sources, 21 tests and one
+Coherence proof factorization with unchanged public statements. All 153 sources
+match the archive bytes and pass current pinned text/style checks. Current
+source checks pass for 3,252 project/client sources. Eighteen independent source
+candidates remain outside production, with their actual historical evidence
+boundaries preserved.
+
+[The source and check record](provenance/perfect-strict-20261018/README.md)
+binds the archive, source hashes, unchanged pins and selected supplied Linux
+receipts. Its final finite scope reports 322 exact-origin declarations over
+19 sources; the perfect-field terminal reports four over two sources. Supplied
+evidence and current checks are distinguished. Current affected compilation and
+consumers remain selected for integration CI with matching caches.

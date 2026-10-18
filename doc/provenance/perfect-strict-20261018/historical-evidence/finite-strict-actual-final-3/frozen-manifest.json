@@ -1,0 +1,55 @@
+{
+  "scope": "Actual finite original canonical boundary Epi for arbitrary original PST universe u+1, and named finite-field strict A1 for original ordinary cohomology, preserving ordinary HasExt and coefficient universe.",
+  "status": "PASS",
+  "source_count": 19,
+  "exact_origin_declarations_audited": 322,
+  "final_receipt": ".lake/verification/finite-strict-actual-final-3",
+  "source_files": {
+    "Motivic/Cohomology/A1/OriginalPresentationAffineCombinedCorrection.lean": "46211519fefd73bbe1f17fb0cdeeadea03fd829224af21bfe7e882c6dd76734d",
+    "Motivic/AlgebraicGeometry/AffineCorrectionBaseRestriction.lean": "57424b20229a7b527431bfceb87ae60bf2d968b8a1f12b6c1776c061e95cf0f5",
+    "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalPresentationAmbientIso.lean": "dc1ad9644c20dbdf6589e0afdc9085dee8d571889013099307ca2ffdd6b817b4",
+    "Motivic/AlgebraicGeometry/SmoothSiteScalarPolynomialCoordinates.lean": "e299fa7a3cee1d294898335594a17968a3a0031055ff1ebea6d3d1727bae36b3",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/LargePrimePolynomialZeroOriginalEtalePresentation.lean": "81d9dcf18220c4fcc6cb12656a184a932c25eb4983c6f9b0cd3ad7beb473d86c",
+    "Motivic/AlgebraicGeometry/SmoothSiteScalarPolynomialPuncture.lean": "b57e8010f60c8b365cc1fe86aa42d5af5a238964be860fa0cd95cf243a9898e6",
+    "Motivic/AlgebraicGeometry/ScalarPolynomialOriginalPresentation.lean": "2e6b03a9e70514c7adfdf966f96379148e78b87a031eeab355eca69cc0f77846",
+    "Motivic/AlgebraicGeometry/ScalarPolynomialZeroFiber.lean": "a4b7a54ddff2a1c621c0ade28f3cd3123def8f44ede48dfd6682a2d5a0117b54",
+    "Motivic/AlgebraicGeometry/LargePrimeNativePolynomialPresentation.lean": "99a6e89cba8b31f20b3e6a4d055c0fe616a794cd60ce15cbcab5be78a7306520",
+    "Motivic/AlgebraicGeometry/SmoothSiteScalarPolynomialOverlap.lean": "480bc9b84938ab0565f8f07dff953b299a3bef7c95bb4c74f17315d26c8f0bcf",
+    "Motivic/AlgebraicGeometry/SmoothSiteScalarEtalePullback.lean": "fe3ca3c27ef93fc92c7de37f5ee277b07b20074289b45ea62b6f93ff4a7fadb8",
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/FiniteScalarAffineCorrectionRestriction.lean": "c34cb5d4df0faaee4f3b647ad1f8970e840155ebc0c81a32a1781e8bb9ea98ab",
+    "Motivic/AlgebraicGeometry/SmoothSiteFiniteScalarOpenFactor.lean": "7d5f19a97ec013c621587697af9a800fa73c59fd47a93a2ddbe61f9bbaaa60f2",
+    "Motivic/Cohomology/A1/PresheafBoundaryOriginalOpenRefinement.lean": "4550b00dd01d5b043a116f787bb701aeced0d50dad0fa3a55b91767569e74534",
+    "Motivic/Cohomology/A1/PresheafBoundaryFinitePolynomialImage.lean": "bde472e7aca7ff304f0c6fabfe36601afecc29a79660e5a166d8fc571af1337b",
+    "Motivic/AlgebraicGeometry/SmoothSiteAffineWeilRefinement.lean": "7470c525501eaaf0db8fded4af8acdbedffa283b9a396d655d5adaf75325cc14",
+    "Motivic/Cohomology/A1/FinitePresheafContractionBoundaryEpi.lean": "55d3b5df2438781340c764fd42bd9c480ab19425b0c34674b73f04c3a0e69c22",
+    "Motivic/Cohomology/A1/StrictInvarianceFiniteField.lean": "1240c302ae03fd9c9338241200d12435bbf55e7611131cc773bbaf623c3e05da",
+    "MotivicTest/FiniteCanonicalBoundaryStrictConsumer.lean": "b0ceda54ff6594e7c89143c5b6eea1d143eb698a7514c79c6d2898de0325029b"
+  },
+  "pins": {
+    "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+    "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+    "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8"
+  },
+  "repository_head": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+  "aglib_head": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
+  "source_checks": {
+    "no_placeholders_or_unsafe": true,
+    "no_heartbeat_or_linter_changes": true,
+    "no_production_test_import": true,
+    "local_import_closure_acyclic": true,
+    "local_import_closure_count": 1581
+  },
+  "assumption_contracts": {
+    "boundary": "Field k, Finite k, arbitrary X and original PST.{u+1}, HI only; no HasExt, NST, rationality, integral-X or supplied family",
+    "strict": "Field k, Finite k, ordinary HasExt.{u+1}, NST.{u+1} and HI only; no supplied D/E family; literal ordinary projection tested"
+  },
+  "final_lint_repairs": [
+    "Remove unused Module.Finite and Algebra.IsSeparable binders only from fieldBaseChangeA1Iso_naturality; actual scalar witnesses and finite producer assumptions unchanged."
+  ],
+  "compatibility_delta": {
+    "file": "Motivic/AlgebraicGeometry/SmoothSiteAffineWeilRefinement.lean",
+    "old_sha256": "a8599e8027dd882140bac0df68a2e98ba04035d5308c6152d328e5e77b3ddc9c",
+    "new_sha256": "7470c525501eaaf0db8fded4af8acdbedffa283b9a396d655d5adaf75325cc14",
+    "change": "Name anonymous local composite Etale instance to avoid collision with OriginalGermInverseImageNaturality; proof/public signatures unchanged. Historical frozen receipt retained."
+  }
+}

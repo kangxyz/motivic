@@ -1,0 +1,68 @@
+{
+  "status": "FINAL_PASS",
+  "source": "Motivic/AlgebraicGeometry/Intersection/ClosedIntersectionTorSheafRestrictionCoherence.lean",
+  "source_sha256": "89579a6bf8bb98e40942f02f2b6ad4a40473acfc1e89b5497c3edc3d4ec61538",
+  "original_backup": "/workspace/scratch/ab4c8cd79b02/proof-backups/ClosedIntersectionTorSheafRestrictionCoherence.original.lean",
+  "original_sha256": "f1360e5a55c67f609a2fc9a0fe32a7472e6a7c8cb4917ec921cbbc116728f7a9",
+  "public_statement_byte_equal": true,
+  "public_statement_sha256": "95ff7907dd953028a9c2db3dc5564f89ad03c9b255c7d4bb55cfe94fe60e3382",
+  "changed_public_declaration": "Motivic.Intersection.closedIntersectionTorSheafRestrictionIso_hom_comp",
+  "new_private_helper": "Motivic.AffineOpenTilde.restrictionMap_comp",
+  "production_receipt": ".lake/verification/coherence-memory-production-2/graph-build.json",
+  "production_receipt_sha256": "ab80ded68e64af545ffda2924571055f294ec686ffacf579c7f1bf9ebf55397a",
+  "production_result": {
+    "state": "completed",
+    "command": [
+      "lake",
+      "--rehash",
+      "build",
+      "Motivic.AlgebraicGeometry.Intersection.ClosedIntersectionTorSheafRestrictionCoherence"
+    ],
+    "cwd": "/workspace/scratch/ab4c8cd79b02/motivic",
+    "pid": 94,
+    "pgid": 94,
+    "exit_code": 0,
+    "guard_failure": null,
+    "peak_rss_bytes": 5281607680,
+    "duration_seconds": 66.11582140199971,
+    "limits": {
+      "lean_memory_mb": 6000,
+      "rss_limit_mb": 7000,
+      "sample_seconds": 0.1,
+      "physical_memory_bytes": 10451439616,
+      "lean_threads": 1,
+      "max_active_lean": 1,
+      "native_build_threads": 2
+    },
+    "owned_group_gone": true,
+    "last_members": [
+      {
+        "pid": 94,
+        "rss_bytes": 0,
+        "executable": "lake",
+        "command_path": "lake"
+      }
+    ]
+  },
+  "audit": "Audit.lean",
+  "audit_sha256": "07d97600fcbd5952cf7c076572de3083fa45e8361db73804039a56eee2dc72fe",
+  "coverage": "All declarations from the one exact production module origin, including private/generated declarations, plus actual theorem application consumer. Standard-three axiom allowlist and declaration lint; text lint on exact production file. Further original-image endpoint consumer remains root-coordinated.",
+  "axiom_allowlist": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "original_prepared_audit_sha256": "9878d0d7a916da8387cf29c87e9a934c7c3eda1ad385a54bcdae13a6df4ec99e",
+  "audit_header_repair": "Added required modern module header for import all; production sources unchanged.",
+  "audit_receipt": ".lake/verification/coherence-memory-final/audit-run-2.json",
+  "checked_declarations": 8,
+  "checks": [
+    "exact-origin standard-three axioms and all declaration lint",
+    "pinned exact-source text/style",
+    "source and backup provenance checks"
+  ],
+  "base": {
+    "Motivic": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+    "Aglib": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e"
+  }
+}

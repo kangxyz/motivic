@@ -49,8 +49,9 @@ Each family facade reexports a deliberately selected interface. Production
 leaves import lower leaves, not a package/family facade to obtain one helper.
 `Motivic.lean` selects four core entries. Characteristic-zero Milnor norm,
 diagonal and weight-one computation entries are optional. Strict invariance
-over infinite perfect fields is available through
-`Motivic.Cohomology.A1.StrictInvariance`. No generated catch-all root admits
+over every perfect field is available through
+`Motivic.Cohomology.A1.StrictInvariancePerfectField`; its finite and infinite
+branches remain separate lower leaves. No generated catch-all root admits
 every retained leaf.
 Historical missing logs are evidence gaps, not proof failures or permissions
 to strengthen statements. New admissions need the actual affected compilation

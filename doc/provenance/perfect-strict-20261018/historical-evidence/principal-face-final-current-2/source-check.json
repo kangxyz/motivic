@@ -1,0 +1,29 @@
+{
+  "consumer": "MotivicTest.PrincipalFaceConsumers",
+  "reachable_local_modules": 446,
+  "pins_and_source_checks": "PASS",
+  "errors": [],
+  "head": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+  "pins": {
+    "mathlib": [
+      "https://github.com/leanprover-community/mathlib4.git",
+      "d13f23b723b8a846827a245b89c10fc7d3f11612"
+    ],
+    "Aglib": [
+      "https://github.com/kangxyz/aglib.git",
+      "b11b71d11bf03cf231f0e06b947a7b63d4344a9e"
+    ]
+  },
+  "source_scope": [
+    "Motivic/Aglib/RingTheory/Multiplicity/PrincipalEuler/FaceDifference.lean",
+    "Motivic/AlgebraicGeometry/Correspondences/FinitePointCycleEndpoints.lean",
+    "Motivic/Aglib/RingTheory/PrincipalKoszulEuler.lean",
+    "Motivic/Aglib/AlgebraicGeometry/PrincipalFaceCoefficient.lean",
+    "Motivic/Aglib/RingTheory/Multiplicity/PrincipalEuler/Surjective.lean",
+    "Motivic/Aglib/AlgebraicGeometry/PrincipalDivisorFaceCoefficient.lean",
+    "Motivic/Aglib/AlgebraicGeometry/PrincipalDivisorFaceSupport.lean",
+    "Motivic/Aglib/AlgebraicGeometry/SignedPrincipalFaceCoefficient.lean",
+    "MotivicTest/PrincipalFaceConsumers.lean"
+  ],
+  "exclusion": "Only aggregate-root missing-import diagnostics outside the actual consumer closure were excluded."
+}
