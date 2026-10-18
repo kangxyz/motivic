@@ -1,0 +1,36 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "env",
+    "lean",
+    "-DautoImplicit=false",
+    "-DwarningAsError=true",
+    "-Dlinter.mathlibStandardSet=true",
+    ".lake/verification/cartier-boundary-zero-final/TextStyle.lean"
+  ],
+  "cwd": "/workspace/scratch/ab4c8cd79b02/motivic",
+  "pid": 9,
+  "pgid": 9,
+  "exit_code": 0,
+  "guard_failure": null,
+  "peak_rss_bytes": 1813127168,
+  "duration_seconds": 1.667570703999445,
+  "limits": {
+    "lean_memory_mb": 4983,
+    "rss_limit_mb": 7475,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 10451439616,
+    "lean_threads": 1,
+    "max_active_lean": 1
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 9,
+      "rss_bytes": 0,
+      "executable": "lake",
+      "command_path": "lake"
+    }
+  ]
+}

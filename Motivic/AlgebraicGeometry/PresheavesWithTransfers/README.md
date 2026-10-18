@@ -25,6 +25,13 @@ universe.
   existence of an abstract isomorphism between section groups.
 
 The consumer checks are `MotivicTest/TransferContraction.lean` and
-`MotivicTest/TransferContractionInvariance.lean`. These constructions do not establish
-strict invariance or a contraction/sheafification comparison, and they do not
-assume either result.
+`MotivicTest/TransferContractionInvariance.lean`. The foundational contraction constructions are separate from the
+[canonical boundary/sheaf comparisons](../../Cohomology/A1/ContractionBoundarySheafComparison.lean).
+Strict A1 invariance remains open.
+
+[ContractionComplement](ContractionComplement.lean) retains the actual original
+complement maps. [NisnevichLocalZero](NisnevichLocalZero.lean) connects genuine
+local-zero data with sheafification; it does not assume objectwise exactness
+of a sheaf cokernel. The ordinary-cohomology
+[Cartier boundary entry](../../Cohomology/A1/CartierBoundary.lean) retains an
+explicit Epi input on its original cohomology-presheaf boundary map.

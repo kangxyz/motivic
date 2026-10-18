@@ -53,3 +53,11 @@ to the original canonical divisor section, not a replacement section.
 `DualTwistedIdealProduct.lean` combines these into unconditional original
 section and three-factor product identities. Thus subsequent boundary
 restriction retains the actual global line isomorphism and its evaluation.
+
+## Boundary-framed data
+
+[BoundaryFramed](BoundaryFramed.lean) and [BoundaryFramedTensor](BoundaryFramedTensor.lean)
+retain actual line bundles, boundary trivializations and their tensor maps.
+The [divisor-pair consumer](../../RelativeCurve/BoundaryFramedDivisorPairs.lean)
+uses this concrete framing. General relative-Picard comparison, H0 and norm
+constructions remain outside this interface.

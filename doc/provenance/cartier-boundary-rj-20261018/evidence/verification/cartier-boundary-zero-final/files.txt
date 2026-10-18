@@ -1,0 +1,12 @@
+Motivic/AlgebraicGeometry/SmoothSiteCartierCylinderComparison.lean
+Motivic/AlgebraicGeometry/SmoothSiteCartierPunctureComparison.lean
+Motivic/Cohomology/A1/PresheafBoundaryCoefficientIso.lean
+Motivic/Cohomology/A1/PresheafSmoothCartierBoundaryZero.lean
+Motivic/Cohomology/SheafCohomologyCartierBoundaryZero.lean
+Motivic/Cohomology/A1/PresheafBoundaryOpenZero.lean
+Motivic/AlgebraicGeometry/Sites/FiniteEtalePointInverseImageComposition.lean
+Motivic/Cohomology/A1/PresheafBoundaryPointComparison.lean
+Motivic/Cohomology/A1/PresheafBoundaryOpenSupport.lean
+Motivic/Cohomology/A1/PresheafBoundaryEtaleLocalization.lean
+Motivic/Cohomology/A1/PresheafBoundaryEtaleExcision.lean
+MotivicTest/SheafCohomologyCartierBoundaryZero.lean

@@ -56,3 +56,8 @@ The geometric consumers live in `Motivic/Transfers/`; their strict source tests
 are separate. This cohort does not supply positive-degree cohomological transfers,
 acyclicity of underlying sheaves of transfer-injectives, strict A¹ invariance,
 or cancellation.
+
+[SheafifyLocallyZero](Sites/SheafifyLocallyZero.lean) supplies the generic
+local-zero/sheafification-zero interface used by model detection. It keeps the
+original presheaf, site and sheafification unit; geometric hypotheses enter in
+the [transfer-presheaf consumer](../../AlgebraicGeometry/PresheavesWithTransfers/NisnevichLocalZero.lean).

@@ -245,3 +245,52 @@ corrected tests, with both standard-foundations audits passing. Dependency,
 native and project caches were restored from the previous failed run's saved
 progress. Core/selected-target native export reported a cache hit with no
 compilation needed. No cache deletion or production proof replay was required.
+
+## Cartier boundary and genuine open direct image
+
+Archive SHA256:
+`5b3aaaf7cbb57d046c0c44e8e2f5cb3622cc6adc6e1d00c1ae5042ccf6c65aef`,
+based on current main `97e291af`. The admitted source set is 53 new production
+leaves, 13 tests and three updates. It is dependency-closed. The other 59 new
+candidates and two incoming replacements are preserved as raw archival source;
+the two corresponding current-base implementations remain unchanged. None of
+the admitted callers uses the five extra unbound APIs in those replacements.
+All six previously quarantined generic-detection inputs now have recorded
+admission evidence, with their earlier archival bytes retained.
+
+The [source index](provenance/cartier-boundary-rj-20261018/SOURCE-INDEX.json)
+binds all 130 incoming source identities. Sixty-seven status-listed hashes match;
+Cartier choice and its test have separate frozen-hash/stdout summaries, whose
+referenced raw guard receipts are absent. The exact twelve-file Cartier bridge
+has a successful graph-build guard and scoped text/source/audit summaries. Its
+earlier cache probe exited three and is not counted as success. These are
+identified archive records, not fresh executions against later projections.
+
+Independent ordinary review accepted the actual quotient, coefficient/unit,
+Cartier-chart, genuine inverse-image, point-fiber and Rj comparisons. It also
+accepted moving the exact composed Rj theorem from the test into production,
+with the literal test type retained as a public consumer and the new defining
+module included in its scoped lint. The production hypothesis block and proof
+block are byte-identical to the reviewed archive consumer.
+
+The upstream ordinary review accepted any-field generic-base H1/all-positive
+results for HI coefficients, infinite-field actual generic-model/sheafification
+zero, current-degree conditional contraction-sheaf zero, canonical boundary Mono,
+and the rank-zero cylinder join. Positive-rank reduction remains conditional.
+Neither review assigns established status or discharges original EPI-P,
+current-degree HI, the remaining marked restriction-Mono joins or strict A1.
+
+Current source checks passed for 3,191 Lean sources. All 71 maintained changed
+modules passed exact-file text/style lint. Two Mathlib-only foundations,
+`SheafifyLocallyZero` and `ClosedFiberEtaleEqualization`, compiled and passed
+15 default declaration linters each, with no exceptions or findings. Their
+source/output/receipt hashes are in the [fixed check record](provenance/cartier-boundary-rj-20261018/CHECKS.json).
+No dependency builds or local whole-endpoint replay occurred.
+
+The actual CI selection covers 73 targets: the 71 changed modules and two
+affected existing consumers. All 62 archival Lean/control paths are excluded.
+The new facade selects its joint consumer on future isolated changes. Existing
+tool fixtures are retained because tooling is unchanged. The adapted consumer's
+current production theorem, exact-origin lint and transitive audit are selected
+for hosted validation. The 20-line root README, pins, configuration, CI and
+previous source/test repairs remain intact.

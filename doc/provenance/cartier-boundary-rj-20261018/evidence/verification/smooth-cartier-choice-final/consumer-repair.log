@@ -1,0 +1,5 @@
+Build cache miss; building requested targets (probe log: /workspace/scratch/ab4c8cd79b02/motivic/.lake/verification/smooth-cartier-choice-final/consumer-repair/cached-check.log).
+ℹ [3386/3386] Built MotivicTest.SmoothCartierChoice (1.9s)
+info: MotivicTest/SmoothCartierChoice.lean:46:0: Actual smooth Cartier choice at original positive-rank points: standard foundations only.
+info: MotivicTest/SmoothCartierChoice.lean:58:0: Smooth Cartier choice: all selected declaration linters passed.
+Build completed successfully (3386 jobs).

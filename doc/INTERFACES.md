@@ -12,7 +12,8 @@ review or a theorem-status assignment.
 | `Motivic.SheafCohomology.withTransfers` | Original ordinary Nisnevich cohomology for every `n : ℕ`, arbitrary fields and transfer sheaves. Retains ordinary `HasExt`; constructs transfer-category Ext internally. Graph and coefficient maps are the original maps. |
 | `Motivic.Cohomology.AffineLine` | Original ordinary big-smooth Nisnevich `H^(n+2)(A1,F)=0` for arbitrary abelian coefficients; `H^(n+1)=0` for HI sheaves with transfers over any field. Ordinary `HasExt` and coefficient universe `u+1` remain explicit. This does not supply a general small-site comparison or strict invariance on arbitrary smooth schemes. |
 | `Motivic.Cohomology.A1.GenericDetection` | Over infinite fields, original nonempty-open vanishing for HI presheaves with transfers on smooth integral affine schemes gives actual affine zero-neighborhoods covering all points. No sheaf premise; local-zero conclusion. |
-| `Motivic.Cohomology.AffineLine.GenericBase` | Over any field and smooth domain base, each original ordinary degree-at-least-two relative-line class vanishes after the specified base restrictions. Whole line, original Ext maps, coefficient universe and `HasExt` retained; class-dependent open. |
+| `Motivic.Cohomology.AffineLine.GenericBase` | Over any field and smooth domain base: classwise eventual higher vanishing for arbitrary ordinary coefficients, plus all-positive vanishing for HI transfer sheaves. Whole line, original maps, coefficient universe and `HasExt` retained; class-dependent open. |
+| `Motivic.Cohomology.A1.CartierBoundary` | Genuine positive `Rj_*` vanishes for a supplied smooth Cartier complement over an infinite field, assuming current-degree original cohomology HI and the original contraction-to-boundary Epi for every smooth object. Ordinary `HasExt.{u+1}`, coefficients `u+1`, locally rank-one ideal and actual complement equality retained. |
 | Motivic complexes | Sheafified reduced-torus singular complexes in weight `q`, with singular chain degree `r` in cochain degree `q-r`; differential/shift signs are explicit. |
 | Motivic finite coefficients | Derived coefficient construction and the original multiplication/coefficient triangle. A termwise replacement needs its own comparison. |
 | Milnor K | Actual integral symbol quotients in every nonnegative degree, independent of the motivic comparison; maps and residues retain their declaration-specific inputs; the optional `Motivic.KTheory.MilnorK.Norms` finite-extension norm tower has characteristic-zero and finite-dimensional hypotheses. |
@@ -30,3 +31,8 @@ higher-Chow/DM/spectrum comparisons retain separate proof obligations. The
 [imported roadmap](provenance/strict-a1-proof-roadmap-20261017.md) records the
 snapshot frontier. A conditional result, checked theorem family or finite
 computation does not close an unsupplied input.
+
+The Cartier result does not produce its original boundary Epi or establish
+current-degree cohomology invariance. Positive-rank induction also retains its
+HI-coefficient, perfect-field, lower-degree/lower-rank and original marked restriction-Mono
+inputs. The coefficient-section dense-open Mono is a different morphism.

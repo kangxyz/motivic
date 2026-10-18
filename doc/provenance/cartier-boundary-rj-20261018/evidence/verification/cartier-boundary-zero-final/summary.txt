@@ -1,0 +1,11 @@
+consumer/graph-build.json: {'state': 'completed', 'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True, 'duration_seconds': 7.51329522100059}
+text-style.json: {'state': 'completed', 'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True, 'duration_seconds': 1.667570703999445}
+PASS: actual smooth Cartier closed-boundary zero, then actual positive open direct-image zero, conditional on original contraction-to-boundary Epi and current-degree cohomology HI.
+Generic cohomology use is restricted to infinite fields, F coefficients u+1 and ordinary HasExt u+1. No PerfectField assumption once the actual smooth Cartier pair is supplied.
+Geometric chart/puncture and arbitrary-presheaf boundary-zero APIs are independent of HI/Epi. Both full closed-fiber squares, original complement and entire marked fields are retained.
+Explicit withTransfersGraphIso and coefficient-isomorphism cokernel/unit equations identify the original ordinary cohomology presheaf; no definitional replacement.
+Final meaningful consumer: MotivicTest.SheafCohomologyCartierBoundaryZero.higherDirectImage_isZero_of_original_epi.
+All 103 scoped declarations passed declaration lint; selected actual consumer/original projection equations depend only on propext, Classical.choice and Quot.sound.
+Exact twelve selected files passed pinned Lean text/style and focused source/pin checks. See files.txt and sha256.txt for frozen scope.
+NOT proved here: original EPI-P, current top-degree HI, strict A1 invariance, finite-field detection, global untwisted contraction purity.
+Excluded source-only helper: Motivic/Cohomology/A1/BoundaryEtaleExcisionUnit.lean. Previously accepted generic9 and Epi-only psi remain unchanged and are not re-audited here.

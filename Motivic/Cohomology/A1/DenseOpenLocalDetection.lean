@@ -24,6 +24,12 @@ universe u w
 namespace Motivic.PresheafWithTransfers
 variable {k : Type u} [Field k] [Infinite k]
 
+/-- An affine open of the original smooth object on which the original section vanishes. -/
+def smoothAffineZeroOpen (P : PresheafWithTransfers.{w} k)
+    (X : SmoothSite (Spec (.of k))) (v : P.sections (Cor.mk X)) (O : X.left.Opens) : Prop :=
+  IsAffineOpen O ∧ P.transfer ((Cor.graphFunctor k).map
+    (SmoothSite.homMk (X := SmoothSite.mk (O.ι ≫ X.hom)) (Y := X) O.ι rfl)) v = 0
+
 /-- Vanishing on an original dense open implies vanishing on an affine Zariski
 neighborhood of each original point, for any HI presheaf with transfers. -/
 theorem exists_zero_neighborhood_of_dense_open
@@ -79,5 +85,17 @@ theorem exists_zero_neighborhood_of_dense_open
   refine ⟨g.left.opensRange, isAffineOpen_opensRange g.left, ?_,
     P.zero_on_open_image_general g v hg⟩
   exact ⟨⟨t, htO⟩, ht⟩
+
+/-- The actual affine zero-neighborhoods cover an arbitrary smooth object, including
+disconnected and empty objects. Dense-open vanishing is only used locally. -/
+theorem iSup_zero_opens_of_dense_open
+    {X A : SmoothSite (Spec (.of k))} (a : A ⟶ X) [IsOpenImmersion a.left]
+    (ha : DenseRange a.left) (P : PresheafWithTransfers.{w} k) (hP : P.IsA1Invariant)
+    (v : P.sections (Cor.mk X)) (hv : P.transfer ((Cor.graphFunctor k).map a) v = 0) :
+    (⨆ O : {O : X.left.Opens // smoothAffineZeroOpen P X v O}, O.val) = ⊤ := by
+  apply top_unique
+  intro x _
+  obtain ⟨O, hO, hxO, hz⟩ := P.exists_zero_neighborhood_of_dense_open a ha hP v hv x
+  exact TopologicalSpace.Opens.mem_iSup.mpr ⟨⟨O, hO, hz⟩, hxO⟩
 
 end Motivic.PresheafWithTransfers

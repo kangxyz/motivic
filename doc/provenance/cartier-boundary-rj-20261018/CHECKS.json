@@ -1,0 +1,328 @@
+{
+  "source_archive_sha256": "5b3aaaf7cbb57d046c0c44e8e2f5cb3622cc6adc6e1d00c1ae5042ccf6c65aef",
+  "repository_baseline": "97e291af4b56f32476899ef93016889ecd6e8af2",
+  "prepared_by": "kangxyz",
+  "admission": {
+    "incoming_source_delta": 130,
+    "admitted_incoming_paths": 69,
+    "new_archive_production": 53,
+    "new_tests": 13,
+    "changed_existing": 3,
+    "additional_public_production_and_facade_files": 2,
+    "new_unverified_sources_archived": 59,
+    "incoming_unverified_replacements_archived": 2,
+    "live_base_versions_preserved": 2
+  },
+  "source_structure": {
+    "status": "passed",
+    "lean_sources_checked": 3191,
+    "project": 3190,
+    "downstream": 1
+  },
+  "text_style": {
+    "status": "passed",
+    "maintained_files": 71,
+    "receipt_sha256": "9a782df8ecb443113b7b1e0ca68e6c6eb1333f5bf0ce152b06b9bdb626ee1eb8",
+    "exit_code": 0,
+    "guard_failure": null,
+    "owned_group_gone": true
+  },
+  "ci_selection": {
+    "maintained_changed_modules": 71,
+    "ci_targets": 73,
+    "additional_affected_consumers": [
+      "MotivicTest.DenseOpenAffineDetection",
+      "MotivicTest.SheafCohomologyRelativeLineHigherVanishing"
+    ],
+    "facade_only_targets": [
+      "Motivic.Cohomology.A1.CartierBoundary",
+      "MotivicTest.SheafCohomologyCartierBoundaryZero"
+    ],
+    "archival_lean_paths_excluded": 62,
+    "tool_fixtures": []
+  },
+  "native_leaf_certificate": {
+    "question": "Native compilation and final declaration lint of only the two assigned projected Mathlib-only leaves",
+    "assignment_complete": true,
+    "repository_head_declared_by_principal": "97e291af",
+    "source_basis": "Actual projected repository bytes with Authors:kangxyz; no raw archive source compilation",
+    "lean_toolchain": "leanprover/lean4:v4.34.1",
+    "dependency_pins": {
+      "mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612"
+    },
+    "guard_tooling_pin": "25c37780264f0da94f5bb6bd31cc089d26f2da80",
+    "options": {
+      "autoImplicit": false,
+      "maxHeartbeats": 200000,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true
+    },
+    "modules": [
+      {
+        "module": "Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero",
+        "source": "Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.lean",
+        "source_sha256_before": "f51dc96ea20ea8706935dceb5824293fc69eff5e2dc6f5c01c40727cccec868c",
+        "source_sha256_after": "f51dc96ea20ea8706935dceb5824293fc69eff5e2dc6f5c01c40727cccec868c",
+        "author_header": "Authors: kangxyz",
+        "direct_imports": [
+          "Mathlib.CategoryTheory.Sites.LocallyBijective",
+          "Mathlib.CategoryTheory.Sites.Abelian",
+          "Mathlib.Algebra.Category.Grp.Abelian",
+          "Mathlib.Algebra.Category.Grp.Zero"
+        ],
+        "setup": {
+          "path": "setup/compile-Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero.json",
+          "sha256": "2514dfd77c3790d72386b0c462a1c83ffc21cb2a25d313e4a00c167321a804ad"
+        },
+        "artifacts": {
+          "olean": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.olean",
+            "sha256": "e4f1ceda64ec41ce16772c9c0aeb5b2e70a312777e90e748d964c4ed04909255"
+          },
+          "olean.server": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.olean.server",
+            "sha256": "8fc5fb94f6d8745261e7e89249135e77d751c57f62adb6c8eceff07e232790a8"
+          },
+          "olean.private": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.olean.private",
+            "sha256": "b98d928cc0400b655c68d6c488fa16bca4d2c857693721fab59ea7fdbc108cfd"
+          },
+          "ir.sig": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.ir.sig",
+            "sha256": "8412f425cac95acdc0307efabf18d4c84ff2f33ed390a54e28d48ff58c127417"
+          },
+          "ir": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.ir",
+            "sha256": "60f9530d4b79d6f2ae567c9bdc56f36b748d1479c3beae327d8b65d12b149382"
+          },
+          "ilean": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.ilean",
+            "sha256": "546e20533df254951241e7cffdd273a290f1b3e01ac3d5068dceeaf873045026"
+          },
+          "c": {
+            "path": "outputs/f51dc96ea20ea870/Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.c",
+            "sha256": "1fc4257c9f3999e367352981e5c5da85f307e4ab5e1c23815b786604ebfd9d35"
+          }
+        },
+        "receipt": "receipts/compile-Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero.guard.json",
+        "receipt_sha256": "fddd35fe8aaf57e76c823e3a565b6a1c429e0067cc61f0d3d07f32588735dbcf"
+      },
+      {
+        "module": "Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization",
+        "source": "Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.lean",
+        "source_sha256_before": "264b67fc94eb3fd94e4de2e9eb90c6943255da4ce0b89b7694128600bf40a598",
+        "source_sha256_after": "264b67fc94eb3fd94e4de2e9eb90c6943255da4ce0b89b7694128600bf40a598",
+        "author_header": "Authors: kangxyz",
+        "direct_imports": [
+          "Mathlib.AlgebraicGeometry.Morphisms.Etale",
+          "Mathlib.AlgebraicGeometry.Morphisms.Separated"
+        ],
+        "setup": {
+          "path": "setup/compile-Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization.json",
+          "sha256": "99b600924370214011185bcdb883a60821ed63f5cf63657043d6951f1ee4553f"
+        },
+        "artifacts": {
+          "olean": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.olean",
+            "sha256": "136d9415f3e20d12ac66006759717616d4ed859b3e3c4aad06922194b1ef7b02"
+          },
+          "olean.server": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.olean.server",
+            "sha256": "72a953b2dcac4b289d254a028c3d38b9ddee23a08bb4569975783cd9bd756447"
+          },
+          "olean.private": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.olean.private",
+            "sha256": "a05b5a06a65acec421dabf7b133bf9878d889431482c3baf4e12806942659978"
+          },
+          "ir.sig": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.ir.sig",
+            "sha256": "5b86997d4174bcb76873c4a5e1068927450eadbf165bb7e91c17f07a9be478c5"
+          },
+          "ir": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.ir",
+            "sha256": "3e7591e97666aa042d0ce68a7897adfb3af439cce196693a8dd9e6134ed50a98"
+          },
+          "ilean": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.ilean",
+            "sha256": "7935030af98093a938146f4a9705725449fec579259c7a6e5c3e3736cfc3a8c9"
+          },
+          "c": {
+            "path": "outputs/264b67fc94eb3fd9/Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.c",
+            "sha256": "c72ed3ac144f1ab3821a8f5fe67fe415660e121d956b91dc1f3433266000ca37"
+          }
+        },
+        "receipt": "receipts/compile-Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization.guard.json",
+        "receipt_sha256": "4be327f6442dfa99e541b6258219f9221b3ee155c4853649274235962738ea33"
+      }
+    ],
+    "admission_selection": {
+      "basis": "Literal current incoming/import eligibility only; not a mathematical verdict",
+      "archive_sha256": "5b3aaaf7cbb57d046c0c44e8e2f5cb3622cc6adc6e1d00c1ae5042ccf6c65aef",
+      "admission_catalog": "/private/tmp/r5-investigations/motivic-cartier-boundary-rj/source_inventory/admission-boundary.json",
+      "selected": [
+        "Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero",
+        "Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization"
+      ],
+      "incoming_source_sha256": {
+        "Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero": "f51dc96ea20ea8706935dceb5824293fc69eff5e2dc6f5c01c40727cccec868c",
+        "Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization": "264b67fc94eb3fd94e4de2e9eb90c6943255da4ce0b89b7694128600bf40a598"
+      },
+      "excluded_preferred_candidate": {
+        "module": "Motivic.Aglib.AlgebraicGeometry.CartierComplementDense",
+        "reason": "direct import Aglib.AlgebraicGeometry.IdealSheaf.Invertible.Affine is not Mathlib-only"
+      },
+      "maximum_native_production_scope": 2
+    },
+    "declaration_lint": {
+      "complete": true,
+      "defining_module_count": 2,
+      "reports": [
+        {
+          "module": "Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero",
+          "errors": 0,
+          "declarations": 1,
+          "automatically_generated": 1,
+          "linters": 15
+        },
+        {
+          "module": "Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization",
+          "errors": 0,
+          "declarations": 2,
+          "automatically_generated": 3,
+          "linters": 15
+        }
+      ],
+      "control_source": "FinalDeclarationLint.lean",
+      "control_source_sha256": "e922726672292ad230af08f77e4b7835744fbda89095b13c365003eef3eb44bd",
+      "setup": {
+        "path": "setup/final-declaration-lint-two.json",
+        "sha256": "ef6bcb0db9ea2381aa9e18a6ad1702971e96da42793655a1261f2bc7f2009679"
+      },
+      "outputs": {
+        "olean": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.olean",
+          "sha256": "9a20ab5b4760e3e9970f4f56788c6099a8bf97a19e297e462d1b6fbc70403b31"
+        },
+        "olean.server": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.olean.server",
+          "sha256": "49aa4f52135db3ab724863e1b1bba6c6288d542da9b6d4e2a569d7ad126f47ad"
+        },
+        "olean.private": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.olean.private",
+          "sha256": "b083a9e8236da6341e1901bba18413f8eac5b1e4075845a3cf9ebbf91bea8734"
+        },
+        "ir.sig": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.ir.sig",
+          "sha256": "f01062b248896059f1447238fbc87f60adadba0115bbef04597101799d98de0a"
+        },
+        "ir": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.ir",
+          "sha256": "abd5d640d390bb0c3f4457ad161e8497239298ac8c4549fb9142a384e15b63c8"
+        },
+        "ilean": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.ilean",
+          "sha256": "89d73c730c406e61e5c03b9ec22ea770ad7f22cb76f13e834634085099d47541"
+        },
+        "c": {
+          "path": "outputs/e922726672292ad2/MotivicValidation/FinalDeclarationLint.c",
+          "sha256": "ddb131bcf09f6ebb6553ef6eef87b36ae594335149b43c8dca5cc6ecad23aabf"
+        }
+      },
+      "scope": "Module-origin filtering; modern module with import all of only the two fresh leaves; declaration-free control with module docstring",
+      "nolint_exceptions_added": false
+    },
+    "raw_successful_receipts": [
+      {
+        "path": "receipts/compile-Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero.guard.json",
+        "sha256": "fddd35fe8aaf57e76c823e3a565b6a1c429e0067cc61f0d3d07f32588735dbcf",
+        "log": "logs/compile-Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero.jsonl",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 1776287744,
+        "duration_seconds": 7.025526041048579,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      },
+      {
+        "path": "receipts/compile-Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization.guard.json",
+        "sha256": "4be327f6442dfa99e541b6258219f9221b3ee155c4853649274235962738ea33",
+        "log": "logs/compile-Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization.jsonl",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 2162327552,
+        "duration_seconds": 5.764781125006266,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      },
+      {
+        "path": "receipts/final-declaration-lint-two.guard.json",
+        "sha256": "6302fa9178b4acedce29c4d6a8bb0f3399ce5df2f5601258151d9e074bef6721",
+        "log": "logs/final-declaration-lint-two.jsonl",
+        "log_sha256": "63064583f3dcdeba70dcff07fc153241902018c1233096329415d19a4355b528",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "peak_rss_bytes": 2131345408,
+        "duration_seconds": 4.875649374909699,
+        "limits": {
+          "lean_memory_mb": 8192,
+          "rss_limit_mb": 10240,
+          "sample_seconds": 0.1,
+          "physical_memory_bytes": 68719476736,
+          "lean_threads": 1,
+          "max_active_lean": 1,
+          "native_build_threads": 4
+        }
+      }
+    ],
+    "execution_source": {
+      "path": "native_selected.py",
+      "sha256": "56c4edeaae2fb65c2b32edd88b763eb4438563d9fc2aa38e784f9a2dc2eb154f"
+    },
+    "source_dependency_boundary": "All two production direct imports are Mathlib.* only. Current pinned Mathlib cache is the accepted external basis; no local mathematical baseline or Aglib mathematical provider dependency was used/rebuilt/fingerprinted. Final lint additionally imports cached Mathlib.Tactic.Linter.Lint and the two current fresh outputs. No dependency builds, old H1/provider replay, or source/Git/.lake mutations.",
+    "outside_scope": "No new tests or terminal/full-facade/native-root checks; retained Linux records/review/CI remain with principal. Exact71-file text/style check separately owned by principal.",
+    "mathematical_status_claim": false,
+    "remaining_gap": null
+  },
+  "evidence_paths": "Relative native artifact paths describe private validation scratch, not versioned binaries. Hashes fix the actual controlled execution.",
+  "public_promotion": {
+    "promoted_declaration": "Motivic.SheafCohomology.higherDirectImage_isZero_of_original_epi",
+    "source_test_declaration": "MotivicTest.SheafCohomologyCartierBoundaryZero.higherDirectImage_isZero_of_original_epi",
+    "variable_block_byte_exact": true,
+    "theorem_block_byte_exact": true,
+    "files": {
+      "Motivic/Cohomology/SheafCohomologyCartierDirectImage.lean": "aec91e20cbad57266120692c0de96068bc59a75203450ed5752b1c7c9eb79e00",
+      "Motivic/Cohomology/A1/CartierBoundary.lean": "9c6263396d74dd04d09ae3cd0d6d8a99a7472ce9863464467bda13b319634527",
+      "MotivicTest/SheafCohomologyCartierBoundaryZero.lean": "d02d0ceff6583496e12eb1f97fff6258aad539145e523cef3976c549b34e1c73"
+    },
+    "test_original_sha256": "5c53a868c83994cf14cff24a50b9daa64c76c71161ab09392c86974eb7094e24",
+    "test_statement_preserved": true,
+    "test_named_helper_promoted_to_production": true
+  },
+  "ordinary_reviews": {
+    "integrated_cartier_boundary_and_Rj": "PASS for the exact conditional statement and original objects/maps; includes production/test promotion correspondence.",
+    "upstream_generic_base_contraction_and_rank": "PASS within the named source hypotheses; generic H1/positive any-field HI coefficients, current-degree conditional contraction zero, explicit positive-rank premises.",
+    "status_assignment": false
+  },
+  "source_evidence_boundary": "Archived67 status hash bindings plus separately frozen SmoothCartier choice/consumer evidence. The latter referenced raw guards are absent. The twelve-file source milestone has a successful graph guard and summaries; its earlier exit3 cached probe is not success. Adapted public files have separate current hashes and will be checked by hosted CI.",
+  "full_local_new_endpoint_native_replay": false,
+  "frontier": "Original EPI-P production, current positive-degree HI, marked restriction Mono joins and full strict A1 remain explicit open obligations."
+}

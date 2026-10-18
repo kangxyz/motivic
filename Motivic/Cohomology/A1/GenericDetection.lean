@@ -15,6 +15,7 @@ on a smooth integral affine scheme that vanishes on an original nonempty open
 vanishes on actual affine neighborhoods covering every point. The original open
 need not be affine. No sheaf hypothesis is required.
 
-This entry retains local-zero conclusions. Finite fields, nonintegral smooth
-schemes and the final zero-sheaf detection consumer remain separate obligations.
+This entry retains local-zero conclusions. Arbitrary smooth objects and actual
+sheafification detection are handled in the separate `DenseOpenLocalDetection`
+and `PresheafGenericModelDetection` leaves. Finite fields remain a separate obligation.
 -/

@@ -43,14 +43,37 @@ and the presheaf need not be a sheaf. The conclusion is local zero, without
 asserting global vanishing for an arbitrary presheaf.
 
 [Relative affine-line generic-base vanishing](AffineLine/GenericBase.lean)
-exports `Motivic.SheafCohomology.exists_relative_generic_base_h_add_two_zero`.
-For any field, smooth domain base and original ordinary coefficient sheaf,
-each degree-at-least-two class is killed after two nonzero base localizations
-and restriction over an affine generic base open. The entire affine line and
-original Ext restriction maps remain. The open may depend on the class.
+retains arbitrary ordinary coefficients in degrees at least two. It now also
+exports original generic-base H1 and all-positive results for HI Nisnevich
+sheaves with transfers over any field. Each class is killed after the stated
+two nonzero base localizations and an affine generic base open. The whole line
+and original restriction maps remain; the open may depend on the class.
 
-The [source record](../../doc/provenance/generic-detection-20261017/README.md)
-separates checked admissions from six unlogged archival leaves. Finite-field
-generic detection, nonintegral smooth schemes, the final zero-sheaf consumer,
-arbitrary-class generic-base H1 and the all-positive generic rank-zero join
-remain outside these entries. The default cohomology entry is unchanged.
+The generic-model detection leaves use actual model-open colimits. Over an
+infinite field, they give genuine big transfer and literal small ordinary
+sheafification-zero conclusions. They do not identify these sheafifications or
+assert objectwise zero of an arbitrary original presheaf. The positive
+contraction-sheaf zero result retains current-degree cohomology invariance.
+
+The rank-zero cylinder join is available for HI sheaves with transfers in all
+positive degrees over any field, with complete field-valued markings retained.
+Positive-rank Cartier reduction retains coefficient HI, perfectness, lower-degree invariance,
+lower-rank germ induction and the exact original marked restriction Mono.
+Coefficient-section dense-open injectivity does not supply that cohomology Mono.
+
+## Cartier boundary and open support
+
+The optional [CartierBoundary entry](A1/CartierBoundary.lean) exports
+`Motivic.SheafCohomology.higherDirectImage_isZero_of_original_epi`.
+For an actual smooth Cartier complement over an infinite field, it proves
+vanishing of the genuine positive right-derived open direct image. It retains
+A1-invariance of `withTransfers k F (n+1)`, epimorphic original
+`contractionToBoundary X` for every smooth `X`, ordinary `HasExt.{u+1}` and
+coefficient universe `u+1`. Perfectness is not required once the smooth Cartier
+pair is supplied. Quotient, small sheafification, genuine closed inverse image
+and original punctured representatives remain the actual constructions.
+
+The [source record](../../doc/provenance/cartier-boundary-rj-20261018/README.md)
+distinguishes checked admissions from archived candidates. The original Epi
+producer, the remaining marked restriction-Mono joins, finite-field generic
+detection and full strict A1 invariance remain open. Default imports are unchanged.

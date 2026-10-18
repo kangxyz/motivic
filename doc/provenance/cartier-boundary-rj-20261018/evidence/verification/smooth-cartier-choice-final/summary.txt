@@ -1,0 +1,12 @@
+04a027feab2e473918abc22535563fa98886d4486c0c8e4fe42015465e7ecc23 Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean
+d59cf30eda133194cde4aa5663ffa23514fb732beb8389b5851fc2ec66f2d04e MotivicTest/SmoothCartierChoice.lean
+44188d401abafbc5238887ced82e84f642ce8379fa6f4fd0b2837ff692aa5fa2 Motivic/Aglib/AlgebraicGeometry/README.md
+46a1d4aeca41f53ab37d8609b576cac4a742c78de8b91c78f64720a1162d2d09 MotivicTest/SheafCohomologyRelativeLineHigherVanishing.lean
+.lake/verification/smooth-cartier-choice-production-repair/graph-build.json {'state': 'completed', 'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True, 'duration_seconds': 4.268588714000089}
+.lake/verification/smooth-cartier-choice-final/consumer-repair/graph-build.json {'state': 'completed', 'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True, 'duration_seconds': 3.7467655949999426}
+.lake/verification/smooth-cartier-choice-final/text-cache.json {'state': 'completed', 'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True, 'duration_seconds': 8.430735344000368}
+.lake/verification/smooth-cartier-choice-final/text-style-repair.json {'state': 'completed', 'exit_code': 0, 'guard_failure': None, 'owned_group_gone': True, 'duration_seconds': 1.2560425290002968}
+Final selected mathematical endpoint and declaration lint: PASS.
+Mechanical axiom set: restricted to propext, Classical.choice, Quot.sound.
+Pinned Lean text lint on the three selected Lean files: PASS, no fixes or disabled checks.
+Python style script cannot execute at the pin: undefined nonterminal_simp_check. No dependency patch was made; Lean text/style check is not asserted to duplicate every Python-only rule.

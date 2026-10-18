@@ -47,3 +47,8 @@ The [generic-detection snapshot](generic-detection-20261017/README.md) records
 the next source delta, checked admissions and six unlogged archival inputs.
 Existing repaired helper implementations are retained with their separate
 source/evidence identities.
+
+The [Cartier boundary/Rj snapshot](cartier-boundary-rj-20261018/README.md) records
+69 admitted source updates, separate current-base retention and archival
+candidates. Its recorded branch, push state and research plans are historical
+source material rather than repository instructions.

@@ -69,3 +69,14 @@ The original étale presentation and one-sided moving constructions feed the
 [affine local-zero detection entry](../../Cohomology/A1/GenericDetection.lean).
 The [source record](../../../doc/provenance/generic-detection-20261017/README.md)
 separates admitted results from unlogged archival inputs.
+
+## Smooth Cartier support
+
+[CartierComplementDense](CartierComplementDense.lean) records density of the
+actual complement. [ClosedFiberEtaleEqualization](ClosedFiberEtaleEqualization.lean)
+keeps the whole closed fiber in its etale comparison.
+[SmoothCartierAtPrime](SmoothCartierAtPrime.lean) and
+[SmoothStalkFiniteRank](SmoothStalkFiniteRank.lean) support the explicitly
+conditional positive-rank reduction. Supplying a smooth Cartier pair in the
+[cohomology boundary entry](../../Cohomology/A1/CartierBoundary.lean) has its own
+hypotheses; it does not solve the remaining marked restriction-Mono inputs.

@@ -1,0 +1,2423 @@
+{
+  "archive_sha256": "5b3aaaf7cbb57d046c0c44e8e2f5cb3622cc6adc6e1d00c1ae5042ccf6c65aef",
+  "repository_baseline_head": "97e291af4b56f32476899ef93016889ecd6e8af2",
+  "counts": {
+    "all_lean_source_delta_paths": 130,
+    "admitted_exact_source_paths": 68,
+    "admitted_new_production": 53,
+    "admitted_new_tests": 13,
+    "admitted_changed_updates": 3,
+    "new_unverified_archival_only": 59,
+    "incoming_unbound_changed_replacements_archived": 2,
+    "status_hash_bound_source_paths": 67,
+    "frozen_cartier_milestone_files": 12,
+    "admitted_snapshot_source_paths": 69,
+    "admitted_public_api_projected_paths": 1,
+    "additional_production_and_facade_modules": 2
+  },
+  "source_hash_manifest": {
+    "archive_relative_path": "SOURCE_SHA256.json",
+    "archive_sha256": "ef54cc6bc0a854fdfd68a2a45c60ffdc01196d7d7af163b278797ea12f862a11",
+    "size_bytes": 452185,
+    "handling": "bounded index below records all 130 source hashes; large raw manifest not duplicated"
+  },
+  "source_status_raw": {
+    "archive_relative_path": "SOURCE_STATUS.json",
+    "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/SOURCE_STATUS.json",
+    "sha256": "ab805a46637dc11b12c8dbe9378ac189f8af8e26ee9ae669da9210d22578a6b7",
+    "size_bytes": 19836
+  },
+  "source_evidence_boundary": {
+    "status_verified_source_hashes": 67,
+    "separately_summary_and_stdout_bound_sources": {
+      "Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean": "verification/smooth-cartier-choice-final/summary.txt",
+      "MotivicTest/SmoothCartierChoice.lean": "verification/smooth-cartier-choice-final/summary.txt"
+    },
+    "primary_cartier_consumer_and_exact12_evidence_retained": true,
+    "surviving_raw_build_receipt_closure_exceptions": [
+      "Motivic.Cohomology.A1.GenericDetection",
+      "MotivicTest.SmoothCartierChoice"
+    ],
+    "full_source_or_whole_library_validation_claimed": false,
+    "receipt_exceptions": {
+      "Motivic.Cohomology.A1.GenericDetection": "documentation-only update; prior body-equivalent evidence retained",
+      "MotivicTest.SmoothCartierChoice": "frozen source hashes and successful compiler/audit stdout plus raw-receipt summaries retained; referenced raw guard JSON files are unavailable and are not reconstructed"
+    }
+  },
+  "retained_current_changed_base_paths": {
+    "Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean": {
+      "current_repository_sha256": "819c25642ec83f3132b3446651c6e5f51d55801613d0e510a40d127f73538694",
+      "incoming_replacement_archived_only": true
+    },
+    "Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean": {
+      "current_repository_sha256": "622d70d9642c6f88d74baef0b55bf19b372e29a67f637c8fba429eb9e4ad9655",
+      "incoming_replacement_archived_only": true
+    }
+  },
+  "retained_previous_repairs": [
+    {
+      "path": "Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean",
+      "retained_current_base": true
+    },
+    {
+      "path": "Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean",
+      "retained_current_base": true
+    }
+  ],
+  "frozen_cartier_milestone": {
+    "source_scope_archive_path": "verification/cartier-boundary-zero-final/files.txt",
+    "source_hash_archive_path": "verification/cartier-boundary-zero-final/sha256.txt",
+    "exact_source_count": 12,
+    "sources": [
+      "Motivic/AlgebraicGeometry/SmoothSiteCartierCylinderComparison.lean",
+      "Motivic/AlgebraicGeometry/SmoothSiteCartierPunctureComparison.lean",
+      "Motivic/Cohomology/A1/PresheafBoundaryCoefficientIso.lean",
+      "Motivic/Cohomology/A1/PresheafSmoothCartierBoundaryZero.lean",
+      "Motivic/Cohomology/SheafCohomologyCartierBoundaryZero.lean",
+      "Motivic/Cohomology/A1/PresheafBoundaryOpenZero.lean",
+      "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointInverseImageComposition.lean",
+      "Motivic/Cohomology/A1/PresheafBoundaryPointComparison.lean",
+      "Motivic/Cohomology/A1/PresheafBoundaryOpenSupport.lean",
+      "Motivic/Cohomology/A1/PresheafBoundaryEtaleLocalization.lean",
+      "Motivic/Cohomology/A1/PresheafBoundaryEtaleExcision.lean",
+      "MotivicTest/SheafCohomologyCartierBoundaryZero.lean"
+    ]
+  },
+  "preserved_minimal_evidence_records": [
+    {
+      "archive_relative_path": "SOURCE_STATUS.json",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/SOURCE_STATUS.json",
+      "sha256": "ab805a46637dc11b12c8dbe9378ac189f8af8e26ee9ae669da9210d22578a6b7",
+      "size_bytes": 19836
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/TextStyle.lean",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/TextStyle.lean",
+      "sha256": "5a6bc0e6fe368807e75c4a65ca10088c030ebbb84d39322eb73cb92d6e340d48",
+      "size_bytes": 1521
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/consumer/graph-build.json",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/consumer/graph-build.json",
+      "sha256": "c57afa89a307e480f04cf1aa484379254800ae3db4ffd5967450b38c724dff98",
+      "size_bytes": 717
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/files.txt",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/files.txt",
+      "sha256": "c219277adc3c34ae35e11c923028a2bbb412e582b928f2dfff1b791590ea8b5a",
+      "size_bytes": 725
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/sha256.txt",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/sha256.txt",
+      "sha256": "83fe182211e8d579fb4b8a22f443efe3a5ff5783f9b9313bf20ebb3880ad7136",
+      "size_bytes": 1517
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/source-scope.log",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/source-scope.log",
+      "sha256": "8fc45455a042208e6846c852a2da1fe7c8fa25b68d3219f1cf26aa6ea7539e6e",
+      "size_bytes": 1813
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/summary.txt",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/summary.txt",
+      "sha256": "4d9334642d88b6b6028bf24b021329f06e19acff6b0bd71dcf44d2393cbee02a",
+      "size_bytes": 1735
+    },
+    {
+      "archive_relative_path": "verification/cartier-boundary-zero-final/text-style.json",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/cartier-boundary-zero-final/text-style.json",
+      "sha256": "9403c8beff2778cd4894281aaf601397daa2831b429aabad3f13f06277e7a6cc",
+      "size_bytes": 790
+    },
+    {
+      "archive_relative_path": "verification/smooth-cartier-choice-final/consumer-repair.log",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/smooth-cartier-choice-final/consumer-repair.log",
+      "sha256": "6dee8f3dd29b1df484273f232afb6a1f7135625a7f47375a59fdaec1c816a4b4",
+      "size_bytes": 534
+    },
+    {
+      "archive_relative_path": "verification/smooth-cartier-choice-final/summary.txt",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/evidence/verification/smooth-cartier-choice-final/summary.txt",
+      "sha256": "a1f971d6188c4e3a3bd56dd304f2043592e9c4568591f7bd491b44301a9574d6",
+      "size_bytes": 1673
+    }
+  ],
+  "archival_plans": [
+    {
+      "archive_relative_path": "doc/STRICT_A1_ROUTE.md",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/plans/STRICT_A1_ROUTE.md",
+      "sha256": "7b024115ea69af9128243f7279158b4c732420e32aca36cf27deff5c520bcccd"
+    },
+    {
+      "archive_relative_path": "doc/STRICT_A1_PROOF_PLAN_20261018.md",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/plans/STRICT_A1_PROOF_PLAN_20261018.md",
+      "sha256": "751590b0abc09d8be961246db6a522812483db8d9a8d9b980bdd553ad3e33df7"
+    },
+    {
+      "archive_relative_path": "doc/STANDARD_TRIPLE_PROOF_PLAN_20261018.md",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/plans/STANDARD_TRIPLE_PROOF_PLAN_20261018.md",
+      "sha256": "6d069f9e640652f6a93104e3cdd7780d778d80951968448ca79475e5d36f5dc7"
+    },
+    {
+      "archive_relative_path": "doc/RELATIVE_PICARD_MINIMAL_PLAN_20261018.md",
+      "preserved_path": "doc/provenance/cartier-boundary-rj-20261018/plans/RELATIVE_PICARD_MINIMAL_PLAN_20261018.md",
+      "sha256": "8c7cf2b020657faf41930a2cfc6fc053032c7d165e624079693430cda0b5907b"
+    }
+  ],
+  "entries": [
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/CartierComplementDense.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.CartierComplementDense",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "776382db1e05145c43c4afeb60503958542d24a5fdbea4e34b3ea1125a3ce1df",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/CartierComplementDense.lean",
+      "current_repository_sha256": "776382db1e05145c43c4afeb60503958542d24a5fdbea4e34b3ea1125a3ce1df",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "264b67fc94eb3fd94e4de2e9eb90c6943255da4ce0b89b7694128600bf40a598",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/ClosedFiberEtaleEqualization.lean",
+      "current_repository_sha256": "264b67fc94eb3fd94e4de2e9eb90c6943255da4ce0b89b7694128600bf40a598",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ],
+      "current_native_validation": {
+        "record": "CHECKS.json",
+        "source_sha256": "264b67fc94eb3fd94e4de2e9eb90c6943255da4ce0b89b7694128600bf40a598",
+        "scope": "This Mathlib-only leaf; all15 default declaration linters passed.",
+        "exit_code": 0
+      }
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/AffineBoundarySection.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.AffineBoundarySection",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "0de51ddf60eb8cb61023ad3f868566a6736fc9ef2d1ad3eb77402bcabb8ef3b0",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/AffineBoundarySection.lean",
+      "current_repository_sha256": "0de51ddf60eb8cb61023ad3f868566a6736fc9ef2d1ad3eb77402bcabb8ef3b0",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/BoundaryFramed.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "0a32fa2fe3728042e97e7b53070b8523a53b011bbaf18f16aa0c376da06b60a9",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/BoundaryFramed.lean",
+      "current_repository_sha256": "0a32fa2fe3728042e97e7b53070b8523a53b011bbaf18f16aa0c376da06b60a9",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/BoundaryFramedSectionTransport.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedSectionTransport",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "17918dd1370966219a9a85fe92e61b3099084c15cdeecf27576b2c16d303fff3",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/BoundaryFramedSectionTransport.lean",
+      "current_repository_sha256": "17918dd1370966219a9a85fe92e61b3099084c15cdeecf27576b2c16d303fff3",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/BoundaryFramedTensor.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedTensor",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "032e69776e617d60f4b9f4ee9bf0706a3007b41d0622f441a6cf6ae0bb2830a2",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/BoundaryFramedTensor.lean",
+      "current_repository_sha256": "032e69776e617d60f4b9f4ee9bf0706a3007b41d0622f441a6cf6ae0bb2830a2",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NeighborhoodOriginalAmbientMaps.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodOriginalAmbientMaps",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "a095eb8310874de7bc0f0cc30cae25eb6843f9db397accf7ca06c2822f9315b2",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NeighborhoodOriginalAmbientMaps.lean",
+      "current_repository_sha256": "a095eb8310874de7bc0f0cc30cae25eb6843f9db397accf7ca06c2822f9315b2",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NeighborhoodPunctureBaseChange.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPunctureBaseChange",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "c8d36e34441258c41fad53e210eaca00d71e1331b0ebb63614869e74190b036e",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NeighborhoodPunctureBaseChange.lean",
+      "current_repository_sha256": "c8d36e34441258c41fad53e210eaca00d71e1331b0ebb63614869e74190b036e",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NeighborhoodPunctureIdentification.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPunctureIdentification",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "fe76a2d127a631ecc88463a905f3953dde5a797abdde71972a288d7c364ac420",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NeighborhoodPunctureIdentification.lean",
+      "current_repository_sha256": "fe76a2d127a631ecc88463a905f3953dde5a797abdde71972a288d7c364ac420",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/PolynomialZeroOriginalEtalePresentation.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.PolynomialZeroOriginalEtalePresentation",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "edbb02626424d91ed097666d48db5ab42a1389bb448c961d84fd8c4ec6555ab6",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/PolynomialZeroOriginalEtalePresentation.lean",
+      "current_repository_sha256": "edbb02626424d91ed097666d48db5ab42a1389bb448c961d84fd8c4ec6555ab6",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/BoundaryFramedDivisorPairs.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryFramedDivisorPairs",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "5967f40feeb8259e68bb73ae650608c91493770b65d73af4093a8858909f66f3",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/BoundaryFramedDivisorPairs.lean",
+      "current_repository_sha256": "5967f40feeb8259e68bb73ae650608c91493770b65d73af4093a8858909f66f3",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/BoundaryNeighborhoodComplement.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryNeighborhoodComplement",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "162cada816b7a2a8ee04499e6c70aef93998e0168a281a6b5afc680b15677f2b",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/AlgebraicGeometry/RelativeCurve/BoundaryNeighborhoodComplement.lean",
+      "current_repository_sha256": "162cada816b7a2a8ee04499e6c70aef93998e0168a281a6b5afc680b15677f2b",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.SmoothCartierAtPrime",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "04a027feab2e473918abc22535563fa98886d4486c0c8e4fe42015465e7ecc23",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": "verification/smooth-cartier-choice-final/summary.txt",
+      "source_evidence_status": [
+        "separately summary/stdout-bound source; record locator included in evidence subtree"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/SmoothCartierAtPrime.lean",
+      "current_repository_sha256": "04a027feab2e473918abc22535563fa98886d4486c0c8e4fe42015465e7ecc23",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/AlgebraicGeometry/SmoothStalkFiniteRank.lean",
+      "module": "Motivic.Aglib.AlgebraicGeometry.SmoothStalkFiniteRank",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "de6a83c6e518196da1924c23410fb56723b127edc75113d4735439bb221ce2d3",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/AlgebraicGeometry/SmoothStalkFiniteRank.lean",
+      "current_repository_sha256": "de6a83c6e518196da1924c23410fb56723b127edc75113d4735439bb221ce2d3",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/CategoryTheory/Sites/RestrictionSourceComposition.lean",
+      "module": "Motivic.Aglib.CategoryTheory.Sites.RestrictionSourceComposition",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "c3293a675b4b1b9c03e2668295c6440dfb57593d18daa1bde701f6935967ebe6",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/CategoryTheory/Sites/RestrictionSourceComposition.lean",
+      "current_repository_sha256": "c3293a675b4b1b9c03e2668295c6440dfb57593d18daa1bde701f6935967ebe6",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.lean",
+      "module": "Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f51dc96ea20ea8706935dceb5824293fc69eff5e2dc6f5c01c40727cccec868c",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Aglib/CategoryTheory/Sites/SheafifyLocallyZero.lean",
+      "current_repository_sha256": "f51dc96ea20ea8706935dceb5824293fc69eff5e2dc6f5c01c40727cccec868c",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ],
+      "current_native_validation": {
+        "record": "CHECKS.json",
+        "source_sha256": "f51dc96ea20ea8706935dceb5824293fc69eff5e2dc6f5c01c40727cccec868c",
+        "scope": "This Mathlib-only leaf; all15 default declaration linters passed.",
+        "exit_code": 0
+      }
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/RingTheory/DVRNormCartierLength.lean",
+      "module": "Motivic.Aglib.RingTheory.DVRNormCartierLength",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "880b0db0203e4ce63ca1763c82ef03ab68e238837a4acae67756c34777a09f2b",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/RingTheory/DVRNormCartierLength.lean",
+      "current_repository_sha256": "880b0db0203e4ce63ca1763c82ef03ab68e238837a4acae67756c34777a09f2b",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Aglib/RingTheory/FiniteAlgebraMarkedNorm.lean",
+      "module": "Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "a3c2e86ff0dd1461abd96ea5434b10c6fce69dc1b0485bbee97d02f2399366c4",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Aglib/RingTheory/FiniteAlgebraMarkedNorm.lean",
+      "current_repository_sha256": "a3c2e86ff0dd1461abd96ea5434b10c6fce69dc1b0485bbee97d02f2399366c4",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Cycles/CodimensionOneDominance.lean",
+      "module": "Motivic.AlgebraicGeometry.Cycles.CodimensionOneDominance",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "06fb454b727a6190b552eddefea447cbe732dfb71d5d11e2efc5ca20555b87bc",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/Cycles/CodimensionOneDominance.lean",
+      "current_repository_sha256": "06fb454b727a6190b552eddefea447cbe732dfb71d5d11e2efc5ca20555b87bc",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Cycles/PrincipalOrderCycle.lean",
+      "module": "Motivic.AlgebraicGeometry.Cycles.PrincipalOrderCycle",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "0a45d983d19f31713bcdf6d062346c77aae6222f78e3d394e1fd9f3816bf1583",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/Cycles/PrincipalOrderCycle.lean",
+      "current_repository_sha256": "0a45d983d19f31713bcdf6d062346c77aae6222f78e3d394e1fd9f3816bf1583",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/BoundaryPencilHomotopy.lean",
+      "module": "Motivic.AlgebraicGeometry.PresheavesWithTransfers.BoundaryPencilHomotopy",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "daf7770db775542129dc7d0e212ef81be23da8dbda9028bc5b4f1dad373ae43f",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/PresheavesWithTransfers/BoundaryPencilHomotopy.lean",
+      "current_repository_sha256": "daf7770db775542129dc7d0e212ef81be23da8dbda9028bc5b4f1dad373ae43f",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/ContractionComplement.lean",
+      "module": "Motivic.AlgebraicGeometry.PresheavesWithTransfers.ContractionComplement",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "3c064b4ac4ad30439810465495cd4c07bbae1d88f104f4c8ac13bad87abec945",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/ContractionComplement.lean",
+      "current_repository_sha256": "3c064b4ac4ad30439810465495cd4c07bbae1d88f104f4c8ac13bad87abec945",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NisnevichLocalZero.lean",
+      "module": "Motivic.AlgebraicGeometry.PresheavesWithTransfers.NisnevichLocalZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "7f3e994d8f6b58cbe4aa8c49f5181062deff51ca94f0fdc7fd8142c7f22b23e2",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NisnevichLocalZero.lean",
+      "current_repository_sha256": "7f3e994d8f6b58cbe4aa8c49f5181062deff51ca94f0fdc7fd8142c7f22b23e2",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/StaticBoundaryPencilAction.lean",
+      "module": "Motivic.AlgebraicGeometry.PresheavesWithTransfers.StaticBoundaryPencilAction",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "75142f5e7caf9edbcc846b768d959b76636f91f1f69536178cda99ce37ea157e",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/PresheavesWithTransfers/StaticBoundaryPencilAction.lean",
+      "current_repository_sha256": "75142f5e7caf9edbcc846b768d959b76636f91f1f69536178cda99ce37ea157e",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleDirectImageOpenSupport.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleDirectImageOpenSupport",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "e47d96d88dd46fe45cf23bb5286c2ed3f32f04c208d8ecf05710a7a5b5ee1c63",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleDirectImageOpenSupport.lean",
+      "current_repository_sha256": "e47d96d88dd46fe45cf23bb5286c2ed3f32f04c208d8ecf05710a7a5b5ee1c63",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointInverseImageComposition.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageComposition",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f035894cc9559b24aa6b7d492e3e4a663790a2e1b5b42e2ff7876fe4df3a40de",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "f035894cc9559b24aa6b7d492e3e4a663790a2e1b5b42e2ff7876fe4df3a40de",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtalePointInverseImageComposition.lean",
+      "current_repository_sha256": "f035894cc9559b24aa6b7d492e3e4a663790a2e1b5b42e2ff7876fe4df3a40de",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleRankZeroPointRefinement.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleRankZeroPointRefinement",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f0b39b28e0609d84d56c26b96083ffc6258eed983796c18b7b44575b12bab080",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleRankZeroPointRefinement.lean",
+      "current_repository_sha256": "f0b39b28e0609d84d56c26b96083ffc6258eed983796c18b7b44575b12bab080",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSmoothNeighborhood.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSmoothNeighborhood",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "796d25376a974f0823208e54dc94f571dfbccd2d2da5847c33e9761c9008b27e",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/Sites/FiniteEtaleSmoothNeighborhood.lean",
+      "current_repository_sha256": "796d25376a974f0823208e54dc94f571dfbccd2d2da5847c33e9761c9008b27e",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSourceComposition.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSourceComposition",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "b7a53352af9a779e2a46880a8e89d1bf350df102676c601ea0587b9e61e57499",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/Sites/FiniteEtaleSourceComposition.lean",
+      "current_repository_sha256": "b7a53352af9a779e2a46880a8e89d1bf350df102676c601ea0587b9e61e57499",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSourceSquare.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSourceSquare",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "e9755183fa1a6473ecd71a5d0867f6a1bd3ffe16d101de331814360308651d3b",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/Sites/FiniteEtaleSourceSquare.lean",
+      "current_repository_sha256": "e9755183fa1a6473ecd71a5d0867f6a1bd3ffe16d101de331814360308651d3b",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedCohomology.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedCohomology",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "6853fff5e061d4a88a94cfafa8af774c8596f33721a765fd1fceb19a05936a01",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedCohomology.lean",
+      "current_repository_sha256": "6853fff5e061d4a88a94cfafa8af774c8596f33721a765fd1fceb19a05936a01",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedComap.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedComap",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "36d0d35b8c2c74460443e93ed0ff3fa7b25c56aef8266f0550814ef9aee5930a",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedComap.lean",
+      "current_repository_sha256": "36d0d35b8c2c74460443e93ed0ff3fa7b25c56aef8266f0550814ef9aee5930a",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedImageExact.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedImageExact",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "87945f94c56433ea2b00d6fa0aa8216a3af5ca3aa45294d34a2f01766b1109d6",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedImageExact.lean",
+      "current_repository_sha256": "87945f94c56433ea2b00d6fa0aa8216a3af5ca3aa45294d34a2f01766b1109d6",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedNeighborhood.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedNeighborhood",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "ff19496cf61308251ecfe563250857e3e6466daca06ff53f5bd0f02999ac07a1",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedNeighborhood.lean",
+      "current_repository_sha256": "ff19496cf61308251ecfe563250857e3e6466daca06ff53f5bd0f02999ac07a1",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedPointFiber.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedPointFiber",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "40d3e7935e8a0d43ffe5cea0e8f35db29b139b9206aac221ee6f1f7f7e4d4770",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedPointFiber.lean",
+      "current_repository_sha256": "40d3e7935e8a0d43ffe5cea0e8f35db29b139b9206aac221ee6f1f7f7e4d4770",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedRefinement.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedRefinement",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "86fe00b11d90e18a6de18f97a285788abea8ff59161e4e02740f46ec45024949",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedRefinement.lean",
+      "current_repository_sha256": "86fe00b11d90e18a6de18f97a285788abea8ff59161e4e02740f46ec45024949",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedSupportUnit.lean",
+      "module": "Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedSupportUnit",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "e4f09fed776988cc899c3e4b628df1b3e62b7f08995d00bd61ce8418ae9ab638",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/Sites/FiniteEtaleSplitClosedSupportUnit.lean",
+      "current_repository_sha256": "e4f09fed776988cc899c3e4b628df1b3e62b7f08995d00bd61ce8418ae9ab638",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteAffineLineOpenMaps.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteAffineLineOpenMaps",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "12e3d9f4bb501948869a783ff274d59d96f1c6ab22678a9f9977ab53d80b3474",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteAffineLineOpenMaps.lean",
+      "current_repository_sha256": "12e3d9f4bb501948869a783ff274d59d96f1c6ab22678a9f9977ab53d80b3474",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteAffineLineZeroCoordinates.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteAffineLineZeroCoordinates",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "7a4662081859556bcb7a327f741b9180d199d59b65bebee5ba657648230d1ced",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/SmoothSiteAffineLineZeroCoordinates.lean",
+      "current_repository_sha256": "7a4662081859556bcb7a327f741b9180d199d59b65bebee5ba657648230d1ced",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteAffineZeroPoint.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteAffineZeroPoint",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "0cf0720f2882377d8ac83a34ac32e89826a6d9e32186e2a35a5605e0335a1169",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/SmoothSiteAffineZeroPoint.lean",
+      "current_repository_sha256": "0cf0720f2882377d8ac83a34ac32e89826a6d9e32186e2a35a5605e0335a1169",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteCartierCylinderComparison.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteCartierCylinderComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "99c7490a67868ec3d4ce8be708ef4bb55fd8c9a83481422b55e46e3088f44dec",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "99c7490a67868ec3d4ce8be708ef4bb55fd8c9a83481422b55e46e3088f44dec",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteCartierCylinderComparison.lean",
+      "current_repository_sha256": "99c7490a67868ec3d4ce8be708ef4bb55fd8c9a83481422b55e46e3088f44dec",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteCartierPunctureComparison.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteCartierPunctureComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "34c70107f5d1390a4d86a26003f0daa579596d36190b084f059a29ff22e55907",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "34c70107f5d1390a4d86a26003f0daa579596d36190b084f059a29ff22e55907",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteCartierPunctureComparison.lean",
+      "current_repository_sha256": "34c70107f5d1390a4d86a26003f0daa579596d36190b084f059a29ff22e55907",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteContractionDensity.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteContractionDensity",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "28d3714a8b0039d4154513742b33ce559c5a058a29f9e18f15b0af7b81cd16f1",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/SmoothSiteContractionDensity.lean",
+      "current_repository_sha256": "28d3714a8b0039d4154513742b33ce559c5a058a29f9e18f15b0af7b81cd16f1",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteCylinderOpenImage.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteCylinderOpenImage",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f87cff2d5d9edba8e7eda8506702ff944f985f48cb646e1ba0b704dacb9169eb",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteCylinderOpenImage.lean",
+      "current_repository_sha256": "f87cff2d5d9edba8e7eda8506702ff944f985f48cb646e1ba0b704dacb9169eb",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteFixedPsiTorus.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteFixedPsiTorus",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "84e40d1abcab5e4cbbb2bd97dc3cb30092e529de9239c96dffd5235cecd3c948",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/SmoothSiteFixedPsiTorus.lean",
+      "current_repository_sha256": "84e40d1abcab5e4cbbb2bd97dc3cb30092e529de9239c96dffd5235cecd3c948",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteNeighborhoodLambdaCylinder.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteNeighborhoodLambdaCylinder",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "b5c61806ca0acaa29871b96bbb4b5fd62515d5fe5ba428efc8c5d500118e08a6",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/SmoothSiteNeighborhoodLambdaCylinder.lean",
+      "current_repository_sha256": "b5c61806ca0acaa29871b96bbb4b5fd62515d5fe5ba428efc8c5d500118e08a6",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteProductPermutation.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteProductPermutation",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "c93fe1a3dca990a4e2c7b229de15ea950ddc2258622d1d863c0ec3facb13c9b4",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/AlgebraicGeometry/SmoothSiteProductPermutation.lean",
+      "current_repository_sha256": "c93fe1a3dca990a4e2c7b229de15ea950ddc2258622d1d863c0ec3facb13c9b4",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/AlgebraicGeometry/SmoothSiteSectionDetection.lean",
+      "module": "Motivic.AlgebraicGeometry.SmoothSiteSectionDetection",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "623fc6c3583a0eb9c803ce7ea1aba8113b1f3a059a6e19f2265faa28aa493858",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/AlgebraicGeometry/SmoothSiteSectionDetection.lean",
+      "current_repository_sha256": "623fc6c3583a0eb9c803ce7ea1aba8113b1f3a059a6e19f2265faa28aa493858",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/BoundaryEtaleExcisionUnit.lean",
+      "module": "Motivic.Cohomology.A1.BoundaryEtaleExcisionUnit",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "84c1cfcfdc084ae2ed95ce8e34e068ff161e7790ca47c19aeeb5079c37d613b2",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/BoundaryEtaleExcisionUnit.lean",
+      "current_repository_sha256": "84c1cfcfdc084ae2ed95ce8e34e068ff161e7790ca47c19aeeb5079c37d613b2",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryLocalKernel.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryLocalKernel",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "00fa021a59d829a4ed0ac55a0f8fd38d1c26afba0c35746119ce70ac64c9435b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionBoundaryLocalKernel.lean",
+      "current_repository_sha256": "00fa021a59d829a4ed0ac55a0f8fd38d1c26afba0c35746119ce70ac64c9435b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryMarkedExtension.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryMarkedExtension",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "568be3765b05af15a5b3407f9d473cebbfc08840acab72b195910f4cbc4921c2",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionBoundaryMarkedExtension.lean",
+      "current_repository_sha256": "568be3765b05af15a5b3407f9d473cebbfc08840acab72b195910f4cbc4921c2",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryMono.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryMono",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "29c8bee60893f57dd7de05cb7666ce947313066ae24f86eaaab12a17322f0971",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionBoundaryMono.lean",
+      "current_repository_sha256": "29c8bee60893f57dd7de05cb7666ce947313066ae24f86eaaab12a17322f0971",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryProjection.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryProjection",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "29c7da7dc618a04677bc8cdddac42fbd0a68699a562616fb454460e79f25deca",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryProjection.lean",
+      "current_repository_sha256": "29c7da7dc618a04677bc8cdddac42fbd0a68699a562616fb454460e79f25deca",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryProjectionCompatibility.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryProjectionCompatibility",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "9e921cb0ae09d78f9d16a9c412e39b79471077d45aedb91ab24afba278187ccf",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryProjectionCompatibility.lean",
+      "current_repository_sha256": "9e921cb0ae09d78f9d16a9c412e39b79471077d45aedb91ab24afba278187ccf",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryProjectionExcision.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryProjectionExcision",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "06e547657b10eb6b5eb59210ad9b74bbdf87dea7d8bb9c0894e8e731bd357d64",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryProjectionExcision.lean",
+      "current_repository_sha256": "06e547657b10eb6b5eb59210ad9b74bbdf87dea7d8bb9c0894e8e731bd357d64",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryProjectionExcisionGeometry.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryProjectionExcisionGeometry",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "cbe896b68eb29a5c545aec8774047b28036ce58ea3638d3e0fb28355a2583004",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryProjectionExcisionGeometry.lean",
+      "current_repository_sha256": "cbe896b68eb29a5c545aec8774047b28036ce58ea3638d3e0fb28355a2583004",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryProjectionGeometry.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryProjectionGeometry",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "19d5a3a1878699abf0de71d55edf5dfc7704d43b1fa8361e16fe2be1edce17d6",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryProjectionGeometry.lean",
+      "current_repository_sha256": "19d5a3a1878699abf0de71d55edf5dfc7704d43b1fa8361e16fe2be1edce17d6",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundaryProjectionSupport.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundaryProjectionSupport",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "261eed550c8e28d6b10542dba3da88f571bcf610322c1e24004898e691edfeee",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ContractionBoundaryProjectionSupport.lean",
+      "current_repository_sha256": "261eed550c8e28d6b10542dba3da88f571bcf610322c1e24004898e691edfeee",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionBoundarySheafComparison.lean",
+      "module": "Motivic.Cohomology.A1.ContractionBoundarySheafComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "06de4debd34b6c237c78768374cafd217f567f35b1c3cb08776b223f1c2d6b31",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionBoundarySheafComparison.lean",
+      "current_repository_sha256": "06de4debd34b6c237c78768374cafd217f567f35b1c3cb08776b223f1c2d6b31",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionIntegralWholeZeroRefinement.lean",
+      "module": "Motivic.Cohomology.A1.ContractionIntegralWholeZeroRefinement",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "6237836b06e3bc8db823608544067b2c95f9e353d2ff4616e2cd7c4433018921",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionIntegralWholeZeroRefinement.lean",
+      "current_repository_sha256": "6237836b06e3bc8db823608544067b2c95f9e353d2ff4616e2cd7c4433018921",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ContractionLocalCylinderExtension.lean",
+      "module": "Motivic.Cohomology.A1.ContractionLocalCylinderExtension",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "24a311ccf1e3a5f8954751a5a0dd26247bdfc8ec3e4f4c1646157500c04c742e",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/ContractionLocalCylinderExtension.lean",
+      "current_repository_sha256": "24a311ccf1e3a5f8954751a5a0dd26247bdfc8ec3e4f4c1646157500c04c742e",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/DenseOpenLocalDetection.lean",
+      "module": "Motivic.Cohomology.A1.DenseOpenLocalDetection",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "8c9a0e065a7e432f90a45f69d058f346ba6acd094a6b914163d08b90e6d94fb0",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/DenseOpenLocalDetection.lean",
+      "current_repository_sha256": "8c9a0e065a7e432f90a45f69d058f346ba6acd094a6b914163d08b90e6d94fb0",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/DenseOpenRestrictionMono.lean",
+      "module": "Motivic.Cohomology.A1.DenseOpenRestrictionMono",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "8dde4dada62d13f1fff0cfced16c586fc9359253377c0b6e3a9773fc796e0f39",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/DenseOpenRestrictionMono.lean",
+      "current_repository_sha256": "8dde4dada62d13f1fff0cfced16c586fc9359253377c0b6e3a9773fc796e0f39",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/FiniteEtaleGenericModelDetection.lean",
+      "module": "Motivic.Cohomology.A1.FiniteEtaleGenericModelDetection",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "c1a9e82f9befee3310e2317d6e384113d21ac3fa9d541398b35aa40f24696caa",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/FiniteEtaleGenericModelDetection.lean",
+      "current_repository_sha256": "c1a9e82f9befee3310e2317d6e384113d21ac3fa9d541398b35aa40f24696caa",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/FixedTargetOriginalOverlapLifting.lean",
+      "module": "Motivic.Cohomology.A1.FixedTargetOriginalOverlapLifting",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "a5f8811c7269a43bfe5d73a12194a4fd9210f0da42bd79bb4a647d798a841ace",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/FixedTargetOriginalOverlapLifting.lean",
+      "current_repository_sha256": "a5f8811c7269a43bfe5d73a12194a4fd9210f0da42bd79bb4a647d798a841ace",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/GenericDetection.lean",
+      "module": "Motivic.Cohomology.A1.GenericDetection",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "9ed0bbf8856de53caa853d14cc88d1fb4d16910972ba97b597fef0d49f2c806b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/GenericDetection.lean",
+      "current_repository_sha256": "9ed0bbf8856de53caa853d14cc88d1fb4d16910972ba97b597fef0d49f2c806b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/NeighborhoodCorrectionCoordinates.lean",
+      "module": "Motivic.Cohomology.A1.NeighborhoodCorrectionCoordinates",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "018ab7149d81acf2ba80a6490b25302921075cd5ca5aaa5e76b29655f8053d52",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/NeighborhoodCorrectionCoordinates.lean",
+      "current_repository_sha256": "018ab7149d81acf2ba80a6490b25302921075cd5ca5aaa5e76b29655f8053d52",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationCombinedCorrection.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationCombinedCorrection",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "582f285f9f937a438a66bae6210baee1df3e95ee6a977c2528d292d0160dd1ee",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationCombinedCorrection.lean",
+      "current_repository_sha256": "582f285f9f937a438a66bae6210baee1df3e95ee6a977c2528d292d0160dd1ee",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationCorrectionSquare.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationCorrectionSquare",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "161a048860094595647f3b0227a799e947dfedc916fb51c1e80c062b1a95fae2",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationCorrectionSquare.lean",
+      "current_repository_sha256": "161a048860094595647f3b0227a799e947dfedc916fb51c1e80c062b1a95fae2",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationOpenImage.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationOpenImage",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "f6996bd8d267f76ff50f37da6b704c11c99f11b093c73286d8f203fa50badfca",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationOpenImage.lean",
+      "current_repository_sha256": "f6996bd8d267f76ff50f37da6b704c11c99f11b093c73286d8f203fa50badfca",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationOverlapLifting.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationOverlapLifting",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "6c5e2ed9f2a8d9780e8e947860b026c7b3fba5acbd3a31f23abe1d21a6e72427",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationOverlapLifting.lean",
+      "current_repository_sha256": "6c5e2ed9f2a8d9780e8e947860b026c7b3fba5acbd3a31f23abe1d21a6e72427",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationPolynomialPuncture.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationPolynomialPuncture",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "5200fc4235158eaba4bfe861b9b0acc5595622dcac3b39e4bf8180d9043bec89",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationPolynomialPuncture.lean",
+      "current_repository_sha256": "5200fc4235158eaba4bfe861b9b0acc5595622dcac3b39e4bf8180d9043bec89",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationSecondCorrection.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationSecondCorrection",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "80aa6f7b8840f369a3b2ff84693a29f028d6bc29c8f65d66f393a8bd2f6a61c4",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationSecondCorrection.lean",
+      "current_repository_sha256": "80aa6f7b8840f369a3b2ff84693a29f028d6bc29c8f65d66f393a8bd2f6a61c4",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationSecondCylinder.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationSecondCylinder",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "3da233cbb03f7b81d7b6badf061f7d51511102b872e2ab3161aca0654a374438",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationSecondCylinder.lean",
+      "current_repository_sha256": "3da233cbb03f7b81d7b6badf061f7d51511102b872e2ab3161aca0654a374438",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean",
+      "module": "Motivic.Cohomology.A1.OriginalPresentationSiteMaps",
+      "disposition": "incoming-replacement-archived-live-base-preserved",
+      "incoming_archive_source_sha256": "3617e09283bfb623e9cee79315db18d6b6162794b5fadb2d771a58a4b79dc206",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean",
+      "current_repository_sha256": "819c25642ec83f3132b3446651c6e5f51d55801613d0e510a40d127f73538694",
+      "incoming_archive_copy_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/OriginalPresentationSiteMaps.lean",
+      "incoming_archive_copy_sha256": "3617e09283bfb623e9cee79315db18d6b6162794b5fadb2d771a58a4b79dc206",
+      "projection_transforms": [
+        "incoming replacement archived raw; live base source bytes preserved"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PointedCartierBaseRefinement.lean",
+      "module": "Motivic.Cohomology.A1.PointedCartierBaseRefinement",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "f146d88d27d2d5f5dc274e6d0904ec17b7c8da9125355467dc99a453eb2f7e82",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PointedCartierBaseRefinement.lean",
+      "current_repository_sha256": "f146d88d27d2d5f5dc274e6d0904ec17b7c8da9125355467dc99a453eb2f7e82",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PointedCylinderH1ChartVanishing.lean",
+      "module": "Motivic.Cohomology.A1.PointedCylinderH1ChartVanishing",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "6a49729d17b38ab0b95cdc704123c7d5ebd469b49f975a2ecc723a5da61b16dd",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PointedCylinderH1ChartVanishing.lean",
+      "current_repository_sha256": "6a49729d17b38ab0b95cdc704123c7d5ebd469b49f975a2ecc723a5da61b16dd",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PointedCylinderLocalEffacement.lean",
+      "module": "Motivic.Cohomology.A1.PointedCylinderLocalEffacement",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "86a1da9472946a2e1ce2839edf7d13d36bd5c13e119916d738a5f76e4de3be96",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PointedCylinderLocalEffacement.lean",
+      "current_repository_sha256": "86a1da9472946a2e1ce2839edf7d13d36bd5c13e119916d738a5f76e4de3be96",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PointedEtaleCylinderRestriction.lean",
+      "module": "Motivic.Cohomology.A1.PointedEtaleCylinderRestriction",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "a55c64691510b50ce6164e48b4083a03cba9a9c8bf72411809a5203c3edb68bf",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PointedEtaleCylinderRestriction.lean",
+      "current_repository_sha256": "a55c64691510b50ce6164e48b4083a03cba9a9c8bf72411809a5203c3edb68bf",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PointedOpenCylinderComparison.lean",
+      "module": "Motivic.Cohomology.A1.PointedOpenCylinderComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "604ac4f9092c8f19ee98a7c5f702589c4b51ef2b4d3ef4dbaca36ada6fdf544f",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PointedOpenCylinderComparison.lean",
+      "current_repository_sha256": "604ac4f9092c8f19ee98a7c5f702589c4b51ef2b4d3ef4dbaca36ada6fdf544f",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PositiveRankCartierReduction.lean",
+      "module": "Motivic.Cohomology.A1.PositiveRankCartierReduction",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "089d22063cd541f5fb2657c56f72f38f9445d51ebb39fdf737677627ae076680",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PositiveRankCartierReduction.lean",
+      "current_repository_sha256": "089d22063cd541f5fb2657c56f72f38f9445d51ebb39fdf737677627ae076680",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryCoefficientIso.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryCoefficientIso",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "e78bdffadd0cd4c37f6f9b01cf163a2749a18cb8b99f44ae60ca92ae3dd8ec3b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "e78bdffadd0cd4c37f6f9b01cf163a2749a18cb8b99f44ae60ca92ae3dd8ec3b",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryCoefficientIso.lean",
+      "current_repository_sha256": "e78bdffadd0cd4c37f6f9b01cf163a2749a18cb8b99f44ae60ca92ae3dd8ec3b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryEtaleExcision.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryEtaleExcision",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "921ab2e5ee575be31a9bba66177d5eacd2e371c3cee66f4543d5a569af130923",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "921ab2e5ee575be31a9bba66177d5eacd2e371c3cee66f4543d5a569af130923",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryEtaleExcision.lean",
+      "current_repository_sha256": "921ab2e5ee575be31a9bba66177d5eacd2e371c3cee66f4543d5a569af130923",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryEtaleLocalization.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryEtaleLocalization",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "e0b9edba4978d8080c3d2c8d1fc67a6d4529b60e4e0d577e5322ecefe10f1029",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "e0b9edba4978d8080c3d2c8d1fc67a6d4529b60e4e0d577e5322ecefe10f1029",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryEtaleLocalization.lean",
+      "current_repository_sha256": "e0b9edba4978d8080c3d2c8d1fc67a6d4529b60e4e0d577e5322ecefe10f1029",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryGeneratorEpi",
+      "disposition": "incoming-replacement-archived-live-base-preserved",
+      "incoming_archive_source_sha256": "6322fb9280aeab4b4632357a301aa3a5f8bf104a9ace455a8671fd72a885a291",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean",
+      "current_repository_sha256": "622d70d9642c6f88d74baef0b55bf19b372e29a67f637c8fba429eb9e4ad9655",
+      "incoming_archive_copy_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PresheafBoundaryGeneratorEpi.lean",
+      "incoming_archive_copy_sha256": "6322fb9280aeab4b4632357a301aa3a5f8bf104a9ace455a8671fd72a885a291",
+      "projection_transforms": [
+        "incoming replacement archived raw; live base source bytes preserved"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryGeometricImage.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryGeometricImage",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "7a9eb569df438137b7684a4f8d1d1f07944c7b698ce5cc047edd8e468cbede99",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PresheafBoundaryGeometricImage.lean",
+      "current_repository_sha256": "7a9eb569df438137b7684a4f8d1d1f07944c7b698ce5cc047edd8e468cbede99",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryGeometricRefinement.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryGeometricRefinement",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "b89e8b879886391568b9cd0b54cb956470acd1d39299269a40c94d4cc171529d",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PresheafBoundaryGeometricRefinement.lean",
+      "current_repository_sha256": "b89e8b879886391568b9cd0b54cb956470acd1d39299269a40c94d4cc171529d",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryOpenSupport.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryOpenSupport",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f7c5974db4163f863019a04d6e2d55d438c01208b831e9f1dccc214739422011",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "f7c5974db4163f863019a04d6e2d55d438c01208b831e9f1dccc214739422011",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryOpenSupport.lean",
+      "current_repository_sha256": "f7c5974db4163f863019a04d6e2d55d438c01208b831e9f1dccc214739422011",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryOpenZero.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryOpenZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f7a8928bb898aa7354f9da646e3c6655b9ba92e47bdc4f29fcbd5ae196b37e6b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "f7a8928bb898aa7354f9da646e3c6655b9ba92e47bdc4f29fcbd5ae196b37e6b",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryOpenZero.lean",
+      "current_repository_sha256": "f7a8928bb898aa7354f9da646e3c6655b9ba92e47bdc4f29fcbd5ae196b37e6b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryPointComparison.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryPointComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "79a2f4847e5325326bd1936e7435cc3785863a745b85967e874b835acfd02fb8",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "79a2f4847e5325326bd1936e7435cc3785863a745b85967e874b835acfd02fb8",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundaryPointComparison.lean",
+      "current_repository_sha256": "79a2f4847e5325326bd1936e7435cc3785863a745b85967e874b835acfd02fb8",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryPolynomialImage.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryPolynomialImage",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "fa790a43d36e97fa0196886c3e49c4acf23077917744b45c0e327c06e97b76df",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PresheafBoundaryPolynomialImage.lean",
+      "current_repository_sha256": "fa790a43d36e97fa0196886c3e49c4acf23077917744b45c0e327c06e97b76df",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundaryPolynomialOverlap.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundaryPolynomialOverlap",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "6b3450798a157a8af5b2e5a79d0ebe199edc034ebea1f66d2457dbf9897ab339",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PresheafBoundaryPolynomialOverlap.lean",
+      "current_repository_sha256": "6b3450798a157a8af5b2e5a79d0ebe199edc034ebea1f66d2457dbf9897ab339",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafBoundarySheafComparison.lean",
+      "module": "Motivic.Cohomology.A1.PresheafBoundarySheafComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "b64feeb3471abf91cd8b8040a92612c0afda107dbc8a424ee3db2bf32a49800e",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafBoundarySheafComparison.lean",
+      "current_repository_sha256": "b64feeb3471abf91cd8b8040a92612c0afda107dbc8a424ee3db2bf32a49800e",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafContractionBoundaryEpi.lean",
+      "module": "Motivic.Cohomology.A1.PresheafContractionBoundaryEpi",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "4e7926b276638f323249cb4e84eb424c0b1f12f9441b16b2ea107d9d2ca961b8",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PresheafContractionBoundaryEpi.lean",
+      "current_repository_sha256": "4e7926b276638f323249cb4e84eb424c0b1f12f9441b16b2ea107d9d2ca961b8",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafGenericModelDetection.lean",
+      "module": "Motivic.Cohomology.A1.PresheafGenericModelDetection",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "224d9f511576f56a7fd7e7e8c24a865ef4d11b2834409f39cf940dd5b7ab21eb",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafGenericModelDetection.lean",
+      "current_repository_sha256": "224d9f511576f56a7fd7e7e8c24a865ef4d11b2834409f39cf940dd5b7ab21eb",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PresheafSmoothCartierBoundaryZero.lean",
+      "module": "Motivic.Cohomology.A1.PresheafSmoothCartierBoundaryZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "9e3b3f16f9b5baac4bf3291dbc518de6344f797c4b0e549a40d4fad89baee16b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "9e3b3f16f9b5baac4bf3291dbc518de6344f797c4b0e549a40d4fad89baee16b",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/PresheafSmoothCartierBoundaryZero.lean",
+      "current_repository_sha256": "9e3b3f16f9b5baac4bf3291dbc518de6344f797c4b0e549a40d4fad89baee16b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/PuncturedCylinderCoordinates.lean",
+      "module": "Motivic.Cohomology.A1.PuncturedCylinderCoordinates",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "379b87a5db779700e47afc3af9208f18302554e88c91481654bf8108b999f4b5",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/PuncturedCylinderCoordinates.lean",
+      "current_repository_sha256": "379b87a5db779700e47afc3af9208f18302554e88c91481654bf8108b999f4b5",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/RankZeroCylinderColimit.lean",
+      "module": "Motivic.Cohomology.A1.RankZeroCylinderColimit",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "a2bdc46603d8dc5bd900257deaa6870dc695e6b286ef320f7546bed06478f184",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/RankZeroCylinderColimit.lean",
+      "current_repository_sha256": "a2bdc46603d8dc5bd900257deaa6870dc695e6b286ef320f7546bed06478f184",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/RankZeroCylinderVanishing.lean",
+      "module": "Motivic.Cohomology.A1.RankZeroCylinderVanishing",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "ff39b27f2945ea9d1d98579a8112cb7dcd5ad41383eb390f0857c9ac6e1fd8ba",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/A1/RankZeroCylinderVanishing.lean",
+      "current_repository_sha256": "ff39b27f2945ea9d1d98579a8112cb7dcd5ad41383eb390f0857c9ac6e1fd8ba",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/RestrictionDifferenceCartesianComposition.lean",
+      "module": "Motivic.Cohomology.A1.RestrictionDifferenceCartesianComposition",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "1ae94d7e156c9a319b930e9d6e293b8ce5f274143086931c06415819d9d7f71b",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/RestrictionDifferenceCartesianComposition.lean",
+      "current_repository_sha256": "1ae94d7e156c9a319b930e9d6e293b8ce5f274143086931c06415819d9d7f71b",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/RestrictionDifferenceComposition.lean",
+      "module": "Motivic.Cohomology.A1.RestrictionDifferenceComposition",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "447e20476b347bc7ae45d9fc4e1c20d0e513e8e04cf9db3678f6a1806816314d",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/RestrictionDifferenceComposition.lean",
+      "current_repository_sha256": "447e20476b347bc7ae45d9fc4e1c20d0e513e8e04cf9db3678f6a1806816314d",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/RestrictionDifferenceIsoAmbient.lean",
+      "module": "Motivic.Cohomology.A1.RestrictionDifferenceIsoAmbient",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "0ea9b85242bd073c328bba757e7c891689c2bada33c155141dd2188f98e357cf",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/RestrictionDifferenceIsoAmbient.lean",
+      "current_repository_sha256": "0ea9b85242bd073c328bba757e7c891689c2bada33c155141dd2188f98e357cf",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/RestrictionDifferenceRestriction.lean",
+      "module": "Motivic.Cohomology.A1.RestrictionDifferenceRestriction",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "c75e3df06f50ed8a644cbf25d389316e6b2ba025b95e3aeb75708abf81511113",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/RestrictionDifferenceRestriction.lean",
+      "current_repository_sha256": "c75e3df06f50ed8a644cbf25d389316e6b2ba025b95e3aeb75708abf81511113",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/StrictA1DegreeInduction.lean",
+      "module": "Motivic.Cohomology.A1.StrictA1DegreeInduction",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "231fad3cdf278e5adad2f372c036e0f9abba28cce0540da86d4ce9a26dd635f7",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/StrictA1DegreeInduction.lean",
+      "current_repository_sha256": "231fad3cdf278e5adad2f372c036e0f9abba28cce0540da86d4ce9a26dd635f7",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ZeroNeighborhoodOriginalLifting.lean",
+      "module": "Motivic.Cohomology.A1.ZeroNeighborhoodOriginalLifting",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "cdc4e352388143800a6702d34cd4f3fb57f583fd8f3724023aed7c8db57c5257",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ZeroNeighborhoodOriginalLifting.lean",
+      "current_repository_sha256": "cdc4e352388143800a6702d34cd4f3fb57f583fd8f3724023aed7c8db57c5257",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/A1/ZeroPointOriginalLifting.lean",
+      "module": "Motivic.Cohomology.A1.ZeroPointOriginalLifting",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "2ca3b9da9e24c10b61d9f8d9a75cc36806081502ae2849c2d740caaf28e81479",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/Motivic/Cohomology/A1/ZeroPointOriginalLifting.lean",
+      "current_repository_sha256": "2ca3b9da9e24c10b61d9f8d9a75cc36806081502ae2849c2d740caaf28e81479",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/AffineLine/GenericBase.lean",
+      "module": "Motivic.Cohomology.AffineLine.GenericBase",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "671e3fd064d7e1d3e42ca4f828614b8adfb9742d60854eb2d96c7dddec29a7e0",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/AffineLine/GenericBase.lean",
+      "current_repository_sha256": "671e3fd064d7e1d3e42ca4f828614b8adfb9742d60854eb2d96c7dddec29a7e0",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/RelativeGenericBaseCylinderZero.lean",
+      "module": "Motivic.Cohomology.RelativeGenericBaseCylinderZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "545393b5021c9d73c48e92bff2d722aa68f1cab3c9bafcaaab1fcc0c28c6a63f",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/RelativeGenericBaseCylinderZero.lean",
+      "current_repository_sha256": "545393b5021c9d73c48e92bff2d722aa68f1cab3c9bafcaaab1fcc0c28c6a63f",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/RelativeGenericBaseH1Zero.lean",
+      "module": "Motivic.Cohomology.RelativeGenericBaseH1Zero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "8eb9ea8f1819293523e4e18357cda6f02a986fd8a3b9f8ffe4c74d61caabc2b1",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/RelativeGenericBaseH1Zero.lean",
+      "current_repository_sha256": "8eb9ea8f1819293523e4e18357cda6f02a986fd8a3b9f8ffe4c74d61caabc2b1",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/RelativeGenericBasePositiveZero.lean",
+      "module": "Motivic.Cohomology.RelativeGenericBasePositiveZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "d3ad40e43bfb4313701131f99fe8235818a44279918434154c529e9f1aff7e1b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/RelativeGenericBasePositiveZero.lean",
+      "current_repository_sha256": "d3ad40e43bfb4313701131f99fe8235818a44279918434154c529e9f1aff7e1b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/RelativeMonicH1BaseZero.lean",
+      "module": "Motivic.Cohomology.RelativeMonicH1BaseZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "3408ccf20aa4e67eb8cdcddda4a066f6feedaf73d9e0f496f14d05976881d4e0",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/RelativeMonicH1BaseZero.lean",
+      "current_repository_sha256": "3408ccf20aa4e67eb8cdcddda4a066f6feedaf73d9e0f496f14d05976881d4e0",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/SheafCohomologyCartierBoundaryZero.lean",
+      "module": "Motivic.Cohomology.SheafCohomologyCartierBoundaryZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "4d0e54a8adaf2f825d95dcf4f7acbc63e63a0e950b34a7130edb9b6db883ea6b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "4d0e54a8adaf2f825d95dcf4f7acbc63e63a0e950b34a7130edb9b6db883ea6b",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "Motivic/Cohomology/SheafCohomologyCartierBoundaryZero.lean",
+      "current_repository_sha256": "4d0e54a8adaf2f825d95dcf4f7acbc63e63a0e950b34a7130edb9b6db883ea6b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/SheafCohomologyContractionSheafZero.lean",
+      "module": "Motivic.Cohomology.SheafCohomologyContractionSheafZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "03470392840b4f66b799650742c1c2ac3b92d2bfb39400e36c85f45e5851900b",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/SheafCohomologyContractionSheafZero.lean",
+      "current_repository_sha256": "03470392840b4f66b799650742c1c2ac3b92d2bfb39400e36c85f45e5851900b",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/WholeAffineLineBaseOpenMaps.lean",
+      "module": "Motivic.Cohomology.WholeAffineLineBaseOpenMaps",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "9a362fb03b178f33ff479eb696435c9cf77db6d10dba64c6b05960b57a44dc1e",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineBaseOpenMaps.lean",
+      "current_repository_sha256": "9a362fb03b178f33ff479eb696435c9cf77db6d10dba64c6b05960b57a44dc1e",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "Motivic/Cohomology/WholeAffineLineCylinderTransport.lean",
+      "module": "Motivic.Cohomology.WholeAffineLineCylinderTransport",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "38689dc8333267b0546da1da291a4d48378bdab476f50646be2435e0d96e20e5",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "Motivic/Cohomology/WholeAffineLineCylinderTransport.lean",
+      "current_repository_sha256": "38689dc8333267b0546da1da291a4d48378bdab476f50646be2435e0d96e20e5",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/BoundaryFramedDivisorPairs.lean",
+      "module": "MotivicTest.BoundaryFramedDivisorPairs",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "f8f5696d7dc68746cd22a1bc657824fa9bf817da44b73d9c8bfb2ac9e27ebf17",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/BoundaryFramedDivisorPairs.lean",
+      "current_repository_sha256": "f8f5696d7dc68746cd22a1bc657824fa9bf817da44b73d9c8bfb2ac9e27ebf17",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/ContractionBoundaryMono.lean",
+      "module": "MotivicTest.ContractionBoundaryMono",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "c230f6273976e78fcc37cdb8553fd1713c88703b179fc9c9e5911586517569c8",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/ContractionBoundaryMono.lean",
+      "current_repository_sha256": "c230f6273976e78fcc37cdb8553fd1713c88703b179fc9c9e5911586517569c8",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/ContractionBoundaryProjection.lean",
+      "module": "MotivicTest.ContractionBoundaryProjection",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "fa07096214f3a3c93104999a5f710bbd02a3088519b2573daa6226a5a338ede8",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/MotivicTest/ContractionBoundaryProjection.lean",
+      "current_repository_sha256": "fa07096214f3a3c93104999a5f710bbd02a3088519b2573daa6226a5a338ede8",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/ContractionBoundarySheafComparison.lean",
+      "module": "MotivicTest.ContractionBoundarySheafComparison",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "4a39046d2f55c17c84910adee7eaeb00faa21bef87960422a0c1e6ca023e355d",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/ContractionBoundarySheafComparison.lean",
+      "current_repository_sha256": "4a39046d2f55c17c84910adee7eaeb00faa21bef87960422a0c1e6ca023e355d",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/DenseOpenRestrictionMono.lean",
+      "module": "MotivicTest.DenseOpenRestrictionMono",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "af879eab30f35aa180c8ed05f95a2c6679ecda09d76d90abda5dd208f16035cb",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/DenseOpenRestrictionMono.lean",
+      "current_repository_sha256": "af879eab30f35aa180c8ed05f95a2c6679ecda09d76d90abda5dd208f16035cb",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/LocalRankCartierReduction.lean",
+      "module": "MotivicTest.LocalRankCartierReduction",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "cda5a92934baa8c838234c1fa9afe14523bd931dd9add2f311efcba1bef29741",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/LocalRankCartierReduction.lean",
+      "current_repository_sha256": "cda5a92934baa8c838234c1fa9afe14523bd931dd9add2f311efcba1bef29741",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/OriginalPresheafBoundaryLifting.lean",
+      "module": "MotivicTest.OriginalPresheafBoundaryLifting",
+      "disposition": "new-unverified-archival-source",
+      "incoming_archive_source_sha256": "8ddfaf6e7360b7cf01475cacbb2b86ea57b815ebdeafc05b9180d6891d6c4d82",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "incoming source identity recorded; no independent verification assertion made here"
+      ],
+      "current_repository_path": "doc/provenance/cartier-boundary-rj-20261018/unverified-source/MotivicTest/OriginalPresheafBoundaryLifting.lean",
+      "current_repository_sha256": "8ddfaf6e7360b7cf01475cacbb2b86ea57b815ebdeafc05b9180d6891d6c4d82",
+      "projection_transforms": [
+        "raw archive bytes copied exactly under unverified-source; not installed in production/test roots"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/RankZeroCylinderColimit.lean",
+      "module": "MotivicTest.RankZeroCylinderColimit",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "508fdf42a900642fcc75e5c851c11dfb70b4f9cb5c64e794dbd24e9bb67ad09e",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/RankZeroCylinderColimit.lean",
+      "current_repository_sha256": "508fdf42a900642fcc75e5c851c11dfb70b4f9cb5c64e794dbd24e9bb67ad09e",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/RelativeGenericBaseCylinderZero.lean",
+      "module": "MotivicTest.RelativeGenericBaseCylinderZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "5ad8ce80e6866e7e82cc6033732ddc37f3afd65c832a838e8e3529509e9d5267",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/RelativeGenericBaseCylinderZero.lean",
+      "current_repository_sha256": "5ad8ce80e6866e7e82cc6033732ddc37f3afd65c832a838e8e3529509e9d5267",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/RelativeGenericBaseH1Zero.lean",
+      "module": "MotivicTest.RelativeGenericBaseH1Zero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "d17f67fdcc791a3fca942553abe7ad68d31f2f9b4130fc0e6fc56d40196d42a4",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/RelativeGenericBaseH1Zero.lean",
+      "current_repository_sha256": "d17f67fdcc791a3fca942553abe7ad68d31f2f9b4130fc0e6fc56d40196d42a4",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/RelativeGenericBasePositiveZero.lean",
+      "module": "MotivicTest.RelativeGenericBasePositiveZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "0209cb8c4d15a9347641e6349cbc3d6cf32dd794b071ee996bc56309b106d7d1",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/RelativeGenericBasePositiveZero.lean",
+      "current_repository_sha256": "0209cb8c4d15a9347641e6349cbc3d6cf32dd794b071ee996bc56309b106d7d1",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/SheafCohomologyCartierBoundaryZero.lean",
+      "module": "MotivicTest.SheafCohomologyCartierBoundaryZero",
+      "disposition": "admitted-with-public-api-projection",
+      "incoming_archive_source_sha256": "5c53a868c83994cf14cff24a50b9daa64c76c71161ab09392c86974eb7094e24",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": "5c53a868c83994cf14cff24a50b9daa64c76c71161ab09392c86974eb7094e24",
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence",
+        "member of exact twelve-file Cartier-boundary frozen source scope"
+      ],
+      "current_repository_path": "MotivicTest/SheafCohomologyCartierBoundaryZero.lean",
+      "current_repository_sha256": "d02d0ceff6583496e12eb1f97fff6258aad539145e523cef3976c549b34e1c73",
+      "projection_transforms": [
+        "Import the public CartierBoundary facade; keep original audit imports.",
+        "Move the exact composed theorem statement/proof into production SheafCohomologyCartierDirectImage; the test now consumes its public declaration.",
+        "Audit the qualified production declaration and include its exact defining module in the scoped declaration lint."
+      ],
+      "projected_repository_sha256": "5c53a868c83994cf14cff24a50b9daa64c76c71161ab09392c86974eb7094e24"
+    },
+    {
+      "archive_source_path": "MotivicTest/SheafCohomologyContractionSheafZero.lean",
+      "module": "MotivicTest.SheafCohomologyContractionSheafZero",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "7cda0bf8ad3263970206de1c13ccd9feb5a81504b8d97467e3edd38f0a6ddc6c",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/SheafCohomologyContractionSheafZero.lean",
+      "current_repository_sha256": "7cda0bf8ad3263970206de1c13ccd9feb5a81504b8d97467e3edd38f0a6ddc6c",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/SmoothCartierChoice.lean",
+      "module": "MotivicTest.SmoothCartierChoice",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "d59cf30eda133194cde4aa5663ffa23514fb732beb8389b5851fc2ec66f2d04e",
+      "source_status_hash_bound": false,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": "verification/smooth-cartier-choice-final/summary.txt",
+      "source_evidence_status": [
+        "separately summary/stdout-bound source; record locator included in evidence subtree"
+      ],
+      "current_repository_path": "MotivicTest/SmoothCartierChoice.lean",
+      "current_repository_sha256": "d59cf30eda133194cde4aa5663ffa23514fb732beb8389b5851fc2ec66f2d04e",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    },
+    {
+      "archive_source_path": "MotivicTest/SplitClosedSupportCohomology.lean",
+      "module": "MotivicTest.SplitClosedSupportCohomology",
+      "disposition": "admitted-source-exact",
+      "incoming_archive_source_sha256": "8fa9a5607ea0e7dab71eff4378c47d47e1377df99f53b7b2364068d9912971d1",
+      "source_status_hash_bound": true,
+      "frozen_cartier_milestone_sha256": null,
+      "separate_summary_stdout_record": null,
+      "source_evidence_status": [
+        "SOURCE_STATUS source hash matches incoming archive bytes; this is hash binding, not by itself compilation evidence"
+      ],
+      "current_repository_path": "MotivicTest/SplitClosedSupportCohomology.lean",
+      "current_repository_sha256": "8fa9a5607ea0e7dab71eff4378c47d47e1377df99f53b7b2364068d9912971d1",
+      "projection_transforms": [
+        "exact archive bytes; no source/header/namespace edits"
+      ]
+    }
+  ],
+  "local_public_integration": {
+    "Motivic/Cohomology/SheafCohomologyCartierDirectImage.lean": {
+      "sha256": "aec91e20cbad57266120692c0de96068bc59a75203450ed5752b1c7c9eb79e00",
+      "basis": "Exact archived composed consumer statement/proof promoted into production, with a pure public facade."
+    },
+    "Motivic/Cohomology/A1/CartierBoundary.lean": {
+      "sha256": "9c6263396d74dd04d09ae3cd0d6d8a99a7472ce9863464467bda13b319634527",
+      "basis": "Exact archived composed consumer statement/proof promoted into production, with a pure public facade."
+    }
+  }
+}

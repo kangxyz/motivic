@@ -5,17 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyRelativeLineHigherVanishing
+public import Motivic.Cohomology.RelativeGenericBasePositiveZero
 
 /-!
-# Original relative affine-line higher classes over a generic base open
+# Original relative affine-line classes over a generic base open
 
 Over any field and a smooth integral affine base, each original ordinary
 Nisnevich cohomology class in degree at least two becomes zero after two nonzero
-base localizations and restriction over an affine generic base open. The whole
-affine-line parameter and original restriction maps are retained. Coefficient
-universe and ordinary HasExt remain explicit; no homotopy invariance is assumed.
+base localizations and restriction over an affine generic base open. No homotopy
+invariance is assumed in those degrees. For homotopy-invariant Nisnevich sheaves
+with transfers, the same assertion holds in every positive degree, including H1.
 
-The open may depend on the class. Generic-base H1 and the all-positive generic
-rank-zero join are not supplied by this entry.
+The whole affine-line parameter and literal original restriction maps are
+retained. Coefficient universe and ordinary HasExt remain explicit. The open may
+depend on the class; this does not assert strict A1 invariance on smooth schemes.
 -/
