@@ -8,7 +8,7 @@ The pinned dependencies are Lean `v4.34.1`, mathlib `d13f23b723b8a846827a245b89c
 
 [source-checks.json](source-checks.json) indexes the 1,972 logs in the archive's `checkpoint-evidence/current`: 1,563 production leaves and 409 test leaves. Each record gives its original module and source path, source SHA256, current repository source SHA256, original log filename, log SHA256 and exit status. The current hash records the migrated test root and author metadata; it does not relabel the historical check as a current-byte certificate. Every indexed source hash was compared with the actual archive bytes; all indexed logs report exit zero. The shared compiler, platform and check options appear once in the index. Earlier logs outside `current` are not indexed. The 102 production leaves, 613 test leaves and two roots without current indexed logs have an evidence gap; absence of a log does not establish a failure or unfinished proof.
 
-These are historical Lean 4.34.1 checks on `x86_64-unknown-linux-gnu`. This historical index claims no aggregate build, current native-platform check, new independent proof review or new mathematical status assignment. The actual selected native checks and their author-metadata boundary are recorded in [verification](../VERIFICATION.md). The archive contains no compiled cache or dependency checkout, and this record does not claim a public compiled cache. Strict A¹-invariance remains open. Historical README descriptions of unfinished transfers and other leaves can precede newer checkpoint results; consult exact source statements and matching records rather than treating all imported narrative as current status.
+These are historical Lean 4.34.1 checks on `x86_64-unknown-linux-gnu`. This historical index claims no aggregate build, current native-platform check, new independent proof review or new mathematical status assignment. The actual selected native checks and their author-metadata boundary are recorded in [verification](../VERIFICATION.md). The archive contains no compiled cache or dependency checkout, and this record does not claim a public compiled cache. That snapshot left strict A¹ invariance open; the newer infinite-perfect-field endpoint is recorded below. Historical README descriptions of unfinished transfers and other leaves can precede newer checkpoint results; consult exact source statements and matching records rather than treating all imported narrative as current status.
 
 Six original logs are included under [checks/](checks/) for the following source/direct-consumer pairs:
 
@@ -52,3 +52,14 @@ The [Cartier boundary/Rj snapshot](cartier-boundary-rj-20261018/README.md) recor
 69 admitted source updates, separate current-base retention and archival
 candidates. Its recorded branch, push state and research plans are historical
 source material rather than repository instructions.
+
+## Infinite-perfect-field strict invariance
+
+[strict-a1-infinite-perfect-20261018](strict-a1-infinite-perfect-20261018/README.md)
+records the later source package based on `b368f696`. Its admitted closure proves
+strict invariance for HI transfer sheaves over infinite perfect fields, with
+the original ordinary groups, projection, HasExt and universe conditions.
+The archive has matching historical Linux compilation and scoped lint/audit
+evidence; ordinary independent mathematical/source review passed. Eleven
+unbound candidates remain archived outside production. Current integration
+checks are recorded separately in [verification](../VERIFICATION.md).

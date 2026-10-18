@@ -171,9 +171,9 @@ theorem actualFinitePushforwardEuler (K : ChainComplex (ModuleCat.{u} B) ℕ)
   calc
     _ = homologyEuler (finiteAlgebraRestrictedComplex R S L) sign hR :=
       homologyEuler_eq_of_length_eq (actualPushforwardStalk_homology_length A B p K) sign _ _
-    _ = ∑ᶠ q : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S q : ℤ) *
+    _ = ∑ᶠ q : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S q : ℤ) *
         homologyEuler (finiteAlgebraLocalizedComplex S L q) sign (hq q) := by
-      let : Finite (MaximalSpectrum S) := LocalLength.finiteAlgebra_maximalSpectrum_finite R S
+      let : Finite (MaximalSpectrum S) := Module.finiteAlgebra_maximalSpectrum_finite R S
       let : Fintype (MaximalSpectrum S) := Fintype.ofFinite _
       rw [finsum_eq_sum_of_fintype]
       exact homologyEuler_finiteAlgebra R S L sign hK

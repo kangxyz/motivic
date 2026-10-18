@@ -213,7 +213,7 @@ theorem rightFirstStageWholeGenericFiber_residueDegree
       (FiniteFiber.localAlgebra Γ(F.rightIntermediateImageProduct G H, V)
         Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ V) r)) :
     letI := coordinateFinite (F.rightIntermediateImageMap G H) V.2
-    LocalLength.finiteAlgebraResidueDegree (Localization.AtPrime r.asIdeal)
+    Module.finiteAlgebraResidueDegree (Localization.AtPrime r.asIdeal)
         (FiniteFiber.localAlgebra Γ(F.rightIntermediateImageProduct G H, V)
           Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ V) r) a =
       (F.rightIntermediateImageMap G H ∣_ V).residueDegree
@@ -352,7 +352,7 @@ theorem rightFirstStagePushforwardAtGenericEuler_eq_cycleCoefficient
     Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ V) r
   let M : ℕ → ModuleCat.{u} T := F.rightFirstStageWholeLocalizedCoefficient G H V r
   let hM : FiniteLengthSupport M := F.rightFirstStageWholeAtGeneric_finiteLengthSupport G H V r hr
-  have : Finite (MaximalSpectrum T) := LocalLength.finiteAlgebra_maximalSpectrum_finite R T
+  have : Finite (MaximalSpectrum T) := Module.finiteAlgebra_maximalSpectrum_finite R T
   let : Fintype (MaximalSpectrum T) := Fintype.ofFinite _
   let A := {x : F.rightIntermediateSupportProduct G H //
     F.rightIntermediateImageMap G H x = V.2.fromSpec r}
@@ -373,7 +373,7 @@ theorem rightFirstStagePushforwardAtGenericEuler_eq_cycleCoefficient
         (F.rightFirstStagePushforwardAtGeneric_finiteLengthSupport G H V r hr)
         (hM.finiteAlgebra_restrict R T M)
         (fun n => (F.rightFirstStageWholePushforward_coefficient_length G H V r n).symm)
-    _ = ∑ a : MaximalSpectrum T, (LocalLength.finiteAlgebraResidueDegree R T a : ℤ) *
+    _ = ∑ a : MaximalSpectrum T, (Module.finiteAlgebraResidueDegree R T a : ℤ) *
         signedLengthSum
           (fun n => (ModuleCat.extendScalars (R := T) (S := Localization.AtPrime a.asIdeal)
             (algebraMap T (Localization.AtPrime a.asIdeal))).obj

@@ -13,8 +13,8 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
-open Motivic.KTheory.MilnorK2 Motivic.KTheory.MilnorK3.PolynomialResidue
-open Motivic.KTheory.MilnorK3.PolynomialNorm Motivic.WeightTwoMilnorSymbol
+open MilnorK.K2 MilnorK.K3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm Motivic.WeightTwoMilnorSymbol
 open Motivic.WeightTwoCorestriction Motivic.WeightTwoMilnorMixedNorm
 
 universe u

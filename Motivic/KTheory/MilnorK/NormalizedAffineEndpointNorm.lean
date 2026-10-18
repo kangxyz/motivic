@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.KTheory.MilnorK.AffineEndpointNormEquality
+public import Aglib.KTheory.MilnorK.Dedekind.AffineEndpointNormEquality
 public import Motivic.Aglib.AlgebraicGeometry.FiniteCurveBranchOrders
 
 /-! # Actual normalization of an arbitrary integral finite affine curve support -/
@@ -13,7 +13,7 @@ public import Motivic.Aglib.AlgebraicGeometry.FiniteCurveBranchOrders
 @[expose] public noncomputable section
 namespace Motivic.FiniteCurveNormalization
 
-open Polynomial KTheory.MilnorK KTheory.MilnorK.DedekindResidue
+open Polynomial MilnorK MilnorK.DedekindResidue
 
 universe u
 variable (k B : Type u) [Field k] [CharZero k] [CommRing B] [IsDomain B]

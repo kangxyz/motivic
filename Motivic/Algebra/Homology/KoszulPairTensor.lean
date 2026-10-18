@@ -25,7 +25,7 @@ universe u
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open scoped ZeroObject TensorProduct
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type u) [AddCommGroup M] [Module R M] (a b : R)
@@ -83,4 +83,4 @@ noncomputable def tensorIso :
     rw [chainComplex_d_add_three, chainComplex_d_add_three, Functor.map_zero,
       zero_comp, comp_zero]
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

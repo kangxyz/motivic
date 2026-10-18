@@ -27,7 +27,7 @@ open Motivic.LengthEuler
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -101,4 +101,4 @@ theorem torEuler_eq_eulerMultiplicity (h : HasFiniteHomology N a b) :
       signedLengthSum_eq_of_iso _ _ _ (fun n => torIsoHomology N a b ha hb n)
     _ = _ := chainEuler_eq_eulerMultiplicity N a b h
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

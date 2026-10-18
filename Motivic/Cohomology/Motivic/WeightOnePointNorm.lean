@@ -7,7 +7,7 @@ module
 
 public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.ReducedTorus
 public import Motivic.AlgebraicGeometry.Correspondences.BaseFieldGenerators
-public import Motivic.Aglib.RingTheory.FiniteAlgebraNormLength
+public import Aglib.RingTheory.FiniteAlgebraNormLength
 public import Mathlib.AlgebraicGeometry.Morphisms.Proper
 
 /-!

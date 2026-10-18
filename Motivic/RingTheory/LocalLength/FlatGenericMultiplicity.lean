@@ -24,7 +24,7 @@ open TensorProduct
 
 universe u v w
 
-namespace Motivic.LocalLength
+namespace Module
 
 variable {A : Type u} {B : Type v} [CommRing A] [CommRing B] [Algebra A B]
 
@@ -84,7 +84,7 @@ theorem flatGeneric_length_eq_mul [IsNoetherianRing A] [Module.Flat A B]
       Module.length (Localization.AtPrime q)
         (Localization.AtPrime q ⊗[A] (A ⧸ q.under A)) := by
   classical
-  obtain ⟨D⟩ := nonempty_primeFiltration (A := A) M
+  obtain ⟨D⟩ := Module.nonempty_primeFiltration (A := A) M
   have hp := flatGeneric_under_mem_minimalPrimes I q hq
   rw [D.fixedSupport_localized_length_eq_count I hI (q.under A) hp]
   rw [D.length_baseChange_eq_add_sum (Localization.AtPrime q), Module.length_eq_zero, zero_add]
@@ -204,4 +204,4 @@ theorem flatGeneric_multiplicity [IsNoetherianRing A] [Module.Flat A B]
   rw [(flatGenericClosedFiberEquiv q).length_eq]
   exact flatGeneric_localizedBaseChange_length M I hI q hq
 
-end Motivic.LocalLength
+end Module

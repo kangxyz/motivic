@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.Motivic.WeightTwoMonicDeformationFactors
 public import Motivic.Cohomology.Motivic.WeightTwoMilnorSymbol
-public import Motivic.KTheory.MilnorK3.PolynomialNormDeformation
+public import Aglib.KTheory.MilnorK.K3.PolynomialNormDeformation
 
 /-!
 # The complete endpoint sum in the original polynomial norm indexing
@@ -32,7 +32,7 @@ universe u
 namespace Motivic.WeightTwoMonicDeformationFactors
 
 open WeightTwoCorestriction WeightTwoMonicDeformation WeightTwoMilnorSymbol
-open KTheory.MilnorK3.PolynomialNorm KTheory.MilnorK3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm MilnorK.K3.PolynomialResidue
 open UniqueFactorizationMonoid
 
 variable {k : Type u} [Field k]

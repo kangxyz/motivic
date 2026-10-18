@@ -21,7 +21,7 @@ No regularity of either equation is required.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -113,4 +113,4 @@ theorem length_H₂_ne_top_of_artinian_support_quotient
     Module.length R (H₂ M a b) ≠ ⊤ :=
   (hasFiniteHomology_of_artinian_support_quotient M a b).2.2
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

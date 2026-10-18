@@ -25,7 +25,7 @@ reducedness nor separability nor a rank/dimension equality is required.
 set_option maxSynthPendingDepth 3
 
 open scoped TensorProduct Polynomial
-open TensorProduct Motivic.LocalLength
+open TensorProduct Module
 
 universe u v w
 

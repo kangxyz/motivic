@@ -51,7 +51,7 @@ theorem length_ne_top_of_generic_stalk_support [IsLocallyNoetherian X]
     (hM : RingHom.ker (f.stalkMap x).hom ≤ Module.annihilator (Y.presheaf.stalk (f x)) M) :
     Module.length (Y.presheaf.stalk (f x)) M ≠ ⊤ := by
   let := stalk_quotient_ker_isArtinian f x hx
-  exact LocalLength.length_ne_top_of_artinian_quotient M
+  exact Module.length_ne_top_of_artinian_quotient M
     (RingHom.ker (f.stalkMap x).hom) hM
 
 /-- Surjective stalk scalars preserve the literal module length. -/

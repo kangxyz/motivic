@@ -13,8 +13,8 @@ public import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   for name in #[
-      ``Motivic.KTheory.MilnorK.oneEquiv_finiteExtensionNorm,
-      ``Motivic.KTheory.MilnorK.finiteExtensionNorm_productUnit_constants,
+      ``MilnorK.oneEquiv_finiteExtensionNorm,
+      ``MilnorK.finiteExtensionNorm_productUnit_constants,
       ``Motivic.DiagonalMixedPointNorm.finite_point_varying,
       ``Motivic.DiagonalCorestrictionMixed.pointPushforward_varying,
       ``Motivic.DiagonalCorestrictionMixed.corestriction_graphSymbol_varying,

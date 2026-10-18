@@ -240,13 +240,13 @@ theorem rightFirstStageRemainingProjectionEuler_of_finiteHomology
   let C := F.rightFirstStageWholeRemainingKoszul G H V p s n
   let hres := hwhole.finiteAlgebra_restrict R T C
   let hloc := hwhole.finiteAlgebra_localized R T C
-  have : Finite (MaximalSpectrum T) := LocalLength.finiteAlgebra_maximalSpectrum_finite R T
+  have : Finite (MaximalSpectrum T) := Module.finiteAlgebra_maximalSpectrum_finite R T
   let : Fintype (MaximalSpectrum T) := Fintype.ofFinite _
   calc
     _ = chainEuler (finiteAlgebraRestrictedComplex R T C) hres :=
       (chainEuler_eq_of_lengths (F.rightFirstStageWholePushforwardRemaining_length G H V p s n)
         _ _).symm
-    _ = ∑ᶠ q : MaximalSpectrum T, (LocalLength.finiteAlgebraResidueDegree R T q : ℤ) *
+    _ = ∑ᶠ q : MaximalSpectrum T, (Module.finiteAlgebraResidueDegree R T q : ℤ) *
         chainEuler (finiteAlgebraLocalizedComplex T C q) (hloc q) := by
       rw [finsum_eq_sum_of_fintype]
       exact chainEuler_finiteAlgebra R T C hwhole

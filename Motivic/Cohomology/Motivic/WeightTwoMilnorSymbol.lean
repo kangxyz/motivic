@@ -7,8 +7,8 @@ module
 
 public import Motivic.Cohomology.Motivic.WeightTwoSteinberg
 public import Motivic.Cohomology.Motivic.WeightTwoFieldChange
-public import Motivic.KTheory.MilnorK2.Map
-public import Motivic.KTheory.MilnorK2.Symbols
+public import Aglib.KTheory.MilnorK.K2.Map
+public import Aglib.KTheory.MilnorK.K2.Symbols
 
 /-!
 # The actual motivic Milnor symbol
@@ -34,7 +34,7 @@ universe w u
 
 namespace Motivic.WeightTwoMilnorSymbol
 
-open KTheory.MilnorK2
+open MilnorK.K2
 
 variable (k : Type u) [Field k]
 
@@ -42,15 +42,15 @@ variable (k : Type u) [Field k]
 abbrev rawH22 := (motivicRawBaseComplex k 2).homology 2
 
 /-- The literal subgroup of natural multiples in the original Milnor group. -/
-def milnorMultiples (n : ℕ) : AddSubgroup (K2 k) :=
-  (n • AddMonoidHom.id (K2 k)).range
+def milnorMultiples (n : ℕ) : AddSubgroup (MilnorK.K2.Group k) :=
+  (n • AddMonoidHom.id (MilnorK.K2.Group k)).range
 
 /-- Membership means an actual multiplication equation in Milnor K₂. -/
-theorem mem_milnorMultiples (n : ℕ) (x : K2 k) :
-    x ∈ milnorMultiples k n ↔ ∃ y : K2 k, n • y = x := Iff.rfl
+theorem mem_milnorMultiples (n : ℕ) (x : MilnorK.K2.Group k) :
+    x ∈ milnorMultiples k n ↔ ∃ y : MilnorK.K2.Group k, n • y = x := Iff.rfl
 
 /-- The original tensor/Steinberg quotient further reduced modulo multiples. -/
-abbrev milnorModulo (n : ℕ) := K2 k ⧸ milnorMultiples k n
+abbrev milnorModulo (n : ℕ) := MilnorK.K2.Group k ⧸ milnorMultiples k n
 
 variable [CharZero k]
 
@@ -63,7 +63,7 @@ def rawSymbolMap : SymbolMap (K := k) (A := rawH22 k) where
     (eq_sub_iff_add_eq.mpr (by simpa only [add_comm] using hab))
 
 /-- Descent of the actual graph classes through the original Milnor presentation. -/
-def rawMilnorSymbol : K2 k →+ rawH22 k := liftSymbols (rawSymbolMap k)
+def rawMilnorSymbol : MilnorK.K2.Group k →+ rawH22 k := liftSymbols (rawSymbolMap k)
 
 /-- A literal Milnor symbol is sent to its original rational graph class. -/
 @[simp] theorem rawMilnorSymbol_symbol (a b : kˣ) :
@@ -89,7 +89,7 @@ variable [HasDerivedCategory.{w}
 abbrev derivedH22 := motivicCohomology k 2 2 (SmoothSite.base (Spec (.of k)))
 
 /-- The actual derived Milnor symbol, using the original field-evaluation comparison. -/
-def motivicMilnorSymbol : K2 k →+ derivedH22 k :=
+def motivicMilnorSymbol : MilnorK.K2.Group k →+ derivedH22 k :=
   (motivicRawBaseEvaluationComparison k 2 2).symm.toAddMonoidHom.comp (rawMilnorSymbol k)
 
 /-- The derived symbol is exactly the original graph transported by the actual comparison. -/
@@ -99,7 +99,7 @@ def motivicMilnorSymbol : K2 k →+ derivedH22 k :=
         (WeightTwoSymbols.graphSymbol k a b) := rfl
 
 /-- The actual comparison sends the derived Milnor map back to its original raw map. -/
-theorem motivicMilnorSymbol_comparison (x : K2 k) :
+theorem motivicMilnorSymbol_comparison (x : MilnorK.K2.Group k) :
     motivicRawBaseEvaluationComparison k 2 2 (motivicMilnorSymbol k x) =
       rawMilnorSymbol k x :=
   (motivicRawBaseEvaluationComparison k 2 2).apply_symm_apply _
@@ -120,7 +120,7 @@ theorem motivicMilnorSymbol_tensor_square :
   AddMonoidHom.ext (motivicMilnorSymbol_tensor k)
 
 /-- The finite Milnor symbol is the original integral coefficient reduction. -/
-def finiteMilnorSymbol (n : ℕ) : K2 k →+
+def finiteMilnorSymbol (n : ℕ) : MilnorK.K2.Group k →+
     motivicFiniteCohomology k 2 2 n (SmoothSite.base (Spec (.of k))) :=
   (motivicBaseIntegralReduction k 2 2 n).comp (motivicMilnorSymbol k)
 
@@ -154,18 +154,18 @@ theorem finiteMilnorSymbol_tensor_square (n : ℕ) :
   AddMonoidHom.ext (finiteMilnorSymbol_tensor k n)
 
 /-- The actual top-degree comparison retains the original integral Milnor class. -/
-theorem finiteMilnorSymbol_topDegree_comparison (n : ℕ) (x : K2 k) :
+theorem finiteMilnorSymbol_topDegree_comparison (n : ℕ) (x : MilnorK.K2.Group k) :
     FieldTopDegree.topDegreeFiniteEquiv k 2 n (finiteMilnorSymbol k n x) =
       (QuotientAddGroup.mk (motivicMilnorSymbol k x) :
         FieldTopDegree.integralModulo k 2 n) :=
   FieldTopDegree.topDegreeFiniteEquiv_integralReduction k 2 n _
 
 /-- All finite Milnor values are annihilated by the coefficient level. -/
-theorem nsmul_finiteMilnorSymbol (n : ℕ) (x : K2 k) :
+theorem nsmul_finiteMilnorSymbol (n : ℕ) (x : MilnorK.K2.Group k) :
     n • finiteMilnorSymbol k n x = 0 := FieldTopDegree.nsmul_eq_zero k 2 n _
 
 /-- Coefficient level one gives the zero map. -/
-@[simp] theorem finiteMilnorSymbol_one (x : K2 k) : finiteMilnorSymbol k 1 x = 0 := by
+@[simp] theorem finiteMilnorSymbol_one (x : MilnorK.K2.Group k) : finiteMilnorSymbol k 1 x = 0 := by
   simpa only [one_nsmul] using nsmul_finiteMilnorSymbol k 1 x
 
 /-- The finite map kills the literal subgroup of Milnor multiples. -/
@@ -182,7 +182,7 @@ def finiteMilnorSymbolModulo (n : ℕ) : milnorModulo k n →+
     (milnorMultiples_le_ker k n)
 
 /-- Reducing a Milnor class before its finite symbol gives the original finite value. -/
-@[simp] theorem finiteMilnorSymbolModulo_mk (n : ℕ) (x : K2 k) :
+@[simp] theorem finiteMilnorSymbolModulo_mk (n : ℕ) (x : MilnorK.K2.Group k) :
     finiteMilnorSymbolModulo k n (QuotientAddGroup.mk x) = finiteMilnorSymbol k n x := rfl
 
 /-- The modulo-`n` symbol retains the literal original rational graph. -/
@@ -216,7 +216,7 @@ theorem rawMilnorSymbol_fieldChange_square :
   exact WeightTwoFieldChange.graphSymbol_fieldChange φ a b
 
 /-- Every raw Milnor class is natural for the original cochain field map. -/
-theorem rawMilnorSymbol_fieldChange (x : K2 k) :
+theorem rawMilnorSymbol_fieldChange (x : MilnorK.K2.Group k) :
     HomologicalComplex.homologyMap (motivicRawBaseComplexMap φ 2) 2
         (rawMilnorSymbol k x) = rawMilnorSymbol L (mapAdd φ x) :=
   DFunLike.congr_fun (rawMilnorSymbol_fieldChange_square φ) x
@@ -229,7 +229,7 @@ def milnorModuloFieldChange (n : ℕ) : milnorModulo k n →+ milnorModulo L n :
 
 omit [CharZero k] [CharZero L] in
 /-- The field map on the quotient sends an actual coset to its ordinary field image. -/
-@[simp] theorem milnorModuloFieldChange_mk (n : ℕ) (x : K2 k) :
+@[simp] theorem milnorModuloFieldChange_mk (n : ℕ) (x : MilnorK.K2.Group k) :
     milnorModuloFieldChange φ n (QuotientAddGroup.mk x) =
       QuotientAddGroup.mk (mapAdd φ x) := rfl
 
@@ -250,13 +250,13 @@ theorem motivicMilnorSymbol_fieldChange_square :
   exact WeightTwoFieldChange.motivicGraphSymbol_fieldChange φ a b
 
 /-- Naturality holds for every Milnor class, using the original field homomorphism. -/
-theorem motivicMilnorSymbol_fieldChange (x : K2 k) :
+theorem motivicMilnorSymbol_fieldChange (x : MilnorK.K2.Group k) :
     motivicCohomologyFieldChange φ 2 2 (motivicMilnorSymbol k x) =
       motivicMilnorSymbol L (mapAdd φ x) :=
   DFunLike.congr_fun (motivicMilnorSymbol_fieldChange_square φ) x
 
 /-- Finite Milnor naturality follows through the original integral reduction at every level. -/
-theorem finiteMilnorSymbol_fieldChange (n : ℕ) (x : K2 k) :
+theorem finiteMilnorSymbol_fieldChange (n : ℕ) (x : MilnorK.K2.Group k) :
     motivicFiniteCohomologyFieldChange φ 2 2 n (finiteMilnorSymbol k n x) =
       finiteMilnorSymbol L n (mapAdd φ x) := by
   change motivicFiniteCohomologyFieldChange φ 2 2 n

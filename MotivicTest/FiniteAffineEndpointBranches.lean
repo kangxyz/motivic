@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 
 import Motivic.Aglib.AlgebraicGeometry.FiniteAffineEndpointBranches
-import Motivic.Aglib.AlgebraicGeometry.DedekindPointStalk
-import Motivic.KTheory.MilnorK.AffineEndpointNormEquality
+import Aglib.AlgebraicGeometry.DedekindPointStalk
+import Aglib.KTheory.MilnorK.Dedekind.AffineEndpointNormEquality
 import Lean.Util.CollectAxioms
 
 /-! Exact original Milnor branch indexing and actual fiber residue-map consumers. -/
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory AlgebraicGeometry
 open AlgebraicGeometry.FiniteFlatCurve
 open AlgebraicGeometry.FiniteAffineEndpointBranches
-open Motivic.KTheory.MilnorK
+open MilnorK
 open scoped Polynomial
 
 universe u

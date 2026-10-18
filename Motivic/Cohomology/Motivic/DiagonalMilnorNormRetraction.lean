@@ -14,7 +14,6 @@ public import Motivic.Cohomology.Motivic.DiagonalMilnorSymbol
 open CategoryTheory AlgebraicGeometry
 universe w u
 namespace Motivic.DiagonalMilnorBoundaryDescent
-open KTheory
 variable (k : Type u) [Field k] [CharZero k] (q : ℕ)
 
 /-- The norm evaluation is a left inverse to the already constructed Milnor symbol map. -/

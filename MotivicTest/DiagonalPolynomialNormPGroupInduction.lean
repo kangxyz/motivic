@@ -24,7 +24,7 @@ universe u
 namespace MotivicTest.DiagonalPolynomialNormPGroupInduction
 
 open Motivic Motivic.DiagonalMilnorSymbol Motivic.DiagonalCorestriction
-open Motivic.DiagonalPolynomialNormInduction Motivic.KTheory
+open Motivic.DiagonalPolynomialNormInduction
 open MilnorK.PolynomialResidue MilnorK.PolynomialNorm
 
 local instance testRootFinite (F : Type u) [Field F] (p : MonicIrreducible F) :

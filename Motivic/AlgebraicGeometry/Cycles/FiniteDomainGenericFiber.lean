@@ -178,10 +178,10 @@ theorem wholeSourceResidueIso_source_square
   apply RingHom.ext
   intro b
   change (sourceSchemeResidueIso A B p q).hom
-      (LocalLength.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q
+      (Module.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q
         (algebraMap (localAlgebra A B p) (localAlgebra A B p ⧸ q.asIdeal)
           (algebraMap B (localAlgebra A B p) b))) = _
-  rw [(LocalLength.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q).commutes]
+  rw [(Module.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q).commutes]
   change (Spec B).residue (sourcePoint A B p q).1
       ((Spec.stalkIso B (sourcePoint A B p q).1).inv
         (sourceLocalizationEquiv A B p q

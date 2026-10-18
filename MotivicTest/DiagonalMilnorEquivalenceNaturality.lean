@@ -11,7 +11,7 @@ public import Lean.Util.CollectAxioms
 /-! Direct original derived transfer and field-map consumers in all weights. -/
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Motivic
-open DiagonalMilnorBoundaryDescent DiagonalMilnorEquivalenceNaturality KTheory
+open DiagonalMilnorBoundaryDescent DiagonalMilnorEquivalenceNaturality
 universe w u
 namespace MotivicTest.DiagonalMilnorEquivalenceNaturality
 variable {k L : Type u} [Field k] [CharZero k] [Field L] [CharZero L]

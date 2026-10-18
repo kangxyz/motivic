@@ -13,7 +13,7 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Motivic
-open KTheory.MilnorK2 WeightTwoMilnorSymbol WeightTwoMilnorSurjective
+open MilnorK.K2 WeightTwoMilnorSymbol WeightTwoMilnorSurjective
 
 universe u
 
@@ -23,7 +23,7 @@ variable (k : Type u) [Field k] [CharZero k]
 
 /-- The target is the original raw homology, not an abstract replacement group. -/
 theorem actual_raw_preimage (x : (motivicRawBaseComplex k 2).homology 2) :
-    ∃ y : K2 k, rawMilnorSymbol k y = x := rawMilnorSymbol_surjective k x
+    ∃ y : MilnorK.K2.Group k, rawMilnorSymbol k y = x := rawMilnorSymbol_surjective k x
 
 /-- A signed actual cycle keeps every original coefficient in its Milnor preimage. -/
 theorem actual_signed_cycle (α : WeightOnePointNorm.point k ⟶ WeightTwoSymbols.target k)
@@ -39,12 +39,12 @@ local instance : HasDerivedCategory
 /-- The original derived integral group is reached by its original symbol map. -/
 theorem actual_derived_preimage
     (x : motivicCohomology k 2 2 (SmoothSite.base (Spec (.of k)))) :
-    ∃ y : K2 k, motivicMilnorSymbol k y = x := motivicMilnorSymbol_surjective k x
+    ∃ y : MilnorK.K2.Group k, motivicMilnorSymbol k y = x := motivicMilnorSymbol_surjective k x
 
 /-- Arbitrary coefficient levels, including zero, one, and composite levels. -/
 theorem actual_finite_preimage (n : ℕ)
     (x : motivicFiniteCohomology k 2 2 n (SmoothSite.base (Spec (.of k)))) :
-    ∃ y : K2 k, finiteMilnorSymbol k n y = x := finiteMilnorSymbol_surjective k n x
+    ∃ y : MilnorK.K2.Group k, finiteMilnorSymbol k n y = x := finiteMilnorSymbol_surjective k n x
 
 /-- The literal quotient by n-multiples maps onto the original finite group. -/
 theorem actual_modulo_preimage (n : ℕ)

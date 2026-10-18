@@ -5,13 +5,4 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.KTheory.MilnorK.FiniteExtensionNormTower
-
-/-!
-# Finite-extension Milnor norms
-
-The characteristic-zero finite-extension norm family and its original tower
-laws, with all finite-dimensional, algebra, scalar-tower and universe inputs
-retained. The all-field symbol/product/residue entry is independent of this
-optional computation family.
--/
+public import Aglib.KTheory.MilnorK.Norms

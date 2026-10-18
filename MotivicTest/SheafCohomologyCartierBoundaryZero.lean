@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.CartierBoundary
+public import Motivic.Cohomology.SheafCohomologyCartierBoundaryZero
 public import Motivic.Cohomology.A1.PresheafBoundaryOpenSupport
 import all Motivic.AlgebraicGeometry.SmoothSiteCartierCylinderComparison
 import all Motivic.AlgebraicGeometry.SmoothSiteCartierPunctureComparison
@@ -18,7 +18,6 @@ import all Motivic.Cohomology.A1.PresheafBoundaryOpenZero
 import all Motivic.Cohomology.A1.PresheafBoundaryOpenSupport
 import all Motivic.Cohomology.A1.PresheafBoundaryEtaleLocalization
 import all Motivic.Cohomology.A1.PresheafBoundaryEtaleExcision
-import all Motivic.Cohomology.SheafCohomologyCartierDirectImage
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -54,8 +53,8 @@ example {U Y : SmoothSite (Spec (.of k))} (j : U ⟶ Y) [IsOpenImmersion j.left]
         ((SheafWithTransfers.toSheaf k).obj F) (n + 1)) j)) :=
   SheafCohomology.isZero_cartierBoundary_succ_of_epi k F n hP hE j i hI hcomp
 
-/- The public ordinary-cohomology endpoint retains the original Epi input. -/
-example
+/-- Actual positive open direct image vanishes under the retained original Epi input. -/
+theorem higherDirectImage_isZero_of_original_epi
     {U Y : SmoothSite (Spec (.of k))} (j : U ⟶ Y) [IsOpenImmersion j.left]
     {Z : Scheme.{u}} (i : Z ⟶ Y.left) [IsClosedImmersion i] [Smooth (i ≫ Y.hom)]
     (hI : IsLocallyRankOne Y.left (Scheme.Hom.idealModule i))
@@ -63,11 +62,13 @@ example
     IsZero (((FiniteEtaleSite.directImage j.left).rightDerived (n + 1)).obj
       ((FiniteEtaleSite.restrict U AddCommGrpCat).obj
         ((SheafWithTransfers.toSheaf k).obj F))) :=
-  SheafCohomology.higherDirectImage_isZero_of_original_epi k F n hP hE j i hI hcomp
+  FiniteEtaleSite.higherDirectImage_isZero_of_positiveBoundary_zero (.of k) j i hcomp
+    ((SheafWithTransfers.toSheaf k).obj F) n
+    (SheafCohomology.isZero_cartierBoundary_succ_of_epi k F n hP hE j i hI hcomp)
 
 open Lean in
 run_cmd do
-  for name in #[``SheafCohomology.higherDirectImage_isZero_of_original_epi,
+  for name in #[``higherDirectImage_isZero_of_original_epi,
       ``SmoothSite.exists_cartier_cylinder_comparison,
       ``SmoothSite.exists_cartier_puncture_comparison,
       ``FiniteEtaleSite.presheafBoundaryAmbientCoefficientIso_projection,
@@ -86,8 +87,7 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.SheafCohomologyCartierDirectImage,
-    `Motivic.AlgebraicGeometry.SmoothSiteCartierCylinderComparison,
+  let sourceModules := #[`Motivic.AlgebraicGeometry.SmoothSiteCartierCylinderComparison,
     `Motivic.AlgebraicGeometry.SmoothSiteCartierPunctureComparison,
     `Motivic.Cohomology.A1.PresheafBoundaryCoefficientIso,
     `Motivic.Cohomology.A1.PresheafSmoothCartierBoundaryZero,

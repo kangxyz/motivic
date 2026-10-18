@@ -131,13 +131,13 @@ instance coordinateFaithful : FaithfulSMul k[X] (coordinateRing Z) :=
 variable [CharZero k]
 
 /-- The original support's full normalized endpoint sum, with all coordinate units. -/
-def normalizedEndpointValue (a : k) : KTheory.MilnorK.K k q := by
+def normalizedEndpointValue (a : k) : MilnorK.K k q := by
   let B := coordinateRing Z
   let := FiniteCurveNormalization.ring_isDedekindDomain (k := k) B
   let := FiniteCurveNormalization.ring_finite_base (k := k) B
   let := FiniteCurveNormalization.normalizationTorsionFree k B
   let := FiniteCurveNormalization.rationalAlgebra k B
-  exact KTheory.MilnorK.DedekindResidue.endpointWeightedResidueSum k
+  exact MilnorK.DedekindResidue.endpointWeightedResidueSum k
     (FiniteCurveNormalization.ring B) (FractionRing B) a q
     (Units.map (algebraMap B (FiniteCurveNormalization.ring B)).toMonoidHom ∘
       coordinateUnit Z)

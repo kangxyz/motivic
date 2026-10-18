@@ -22,7 +22,7 @@ discharges the Artinian hypothesis as well. No regularity is assumed.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R] [IsNoetherianRing R]
 variable {U V W : Type v}
@@ -63,4 +63,4 @@ theorem eulerMultiplicity_add_of_mem_minimalPrimes_middle_support
           (Module.annihilator R V) (g.annihilator_le_of_surjective hg) hm) :=
   eulerMultiplicity_add_of_exact a b f g hf hg hex _ _ _
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

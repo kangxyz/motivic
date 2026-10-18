@@ -8,7 +8,7 @@ module
 public import Motivic.Cohomology.Motivic.DiagonalCorestrictionBaseChange
 public import Motivic.Cohomology.Motivic.DiagonalScalarTupleChange
 public import Motivic.Aglib.AlgebraicGeometry.AdjoinRootScalarBranches
-public import Motivic.KTheory.MilnorK.ResidueBaseChangeSupport
+public import Aglib.KTheory.MilnorK.Residue.BaseChangeSupport
 
 /-! # Every original scalar branch of an arbitrary-weight transferred polynomial point -/
 
@@ -25,7 +25,7 @@ variable {n : ℕ}
 
 section Polynomial
 
-open Polynomial KTheory.MilnorK.PolynomialResidue AdjoinRootScalarBranches
+open Polynomial MilnorK.PolynomialResidue AdjoinRootScalarBranches
 
 variable {k L : Type u} [Field k] [Field L] [Algebra k L]
 

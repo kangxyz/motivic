@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.PolynomialFiberNorm
+public import Aglib.RingTheory.PolynomialFiberNorm
 public import Mathlib.RingTheory.AdjoinRoot
 
 /-!

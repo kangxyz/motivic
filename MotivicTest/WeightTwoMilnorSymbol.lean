@@ -21,7 +21,7 @@ The dependency audit rejects every nonstandard assumption.
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.KTheory.MilnorK2 Motivic.WeightTwoMilnorSymbol
+open MilnorK.K2 Motivic.WeightTwoMilnorSymbol
 open scoped TensorProduct
 
 universe u
@@ -80,8 +80,8 @@ theorem actual_reduction_square (n : ℕ) :
 
 omit [CharZero k] in
 /-- The subgroup used in the second quotient is exactly the subgroup of multiples. -/
-theorem exact_milnor_multiples (n : ℕ) (x : K2 k) :
-    x ∈ milnorMultiples k n ↔ ∃ y : K2 k, n • y = x := mem_milnorMultiples k n x
+theorem exact_milnor_multiples (n : ℕ) (x : MilnorK.K2.Group k) :
+    x ∈ milnorMultiples k n ↔ ∃ y : MilnorK.K2.Group k, n • y = x := mem_milnorMultiples k n x
 
 /-- Quotient reduction retains the actual integral reduction without any comparison premise. -/
 theorem actual_modulo_reduction_square (n : ℕ) :
@@ -90,7 +90,7 @@ theorem actual_modulo_reduction_square (n : ℕ) :
   finiteMilnorSymbolModulo_reduction_square k n
 
 /-- The finite top-degree comparison retains the same actual integral symbol class. -/
-theorem actual_top_degree_comparison (n : ℕ) (x : K2 k) :
+theorem actual_top_degree_comparison (n : ℕ) (x : MilnorK.K2.Group k) :
     FieldTopDegree.topDegreeFiniteEquiv k 2 n
         (finiteMilnorSymbolModulo k n (QuotientAddGroup.mk x)) =
       (QuotientAddGroup.mk (motivicMilnorSymbol k x) :
@@ -98,12 +98,12 @@ theorem actual_top_degree_comparison (n : ℕ) (x : K2 k) :
   finiteMilnorSymbol_topDegree_comparison k n x
 
 /-- Level zero is included in the actual modulo construction. -/
-theorem coefficient_zero (x : K2 k) :
+theorem coefficient_zero (x : MilnorK.K2.Group k) :
     finiteMilnorSymbolModulo k 0 (QuotientAddGroup.mk x) =
       motivicBaseIntegralReduction k 2 2 0 (motivicMilnorSymbol k x) := rfl
 
 /-- Level one vanishes in the actual finite motivic target. -/
-theorem coefficient_one (x : K2 k) :
+theorem coefficient_one (x : MilnorK.K2.Group k) :
     finiteMilnorSymbolModulo k 1 (QuotientAddGroup.mk x) = 0 :=
   finiteMilnorSymbol_one k x
 
@@ -122,7 +122,7 @@ local instance : HasDerivedCategory
   HasDerivedCategory.standard _
 
 /-- Raw naturality uses the actual signed cochain map and original Milnor field map. -/
-theorem actual_raw_naturality (x : K2 k) :
+theorem actual_raw_naturality (x : MilnorK.K2.Group k) :
     HomologicalComplex.homologyMap (motivicRawBaseComplexMap φ 2) 2
         (rawMilnorSymbol k x) = rawMilnorSymbol L (mapAdd φ x) :=
   rawMilnorSymbol_fieldChange φ x

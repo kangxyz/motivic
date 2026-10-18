@@ -4,9 +4,9 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 
-import Motivic.Aglib.RingTheory.AdicCompletion.FractionTensorBranches
+import Aglib.RingTheory.AdicCompletion.FractionTensorBranches
 import Motivic.Aglib.RingTheory.AdicCompletion.FiniteRank
-import Motivic.Aglib.RingTheory.AdicCompletion.BranchFractionFinite
+import Aglib.RingTheory.AdicCompletion.BranchFractionFinite
 import Lean.Util.CollectAxioms
 
 /-! The actual original branch field product and all required scalar structures. -/

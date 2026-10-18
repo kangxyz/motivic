@@ -8,7 +8,7 @@ module
 public import Motivic.Cohomology.Motivic.DiagonalNormalizedEndpointCycles
 public import Motivic.Cohomology.Motivic.DiagonalBoundaryFiberEvaluation
 public import Motivic.Cohomology.Motivic.AffineEndpointGeometricNorm
-public import Motivic.KTheory.MilnorK.AffineEndpointNormAllDegrees
+public import Aglib.KTheory.MilnorK.Dedekind.AffineEndpointNormAllDegrees
 
 /-! # Actual normalized endpoint norm evaluation of original simplex supports -/
 
@@ -103,7 +103,7 @@ theorem normalizedEndpointValue_eq_all (a b : k) :
   let := FiniteCurveNormalization.ring_finite_base (k := k) B
   let := FiniteCurveNormalization.normalizationTorsionFree k B
   let := FiniteCurveNormalization.rationalAlgebra k B
-  exact KTheory.MilnorK.DedekindResidue.endpointWeightedResidueSum_eq_all k
+  exact MilnorK.DedekindResidue.endpointWeightedResidueSum_eq_all k
     (FiniteCurveNormalization.ring B) (FractionRing B) a b q _
 
 /-- Every original integral singular support has equal actual endpoint norms. -/

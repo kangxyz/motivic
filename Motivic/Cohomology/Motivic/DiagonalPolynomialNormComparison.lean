@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.KTheory.MilnorK.PolynomialNormCompatibility
+public import Aglib.KTheory.MilnorK.Norm.Polynomial.Compatibility
 public import Motivic.Cohomology.Motivic.DiagonalMilnorSymbol
 public import Motivic.Cohomology.Motivic.WeightTwoMilnorNormComparison
 
@@ -29,8 +29,8 @@ universe w u
 
 namespace Motivic.DiagonalPolynomialNormComparison
 
-open KTheory.MilnorK KTheory.MilnorK.PolynomialResidue
-open KTheory.MilnorK.PolynomialNorm DiagonalMilnorSymbol WeightTwoCorestriction
+open MilnorK MilnorK.PolynomialResidue
+open MilnorK.PolynomialNorm DiagonalMilnorSymbol WeightTwoCorestriction
 
 variable {k : Type u} [Field k] [CharZero k]
 

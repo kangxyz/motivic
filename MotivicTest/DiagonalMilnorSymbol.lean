@@ -18,7 +18,7 @@ old maps. No converse or arbitrary boundary norm is imported as an assumption.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.KTheory
+open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalMilnorSymbol
 
 universe w u

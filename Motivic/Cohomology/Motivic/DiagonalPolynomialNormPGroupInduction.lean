@@ -8,8 +8,8 @@ module
 public import Motivic.Cohomology.Motivic.DiagonalPolynomialNormPrimeInduction
 public import Motivic.Cohomology.Motivic.DiagonalCorestrictionPresentationTransport
 public import Motivic.Cohomology.Motivic.DiagonalCorestrictionTower
-public import Motivic.KTheory.MilnorK.FiniteExtensionNormTower
-public import Motivic.Aglib.FieldTheory.PGroupNormalSubfieldEmbedding
+public import Aglib.KTheory.MilnorK.Norm.FiniteExtension.Tower
+public import Aglib.FieldTheory.PGroupNormalSubfieldEmbedding
 
 /-!
 # The genuine p-group ambient norm-symbol induction step
@@ -31,9 +31,9 @@ universe u
 
 namespace Motivic.DiagonalPolynomialNormInduction
 
-open DiagonalMilnorSymbol DiagonalCorestriction KTheory
+open DiagonalMilnorSymbol DiagonalCorestriction
 open MilnorK.PolynomialResidue MilnorK.PolynomialNorm
-open MilnorK3.PolynomialNorm (rootEvaluationEquiv rootEvaluationEquiv_toRingHom)
+open MilnorK.K3.PolynomialNorm (rootEvaluationEquiv rootEvaluationEquiv_toRingHom)
 
 local instance pGroupRootFinite (F : Type u) [Field F] (p : MonicIrreducible F) :
     Module.Finite F (AdjoinRoot p.val) := p.property.1.finite_adjoinRoot

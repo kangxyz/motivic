@@ -58,7 +58,6 @@ public import MotivicTest.Transfers.EnoughInjectives
 public import MotivicTest.AlgebraicGeometry.SemilocalLineBundle
 public import MotivicTest.TransferContraction
 public import MotivicTest.Transfers.DegreeZeroNaturality
-public import MotivicTest.MilnorKPolynomialNormCompatibility
 public import MotivicTest.DiagonalPolynomialNormComparison
 public import MotivicTest.Transfers.DegreeZeroTransfers
 public import MotivicTest.Cohomology.A1
@@ -74,37 +73,24 @@ public import MotivicTest.DiagonalCycleSymbols
 public import MotivicTest.DiagonalCoordinateInsertion
 public import MotivicTest.DiagonalMilnorSymbol
 public import MotivicTest.DiagonalFieldChange
-public import MotivicTest.DVRCartierLength
 public import MotivicTest.FiniteCurveBranchOrders
-public import MotivicTest.CompleteDVRExtension
-public import MotivicTest.PolynomialNormRestrictionKernel
-public import MotivicTest.MilnorK2RamifiedRestriction
-public import MotivicTest.HenselianPrincipalRoots
 public import MotivicTest.FiniteCurveNormalization
 public import MotivicTest.WeightTwoCoordinateCycleEvaluation
 public import MotivicTest.WeightTwoCoordinateEvaluation
-public import MotivicTest.PolynomialNormRootRecurrence
 public import MotivicTest.WeightTwoMilnorSurjective
 public import MotivicTest.WeightTwoMilnorNormComparison
 public import MotivicTest.WeightTwoPointPresentation
 public import MotivicTest.WeightTwoMonicDeformationNormSum
 public import MotivicTest.WeightTwoMonicDeformationFactors
-public import MotivicTest.PolynomialNormDeformation
 public import MotivicTest.WeightTwoMonicDeformationTransfer
 public import MotivicTest.AdjoinRootFactorLength
 public import MotivicTest.WeightTwoMonicDeformation
-public import MotivicTest.MilnorK3PrincipalUnitResidue
 public import MotivicTest.TwoUnitMonicDeformation
-public import MotivicTest.MilnorK2BalancedRepresentatives
-public import MotivicTest.AdjoinRootBalancedFractions
 public import MotivicTest.WeightTwoCorestrictionBaseChange
 public import MotivicTest.WeightTwoScalarPairChange
 public import MotivicTest.FinitePointBaseChange
-public import MotivicTest.AdjoinRootScalarBranches
 public import MotivicTest.AdjoinRootScalarBranchesGeometry
 public import MotivicTest.WeightTwoMilnorMixedNorm
-public import MotivicTest.AdjoinRootNormResultant
-public import MotivicTest.MilnorK3PolynomialResidueRestriction
 public import MotivicTest.WeightTwoMilnorRootNorm
 public import MotivicTest.CorIntegration
 public import MotivicTest.LaurentTorus
@@ -125,7 +111,6 @@ public import MotivicTest.FlatBaseChangeGeneric
 public import MotivicTest.FieldBaseChangeSupport
 public import MotivicTest.FieldBaseChangeCycle
 public import MotivicTest.FieldBaseChangeGraph
-public import MotivicTest.FiniteAlgebraNormLength
 public import MotivicTest.ClosedImmersionKoszulEuler
 public import MotivicTest.FlatFundamentalCycle
 public import MotivicTest.SmoothSiteBaseChangeProducts
@@ -136,7 +121,6 @@ public import MotivicTest.BaseFieldGenerators
 
 public import MotivicTest.WeightOnePointNorm
 
-public import MotivicTest.PolynomialFiberNorm
 
 public import MotivicTest.FieldBaseChangePushforward
 
@@ -155,7 +139,6 @@ public import MotivicTest.WeightOneBoundaryNorm
 public import MotivicTest.WeightOneHomologyNorm
 public import MotivicTest.FiniteFlatCurveComponents
 public import MotivicTest.CartierCutLength
-public import MotivicTest.AdjoinRootNormEvaluation
 public import MotivicTest.RawFieldChangeCoherence
 
 public import MotivicTest.CorrespondenceIsoTransport
@@ -181,8 +164,6 @@ public import MotivicTest.WeightTwoSteinberg
 public import MotivicTest.WeightTwoMilnorSymbol
 public import MotivicTest.WeightTwoCorestrictionTower
 
-public import MotivicTest.MilnorK3DVR
-public import MotivicTest.PolynomialLocalResidue
 
 /-! # Public integration of actual motivic complexes and derived cohomology -/
 
@@ -377,8 +358,8 @@ def derivedFiniteWeightTwoSymbol (n : ℕ) :=
 
 open Lean in
 run_cmd do
-  for name in #[``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_principal_unit_completeDVR,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_restrict_of_splits,
+  for name in #[``MilnorK.K3.PolynomialNorm.polynomialNorm_principal_unit_completeDVR,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_restrict_of_splits,
       ``motivicComplex, ``motivicComplexPlacementIso,
       ``motivicComplexUnderlyingXIso, ``motivicComplex_d_faces,
       ``motivicComplex_two_d_one_two, ``motivicComplex_one_d_zero_one,
@@ -421,28 +402,28 @@ run_cmd do
       ``WeightTwoSteinbergBound.graphSymbol_steinberg,
       ``WeightTwoSteinberg.motivicTensorSymbol_steinberg,
       ``WeightTwoSteinberg.finiteTensorSymbol_steinberg,
-      ``KTheory.MilnorK3.DegreeFiltration.stageResidue_comp_stageLift,
-      ``KTheory.MilnorK3.PolynomialResidue.totalResidue_surjective,
-      ``KTheory.MilnorK3.PolynomialResidue.ker_totalResidue_eq_constant_range,
-      ``KTheory.MilnorK3.PolynomialResidue.quotientConstantEquivResidues,
+      ``MilnorK.K3.DegreeFiltration.stageResidue_comp_stageLift,
+      ``MilnorK.K3.PolynomialResidue.totalResidue_surjective,
+      ``MilnorK.K3.PolynomialResidue.ker_totalResidue_eq_constant_range,
+      ``MilnorK.K3.PolynomialResidue.quotientConstantEquivResidues,
       ``Polynomial.LocalResidue.primeIdeal_eq_comap,
       ``Polynomial.LocalResidue.residueEquiv_residueMap,
       ``Polynomial.LocalResidue.fractionMap_algebraMap_localRing,
       ``Polynomial.LocalResidue.irreducible_localRingMap_polynomial,
-      ``KTheory.MilnorK3.DVR.residue_restrict,
-      ``KTheory.MilnorK3.PolynomialResidue.residueAt_restrict,
-      ``KTheory.MilnorK3.InfinityResidue.residue_restrict,
+      ``MilnorK.K3.DVR.residue_restrict,
+      ``MilnorK.K3.PolynomialResidue.residueAt_restrict,
+      ``MilnorK.K3.InfinityResidue.residue_restrict,
       ``Polynomial.LocalResidue.finite_place_or_no_polynomial_divisor,
-      ``KTheory.MilnorK3.PolynomialResidue.residueAt_restrict_zero_of_no_polynomial_divisor,
-      ``KTheory.MilnorK3.PolynomialResidue.totalResidue_restrict_single_of_dvd,
-      ``KTheory.MilnorK3.PolynomialResidue.totalResidue_restrict_single_of_not_dvd,
-      ``KTheory.MilnorK3.PolynomialResidue.totalResidue_restrict_single_support_subset,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_restrict,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_comp_restrict,
+      ``MilnorK.K3.PolynomialResidue.residueAt_restrict_zero_of_no_polynomial_divisor,
+      ``MilnorK.K3.PolynomialResidue.totalResidue_restrict_single_of_dvd,
+      ``MilnorK.K3.PolynomialResidue.totalResidue_restrict_single_of_not_dvd,
+      ``MilnorK.K3.PolynomialResidue.totalResidue_restrict_single_support_subset,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_restrict,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_comp_restrict,
       ``AdjoinRoot.norm_mk_eq_resultant,
       ``AdjoinRoot.norm_mk_reciprocity,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_symbol_constant,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_constant_symbol,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_symbol_constant,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_constant_symbol,
       ``WeightTwoMilnorMixedNorm.raw_mixed,
       ``WeightTwoMilnorMixedNorm.derived_mixed,
       ``WeightTwoMilnorMixedNorm.finite_mixed,
@@ -456,41 +437,41 @@ run_cmd do
       ``AdjoinRootScalarBranches.scalar_isPullback,
       ``AdjoinRootScalarBranches.scalar_fundamentalCycle_eq_sum_branches,
       ``AdjoinRootScalarBranches.branchMap_scalarMap,
-      ``KTheory.MilnorK3.PolynomialNorm.totalNorm_totalResidue,
-      ``KTheory.MilnorK3.PolynomialNorm.totalNorm_unique,
-      ``KTheory.MilnorK3.PolynomialNorm.finite_rational_reciprocity,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_map_constants,
-      ``KTheory.MilnorK3.PolynomialNorm.polynomialNorm_root_constant,
+      ``MilnorK.K3.PolynomialNorm.totalNorm_totalResidue,
+      ``MilnorK.K3.PolynomialNorm.totalNorm_unique,
+      ``MilnorK.K3.PolynomialNorm.finite_rational_reciprocity,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_map_constants,
+      ``MilnorK.K3.PolynomialNorm.polynomialNorm_root_constant,
       ``AdjoinRoot.norm_root,
       ``WeightTwoMilnorRootNorm.raw_root_constant,
       ``WeightTwoMilnorRootNorm.derived_root_constant,
       ``WeightTwoMilnorRootNorm.finite_root_constant,
-      ``KTheory.MilnorK3.DegreeFiltration.lower_succ_eq,
-      ``KTheory.MilnorK3.DegreeFiltration.exists_mem_lower,
-      ``KTheory.MilnorK3.DegreeFiltration.lower_one_eq_constant_range,
-      ``KTheory.MilnorK3.DegreeFiltration.actualStageEquiv,
-      ``KTheory.MilnorK3.DegreeFiltration.degreeResidues_eq_zero_iff_mem_lower,
-      ``KTheory.MilnorK3.InfinityResidue.residue_polynomial_constants,
-      ``KTheory.MilnorK3.PolynomialResidue.totalResidue,
-      ``KTheory.MilnorK3.PolynomialResidue.finite_residueAt_support,
-      ``KTheory.MilnorK3.DegreeFiltration.reduced_mul_middle_mem_lower,
-      ``KTheory.MilnorK3.DegreeFiltration.reduced_mul_right_mem_lower,
-      ``KTheory.MilnorK3.DegreeFiltration.reduced_steinberg,
-      ``KTheory.MilnorK3.map_comp,
+      ``MilnorK.K3.DegreeFiltration.lower_succ_eq,
+      ``MilnorK.K3.DegreeFiltration.exists_mem_lower,
+      ``MilnorK.K3.DegreeFiltration.lower_one_eq_constant_range,
+      ``MilnorK.K3.DegreeFiltration.actualStageEquiv,
+      ``MilnorK.K3.DegreeFiltration.degreeResidues_eq_zero_iff_mem_lower,
+      ``MilnorK.K3.InfinityResidue.residue_polynomial_constants,
+      ``MilnorK.K3.PolynomialResidue.totalResidue,
+      ``MilnorK.K3.PolynomialResidue.finite_residueAt_support,
+      ``MilnorK.K3.DegreeFiltration.reduced_mul_middle_mem_lower,
+      ``MilnorK.K3.DegreeFiltration.reduced_mul_right_mem_lower,
+      ``MilnorK.K3.DegreeFiltration.reduced_steinberg,
+      ``MilnorK.K3.map_comp,
       ``RatFunc.inversion_inversion,
-      ``KTheory.MilnorK3.InfinityResidue.residue,
-      ``KTheory.MilnorK3.InfinityResidue.residue_inv_variable,
-      ``KTheory.MilnorK3.InfinityResidue.residue_comp_constants,
-      ``KTheory.MilnorK3.PolynomialResidue.residueAt,
-      ``KTheory.MilnorK3.PolynomialResidue.residueAt_reduced,
-      ``KTheory.MilnorK3.PolynomialResidue.residueAt_coprime,
-      ``KTheory.MilnorK3.symbol3FixedLast,
-      ``KTheory.MilnorK3.symbol3_euclidean,
-      ``KTheory.MilnorK3.residue3,
-      ``KTheory.MilnorK3.residue3_uniformizer_units,
-      ``KTheory.MilnorK3.residue3_eq_of_unitPart_change,
-      ``KTheory.MilnorK3.DVR.residue,
-      ``KTheory.MilnorK3.DVR.residue_uniformizer_ring_units,
+      ``MilnorK.K3.InfinityResidue.residue,
+      ``MilnorK.K3.InfinityResidue.residue_inv_variable,
+      ``MilnorK.K3.InfinityResidue.residue_comp_constants,
+      ``MilnorK.K3.PolynomialResidue.residueAt,
+      ``MilnorK.K3.PolynomialResidue.residueAt_reduced,
+      ``MilnorK.K3.PolynomialResidue.residueAt_coprime,
+      ``MilnorK.K3.symbol3FixedLast,
+      ``MilnorK.K3.symbol3_euclidean,
+      ``MilnorK.K3.residue3,
+      ``MilnorK.K3.residue3_uniformizer_units,
+      ``MilnorK.K3.residue3_eq_of_unitPart_change,
+      ``MilnorK.K3.DVR.residue,
+      ``MilnorK.K3.DVR.residue_uniformizer_ring_units,
       ``Polynomial.LocalResidue.residueEquiv_residue_eq_aeval,
       ``Polynomial.LocalResidue.irreducible_polynomial,
       ``WeightTwoMilnorSymbol.rawMilnorSymbol,
@@ -532,17 +513,17 @@ run_cmd do
       ``motivicCohomologyFieldChange_integralReduction, ``motivicCohomologyFieldChange_bockstein,
       ``WeightOneNormFieldChange.reducedNorm_baseReducedTorusFieldChange,
       ``Algebra.norm_eq_prod_quotient_norm_pow_local_length_of_finite,
-      ``KTheory.MilnorK.lift, ``KTheory.MilnorK.map_comp,
-      ``KTheory.MilnorK.zeroEquiv, ``KTheory.MilnorK.oneEquiv,
-      ``KTheory.MilnorK.twoEquiv, ``KTheory.MilnorK.threeEquiv,
-      ``KTheory.MilnorK.twoEquiv_map, ``KTheory.MilnorK.threeEquiv_map,
+      ``MilnorK.lift, ``MilnorK.map_comp,
+      ``MilnorK.zeroEquiv, ``MilnorK.oneEquiv,
+      ``MilnorK.twoEquiv, ``MilnorK.threeEquiv,
+      ``MilnorK.twoEquiv_map, ``MilnorK.threeEquiv_map,
       ``IsDiscreteValuationRing.length_quotient_span_eq_addVal,
       ``FiniteCurveNormalization.fiber_fundamentalCoefficient_eq_sum_branchOrders,
       ``DiagonalTopDegree.raw_d_top, ``DiagonalTopDegree.quotientToRawEquiv,
       ``DiagonalTopDegree.quotientToMotivicEquiv,
-      ``KTheory.MilnorK.product, ``KTheory.MilnorK.product_assoc,
-      ``KTheory.MilnorK.map_product, ``KTheory.MilnorK.symbol_adjacent_skew,
-      ``KTheory.MilnorK.symbol_adjacent_self,
+      ``MilnorK.product, ``MilnorK.product_assoc,
+      ``MilnorK.map_product, ``MilnorK.symbol_adjacent_skew,
+      ``MilnorK.symbol_adjacent_self,
       ``DiagonalCycleSymbols.graphSymbol_mul,
       ``DiagonalCoordinateInsertion.graphSymbol_steinberg,
       ``DiagonalMilnorSymbol.motivicSymbol,
@@ -552,42 +533,42 @@ run_cmd do
       ``DiagonalWeightZero.motivicSymbol_zero,
       ``DiagonalCorestriction.corestriction_comp,
       ``DiagonalCorestriction.motivicCorestriction_comp,
-      ``KTheory.MilnorK.specializeTwist, ``KTheory.MilnorK.twoEquiv_specialize,
-      ``KTheory.MilnorK.DVR.specializeWithUniformizer_ring_units,
-      ``KTheory.MilnorK.productUnit_pair_zero,
-      ``KTheory.MilnorK.residue, ``KTheory.MilnorK.residueSymbol_steinberg,
-      ``KTheory.MilnorK.zeroEquiv_residue, ``KTheory.MilnorK.residue_symbol_principal,
-      ``KTheory.MilnorK.residue_symbol_uniformizers,
-      ``KTheory.MilnorK.oneEquiv_residue_one, ``KTheory.MilnorK.twoEquiv_residue_two,
-      ``KTheory.MilnorK.specialize_change,
-      ``KTheory.MilnorK.residue_eq_of_unitPart_change,
-      ``KTheory.MilnorK.DVR.residueWithUniformizer_independent,
-      ``KTheory.MilnorK.DVR.residue_ring_units_uniformizer,
-      ``KTheory.MilnorK.DVR.residue_principal_ring_unit,
-      ``KTheory.MilnorK.symbol_skew, ``KTheory.MilnorK.pairMap,
-      ``KTheory.MilnorK.PolynomialResidue.residueAt_eq_dvr,
-      ``KTheory.MilnorK.PolynomialResidue.residueAt_reduced,
-      ``KTheory.MilnorK.PolynomialResidue.finite_residueAt_support,
-      ``KTheory.MilnorK.PolynomialResidue.totalResidue,
-      ``KTheory.MilnorK.InfinityResidue.residue_polynomial_constants,
-      ``KTheory.MilnorK.DegreeFiltration.exists_mem_lower,
-      ``KTheory.MilnorK.DegreeFiltration.lower_succ_eq,
-      ``KTheory.MilnorK.DegreeFiltration.reduced_mul_coordinate_mem_lower,
-      ``KTheory.MilnorK.DegreeFiltration.stageResidue_comp_stageLift,
-      ``KTheory.MilnorK.DegreeFiltration.actualStageEquiv,
-      ``KTheory.MilnorK.PolynomialResidue.totalResidue_surjective,
-      ``KTheory.MilnorK.PolynomialResidue.ker_totalResidue_eq_constant_range,
-      ``KTheory.MilnorK.PolynomialResidue.quotientConstantEquivResidues,
-      ``KTheory.MilnorK.PolynomialResidue.rational_short_exact,
-      ``KTheory.MilnorK.ConstantRestriction.constants_injective,
-      ``KTheory.MilnorK.specialize_product,
-      ``KTheory.MilnorK.DVR.residue_product_base_field_left,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm,
-      ``KTheory.MilnorK.PolynomialNorm.totalNorm_unique,
-      ``KTheory.MilnorK.PolynomialNorm.infinity_residue_eq_of_totalResidue_eq,
-      ``KTheory.MilnorK.PolynomialNorm.finite_rational_reciprocity,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_map_constants,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_product_constants_left,
+      ``MilnorK.specializeTwist, ``MilnorK.twoEquiv_specialize,
+      ``MilnorK.DVR.specializeWithUniformizer_ring_units,
+      ``MilnorK.productUnit_pair_zero,
+      ``MilnorK.residue, ``MilnorK.residueSymbol_steinberg,
+      ``MilnorK.zeroEquiv_residue, ``MilnorK.residue_symbol_principal,
+      ``MilnorK.residue_symbol_uniformizers,
+      ``MilnorK.oneEquiv_residue_one, ``MilnorK.twoEquiv_residue_two,
+      ``MilnorK.specialize_change,
+      ``MilnorK.residue_eq_of_unitPart_change,
+      ``MilnorK.DVR.residueWithUniformizer_independent,
+      ``MilnorK.DVR.residue_ring_units_uniformizer,
+      ``MilnorK.DVR.residue_principal_ring_unit,
+      ``MilnorK.symbol_skew, ``MilnorK.pairMap,
+      ``MilnorK.PolynomialResidue.residueAt_eq_dvr,
+      ``MilnorK.PolynomialResidue.residueAt_reduced,
+      ``MilnorK.PolynomialResidue.finite_residueAt_support,
+      ``MilnorK.PolynomialResidue.totalResidue,
+      ``MilnorK.InfinityResidue.residue_polynomial_constants,
+      ``MilnorK.DegreeFiltration.exists_mem_lower,
+      ``MilnorK.DegreeFiltration.lower_succ_eq,
+      ``MilnorK.DegreeFiltration.reduced_mul_coordinate_mem_lower,
+      ``MilnorK.DegreeFiltration.stageResidue_comp_stageLift,
+      ``MilnorK.DegreeFiltration.actualStageEquiv,
+      ``MilnorK.PolynomialResidue.totalResidue_surjective,
+      ``MilnorK.PolynomialResidue.ker_totalResidue_eq_constant_range,
+      ``MilnorK.PolynomialResidue.quotientConstantEquivResidues,
+      ``MilnorK.PolynomialResidue.rational_short_exact,
+      ``MilnorK.ConstantRestriction.constants_injective,
+      ``MilnorK.specialize_product,
+      ``MilnorK.DVR.residue_product_base_field_left,
+      ``MilnorK.PolynomialNorm.polynomialNorm,
+      ``MilnorK.PolynomialNorm.totalNorm_unique,
+      ``MilnorK.PolynomialNorm.infinity_residue_eq_of_totalResidue_eq,
+      ``MilnorK.PolynomialNorm.finite_rational_reciprocity,
+      ``MilnorK.PolynomialNorm.polynomialNorm_map_constants,
+      ``MilnorK.PolynomialNorm.polynomialNorm_product_constants_left,
       ``SmoothSite.a1Section_projection,
       ``A1.projectionPullback_naturality,
       ``A1.projectionPullback_coefficient_naturality,
@@ -618,7 +599,7 @@ run_cmd do
       ``PresheafWithTransfers.contraction_split_identity,
       ``PresheafWithTransfers.contractionFunctor,
       ``PresheafWithTransfers.contractionIsoKernel_hom_naturality,
-      ``KTheory.MilnorK.PolynomialNorm.twoEquiv_polynomialNorm,
+      ``MilnorK.PolynomialNorm.twoEquiv_polynomialNorm,
       ``DiagonalPolynomialNormComparison.raw_norm,
       ``DiagonalPolynomialNormComparison.derived_norm,
       ``DiagonalPolynomialNormComparison.finite_norm,
@@ -630,14 +611,14 @@ run_cmd do
       ``SheafWithTransfers.enoughInjectives,
       ``AlgebraicGeometry.Scheme.Modules.Invertible.semilocalLineBundle_trivial,
       ``AlgebraicGeometry.Scheme.Modules.Invertible.finiteFiberLineBundle_trivial,
-      ``KTheory.MilnorK.specialize_restrict,
-      ``KTheory.MilnorK.DVR.residue_restrict,
-      ``KTheory.MilnorK.PolynomialResidue.residueAt_restrict,
-      ``KTheory.MilnorK.InfinityResidue.residue_restrict,
-      ``KTheory.MilnorK.PolynomialResidue.residueAt_restrict_zero_of_no_polynomial_divisor,
-      ``KTheory.MilnorK.PolynomialResidue.totalResidue_restrict_single_support_subset,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_restrict,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_comp_restrict,
+      ``MilnorK.specialize_restrict,
+      ``MilnorK.DVR.residue_restrict,
+      ``MilnorK.PolynomialResidue.residueAt_restrict,
+      ``MilnorK.InfinityResidue.residue_restrict,
+      ``MilnorK.PolynomialResidue.residueAt_restrict_zero_of_no_polynomial_divisor,
+      ``MilnorK.PolynomialResidue.totalResidue_restrict_single_support_subset,
+      ``MilnorK.PolynomialNorm.polynomialNorm_restrict,
+      ``MilnorK.PolynomialNorm.polynomialNorm_comp_restrict,
       ``AlgebraicGeometry.Scheme.Modules.Invertible.exists_base_open_support_unitIso,
       ``AlgebraicGeometry.Scheme.Modules.Invertible.exists_base_open_unitIso_of_isFinite,
       ``SheafCohomology.zero_isIso_restriction_iff,
@@ -650,15 +631,15 @@ run_cmd do
       ``SheafWithTransfers.contraction_isA1Invariant,
       ``CategoryTheory.GrothendieckTopology.Point.skyscraperCohomologyComparison,
       ``CategoryTheory.GrothendieckTopology.Point.skyscraper_cohomology_eq_zero,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_eq_map_rootEvaluation,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_restrict_of_splits,
-      ``KTheory.MilnorK.PolynomialNorm.oneEquiv_polynomialNorm,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_one_map_algEquiv,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_productUnit_constants,
-      ``KTheory.MilnorK.exists_degree_retraction,
-      ``KTheory.MilnorK.finrank_smul_eq_zero_of_map_eq_zero,
-      ``KTheory.MilnorK.eq_zero_of_map_eq_zero_of_coprime_pow,
-      ``KTheory.MilnorK.eq_zero_of_two_maps_eq_zero_of_coprime,
+      ``MilnorK.PolynomialNorm.polynomialNorm_eq_map_rootEvaluation,
+      ``MilnorK.PolynomialNorm.polynomialNorm_restrict_of_splits,
+      ``MilnorK.PolynomialNorm.oneEquiv_polynomialNorm,
+      ``MilnorK.PolynomialNorm.polynomialNorm_one_map_algEquiv,
+      ``MilnorK.PolynomialNorm.polynomialNorm_productUnit_constants,
+      ``MilnorK.exists_degree_retraction,
+      ``MilnorK.finrank_smul_eq_zero_of_map_eq_zero,
+      ``MilnorK.eq_zero_of_map_eq_zero_of_coprime_pow,
+      ``MilnorK.eq_zero_of_two_maps_eq_zero_of_coprime,
       ``Cor.graph_evaluation_ofFiniteFlatSpan,
       ``RelativeCartierDivisor.productMap_closed_of_target_closed,
       ``RelativeCartierDivisor.graph_evaluation_correspondence,
@@ -666,9 +647,9 @@ run_cmd do
       ``SmoothSite.nisnevichPoint,
       ``SmoothSite.isColimitNisnevichPointFiberCocone,
       ``SmoothSite.nisnevichPointFiberCocone_naturality,
-      ``KTheory.MilnorK.mixedSpan_eq_top_of_degree_gap,
-      ``KTheory.MilnorK.mixedSpan_eq_top_of_natDegree_le_two,
-      ``KTheory.MilnorK.exists_mixed_expansion_of_degree_gap,
+      ``MilnorK.mixedSpan_eq_top_of_degree_gap,
+      ``MilnorK.mixedSpan_eq_top_of_natDegree_le_two,
+      ``MilnorK.exists_mixed_expansion_of_degree_gap,
       ``CategoryTheory.uliftYoneda_map_app_injective,
       ``Hypercohomology.freeAbelianSheafFunctor_map_mono,
       ``SheafCohomology.relativePresentation_shortExact,
@@ -682,9 +663,9 @@ run_cmd do
       ``SmoothSite.NisnevichNeighborhood.exists_lift_of_isFinite,
       ``SmoothSite.NisnevichNeighborhood.exists_family_lift_of_isFinite,
       ``FiniteCorrespondenceGenerator.exists_pointed_graph_family_factorization,
-      ``KTheory.MilnorK.FiniteDescent.exists_finite_relation,
-      ``KTheory.MilnorK.FiniteDescent.exists_finite_intermediate_map_eq_zero,
-      ``KTheory.MilnorK.FiniteDescent.eq_zero_of_map_eq_zero_of_finite_degrees_coprime_pow,
+      ``MilnorK.FiniteDescent.exists_finite_relation,
+      ``MilnorK.FiniteDescent.exists_finite_intermediate_map_eq_zero,
+      ``MilnorK.FiniteDescent.eq_zero_of_map_eq_zero_of_finite_degrees_coprime_pow,
       ``Cor.toPoints_comp_graph,
       ``Cor.ofFiniteFlatSpan_comp_graph,
       ``Cor.graph_evaluation_ofFiniteFlatSpan_postcompose,
@@ -697,12 +678,12 @@ run_cmd do
       ``SheafWithTransfers.contractionToRelative_injective,
       ``SheafWithTransfers.contractionToRelative_toContraction,
       ``SheafWithTransfers.contractionToRelative_range,
-      ``KTheory.MilnorK.DegreeFiltration.polynomial_symbol_mem_lower_two_of_splits,
-      ``KTheory.MilnorK.restricted_symbol_mem_mixed_of_reduced_splits,
-      ``KTheory.MilnorK.exists_finite_reduced_mixed_expansion,
-      ``KTheory.MilnorK.exists_finite_coprime_mixed_expansion,
+      ``MilnorK.DegreeFiltration.polynomial_symbol_mem_lower_two_of_splits,
+      ``MilnorK.restricted_symbol_mem_mixed_of_reduced_splits,
+      ``MilnorK.exists_finite_reduced_mixed_expansion,
+      ``MilnorK.exists_finite_coprime_mixed_expansion,
       ``AdjoinRoot.coefficientEquiv_coefficientMap,
-      ``KTheory.MilnorK.PolynomialNorm.exists_coprime_restriction_eq_of_algEquiv,
+      ``MilnorK.PolynomialNorm.exists_coprime_restriction_eq_of_algEquiv,
       ``SmoothSite.NisnevichNeighborhood.exists_normalized_refinement,
       ``SmoothSite.sectionToNisnevichPoint_eq_zero_iff,
       ``PresheafWithTransfers.transfer_germ_eq_of_eq_on_support,
@@ -711,12 +692,12 @@ run_cmd do
       ``SheafCohomology.H_succ_base_eq_zero,
       ``Graph.polynomialTor_length,
       ``Graph.polynomialTor_component_isZero_succ,
-      ``KTheory.MilnorK.PolynomialNorm.polynomialNorm_map_algEquiv_of_prime_normal,
+      ``MilnorK.PolynomialNorm.polynomialNorm_map_algEquiv_of_prime_normal,
       ``SmoothSite.exists_section_of_mem_nisnevichPrecoverage_of_henselian,
       ``SheafCohomology.H_succ_eq_zero_of_henselian,
-      ``KTheory.MilnorK.DVR.residue_ramified_restrict_apply,
-      ``KTheory.MilnorK.PolynomialNorm.residue_polynomialNorm_ring_units_eq,
-      ``KTheory.MilnorK.PolynomialNorm.residue_polynomialNorm_one_eq,
+      ``MilnorK.DVR.residue_ramified_restrict_apply,
+      ``MilnorK.PolynomialNorm.residue_polynomialNorm_ring_units_eq,
+      ``MilnorK.PolynomialNorm.residue_polynomialNorm_one_eq,
       ``FiniteCorrespondenceGenerator.exists_graph_family_factorization_with_support_lift,
       ``FiniteCorrespondenceGenerator.exists_pointed_graph_family_factorization_with_support,
       ``FiniteCorrespondenceGenerator.exists_normalized_pointed_graph_family_factorization,
@@ -731,7 +712,7 @@ run_cmd do
       ``SheafCohomology.zeroSieve_mem_succ,
       ``PresheafWithTransfers.transfer_germ_eq_of_single_center,
       ``PresheafWithTransfers.fixed_lift_germ_evaluation_eq,
-      ``KTheory.MilnorK.PolynomialNorm.residue_polynomialNorm_final_ring_unit,
+      ``MilnorK.PolynomialNorm.residue_polynomialNorm_final_ring_unit,
       ``IsLocalRing.exists_principal_adjusted_uniformizer,
       ``AlgebraicGeometry.relativeFiniteFlat_fundamentalCycle_specialization,
       ``FiniteCorrespondenceGenerator.exists_pointed_germ_family_factorization,
@@ -741,7 +722,7 @@ run_cmd do
       ``Cor.graph_relative_endpoint_ofFiniteFlatSpan_postcompose,
       ``RelativeCartierDivisor.graph_relative_endpoint_correspondence,
       ``FiniteCorrespondence.exists_cech_boundary_of_common_support_lift_with_point_lift,
-      ``KTheory.MilnorK.PolynomialNorm.residue_polynomialNorm_mixed_prime,
+      ``MilnorK.PolynomialNorm.residue_polynomialNorm_mixed_prime,
       ``SheafCohomology.h_one_eq_zero_of_square_difference_surjective,
       ``FiniteCorrespondence.exists_pointed_cech_boundary_with_point_property] do
     for dependency in ← collectAxioms name do

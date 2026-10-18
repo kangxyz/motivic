@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.Motivic.DiagonalMilnorNormBaseChange
 public import Motivic.Cohomology.Motivic.DiagonalMilnorMixedNorm
-public import Motivic.KTheory.MilnorK.FiniteExtensionNormBaseChange
+public import Aglib.KTheory.MilnorK.Norm.FiniteExtension.BaseChange
 
 /-! # Prime-to-prime restriction of the actual all-weight norm comparison -/
 
@@ -19,8 +19,8 @@ universe u
 
 namespace Motivic.DiagonalMilnorCoprimeRestriction
 
-open KTheory.MilnorK KTheory.MilnorK.PolynomialResidue
-open KTheory.MilnorK.PolynomialNorm Polynomial.LocalResidue DiagonalMilnorSymbol
+open MilnorK MilnorK.PolynomialResidue
+open MilnorK.PolynomialNorm Polynomial.LocalResidue DiagonalMilnorSymbol
 
 variable {k : Type u} [Field k] [CharZero k]
 

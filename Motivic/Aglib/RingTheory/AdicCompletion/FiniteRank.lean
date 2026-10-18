@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.AdicCompletion.FiniteAlgebra
+public import Aglib.RingTheory.AdicCompletion.FiniteAlgebra
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 
 /-! # Finite free rank of the actual completed algebra -/

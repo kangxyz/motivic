@@ -14,7 +14,7 @@ public import Lean.Util.CollectAxioms
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalPointNorm
-open Motivic.DiagonalFinitePointEvaluation Motivic.KTheory.MilnorK
+open Motivic.DiagonalFinitePointEvaluation MilnorK
 
 universe u
 

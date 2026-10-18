@@ -22,25 +22,29 @@ variable (k : Type u) [Field k] {X Y A Z : Scheme.{u}}
   (b : X ⟶ Spec (.of k)) (p : Y ⟶ X) [Etale p] [QuasiCompact p] [IsSeparated p]
   (a : A ⟶ X) [IsOpenImmersion a] (z : Z ⟶ X) (s : Z ⟶ Y) (x : X)
   (e : OriginalEtalePresentation k b p a z s x)
-local instance : IsNoetherianRing e.base := e.base_noetherian
-local instance : Smooth e.toField := e.base_smooth
-local instance : IsAffine e.target := e.target_affine
-local instance : IsOpenImmersion e.refinement := e.refinement_open
-local instance : IsIntegral e.compact := e.compact_integral
-local instance : IsLocallyNoetherian e.compact := e.compact_noetherian
-local instance (c : e.compact) : IsIntegrallyClosed (e.compact.presheaf.stalk c) :=
+local instance originalLiftingBaseNoetherian : IsNoetherianRing e.base := e.base_noetherian
+local instance originalLiftingBaseSmooth : Smooth e.toField := e.base_smooth
+local instance originalLiftingTargetAffine : IsAffine e.target := e.target_affine
+local instance originalLiftingRefinementOpen : IsOpenImmersion e.refinement := e.refinement_open
+local instance originalLiftingCompactIntegral : IsIntegral e.compact := e.compact_integral
+local instance originalLiftingCompactLocallyNoetherian : IsLocallyNoetherian e.compact :=
+  e.compact_noetherian
+local instance originalLiftingCompactNormalStalk (c :
+    e.compact) : IsIntegrallyClosed (e.compact.presheaf.stalk c) :=
   e.compact_normal c
-local instance : IsFinite e.projectiveMap := e.projective_finite
-local instance : IsOpenImmersion e.inclusion := e.inclusion_open
-local instance : SmoothOfRelativeDimension 1
+local instance originalLiftingProjectiveFinite : IsFinite e.projectiveMap := e.projective_finite
+local instance originalLiftingInclusionOpen : IsOpenImmersion e.inclusion := e.inclusion_open
+local instance originalLiftingRelativeSmooth : SmoothOfRelativeDimension 1
     (e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _) := e.target_smooth
-local instance : IsClosedImmersion e.closedLift := e.closedLift_closed
-local instance : IsFinite
+local instance originalLiftingClosedLiftClosed : IsClosedImmersion e.closedLift :=
+  e.closedLift_closed
+local instance originalLiftingBoundaryFinite : IsFinite
     (e.closedInclusion ≫ e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _) :=
   e.closed_finite
-local instance : IsFinite
+local instance originalLiftingMarkedBoundaryFinite : IsFinite
     (e.boundaryInclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _) := e.boundary_finite
-local instance : IsFinite ((pullback.snd p e.refinement) ∣_ e.goodOpen) := e.good_finite
+local instance originalLiftingGoodFinite : IsFinite ((pullback.snd p e.refinement) ∣_ e.goodOpen) :=
+  e.good_finite
 
 /-- The native fixed-target lifting assertion on the actual original pullback spans. -/
 def HasLocalLifting (P : PresheafWithTransfers.{u + 1} k) : Prop :=

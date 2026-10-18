@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.Motivic.DiagonalCorestrictionMixed
 public import Motivic.Cohomology.Motivic.DiagonalMilnorSymbol
-public import Motivic.KTheory.MilnorK.FiniteExtensionNormOne
+public import Aglib.KTheory.MilnorK.Norm.FiniteExtension.One
 
 /-! # Genuine all-weight mixed Milnor/motivic transfer compatibility -/
 
@@ -19,7 +19,7 @@ universe w u
 
 namespace Motivic.DiagonalMilnorMixedNorm
 
-open KTheory.MilnorK DiagonalMilnorSymbol DiagonalCorestrictionMixed
+open MilnorK DiagonalMilnorSymbol DiagonalCorestrictionMixed
 
 variable {k E : Type u} [Field k] [Field E] [Algebra k E]
   [Module.Finite k E] [CharZero k] [CharZero E]

@@ -1,0 +1,43 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "env",
+    "/private/tmp/r5-investigations/milnor-k-aglib/incremental_cache_reuse/tmp/aglib-capped-toolchain-7eceoj6e/bin/lean",
+    "/Users/kang/Documents/New project/tmp/motivic/Motivic/Cohomology/Motivic/WeightTwoMilnorNormComparison.lean",
+    "--setup",
+    "/private/tmp/r5-investigations/milnor-k-aglib/incremental_cache_reuse/setup/Motivic.Cohomology.Motivic.WeightTwoMilnorNormComparison.json",
+    "-o",
+    "/private/tmp/r5-investigations/milnor-k-aglib/incremental_cache_reuse/lib/Motivic/Cohomology/Motivic/WeightTwoMilnorNormComparison.olean",
+    "-i",
+    "/private/tmp/r5-investigations/milnor-k-aglib/incremental_cache_reuse/lib/Motivic/Cohomology/Motivic/WeightTwoMilnorNormComparison.ilean",
+    "-c",
+    "/private/tmp/r5-investigations/milnor-k-aglib/incremental_cache_reuse/lib/Motivic/Cohomology/Motivic/WeightTwoMilnorNormComparison.c",
+    "--json"
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/aglib",
+  "pid": 357,
+  "pgid": 357,
+  "exit_code": 0,
+  "guard_failure": null,
+  "peak_rss_bytes": 2705358848,
+  "duration_seconds": 8.691807250026613,
+  "limits": {
+    "lean_memory_mb": 8192,
+    "rss_limit_mb": 10240,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 68719476736,
+    "lean_threads": 1,
+    "max_active_lean": 1,
+    "native_build_threads": 4
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 357,
+      "rss_bytes": 0,
+      "executable": "<defunct>",
+      "command_path": "<defunct>"
+    }
+  ]
+}

@@ -26,7 +26,7 @@ makes no claim that dimension vanishing or cycle devissage is already proved.
 
 universe u v
 
-namespace Motivic.LocalLength
+namespace Module
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M]
@@ -98,4 +98,4 @@ theorem koszulDimension_quotient_le_length (J : Ideal R) (s : List R)
     infer_instance
   exact koszulDimension_le_length_of_artinian_support_quotient (R ⧸ J) s hs
 
-end Motivic.LocalLength
+end Module

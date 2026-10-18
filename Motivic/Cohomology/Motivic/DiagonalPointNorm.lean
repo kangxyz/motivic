@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.DiagonalCycleSymbols
-public import Motivic.KTheory.MilnorK.FiniteExtensionNorm
+public import Aglib.KTheory.MilnorK.Norm.FiniteExtension.Basic
 
 /-!
 # Actual finite-point Milnor evaluation in every diagonal weight
@@ -34,7 +34,7 @@ universe u
 
 namespace Motivic.DiagonalPointNorm
 
-open KTheory.MilnorK DiagonalCycleSymbols
+open MilnorK DiagonalCycleSymbols
 open WeightOnePointNorm (point)
 
 variable (k : Type u) [Field k]

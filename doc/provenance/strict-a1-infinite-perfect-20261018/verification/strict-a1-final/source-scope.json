@@ -1,0 +1,31 @@
+{
+  "scope": [
+    "Motivic/Cohomology/A1/ContractionChartHigherImageVanishing.lean",
+    "Motivic/Cohomology/A1/PointedCylinderPositiveRestriction.lean",
+    "Motivic/Cohomology/A1/PointedCartierPositiveRestriction.lean",
+    "Motivic/Cohomology/A1/StrictInvariance.lean",
+    "MotivicTest/StrictA1Invariance.lean"
+  ],
+  "sha256": {
+    "Motivic/Cohomology/A1/ContractionChartHigherImageVanishing.lean": "973274a38dcbd196ec3135051cc493b6e49d0478d970a90ca9e7e66403735c7a",
+    "Motivic/Cohomology/A1/PointedCylinderPositiveRestriction.lean": "8c1ae3082e0fe3d9de303aeab399df57804a25df0dc879b785f2fa024eb5c518",
+    "Motivic/Cohomology/A1/PointedCartierPositiveRestriction.lean": "92afa980cf46f5864149a2b7d8367b71d838e59332c310d6904f1e840a99b60a",
+    "Motivic/Cohomology/A1/StrictInvariance.lean": "a74bee57561fa3c6811ccfd6e5aae9642ad69303ad63a8fe58485972a7d9ab95",
+    "MotivicTest/StrictA1Invariance.lean": "15eccc63a8f091d23f2c50a119514b862210d667fc78c786afde10f0b86883eb"
+  },
+  "checks": [
+    "exact selected module headers",
+    "selected proof/unsafe tokens",
+    "selected budget/lint/quotation options",
+    "selected import existence and boundaries",
+    "reachable actual local import cycles",
+    "fixed mathematical pins and compiler identity"
+  ],
+  "reachable_local_modules": 1486,
+  "errors": [],
+  "passed": true,
+  "reused_evidence": [
+    "Frozen accepted dependency source hashes checked by root; only the three higher producers, final induction join and actual all-degree projection consumer are audited here."
+  ],
+  "text_scope": "Pinned Lean text-based linter runs separately; legacy Python-only rules are not claimed."
+}

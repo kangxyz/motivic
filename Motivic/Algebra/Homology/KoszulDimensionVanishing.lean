@@ -64,7 +64,7 @@ theorem koszulDimension_chainEuler_zero (M : ModuleCat R) [Module.Finite R M]
         · have hreg : IsSMulRegular N a := by
             intro x y hxy
             apply e.injective
-            apply LocalLength.scalar_regular_primeQuotient p.asIdeal a ha
+            apply Module.scalar_regular_primeQuotient p.asIdeal a ha
             simpa only [map_smul] using congrArg e hxy
           have hArtQ := koszulDimension_artinian_scalarQuotient (ModuleCat.of R N) a s
           have hdQ := koszulDimensionReduction_supportDim_lt (ModuleCat.of R N) a s hreg

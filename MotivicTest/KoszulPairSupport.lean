@@ -20,7 +20,7 @@ The final consumer discharges finiteness from a local minimal-support prime.
 
 universe u v
 
-open Motivic.LocalLength.KoszulPair
+open Module.KoszulPair
 
 namespace MotivicTest.KoszulPairSupport
 

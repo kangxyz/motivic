@@ -6,6 +6,7 @@ Authors: kangxyz
 module
 public import Motivic.Cohomology.A1.PresheafBoundaryGenerators
 public import Mathlib.CategoryTheory.Sites.LocallySurjective
+public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleJacobsonOpenCover
 
 /-! # Epimorphisms detected on locally represented original boundary generators -/
 @[expose] public noncomputable section
@@ -41,6 +42,27 @@ theorem presheafBoundary_epi_of_local_generators
       (congr_app ((sheafToPresheaf (nisnevichTopology Z.left) _).congr_map heq) (op V)) a
     exact h₁.symm.trans ((congrArg (f.hom.app _) ha.symm).trans
       (hfg.trans ((congrArg (g.hom.app _) ha).trans h₂)))
+
+
+/-- Over a Jacobson zero scheme, actual open neighborhoods at closed points suffice.
+They first form an honest open cover, hence a Nisnevich covering sieve; closed points
+are not used as a substitute for arbitrary small-site stalks. -/
+theorem presheafBoundary_epi_of_closedPoint_generators [JacobsonSpace Z.left]
+    {C : Sheaf (nisnevichTopology Z.left) AddCommGrpCat.{u + 1}}
+    (φ : C ⟶ presheafBoundary P j i)
+    (h : ∀ (W : FiniteEtaleSite Y.left)
+      (s : P.obj (op ((toSmoothSite U).obj ((baseChange j.left).obj W))))
+      (w : ((baseChange i.left).obj W).left), IsClosed ({w} : Set _) →
+      ∃ (V : FiniteEtaleSite Z.left) (v : V ⟶ (baseChange i.left).obj W),
+        IsOpenImmersion v.left ∧ w ∈ Set.range v.left ∧
+        Presheaf.imageSieve φ.hom ((presheafBoundaryGenerator P j i).app (op W) s) v) :
+    Epi φ := by
+  apply presheafBoundary_epi_of_local_generators P j i φ
+  intro W s
+  have : JacobsonSpace ((baseChange i.left).obj W).left :=
+    LocallyOfFiniteType.jacobsonSpace (Y := Z.left)
+      (show ((baseChange i.left).obj W).left ⟶ Z.left from ((baseChange i.left).obj W).hom)
+  exact sieve_mem_of_closedPoint_open_neighborhoods _ _ (h W s)
 
 
 end Motivic.FiniteEtaleSite

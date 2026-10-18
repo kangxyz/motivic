@@ -10,7 +10,7 @@ public import Motivic.Cohomology.Motivic.WeightOneFundamentalNorm
 public import Motivic.Cohomology.Motivic.FieldCycleEvaluation
 public import Motivic.AlgebraicGeometry.Correspondences.FlatLeftGraphComposition
 public import Motivic.AlgebraicGeometry.Correspondences.SimplexSingularTransferMaps
-public import Motivic.Aglib.RingTheory.PolynomialFiberNorm
+public import Aglib.RingTheory.PolynomialFiberNorm
 public import Mathlib.Algebra.MvPolynomial.Equiv
 public import Mathlib.AlgebraicGeometry.Morphisms.SchemeTheoreticallyDominant
 

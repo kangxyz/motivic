@@ -136,7 +136,7 @@ theorem exteriorClosedFiber_length {V D P Q : Scheme.{u}}
       Module.length (V.presheaf.stalk w)
         (Koszul.coefficientClosedFiber (a.stalkMap w).hom) := by
   have : IsClosedImmersion b := MorphismProperty.of_isPullback sq inferInstance
-  exact LocalLength.closedFiberQuotient_length
+  exact Module.closedFiberQuotient_length
     (i.stalkMap (a w)).hom (i.stalkMap_surjective (a w))
     (b.stalkMap w).hom (b.stalkMap_surjective w)
     (Diagonal.baseChangeStalkMap sq w).hom (a.stalkMap w).hom

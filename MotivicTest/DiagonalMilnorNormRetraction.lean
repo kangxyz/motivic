@@ -17,14 +17,14 @@ namespace MotivicTest.DiagonalMilnorNormRetraction
 variable (k : Type u) [Field k] [CharZero k]
 
 /-- The existing forward all-weight symbol is actually split injective. -/
-theorem actual_symbol_left_inverse (q : ℕ) (x : KTheory.MilnorK.K k q) :
+theorem actual_symbol_left_inverse (q : ℕ) (x : MilnorK.K k q) :
     rawNorm k q (DiagonalMilnorSymbol.rawSymbol k q x) = x := rawNorm_rawSymbol k q x
 
 variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- The original derived Milnor symbol is a section of the actual derived norm. -/
-theorem actual_derived_symbol_left_inverse (q : ℕ) (x : KTheory.MilnorK.K k q) :
+theorem actual_derived_symbol_left_inverse (q : ℕ) (x : MilnorK.K k q) :
     motivicNorm k q (DiagonalMilnorSymbol.motivicSymbol k q x) = x :=
   motivicNorm_motivicSymbol k q x
 

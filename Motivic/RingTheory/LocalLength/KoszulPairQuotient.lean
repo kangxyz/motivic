@@ -20,7 +20,7 @@ It imposes no regularity assumption; higher Koszul homology remains separate.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -53,4 +53,4 @@ noncomputable def iteratedQuotientEquiv :
       (LinearMap.range (LinearMap.lsmul R M b))).trans
         (Submodule.quotEquivOfEq _ _ (range_d₁ M a b).symm))
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

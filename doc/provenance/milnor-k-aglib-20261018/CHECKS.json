@@ -1,0 +1,207 @@
+{
+  "source_revision": "b368f6965228e63643380033ec224335bcd24a2c",
+  "current_aglib_pin": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
+  "upstream_correspondence": "https://github.com/kangxyz/aglib/blob/b11b71d11bf03cf231f0e06b947a7b63d4344a9e/doc/migration/motivic-milnor-k.json",
+  "scope": "General Milnor implementation and170tests moved upstream; two endpoint-geometry applications remain in Motivic.",
+  "interfaces": {
+    "canonical": "MilnorK.K F n",
+    "degree_two": "MilnorK.K2.Group F",
+    "degree_three": "MilnorK.K3.Group F"
+  },
+  "production_native": {
+    "status": "PASS within stated computational scope",
+    "counts": {
+      "local": 621,
+      "provider": 264,
+      "geometry_candidates": 279,
+      "compile_gaps": 342
+    },
+    "accepted_current_Motivic_modules": 342,
+    "retained_compatible_prior_phase_outputs": 287,
+    "fresh_native_Motivic_compilations_this_resume": 55,
+    "controlled_geometry_reuses": 279,
+    "current_provider_dependencies_bound": 264,
+    "provider_compilations_by_this_runner": 0,
+    "foreign_interfaces_compared": 168,
+    "effective_Motivic_options": {
+      "autoImplicit": false,
+      "maxHeartbeats": 200000,
+      "warningAsError": true,
+      "weak.linter.mathlibStandardSet": true
+    },
+    "resource_caps": {
+      "raw_receipt_Lean_threads_field": [
+        1
+      ],
+      "effective_frontend_configured_threads": 4,
+      "metadata_locator_threads": 1,
+      "native_build_threads": 4,
+      "max_active_lean": 1,
+      "Lean_memory_MB": 8192,
+      "RSS_MB": 10240
+    },
+    "targets_current": {
+      "Motivic.Cohomology.Motivic.DiagonalMilnorEquivalenceNaturality": {
+        "source_sha256": "fd468e3c8f7fdb70dc24ce9e916b6815caf1c6e24310b1e55255234859f3c25f",
+        "setup_sha256": "abb6b028aa279de31944890704eec26844ad300fad9379d6e126aa7064230a38",
+        "artifacts": {
+          "olean": "6c74fbbeedac6d4d53a91f65123edeaa0dbbdab8e146d916a6bdbd4cee982b6f",
+          "olean.server": "254980705c6ac112bfaa7d536789e139a5a46a07a6cba2fdb46a1d3f28ac92fd",
+          "olean.private": "acd55c9c266d39fa8562ae4f3e949e83158e36ea480b2f8fb43bad5c7a1c2a77",
+          "ir.sig": "6cea13d61ff70c267dbf8e1b312cc20fb384595083daff09e59df2a057a535c5",
+          "ir": "fc509aebe831501ceef2dd326006673739ae702a72f4e5e5d9d330f1086e07c7",
+          "ilean": "dda5bb1a9615a4a904c4ed28f389211d599d3bdca82e2cd0c92741e32dc98ca5",
+          "c": "c22e996f4fd882a173c95bf18e3bdc298551fffbf38668a3fcff464c8d6d06e2"
+        },
+        "guard_receipt_sha256": "1ac4dd450924c4b39857430f7c027f699ce8b56809a3a3a31ee9faabb2ded89c",
+        "compiler_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "receipt": "receipts/compile-Motivic.Cohomology.Motivic.DiagonalMilnorEquivalenceNaturality.json"
+      },
+      "Motivic.Cohomology.Motivic.WeightTwoMilnorNormComparison": {
+        "source_sha256": "4d7eac96b04d5d69ed24c82f6e97f0772baed48bf78e24886ac413341a74fb07",
+        "setup_sha256": "652b8f1f0c53932fe475e0f388ebf00a746a7266790fda0bfd536b75c6b8fab6",
+        "artifacts": {
+          "olean": "c28f53dd61a557f770f73cabd0b7623233055647ed0b9aac376cd383edfeedf9",
+          "olean.server": "e5acbb5eac0cc8b4401139cf4b3cc76a2dcafbd7500ed401b4f902a7e6baddc4",
+          "olean.private": "574a15b56c51c2bf556a15f44be822031aa31e5f42befe3ca2d30fcc095a3f27",
+          "ir.sig": "e4d2841524df4b303ed19da45fc2b949430a9e03cfd63d41ddd2ee94d777d05d",
+          "ir": "01d67393e403978c678b35b62118e14fcbcdf6a9c2315e9a4b854619c316a726",
+          "ilean": "9bbf83bc5ea46ab100ee1d82010ff7c490809fb04341596d93e429eb43d65db4",
+          "c": "849c0ef5639cf510a0cc931156b65c07babdb286033e4b2a3ce542408197fa5e"
+        },
+        "guard_receipt_sha256": "e2cf85b5bac7773b288194357d3bea54e3c05b514f980968fe3ffc57b2b11a3b",
+        "compiler_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "receipt": "receipts/compile-Motivic.Cohomology.Motivic.WeightTwoMilnorNormComparison.json"
+      },
+      "Motivic.KTheory.MilnorK.NormalizedAffineEndpointNorm": {
+        "source_sha256": "96e6d30ae2254f3913a0afcd75e07259a64af8fbcb40752d56806a3423d84eb3",
+        "setup_sha256": "35a00bc88a3b02dbe4d633ee93f383c0a2b33339126c0e65a6d77658366b32af",
+        "artifacts": {
+          "olean": "f8749c8b7d210f96550f458d76e4a6e0ca4ca0f4a9c7c6d11e0ca3b153087cce",
+          "olean.server": "78bd72a20f5321ceca4714583d49f69636f027048b8269ab2df3370ff4c23571",
+          "olean.private": "96db4d394ed3860637d382963ea4fc1a1cbe28c16a4e64a30b5fa5a47db43bed",
+          "ir.sig": "4c7830a4f84b2b4d36d6adc5d69eb271fed1cb764749fa35bf60701f61981fc8",
+          "ir": "c7b18590fc1f28de1e8d093650e3b18f02dc7c7257dc0ac7033ef0eb6d76b1fb",
+          "ilean": "cfcaf3342225e77afbf9f82dcbd0d5911c14d2aeb5f54f2e3fa4348be338e0a7",
+          "c": "3af460899d972c5e0baf01e462b1c9ab65a530a1420f5c1a356f39628cef6248"
+        },
+        "guard_receipt_sha256": "d09529851ad5deee4f5e1140dadf5329537851eacf7609e9a09b3e38625892ca",
+        "compiler_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "receipt": "receipts/compile-Motivic.KTheory.MilnorK.NormalizedAffineEndpointNorm.json"
+      }
+    }
+  },
+  "evidence_hashes": {
+    "production_summary": "24e1af8754d15ab9ae93c9b1cc131f9cab463b88679c5b16cdefd495542870f9",
+    "accepted_module_inventory": "fa16c3c1c2874330c64517d2555fe9b11cbcb7d4de9f9f5dfdc534137b095d22",
+    "source_repairs": "2d4959b24a5ac05c66cb08944655c4b6790d5d920203f0f4f1018e9dd3e3348a"
+  },
+  "boundaries": [
+    "Production execution used current explicit Aglib native mappings and source/config/artifact-bound geometry, including accepted original-header-only equivalence.",
+    "The observed production source pin was aaab145; the final b11b71d changes only the test umbrella, generator/regression and documentation. Actual provider sources/options/artifacts are unchanged.",
+    "This is not a fresh rehashed Lake build of the complete committed-pin Motivic package. Hosted validation is recorded separately.",
+    "No new mathematical status or stronger hypothesis is assigned."
+  ],
+  "focused_tests": {
+    "status": "PASS",
+    "options": {
+      "autoImplicit": false,
+      "maxHeartbeats": 200000,
+      "warningAsError": true
+    },
+    "modules": {
+      "MotivicTest.DiagonalMilnorSymbol": {
+        "source_sha256": "6ce109da94ca0458c931ef7ff1a6aada070ab7b889c0ecfe778a6aa3950d8202",
+        "setup_sha256": "17a398c8c16bea969ff391d0b380561bcc96b6637959f760cb5d508e493a308b",
+        "artifacts": {
+          "olean": "b792f5a868da80ae2fd28d2a46b43e6a15587d20c5ca4da7ce69f427cd505ccd",
+          "olean.server": "c83fa5330dc5355d8bc844f1af733ad67029c4d9f4bd6384d24fe8990ac6925f",
+          "olean.private": "74b8787333b4081664b1b5335b0c98ce3a901861f2046753c696221cb7eb81b2",
+          "ir.sig": "8332828f993d52d548008b1e6706d8c2abd9907a3927f9c7dcc4417436622bae",
+          "ir": "fc36626e44782e45b57d2d30bf00b891a8626f1ae2fe8569d54befdcc1e42d39",
+          "ilean": "310446521a5c63ac4bf790ac97cb40cded84874e4a9931733d470695ab7112b1",
+          "c": "b640339c825cc1570ff6da145cd66f6e974ce768a205cd2d72e2e00ad9807a03"
+        },
+        "receipt": "receipts/compile-MotivicTest.DiagonalMilnorSymbol.json",
+        "receipt_sha256": "b5064e7ace5ad9e9bb2925a6b7b18e015f43bd1b423e9a999bc4d6118aa9a3b5",
+        "log_sha256": "9f900406b7aa8d7dfdf3fc7f8710f47ef300b45819c7663c09cbfd0319383076"
+      },
+      "MotivicTest.DiagonalMilnorEquivalenceNaturality": {
+        "source_sha256": "1c936730c0d85cb07d90904c52e343a619c509e9484daab33b8a2f36a51308b4",
+        "setup_sha256": "2863dabcc6207f46954fb12caca2f47bc1acc50484fe0204b22bd986fc5e7434",
+        "artifacts": {
+          "olean": "620cfc8f712efde35a8ed6a1626f563b7bc64f580aa69d9950dfce6c387e22ba",
+          "olean.server": "f5069724a0808c080507a5c6c6c12facb7089161a26ec4e2c8f47a35b728d1ae",
+          "olean.private": "29ba0c020e53a0ebff4c5320b2d038b3569838869aeb97c5d03454c4c0805a92",
+          "ir.sig": "64378a46d7773f2f9d82cf4e5fe89f657486e938fabdf2f62910cb0198d41e8f",
+          "ir": "a508e7a5fa297549b16f703ac9a0f4c736bb1875a929d6264cc7a1eb023cfb55",
+          "ilean": "f6729dfe659488a12c9b6f9a8853055c042decff148176af02484e63ecc24d33",
+          "c": "3db9818e7cbc15009bfe60654df0a763f82c00efb8a977d07442020a26f1be02"
+        },
+        "receipt": "receipts/compile-MotivicTest.DiagonalMilnorEquivalenceNaturality.json",
+        "receipt_sha256": "bf067917ab8e56d68be4ccf2121948cbe269f9a658d071cf30c8bb751dda30af",
+        "log_sha256": "f438c114b591326689684f6b15c9cc4d3e6035d7b6afc86c092127bfa62e7177"
+      },
+      "MotivicTest.WeightTwoMilnorNormComparison": {
+        "source_sha256": "3a28f9be2eaef39de852cd8fac299b5f344321b0f7b9820bda37596702aff62c",
+        "setup_sha256": "f5c13df2e67c37c89063692bdca544649370b43c8d3fc95f6290e94beaf9c284",
+        "artifacts": {
+          "olean": "83d31e2f78e39479a2cdc8e0afa987caf033149c24e4b0fa5b7d9895f3563db0",
+          "olean.server": "b4f58824acc8bb4b4085696f42479110ee5b3b7b9d070c8a1d5dfaebd9a2f17c",
+          "olean.private": "2f2595979d210017319bc178a375ec79a088afac705f9c6b00cc217c0fedd77e",
+          "ir.sig": "00de3821147eaf394950a363cbef6ab2de1d73e24067bb82960e12e9fe244814",
+          "ir": "4240537fb9d78c8d8a8acb3c24e4960d6546a4b411e5b3a8ed3bbbb385df713c",
+          "ilean": "09e084a0da401e959ea6cecdf33aeac836a72b5458314a4d296a5ec87768eb81",
+          "c": "860644fc563ac3dc6e7a22509cefc1ff488dd8e7d74c4cbd12a9253e9514243a"
+        },
+        "receipt": "receipts/compile-MotivicTest.WeightTwoMilnorNormComparison.json",
+        "receipt_sha256": "faa1e95610bbc284e56f999fb1707f304454d7ba7f32efedf424891287f30c79",
+        "log_sha256": "c788225afcb33ec774b95f01fd698b2eadcbba420850eb796abb97fe374cc608"
+      },
+      "MotivicTest.DiagonalPolynomialNormPrimeInduction": {
+        "source_sha256": "ad8703dee2ae54e5a6f94050471e3abade5cebdc6f8f0581f3ff87bcda0de33d",
+        "setup_sha256": "1dc571c16d7f2cc5f7a8520071b71d1bfdb423867b87b427055fab55dbecd000",
+        "artifacts": {
+          "olean": "7428725d66864a5b1c888be2a8a0b91cfb4013cb057fc830d68fd09fbdde4016",
+          "olean.server": "a2cd081656ed2c4d0b9478851e536d8578b2473a5ca2d0a5cd05029c7ac326da",
+          "olean.private": "edeb8678084f5d895047dbd6d1b14e74fdb2f14147231a3d846da49e4b21d5aa",
+          "ir.sig": "4b88cf8a7f3ba1150580f83ff287837b271956b5d7c03c736d369d634852752f",
+          "ir": "b7599a5eec32e1ed3a5ac0d36d51d574bda91642588a359b3ce245835966cb95",
+          "ilean": "4f164f97b8d73f55262fc2b0bcc60ab3d714f7e338cb46974174ed328a42ce68",
+          "c": "b7fc3eef769168853741cec582ceebae8ab9057c552140b96e47c5b93814a0e5"
+        },
+        "receipt": "receipts/compile-MotivicTest.DiagonalPolynomialNormPrimeInduction.json",
+        "receipt_sha256": "8e13a027d33d95d30d65edd158b5ff1c79163bf10b0216bfa7e200f5da1ed80e",
+        "log_sha256": "68bcea9ea060f66833e08ac9460e5a08280175d14ccbdbca49006ae38a28fd38"
+      },
+      "MotivicTest.KoszulTwoListReplacement": {
+        "source_sha256": "59717d9aee506274c3cff5de40af167ef180fc79b374a7ca24d49e464b9d2fea",
+        "setup_sha256": "98068feca2cf1f1834d8a52bfbb5cf559203c68b21a66c79527149c7f160fc3e",
+        "artifacts": {
+          "olean": "e211dba7c55ceb12c57f02dcff75b194fcf77b6644fe589315c5630310a15ba2",
+          "olean.server": "b9ef69509151ef1b7ff2521698fa9fde3671b62c7c2ab54ef11acebc2c6dd822",
+          "olean.private": "8d983b1c688241f4b5dfeab9349146de6334adb57d00450dec87e3feaa0e2e07",
+          "ir.sig": "1a547668bca615daf3cf9f3622b9c041d8ca5d0f64b09d243d6152adcc6b0aac",
+          "ir": "de80ebe27237b0735634b50f957bb282e97c9646656782d2ff720b872220e574",
+          "ilean": "02e6461207db4332a4d89e6f8cb814a2a599743779544bfc27266ccec5ae1e62",
+          "c": "98509dfe09406a05e6e98615ba9e2df8cc393c08cd51aa68bcd8ff6cc6fb95a0"
+        },
+        "receipt": "receipts/compile-MotivicTest.KoszulTwoListReplacement.json",
+        "receipt_sha256": "4ed091052f3de4a38a78975c3bf71b654317519940f247334f3ded35cd72d1f8",
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    "summary_sha256": "2f20e7e939eab9c93b8b57a7c8a86bbba9648bdece06b3245871a60691ca2a18"
+  },
+  "hosted_upstream": {
+    "revision": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
+    "run": "https://github.com/kangxyz/aglib/actions/runs/39102077330",
+    "status": "success",
+    "public_native_release": "https://github.com/kangxyz/aglib/releases/tag/cache-b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
+    "mathematical_sources_rebuilt_in_final_correction": 0
+  },
+  "hosted_downstream": {
+    "public_api_and_independent_client": "Selected for actual hosted validation against matching published Linux artifacts; no fresh local Darwin completion claimed.",
+    "ordinary_boundaries": "Imported strict-A1 theorem keeps infinite perfect fields, original ordinary HasExt and HI hypotheses."
+  }
+}

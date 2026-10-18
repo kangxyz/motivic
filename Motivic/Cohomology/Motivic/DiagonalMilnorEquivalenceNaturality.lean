@@ -13,7 +13,7 @@ open CategoryTheory AlgebraicGeometry
 universe w u
 namespace Motivic.DiagonalMilnorEquivalenceNaturality
 open PresheafWithTransfers DiagonalMilnorSymbol DiagonalMilnorBoundaryDescent
-open DiagonalMilnorEquivalence DiagonalCorestriction KTheory
+open DiagonalMilnorEquivalence DiagonalCorestriction
 variable {k L : Type u} [Field k] [CharZero k] [Field L] [CharZero L]
 
 /-- The actual inverse evaluator commutes with every original raw field-change map. -/

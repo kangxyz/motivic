@@ -39,13 +39,13 @@ theorem chainEuler_source_point_sum
         (localAlgebra A B p) K)
         (hK.finiteAlgebra_restrict (Localization.AtPrime p.asIdeal) (localAlgebra A B p) K) =
       ∑ x : {x : PrimeSpectrum B // PrimeSpectrum.comap (algebraMap A B) x = p},
-        (LocalLength.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
+        (Module.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
           (localAlgebra A B p) ((maximalSpectrumEquivFiber A B p).symm x) : ℤ) *
         chainEuler (finiteAlgebraLocalizedComplex (localAlgebra A B p) K
           ((maximalSpectrumEquivFiber A B p).symm x))
           (hK.finiteAlgebra_localized (Localization.AtPrime p.asIdeal) (localAlgebra A B p) K
             ((maximalSpectrumEquivFiber A B p).symm x)) := by
-  have := LocalLength.finiteAlgebra_maximalSpectrum_finite
+  have := Module.finiteAlgebra_maximalSpectrum_finite
     (Localization.AtPrime p.asIdeal) (localAlgebra A B p)
   let : Fintype (MaximalSpectrum (localAlgebra A B p)) := Fintype.ofFinite _
   rw [chainEuler_finiteAlgebra (Localization.AtPrime p.asIdeal) (localAlgebra A B p) K hK]

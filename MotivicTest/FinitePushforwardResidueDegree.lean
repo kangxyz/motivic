@@ -36,7 +36,7 @@ variable (A B : CommRingCat.{u}) [Algebra A B] [Module.Finite A B] (p : PrimeSpe
 /-- The numerical weight is the actual scheme residue degree at every source point above p. -/
 theorem actualSourceWeight
     (x : {x : PrimeSpectrum B // PrimeSpectrum.comap (algebraMap A B) x = p}) :
-    LocalLength.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
+    Module.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
         (localAlgebra A B p) ((maximalSpectrumEquivFiber A B p).symm x) =
       (Spec.map (CommRingCat.ofHom (algebraMap A B) : A ⟶ B)).residueDegree x.1 := by
   rw [finiteAlgebraResidueDegree_eq_schemeResidueDegree A B p]

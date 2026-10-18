@@ -23,7 +23,7 @@ are covered, with no regularity assumption on either the ring or the module.
 
 universe u
 
-namespace Motivic.LocalLength.KoszulFinite
+namespace Module.KoszulFinite
 
 open Motivic.Koszul
 
@@ -66,4 +66,4 @@ theorem length_homology_ne_top_of_mem_minimalPrimes_support [IsLocalRing R]
   length_homology_ne_top_of_mem_minimalPrimes_of_le_annihilator M s
     (Module.annihilator R M) le_rfl hm n
 
-end Motivic.LocalLength.KoszulFinite
+end Module.KoszulFinite

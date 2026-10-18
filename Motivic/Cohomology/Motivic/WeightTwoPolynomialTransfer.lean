@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.Motivic.WeightTwoCubicBoundary
 public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionMixed
-public import Motivic.Aglib.RingTheory.AdjoinRootNormEvaluation
+public import Aglib.RingTheory.AdjoinRootNormEvaluation
 
 /-!
 # Whole polynomial cycles as actual finite transfers

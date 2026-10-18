@@ -39,7 +39,7 @@ theorem actualSourcePointProjection (s : List (Localization.AtPrime p.asIdeal))
         (finiteProjectionSource_finiteHomology (Localization.AtPrime p.asIdeal)
           (localAlgebra A B p) s K hK) =
       ∑ᶠ x : {x : PrimeSpectrum B // PrimeSpectrum.comap (algebraMap A B) x = p},
-        (Motivic.LocalLength.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
+        (Module.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
           (localAlgebra A B p) ((maximalSpectrumEquivFiber A B p).symm x) : ℤ) *
         chainEuler (finiteProjectionLocal (Localization.AtPrime p.asIdeal)
           (localAlgebra A B p) s K ((maximalSpectrumEquivFiber A B p).symm x))

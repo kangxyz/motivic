@@ -28,12 +28,12 @@ theorem actual_transfer_restriction [Module.Finite k L] (n : ℕ)
         (Module.finrank k L : ℤ) • x := corestriction_fieldChange n x
 
 local instance polynomialFinite (F : Type u) [Field F]
-    (p : KTheory.MilnorK.PolynomialResidue.MonicIrreducible F) :
+    (p : MilnorK.PolynomialResidue.MonicIrreducible F) :
     Module.Finite F (AdjoinRoot p.val) := p.property.1.finite_adjoinRoot
 
 /-- The whole finite point's scalar cycle is its literal changed source fundamental cycle. -/
 theorem actual_whole_polynomial_cycle (n : ℕ)
-    (p : KTheory.MilnorK.PolynomialResidue.MonicIrreducible k)
+    (p : MilnorK.PolynomialResidue.MonicIrreducible k)
     (a : Fin n → (AdjoinRoot p.val)ˣ) :
     FiniteCorrespondence.toIntegralCycle
       (baseTorusCycleFieldChange (algebraMap k L) n

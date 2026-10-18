@@ -25,7 +25,7 @@ open scoped BigOperators
 
 universe u
 namespace Motivic.DiagonalResiduePointEvaluation
-open DiagonalPointNorm DiagonalFinitePointEvaluation KTheory.MilnorK
+open DiagonalPointNorm DiagonalFinitePointEvaluation MilnorK
 
 variable {k : Type u} [Field k] {T : Scheme.{u}} {q : ℕ}
 

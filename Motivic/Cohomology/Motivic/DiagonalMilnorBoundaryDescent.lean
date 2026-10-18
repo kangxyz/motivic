@@ -23,7 +23,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe w u
 namespace Motivic.DiagonalMilnorBoundaryDescent
 open PresheafWithTransfers DiagonalBoundaryEvaluation DiagonalTopDegree
-open WeightOneBoundaryNorm KTheory
+open WeightOneBoundaryNorm
 variable (k : Type u) [Field k] [CharZero k] (q : ℕ)
 
 /-- Endpoint norms agree for every original signed simplex correspondence. -/

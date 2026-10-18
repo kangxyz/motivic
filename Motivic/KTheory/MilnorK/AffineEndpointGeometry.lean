@@ -7,10 +7,10 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.FiniteAffineEndpointBranches
-public import Motivic.Aglib.AlgebraicGeometry.DedekindPointStalk
-public import Motivic.KTheory.MilnorK.AffineEndpointNormEquality
-public import Motivic.KTheory.MilnorK.AffineEndpointBaseNorm
-public import Motivic.KTheory.MilnorK.DedekindStalkResidue
+public import Aglib.AlgebraicGeometry.DedekindPointStalk
+public import Aglib.KTheory.MilnorK.Dedekind.AffineEndpointNormEquality
+public import Aglib.KTheory.MilnorK.Dedekind.AffineEndpointBaseNorm
+public import Aglib.KTheory.MilnorK.Dedekind.StalkResidue
 
 /-! Exact original Milnor branch indexing and actual fiber residue-map consumers. -/
 
@@ -23,12 +23,12 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory AlgebraicGeometry
 open AlgebraicGeometry.FiniteFlatCurve
 open AlgebraicGeometry.FiniteAffineEndpointBranches
-open Motivic.KTheory.MilnorK
+open MilnorK
 open scoped Polynomial
 
 universe u
 
-namespace Motivic.KTheory.MilnorK.AffineEndpointGeometry
+namespace MilnorK.AffineEndpointGeometry
 
 variable (k S : Type u) [Field k] [CharZero k]
   [CommRing S] [IsDedekindDomain S] [Algebra k[X] S]
@@ -84,7 +84,7 @@ omit [CharZero k] in
 /-- The full scheme-theoretic fiber coefficient is the original field order. -/
 theorem fundamentalCoefficient_eq_originalOrder (a : k) (x : fiber (baseMap S) a) :
     Motivic.IntegralCycle.toPoints (Motivic.fundamentalCycle (fiber (baseMap S) a)) x =
-      MilnorK2.DVR.value
+      MilnorK.K2.DVR.value
         (Localization.AtPrime
           (DedekindResidue.branchPoint k[X] S
             (PolynomialDedekindResidue.point (DedekindResidue.endpointPolynomial k a))
@@ -112,4 +112,4 @@ theorem fundamentalCoefficient_eq_originalOrder (a : k) (x : fiber (baseMap S) a
   rw [hu]
   exact h.symm
 
-end Motivic.KTheory.MilnorK.AffineEndpointGeometry
+end MilnorK.AffineEndpointGeometry

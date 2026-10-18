@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 
 import Motivic.Aglib.RingTheory.AdicCompletion.FiniteRank
-import Motivic.Aglib.RingTheory.AdicCompletion.Powers
+import Aglib.RingTheory.AdicCompletion.Powers
 import Lean.Util.CollectAxioms
 
 /-! The finite tensor comparison is an actual unital algebra equivalence. -/

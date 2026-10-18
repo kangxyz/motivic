@@ -76,7 +76,7 @@ theorem finiteProjection_chainEuler [Fintype (MaximalSpectrum S)] (s : List R)
     (K : ChainComplex (ModuleCat S) ℕ) (hK : FiniteHomology (finiteProjectionTotal R S s K)) :
     chainEuler (finiteProjectionSource R S s K)
         (finiteProjectionSource_finiteHomology R S s K hK) =
-      ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteProjectionLocal R S s K p)
           (finiteProjectionLocal_finiteHomology R S s K hK p) := by
   calc
@@ -85,7 +85,7 @@ theorem finiteProjection_chainEuler [Fintype (MaximalSpectrum S)] (s : List R)
       (homologyEuler_eq_of_quasiIso (koszulTensorRestrictIso (algebraMap R S) s K).hom
         (fun n => (-1) ^ n) (hK.finiteAlgebra_restrict R S (finiteProjectionTotal R S s K))
         (finiteProjectionSource_finiteHomology R S s K hK)).symm
-    _ = ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+    _ = ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteAlgebraLocalizedComplex S (finiteProjectionTotal R S s K) p)
           (hK.finiteAlgebra_localized R S (finiteProjectionTotal R S s K) p) :=
       chainEuler_finiteAlgebra R S (finiteProjectionTotal R S s K) hK
@@ -105,10 +105,10 @@ theorem finiteProjection_chainEuler_finsum (s : List R)
     (K : ChainComplex (ModuleCat S) ℕ) (hK : FiniteHomology (finiteProjectionTotal R S s K)) :
     chainEuler (finiteProjectionSource R S s K)
         (finiteProjectionSource_finiteHomology R S s K hK) =
-      ∑ᶠ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ᶠ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteProjectionLocal R S s K p)
           (finiteProjectionLocal_finiteHomology R S s K hK p) := by
-  let : Finite (MaximalSpectrum S) := LocalLength.finiteAlgebra_maximalSpectrum_finite R S
+  let : Finite (MaximalSpectrum S) := Module.finiteAlgebra_maximalSpectrum_finite R S
   let : Fintype (MaximalSpectrum S) := Fintype.ofFinite _
   rw [finsum_eq_sum_of_fintype]
   exact finiteProjection_chainEuler R S s K hK

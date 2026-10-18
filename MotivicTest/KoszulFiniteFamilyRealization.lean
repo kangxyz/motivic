@@ -71,7 +71,7 @@ theorem boundedActualProjection (N : ℕ) (hzero : ∀ n, N < n → IsZero (M n)
     (∑ᶠ n : ℕ, (-1 : ℤ) ^ n *
       chainEuler (coefficientComplex (finiteFamilyRestriction R B (M n)) s)
         (finiteFamilyRestriction_finiteHomology R B (M n) s J (hJ n))) =
-      ∑ᶠ q : MaximalSpectrum B, (Motivic.LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ∑ᶠ n : ℕ, (-1 : ℤ) ^ n * chainEuler (finiteFamilyLocalComplex R B (M n) s q)
           (finiteFamilyLocal_finiteHomology R B (M n) s J (hJ n) q) :=
   boundedFamily_chainEuler_projection R B M s J hJ N hzero
@@ -97,7 +97,7 @@ variable (A : Type u) [CommRing A] [IsNoetherianRing A] [IsLocalRing A]
 /-- A zero equation is not regular on nonzero coefficients. Its genuine
 two-term cancellation is preserved by the all-maximal-branch formula. -/
 theorem zeroEquationAllBranches :
-    (∑ᶠ q : MaximalSpectrum C, (Motivic.LocalLength.finiteAlgebraResidueDegree A C q : ℤ) *
+    (∑ᶠ q : MaximalSpectrum C, (Module.finiteAlgebraResidueDegree A C q : ℤ) *
       chainEuler (finiteFamilyLocalComplex A C P [0] q)
         (finiteFamilyLocal_finiteHomology A C P [0] I hI q)) = 0 := by
   rw [← finiteFamily_coefficient_projection A C P [0] I hI]
@@ -124,7 +124,7 @@ theorem emptyCoefficientEuler (P : ModuleCat k) (hP : Module.length k P ≠ ⊤)
 The family sign and both branches are retained by the new common engine. -/
 theorem twoBranchOddFamily :
     (∑ᶠ q : MaximalSpectrum (k × k),
-      (Motivic.LocalLength.finiteAlgebraResidueDegree k (k × k) q : ℤ) *
+      (Module.finiteAlgebraResidueDegree k (k × k) q : ℤ) *
         ∑ n ∈ ({1} : Finset ℕ), (-1 : ℤ) ^ n *
           chainEuler (finiteFamilyLocalComplex k (k × k)
             (ModuleCat.of (k × k) (k × k)) [] q)

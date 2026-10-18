@@ -26,7 +26,7 @@ open CategoryTheory AlgebraicGeometry
 universe w u
 namespace Motivic.DiagonalMilnorEquivalence
 open PresheafWithTransfers DiagonalCycleSymbols DiagonalMilnorSymbol
-open DiagonalMilnorBoundaryDescent KTheory
+open DiagonalMilnorBoundaryDescent
 variable (k : Type u) [Field k] [CharZero k] (q : ℕ)
 
 /-- The actual norm of each original integral point is sent back to its own cycle class. -/

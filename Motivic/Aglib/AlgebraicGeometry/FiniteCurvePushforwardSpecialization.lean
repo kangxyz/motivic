@@ -209,7 +209,7 @@ theorem finiteAlgebra_cartierEuler
       rw [sup_bot_eq]; infer_instance
     chainEuler (coefficientComplex (finiteFamilyRestriction R B (ModuleCat.of B B)) [t])
         (finiteFamilyRestriction_finiteHomology R B (ModuleCat.of B B) [t] ⊥ bot_le) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ((Module.length (Localization.AtPrime q.asIdeal)
           ((Localization.AtPrime q.asIdeal) ⧸
             Ideal.ofList [algebraMap R (Localization.AtPrime q.asIdeal) t])).toNat : ℤ) := by
@@ -364,7 +364,7 @@ theorem finiteAlgebra_domainCartierLength
     (hregular : ∀ q : MaximalSpectrum B,
       IsSMulRegular (Localization.AtPrime q.asIdeal)
         (algebraMap R (Localization.AtPrime q.asIdeal) t)) :
-    (∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+    (∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
       ((Module.length (Localization.AtPrime q.asIdeal)
         ((Localization.AtPrime q.asIdeal) ⧸
           Ideal.ofList [algebraMap R (Localization.AtPrime q.asIdeal) t])).toNat : ℤ)) =

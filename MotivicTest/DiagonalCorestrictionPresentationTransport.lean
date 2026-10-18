@@ -19,7 +19,7 @@ original derived comparison.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.KTheory
+open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalMilnorSymbol Motivic.DiagonalCorestriction
 
 universe w u

@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.Motivic.DiagonalMilnorNormBaseChange
 public import Motivic.Cohomology.Motivic.DiagonalCorestrictionDegree
-public import Motivic.KTheory.MilnorK.PolynomialNormPrimeInduction
+public import Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeInduction
 
 /-!
 # Actual diagonal norm comparison under strict lower-degree induction
@@ -26,7 +26,7 @@ open CategoryTheory AlgebraicGeometry
 universe u
 namespace Motivic.DiagonalPolynomialNormInduction
 open PresheafWithTransfers DiagonalMilnorSymbol DiagonalCorestriction
-open KTheory MilnorK.PolynomialResidue MilnorK.PolynomialNorm
+open MilnorK.PolynomialResidue MilnorK.PolynomialNorm
 open Polynomial Polynomial.LocalResidue AdjoinRoot
 variable {k L : Type u} [Field k] [Field L] [CharZero k] [CharZero L] [Algebra k L]
 

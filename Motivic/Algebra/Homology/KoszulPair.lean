@@ -26,7 +26,7 @@ universe u v
 open CategoryTheory CategoryTheory.Limits
 open scoped ZeroObject
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -125,4 +125,4 @@ theorem exactAt_two_of_regular (ha : IsSMulRegular M a) :
   exact (ModuleCat.isZero_of_subsingleton (ModuleCat.of R (H₂ M a b))).of_iso
     (homologyTwoIso M a b)
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

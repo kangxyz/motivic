@@ -22,7 +22,7 @@ factor in flat base-change multiplicity is therefore not always one.
 set_option maxSynthPendingDepth 3
 
 open scoped TensorProduct
-open TensorProduct Motivic.LocalLength
+open TensorProduct Module
 
 universe u
 

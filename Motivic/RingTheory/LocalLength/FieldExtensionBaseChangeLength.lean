@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.FiniteAlgebraLength
+public import Aglib.RingTheory.FiniteLength.FiniteAlgebraLength
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 public import Mathlib.RingTheory.Artinian.Ring
 public import Mathlib.RingTheory.HopkinsLevitzki
@@ -35,7 +35,7 @@ open scoped TensorProduct
 
 universe u v w w'
 
-namespace Motivic.LocalLength
+namespace Module
 
 variable (K : Type u) (L : Type v) (R : Type w)
   [Field K] [Field L] [Algebra K L] [Module.Finite K L]
@@ -183,4 +183,4 @@ theorem fieldExtensionBaseChange_sum_integerLength_mul_residueDegree
   simpa only [ENat.toNat_mul, ENat.toNat_natCast, Nat.cast_sum, Nat.cast_mul] using
     congrArg (fun n : ℕ => (n : ℤ)) h
 
-end Motivic.LocalLength
+end Module

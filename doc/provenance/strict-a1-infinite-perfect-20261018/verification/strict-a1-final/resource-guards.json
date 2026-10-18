@@ -1,0 +1,53 @@
+{
+  ".lake/verification/positive-cartier-restriction-production2/graph-build.json": {
+    "state": "completed",
+    "exit_code": 0,
+    "guard_failure": null,
+    "peak_rss_bytes": 4696338432,
+    "duration_seconds": 50.72037528999999,
+    "limits": {
+      "lean_memory_mb": 6000,
+      "rss_limit_mb": 7000,
+      "sample_seconds": 0.1,
+      "physical_memory_bytes": 10451439616,
+      "lean_threads": 1,
+      "max_active_lean": 1,
+      "native_build_threads": 2
+    },
+    "owned_group_gone": true
+  },
+  ".lake/verification/strict-invariance-production/graph-build.json": {
+    "state": "completed",
+    "exit_code": 0,
+    "guard_failure": null,
+    "peak_rss_bytes": 4032131072,
+    "duration_seconds": 18.036535905000164,
+    "limits": {
+      "lean_memory_mb": 6000,
+      "rss_limit_mb": 7000,
+      "sample_seconds": 0.1,
+      "physical_memory_bytes": 10451439616,
+      "lean_threads": 1,
+      "max_active_lean": 1,
+      "native_build_threads": 2
+    },
+    "owned_group_gone": true
+  },
+  ".lake/verification/strict-a1-final/consumer/graph-build.json": {
+    "state": "completed",
+    "exit_code": 0,
+    "guard_failure": null,
+    "peak_rss_bytes": 4042022912,
+    "duration_seconds": 18.742592955999953,
+    "limits": {
+      "lean_memory_mb": 6000,
+      "rss_limit_mb": 7000,
+      "sample_seconds": 0.1,
+      "physical_memory_bytes": 10451439616,
+      "lean_threads": 1,
+      "max_active_lean": 1,
+      "native_build_threads": 2
+    },
+    "owned_group_gone": true
+  }
+}

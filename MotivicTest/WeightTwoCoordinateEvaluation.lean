@@ -21,8 +21,8 @@ inverse map on motivic homology or arbitrary norm presentation independence.
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
-open Motivic.KTheory.MilnorK2 Motivic.KTheory.MilnorK3.PolynomialResidue
-open Motivic.KTheory.MilnorK3.PolynomialNorm
+open MilnorK.K2 MilnorK.K3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm
 open Motivic.WeightTwoCoordinateEvaluation Algebra.PolynomialFiber
 
 universe u
@@ -80,23 +80,23 @@ theorem proper_first_coordinate [CharZero k] (hp : 1 < p.val.natDegree) (a : kˣ
 theorem actual_nonreduced_fiber (a : AdjoinRoot p.val) :
     specialize (DualNumber (AdjoinRoot p.val)[X]) a DualNumber.eps ≠ 0 ∧
       specialize (DualNumber (AdjoinRoot p.val)[X]) a DualNumber.eps ^ 2 = 0 :=
-  Motivic.MotivicTest.PolynomialFiberNorm.dualFiber_nonreduced a
+  MotivicTest.PolynomialFiberNorm.dualFiber_nonreduced a
 
 local instance finiteDual :
     Module.Finite (AdjoinRoot p.val)[X] (DualNumber (AdjoinRoot p.val)[X]) :=
-  Motivic.MotivicTest.PolynomialFiberNorm.dualPolynomial_finiteFree.1
+  MotivicTest.PolynomialFiberNorm.dualPolynomial_finiteFree.1
 
 local instance freeDual :
     Module.Free (AdjoinRoot p.val)[X] (DualNumber (AdjoinRoot p.val)[X]) :=
-  Motivic.MotivicTest.PolynomialFiberNorm.dualPolynomial_finiteFree.2
+  MotivicTest.PolynomialFiberNorm.dualPolynomial_finiteFree.2
 
 /-- The new Milnor-valued theorem applies to the actual nonreduced fibers and
 a varying unit, with no reduced quotient substituted for their local lengths. -/
 theorem actual_nonreduced_endpoints :
     fiberValue p hp0 (DualNumber (AdjoinRoot p.val)[X])
-      (Motivic.MotivicTest.PolynomialFiberNorm.varyingDualUnit (k := AdjoinRoot p.val)) 0 =
+      (MotivicTest.PolynomialFiberNorm.varyingDualUnit (k := AdjoinRoot p.val)) 0 =
     fiberValue p hp0 (DualNumber (AdjoinRoot p.val)[X])
-      (Motivic.MotivicTest.PolynomialFiberNorm.varyingDualUnit (k := AdjoinRoot p.val)) 1 :=
+      (MotivicTest.PolynomialFiberNorm.varyingDualUnit (k := AdjoinRoot p.val)) 1 :=
   fiberValue_endpoints p hp0 _ _ 0 1
 
 /-- Both independent components of a disconnected family survive in the whole

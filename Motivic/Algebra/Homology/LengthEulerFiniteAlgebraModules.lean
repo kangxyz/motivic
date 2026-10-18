@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Algebra.Homology.LengthEuler
-public import Motivic.RingTheory.LocalLength.FiniteAlgebraLength
+public import Aglib.RingTheory.FiniteLength.FiniteAlgebraLength
 public import Mathlib.Algebra.Category.ModuleCat.ChangeOfRings
 public import Mathlib.Data.ENat.BigOperators
 
@@ -55,7 +55,7 @@ theorem finiteAlgebra_restrict_length_ne_top (M : ModuleCat.{u} S)
   let := Module.compHom M (algebraMap R S)
   have : IsScalarTower R S M := IsScalarTower.of_compHom R S M
   change Module.length R M ≠ ⊤
-  exact LocalLength.finiteAlgebra_length_ne_top R S hM
+  exact Module.finiteAlgebra_length_ne_top R S hM
 
 include R in
 omit [IsLocalRing R] in
@@ -68,7 +68,7 @@ theorem finiteAlgebra_localized_length_ne_top (M : ModuleCat.{u} S)
   have : IsNoetherianRing S := IsNoetherianRing.of_finite R S
   have : IsNoetherian S M :=
     (isFiniteLength_iff_isNoetherian_isArtinian.mp (Module.length_ne_top_iff.mp hM)).1
-  obtain ⟨D⟩ := LocalLength.nonempty_primeFiltrationFrom (A := S) M ⊥
+  obtain ⟨D⟩ := Module.nonempty_primeFiltrationFrom (A := S) M ⊥
   rw [(finiteAlgebraExtendScalarsEquiv S (Localization.AtPrime p.asIdeal) M).length_eq]
   rw [D.localized_length_eq_count_of_finiteLength hM p]
   exact ENat.natCast_ne_top _
@@ -124,7 +124,7 @@ theorem integerLength_finiteAlgebra [Fintype (MaximalSpectrum S)]
     (M : ModuleCat.{u} S) (hM : Module.length S M ≠ ⊤) :
     integerLength ((ModuleCat.restrictScalars (algebraMap R S)).obj M)
         (finiteAlgebra_restrict_length_ne_top R S M hM) =
-      ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         integerLength
           ((ModuleCat.extendScalars (algebraMap S (Localization.AtPrime p.asIdeal))).obj M)
           (finiteAlgebra_localized_length_ne_top R S M hM p) := by
@@ -133,14 +133,14 @@ theorem integerLength_finiteAlgebra [Fintype (MaximalSpectrum S)]
   have hsum : ∀ p : MaximalSpectrum S, p ∈ (Finset.univ : Finset (MaximalSpectrum S)) →
       Module.length (Localization.AtPrime p.asIdeal)
         (Localization.AtPrime p.asIdeal ⊗[S] M) *
-          (LocalLength.finiteAlgebraResidueDegree R S p : ℕ∞) ≠ ⊤ := by
+          (Module.finiteAlgebraResidueDegree R S p : ℕ∞) ≠ ⊤ := by
     intro p _
     apply WithTop.mul_ne_top _ (ENat.natCast_ne_top _)
     rw [← (finiteAlgebraExtendScalarsEquiv S (Localization.AtPrime p.asIdeal) M).length_eq]
     exact finiteAlgebra_localized_length_ne_top R S M hM p
   unfold integerLength
   change ((Module.length R M).toNat : ℤ) = _
-  rw [LocalLength.finiteAlgebra_length_eq_sum R S hM, ENat.toNat_sum hsum, Nat.cast_sum]
+  rw [Module.finiteAlgebra_length_eq_sum R S hM, ENat.toNat_sum hsum, Nat.cast_sum]
   apply Finset.sum_congr rfl
   intro p _
   simp only [ENat.toNat_mul, ENat.toNat_natCast, Nat.cast_mul]
@@ -153,7 +153,7 @@ theorem signedLengthSum_finiteAlgebra [Fintype (MaximalSpectrum S)]
     signedLengthSum
         (fun i => (ModuleCat.restrictScalars (algebraMap R S)).obj (X i)) sign
         (hX.finiteAlgebra_restrict R S X) =
-      ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         signedLengthSum
           (fun i => (ModuleCat.extendScalars
             (algebraMap S (Localization.AtPrime p.asIdeal))).obj (X i)) sign

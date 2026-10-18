@@ -126,7 +126,7 @@ theorem originalWholeModule_finite
   let S := FiniteFiber.localAlgebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) p
   let M := originalWholeLocalizedModule f hU p N
   have : Finite (MaximalSpectrum S) :=
-    LocalLength.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) S
+    Module.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) S
   apply Module.Finite.of_isLocalized_maximal M
     (fun P _ => Localization.AtPrime P)
     (fun P _ => Localization.AtPrime P ⊗[S] M)

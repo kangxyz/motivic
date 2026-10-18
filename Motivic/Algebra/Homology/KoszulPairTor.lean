@@ -29,7 +29,7 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type u) [AddCommGroup M] [Module R M] (a b : R)
@@ -90,4 +90,4 @@ theorem isZero_tor_succ_of_regular (haM : IsSMulRegular M a)
     (exactAt_succ_of_regular M a b haM hbM n)).of_iso
       (torIsoHomology M a b ha hb (n + 1))
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

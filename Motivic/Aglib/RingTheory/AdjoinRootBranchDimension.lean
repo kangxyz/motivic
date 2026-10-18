@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.FiniteAlgebraLength
+public import Aglib.RingTheory.FiniteLength.FiniteAlgebraLength
 public import Mathlib.RingTheory.AdjoinRoot
 public import Mathlib.RingTheory.Artinian.Ring
 
@@ -37,7 +37,7 @@ theorem finrank_eq_sum_local_length_mul_finrank [Fintype (MaximalSpectrum B)] :
       (Module.length (Localization.AtPrime q.asIdeal)
         (Localization.AtPrime q.asIdeal)).toNat * Module.finrank k (B ⧸ q.asIdeal) := by
   let : IsArtinianRing B := .of_finite k B
-  have h := Motivic.LocalLength.finiteAlgebra_length_eq_sum
+  have h := Module.finiteAlgebra_length_eq_sum
     (R := k) (S := B) (M := B) Module.length_ne_top
   have hlocal (q : MaximalSpectrum B) :
       Module.length (Localization.AtPrime q.asIdeal)
@@ -46,9 +46,9 @@ theorem finrank_eq_sum_local_length_mul_finrank [Fintype (MaximalSpectrum B)] :
     (TensorProduct.AlgebraTensorModule.rid B
       (Localization.AtPrime q.asIdeal) (Localization.AtPrime q.asIdeal)).length_eq
   have hdeg (q : MaximalSpectrum B) :
-      (Motivic.LocalLength.finiteAlgebraResidueDegree k B q : ℕ∞) =
+      (Module.finiteAlgebraResidueDegree k B q : ℕ∞) =
         (Module.finrank k (B ⧸ q.asIdeal) : ℕ∞) := by
-    rw [← Motivic.LocalLength.finiteAlgebra_residue_length k B q,
+    rw [← Module.finiteAlgebra_residue_length k B q,
       Module.length_eq_finrank]
   have hn (q : MaximalSpectrum B) :
       ((Module.length (Localization.AtPrime q.asIdeal)

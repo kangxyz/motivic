@@ -21,7 +21,7 @@ No Noetherian, local, catenary, or equidimensional hypothesis is needed.
 
 universe u
 
-namespace Motivic.LocalLength
+namespace Module
 
 variable {R : Type u} [CommRing R]
 
@@ -45,4 +45,4 @@ theorem strictPrime_support_dimension (p q : Ideal R) [p.IsPrime] (hpq : p < q) 
   simpa only [Module.supportDim_quotient_eq_ringKrullDim] using
     strictPrime_quotient_dimension p q hpq
 
-end Motivic.LocalLength
+end Module

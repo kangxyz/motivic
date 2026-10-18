@@ -33,7 +33,7 @@ universe u v
 
 namespace MotivicTest.FieldExtensionBaseChangeLength
 
-open LocalLength
+open Module
 
 section Algebra
 

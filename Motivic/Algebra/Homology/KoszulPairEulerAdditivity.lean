@@ -28,7 +28,7 @@ open scoped ZeroObject
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable {U V W : Type v}
@@ -177,4 +177,4 @@ theorem eulerMultiplicity_add_of_artinian_quotient [IsNoetherianRing R]
         eulerMultiplicity W a b (hasFiniteHomology_of_artinian_quotient W a b) :=
   eulerMultiplicity_add_of_exact a b f g hf hg hex _ _ _
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

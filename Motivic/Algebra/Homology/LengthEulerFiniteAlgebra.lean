@@ -90,7 +90,7 @@ theorem homologyEuler_finiteAlgebra [Fintype (MaximalSpectrum S)]
     (K : HomologicalComplex (ModuleCat.{u} S) c) (sign : ι → ℤ) (hK : FiniteHomology K) :
     homologyEuler (finiteAlgebraRestrictedComplex R S K) sign
         (FiniteHomology.finiteAlgebra_restrict R S K hK) =
-      ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         homologyEuler (finiteAlgebraLocalizedComplex S K p) sign
           (FiniteHomology.finiteAlgebra_localized R S K hK p) := by
   unfold homologyEuler
@@ -107,9 +107,9 @@ theorem homologyEuler_finiteAlgebra [Fintype (MaximalSpectrum S)]
 /-- The all-point sum uses the finite maximal spectrum derived from the algebra. -/
 def finiteAlgebraFiberEuler (K : HomologicalComplex (ModuleCat.{u} S) c)
     (sign : ι → ℤ) (hK : FiniteHomology K) : ℤ :=
-  let : Finite (MaximalSpectrum S) := LocalLength.finiteAlgebra_maximalSpectrum_finite R S
+  let : Finite (MaximalSpectrum S) := Module.finiteAlgebra_maximalSpectrum_finite R S
   let : Fintype (MaximalSpectrum S) := Fintype.ofFinite _
-  ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+  ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
     homologyEuler (finiteAlgebraLocalizedComplex S K p) sign
       (FiniteHomology.finiteAlgebra_localized R S K hK p)
 
@@ -120,7 +120,7 @@ theorem homologyEuler_finiteAlgebra_eq_fiberEuler
     homologyEuler (finiteAlgebraRestrictedComplex R S K) sign
         (FiniteHomology.finiteAlgebra_restrict R S K hK) =
       finiteAlgebraFiberEuler R S K sign hK := by
-  let : Finite (MaximalSpectrum S) := LocalLength.finiteAlgebra_maximalSpectrum_finite R S
+  let : Finite (MaximalSpectrum S) := Module.finiteAlgebra_maximalSpectrum_finite R S
   let : Fintype (MaximalSpectrum S) := Fintype.ofFinite _
   exact homologyEuler_finiteAlgebra R S K sign hK
 
@@ -130,7 +130,7 @@ theorem chainEuler_finiteAlgebra [Fintype (MaximalSpectrum S)]
     (K : ChainComplex (ModuleCat.{u} S) ℕ) (hK : FiniteHomology K) :
     chainEuler (finiteAlgebraRestrictedComplex R S K)
         (FiniteHomology.finiteAlgebra_restrict R S K hK) =
-      ∑ p : MaximalSpectrum S, (LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteAlgebraLocalizedComplex S K p)
           (FiniteHomology.finiteAlgebra_localized R S K hK p) :=
   homologyEuler_finiteAlgebra R S K (fun i => (-1) ^ i) hK

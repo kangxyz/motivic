@@ -17,7 +17,7 @@ open CategoryTheory AlgebraicGeometry
 universe u
 namespace Motivic.DiagonalPolynomialNormInduction
 open PresheafWithTransfers DiagonalMilnorSymbol DiagonalCorestriction
-open KTheory MilnorK.PolynomialResidue MilnorK.PolynomialNorm
+open MilnorK.PolynomialResidue MilnorK.PolynomialNorm
 variable {k : Type u} [Field k] [CharZero k]
 local instance rootFinite (F : Type u) [Field F] (p : MonicIrreducible F) :
     Module.Finite F (AdjoinRoot p.val) := p.property.1.finite_adjoinRoot

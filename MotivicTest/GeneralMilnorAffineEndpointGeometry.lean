@@ -13,10 +13,10 @@ open Lean in
 run_cmd do
   let env ← getEnv
   let names := #[
-    `Motivic.KTheory.MilnorK.AffineEndpointGeometry.fundamentalCoefficient_eq_originalOrder,
-    `Motivic.KTheory.MilnorK.AffineEndpointGeometry.originalBranchResidueEquiv_scalar,
-    `Motivic.KTheory.MilnorK.DedekindStalkResidue.value_scalar_eq_stalkLength,
-    `Motivic.KTheory.MilnorK.DedekindResidue.endpointWeightedResidueSum_eq_baseNormSum]
+    `MilnorK.AffineEndpointGeometry.fundamentalCoefficient_eq_originalOrder,
+    `MilnorK.AffineEndpointGeometry.originalBranchResidueEquiv_scalar,
+    `MilnorK.DedekindStalkResidue.value_scalar_eq_stalkLength,
+    `MilnorK.DedekindResidue.endpointWeightedResidueSum_eq_baseNormSum]
   for name in names do
     unless (env.checked.get.find? name).isSome do
       throwError "Declaration {name} is missing from the checked environment"

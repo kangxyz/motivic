@@ -20,7 +20,7 @@ while the generic summand has length one.
 
 @[expose] public section
 
-open CategoryTheory Motivic.Koszul Motivic.LengthEuler Motivic.LocalLength
+open CategoryTheory Motivic.Koszul Motivic.LengthEuler Module
 open scoped TensorProduct
 
 universe u
@@ -33,7 +33,7 @@ omit [IsLocalRing R] in
 /-- An arbitrary actual complete prime filtration telescopes the literal
 all-degree coefficient-complex Euler characteristic. -/
 theorem actualFiltration (M : ModuleCat R) [Module.Finite R M]
-    (D : PrimeFiltrationFrom M ⊥) (s : List R) (J : Ideal R)
+    (D : Module.PrimeFiltrationFrom M ⊥) (s : List R) (J : Ideal R)
     [IsArtinianRing (R ⧸ (Ideal.ofList s ⊔ J))] (hJ : J ≤ Module.annihilator R M) :
     chainEuler (coefficientComplex M s)
         (finiteHomology_of_artinian_quotient_of_le_annihilator M s J hJ) =
@@ -59,8 +59,8 @@ theorem mixedGenericLength (p q : Ideal R) [p.IsPrime] (hpq : p < q)
     fixedSupportGenericLength (ModuleCat.of R ((R ⧸ p) × (R ⧸ q))) p hJ ⟨p, hp⟩ = 1 := by
   have he := (TensorProduct.prodRight R (Localization.AtPrime p) (Localization.AtPrime p)
     (R ⧸ p) (R ⧸ q)).length_eq
-  have hpone := localized_primeQuotient_length p p (fun _ => rfl)
-  have hqzero := localized_primeQuotient_length p q (fun h => (hpq.not_ge h).elim)
+  have hpone := Module.localized_primeQuotient_length p p (fun _ => rfl)
+  have hqzero := Module.localized_primeQuotient_length p q (fun h => (hpq.not_ge h).elim)
   simp at hpone
   rw [ite_eq_right hpq.ne.symm] at hqzero
   simp only [Module.length_prod, hpone, hqzero, add_zero] at he

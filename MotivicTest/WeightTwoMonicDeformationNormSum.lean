@@ -19,7 +19,7 @@ kept. The finite multiset preserves every occurrence of every irreducible factor
 
 open Polynomial Motivic WeightTwoCorestriction WeightTwoMonicDeformation
 open WeightTwoMonicDeformationFactors WeightTwoMilnorSymbol
-open KTheory.MilnorK3.PolynomialNorm KTheory.MilnorK3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm MilnorK.K3.PolynomialResidue
 
 universe u
 

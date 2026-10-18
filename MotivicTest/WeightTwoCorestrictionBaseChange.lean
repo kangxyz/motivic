@@ -21,7 +21,7 @@ projections are retained, without assuming a transfer comparison as input.
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Polynomial Motivic
 open PresheafWithTransfers WeightTwoCorestriction
-open KTheory.MilnorK3.PolynomialResidue
+open MilnorK.K3.PolynomialResidue
 open scoped BigOperators
 
 universe u

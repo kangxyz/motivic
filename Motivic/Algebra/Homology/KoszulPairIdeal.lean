@@ -24,7 +24,7 @@ universe u
 
 open CategoryTheory
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R] (a b : R)
 
@@ -50,4 +50,4 @@ noncomputable def idealProjectiveResolution (ha : IsSMulRegular R a)
   π := (projectiveResolution R a b ha hb).π ≫
     (ChainComplex.single₀ (ModuleCat R)).map (idealQuotientEquiv a b).toModuleIso.hom
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

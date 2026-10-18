@@ -1,0 +1,6 @@
+PASS: actual all-degree projection IsIso and bijective over infinite perfect fields.
+Hypotheses: ordinary HasExt and HI(F), no additional puncture/Epi/current-degree family.
+50 exact-origin declarations pass std3 axiom closure and declaration lint.
+Pinned Lean text/style passes exactly five sources.
+Source/import/cycle/options and pins pass.
+Finite-field descent remains open.

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.DiagonalCorestrictionDegree
-public import Motivic.Aglib.FieldTheory.SylowFixedField
+public import Aglib.FieldTheory.SylowFixedField
 
 /-! # Actual diagonal cohomology is detected by the full Sylow restriction family -/
 @[expose] public noncomputable section

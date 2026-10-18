@@ -25,7 +25,7 @@ universe u v
 
 namespace MotivicTest.FixedSupportMultiplicity
 
-open Motivic.LocalLength
+open Module
 
 variable {R : Type u} [CommRing R]
 
@@ -40,7 +40,7 @@ theorem fixedSupportFinite [IsNoetherianRing R]
 /-- A larger annihilator can remove a generic point of the fixed support;
 the literal filtration then records zero occurrences there. -/
 theorem strictlySupportedQuotient (p q : Ideal R) [p.IsPrime] (hpq : p < q)
-    (D : PrimeFiltrationFrom (R ⧸ q) ⊥) :
+    (D : Module.PrimeFiltrationFrom (R ⧸ q) ⊥) :
     Module.length (Localization.AtPrime p) (Localization.AtPrime p ⊗[R] (R ⧸ q)) = 0 ∧
       D.primes.count p = 0 := by
   have hJ : p ≤ Module.annihilator R (R ⧸ q) := by

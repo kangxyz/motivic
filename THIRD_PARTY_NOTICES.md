@@ -8,7 +8,7 @@ does not relicense the copied R5 implementations under Apache-2.0. Original
 source identities, authorship and license exceptions below remain in force.
 
 The effective Aglib dependency is pinned to
-`25c37780264f0da94f5bb6bd31cc089d26f2da80`; the older Aglib revision mentioned
+`b11b71d11bf03cf231f0e06b947a7b63d4344a9e`; the older Aglib revision mentioned
 below is historical extraction provenance. The project has no R5Lab or Quillen
 package dependency. See [snapshot provenance](doc/provenance/README.md).
 
@@ -28,17 +28,26 @@ The current library depends on `kangxyz/aglib` at commit
 `40af743ab794d607f566cec0c5417d8e4d02a735`, licensed under Apache-2.0.
 Aglib retains its original copyright, authorship and provenance notices.
 
-The seven current `Motivic/RingTheory/LocalLength` adapter modules listed below
-contain imports and exported compatibility names for native Aglib declarations.
-They no longer contain the older R5Lab implementations. Two neighboring modules,
-`FiniteAlgebraLength` and `FixedSupportMultiplicity`, use explicit native-method
-aliases; their mathematical hypotheses and conclusions are unchanged.
-There is no R5Lab or Quillen package dependency.
+The former `Motivic/RingTheory/LocalLength` import adapters listed below now
+use native Aglib declarations in `Module` and `Module.PrimeFiltrationFrom`.
+The finite-algebra fiber and length implementations also live in Aglib.
+`FixedSupportMultiplicity` retains its downstream fixed-support statements
+under the native namespaces. Their mathematical hypotheses and conclusions
+are unchanged. There is no R5Lab or Quillen package dependency.
 
 The following notice documents earlier source snapshots. It does not relicense
 those archived copies and does not describe the current seven import adapters.
 
-# Current Milnor K2 source exceptions
+# Milnor K₂ implementation migration
+
+The seven implementation leaves listed in the historical section below now
+live in the independent Aglib package, under `Aglib.KTheory.MilnorK.K2`.
+Their former Motivic paths contain import compatibility only. Aglib retains
+the original source headers and non-Apache exceptions in its own
+`THIRD_PARTY_NOTICES.md`. This relocation supplies one implementation source;
+it does not change the original license or publication authorization.
+
+# Historical Milnor K2 source exceptions
 
 `Motivic/KTheory/MilnorK2/Basic.lean`, `Map.lean`, `Symbols.lean`,
 `Residue.lean`, `Specialization.lean`, `DVR/Basic.lean`, and

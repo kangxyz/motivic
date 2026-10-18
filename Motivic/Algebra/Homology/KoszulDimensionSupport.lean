@@ -31,7 +31,7 @@ variable {R : Type u} [CommRing R]
 theorem koszulDimension_artinian_quotient_of_le [IsNoetherianRing R] (I J : Ideal R)
     [IsArtinianRing (R ⧸ I)] (hIJ : I ≤ J) : IsArtinianRing (R ⧸ J) := by
   have hlen : Module.length R (R ⧸ J) ≠ ⊤ :=
-    LocalLength.length_ne_top_of_artinian_quotient (R ⧸ J) I
+    Module.length_ne_top_of_artinian_quotient (R ⧸ J) I
       (by rwa [Ideal.annihilator_quotient])
   have hArt : IsArtinian R (R ⧸ J) :=
     (isFiniteLength_iff_isNoetherian_isArtinian.mp (Module.length_ne_top_iff.mp hlen)).2

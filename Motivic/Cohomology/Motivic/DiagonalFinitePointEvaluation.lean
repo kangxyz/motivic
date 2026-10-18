@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.DiagonalPointNorm
-public import Motivic.KTheory.MilnorK.FiniteExtensionNormTower
+public import Aglib.KTheory.MilnorK.Norm.FiniteExtension.Tower
 public import Motivic.AlgebraicGeometry.Cycles.FiniteImageProjection
 public import Motivic.Aglib.AlgebraicGeometry.FiniteFieldResidueDegree
 
@@ -33,7 +33,7 @@ universe u
 
 namespace Motivic.DiagonalFinitePointEvaluation
 
-open DiagonalPointNorm KTheory.MilnorK
+open DiagonalPointNorm MilnorK
 open AlgebraicGeometry.Scheme.PolynomialLaurent
 
 variable (k : Type u) [Field k]

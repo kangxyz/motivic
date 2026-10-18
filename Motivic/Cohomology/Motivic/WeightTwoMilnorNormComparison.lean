@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.KTheory.MilnorK2.BalancedRepresentatives
+public import Aglib.KTheory.MilnorK.K2.BalancedRepresentatives
 public import Motivic.Cohomology.Motivic.WeightTwoMilnorMixedNorm
 public import Motivic.Cohomology.Motivic.WeightTwoMonicDeformationNormSum
-public import Motivic.KTheory.MilnorK3.PolynomialNormDeformation
+public import Aglib.KTheory.MilnorK.K3.PolynomialNormDeformation
 
 /-!
 # The actual polynomial Milnor norm and motivic corestriction
@@ -27,8 +27,8 @@ universe w u
 
 namespace Motivic.WeightTwoMilnorNormComparison
 
-open KTheory.MilnorK2 KTheory.MilnorK3.PolynomialResidue
-open KTheory.MilnorK3.PolynomialNorm WeightTwoMilnorSymbol WeightTwoCorestriction
+open MilnorK.K2 MilnorK.K3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm WeightTwoMilnorSymbol WeightTwoCorestriction
 open Polynomial.TwoUnitMonicDeformation WeightTwoMonicDeformation
 open WeightTwoMonicDeformationFactors
 
@@ -59,7 +59,7 @@ theorem unit_eq_map_constant (p : MonicIrreducible k) (B : k[X])
 
 /-- The genuine degree-one base case uses actual mixed-symbol compatibility. -/
 theorem raw_norm_degree_one (p : MonicIrreducible k) (hp : p.val.natDegree = 1)
-    (x : K2 (AdjoinRoot p.val)) :
+    (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     rawMilnorSymbol k (polynomialNorm p x) =
       corestriction (k := k) (E := AdjoinRoot p.val) (rawMilnorSymbol (AdjoinRoot p.val) x) := by
   have hmaps : (rawMilnorSymbol k).comp (polynomialNorm p).toAddMonoidHom =
@@ -110,7 +110,7 @@ theorem factor_sum_comparison (p A B : k[X]) (hp : p.Monic)
     (ha : (a : AdjoinRoot p) = AdjoinRoot.mk p A)
     (hb : (b : AdjoinRoot p) = AdjoinRoot.mk p B)
     (h : ∀ r : MonicIrreducible k, r ∈ factorPlaces p hp.ne_zero →
-      ∀ x : K2 (AdjoinRoot r.val),
+      ∀ x : MilnorK.K2.Group (AdjoinRoot r.val),
         rawMilnorSymbol k (polynomialNorm r x) =
           corestriction (k := k) (E := AdjoinRoot r.val) (rawMilnorSymbol (AdjoinRoot r.val) x)) :
     rawMilnorSymbol k (factorNormSum p A B hp hcop) =
@@ -127,10 +127,10 @@ theorem factor_sum_comparison (p A B : k[X]) (hp : p.Monic)
 actual quotient fields, using the whole finite monic deformation. -/
 theorem raw_norm_degree_step (p : MonicIrreducible k) (hn : 1 < p.val.natDegree)
     (ih : ∀ r : MonicIrreducible k, r.val.natDegree < p.val.natDegree →
-      ∀ x : K2 (AdjoinRoot r.val),
+      ∀ x : MilnorK.K2.Group (AdjoinRoot r.val),
         rawMilnorSymbol k (polynomialNorm r x) =
           corestriction (k := k) (E := AdjoinRoot r.val) (rawMilnorSymbol (AdjoinRoot r.val) x))
-    (x : K2 (AdjoinRoot p.val)) :
+    (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     rawMilnorSymbol k (polynomialNorm p x) =
       corestriction (k := k) (E := AdjoinRoot p.val) (rawMilnorSymbol (AdjoinRoot p.val) x) := by
   classical
@@ -160,7 +160,7 @@ theorem raw_norm_degree_step (p : MonicIrreducible k) (hn : 1 < p.val.natDegree)
     have hrec := factorNormSum_eq_of_monic_deformation p.val q A B
       p.property.1 hq hqd hA hB hcop hqc (endpoint_difference p.val A B γ 1)
     have hfactor : ∀ r : MonicIrreducible k, r ∈ factorPlaces q hq.ne_zero →
-        ∀ y : K2 (AdjoinRoot r.val),
+        ∀ y : MilnorK.K2.Group (AdjoinRoot r.val),
           rawMilnorSymbol k (polynomialNorm r y) =
             corestriction (k := k) (E := AdjoinRoot r.val)
             (rawMilnorSymbol (AdjoinRoot r.val) y) := by
@@ -189,11 +189,11 @@ theorem raw_norm_degree_step (p : MonicIrreducible k) (hn : 1 < p.val.natDegree)
 
 /-- The actual polynomial Milnor K₂ norm intertwines the original raw motivic
 symbol and finite corestriction on every element. -/
-theorem raw_norm (p : MonicIrreducible k) (x : K2 (AdjoinRoot p.val)) :
+theorem raw_norm (p : MonicIrreducible k) (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     rawMilnorSymbol k (polynomialNorm p x) =
       corestriction (k := k) (E := AdjoinRoot p.val) (rawMilnorSymbol (AdjoinRoot p.val) x) := by
   have hall : ∀ n : ℕ, ∀ r : MonicIrreducible k, r.val.natDegree = n →
-      ∀ y : K2 (AdjoinRoot r.val),
+      ∀ y : MilnorK.K2.Group (AdjoinRoot r.val),
         rawMilnorSymbol k (polynomialNorm r y) =
           corestriction (k := k) (E := AdjoinRoot r.val)
             (rawMilnorSymbol (AdjoinRoot r.val) y) := by
@@ -223,7 +223,7 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of (AdjoinRoot p.val)))) AddCommGrpCat.{u + 1})]
 
 /-- The full comparison in the originally defined derived integral group. -/
-theorem derived_norm (x : K2 (AdjoinRoot p.val)) :
+theorem derived_norm (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     motivicMilnorSymbol k (polynomialNorm p x) =
       motivicCorestriction (k := k) (motivicMilnorSymbol (AdjoinRoot p.val) x) := by
   apply (motivicRawBaseEvaluationComparison k 2 2).injective
@@ -232,7 +232,7 @@ theorem derived_norm (x : K2 (AdjoinRoot p.val)) :
 
 /-- Original coefficient reduction preserves the full comparison for every
 natural coefficient level, including zero, one, and composite levels. -/
-theorem finite_norm (n : ℕ) (x : K2 (AdjoinRoot p.val)) :
+theorem finite_norm (n : ℕ) (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     finiteMilnorSymbol k n (polynomialNorm p x) =
       finiteCorestriction (k := k) n (finiteMilnorSymbol (AdjoinRoot p.val) n x) := by
   change motivicBaseIntegralReduction k 2 2 n (motivicMilnorSymbol k _) =

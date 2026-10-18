@@ -38,7 +38,7 @@ theorem finiteHomology_of_artinian_quotient_of_le_annihilator [IsNoetherianRing 
     (hI : I ≤ Module.annihilator R M) :
     FiniteHomology (coefficientComplex M s) where
   finite_length :=
-    LocalLength.KoszulFinite.length_homology_ne_top_of_artinian_quotient_of_le_annihilator
+    Module.KoszulFinite.length_homology_ne_top_of_artinian_quotient_of_le_annihilator
       M s I hI
   finite_support := (Finset.range (s.length + 1)).finite_toSet.subset
     (coefficient_homology_length_support_subset M s)

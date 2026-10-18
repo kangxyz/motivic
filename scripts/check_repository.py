@@ -15,7 +15,7 @@ PINS = {
     'mathlib': ('https://github.com/leanprover-community/mathlib4.git',
                 'd13f23b723b8a846827a245b89c10fc7d3f11612'),
     'Aglib': ('https://github.com/kangxyz/aglib.git',
-              '25c37780264f0da94f5bb6bd31cc089d26f2da80'),
+              'b11b71d11bf03cf231f0e06b947a7b63d4344a9e'),
 }
 EXTERNAL_ROOTS = {'Mathlib', 'Aglib', 'Lean', 'Init', 'Std', 'Batteries',
                   'Aesop', 'Qq', 'ProofWidgets', 'ImportGraph', 'Plausible',

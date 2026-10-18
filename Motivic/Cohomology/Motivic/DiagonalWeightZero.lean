@@ -8,7 +8,7 @@ module
 public import Motivic.Cohomology.Motivic.DiagonalTopDegree
 public import Motivic.Cohomology.Motivic.DiagonalMilnorSymbol
 public import Motivic.AlgebraicGeometry.Correspondences.BaseFieldGenerators
-public import Motivic.KTheory.MilnorK.LowDegree
+public import Aglib.KTheory.MilnorK.LowDegree
 
 /-!
 # Actual weight-zero field cohomology
@@ -234,9 +234,9 @@ theorem motivicEquiv_class (x : chains k 0 0) :
   exact congrArg (quotientEquiv k) ((quotientToMotivicEquiv k 0).symm_apply_apply _)
 
 /-- The actual zeroth Milnor group agrees with the original derived weight-zero group. -/
-def milnorEquiv : KTheory.MilnorK.K k 0 ≃+
+def milnorEquiv : MilnorK.K k 0 ≃+
     motivicCohomology k 0 0 (SmoothSite.base (Spec (.of k))) :=
-  (KTheory.MilnorK.zeroEquiv k).toAddEquiv.trans (motivicEquiv k).symm
+  (MilnorK.zeroEquiv k).toAddEquiv.trans (motivicEquiv k).symm
 
 /-- The original derived class of the actual base structural graph. -/
 def graphClass : motivicCohomology k 0 0 (SmoothSite.base (Spec (.of k))) :=
@@ -254,22 +254,22 @@ theorem motivicEquiv_symm_apply (z : ℤ) :
     zsmul_eq_mul, mul_one, Int.cast_id]
 
 /-- The empty Milnor symbol is the original structural graph class. -/
-theorem milnorEquiv_symbol (a : KTheory.MilnorK.SymbolTuple k 0) :
-    milnorEquiv k (KTheory.MilnorK.symbol a) = graphClass k := by
+theorem milnorEquiv_symbol (a : MilnorK.SymbolTuple k 0) :
+    milnorEquiv k (MilnorK.symbol a) = graphClass k := by
   change (motivicEquiv k).symm
-    (KTheory.MilnorK.zeroEquiv k (KTheory.MilnorK.symbol a)) = graphClass k
-  rw [KTheory.MilnorK.zeroEquiv_symbol, motivicEquiv_symm_apply, one_zsmul]
+    (MilnorK.zeroEquiv k (MilnorK.symbol a)) = graphClass k
+  rw [MilnorK.zeroEquiv_symbol, motivicEquiv_symm_apply, one_zsmul]
 
 /-- The degree-zero all-weight symbol is precisely the proved canonical equivalence. -/
-theorem motivicSymbol_zero [CharZero k] (x : KTheory.MilnorK.K k 0) :
+theorem motivicSymbol_zero [CharZero k] (x : MilnorK.K k 0) :
     DiagonalMilnorSymbol.motivicSymbol k 0 x = milnorEquiv k x := by
   have h : DiagonalMilnorSymbol.motivicSymbol k 0 = (milnorEquiv k).toAddMonoidHom := by
-    apply KTheory.MilnorK.addHom_ext
+    apply MilnorK.addHom_ext
     intro a
-    change DiagonalMilnorSymbol.motivicSymbol k 0 (KTheory.MilnorK.symbol a) =
-      milnorEquiv k (KTheory.MilnorK.symbol a)
+    change DiagonalMilnorSymbol.motivicSymbol k 0 (MilnorK.symbol a) =
+      milnorEquiv k (MilnorK.symbol a)
     apply (motivicRawBaseEvaluationComparison k 0 0).injective
-    exact (DiagonalMilnorSymbol.motivicSymbol_comparison k 0 (KTheory.MilnorK.symbol a)).trans
+    exact (DiagonalMilnorSymbol.motivicSymbol_comparison k 0 (MilnorK.symbol a)).trans
       ((DiagonalMilnorSymbol.rawSymbol_symbol k 0 a).trans
         ((graphSymbol_zero k a).trans
           ((quotientToMotivicEquiv_mk k 0 (graphChain k 0)).symm.trans

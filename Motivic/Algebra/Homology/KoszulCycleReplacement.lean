@@ -22,7 +22,7 @@ The remaining multiplicities are actual finite localized module lengths.
 
 @[expose] public section
 
-open CategoryTheory Motivic.LengthEuler Motivic.LocalLength
+open CategoryTheory Motivic.LengthEuler Module
 open scoped TensorProduct
 
 universe u
@@ -70,7 +70,7 @@ theorem fixedSupportPrimeEuler_zero_of_not_minimal (s : List R) (J q : Ideal R)
 /-- Actual filtration Euler length regroups on the fixed minimal-prime set;
 the discarded summands vanish by dimension, not by a support-cycle convention. -/
 theorem fixedSupport_chainEuler_eq_count_sum (M : ModuleCat R) [Module.Finite R M]
-    (D : PrimeFiltrationFrom M ⊥) (s : List R) (J : Ideal R)
+    (D : Module.PrimeFiltrationFrom M ⊥) (s : List R) (J : Ideal R)
     [IsArtinianRing (R ⧸ (Ideal.ofList s ⊔ J))]
     (hs : ∀ a ∈ s, a ∈ IsLocalRing.maximalIdeal R) (hJ : J ≤ Module.annihilator R M)
     (hM : FiniteHomology (coefficientComplex M s)) :
@@ -110,7 +110,7 @@ noncomputable def fixedSupportGenericLength (M : ModuleCat R) [Module.Finite R M
 omit [IsLocalRing R] in
 /-- The fixed-support multiplicity agrees with literal prime-filtration count. -/
 theorem fixedSupportGenericLength_eq_count (M : ModuleCat R) [Module.Finite R M]
-    (D : PrimeFiltrationFrom M ⊥) (J : Ideal R) (hJ : J ≤ Module.annihilator R M)
+    (D : Module.PrimeFiltrationFrom M ⊥) (J : Ideal R) (hJ : J ≤ Module.annihilator R M)
     (p : J.minimalPrimes) : fixedSupportGenericLength M J hJ p = D.primes.count p.1 := by
   let : p.1.IsPrime := p.2.isPrime
   simp only [fixedSupportGenericLength, integerLength,
@@ -126,7 +126,7 @@ theorem fixedSupport_chainEuler_replacement (M : ModuleCat R) [Module.Finite R M
       ∑ᶠ p : J.minimalPrimes, fixedSupportGenericLength M J hJ p *
         chainEuler (coefficientComplex (ModuleCat.of R (R ⧸ p.1)) s)
           (fixedSupport_prime_finiteHomology s J p.1 p.2.le) := by
-  obtain ⟨D⟩ := nonempty_primeFiltration (A := R) M
+  obtain ⟨D⟩ := Module.nonempty_primeFiltration (A := R) M
   rw [fixedSupport_chainEuler_eq_count_sum M D s J hs hJ]
   apply finsum_congr
   intro p

@@ -16,8 +16,9 @@ bootstrap, avoiding unnecessary import and theorem-name churn.
 Declaration namespaces follow the object. Extend `CategoryTheory`,
 `AlgebraicGeometry`, `Ideal`, and other native owners for their general facts.
 Use `Motivic.Cor`, `Motivic.PresheafWithTransfers`, `Motivic.SheafWithTransfers`,
-`Motivic.SheafCohomology`, and `Motivic.KTheory.MilnorK` for the actual existing
-constructions. `Motivic.Cohomology.Motivic` is an import family, not a new
+`Motivic.SheafCohomology` for the actual existing constructions. General
+Milnor groups use Aglib's `MilnorK` namespace, including its nested `K2` and
+`K3` tensor-presentation interfaces. `Motivic.Cohomology.Motivic` is an import family, not a new
 wrapper namespace or second cohomology type.
 
 Use `map`/`map_id`/`map_comp` for functorial maps, `...Iso` for categorical

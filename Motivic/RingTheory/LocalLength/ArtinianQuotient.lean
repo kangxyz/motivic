@@ -20,7 +20,7 @@ Artinianness is transported through the resulting bijective semilinear map.
 
 universe u v
 
-namespace Motivic.LocalLength
+namespace Module
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M]
@@ -39,4 +39,4 @@ theorem length_ne_top_of_artinian_quotient [IsNoetherian R M] (I : Ideal R)
   exact Module.length_ne_top_iff.mpr
     (isFiniteLength_iff_isNoetherian_isArtinian.mpr ⟨inferInstance, inferInstance⟩)
 
-end Motivic.LocalLength
+end Module

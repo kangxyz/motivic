@@ -18,8 +18,8 @@ open AlgebraicGeometry.FiniteFlatCurve AlgebraicGeometry.FiniteAffineEndpointBra
 open scoped Polynomial BigOperators
 universe u
 namespace Motivic.AffineEndpointGeometricNorm
-open KTheory.MilnorK AffineEndpointResidueScalar DiagonalResiduePointEvaluation
-open KTheory.MilnorK.AffineEndpointGeometry KTheory.MilnorK.DedekindResidue
+open MilnorK AffineEndpointResidueScalar DiagonalResiduePointEvaluation
+open MilnorK.AffineEndpointGeometry MilnorK.DedekindResidue
 variable (k S : Type u) [Field k] [CharZero k] [CommRing S] [IsDedekindDomain S]
   [Algebra k[X] S] [Module.Finite k[X] S] [Module.IsTorsionFree k[X] S]
   [Algebra k S] [IsScalarTower k k[X] S]

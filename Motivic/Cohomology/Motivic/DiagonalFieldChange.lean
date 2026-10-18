@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.DiagonalMilnorSymbol
-public import Motivic.KTheory.MilnorK.Map
+public import Aglib.KTheory.MilnorK.Map
 public import Motivic.Cohomology.Motivic.WeightTwoFieldChange
 
 /-!
@@ -31,7 +31,7 @@ universe w u
 namespace Motivic.DiagonalFieldChange
 
 open PresheafWithTransfers DiagonalTopDegree DiagonalCycleSymbols DiagonalMilnorSymbol
-open WeightOneBoundaryNorm KTheory
+open WeightOneBoundaryNorm
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
 

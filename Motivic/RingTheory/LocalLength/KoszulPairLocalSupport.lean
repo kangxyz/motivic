@@ -22,7 +22,7 @@ construction of equations or support primes from a geometric intersection.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] [Module.Finite R M] (a b : R)
@@ -46,4 +46,4 @@ theorem hasFiniteHomology_of_mem_minimalPrimes_support
   hasFiniteHomology_of_mem_minimalPrimes_of_le_annihilator M a b
     (Module.annihilator R M) le_rfl hm
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

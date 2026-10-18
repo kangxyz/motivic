@@ -84,4 +84,45 @@ def overlapToOriginal :
     exact (pullback.condition_assoc _).symm)
 
 
+omit [IsAffine A.left] [IsOpenImmersion a.left] in
+/-- Both paths retain the original étale arrow, not merely its underlying field map. -/
+@[reassoc] theorem etaleToOriginal_arrow :
+    etaleToOriginal p a z s x e ≫ p =
+      originalEtaleArrow k e.base e.toField
+        (e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _)
+        (pullback.snd p.left e.refinement) ≫ targetToOriginal p a z s x e := by
+  apply MorphismProperty.Over.Hom.ext
+  exact pullback.condition
+
+omit [IsAffine Y.left] [Etale p.left] in
+/-- Both paths retain the unchanged original puncture inclusion. -/
+@[reassoc] theorem punctureToOriginal_arrow :
+    punctureToOriginal p a z s x e ≫ a =
+      originalOpenArrow k e.base e.toField
+        (e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _)
+        (pullback.snd a.left e.refinement) ≫ targetToOriginal p a z s x e := by
+  apply MorphismProperty.Over.Hom.ext
+  exact pullback.condition
+
+/-- Projection to the original étale source commutes with the exact overlap restriction. -/
+@[reassoc] theorem overlapToOriginal_etale :
+    overlapToOriginal p a z s x e ≫ SmoothSite.etalePullbackFst p a =
+      originalOverlapToEtale k e.base e.toField
+        (e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _)
+        (pullback.snd p.left e.refinement) (pullback.snd a.left e.refinement) ≫
+          etaleToOriginal p a z s x e := by
+  apply MorphismProperty.Over.Hom.ext
+  exact pullback.lift_fst _ _ _
+
+/-- Projection to the original puncture commutes with the exact overlap restriction. -/
+@[reassoc] theorem overlapToOriginal_puncture :
+    overlapToOriginal p a z s x e ≫ SmoothSite.etalePullbackSnd p a =
+      originalOverlapToOpen k e.base e.toField
+        (e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _)
+        (pullback.snd p.left e.refinement) (pullback.snd a.left e.refinement) ≫
+          punctureToOriginal p a z s x e := by
+  apply MorphismProperty.Over.Hom.ext
+  exact pullback.lift_snd _ _ _
+
+
 end AlgebraicGeometry.Scheme.RelativeCurve.OriginalEtalePresentation

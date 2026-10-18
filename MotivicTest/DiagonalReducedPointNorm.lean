@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.DiagonalReducedPointNorm
-public import Motivic.KTheory.MilnorK.DedekindStalkResidue
+public import Aglib.KTheory.MilnorK.Dedekind.StalkResidue
 public import Motivic.KTheory.MilnorK.NormalizedAffineEndpointNorm
 public import Lean.Util.CollectAxioms
 
@@ -24,7 +24,7 @@ variable (k : Type u) [Field k] [CharZero k]
 theorem actual_reduced_rational_tuple (q : ℕ) (a : Fin q → kˣ) :
     reducedNorm k q ((toReducedTorus k q).hom.app (op (WeightOnePointNorm.point k))
       (ULift.up ((Cor.graphFunctor k).map (DiagonalCycleSymbols.rationalTuple k q a)))) =
-        KTheory.MilnorK.symbol a :=
+        MilnorK.symbol a :=
   reducedNorm_rationalTuple q a
 
 open Lean in
@@ -32,7 +32,7 @@ run_cmd do
   for name in #[``actual_reduced_rational_tuple, ``largeCycleNorm,
       ``relation_largeCycleNorm, ``reducedNormLarge, ``toReducedTorus_reducedNormLarge,
       ``reducedNorm, ``reducedNorm_quotient, ``reducedNorm_rationalTuple,
-      ``Motivic.KTheory.MilnorK.DedekindStalkResidue.residue_eq,
+      ``MilnorK.DedekindStalkResidue.residue_eq,
       ``Motivic.FiniteCurveNormalization.normalized_endpoint_sum_eq] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

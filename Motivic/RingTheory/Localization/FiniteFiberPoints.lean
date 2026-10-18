@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.FiniteAlgebraFiber
+public import Aglib.RingTheory.FiniteLength.FiniteAlgebraFiber
 public import Mathlib.RingTheory.Localization.BaseChange
 public import Mathlib.RingTheory.Localization.LocalizationLocalization
 
@@ -68,7 +68,7 @@ theorem localAlgebra_finite :
 theorem maximal_under_base (q : MaximalSpectrum (localAlgebra A B p)) :
     q.asIdeal.under A = p.asIdeal := by
   rw [← Ideal.under_under (B := Localization.AtPrime p.asIdeal),
-    LocalLength.finiteAlgebra_maximal_under (Localization.AtPrime p.asIdeal)
+    Module.finiteAlgebra_maximal_under (Localization.AtPrime p.asIdeal)
       (localAlgebra A B p) q,
     IsLocalization.AtPrime.under_maximalIdeal (Localization.AtPrime p.asIdeal) p.asIdeal]
 
@@ -207,7 +207,7 @@ theorem sourceResidueEquiv_base_square (q : MaximalSpectrum (localAlgebra A B p)
 /-- The actual point fiber is finite without requiring its individual local rings to be finite. -/
 theorem pointFiber_finite :
     Finite {x : PrimeSpectrum B // PrimeSpectrum.comap (algebraMap A B) x = p} := by
-  have := LocalLength.finiteAlgebra_maximalSpectrum_finite
+  have := Module.finiteAlgebra_maximalSpectrum_finite
     (Localization.AtPrime p.asIdeal) (localAlgebra A B p)
   exact (maximalSpectrumEquivFiber A B p).finite_iff.mp inferInstance
 

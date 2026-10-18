@@ -18,8 +18,8 @@ variable (k : Type u) [Field k] [CharZero k] (q : ℕ)
 
 /-- The original finite field, in every degree, satisfies the actual norm/transfer square. -/
 theorem actual_finite_norm_square {E : Type u} [Field E] [CharZero E]
-    [Algebra k E] [Module.Finite k E] (x : KTheory.MilnorK.K E q) :
-    rawSymbol k q (KTheory.MilnorK.finiteExtensionNorm k E q x) =
+    [Algebra k E] [Module.Finite k E] (x : MilnorK.K E q) :
+    rawSymbol k q (MilnorK.finiteExtensionNorm k E q x) =
       DiagonalCorestriction.corestriction (k := k) q (rawSymbol E q x) :=
   DiagonalPolynomialNormComparisonAll.rawSymbol_finiteExtensionNorm q x
 
@@ -39,7 +39,7 @@ theorem actual_derived_opposite_inverse
 
 /-- The equivalence retains the literal original Hnn codomain
 and the existing symbol as its forward map. -/
-theorem actual_derived_forward_map (x : KTheory.MilnorK.K k q) :
+theorem actual_derived_forward_map (x : MilnorK.K k q) :
     Motivic.DiagonalMilnorEquivalence.motivicEquiv k q x = motivicSymbol k q x := rfl
 
 /-- Weight zero is included without a positive-weight premise. -/

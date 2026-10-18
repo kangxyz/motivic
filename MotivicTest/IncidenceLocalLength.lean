@@ -73,7 +73,7 @@ support; no vanishing of the higher correction modules is assumed. -/
 theorem zero_equations_generic_incidence_support :
     let R := (correspondenceTripleProduct f g h).presheaf.stalk ((A.incidenceInclusion B) w.val)
     let I := RingHom.ker ((A.incidenceInclusion B).stalkMap w.val).hom
-    LocalLength.KoszulPair.HasFiniteHomology (R ⧸ I) (0 : R) 0 := by
+    Module.KoszulPair.HasFiniteHomology (R ⧸ I) (0 : R) 0 := by
   dsimp only
   apply FiniteCorrespondenceGenerator.incidence_koszul_hasFiniteHomology
     A B w.val w.property _ 0 0

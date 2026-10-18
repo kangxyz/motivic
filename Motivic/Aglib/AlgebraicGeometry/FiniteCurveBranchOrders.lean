@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.FiniteCurveNormalization
-public import Motivic.Aglib.RingTheory.DVRCartierLength
+public import Aglib.RingTheory.DVRCartierLength
 public import Mathlib.RingTheory.DedekindDomain.Dvr
 
 /-!

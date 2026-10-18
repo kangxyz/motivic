@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.KTheory.MilnorK3.PolynomialNormProjection
+public import Aglib.KTheory.MilnorK.K3.PolynomialNormProjection
 public import Motivic.Cohomology.Motivic.WeightTwoMilnorSymbol
 public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionMixed
 public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionFinite
@@ -28,8 +28,8 @@ universe w u
 
 namespace Motivic.WeightTwoMilnorMixedNorm
 
-open KTheory.MilnorK2 KTheory.MilnorK3.PolynomialResidue
-open KTheory.MilnorK3.PolynomialNorm WeightTwoMilnorSymbol WeightTwoCorestriction
+open MilnorK.K2 MilnorK.K3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm WeightTwoMilnorSymbol WeightTwoCorestriction
 
 variable {k : Type u} [Field k] [CharZero k] (p : MonicIrreducible k)
 

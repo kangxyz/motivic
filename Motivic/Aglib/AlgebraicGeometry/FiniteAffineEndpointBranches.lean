@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.FiniteCurveBranchOrders
-public import Motivic.Aglib.RingTheory.AdicCompletion.DedekindBranches
+public import Aglib.RingTheory.AdicCompletion.DedekindBranches
 
 /-!
 # Actual affine endpoint points and original Dedekind ideal branches

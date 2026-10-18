@@ -34,7 +34,7 @@ theorem localizedHomologyLengthFinite (M : ModuleCat R) [Module.Finite R M]
     (hp : p ∈ (Ideal.ofList t ⊔ Module.annihilator R M).minimalPrimes) :
     Module.length (Localization.AtPrime p)
       (Localization.AtPrime p ⊗[R] (coefficientComplex M t).homology n) ≠ ⊤ :=
-  Motivic.LocalLength.fixedSupport_localized_length_ne_top
+  Module.fixedSupport_localized_length_ne_top
     ((coefficientComplex M t).homology n) _
     (support_le_annihilator_coefficient_homology M t n) p hp
 

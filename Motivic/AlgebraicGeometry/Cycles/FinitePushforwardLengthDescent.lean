@@ -184,7 +184,7 @@ theorem firstStageWholeRemainingHomology_length_ne_top
   let T := FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
     Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ V) p
   have : Finite (MaximalSpectrum T) :=
-    LocalLength.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) T
+    Module.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) T
   apply FiniteSchemeEuler.length_ne_top_of_maximal T
     ((F.firstStageWholeRemainingKoszul G H V p s n).homology r)
   intro q

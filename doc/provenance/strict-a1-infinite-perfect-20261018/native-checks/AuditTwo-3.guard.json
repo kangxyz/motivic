@@ -1,0 +1,44 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "env",
+    "/var/folders/g1/yy39t2796_sgd3x00vlqmwxm0000gn/T/aglib-capped-toolchain-5ctbwi79/bin/lean",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/AuditTwo.lean",
+    "--root",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review",
+    "--setup",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/AuditTwo.setup.json"
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/aglib",
+  "pid": 90409,
+  "pgid": 90409,
+  "exit_code": 0,
+  "guard_failure": null,
+  "peak_rss_bytes": 3261136896,
+  "duration_seconds": 5.400785250007175,
+  "limits": {
+    "lean_memory_mb": 24576,
+    "rss_limit_mb": 25600,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 68719476736,
+    "lean_threads": 1,
+    "max_active_lean": 1,
+    "native_build_threads": 4
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 90409,
+      "rss_bytes": 701120512,
+      "executable": "(lake)",
+      "command_path": "(lake)"
+    },
+    {
+      "pid": 90448,
+      "rss_bytes": 0,
+      "executable": "(lean)",
+      "command_path": "(lean)"
+    }
+  ]
+}

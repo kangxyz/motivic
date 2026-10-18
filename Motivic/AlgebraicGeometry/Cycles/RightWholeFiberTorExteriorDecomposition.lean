@@ -60,7 +60,7 @@ theorem arrowIso_kernel :
 scalar maps have zero kernel, so its Cartesian-kernel condition is proved. -/
 def closedFiberArrowEquiv :
     Koszul.coefficientClosedFiber g.hom ≃+* Koszul.coefficientClosedFiber f.hom :=
-  LocalLength.closedFiberQuotientEquiv (A := A) (B := B) (R := R) (S := T)
+  Module.closedFiberQuotientEquiv (A := A) (B := B) (R := R) (S := T)
     e.hom.left.hom
     (ConcreteCategory.bijective_of_isIso e.hom.left).2 e.hom.right.hom
     (ConcreteCategory.bijective_of_isIso e.hom.right).2 g.hom f.hom
@@ -77,7 +77,7 @@ using the existing scalar-compatible module isomorphism, not ring cardinalities.
 theorem closedFiberArrow_length :
     Module.length B (Koszul.coefficientClosedFiber g.hom) =
       Module.length T (Koszul.coefficientClosedFiber f.hom) :=
-  LocalLength.closedFiberQuotient_length (A := A) (B := B) (R := R) (S := T)
+  Module.closedFiberQuotient_length (A := A) (B := B) (R := R) (S := T)
     e.hom.left.hom
     (ConcreteCategory.bijective_of_isIso e.hom.left).2 e.hom.right.hom
     (ConcreteCategory.bijective_of_isIso e.hom.right).2 g.hom f.hom

@@ -43,7 +43,7 @@ theorem schemeCoordinateUnit_fiberInclusion (a : k) (i : Fin q) :
   rfl
 
 /-- Every original endpoint contributes its full scheme-theoretic local length. -/
-def endpointResidueValue (a : k) : KTheory.MilnorK.K k q := by
+def endpointResidueValue (a : k) : MilnorK.K k q := by
   let : Fintype (fiber Z a) := finiteSchemeFintype (fiberProjection Z a)
   exact ∑ x : fiber Z a,
     (IntegralCycle.toPoints (fundamentalCycle (fiber Z a)) x) •

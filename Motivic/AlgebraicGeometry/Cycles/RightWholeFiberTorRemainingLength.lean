@@ -125,7 +125,7 @@ theorem rightFirstStageWholeRemaining_finiteHomology_of_source
   let T := FiniteFiber.localAlgebra Γ(F.rightIntermediateImageProduct G H, V)
     Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ V) p
   have : Finite (MaximalSpectrum T) :=
-    LocalLength.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) T
+    Module.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) T
   apply Koszul.coefficient_finiteHomology_of_maximalLengths T
     (F.rightFirstStageWholeLocalizedCoefficient G H V p n)
     (F.rightFirstStageWholeRemainingList G H V p s)

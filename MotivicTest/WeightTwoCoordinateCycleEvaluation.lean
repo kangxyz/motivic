@@ -80,7 +80,7 @@ theorem base_pair_retains_extension_degree [CharZero k] (a b : kˣ) :
       ((Cor.graphFunctor E).map (WeightTwoSymbols.rationalPair E
         (Units.map (algebraMap k E).toMonoidHom a)
         (Units.map (algebraMap k E).toMonoidHom b)))) =
-      Module.finrank k E • KTheory.MilnorK2.symbol a b := by
+      Module.finrank k E • MilnorK.K2.symbol a b := by
   rw [cycleValue_pointPushforward_graph, value_map_degree, value_rational]
 
 /-- Negative multiplicities and support collisions need no separate injectivity lemma. -/
@@ -106,7 +106,7 @@ theorem second_identity_axis (a : Eˣ) :
 /-- Normalization uses the actual rational graph, with no prospective comparison inverse. -/
 theorem rational_graph_normalization [CharZero k] (a b : kˣ) :
     cycleValue k ((Cor.graphFunctor k).map (WeightTwoSymbols.rationalPair k a b)) =
-      KTheory.MilnorK2.symbol a b :=
+      MilnorK.K2.symbol a b :=
   cycleValue_graph a b
 
 /-- The identity-axis statement holds for arbitrary original signed supports. -/

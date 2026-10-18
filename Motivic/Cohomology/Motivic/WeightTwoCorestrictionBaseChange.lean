@@ -10,7 +10,7 @@ public import Motivic.Cohomology.Motivic.WeightTwoPolynomialTransfer
 public import Motivic.AlgebraicGeometry.Correspondences.FinitePointBaseChange
 public import Motivic.Cohomology.Motivic.WeightTwoScalarPairChange
 public import Motivic.Aglib.AlgebraicGeometry.AdjoinRootScalarBranches
-public import Motivic.KTheory.MilnorK3.ResidueBaseChangeSupport
+public import Aglib.KTheory.MilnorK.K3.ResidueBaseChangeSupport
 
 /-!
 # Actual finite-point transfer under scalar extension
@@ -241,7 +241,7 @@ end WholePoint
 
 section Polynomial
 
-open Polynomial KTheory.MilnorK3.PolynomialResidue AdjoinRootScalarBranches
+open Polynomial MilnorK.K3.PolynomialResidue AdjoinRootScalarBranches
 
 variable {k L : Type u} [Field k] [Field L] [Algebra k L]
 
@@ -392,7 +392,7 @@ end Polynomial
 
 section Endpoints
 
-open Polynomial KTheory.MilnorK3.PolynomialResidue
+open Polynomial MilnorK.K3.PolynomialResidue
 
 variable {k L : Type u} [Field k] [Field L] [CharZero k]
 

@@ -1,0 +1,44 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "env",
+    "/var/folders/g1/yy39t2796_sgd3x00vlqmwxm0000gn/T/aglib-capped-toolchain-1f_j8cft/bin/lean",
+    "/Users/kang/Documents/New project/tmp/motivic/Motivic/Aglib/RingTheory/DVRNormCartierLength.lean",
+    "--root",
+    "/Users/kang/Documents/New project/tmp/motivic",
+    "--setup",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/Motivic.Aglib.RingTheory.DVRNormCartierLength.setup.json",
+    "-o",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/lib/Motivic/Aglib/RingTheory/DVRNormCartierLength.olean",
+    "-i",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/lib/Motivic/Aglib/RingTheory/DVRNormCartierLength.ilean",
+    "-c",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/lib/Motivic/Aglib/RingTheory/DVRNormCartierLength.c"
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/aglib",
+  "pid": 88649,
+  "pgid": 88649,
+  "exit_code": 0,
+  "guard_failure": null,
+  "peak_rss_bytes": 2114158592,
+  "duration_seconds": 4.47929845796898,
+  "limits": {
+    "lean_memory_mb": 24576,
+    "rss_limit_mb": 25600,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 68719476736,
+    "lean_threads": 1,
+    "max_active_lean": 1,
+    "native_build_threads": 4
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 88649,
+      "rss_bytes": 0,
+      "executable": "<defunct>",
+      "command_path": "<defunct>"
+    }
+  ]
+}

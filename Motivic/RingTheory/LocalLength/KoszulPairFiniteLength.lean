@@ -22,7 +22,7 @@ algebraic hypotheses rather than assuming the desired lengths are finite.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -149,4 +149,4 @@ theorem hasFiniteHomology_of_artinian_quotient [IsNoetherianRing R] [Module.Fini
     [IsArtinianRing (R ⧸ Ideal.span ({a, b} : Set R))] : HasFiniteHomology M a b :=
   ⟨length_H₀_ne_top M a b, length_H₁_ne_top M a b, length_H₂_ne_top M a b⟩
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

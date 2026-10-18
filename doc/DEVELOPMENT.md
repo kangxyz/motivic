@@ -16,6 +16,11 @@ python3 scripts/cache.py --guarded --resolve-deps Motivic.KTheory.MilnorK.Basic
 python3 scripts/build.py Motivic.KTheory.MilnorK.Basic
 ```
 
+General Milnor implementation work belongs in the independent Aglib checkout.
+The `Motivic.KTheory.MilnorK*` paths are import compatibility leaves; use
+Aglib's focused build and cache route when changing the shared theory.
+
+
 The build wrapper uses Aglib's pinned serial/resource-capped driver with this
 repository as the root. Exact commands and CLI options are available with
 `--help`. Receipts and writable outputs stay under this checkout's `.lake/`.

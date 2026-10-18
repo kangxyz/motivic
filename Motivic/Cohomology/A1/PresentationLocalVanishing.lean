@@ -21,18 +21,19 @@ variable {k : Type u} [Field k] {X A : SmoothSite (Spec (.of k))}
   (p : Y ⟶ X.left) (a : A ⟶ X) [IsOpenImmersion a.left]
   (z : Z ⟶ X.left) [IsClosedImmersion z] (s : Z ⟶ Y) (x : X.left)
   (e : OriginalEtalePresentation k X.hom p a.left z s x)
-local instance : IsNoetherianRing e.base := e.base_noetherian
-local instance : IsAffine e.target := e.target_affine
-local instance : IsOpenImmersion e.refinement := e.refinement_open
-local instance : IsFinite e.projectiveMap := e.projective_finite
-local instance : IsOpenImmersion e.inclusion := e.inclusion_open
-local instance : IsLocallyNoetherian e.compact := e.compact_noetherian
-local instance : IsLocallyNoetherian e.target :=
+local instance localVanishingBaseNoetherian : IsNoetherianRing e.base := e.base_noetherian
+local instance localVanishingTargetAffine : IsAffine e.target := e.target_affine
+local instance localVanishingRefinementOpen : IsOpenImmersion e.refinement := e.refinement_open
+local instance localVanishingProjectiveFinite : IsFinite e.projectiveMap := e.projective_finite
+local instance localVanishingInclusionOpen : IsOpenImmersion e.inclusion := e.inclusion_open
+local instance localVanishingCompactLocallyNoetherian : IsLocallyNoetherian e.compact :=
+  e.compact_noetherian
+local instance localVanishingTargetLocallyNoetherian : IsLocallyNoetherian e.target :=
   LocallyOfFiniteType.isLocallyNoetherian e.inclusion
-local instance : IsNoetherian e.target := {}
-local instance : SmoothOfRelativeDimension 1
+local instance localVanishingTargetNoetherian : IsNoetherian e.target := {}
+local instance localVanishingRelativeSmooth : SmoothOfRelativeDimension 1
     (e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _) := e.target_smooth
-local instance : IsFinite
+local instance localVanishingClosedFinite : IsFinite
     (e.closedInclusion ≫ e.inclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _) :=
   e.closed_finite
 

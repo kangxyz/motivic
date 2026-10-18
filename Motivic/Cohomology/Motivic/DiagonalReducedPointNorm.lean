@@ -22,7 +22,7 @@ variable (k : Type u) [Field k] [CharZero k]
 
 /-- The same norm on the genuine universe-lifted representable sections. -/
 def largeCycleNorm (q : ℕ) : sections (torusRepresentable k q) (point k) ⟶
-    AddCommGrpCat.of (ULift.{u + 1} (KTheory.MilnorK.K k q)) :=
+    AddCommGrpCat.of (ULift.{u + 1} (MilnorK.K k q)) :=
   AddCommGrpCat.ofHom
     { toFun := fun α => ULift.up (DiagonalPointNorm.cycleValue k q α.down)
       map_zero' := by
@@ -54,7 +54,7 @@ theorem relation_largeCycleNorm (q : ℕ) :
 
 /-- The objectwise norm descended through the actual reduced-torus cokernel. -/
 def reducedNormLarge (q : ℕ) : sections (reducedTorus k q) (point k) ⟶
-    AddCommGrpCat.of (ULift.{u + 1} (KTheory.MilnorK.K k q)) :=
+    AddCommGrpCat.of (ULift.{u + 1} (MilnorK.K k q)) :=
   (PreservesCokernel.iso
       ((evaluation (Cor k)ᵒᵖ AddCommGrpCat).obj (op (point k))) (torusRelation k q)).hom ≫
     cokernel.desc ((torusRelation k q).app (op (point k)))
@@ -69,7 +69,7 @@ def reducedNormLarge (q : ℕ) : sections (reducedTorus k q) (point k) ⟶
   exact cokernel.π_desc _ _ _
 
 /-- The norm of an actual reduced point section, valued in the original field's units. -/
-def reducedNorm (q : ℕ) : sections (reducedTorus k q) (point k) →+ KTheory.MilnorK.K k q where
+def reducedNorm (q : ℕ) : sections (reducedTorus k q) (point k) →+ MilnorK.K k q where
   toFun s := (reducedNormLarge k q s).down
   map_zero' := by rw [map_zero]; rfl
   map_add' s t := by rw [map_add]; rfl
@@ -87,7 +87,7 @@ variable {k}
 @[simp] theorem reducedNorm_rationalTuple (q : ℕ) (a : Fin q → kˣ) :
     reducedNorm k q ((toReducedTorus k q).hom.app (op (point k))
       (ULift.up ((Cor.graphFunctor k).map (DiagonalCycleSymbols.rationalTuple k q a)))) =
-        KTheory.MilnorK.symbol a := by
+        MilnorK.symbol a := by
   rw [reducedNorm_quotient, DiagonalPointNorm.cycleValue_rationalTuple]
 
 end Motivic.DiagonalReducedPointNorm

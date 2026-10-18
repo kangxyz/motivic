@@ -49,7 +49,7 @@ theorem repeatedZeroProjection (a : R) (K : ChainComplex (ModuleCat S) ℕ)
     (hK : FiniteHomology (finiteProjectionTotal R S [a, a, 0] K)) :
     chainEuler (finiteProjectionSource R S [a, a, 0] K)
         (finiteProjectionSource_finiteHomology R S [a, a, 0] K hK) =
-      ∑ᶠ p : MaximalSpectrum S, (Motivic.LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ᶠ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteProjectionLocal R S [a, a, 0] K p)
           (finiteProjectionLocal_finiteHomology R S [a, a, 0] K hK p) :=
   finiteProjection_chainEuler_finsum R S [a, a, 0] K hK
@@ -65,7 +65,7 @@ theorem emptyTotalFinite (K : ChainComplex (ModuleCat S) ℕ) (hK : FiniteHomolo
 /-- The empty-list weighted formula agrees with the previously established
 actual finite-algebra fiber Euler, rather than an assumed numerical comparison. -/
 theorem emptyWeightedEuler (K : ChainComplex (ModuleCat S) ℕ) (hK : FiniteHomology K) :
-    (∑ᶠ p : MaximalSpectrum S, (Motivic.LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+    (∑ᶠ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteProjectionLocal R S [] K p)
           (finiteProjectionLocal_finiteHomology R S [] K (emptyTotalFinite R S K hK) p)) =
       finiteAlgebraFiberEuler R S K (fun n => (-1) ^ n) hK := by
@@ -88,7 +88,7 @@ theorem unrestrictedContractibleProjection (s : List R) (K : ChainComplex (Modul
     chainEuler (finiteProjectionSource R S s
         (HomologicalComplex.tensorObj (singleComplex S 1) K))
         (finiteProjectionSource_finiteHomology R S s _ (contractibleTotalFinite R S s K)) =
-      ∑ᶠ p : MaximalSpectrum S, (Motivic.LocalLength.finiteAlgebraResidueDegree R S p : ℤ) *
+      ∑ᶠ p : MaximalSpectrum S, (Module.finiteAlgebraResidueDegree R S p : ℤ) *
         chainEuler (finiteProjectionLocal R S s
           (HomologicalComplex.tensorObj (singleComplex S 1) K) p)
           (finiteProjectionLocal_finiteHomology R S s _ (contractibleTotalFinite R S s K) p) :=
@@ -119,7 +119,7 @@ theorem residueProjection (s : List A)
     chainEuler (finiteProjectionSource A (IsLocalRing.ResidueField A) s K)
         (finiteProjectionSource_finiteHomology A (IsLocalRing.ResidueField A) s K hK) =
       ∑ᶠ p : MaximalSpectrum (IsLocalRing.ResidueField A),
-        (Motivic.LocalLength.finiteAlgebraResidueDegree A (IsLocalRing.ResidueField A) p : ℤ) *
+        (Module.finiteAlgebraResidueDegree A (IsLocalRing.ResidueField A) p : ℤ) *
           chainEuler (finiteProjectionLocal A (IsLocalRing.ResidueField A) s K p)
             (finiteProjectionLocal_finiteHomology A (IsLocalRing.ResidueField A) s K hK p) :=
   finiteProjection_chainEuler_finsum A (IsLocalRing.ResidueField A) s K hK
@@ -136,7 +136,7 @@ theorem twoBranchOddWeightedEuler :
     let hK := finiteHomology_single (ComplexShape.down ℕ) 1 _
       (Motivic.MotivicTest.LengthEulerFiniteAlgebra.twoBranchFiniteLength k)
     (∑ᶠ p : MaximalSpectrum (k × k),
-      (Motivic.LocalLength.finiteAlgebraResidueDegree k (k × k) p : ℤ) *
+      (Module.finiteAlgebraResidueDegree k (k × k) p : ℤ) *
         chainEuler (finiteProjectionLocal k (k × k) [] K p)
           (finiteProjectionLocal_finiteHomology k (k × k) [] K
             (emptyTotalFinite k (k × k) K hK) p)) = -2 := by

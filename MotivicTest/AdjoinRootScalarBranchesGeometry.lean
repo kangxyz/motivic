@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.AdjoinRootScalarBranches
-public import Motivic.KTheory.MilnorK3.ResidueBaseChangeSupport
+public import Aglib.KTheory.MilnorK.K3.ResidueBaseChangeSupport
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -21,7 +21,7 @@ applying any cycle class, norm, or motivic quotient.
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Polynomial AdjoinRoot
-open Motivic.KTheory.MilnorK3.PolynomialResidue
+open MilnorK.K3.PolynomialResidue
 open Motivic.AdjoinRootScalarBranches
 open scoped BigOperators
 

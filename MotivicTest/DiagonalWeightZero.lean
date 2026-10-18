@@ -67,17 +67,17 @@ def actual_derived_equivalence :
     motivicCohomology k 0 0 (SmoothSite.base (Spec (.of k))) ≃+ ℤ := motivicEquiv k
 
 /-- The original all-degree Milnor presentation computes the original derived group. -/
-def actual_milnor_equivalence : KTheory.MilnorK.K k 0 ≃+
+def actual_milnor_equivalence : MilnorK.K k 0 ≃+
     motivicCohomology k 0 0 (SmoothSite.base (Spec (.of k))) := milnorEquiv k
 
 /-- The zeroth Milnor symbol has the canonical integer normalization. -/
-theorem actual_empty_symbol_degree (a : KTheory.MilnorK.SymbolTuple k 0) :
-    motivicEquiv k (milnorEquiv k (KTheory.MilnorK.symbol a)) = 1 := by
+theorem actual_empty_symbol_degree (a : MilnorK.SymbolTuple k 0) :
+    motivicEquiv k (milnorEquiv k (MilnorK.symbol a)) = 1 := by
   rw [milnorEquiv_symbol, motivicEquiv_graphClass]
 
 /-- The canonical empty symbol is the actual structural graph class. -/
-theorem actual_empty_symbol_graph (a : KTheory.MilnorK.SymbolTuple k 0) :
-    milnorEquiv k (KTheory.MilnorK.symbol a) = graphClass k := milnorEquiv_symbol k a
+theorem actual_empty_symbol_graph (a : MilnorK.SymbolTuple k 0) :
+    milnorEquiv k (MilnorK.symbol a) = graphClass k := milnorEquiv_symbol k a
 
 /-- The inverse sends a negative integer to the literal negative graph multiple. -/
 theorem actual_derived_negative_generator :
@@ -85,7 +85,7 @@ theorem actual_derived_negative_generator :
   motivicEquiv_symm_apply k (-3)
 
 /-- The all-weight forward map is the canonical degree-zero equivalence. -/
-theorem actual_forward_symbol_zero [CharZero k] (x : KTheory.MilnorK.K k 0) :
+theorem actual_forward_symbol_zero [CharZero k] (x : MilnorK.K k 0) :
     DiagonalMilnorSymbol.motivicSymbol k 0 x = milnorEquiv k x :=
   motivicSymbol_zero k x
 

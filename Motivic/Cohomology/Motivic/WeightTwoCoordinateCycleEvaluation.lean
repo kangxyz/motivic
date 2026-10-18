@@ -336,7 +336,7 @@ end Pairs
 /-- On the actual rational graph, cycle evaluation is the original Milnor symbol. -/
 @[simp] theorem cycleValue_graph [CharZero k] (a b : kˣ) :
     cycleValue k ((Cor.graphFunctor k).map (WeightTwoSymbols.rationalPair k a b)) =
-      KTheory.MilnorK2.symbol a b := by
+      MilnorK.K2.symbol a b := by
   rw [cycleValue_eq_value_units_of_finite_fundamental
     (graphEmbedding (WeightTwoSymbols.rationalPair k a b)) (by
       rw [graphEmbedding_fst]

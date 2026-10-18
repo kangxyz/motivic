@@ -18,7 +18,7 @@ last test derives all finite homology lengths from the Artinian ideal quotient.
 
 universe u v
 
-open Motivic.LocalLength.KoszulPair
+open Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)

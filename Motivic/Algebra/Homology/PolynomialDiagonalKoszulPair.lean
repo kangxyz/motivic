@@ -23,7 +23,7 @@ universe u
 
 open CategoryTheory RingTheory.Sequence
 open scoped Pointwise
-open Motivic.LocalLength.KoszulPair
+open Module.KoszulPair
 
 namespace Motivic.PolynomialDiagonal
 

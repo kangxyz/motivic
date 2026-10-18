@@ -21,7 +21,7 @@ universe u v
 
 namespace MotivicTest.KoszulDimensionBound
 
-open Motivic.LocalLength
+open Module
 
 variable {R : Type u} [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
 

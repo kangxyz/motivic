@@ -116,10 +116,10 @@ maximal branch, with the canonical residue-field degrees of its actual map. -/
 theorem finiteFamily_coefficient_projection :
     chainEuler (coefficientComplex (finiteFamilyRestriction R B M) s)
         (finiteFamilyRestriction_finiteHomology R B M s J hJ) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         chainEuler (finiteFamilyLocalComplex R B M s q)
           (finiteFamilyLocal_finiteHomology R B M s J hJ q) := by
-  let : Finite (MaximalSpectrum B) := LocalLength.finiteAlgebra_maximalSpectrum_finite R B
+  let : Finite (MaximalSpectrum B) := Module.finiteAlgebra_maximalSpectrum_finite R B
   let : Fintype (MaximalSpectrum B) := Fintype.ofFinite _
   let K := coefficientComplex M (s.map (algebraMap R B))
   have hK := finiteFamilyWhole_finiteHomology R B M s J hJ
@@ -127,7 +127,7 @@ theorem finiteFamily_coefficient_projection :
     _ = chainEuler (finiteAlgebraRestrictedComplex R B K)
         (hK.finiteAlgebra_restrict R B K) :=
       homologyEuler_eq_of_quasiIso (coefficientRestrictIso (algebraMap R B) M s).hom _ _ _
-    _ = ∑ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+    _ = ∑ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         chainEuler (finiteAlgebraLocalizedComplex B K q)
           (hK.finiteAlgebra_localized R B K q) :=
       chainEuler_finiteAlgebra R B K hK
@@ -194,11 +194,11 @@ theorem finiteFamily_chainEuler_projection (t : Finset ℕ) (sign : ℕ → ℤ)
     (∑ n ∈ t, sign n *
       chainEuler (coefficientComplex (finiteFamilyRestriction R B (M n)) s)
         (finiteFamilyRestriction_finiteHomology R B (M n) s J (hJ n))) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ∑ n ∈ t, sign n * chainEuler (finiteFamilyLocalComplex R B (M n) s q)
           (finiteFamilyLocal_finiteHomology R B (M n) s J (hJ n) q) := by
   classical
-  let : Finite (MaximalSpectrum B) := LocalLength.finiteAlgebra_maximalSpectrum_finite R B
+  let : Finite (MaximalSpectrum B) := Module.finiteAlgebra_maximalSpectrum_finite R B
   let : Fintype (MaximalSpectrum B) := Fintype.ofFinite _
   have hLayer (n : ℕ) := finiteFamily_coefficient_projection R B (M n) s J (hJ n)
   simp_rw [hLayer, finsum_eq_sum_of_fintype, Finset.mul_sum]
@@ -215,7 +215,7 @@ theorem finiteFamily_cycle_realization (t : Finset ℕ) (sign : ℕ → ℤ)
     (∑ᶠ p : J.minimalPrimes, finiteFamilyGenericEuler R B M J hJ t sign p *
       chainEuler (coefficientComplex (ModuleCat.of R (R ⧸ p.1)) s)
         (fixedSupport_prime_finiteHomology s J p.1 p.2.le)) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ∑ n ∈ t, sign n * chainEuler (finiteFamilyLocalComplex R B (M n) s q)
           (finiteFamilyLocal_finiteHomology R B (M n) s J (hJ n) q) :=
   (finiteFamily_chainEuler_replacement R B M s J hJ t sign hs).symm.trans
@@ -316,7 +316,7 @@ theorem boundedFamily_chainEuler_projection (N : ℕ)
     (∑ᶠ n : ℕ, (-1 : ℤ) ^ n *
       chainEuler (coefficientComplex (finiteFamilyRestriction R B (M n)) s)
         (finiteFamilyRestriction_finiteHomology R B (M n) s J (hJ n))) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ∑ᶠ n : ℕ, (-1 : ℤ) ^ n * chainEuler (finiteFamilyLocalComplex R B (M n) s q)
           (finiteFamilyLocal_finiteHomology R B (M n) s J (hJ n) q) := by
   rw [finsum_eq_sum_of_support_subset _
@@ -337,7 +337,7 @@ theorem boundedFamily_cycle_realization (N : ℕ)
       finiteFamilyGenericEuler R B M J hJ (Finset.range (N + 1)) (fun n => (-1) ^ n) p *
         chainEuler (coefficientComplex (ModuleCat.of R (R ⧸ p.1)) s)
           (fixedSupport_prime_finiteHomology s J p.1 p.2.le)) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ∑ᶠ n : ℕ, (-1 : ℤ) ^ n * chainEuler (finiteFamilyLocalComplex R B (M n) s q)
           (finiteFamilyLocal_finiteHomology R B (M n) s J (hJ n) q) :=
   (boundedFamily_chainEuler_replacement R B M s J hJ N hzero hs).symm.trans
@@ -353,7 +353,7 @@ theorem boundedFamily_cycle_realization_finsum (N : ℕ)
         (finiteFamilyRestriction R B (M n)) J (hJ n) p) *
         chainEuler (coefficientComplex (ModuleCat.of R (R ⧸ p.1)) s)
           (fixedSupport_prime_finiteHomology s J p.1 p.2.le)) =
-      ∑ᶠ q : MaximalSpectrum B, (LocalLength.finiteAlgebraResidueDegree R B q : ℤ) *
+      ∑ᶠ q : MaximalSpectrum B, (Module.finiteAlgebraResidueDegree R B q : ℤ) *
         ∑ᶠ n : ℕ, (-1 : ℤ) ^ n * chainEuler (finiteFamilyLocalComplex R B (M n) s q)
           (finiteFamilyLocal_finiteHomology R B (M n) s J (hJ n) q) := by
   simpa only [boundedFamilyGenericEuler_eq_finsum R B M J hJ N hzero] using

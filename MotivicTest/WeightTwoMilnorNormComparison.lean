@@ -19,8 +19,8 @@ mixed-symbol generation nor transfer compatibility is an input hypothesis.
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
-open Motivic.KTheory.MilnorK2 Motivic.KTheory.MilnorK3.PolynomialResidue
-open Motivic.KTheory.MilnorK3.PolynomialNorm Motivic.WeightTwoMilnorSymbol
+open MilnorK.K2 MilnorK.K3.PolynomialResidue
+open MilnorK.K3.PolynomialNorm Motivic.WeightTwoMilnorSymbol
 open Motivic.WeightTwoCorestriction Motivic.WeightTwoMilnorNormComparison
 
 universe u
@@ -35,7 +35,7 @@ local instance : CharZero (AdjoinRoot p.val) :=
   charZero_of_injective_algebraMap (algebraMap k (AdjoinRoot p.val)).injective
 
 /-- The full actual raw comparison holds for every original Milnor element. -/
-theorem actual_raw (x : K2 (AdjoinRoot p.val)) :
+theorem actual_raw (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     (rawMilnorSymbol k (polynomialNorm p x) :
         (motivicRawBaseComplex k 2).homology 2) =
       corestriction (k := k) (rawMilnorSymbol (AdjoinRoot p.val) x) :=
@@ -56,14 +56,14 @@ local instance : HasDerivedCategory
   HasDerivedCategory.standard _
 
 /-- The comparison uses the original derived integral motivic cohomology. -/
-theorem actual_derived (x : K2 (AdjoinRoot p.val)) :
+theorem actual_derived (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     (motivicMilnorSymbol k (polynomialNorm p x) :
         motivicCohomology k 2 2 (SmoothSite.base (Spec (.of k)))) =
       motivicCorestriction (k := k) (motivicMilnorSymbol (AdjoinRoot p.val) x) :=
   derived_norm p x
 
 /-- All natural coefficient levels, including composite levels, are retained. -/
-theorem actual_finite (n : ℕ) (x : K2 (AdjoinRoot p.val)) :
+theorem actual_finite (n : ℕ) (x : MilnorK.K2.Group (AdjoinRoot p.val)) :
     (finiteMilnorSymbol k n (polynomialNorm p x) :
         motivicFiniteCohomology k 2 2 n (SmoothSite.base (Spec (.of k)))) =
       finiteCorestriction (k := k) n (finiteMilnorSymbol (AdjoinRoot p.val) n x) :=

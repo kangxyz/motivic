@@ -61,7 +61,7 @@ theorem primeZeroHead [IsNoetherianRing R] (p : Ideal R) (a : R) (s : List R)
 regular-head quasi-isomorphism; no tail regularity is assumed. -/
 theorem primeRegularHead (p : Ideal R) [p.IsPrime] (a : R) (s : List R)
     (ha : a ∉ p) : QuasiIso (koszulDimensionReduction (ModuleCat.of R (R ⧸ p)) a s) :=
-  koszulDimensionReduction_quasiIso _ _ _ (Motivic.LocalLength.scalar_regular_primeQuotient p a ha)
+  koszulDimensionReduction_quasiIso _ _ _ (Module.scalar_regular_primeQuotient p a ha)
 
 /-- The strict dimension bound survives passing to literal quotient
 coefficients in the regular prime-quotient branch. -/
@@ -71,7 +71,7 @@ theorem primeDimensionDrop [IsNoetherianRing R] [IsLocalRing R]
     (hd : Module.supportDim R (R ⧸ p) < (a :: s).length) :
     Module.supportDim R ((scalarQuotientFunctor a).obj (ModuleCat.of R (R ⧸ p))) < s.length :=
   koszulDimensionReduction_supportDim_lt _ _ _
-    (Motivic.LocalLength.scalar_regular_primeQuotient p a ha) hm hd
+    (Module.scalar_regular_primeQuotient p a ha) hm hd
 
 /-- The tail's actual quotient coefficients retain the required Artinian
 support hypothesis, even before regularity is used. -/

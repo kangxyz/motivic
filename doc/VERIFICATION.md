@@ -77,7 +77,8 @@ norm, diagonal and weight-one computation endpoints retain their exact imported
 Linux source/check evidence; no fresh whole-library replay is claimed.
 [Historical records](provenance/README.md) identify their source hashes and
 compiler separately. Source scans, caches and successful conditional theorems
-do not discharge explicit premises. Strict A1 invariance remains open.
+do not discharge explicit premises. The later infinite-perfect-field strict A1
+entry below supersedes this initial open frontier under its exact hypotheses.
 
 The hosted workflow is configured to check actual changed leaves and affected
 public consumers, with `Motivic` and `MotivicTest` on initial setup or pin/tooling
@@ -303,3 +304,82 @@ audit and all 103 exact-origin declaration checks. Its completed log reports
 builds, and a native-export cache hit without compilation. This validates the
 current public production/test projection against the pinned hosted environment.
 The source Epi and current-degree HI assumptions remain explicit.
+
+## Strict A1 invariance over infinite perfect fields
+
+Archive SHA256:
+`6e33d7d1c1417882b6686f76e6940b6092a9c9b6b6f6c548b062120de81eca54`,
+based on `b368f696`. The admitted delta is 70 new production files, nine new
+tests, five production updates and one test update. Eleven unbound new sources
+remain outside production under the [source provenance](provenance/strict-a1-infinite-perfect-20261018/README.md).
+Eighty-two admitted sources are byte-exact to the archive. Two helpers and their
+covering-norm consumer use canonical Aglib imports and native `Module` names;
+their mathematical statements, conditions and proofs are preserved modulo
+those qualifications. The root README and curated default imports are unchanged.
+
+Independent ordinary mathematical/source review accepted the actual original
+ordinary Nisnevich cohomology projection isomorphism in every natural degree
+for HI sheaves with transfers over an infinite perfect field. The public leaf is
+`Motivic.Cohomology.A1.StrictInvariance`; ordinary `HasExt.{u+1}` and the original
+coefficient universe remain explicit. The canonical presheaf boundary Epi,
+marked H1 and positive restriction Monos, and lower-degree strong-induction
+suppliers are supplied. No positive-HI or puncture-Mono theorem family remains
+an external input to that final theorem. This is ordinary result-specific
+review, not an established-status assignment.
+
+All 85 admitted sources have matching supplied source-status and frozen-hash
+evidence. The final five-file Linux scope includes successful production and
+terminal consumer receipts and 50 exact-origin declaration checks. Two earlier
+raw producer receipts are absent; they are not invented or relabeled as fresh
+native checks. The successful downstream records and final source bindings are
+retained separately. No whole new strict endpoint replay is claimed locally.
+
+The two adapted helpers compiled against the current Aglib provider. Their nine
+exact-origin declarations passed the standard-foundations audit and all 15
+applicable declaration linters. The corrected `MotivicTest.CoveringNormLengths`
+also compiled, reporting 11 declarations checked for lint and standard axioms,
+and text/style success for itself and both helpers. The 85-file source delta
+has exact-file text/style coverage. Source checks pass for 3,100 Lean sources,
+and the six dependency/source-boundary fixtures pass after the exact Aglib pin
+update. The [fixed check record](provenance/strict-a1-infinite-perfect-20261018/CHECKS.json)
+separates current native checks from historical Linux evidence.
+
+All 43 source adaptations within the strict consumer closure already belong to
+the Milnor migration's selected downstream validation scope. The two newly
+adapted helpers are outside that closure. A separate full strict-closure replay
+would duplicate that integration work. Finite-field descent and the separate
+frame/standard-triple/norm/Picard program remain open; higher-Chow and spectrum
+comparisons remain separate.
+
+## General Milnor K-theory upstream integration
+
+The independent Aglib dependency is pinned to
+`b11b71d11bf03cf231f0e06b947a7b63d4344a9e`. Its source correspondence records
+273 moved implementation modules, one generic polynomial extraction and 170
+moved tests. `MilnorK.K F n` is canonical; the tensor presentations live in
+`MilnorK.K2.Group` and `MilnorK.K3.Group`. Motivic keeps its two actual endpoint
+geometry applications and comparison interfaces. Old module paths are thin
+imports, with the six existing native-alias adapters retained. Source notices
+and the seven non-Apache implementation exceptions move with their owner.
+
+Ordinary source/API correspondence review passed. The upstream selected
+production, declaration/style checks, 147 affected tests, 23 retained unchanged
+tests and standalone client passed. Its final hosted CI passed library and
+client checks and published the matching native cache. The header-credit guard
+and mixed-format test-umbrella regressions pass; legacy audit leaves keep their
+original visibility and private-origin coverage.
+
+Current native downstream validation compiled 342 modules and reused 279
+controlled compatible geometry outputs, with 264 current Aglib providers and
+168 reached foreign interfaces bound to actual artifacts. All three selected
+production endpoints passed. Five direct consumers of symbols, naturality,
+weight-two norms, prime induction and Koszul replacement also passed under the
+actual test-package options. Compatible outputs survived every source repair;
+no mathematical heartbeat bound changed.
+
+[The integration check record](provenance/milnor-k-aglib-20261018/CHECKS.json)
+identifies the exact endpoint/test sources, artifacts and successful guards.
+It distinguishes controlled native overlays from a fresh rehashed Lake build
+of the complete committed-pin package. The true public-root and independent
+Motivic client remain selected for hosted validation with the published Linux
+cache; no unbound Darwin artifact is adopted to claim local completion.

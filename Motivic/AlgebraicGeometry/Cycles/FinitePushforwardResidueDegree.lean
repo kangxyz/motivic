@@ -60,7 +60,7 @@ instance localAlgebraQuotientResidueAlgebra :
 
 /-- The maximal quotient and localized residue field have the same literal target residue action. -/
 theorem quotientResidue_base_square :
-    (LocalLength.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q).toRingHom.comp
+    (Module.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q).toRingHom.comp
         (algebraMap (IsLocalRing.ResidueField (Localization.AtPrime p.asIdeal))
           (localAlgebra A B p ⧸ q.asIdeal)) =
       IsLocalRing.ResidueField.map
@@ -68,13 +68,13 @@ theorem quotientResidue_base_square :
   apply RingHom.ext
   intro z
   obtain ⟨a, rfl⟩ := IsLocalRing.residue_surjective z
-  change LocalLength.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q
+  change Module.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q
       (algebraMap (Localization.AtPrime p.asIdeal) (localAlgebra A B p ⧸ q.asIdeal) a) =
     IsLocalRing.residue _
       (algebraMap (Localization.AtPrime p.asIdeal) (Localization.AtPrime q.asIdeal) a)
   rw [IsScalarTower.algebraMap_apply (Localization.AtPrime p.asIdeal) (localAlgebra A B p)
     (localAlgebra A B p ⧸ q.asIdeal)]
-  rw [(LocalLength.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q).commutes]
+  rw [(Module.finiteAlgebraResidueQuotientEquiv (localAlgebra A B p) q).commutes]
   rw [← IsScalarTower.algebraMap_apply (Localization.AtPrime p.asIdeal)
     (localAlgebra A B p) (IsLocalRing.ResidueField (Localization.AtPrime q.asIdeal))]
   rfl
@@ -83,7 +83,7 @@ theorem quotientResidue_base_square :
 def sourceQuotientResidueIso :
     CommRingCat.of (localAlgebra A B p ⧸ q.asIdeal) ≅
       (Spec B).residueField (sourcePoint A B p q).1 :=
-  (LocalLength.finiteAlgebraResidueQuotientEquiv
+  (Module.finiteAlgebraResidueQuotientEquiv
     (localAlgebra A B p) q).toRingEquiv.toCommRingCatIso ≪≫
     sourceSchemeResidueIso A B p q
 
@@ -103,7 +103,7 @@ theorem sourceQuotientResidueIso_base_square :
         (localAlgebra A B p ⧸ q.asIdeal)) :
       CommRingCat.of p.asIdeal.ResidueField ⟶
         CommRingCat.of (localAlgebra A B p ⧸ q.asIdeal)) ≫
-        (LocalLength.finiteAlgebraResidueQuotientEquiv
+        (Module.finiteAlgebraResidueQuotientEquiv
           (localAlgebra A B p) q).toRingEquiv.toCommRingCatIso.hom =
       CommRingCat.ofHom (IsLocalRing.ResidueField.map
         (algebraMap (Localization.AtPrime p.asIdeal) (Localization.AtPrime q.asIdeal))) := by
@@ -123,7 +123,7 @@ theorem sourceSchemeResidue_finite :
       (sourcePoint A B p q).1 (sourcePoint A B p q).2).hom.toAlgebra
   have : Module.Finite (IsLocalRing.ResidueField (Localization.AtPrime p.asIdeal))
       (localAlgebra A B p ⧸ q.asIdeal) :=
-    LocalLength.finiteAlgebra_residue_finite (Localization.AtPrime p.asIdeal) (localAlgebra A B p) q
+    Module.finiteAlgebra_residue_finite (Localization.AtPrime p.asIdeal) (localAlgebra A B p) q
   exact Module.Finite.of_equiv_equiv
     (Scheme.Spec.residueFieldIso A p).symm.commRingCatIsoToRingEquiv
     (sourceQuotientResidueIso A B p q).commRingCatIsoToRingEquiv
@@ -131,7 +131,7 @@ theorem sourceSchemeResidue_finite :
 
 /-- The finite-algebra weight is exactly the residue degree used by finite scheme pushforward. -/
 theorem finiteAlgebraResidueDegree_eq_schemeResidueDegree :
-    LocalLength.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
+    Module.finiteAlgebraResidueDegree (Localization.AtPrime p.asIdeal)
         (localAlgebra A B p) q =
       (Spec.map (CommRingCat.ofHom (algebraMap A B) : A ⟶ B)).residueDegree
         (sourcePoint A B p q).1 := by

@@ -14,7 +14,7 @@ These checks retain higher homology and only require regularity on the ring
 for the Tor comparison, not regularity on the coefficient module.
 -/
 
-open CategoryTheory Motivic.LengthEuler Motivic.LocalLength.KoszulPair
+open CategoryTheory Motivic.LengthEuler Module.KoszulPair
 
 universe u v
 

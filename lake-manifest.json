@@ -115,10 +115,10 @@
       "type": "git",
       "subDir": null,
       "scope": "",
-      "rev": "25c37780264f0da94f5bb6bd31cc089d26f2da80",
+      "rev": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
       "name": "Aglib",
       "manifestFile": "lake-manifest.json",
-      "inputRev": "25c37780264f0da94f5bb6bd31cc089d26f2da80",
+      "inputRev": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
       "inherited": false,
       "configFile": "lakefile.toml"
     }

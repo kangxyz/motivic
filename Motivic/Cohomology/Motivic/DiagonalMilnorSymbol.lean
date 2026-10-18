@@ -6,8 +6,8 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.DiagonalCoordinateInsertion
-public import Motivic.KTheory.MilnorK.LowDegree
-public import Motivic.KTheory.MilnorK.CompatibilityK2
+public import Aglib.KTheory.MilnorK.LowDegree
+public import Aglib.KTheory.MilnorK.CompatibilityK2
 public import Motivic.Cohomology.Motivic.WeightOneEquivalence
 public import Motivic.Cohomology.Motivic.WeightTwoMilnorSymbol
 
@@ -33,7 +33,7 @@ universe w u
 
 namespace Motivic.DiagonalMilnorSymbol
 
-open KTheory DiagonalTopDegree DiagonalCycleSymbols
+open DiagonalTopDegree DiagonalCycleSymbols
 
 variable (k : Type u) [Field k] [CharZero k]
 

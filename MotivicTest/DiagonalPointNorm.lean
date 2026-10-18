@@ -13,7 +13,7 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.DiagonalCycleSymbols Motivic.DiagonalPointNorm Motivic.KTheory.MilnorK
+open Motivic.DiagonalCycleSymbols Motivic.DiagonalPointNorm MilnorK
 
 universe u
 

@@ -26,7 +26,7 @@ universe u v
 open CategoryTheory CategoryTheory.Limits
 open scoped ZeroObject
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -121,4 +121,4 @@ theorem projectiveResolution_π [Module.Projective R M]
     (ha : IsSMulRegular M a) (hb : IsSMulRegular (PrincipalQuotient M a) b) :
     (projectiveResolution M a b ha hb).π = augmentation M a b := rfl
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

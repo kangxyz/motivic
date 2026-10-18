@@ -1,0 +1,153 @@
+{
+  "source_archive_sha256": "6e33d7d1c1417882b6686f76e6940b6092a9c9b6b6f6c548b062120de81eca54",
+  "repository_baseline": "b368f6965228e63643380033ec224335bcd24a2c",
+  "admission": {
+    "sources": 85,
+    "archive_exact": 82,
+    "canonical_namespace_or_import_adaptations": 3,
+    "unbound_candidates_outside_production": 11
+  },
+  "ordinary_review": {
+    "strict_all_degree_theorem": "PASS for original ordinary Nisnevich projection maps over infinite perfect fields; ordinary HasExt, coefficient universe and HI assumptions retained.",
+    "integration_correspondence": "Two helpers match exact canonical import and Module qualifications. The covering-norm test has the same one-name correction.",
+    "status_boundary": "No established-status assignment."
+  },
+  "source_structure": {
+    "status": "passed",
+    "sources": 3100,
+    "includes_downstream": 1
+  },
+  "text_style": {
+    "status": "passed",
+    "archive_sources": 85,
+    "repaired_covering_consumer": "Fresh built-in text/style coverage includes the current two helpers and corrected test."
+  },
+  "historical_evidence": {
+    "all_admitted_sources": "Matching source status and frozen hash evidence; incoming successful Linux endpoint and test records retained.",
+    "final_five_source_scope_declarations": 50,
+    "missing_earlier_raw_receipts": [
+      ".lake/verification/boundary-epi-canonical-repair2/graph-build.json",
+      ".lake/verification/positive-cartier-restriction-production2/graph-build.json"
+    ],
+    "boundary": "Those earlier producer receipts are not invented; successful downstream terminal receipts and final frozen bindings remain."
+  },
+  "current_native": {
+    "toolchain": {
+      "path": "/Users/kang/Documents/New project/tmp/aglib/lean-toolchain",
+      "sha256": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b",
+      "compiler_path": "/Users/kang/.elan/toolchains/leanprover--lean4---v4.34.1/bin/lean",
+      "compiler_sha256": "1b370cfcbf44e80d1b004ab1b1ab9a4c73951f9f7c242140bcff9bc577576554"
+    },
+    "production_options": {
+      "autoImplicit": false,
+      "maxHeartbeats": 200000,
+      "weak.linter.mathlibStandardSet": true,
+      "warningAsError": true
+    },
+    "helpers": {
+      "Motivic.Aglib.RingTheory.DVRNormCartierLength": {
+        "source_sha256": "d6b5cb1d190a1a627e8656a18c6353cee809b16fc7441ede4975ed9bc99aec4f",
+        "setup_sha256": "57bbdb43bd354af232e1049946a370e3ef6f44d9acc9bd9179b586a2783ae4ce",
+        "artifacts": {
+          "olean": "1dbe8b79eb10a46ae76133583c5eb58c05f9fe51ffa44b44bb3eaa5555f5269e",
+          "olean.server": "e4c4a34e36543b4617f88191af93d4f71eb9c849e498670ad87660446315dfda",
+          "olean.private": "609684fb08d693cd2ebb05de051bb42062b8758d41886ef613aa2bd4d3f9af30",
+          "ir.sig": "02e4d903597daaf179ad3e56c350b81ae5e925db0c8661da32951b465e733aaf",
+          "ir": "29cb867310452c812d1cb555b1df6194456ec739bf178e374d3462cd859922da",
+          "ilean": "0705265ca9eec5db2b49ddb2ae570428bebaca31b5dda0eb63c07a3716f17ead",
+          "c": "a395075381367cca40d552926addfd9ab1ceb81f68ded72e0f3fa953b7afb047"
+        },
+        "receipt": {
+          "path": "native-checks/Motivic.Aglib.RingTheory.DVRNormCartierLength.guard.json",
+          "sha256": "54ec2d12a32a1eaeb83c62b9b3c8d50506002d4b5afb3394c884ea0c9f3c68cd"
+        },
+        "guard_result": {
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true,
+          "duration_seconds": 4.47929845796898,
+          "peak_rss_bytes": 2114158592
+        }
+      },
+      "Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm": {
+        "source_sha256": "275954416138866c2fe2fb08bb684d3797c21286609e00d19072deef7062b81d",
+        "setup_sha256": "f829adc0d0b003e60d9227fc222adc0e3a97c0ca55205250e61712993ff4aee4",
+        "artifacts": {
+          "olean": "d02746c22c8365110f6253807dd26efc831e52557bac2ac8c89cf503fea2c99f",
+          "olean.server": "e552194775f3aa23c281f7f51ca4553b3df3706040ea4a0d91f63771de81ff0c",
+          "olean.private": "007209e867e666e82770e0175a2df06ca6ccfbc9568fd8a8bf90a96be4254937",
+          "ir.sig": "abc69fded9a52c6a74bd68572c362485341692905407814f586333f6e384c055",
+          "ir": "62f16b070aa488c558ff0e3642a035e26edeb0e0805d79ea74fe0873574f4186",
+          "ilean": "ff4c6fa9e2c0e2bb9b37e4d5c53d7a4173693d1f4293b78876131a61c9f012be",
+          "c": "4e821cf0f52a07b9a26129fa44a7a7c5de5ccaf74ff02274bea6c1f729dde147"
+        },
+        "receipt": {
+          "path": "native-checks/Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm.guard.json",
+          "sha256": "03ed473c21a5e323c11cfc92bb3383d06b20097068cf08c5d957bbf234b4e2aa"
+        },
+        "guard_result": {
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true,
+          "duration_seconds": 4.1799490000121295,
+          "peak_rss_bytes": 2111766528
+        }
+      }
+    },
+    "declaration_audit": {
+      "declarations": 9,
+      "linters": 15,
+      "findings": 0,
+      "allowed_axioms": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "receipt": {
+        "path": "native-checks/AuditTwo-3.guard.json",
+        "sha256": "d0e6a989ecca76097ee305b43f0b8c00fa645b094d0e87dcceed72accefc8904"
+      },
+      "log": {
+        "path": "native-checks/AuditTwo-3.log",
+        "sha256": "7393e2da74d7b3c5116b555e73035f0b12bff6c9475c6218ad4d914fc3e2df12"
+      }
+    },
+    "affected_consumer": {
+      "module": "MotivicTest.CoveringNormLengths",
+      "source_sha256": "617db1130d1b2b32911983d684f5c3dce216d94eb7c2d485c317ee025a99bf45",
+      "options": {
+        "autoImplicit": false,
+        "maxHeartbeats": 200000,
+        "warningAsError": true
+      },
+      "receipt": {
+        "path": "native-checks/CoveringNormLengths.guard.json",
+        "sha256": "cd383f81db85c9e7bd452162095034fe6ce828493df577d50265a02dacb297e5"
+      },
+      "log": {
+        "path": "native-checks/CoveringNormLengths.log",
+        "sha256": "fe30e9a6b9ef99776769a2bd67d4569ce953ab3b2c64884e0a4071896c991285"
+      },
+      "guard_result": {
+        "state": "completed",
+        "exit_code": 0,
+        "guard_failure": null,
+        "owned_group_gone": true,
+        "duration_seconds": 5.376667542033829,
+        "peak_rss_bytes": 2153873408
+      },
+      "coverage": {
+        "exact_origin_declarations_lint_and_standard_axioms": 11,
+        "source_text_style_modules": [
+          "Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm",
+          "Motivic.Aglib.RingTheory.DVRNormCartierLength",
+          "MotivicTest.CoveringNormLengths"
+        ],
+        "declaration_linter_count": "Not emitted by test; no extra count inferred.",
+        "independent_lint_replay": "Not performed; original two-helper independent15-linter evidence retained."
+      }
+    }
+  },
+  "current_full_strict_endpoint_native_replay": false,
+  "dependency_direction": "All 43 source adaptations inside the strict closure are already in the Milnor consumer validation scope. The two new helper adaptations and covering-norm test are outside that closure; no separate full closure replay is claimed."
+}

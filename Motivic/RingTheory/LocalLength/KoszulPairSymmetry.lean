@@ -21,7 +21,7 @@ it is not the full associativity or projection formula for correspondence cycles
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] (a b : R)
@@ -117,4 +117,4 @@ theorem eulerMultiplicity_of_regular (ha : IsSMulRegular M a)
   let := subsingleton_H₂_of_regular M a b ha
   simp [eulerMultiplicity]
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

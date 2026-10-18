@@ -19,7 +19,7 @@ support of the middle module, with no assumed finite homology or regular pair.
 
 universe u v
 
-open Motivic.LocalLength.KoszulPair
+open Module.KoszulPair
 
 namespace MotivicTest.KoszulPairSupportEuler
 

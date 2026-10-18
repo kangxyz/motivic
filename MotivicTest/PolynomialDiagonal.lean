@@ -21,7 +21,7 @@ regularity of a coefficient support is an input.
 universe u
 
 open CategoryTheory RingTheory.Sequence MvPolynomial
-open Motivic.PolynomialDiagonal Motivic.LocalLength.KoszulPair
+open Motivic.PolynomialDiagonal Module.KoszulPair
 
 variable (R : Type u) [CommRing R]
 

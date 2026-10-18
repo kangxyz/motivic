@@ -31,7 +31,7 @@ multiplicity is the alternating sum of local Tor lengths.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M]
@@ -128,4 +128,4 @@ theorem subsingleton_H₂_of_regular (ha : IsSMulRegular M a) :
   refine ⟨fun x y => Subtype.ext ?_⟩
   exact d₂_injective_of_regular M a b ha (x.property.trans y.property.symm)
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

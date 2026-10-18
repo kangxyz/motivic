@@ -17,8 +17,8 @@ set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open AlgebraicGeometry.FiniteFlatCurve AlgebraicGeometry.FiniteAffineEndpointBranches
-open Motivic.KTheory.MilnorK Motivic.KTheory.MilnorK.AffineEndpointGeometry
-open IsDedekindDomain Motivic.KTheory
+open MilnorK MilnorK.AffineEndpointGeometry
+open IsDedekindDomain
 open scoped Polynomial
 
 universe u

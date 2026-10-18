@@ -133,15 +133,15 @@ theorem sum_local_length_eq_natDegree (p : k[X]) (hp : p.Monic)
   let : IsArtinianRing (AdjoinRoot p) := .of_finite k _
   let : Fintype (MaximalSpectrum (AdjoinRoot p)) := Fintype.ofFinite _
   have hdeg (q : MaximalSpectrum (AdjoinRoot p)) :
-      (Motivic.LocalLength.finiteAlgebraResidueDegree k (AdjoinRoot p) q : ℕ∞) = 1 := by
-    rw [← Motivic.LocalLength.finiteAlgebra_residue_length k (AdjoinRoot p) q,
+      (Module.finiteAlgebraResidueDegree k (AdjoinRoot p) q : ℕ∞) = 1 := by
+    rw [← Module.finiteAlgebra_residue_length k (AdjoinRoot p) q,
       Module.length_eq_finrank]
     obtain ⟨a, ha⟩ := hroot q
     rw [Module.finrank_of_bijective_algebraMap
       ⟨(algebraMap k (AdjoinRoot p ⧸ q.asIdeal)).injective,
         quotient_scalar_surjective p q a ha⟩]
     rfl
-  have h := Motivic.LocalLength.finiteAlgebra_length_eq_sum
+  have h := Module.finiteAlgebra_length_eq_sum
     (R := k) (S := AdjoinRoot p) (M := AdjoinRoot p) Module.length_ne_top
   have hlocal (q : MaximalSpectrum (AdjoinRoot p)) :
       Module.length (Localization.AtPrime q.asIdeal)

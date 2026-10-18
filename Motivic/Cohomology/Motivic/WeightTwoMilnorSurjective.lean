@@ -27,13 +27,13 @@ universe w u
 
 namespace Motivic.WeightTwoMilnorSurjective
 
-open KTheory.MilnorK2 KTheory.MilnorK3.PolynomialNorm
+open MilnorK.K2 MilnorK.K3.PolynomialNorm
 open WeightTwoMilnorSymbol WeightTwoMilnorNormComparison
 
 variable (k : Type u) [Field k] [CharZero k]
 
 /-- A literal Milnor preimage of a signed point cycle, before quotienting by boundaries. -/
-def cyclePreimage (α : WeightOnePointNorm.point k ⟶ WeightTwoSymbols.target k) : K2 k :=
+def cyclePreimage (α : WeightOnePointNorm.point k ⟶ WeightTwoSymbols.target k) : MilnorK.K2.Group k :=
   α.sum fun Z n => n • polynomialNorm (WeightTwoPointPresentation.polynomial Z)
     (symbol (WeightTwoPointPresentation.polynomialUnit Z 0)
       (WeightTwoPointPresentation.polynomialUnit Z 1))

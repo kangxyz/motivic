@@ -1,0 +1,33 @@
+{
+  "state": "completed",
+  "command": [
+    "lake",
+    "env",
+    "python3",
+    "/private/tmp/r5-investigations/motivic-strict-a1-infinite-perfect/integration_review/exec-test.py"
+  ],
+  "cwd": "/Users/kang/Documents/New project/tmp/aglib",
+  "pid": 1152,
+  "pgid": 1152,
+  "exit_code": 0,
+  "guard_failure": null,
+  "peak_rss_bytes": 2153873408,
+  "duration_seconds": 5.376667542033829,
+  "limits": {
+    "lean_memory_mb": 24576,
+    "rss_limit_mb": 25600,
+    "sample_seconds": 0.1,
+    "physical_memory_bytes": 68719476736,
+    "lean_threads": 1,
+    "max_active_lean": 1
+  },
+  "owned_group_gone": true,
+  "last_members": [
+    {
+      "pid": 1152,
+      "rss_bytes": 0,
+      "executable": "<defunct>",
+      "command_path": "<defunct>"
+    }
+  ]
+}

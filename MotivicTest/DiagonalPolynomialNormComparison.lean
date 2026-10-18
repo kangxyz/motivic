@@ -20,8 +20,8 @@ are retained explicitly. Zero and composite coefficient levels are exercised.
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
-open KTheory.MilnorK KTheory.MilnorK.PolynomialResidue
-open KTheory.MilnorK.PolynomialNorm DiagonalMilnorSymbol WeightTwoCorestriction
+open MilnorK MilnorK.PolynomialResidue
+open MilnorK.PolynomialNorm DiagonalMilnorSymbol WeightTwoCorestriction
 open DiagonalPolynomialNormComparison
 
 universe w u

@@ -96,7 +96,7 @@ theorem coordinateFlatLocalHomology_length [IsLocalRing A] [IsLocalRing B]
 end Motivic.Koszul
 
 
-namespace Motivic.LocalLength
+namespace Module
 
 variable {A B R S : Type u} [CommRing A] [CommRing B] [CommRing R] [CommRing S]
   [IsLocalRing A] [IsLocalRing R]
@@ -128,7 +128,7 @@ theorem closedFiberIdeal_comap :
 /-- The actual two closed fibers are compared by the literal quotient map
 induced by the support-stalk quotient, retaining all nilpotents. -/
 def closedFiberQuotientEquiv :
-    Koszul.coefficientClosedFiber g ≃+* Koszul.coefficientClosedFiber f :=
+    Motivic.Koszul.coefficientClosedFiber g ≃+* Motivic.Koszul.coefficientClosedFiber f :=
   RingEquiv.ofBijective
     (Ideal.quotientMap ((IsLocalRing.maximalIdeal R).map f) τ
       (closedFiberIdeal_comap σ hσ τ hτ g f hcomm hker).ge)
@@ -144,13 +144,13 @@ def closedFiberQuotientEquiv :
 /-- The closed-fiber comparison preserves the actual coefficient-ring scalar
 map, not merely the abstract quotient rings. -/
 def closedFiberQuotientModuleIso :
-    ModuleCat.of B (Koszul.coefficientClosedFiber g) ≅
+    ModuleCat.of B (Motivic.Koszul.coefficientClosedFiber g) ≅
       (ModuleCat.restrictScalars τ).obj
-        (ModuleCat.of S (Koszul.coefficientClosedFiber f)) := by
+        (ModuleCat.of S (Motivic.Koszul.coefficientClosedFiber f)) := by
   let e := closedFiberQuotientEquiv σ hσ τ hτ g f hcomm hker
   let N := (ModuleCat.restrictScalars τ).obj
-    (ModuleCat.of S (Koszul.coefficientClosedFiber f))
-  let l : ModuleCat.of B (Koszul.coefficientClosedFiber g) ≃ₗ[B] N :=
+    (ModuleCat.of S (Motivic.Koszul.coefficientClosedFiber f))
+  let l : ModuleCat.of B (Motivic.Koszul.coefficientClosedFiber g) ≃ₗ[B] N :=
     { e.toAddEquiv with
       map_smul' := by
         intro b x
@@ -164,9 +164,9 @@ include hσ hτ hcomm hker in
 /-- Closed-fiber lengths agree under the actual Cartesian quotient square;
 surjectivity compares their different original scalar rings. -/
 theorem closedFiberQuotient_length :
-    Module.length B (Koszul.coefficientClosedFiber g) =
-      Module.length S (Koszul.coefficientClosedFiber f) :=
+    Module.length B (Motivic.Koszul.coefficientClosedFiber g) =
+      Module.length S (Motivic.Koszul.coefficientClosedFiber f) :=
   (closedFiberQuotientModuleIso σ hσ τ hτ g f hcomm hker).toLinearEquiv.length_eq.trans
-    (TorComparison.length_restrictScalars_of_surjective τ hτ _)
+    (Motivic.TorComparison.length_restrictScalars_of_surjective τ hτ _)
 
-end Motivic.LocalLength
+end Module

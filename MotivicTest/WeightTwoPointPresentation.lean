@@ -20,7 +20,7 @@ all accepted declarations are checked against standard foundational axioms.
 
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
 open WeightTwoPointPresentation WeightTwoCorestriction
-open KTheory.MilnorK3.PolynomialResidue
+open MilnorK.K3.PolynomialResidue
 
 universe w u
 

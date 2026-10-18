@@ -1,0 +1,5 @@
+Motivic/Cohomology/A1/ContractionChartHigherImageVanishing.lean
+Motivic/Cohomology/A1/PointedCylinderPositiveRestriction.lean
+Motivic/Cohomology/A1/PointedCartierPositiveRestriction.lean
+Motivic/Cohomology/A1/StrictInvariance.lean
+MotivicTest/StrictA1Invariance.lean

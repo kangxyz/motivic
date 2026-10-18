@@ -18,12 +18,12 @@ module prefix identifies where its source is maintained.
 | Owner | Responsibility |
 | --- | --- |
 | `Motivic/Algebra`, `Motivic/RingTheory` | Local algebraic/homological foundations used by geometry and cohomology |
-| `Motivic/Aglib` | Inherited candidates for future upstream contribution; currently a local staging area |
+| `Motivic/Aglib` | Aglib import adapters and remaining local candidates for upstream contribution |
 | `Motivic/AlgebraicGeometry` | Smooth sites, actual correspondences, products and presheaves with transfers |
 | `Motivic/Transfers` | Additive transfer sheaves, exactness, injectives and ordinary-cohomology transfers |
 | `Motivic/Cohomology` | Ordinary sheaf cohomology, relative cohomology and hypercohomology |
 | `Motivic/Cohomology/Motivic` | Canonical motivic complexes, coefficients, field change and computations |
-| `Motivic/KTheory` | Milnor quotients, residues, norms and their comparison inputs |
+| `Motivic/KTheory` | Aglib Milnor import compatibility and endpoint geometry/cycle applications |
 | `MotivicTest` | Focused interface consumers and inherited proof/trust checks |
 | `examples/downstream` | A separate client package exercising public imports |
 | `doc/provenance` | Immutable imported source/evidence records, outside the build graph |
@@ -39,14 +39,19 @@ create a root `Aglib/` subtree or shadow the upstream package.
 Keep the actual import graph acyclic. General ring/category/complex primitives
 should lie below their geometric uses. Geometric correspondences precede
 transfer presheaves; transfer exactness and ordinary cohomology feed the
-all-degree transfer comparison. Motivic complexes and Milnor groups are
+all-degree transfer comparison. General Milnor theory is maintained in the independent Aglib package under
+`Aglib.KTheory.MilnorK`, with declaration namespace `MilnorK`. Motivic complexes
+and Milnor groups are
 independently defined; comparison modules consume both sides. Applications
 consume these constructions and cannot be prerequisites for their definitions.
 
 Each family facade reexports a deliberately selected interface. Production
 leaves import lower leaves, not a package/family facade to obtain one helper.
-`Motivic.lean` selects four core entries. Characteristic-zero Milnor norm, diagonal and weight-one computation
-entries are optional; no generated catch-all root admits every retained leaf.
+`Motivic.lean` selects four core entries. Characteristic-zero Milnor norm,
+diagonal and weight-one computation entries are optional. Strict invariance
+over infinite perfect fields is available through
+`Motivic.Cohomology.A1.StrictInvariance`. No generated catch-all root admits
+every retained leaf.
 Historical missing logs are evidence gaps, not proof failures or permissions
 to strengthen statements. New admissions need the actual affected compilation
 and statement/map correspondence.

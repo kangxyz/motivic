@@ -44,7 +44,7 @@ attribute [local instance] Algebra.TensorProduct.rightAlgebra
 theorem originalSourceFiber_finite : Finite {x : X // f x = hU.fromSpec p} := by
   have := coordinateFinite f hU
   have : Finite (MaximalSpectrum (FiniteFiber.localAlgebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) p)) :=
-    LocalLength.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) _
+    Module.finiteAlgebra_maximalSpectrum_finite (Localization.AtPrime p.asIdeal) _
   exact (wholeAlgebraFiberEquiv f hU p).finite_iff.mp inferInstance
 
 /-- The actual finite maximum of the possibly different bounds on original source stalks. -/

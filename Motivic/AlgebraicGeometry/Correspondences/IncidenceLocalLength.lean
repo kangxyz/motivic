@@ -73,18 +73,18 @@ theorem incidence_koszul_hasFiniteHomology
     (a b : (correspondenceTripleProduct f g h).presheaf.stalk ((A.incidenceInclusion B) w))
     (hker : RingHom.ker ((A.incidenceInclusion B).stalkMap w).hom ≤
       Ideal.span ({a, b} : Set _) ⊔ Module.annihilator _ M) :
-    LocalLength.KoszulPair.HasFiniteHomology M a b := by
+    Module.KoszulPair.HasFiniteHomology M a b := by
   have := isLocallyNoetherian_incidence A B
   have := isLocallyNoetherian_correspondenceTripleProduct (f := f) (g := g) (h := h)
   refine ⟨length_ne_top_of_generic_stalk_support (A.incidenceInclusion B) w hw
-      (LocalLength.KoszulPair.H₀ M a b) ?_,
+      (Module.KoszulPair.H₀ M a b) ?_,
     length_ne_top_of_generic_stalk_support (A.incidenceInclusion B) w hw
-      (LocalLength.KoszulPair.H₁ M a b) ?_,
+      (Module.KoszulPair.H₁ M a b) ?_,
     length_ne_top_of_generic_stalk_support (A.incidenceInclusion B) w hw
-      (LocalLength.KoszulPair.H₂ M a b) ?_⟩
-  · exact hker.trans (LocalLength.KoszulPair.span_sup_annihilator_le_annihilator_H₀ M a b)
-  · exact hker.trans (LocalLength.KoszulPair.span_sup_annihilator_le_annihilator_H₁ M a b)
-  · exact hker.trans (LocalLength.KoszulPair.span_sup_annihilator_le_annihilator_H₂ M a b)
+      (Module.KoszulPair.H₂ M a b) ?_⟩
+  · exact hker.trans (Module.KoszulPair.span_sup_annihilator_le_annihilator_H₀ M a b)
+  · exact hker.trans (Module.KoszulPair.span_sup_annihilator_le_annihilator_H₁ M a b)
+  · exact hker.trans (Module.KoszulPair.span_sup_annihilator_le_annihilator_H₂ M a b)
 
 end FiniteCorrespondenceGenerator
 

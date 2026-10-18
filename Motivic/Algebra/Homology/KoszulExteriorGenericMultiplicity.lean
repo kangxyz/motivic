@@ -142,7 +142,7 @@ theorem localTensorGeneric_length [Algebra R S] [IsNoetherianRing R] [Module.Fla
   let : Algebra (Localization.AtPrime (Q.under R)) (Localization.AtPrime Q) :=
     (Localization.localRingHom (Q.under R) Q (algebraMap R S) rfl).toAlgebra
   refine (localTensorCanonicalBaseChangeIso Q M).toLinearEquiv.length_eq.trans ?_
-  have h := LocalLength.flatGeneric_multiplicity M I hI Q hQ
+  have h := Module.flatGeneric_multiplicity M I hI Q hQ
   rw [← (LocalizedModule.equivTensorProduct (Q.under R).primeCompl M).length_eq] at h
   dsimp only [primeLocalClosedFiber]
   rw [primeLocalClosedFiber_ideal (R := R) Q]
@@ -159,7 +159,7 @@ theorem localGeneric_factors_ne_top [Algebra R S] [IsNoetherianRing R]
         (LocalizedModule (Q.under R).primeCompl M) ≠ ⊤ ∧
       Module.length (Localization.AtPrime Q)
         (primeLocalClosedFiber (algebraMap R S) Q) ≠ ⊤ := by
-  have h := LocalLength.flatGeneric_lengths_ne_top M I hI Q hQ
+  have h := Module.flatGeneric_lengths_ne_top M I hI Q hQ
   constructor
   · rw [(LocalizedModule.equivTensorProduct (Q.under R).primeCompl M).length_eq]
     exact h.1

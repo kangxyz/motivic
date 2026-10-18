@@ -26,7 +26,7 @@ control, pushforward and the projection formula.
 
 universe u v
 
-namespace Motivic.LocalLength.KoszulPair
+namespace Module.KoszulPair
 
 variable {R : Type u} [CommRing R] [IsNoetherianRing R] [IsLocalRing R]
 variable (M : Type v) [AddCommGroup M] [Module R M] [Module.Finite R M]
@@ -47,4 +47,4 @@ theorem eulerMultiplicity_eq_weighted_principal (ha : IsSMulRegular M a)
     rw [(iteratedQuotientEquiv M a b).length_eq]
     exact h.1)
 
-end Motivic.LocalLength.KoszulPair
+end Module.KoszulPair

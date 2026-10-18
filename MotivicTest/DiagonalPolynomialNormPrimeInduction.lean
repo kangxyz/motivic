@@ -13,7 +13,7 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Motivic
 open PresheafWithTransfers DiagonalMilnorSymbol DiagonalCorestriction
-open KTheory MilnorK.PolynomialResidue MilnorK.PolynomialNorm
+open MilnorK.PolynomialResidue MilnorK.PolynomialNorm
 open DiagonalPolynomialNormInduction
 universe u
 namespace MotivicTest.DiagonalPolynomialNormPrimeInduction

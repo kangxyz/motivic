@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.Motivic.WeightTwoScalarPairChange
-public import Motivic.KTheory.MilnorK3.ResidueSupport
+public import Aglib.KTheory.MilnorK.K3.ResidueSupport
 public import Mathlib.FieldTheory.PrimitiveElement
 
 /-!
@@ -35,7 +35,7 @@ universe u
 namespace Motivic.WeightTwoPointPresentation
 
 open WeightOneInterpolationCycle WeightTwoCubicBoundary WeightTwoCorestriction
-open WeightTwoPolynomialTransfer KTheory.MilnorK3.PolynomialResidue
+open WeightTwoPolynomialTransfer MilnorK.K3.PolynomialResidue
 
 variable (k : Type u) [Field k]
 

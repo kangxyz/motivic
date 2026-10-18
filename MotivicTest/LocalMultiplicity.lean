@@ -15,7 +15,7 @@ weighted principal formula. The zero pair checks that the Euler expression
 retains higher-homology corrections; it is not a proper-intersection example.
 -/
 
-open Motivic.LocalLength Motivic.LocalLength.KoszulPair
+open Module Module.KoszulPair
 
 universe u v
 

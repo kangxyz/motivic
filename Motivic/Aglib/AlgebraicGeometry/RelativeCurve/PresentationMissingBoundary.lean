@@ -18,9 +18,9 @@ namespace AlgebraicGeometry.Scheme.RelativeCurve.OriginalEtalePresentation
 variable {k : Type u} [Field k] {X Y A Z : Scheme.{u}}
   {b : X ⟶ Spec (.of k)} {p : Y ⟶ X} {a : A ⟶ X} {z : Z ⟶ X}
   {s : Z ⟶ Y} {x : X} (e : OriginalEtalePresentation k b p a z s x)
-local instance : IsOpenImmersion e.inclusion := e.inclusion_open
-local instance : IsFinite e.projectiveMap := e.projective_finite
-local instance : IsFinite
+local instance missingBoundaryInclusionOpen : IsOpenImmersion e.inclusion := e.inclusion_open
+local instance missingBoundaryProjectiveFinite : IsFinite e.projectiveMap := e.projective_finite
+local instance missingBoundaryFullBoundaryFinite : IsFinite
     (e.boundaryInclusion ≫ e.projectiveMap ≫ ProjectiveSpace.toSpec e.base _) := e.boundary_finite
 
 /-- The actual missing closed scheme, distinct from the full bad boundary. -/

@@ -42,7 +42,7 @@ def coordinatePairGenericPrime (σ : P →ₐ[k] T)
     (Ideal.ofList t ⊔ Module.annihilator P (coordinateCoefficient σ.toRingHom)).minimalPrimes := by
   refine ⟨Q.under P, ?_⟩
   rw [coordinateCoefficient_annihilator]
-  exact LocalLength.flatGeneric_under_mem_minimalPrimes
+  exact Module.flatGeneric_under_mem_minimalPrimes
     (coordinateKoszulSupport σ.toRingHom t) Q hQ
 
 variable [IsNoetherianRing P] [IsNoetherianRing (P ⊗[k] E)]

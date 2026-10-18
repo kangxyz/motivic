@@ -30,7 +30,7 @@ universe w u
 
 namespace Motivic.DiagonalCorestriction
 
-open DiagonalCycleSymbols DiagonalMilnorSymbol KTheory
+open DiagonalCycleSymbols DiagonalMilnorSymbol
 open WeightTwoCorestriction WeightTwoCubicBoundary
 
 variable {k E F : Type u} [Field k] [Field E] [Field F]

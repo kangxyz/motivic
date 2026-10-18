@@ -268,7 +268,7 @@ theorem originalFinitePushforwardKoszulEuler
     _ = chainEuler (Koszul.finiteProjectionSource R T t C) hC :=
       (koszulEuler_eq_of_length_eq (originalPushforwardKoszul_homology_length f hU p K s)
         _ _).symm
-    _ = ∑ᶠ q : MaximalSpectrum T, (LocalLength.finiteAlgebraResidueDegree R T q : ℤ) *
+    _ = ∑ᶠ q : MaximalSpectrum T, (Module.finiteAlgebraResidueDegree R T q : ℤ) *
         chainEuler (Koszul.finiteProjectionLocal R T t C q) (hq q) :=
       Koszul.finiteProjection_chainEuler_finsum R T t C hK
     _ = ∑ᶠ q : MaximalSpectrum T, (f.residueDegree (wholeAlgebraFiberEquiv f hU p q).1 : ℤ) *

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.AdjoinRootScalarBranches
+public import Aglib.RingTheory.AdjoinRootScalarBranches
 public import Mathlib.RingTheory.DedekindDomain.Dvr
 public import Mathlib.RingTheory.UniqueFactorizationDomain.Multiplicity
 

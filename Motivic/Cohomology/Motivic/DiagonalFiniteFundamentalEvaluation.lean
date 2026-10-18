@@ -32,7 +32,7 @@ universe u
 
 namespace Motivic.DiagonalFiniteFundamentalEvaluation
 
-open DiagonalPointNorm DiagonalFinitePointEvaluation KTheory.MilnorK
+open DiagonalPointNorm DiagonalFinitePointEvaluation MilnorK
 open WeightOneFundamentalNorm (quotientMap quotientSupport quotientSupport_point
   quotientMap_genericPoint fundamentalCycle_affine_eq_sum)
 

@@ -205,7 +205,7 @@ theorem rightFirstStagePushforwardGenericStalk_length_ne_top
   let : r.1.IsPrime := r.2.isPrime
   have := F.rightFirstStagePushforwardCoefficient_finite G H V p n
   rw [← F.rightFirstStagePushforwardTargetGeneric_length G H V p q n]
-  exact LocalLength.fixedSupport_localized_length_ne_top
+  exact Module.fixedSupport_localized_length_ne_top
     (F.rightFirstStagePushforwardCoefficient G H V p n) ⊥ bot_le r.1 r.2
 
 /-- The accepted fixed-support generic weight is the finite integer length of

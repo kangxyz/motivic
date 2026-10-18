@@ -23,7 +23,7 @@ variable (k : Type u) [Field k] [CharZero k] (q : ℕ)
 /-- The point norm on the actual degree-zero singular quotient,
 via the proved base identification. -/
 def degreeZeroNorm : sections (reducedTorus k q)
-    (Cor.simplexProduct (WeightOnePointNorm.point k) 0) →+ KTheory.MilnorK.K k q :=
+    (Cor.simplexProduct (WeightOnePointNorm.point k) 0) →+ MilnorK.K k q :=
   (DiagonalReducedPointNorm.reducedNorm k q).comp
     (transfer (reducedTorus k q) (zeroProductIso k).inv).hom
 

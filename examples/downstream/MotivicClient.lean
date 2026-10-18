@@ -5,11 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.KTheory.MilnorK.LowDegree
+public import Motivic
 
 /-! # Independent public client
 
-Use the original Milnor group and its exported degree-zero computation.
+Use the Motivic public entry, its correspondence category and the canonical
+Milnor group supplied by Aglib.
 -/
 @[expose] public noncomputable section
 
@@ -19,8 +20,11 @@ namespace MotivicClient
 
 variable (k : Type u) [Field k]
 
+/-- The package entry exports its correspondence category. -/
+example : CategoryTheory.Category (Motivic.Cor k) := inferInstance
+
 /-- The public degree-zero equivalence uses the original integral symbol quotient. -/
-example : Motivic.KTheory.MilnorK.K k 0 ≃ₗ[ℤ] ℤ :=
-  Motivic.KTheory.MilnorK.zeroEquiv k
+example : MilnorK.K k 0 ≃ₗ[ℤ] ℤ :=
+  MilnorK.zeroEquiv k
 
 end MotivicClient

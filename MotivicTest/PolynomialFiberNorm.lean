@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.PolynomialFiberNorm
+public import Aglib.RingTheory.PolynomialFiberNorm
 public import Mathlib.RingTheory.DualNumber
 public import Mathlib.LinearAlgebra.Basis.Fin
 public import Mathlib.Algebra.Group.TypeTags.Hom
@@ -26,7 +26,7 @@ open Polynomial
 open scoped TensorProduct
 open Algebra.PolynomialFiber
 
-namespace Motivic.MotivicTest.PolynomialFiberNorm
+namespace MotivicTest.PolynomialFiberNorm
 
 universe u v
 
@@ -182,4 +182,4 @@ run_cmd do
         throwError "{name} depends on unsupported assumption {dependency}"
   logInfo "Polynomial-fiber norm and signed-endpoint audit passed: standard foundations only."
 
-end Motivic.MotivicTest.PolynomialFiberNorm
+end MotivicTest.PolynomialFiberNorm

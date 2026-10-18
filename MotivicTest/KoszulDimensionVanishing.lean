@@ -61,7 +61,7 @@ theorem dependentTwoEquations (M : ModuleCat R) [Module.Finite R M]
     ∃ h : FiniteHomology (coefficientComplex M [a, a]),
       chainEuler (coefficientComplex M [a, a]) h = 0 := by
   have hs : ∀ b ∈ [a], b ∈ IsLocalRing.maximalIdeal R := by simpa using ha
-  have hd := Motivic.LocalLength.koszulDimension_le_length_of_artinian_support_quotient M [a] hs
+  have hd := Module.koszulDimension_le_length_of_artinian_support_quotient M [a] hs
   have : IsArtinianRing (R ⧸ (Ideal.ofList [a, a] ⊔ Module.annihilator R M)) := by
     have he : Ideal.ofList [a, a] = Ideal.ofList [a] := by simp
     rw [he]

@@ -20,7 +20,7 @@ They retain the ring-regularity hypotheses in the arbitrary-module Tor theorem.
 universe u
 
 open CategoryTheory CategoryTheory.Limits
-open Motivic.LocalLength.KoszulPair
+open Module.KoszulPair
 
 variable {R : Type u} [CommRing R]
 variable (M : Type u) [AddCommGroup M] [Module R M] (a b : R)

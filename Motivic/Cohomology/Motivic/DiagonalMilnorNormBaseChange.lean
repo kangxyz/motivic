@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.Motivic.DiagonalPolynomialPointBaseChange
 public import Motivic.Cohomology.Motivic.DiagonalFieldChange
-public import Motivic.KTheory.MilnorK.PolynomialNormFiniteComparison
+public import Aglib.KTheory.MilnorK.Norm.Polynomial.FiniteComparison
 
 /-! # Full-branch base change for original all-weight transferred Milnor symbols -/
 
@@ -20,7 +20,7 @@ universe u
 
 namespace Motivic.DiagonalMilnorNormBaseChange
 
-open KTheory.MilnorK KTheory.MilnorK.PolynomialResidue
+open MilnorK MilnorK.PolynomialResidue
 open Polynomial.LocalResidue DiagonalMilnorSymbol DiagonalCorestriction
 
 variable {k L : Type u} [Field k] [Field L] [Algebra k L] [CharZero k] [CharZero L]
@@ -50,7 +50,7 @@ theorem corestriction_rawSymbol_baseChange_algebraMap (n : ℕ) (p : MonicIrredu
           ((rawSymbol (AdjoinRoot q.val.val) n).comp
             (map n (adjoinRootMap (algebraMap k L) p.val q.val.val
               ((mem_placesAbove (algebraMap k L) p q.val).mp q.property))).toAddMonoidHom) := by
-    apply KTheory.MilnorK.addHom_ext
+    apply MilnorK.addHom_ext
     intro a
     simp only [AddMonoidHom.comp_apply, AddMonoidHom.finsetSum_apply,
       LinearMap.toAddMonoidHom_coe, map_symbol, rawSymbol_symbol]

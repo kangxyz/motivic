@@ -50,7 +50,7 @@ theorem finiteHomology_of_artinian_support_quotient [IsNoetherianRing R]
     [IsArtinianRing (R ⧸ (Ideal.ofList s ⊔ Module.annihilator R M))] :
     FiniteHomology (coefficientComplex M s) where
   finite_length :=
-    LocalLength.KoszulFinite.length_homology_ne_top_of_artinian_support_quotient M s
+    Module.KoszulFinite.length_homology_ne_top_of_artinian_support_quotient M s
   finite_support := (Finset.range (s.length + 1)).finite_toSet.subset
     (coefficient_homology_length_support_subset M s)
 
@@ -62,7 +62,7 @@ theorem finiteHomology_of_mem_minimalPrimes_support [IsNoetherianRing R] [IsLoca
       (Ideal.ofList s ⊔ Module.annihilator R M).minimalPrimes) :
     FiniteHomology (coefficientComplex M s) where
   finite_length :=
-    LocalLength.KoszulFinite.length_homology_ne_top_of_mem_minimalPrimes_support M s hm
+    Module.KoszulFinite.length_homology_ne_top_of_mem_minimalPrimes_support M s hm
   finite_support := (Finset.range (s.length + 1)).finite_toSet.subset
     (coefficient_homology_length_support_subset M s)
 

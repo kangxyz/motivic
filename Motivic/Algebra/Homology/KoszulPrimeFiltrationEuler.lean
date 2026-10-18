@@ -7,7 +7,18 @@ module
 
 public import Motivic.Algebra.Homology.KoszulCoefficientEulerAdditivity
 public import Motivic.Algebra.Homology.KoszulDimensionZeroHead
-public import Motivic.RingTheory.LocalLength.PrimeFiltrationMultiplicity
+public import Aglib.RingTheory.PrimeFiltration.Multiplicity
+public import Aglib.RingTheory.FiniteLength.Support
+public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Support
+public import Aglib.RingTheory.PrimeFiltration.Length
+public import Aglib.RingTheory.PrimeFiltration.Support
+public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Filtration
+public import Aglib.RingTheory.PrimeFiltration.Primes
+public import Aglib.RingTheory.Length.ExactSequence
+public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Additivity
+public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Basic
+public import Aglib.RingTheory.ScalarHomology.Basic
+public import Aglib.RingTheory.PrimeFiltration.Basic
 
 /-!
 # Actual Koszul Euler length along a prime filtration
@@ -22,7 +33,7 @@ ideal supplies finite homology of every term and every factor.
 
 universe u
 
-open CategoryTheory Motivic.LengthEuler Motivic.LocalLength
+open CategoryTheory Motivic.LengthEuler Module
 
 namespace Motivic.Koszul
 
@@ -67,7 +78,7 @@ theorem fixedSupportPrimeEuler_eq (s : List R) (J p : Ideal R)
 /-- Telescoping along literal successive quotient isomorphisms computes the
 actual coefficient-complex Euler characteristic. -/
 theorem primeFiltration_chainEuler_eq_add_sum (M : ModuleCat R) [Module.Finite R M]
-    {U : Submodule R M} (D : PrimeFiltrationFrom M U) (s : List R) (J : Ideal R)
+    {U : Submodule R M} (D : Module.PrimeFiltrationFrom M U) (s : List R) (J : Ideal R)
     [IsArtinianRing (R ⧸ (Ideal.ofList s ⊔ J))] (hJ : J ≤ Module.annihilator R M)
     (hM : FiniteHomology (coefficientComplex M s))
     (hU : FiniteHomology (coefficientComplex (ModuleCat.of R U) s)) :
@@ -76,7 +87,7 @@ theorem primeFiltration_chainEuler_eq_add_sum (M : ModuleCat R) [Module.Finite R
         (D.primes.map (fixedSupportPrimeEuler s J)).sum := by
   induction D with
   | top =>
-    simp only [PrimeFiltrationFrom.primes, List.map_nil, List.sum_nil, add_zero]
+    simp only [Module.PrimeFiltrationFrom.primes, List.map_nil, List.sum_nil, add_zero]
     exact coefficient_chainEuler_eq_of_linearEquiv M _ (Submodule.topEquiv.symm) s _ _
   | @step U V hUV p hp e tail ih =>
     have hJV : J ≤ Module.annihilator R V :=
@@ -104,11 +115,11 @@ theorem primeFiltration_chainEuler_eq_add_sum (M : ModuleCat R) [Module.Finite R
     rw [← fixedSupportPrimeEuler_eq s J p hJp hP] at he
     have hi := ih hV
     rw [hadd, he] at hi
-    simpa only [PrimeFiltrationFrom.primes, List.map_cons, List.sum_cons, add_assoc] using hi
+    simpa only [Module.PrimeFiltrationFrom.primes, List.map_cons, List.sum_cons, add_assoc] using hi
 
 /-- The initial zero submodule contributes zero to the actual telescope. -/
 theorem primeFiltration_chainEuler_eq_sum (M : ModuleCat R) [Module.Finite R M]
-    (D : PrimeFiltrationFrom M ⊥) (s : List R) (J : Ideal R)
+    (D : Module.PrimeFiltrationFrom M ⊥) (s : List R) (J : Ideal R)
     [IsArtinianRing (R ⧸ (Ideal.ofList s ⊔ J))] (hJ : J ≤ Module.annihilator R M)
     (hM : FiniteHomology (coefficientComplex M s)) :
     chainEuler (coefficientComplex M s) hM =

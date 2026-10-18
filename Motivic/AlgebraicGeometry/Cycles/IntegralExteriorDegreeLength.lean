@@ -128,7 +128,7 @@ def tensorBranchQuotientEquiv :
   let := (originalResidueToStalk f x hU g y.1 hy).toAlgebra
   dsimp only
   intro q
-  exact (LocalLength.finiteAlgebraResidueQuotientEquiv T q).toRingEquiv.trans
+  exact (Module.finiteAlgebraResidueQuotientEquiv T q).toRingEquiv.trans
     (tensorBranchResidueEquiv f x hU sq hV hVU y hy q)
 
 /-- The quotient comparison retains the full target-stalk action, followed by
@@ -149,7 +149,7 @@ theorem tensorBranchQuotientEquiv_scalarSquare :
     RingEquiv.toRingHom_eq_coe, RingEquiv.coe_toRingHom, RingEquiv.trans_apply,
     AlgEquiv.coe_ringEquiv]
   rw [IsScalarTower.algebraMap_apply R T (T ⧸ q.asIdeal),
-    (LocalLength.finiteAlgebraResidueQuotientEquiv T q).commutes]
+    (Module.finiteAlgebraResidueQuotientEquiv T q).commutes]
   change tensorBranchResidueEquiv f x hU sq hV hVU y hy q
       (IsLocalRing.residue _ (tensorBranchBaseMap f x hU y hy q r)) = _
   rw [← tensorBranchResidueMap_residue f x hU sq hV hVU y hy q r]
@@ -161,7 +161,7 @@ degree of that branch, proved using the whole-target-stalk scalar square. -/
 theorem tensorBranch_residueDegree :
     let := (originalResidueToStalk f x hU g y.1 hy).toAlgebra
     ∀ (q : MaximalSpectrum T),
-    LocalLength.finiteAlgebraResidueDegree R T q =
+    Module.finiteAlgebraResidueDegree R T q =
       f'.residueDegree (tensorFiberEquiv f x hU sq hV hVU y hy q).1 := by
   let := (originalResidueToStalk f x hU g y.1 hy).toAlgebra
   dsimp only
@@ -173,7 +173,7 @@ theorem tensorBranch_residueDegree :
     ((actualFiberResidueMap f' y w).hom.comp (Y'.residue y.1).hom).toAlgebra
   let : IsScalarTower R (IsLocalRing.ResidueField R) (X'.residueField w.1) :=
     IsScalarTower.of_algebraMap_eq' rfl
-  exact (LocalLength.fieldExtensionBaseChange_residueDegree_eq_of_square L M R q
+  exact (Module.fieldExtensionBaseChange_residueDegree_eq_of_square L M R q
     (tensorBranchQuotientEquiv f x hU sq hV hVU y hy q)
     (tensorBranchQuotientEquiv_scalarSquare f x hU sq hV hVU y hy q)).trans
       (actualFiberResidueMap_finrank f' y w)
@@ -219,7 +219,7 @@ theorem actualGenericFiber_length_ne_top (hygen : y.1 ∈ genericPoints Y')
     (X'.presheaf.stalk (tensorFiberEquiv f x hU sq hV hVU y hy q).1)
     (X'.presheaf.stalk (tensorFiberEquiv f x hU sq hV hVU y hy q).1) ≠ ⊤
   rw [← tensorBranch_length f x hU sq hV hVU y hy q]
-  exact LocalLength.fieldExtensionBaseChange_localLength_ne_top L M R q
+  exact Module.fieldExtensionBaseChange_localLength_ne_top L M R q
 
 include hU hV hVU hy in
 /-- On actual affine neighborhoods, the accepted whole-Artinian-tensor balance
@@ -234,7 +234,7 @@ theorem actualGenericFiberDegreeLengthSum_eq_of_charts (hygen : y.1 ∈ genericP
   let : IsArtinianRing R :=
     isArtinianRing_stalk_of_mem_genericPoints y.1 hygen
   let : Finite (MaximalSpectrum T) :=
-    LocalLength.finiteAlgebra_maximalSpectrum_finite R T
+    Module.finiteAlgebra_maximalSpectrum_finite R T
   let : Fintype (MaximalSpectrum T) := Fintype.ofFinite _
   let := actualGenericFiberFintype f' y.1
   change (∑ w : {w : genericPoints X' // f' w.1 = y.1},
@@ -243,14 +243,14 @@ theorem actualGenericFiberDegreeLengthSum_eq_of_charts (hygen : y.1 ∈ genericP
     _ = ∑ q : MaximalSpectrum T,
         ((Module.length (Localization.AtPrime q.asIdeal)
           (Localization.AtPrime q.asIdeal)).toNat : ℤ) *
-            (LocalLength.finiteAlgebraResidueDegree R T q : ℤ) := by
+            (Module.finiteAlgebraResidueDegree R T q : ℤ) := by
       symm
       apply Fintype.sum_equiv (tensorGenericFiberEquiv f x hU sq hV hVU y hy hygen)
       intro q
       rw [tensorBranch_genericMultiplicity f x hU sq hV hVU y hy hygen q,
         tensorBranch_residueDegree f x hU sq hV hVU y hy q]
       rfl
-    _ = _ := LocalLength.fieldExtensionBaseChange_sum_integerLength_mul_residueDegree L M R
+    _ = _ := Module.fieldExtensionBaseChange_sum_integerLength_mul_residueDegree L M R
 
 end ActualCartesianCharts
 
