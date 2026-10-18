@@ -294,3 +294,12 @@ tool fixtures are retained because tooling is unchanged. The adapted consumer's
 current production theorem, exact-origin lint and transitive audit are selected
 for hosted validation. The 20-line root README, pins, configuration, CI and
 previous source/test repairs remain intact.
+
+The [hosted Cartier run](https://github.com/kangxyz/motivic/actions/runs/39090562661)
+for `48dd1e1` subsequently passed source checks, all selected Lean targets and
+cache publication. The adapted public consumer passed its standard-foundations
+audit and all 103 exact-origin declaration checks. Its completed log reports
+74 production and 14 test modules freshly built, zero Aglib/Mathlib source
+builds, and a native-export cache hit without compilation. This validates the
+current public production/test projection against the pinned hosted environment.
+The source Epi and current-degree HI assumptions remain explicit.

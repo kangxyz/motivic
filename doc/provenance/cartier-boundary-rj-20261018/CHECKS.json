@@ -324,5 +324,25 @@
   },
   "source_evidence_boundary": "Archived67 status hash bindings plus separately frozen SmoothCartier choice/consumer evidence. The latter referenced raw guards are absent. The twelve-file source milestone has a successful graph guard and summaries; its earlier exit3 cached probe is not success. Adapted public files have separate current hashes and will be checked by hosted CI.",
   "full_local_new_endpoint_native_replay": false,
-  "frontier": "Original EPI-P production, current positive-degree HI, marked restriction Mono joins and full strict A1 remain explicit open obligations."
+  "frontier": "Original EPI-P production, current positive-degree HI, marked restriction Mono joins and full strict A1 remain explicit open obligations.",
+  "hosted_validation": {
+    "run_url": "https://github.com/kangxyz/motivic/actions/runs/39090562661",
+    "source_commit": "48dd1e1bb0dafa4ffcbc1047ddc6ffd748a70fa6",
+    "status": "success",
+    "jobs": {
+      "source": "success",
+      "lean": "success",
+      "publish-cache": "success"
+    },
+    "fresh_source_build_counts": {
+      "Motivic": 74,
+      "MotivicTest": 14,
+      "Aglib": 0,
+      "Mathlib": 0
+    },
+    "joint_consumer_scoped_declarations": 103,
+    "joint_consumer_standard_axioms_only": true,
+    "native_export_cache_hit": true,
+    "build_log_sha256": "c190724b63e1a8fc03a9019b5cb43902eafa6b9e2b8d297f32e038ef0d4c0a79"
+  }
 }
