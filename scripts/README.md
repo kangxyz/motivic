@@ -98,14 +98,18 @@ and their affected consumers remain selected alongside those roots. An explicit
 manual selection must name existing local modules. Documentation-only changes avoid the Lean job.
 Client Lean/config changes select the `Motivic` public root and independent
 client acceptance; changes reaching the client's public import select it too.
-Unrelated optional leaves and documentation changes do not expand to the client.
+PR/manual runs keep unrelated optional leaves outside client acceptance;
+documentation-only changes do not select the Lean job.
 `python3 scripts/build_client.py` prepares the inherited locked manifest and
 runs the same guarded `--rehash` driver on `MotivicClient`. Its package-directory
 link points only to this checkout's canonical dependency cache; its writable
 outputs remain in `examples/downstream/.lake/build`. Existing foreign package
 links or shared build-output links are rejected without deleting user work.
-CI runs this acceptance after the selected library build and before publication,
-reusing the same job's validated public outputs and matching dependency caches. CI restores matching
+PR/manual runs check the client after the selected public build when it is
+affected. Every main-branch native-cache producer checks it after the already
+required guarded core export and before cache staging, even for optional-only
+changes. A failure blocks publication. The client reuses the same job's validated
+public outputs and matching dependency caches. CI restores matching
 Mathlib dependencies, public Aglib native artifacts and incremental outputs;
 it saves partial progress. Native cache transport tooling has its own reviewed
 pin, independent of the mathematical Aglib revision. The selected build also

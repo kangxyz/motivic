@@ -122,9 +122,6 @@ jobs:
           read -r -a targets <<< "$SELECTED_TARGETS"
           python3 scripts/build.py --receipt-dir .lake/verification/ci \
             --outputs "$RUNNER_TEMP/native-outputs.jsonl" "${targets[@]}"
-      - name: Build the affected independent public client
-        if: needs.source.outputs.client == 'true'
-        run: python3 scripts/build_client.py --receipt-dir .lake/verification/ci-client
       - name: Export current core and selected-target native mappings
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
@@ -140,6 +137,9 @@ jobs:
           # mappings. A miss builds only this required core/selected closure.
           python3 scripts/build.py --receipt-dir .lake/verification/native-export \
             --outputs "$RUNNER_TEMP/native-outputs.jsonl" "${export_targets[@]}"
+      - name: Build the independent public client
+        if: ${{ needs.source.outputs.client == 'true' || (github.event_name == 'push' && github.ref == 'refs/heads/main') }}
+        run: python3 scripts/build_client.py --receipt-dir .lake/verification/ci-client
       - name: Stage native artifacts for downstream dependencies
         id: native-stage
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}

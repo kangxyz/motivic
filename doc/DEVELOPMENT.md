@@ -113,11 +113,13 @@ python3 scripts/build_client.py
 The client helper prepares an inherited manifest, shares this checkout's canonical
 package directory, and keeps its build outputs in the client's own `.lake/build`.
 It uses the same resource caps and rehashed native cache checks as the library
-build; it does not link another checkout's mutable outputs. CI runs it after the
-selected public build when client source/configuration or its public import is
-affected, and a client failure blocks publication. Matching root/dependency
-outputs are reused. For a consumer changing to a Git dependency, pin a reviewed
-repository commit rather than a moving branch.
+build; it does not link another checkout's mutable outputs. PR/manual CI runs
+check it after the selected public build when client source/configuration or its
+public import is affected. Every main-branch native-cache producer also checks
+the client after its already-required guarded core export and before cache
+staging. This adds only the client module, reuses matching root/dependency
+outputs, and blocks publication on client failure. For a consumer changing to a
+Git dependency, pin a reviewed repository commit rather than a moving branch.
 
 ## Source and contribution conventions
 
