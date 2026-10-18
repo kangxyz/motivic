@@ -6,6 +6,10 @@ Authors: kangxyz
 module
 
 public import Motivic
+public import Aglib.KTheory.MilnorK.FiniteRelationDescent
+public import Aglib.KTheory.MilnorK.K3.PolynomialNormPrincipalUnit
+public import Aglib.KTheory.MilnorK.Norm.Polynomial.DVRUniformizer
+public import Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeNormal
 public import MotivicTest.Cohomology.SheafCohomologyH1SquareDescent
 public import MotivicTest.NisnevichPointControlledCechKernel
 public import MotivicTest.Cohomology.SheafCohomologyH1Descent

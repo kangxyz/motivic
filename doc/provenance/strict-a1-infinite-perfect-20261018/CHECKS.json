@@ -149,5 +149,19 @@
     }
   },
   "current_full_strict_endpoint_native_replay": false,
-  "dependency_direction": "All 43 source adaptations inside the strict closure are already in the Milnor consumer validation scope. The two new helper adaptations and covering-norm test are outside that closure; no separate full closure replay is claimed."
+  "dependency_direction": "All 43 source adaptations inside the strict closure are already in the Milnor consumer validation scope. The two new helper adaptations and covering-norm test are outside that closure; no separate full closure replay is claimed.",
+  "current_hosted_terminal": {
+    "revision": "d05e0376729339797263f9565ca5880d94481067",
+    "run": "https://github.com/kangxyz/motivic/actions/runs/39113032519",
+    "status": "Strict terminal and consumer passed within a run failing only the separate MotivicIntegration audit.",
+    "targets": [
+      "Motivic.Cohomology.A1.StrictInvariance",
+      "MotivicTest.StrictA1Invariance"
+    ],
+    "audited_declarations": 50,
+    "text_style_source_count": 5,
+    "hypotheses": "Infinite perfect field; original ordinary HasExt, coefficient universes and HI transfer sheaf hypotheses unchanged.",
+    "log_archive_sha256": "71933b6f9ac27ed576b420125154ccacc57b3d42fb7842530b0df289381af39c",
+    "incremental_boundary": "Current terminal and consumer compiled on Linux using matching checked dependency artifacts. This is not a local Darwin full-closure replay or a fresh rebuild of every dependency."
+  }
 }

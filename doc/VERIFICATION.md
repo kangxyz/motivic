@@ -344,6 +344,11 @@ and the six dependency/source-boundary fixtures pass after the exact Aglib pin
 update. The [fixed check record](provenance/strict-a1-infinite-perfect-20261018/CHECKS.json)
 separates current native checks from historical Linux evidence.
 
+The later current Linux integration at `d05e037` compiled the strict-invariance
+leaf and consumer, with all 50 exact-origin declarations and five-source
+text/style checks passing. Its separate aggregate audit-name failure is recorded
+in the Milnor integration section below.
+
 All 43 source adaptations within the strict consumer closure already belong to
 the Milnor migration's selected downstream validation scope. The two newly
 adapted helpers are outside that closure. A separate full strict-closure replay
@@ -404,5 +409,16 @@ qualify categorical projectivity, and wrap the long signature. Nine current
 native modules, including the existing Koszul/Tor and weight-two surjectivity
 tests, passed. Fifteen declaration linters found no errors in the two repaired
 defining modules (21 declarations and seven generated declarations). All four
-changed sources passed pinned text/style checks. The projective branch retains
-its explicit hosted validation boundary with the matching upstream cache.
+changed sources passed pinned text/style checks.
+
+The [repair run at `d05e037`](https://github.com/kangxyz/motivic/actions/runs/39113032519)
+compiled all three repaired leaves. It also compiled `StrictInvariance` and
+`MotivicTest.StrictA1Invariance`: 50 declarations passed the exact-origin
+standard-foundation/declaration audit, and the five selected source files passed
+pinned text/style checks. The run failed only in `MotivicTest.MotivicIntegration`,
+where 43 canonical declarations were unavailable after their former test-import
+paths moved upstream. Four precise public Aglib imports restore reachability of
+their 25 defining modules. All 417 audit entries and all non-import source bytes
+are preserved. Dependency, project and native progress were saved; no Aglib or
+Mathlib module compiled. The aggregate audit is selected for cached hosted
+acceptance after this import repair.

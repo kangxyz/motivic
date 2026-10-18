@@ -356,7 +356,38 @@
         },
         "summary_sha256": "464c7099531b4b433b4f780a85de1643e962133b7705bae0edee98d2365af1e8",
         "boundary": "Not a fresh complete-package Lake build. Projective native acceptance remains assigned to hosted Linux with matching provider caches."
+      },
+      "hosted_run": {
+        "revision": "d05e0376729339797263f9565ca5880d94481067",
+        "run": "https://github.com/kangxyz/motivic/actions/runs/39113032519",
+        "three_repaired_leaves": "All compiled successfully.",
+        "strict_terminal": "StrictInvariance and MotivicTest.StrictA1Invariance compiled; 50 declarations and five-source pinned text/style audit passed.",
+        "remaining_failure": "Only MotivicTest.MotivicIntegration:43 canonical declarations were unavailable because their defining modules were no longer imported after test relocation.",
+        "fresh_Motivic": 237,
+        "fresh_MotivicTest": 102,
+        "fresh_Aglib": 0,
+        "fresh_Mathlib": 0,
+        "unique_replayed_tests": 142,
+        "partial_caches_saved": true,
+        "publication": "Skipped after the test failure."
       }
+    },
+    "aggregate_audit_import_repair": {
+      "added_imports": [
+        "Aglib.KTheory.MilnorK.FiniteRelationDescent",
+        "Aglib.KTheory.MilnorK.K3.PolynomialNormPrincipalUnit",
+        "Aglib.KTheory.MilnorK.Norm.Polynomial.DVRUniformizer",
+        "Aglib.KTheory.MilnorK.Norm.Polynomial.PrimeNormal"
+      ],
+      "canonical_names_preserved": 43,
+      "defining_modules_reached": 25,
+      "audit_entries_preserved": 417,
+      "non_import_source_bytes": "Unchanged.",
+      "acceptance_boundary": "Exact public-import reachability and current source/style checks; actual complete audit execution is selected for cached hosted CI.",
+      "source_sha256": "b1a77b5dbe6d73de5c0584621c3c9865dbac89d59cdf931af2e41a06de5f226f",
+      "public_import_reachability_evidence_sha256": "2589fc74daa4432000612db990d71c0a81d913a57450e8cd245685a8940b4155",
+      "current_text_style": "Pinned source text/style passed for the audit file.",
+      "current_source_structure": "3100 sources passed the repository checker."
     }
   }
 }
