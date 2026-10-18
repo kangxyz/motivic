@@ -1,6 +1,7 @@
 /-
 Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
@@ -18,7 +19,7 @@ universe u
 variable (R : Type u) [CommRing R] (ι : Type u)
 
 /-- Frame coefficients commute with the actual presheaf transport along equal opens. -/
-theorem twistingSectionsEquiv_eqToHom (n : ℤ) (i : ι)
+theorem twistingSectionsEquiv_eqToHom_opens (n : ℤ) (i : ι)
     {V W : (ProjectiveSpace R ι).Opens} (h : V = W) (hi : W ≤ coordinateOpen R ι i)
     (s : Γ(twistingSheaf R ι n, W)) :
     twistingSectionsEquiv R ι n i (h.le.trans hi)

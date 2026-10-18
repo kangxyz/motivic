@@ -111,7 +111,7 @@ theorem twistingBaseChangePushforward_restrict_apply (f : R →+* S) (ι : Type 
           (op ((coordinateOpen R ι i).ι ''ᵁ V)) s)) =
       ((map f ι ∣_ coordinateOpen R ι i).app V).hom
         (twistingSectionsEquiv R ι n i ((coordinateOpen R ι i).ι_image_le V) s) := by
-  rw [twistingSectionsEquiv_eqToHom S ι n i _
+  rw [twistingSectionsEquiv_eqToHom_opens S ι n i _
     (le_coordinateOpen_of_le_preimage f ι i le_rfl
       ((coordinateOpen R ι i).ι_image_le V))]
   rw [twistingBaseChangePushforward_local f ι n i _

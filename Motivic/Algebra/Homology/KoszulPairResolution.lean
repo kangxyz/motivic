@@ -92,13 +92,13 @@ theorem augmentation_quasiIso_of_regular (ha : IsSMulRegular M a)
     exact exactAt_succ_of_regular M a b ha hb n
 
 instance chainComplex_projective [Module.Projective R M] (n : ℕ) :
-    Projective ((chainComplex M a b).X n) := by
+    CategoryTheory.Projective ((chainComplex M a b).X n) := by
   obtain (_ | _ | _ | n) := n
-  · change Projective (ModuleCat.of R M)
+  · change CategoryTheory.Projective (ModuleCat.of R M)
     infer_instance
-  · change Projective (ModuleCat.of R (M × M))
+  · change CategoryTheory.Projective (ModuleCat.of R (M × M))
     infer_instance
-  · change Projective (ModuleCat.of R M)
+  · change CategoryTheory.Projective (ModuleCat.of R M)
     infer_instance
   · exact IsZero.projective (isZero_zero _)
 

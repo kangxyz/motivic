@@ -14,6 +14,11 @@ arbitrary complete curve fiber is trivial. See the owning
 [finite-morphism](Morphisms/Finite/README.md) and
 [invertible-module](Modules/Invertible/README.md) families.
 
+`ProjectiveSpace/TwistFrameTransport` provides
+`AlgebraicGeometry.ProjectiveSpace.twistingSectionsEquiv_eqToHom_opens`
+for transport along equality of opens. The pinned Aglib theorem
+`twistingSectionsEquiv_eqToHom` instead transports the twist degree.
+
 ## Relative endpoint scalar and graph adapters
 
 `FlatPolynomialComponentRegularity` proves that the literal parameter `t - a`

@@ -201,7 +201,162 @@
     "mathematical_sources_rebuilt_in_final_correction": 0
   },
   "hosted_downstream": {
-    "public_api_and_independent_client": "Selected for actual hosted validation against matching published Linux artifacts; no fresh local Darwin completion claimed.",
-    "ordinary_boundaries": "Imported strict-A1 theorem keeps infinite perfect fields, original ordinary HasExt and HI hypotheses."
+    "initial_integration": {
+      "revision": "50799e28fe5bb96f90efdd82332d6fd63737eb45",
+      "run": "https://github.com/kangxyz/motivic/actions/runs/39103086719",
+      "status": "failure",
+      "public_api": "Motivic, MotivicTest.PublicAPI and MotivicTest compiled.",
+      "failed_targets": [
+        "Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.TwistFrameTransport",
+        "Motivic.Algebra.Homology.KoszulPairResolution",
+        "Motivic.Cohomology.Motivic.WeightTwoMilnorSurjective"
+      ],
+      "partial_dependency_project_native_caches_saved": true,
+      "public_aglib_asset_imported": true,
+      "fresh_Aglib": 0,
+      "fresh_Mathlib": 0,
+      "fresh_Motivic": 1136,
+      "fresh_MotivicTest": 531,
+      "independent_client_configured": false
+    },
+    "public_client_followup": {
+      "revision": "dd1f4ef9b6ae3bea510f4d53b4e4f09e8a53730a",
+      "run": "https://github.com/kangxyz/motivic/actions/runs/39108109720",
+      "status": "success",
+      "selected_targets": [
+        "Motivic",
+        "MotivicTest",
+        "MotivicTest.Axioms"
+      ],
+      "fresh_modules": [
+        "MotivicTest.Axioms",
+        "MotivicClient"
+      ],
+      "ordinary_transfer_audit": "Replayed, not freshly compiled.",
+      "project_and_native_cache_reused_from_run": 39103086719,
+      "core_export": "cache hit; no compilation",
+      "audited_project_declarations": 12309,
+      "independent_client": "Compiled successfully in the separate Lake package.",
+      "public_native_release": "https://github.com/kangxyz/motivic/releases/tag/cache-dd1f4ef9b6ae3bea510f4d53b4e4f09e8a53730a",
+      "asset_id": 652962495,
+      "asset_bytes": 13094506,
+      "asset_sha256": "5270140807f224758acb65fcd023654bd13d9ee3769a62072dec006254e57bc2",
+      "boundary": "This selection does not certify the three earlier optional failures repaired."
+    },
+    "ordinary_boundaries": "Imported strict-A1 theorem keeps infinite perfect fields, original ordinary HasExt and HI hypotheses.",
+    "optional_failure_repairs": {
+      "sources": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/TwistFrameTransport.lean",
+          "before_sha256": "53717f1f3174b6d5e512a9b1a84854ed546171b1ab03db1bc01695e1b20f4479",
+          "after_sha256": "872828d9aebec35da5c6febaa2277e2556bea1ad947f0ef82a432932b0952804"
+        },
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveSpace/TwistRestrictedFrames.lean",
+          "before_sha256": "e8d408c78cdc6d76dc67272cf79580c83b5da0aa12e5b1f5e36851a7f1ddcb5b",
+          "after_sha256": "56040172268f745b6753da84f8b07f788ac421b0fdff44d556ef09bbb4dc8376"
+        },
+        {
+          "path": "Motivic/Algebra/Homology/KoszulPairResolution.lean",
+          "before_sha256": "055ca86c525ee8a9ef7953a9612911d0a97b471d1bd5517f6f2ceeaea3c2758a",
+          "after_sha256": "d900a4c7302c4b6c467b83a103e87d10147529d5e73e238c2a19775020ef3163"
+        },
+        {
+          "path": "Motivic/Cohomology/Motivic/WeightTwoMilnorSurjective.lean",
+          "before_sha256": "e81590bae83b066338d1028ad83aa1c44246125bbefc775eb59dc7085bd2d18a",
+          "after_sha256": "37aecf93b2af05f57a94edb6b4b8411981cb9830126301633e259b436af8353d"
+        }
+      ],
+      "changes": [
+        "Rename only the local open-equality transport theorem and its caller to twistingSectionsEquiv_eqToHom_opens; preserve the upstream degree-equality theorem.",
+        "Qualify four categorical Projective references under Module.KoszulPair; keep module-projectivity hypotheses and all proofs.",
+        "Wrap the Milnor cyclePreimage signature without changing tokens."
+      ],
+      "source_correspondence": "Exact token equality modulo the theorem/caller rename and CategoryTheory.Projective qualification; no hypothesis, map, proof or heartbeat change.",
+      "current_text_style": "Four repaired sources passed the pinned text/style linter.",
+      "current_source_structure": "3100 project/client sources passed the repository checker.",
+      "hosted_affected_selection_count": 111,
+      "projective_native_boundary": "Current local upstream Twisting bindings differ from the pinned provider. No unbound artifact is adopted; hosted Linux validation uses matching b11 native artifacts.",
+      "controlled_current_native": {
+        "status": "PASS within controlled native-overlay scope",
+        "compiled_modules": [
+          "Motivic.Algebra.Homology.KoszulPair",
+          "Motivic.Algebra.Homology.KoszulPairResolution",
+          "Motivic.Algebra.Homology.KoszulPairIdeal",
+          "Motivic.Algebra.Homology.KoszulPairTensor",
+          "Motivic.Algebra.Homology.KoszulPairTor",
+          "MotivicTest.KoszulPairTor",
+          "Motivic.Cohomology.Motivic.WeightTwoPointPresentation",
+          "Motivic.Cohomology.Motivic.WeightTwoMilnorSurjective",
+          "MotivicTest.WeightTwoMilnorSurjective"
+        ],
+        "production_options": {
+          "autoImplicit": false,
+          "maxHeartbeats": 200000,
+          "weak.linter.mathlibStandardSet": true,
+          "warningAsError": true
+        },
+        "test_options": {
+          "autoImplicit": false,
+          "maxHeartbeats": 200000,
+          "warningAsError": true
+        },
+        "two_defining_module_declaration_lint": {
+          "linters": 15,
+          "declarations": 21,
+          "generated_declarations": 7,
+          "findings": 0
+        },
+        "accepted_sources": {
+          "Motivic.Algebra.Homology.KoszulPair": {
+            "source_sha256": "c7dea5e8ebedf6deea01145544f49e63ecd1e5f820e73f88fe73528ce8df02de",
+            "setup_sha256": "f365bf5710a3eadf0632e51da03d8fea1190242e314dc955774a8875edb00197",
+            "olean_sha256": "5e91b5c3e2ca3a9d14db50c53f296e2e3b5f124360139d8a4ea1e976332af493"
+          },
+          "Motivic.Algebra.Homology.KoszulPairResolution": {
+            "source_sha256": "d900a4c7302c4b6c467b83a103e87d10147529d5e73e238c2a19775020ef3163",
+            "setup_sha256": "7f1db5edae692dbf1fb5fd6e9549e95626540efe14836d3257c0de1b9a2f8605",
+            "olean_sha256": "73c4556a084ef9920225546f5584e7992766e64c414cf9d618d228b431784732"
+          },
+          "Motivic.Algebra.Homology.KoszulPairIdeal": {
+            "source_sha256": "48e36bd41a75cf58083366061d7acc3e86ff4fcc8e61d61582f31217fe6725c0",
+            "setup_sha256": "014ddad2d07347b64b0741b3107530d67a1e56ea734b3cab4aaa6eb4257d3686",
+            "olean_sha256": "b2167fc4e840873751c218ea33756f4711a2799ed83aeb0694c17609301ec0e4"
+          },
+          "Motivic.Algebra.Homology.KoszulPairTensor": {
+            "source_sha256": "585b868c8c810e1043852c7d72214688a2ffac1694ac8457fca4ed9780cf6f5d",
+            "setup_sha256": "598d4816c96f6deac4b2acc2b700ca43c1feadae624a8042b5652420895faca4",
+            "olean_sha256": "7c50afd95c30a8a7d445dd4b06335e17ca060d28dac7b6285102c286606da2dd"
+          },
+          "Motivic.Algebra.Homology.KoszulPairTor": {
+            "source_sha256": "102e3cd0c0c2aa44e97038fcca72816f123cd5c08477bc987b4360d5cd27cf83",
+            "setup_sha256": "26b5d671dac6cb53282cf587a947df5bbc2422785c4be5b25257f6089c2d01d9",
+            "olean_sha256": "ce19aba95abcec5adf940a1599d2f7fa8b4c76463121db0da61e97b1055bd0da"
+          },
+          "MotivicTest.KoszulPairTor": {
+            "source_sha256": "3ea205efb59e8ec9b3e604225d7eb234067ccc2fe84372a1e33a04092284f408",
+            "setup_sha256": "986631d564e41ea35382fd81349e59c89cccdbc31eab7a4f3bee86b81e1daab0",
+            "olean_sha256": "f84df70d7225e778fbee31d438158d2ec0ee0e1ba6979f4cba4be114db8cb19b"
+          },
+          "Motivic.Cohomology.Motivic.WeightTwoPointPresentation": {
+            "source_sha256": "2b6c958f0aefc2ec4599371c5e8ea4748102394d96751d5a8a771fbc80b8296d",
+            "setup_sha256": "501aa4e743fb05d1a1109bd17a33f072c99515bde1febbfa859af79c4725588b",
+            "olean_sha256": "972c8b6bb4714b843290a1cd09a0a1daa56ee39f086c5194fc8fb8bd83d412f6"
+          },
+          "Motivic.Cohomology.Motivic.WeightTwoMilnorSurjective": {
+            "source_sha256": "37aecf93b2af05f57a94edb6b4b8411981cb9830126301633e259b436af8353d",
+            "setup_sha256": "75c755ae3f946171e672c58d1dc4db18180d10891c8bbe84b883c5726a7067ab",
+            "olean_sha256": "54e7857ed6bf511198a6d9a53cbefcbb8cbf0367766bc499ab0f26950cc51a43"
+          },
+          "MotivicTest.WeightTwoMilnorSurjective": {
+            "source_sha256": "e4e780046f3fe5d2e167d2caf304234ef24ea07f4a21dca4cb596b988b98fe01",
+            "setup_sha256": "fd185bc72f644b3f0de37a2da3838fb187f4099c5918a846a4073afc2964070f",
+            "olean_sha256": "e7a0fc9f8e01e92724244f29b8ac7b0880759c91bfdf49ef6cfdebcf17b9a805"
+          }
+        },
+        "summary_sha256": "464c7099531b4b433b4f780a85de1643e962133b7705bae0edee98d2365af1e8",
+        "boundary": "Not a fresh complete-package Lake build. Projective native acceptance remains assigned to hosted Linux with matching provider caches."
+      }
+    }
   }
 }

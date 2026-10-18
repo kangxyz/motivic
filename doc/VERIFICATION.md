@@ -381,6 +381,28 @@ no mathematical heartbeat bound changed.
 [The integration check record](provenance/milnor-k-aglib-20261018/CHECKS.json)
 identifies the exact endpoint/test sources, artifacts and successful guards.
 It distinguishes controlled native overlays from a fresh rehashed Lake build
-of the complete committed-pin package. The true public-root and independent
-Motivic client remain selected for hosted validation with the published Linux
-cache; no unbound Darwin artifact is adopted to claim local completion.
+of the complete committed-pin package. No unbound Darwin artifact is adopted
+to claim local completion.
+
+The [hosted run at `50799e2`](https://github.com/kangxyz/motivic/actions/runs/39103086719)
+built the public root and `MotivicTest.PublicAPI`, but failed on three optional
+leaves: an open-transport theorem name collided with the upstream degree-transport
+theorem; four categorical projectivity references resolved to module projectivity;
+and a Milnor surjectivity definition exceeded the line-length limit. Its partial
+caches were saved. The pinned Aglib asset imported successfully, with no fresh
+Aglib or Mathlib compilation.
+
+The [follow-up at `dd1f4ef`](https://github.com/kangxyz/motivic/actions/runs/39108109720)
+passed the public roots, the 12,309-declaration standard-foundation audit and the
+independent `MotivicClient`, then published its native cache. It reused the failed
+run's project/native progress; only the audit and client modules compiled. That
+selection does not certify repairs to the three optional failures, whose focused
+validation is recorded separately.
+
+The focused repairs rename the local open-equality theorem and its caller,
+qualify categorical projectivity, and wrap the long signature. Nine current
+native modules, including the existing Koszul/Tor and weight-two surjectivity
+tests, passed. Fifteen declaration linters found no errors in the two repaired
+defining modules (21 declarations and seven generated declarations). All four
+changed sources passed pinned text/style checks. The projective branch retains
+its explicit hosted validation boundary with the matching upstream cache.
