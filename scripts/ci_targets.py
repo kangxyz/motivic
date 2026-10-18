@@ -12,6 +12,19 @@ from library_sources import is_import_surface, lean_imports, module_name, source
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULTS = ('Motivic', 'MotivicTest')
 CONFIG_INPUTS = {'lakefile.toml', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain'}
+CLIENT = 'examples/downstream/'
+
+
+def client_input(path: str) -> bool:
+    return path.startswith(CLIENT) and (path.endswith('.lean')
+        or path[len(CLIENT):] in CONFIG_INPUTS)
+
+
+def select_client(root: Path, changed: list[str], targets: list[str]) -> bool:
+    if any(client_input(path) for path in changed):
+        return True
+    source = root / CLIENT / 'MotivicClient.lean'
+    return source.is_file() and any(name in targets for name in lean_imports(source.read_text()))
 
 
 def validation_scope(changed: list[str], *, setup: bool = False,
@@ -19,7 +32,7 @@ def validation_scope(changed: list[str], *, setup: bool = False,
     """Select structural checks and fixtures from the current tool ownership."""
     if setup:
         return True, ['test_*.py']
-    structural = manual or any(path.endswith('.lean') or path in CONFIG_INPUTS
+    structural = manual or any(path.endswith('.lean') or path in CONFIG_INPUTS or client_input(path)
                                for path in changed)
     fixtures = set()
     owners = {
@@ -27,6 +40,8 @@ def validation_scope(changed: list[str], *, setup: bool = False,
         'scripts/test_ci_targets.py': 'test_ci_targets.py',
         'scripts/build.py': 'test_build.py',
         'scripts/test_build.py': 'test_build.py',
+        'scripts/build_client.py': 'test_build_client.py',
+        'scripts/test_build_client.py': 'test_build_client.py',
         'scripts/cache.py': 'test_repository.py',
         'scripts/check_repository.py': 'test_repository.py',
         'scripts/test_repository.py': 'test_repository.py',
@@ -64,6 +79,8 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
             path.startswith('scripts/') and path.endswith(('.py', '.sh')))
            for path in changed)
     defaults = set(select_targets(root, [], full=True)) if needs_defaults else set()
+    if any(client_input(path) for path in changed):
+        defaults.add('Motivic')
     selected = {module_name(path) for path in changed if path.endswith('.lean')
                 and module_name(path) in sources}
     if not selected:
@@ -106,6 +123,7 @@ def main() -> int:
         targets = select_targets(root, changed, full=full, manual=manual)
         setup = first_push or (args.event == 'workflow_dispatch'
                                and (manual is None or tuple(manual) == DEFAULTS))
+        client = select_client(root, changed, targets)
         structural, tests = validation_scope(changed, setup=setup,
                                               manual=args.event == 'workflow_dispatch')
         print(' '.join(targets))
@@ -113,6 +131,7 @@ def main() -> int:
             with args.github_output.open('a') as output:
                 output.write('lean=' + str(bool(targets)).lower() + '\n')
                 output.write('targets=' + ' '.join(targets) + '\n')
+                output.write('client=' + str(client).lower() + '\n')
                 output.write('structural=' + str(structural).lower() + '\n')
                 output.write('tool_tests=' + ' '.join(tests) + '\n')
     except (OSError, UnicodeError, ValueError, subprocess.CalledProcessError) as error:

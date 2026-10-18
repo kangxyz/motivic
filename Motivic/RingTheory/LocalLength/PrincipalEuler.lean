@@ -13,8 +13,8 @@ public import Aglib.RingTheory.Multiplicity.PrincipalEuler.Basic
 
 This temporary downstream adapter preserves the existing Motivic names while
 reusing the native Aglib declarations. It adds no mathematical implementation.
-Dependency pin: `kangxyz/aglib` commit `40af743ab794d607f566cec0c5417d8e4d02a735`.
-The earlier R5Lab extraction provenance remains in `THIRD_PARTY_NOTICES.md`;
+The current Aglib revision is recorded in `lake-manifest.json`.
+The earlier R5Lab extraction provenance remains in `doc/provenance/early-source-migrations.md`;
 the imported Aglib source carries its own Apache-2.0 notices and exact provenance.
 -/
 

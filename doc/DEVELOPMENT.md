@@ -101,10 +101,23 @@ specific target. A configured workflow is not evidence that it passed.
 ## Public client
 
 `examples/downstream` is a separate Lake package requiring this repository by
-relative path. Its source imports only a public facade and checks an original
-mathematical interface. Resolve its committed upstream pins before building.
-For a consumer changing to a Git dependency, pin a reviewed repository commit
-rather than a moving branch.
+relative path. Its `Motivic` import checks the public correspondence category
+and the canonical Milnor degree-zero equivalence. After the guarded public
+build, compile the independent package with the same pinned dependencies:
+
+```sh
+python3 scripts/build.py Motivic
+python3 scripts/build_client.py
+```
+
+The client helper prepares an inherited manifest, shares this checkout's canonical
+package directory, and keeps its build outputs in the client's own `.lake/build`.
+It uses the same resource caps and rehashed native cache checks as the library
+build; it does not link another checkout's mutable outputs. CI runs it after the
+selected public build when client source/configuration or its public import is
+affected, and a client failure blocks publication. Matching root/dependency
+outputs are reused. For a consumer changing to a Git dependency, pin a reviewed
+repository commit rather than a moving branch.
 
 ## Source and contribution conventions
 

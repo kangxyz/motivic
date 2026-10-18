@@ -359,8 +359,9 @@ The independent Aglib dependency is pinned to
 moved tests. `MilnorK.K F n` is canonical; the tensor presentations live in
 `MilnorK.K2.Group` and `MilnorK.K3.Group`. Motivic keeps its two actual endpoint
 geometry applications and comparison interfaces. Old module paths are thin
-imports, with the six existing native-alias adapters retained. Source notices
-and the seven non-Apache implementation exceptions move with their owner.
+imports, with the six existing native-alias adapters retained. Earlier source
+identities remain recorded separately from the current authorship and
+Apache-2.0 license headers.
 
 Ordinary source/API correspondence review passed. The upstream selected
 production, declaration/style checks, 147 affected tests, 23 retained unchanged

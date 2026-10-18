@@ -25,6 +25,7 @@ jobs:
     outputs:
       lean: ${{ steps.scope.outputs.lean }}
       targets: ${{ steps.scope.outputs.targets }}
+      client: ${{ steps.scope.outputs.client }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -121,6 +122,9 @@ jobs:
           read -r -a targets <<< "$SELECTED_TARGETS"
           python3 scripts/build.py --receipt-dir .lake/verification/ci \
             --outputs "$RUNNER_TEMP/native-outputs.jsonl" "${targets[@]}"
+      - name: Build the affected independent public client
+        if: needs.source.outputs.client == 'true'
+        run: python3 scripts/build_client.py --receipt-dir .lake/verification/ci-client
       - name: Export current core and selected-target native mappings
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |

@@ -26,6 +26,11 @@ The index maps original test source paths to repository paths. These test edits 
 
 ## Authorship metadata
 
+Current source uses the repository Apache-2.0 license. The imported extraction
+notices describe an older snapshot, not current license exceptions. Earlier
+paths and source identities are collected in
+[early source migrations](early-source-migrations.md).
+
 Generic Motivic contributor labels in maintained Lean headers are normalized to
 `Authors: kangxyz`; concrete upstream author names remain. The original snapshots
 here keep their original bytes and notices. Production text after the first

@@ -17,4 +17,4 @@ Lean and dependencies are pinned in `lean-toolchain` and `lake-manifest.json`.
 - [Architecture](doc/ARCHITECTURE.md) and [naming](doc/NAMING.md).
 - [Verification](doc/VERIFICATION.md) and [source provenance](doc/provenance/README.md).
 
-License information: [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md).
+License: [Apache-2.0](LICENSE).

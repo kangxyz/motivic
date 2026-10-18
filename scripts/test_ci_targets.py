@@ -9,7 +9,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from ci_targets import main, select_targets, validation_scope
+from ci_targets import main, select_client, select_targets, validation_scope
 
 
 class TargetSelectionTests(unittest.TestCase):
@@ -70,6 +70,24 @@ public import
                                   'Motivic/Optional/Computation.lean']),
                                  ['Motivic', 'Motivic.Optional.Computation', 'MotivicTest'])
 
+    def test_client_only_source_and_config_select_public_build_and_client(self):
+        for path in ('examples/downstream/MotivicClient.lean',
+                     'examples/downstream/lakefile.toml',
+                     'examples/downstream/lean-toolchain'):
+            with self.subTest(path=path):
+                targets = select_targets(self.root, [path])
+                self.assertEqual(targets, ['Motivic'])
+                self.assertTrue(select_client(self.root, [path], targets))
+                self.assertEqual(validation_scope([path]), (True, []))
+
+    def test_public_changes_select_client_but_unrelated_optional_and_docs_do_not(self):
+        self.write('examples/downstream/MotivicClient.lean', 'module\npublic import Motivic\n')
+        self.assertTrue(select_client(self.root, ['Motivic/Public/Core.lean'],
+                                     select_targets(self.root, ['Motivic/Public/Core.lean'])))
+        self.assertFalse(select_client(self.root, ['Motivic/Optional/Computation.lean'],
+                                      select_targets(self.root, ['Motivic/Optional/Computation.lean'])))
+        self.assertFalse(select_client(self.root, ['examples/downstream/README.md'], []))
+
     def test_docs_only_selects_no_lean(self):
         self.assertEqual(select_targets(self.root, ['README.md', 'doc/INTERFACES.md']), [])
 
@@ -112,6 +130,7 @@ class ValidationScopeTests(unittest.TestCase):
         groups = {
             'test_ci_targets.py': ('ci_targets.py', 'test_ci_targets.py'),
             'test_build.py': ('build.py', 'test_build.py'),
+            'test_build_client.py': ('build_client.py', 'test_build_client.py'),
             'test_repository.py': ('cache.py', 'check_repository.py', 'test_repository.py'),
         }
         for fixture, tools in groups.items():
@@ -145,7 +164,7 @@ class ValidationScopeTests(unittest.TestCase):
             self.assertEqual(result.returncode, 0, result.stderr)
             values = dict(line.split('=', 1) for line in output.read_text().splitlines())
             self.assertEqual(values, dict(lean='true', targets='Motivic MotivicTest',
-                                          structural='true', tool_tests='test_*.py'))
+                                          client='false', structural='true', tool_tests='test_*.py'))
 
     def test_docs_only_cli_keeps_outputs_valid_when_checks_are_skipped(self):
         with tempfile.TemporaryDirectory() as temporary:
@@ -160,7 +179,7 @@ class ValidationScopeTests(unittest.TestCase):
                 self.assertEqual(main(), 0)
             values = dict(line.split('=', 1) for line in output.read_text().splitlines())
             self.assertEqual(values, dict(lean='false', targets='',
-                                          structural='false', tool_tests=''))
+                                          client='false', structural='false', tool_tests=''))
 
 
 if __name__ == '__main__':
