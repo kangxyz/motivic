@@ -41,3 +41,8 @@ for the corresponding application conditions.
 Keep each fixed section-data record with its projected data and original maps.
 An independent `Nonempty` witness is not an equality with that record and does
 not identify its chosen sections or frame without an explicit compatibility.
+
+The occupied [pencil guide](Pencils/README.md) records simultaneous original
+section choices, finite/identity parameter diagrams, graph-coefficient
+regularity and the R3/R5 normalized-unit constructors, with their exact
+boundary and component hypotheses.

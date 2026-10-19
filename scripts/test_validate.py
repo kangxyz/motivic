@@ -176,6 +176,50 @@ class DeclarationOriginTests(unittest.TestCase):
         self.assertIn(lint_declarations.ORIGIN_FILTER, observed[0][1])
         self.assertEqual(path.read_bytes(), native)
 
+    def test_distinct_origins_run_in_separate_processes_with_the_same_adapter(self):
+        native = ('before\n' + lint_declarations.ENUMERATION + 'after\n').encode()
+        path = self.root / '.lake/packages/batteries/scripts/runLinter.lean'
+        path.parent.mkdir(parents=True)
+        path.write_bytes(native)
+        argv = ['lint_declarations.py', '--root', str(self.root), '--no-build',
+                'Motivic.Provider', 'Motivic.Consumer', 'Motivic.Provider']
+        observed = []
+        def native_call(argv, **kwargs):
+            observed.append((argv, kwargs, Path(argv[argv.index('--run') + 1]).read_text()))
+            return subprocess.CompletedProcess(argv, 0)
+        wrapper = '/private/tmp/selected-lean-wrapper'
+        with patch.object(sys, 'argv', argv), patch.dict(os.environ, LEAN=wrapper), \
+                patch('lint_declarations.DRIVER_SHA256', hashlib.sha256(native).hexdigest()), \
+                patch('lint_declarations.subprocess.run', side_effect=native_call):
+            self.assertEqual(lint_declarations.main(), 0)
+        self.assertEqual(len(observed), 2)
+        for (command, kwargs, adapted), origin in zip(observed, ['Motivic.Provider', 'Motivic.Consumer']):
+            self.assertEqual(command[:4], ['lake', 'env', wrapper, '--run'])
+            self.assertEqual(command[5:], ['--no-build', origin])
+            self.assertEqual(kwargs, {'cwd': self.root})
+            self.assertEqual(adapted, native.decode().replace(
+                lint_declarations.ENUMERATION,
+                lint_declarations.ENUMERATION + lint_declarations.ORIGIN_FILTER))
+        self.assertEqual(observed[0][0][4], observed[1][0][4])
+        self.assertEqual(path.read_bytes(), native)
+
+    def test_origin_process_failure_stops_later_origins_and_preserves_exit_code(self):
+        native = ('before\n' + lint_declarations.ENUMERATION + 'after\n').encode()
+        path = self.root / '.lake/packages/batteries/scripts/runLinter.lean'
+        path.parent.mkdir(parents=True)
+        path.write_bytes(native)
+        argv = ['lint_declarations.py', '--root', str(self.root), '--no-build',
+                'Motivic.Provider', 'Motivic.Consumer', 'Motivic.Unrelated']
+        for returncodes in ([23], [0, 7]):
+            with self.subTest(returncodes=returncodes), patch.object(sys, 'argv', argv), \
+                    patch('lint_declarations.DRIVER_SHA256', hashlib.sha256(native).hexdigest()), \
+                    patch('lint_declarations.subprocess.run', side_effect=[
+                        subprocess.CompletedProcess([], code) for code in returncodes]) as run:
+                self.assertEqual(lint_declarations.main(), returncodes[-1])
+            self.assertEqual([call.args[0][5:] for call in run.call_args_list],
+                             [['--no-build', origin] for origin in
+                              ['Motivic.Provider', 'Motivic.Consumer'][:len(returncodes)]])
+
     def test_normal_routes_use_origin_adapter_but_explicit_full_keeps_native_driver(self):
         plan = make_plan(self.root, ['Motivic/Provider.lean'])
         selected = commands(self.root, plan, self.receipts, skip_static=True, skip_cache=True)

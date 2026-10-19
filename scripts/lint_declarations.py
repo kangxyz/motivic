@@ -54,8 +54,13 @@ def main() -> int:
             runtime.write_text(adapted)
             # Lake may prepend its real bin directory; name the selected guard explicitly.
             lean = os.environ.get('LEAN') or 'lean'
-            return subprocess.run(['lake', 'env', lean, '--run', str(runtime),
-                                   '--no-build', *dict.fromkeys(args.targets)], cwd=root).returncode
+            # Release interpreter state between origins; the driver imports each independently.
+            for origin in dict.fromkeys(args.targets):
+                result = subprocess.run(['lake', 'env', lean, '--run', str(runtime),
+                                         '--no-build', origin], cwd=root)
+                if result.returncode:
+                    return result.returncode
+            return 0
     except (OSError, UnicodeError, ValueError) as error:
         print(f'Focused declaration lint failed: {error}', file=sys.stderr)
         return 1

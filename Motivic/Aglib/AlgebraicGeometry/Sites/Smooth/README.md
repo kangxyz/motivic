@@ -76,3 +76,50 @@ with `[IsAffine X.left]` and `[IsAffine A.left]`, an arrow `i : A ⟶ X` with
 `[Etale i.left]`, and `v : V ⟶ X`. Its conclusion is affineness of the actual
 `etalePullback i (affineOpenInclusion V W ≫ v)`, whose underlying scheme is
 the corresponding pullback of `i.left` and the displayed composite.
+
+## Native coefficient restrictions and the whole original cylinder
+
+For `k : Type u`, `[Field k]`, affine `U : SmoothSite (Spec k)`, an original
+`e : T ≅ a1Cylinder (.of k) U` and three successive affine coefficient opens
+`B,O,V`, [AffineLine/CoefficientCartesianSquare](AffineLine/CoefficientCartesianSquare.lean)
+defines `nativeOriginalCoefficientMap` and `nativeOriginalLineMap` as literal
+composites. `nativeOriginalCoefficient_isPullback` identifies the entire final
+native affine line as the Cartesian pullback of the original cylinder along
+that original-base map. The
+[projective-line affine-square interface](../../ProjectiveLine/Neighborhood/README.md)
+provides the lower Cartesian squares; no normalization of a triple product of
+ring maps or arbitrary open of the cylinder replaces them.
+
+[NativeOriginalBase](AffineLine/NativeOriginalBase.lean) gives the original
+field-structure composites, `nativeOriginalBaseSite`, its open inclusion,
+and the final native line object/projection. Nonemptiness uses a retained
+point of the final coefficient open. [NativeOriginalLineRestriction](AffineLine/NativeOriginalLineRestriction.lean)
+packages the line map as a smooth-site arrow and retains the actual Cartesian
+square. [CartesianCylinderIso](AffineLine/CartesianCylinderIso.lean) constructs
+the general comparison from that square.
+[NativeOriginalCylinder](AffineLine/NativeOriginalCylinder.lean) specializes it:
+`nativeOriginalCylinderIso` preserves both the base projection and original
+parameter coordinate; `nativeOriginalWholeCylinderMap_comp` states that the
+map back to `T`, followed by `e.hom`, is exactly `a1Map` of the original base
+inclusion. [OriginalCoefficientRestriction](AffineLine/OriginalCoefficientRestriction.lean)
+retains the corresponding ordinary coefficient-open arrow and its literal
+line/cylinder coordinates.
+
+## Field lifting after both coefficient restrictions
+
+[Nisnevich/NativeCoefficientCover](Nisnevich/NativeCoefficientCover.lean)
+retains the original puncture and source coordinates under both restrictions.
+In [NativeCoefficientFieldLifting](Nisnevich/NativeCoefficientFieldLifting.lean),
+`nativeCoefficientCover_field_lifting` says that every `Spec K` point of the
+final native line lifts either through its actual puncture or through its
+actual source. Its data are a commutative ring `R : Type u`, two affine
+coefficient opens, an open puncture, a closed marked complement and the
+original marked section through the source map. This field-lifting assertion
+omits source étaleness and affineness. The topology theorem
+`nativeCoefficientCover_mem_nisnevichTopology` retains the affine source and
+puncture, étale source map and a smooth separated quasi-compact structure
+map of the final line to `Spec k`; it concludes membership of the literal
+two-arrow sieve in the smooth Nisnevich topology. The
+[host refined-cover consumer](../../../../Transfers/Presheaf/Actions/README.md)
+must still bind these arrows to the original whole cylinder and representative
+restrictions. A field-lifting result alone does not close that assembly.

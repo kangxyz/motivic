@@ -485,3 +485,28 @@ dependency caches.
 The arbitrary HI-presheaf sheafification corollary retains its explicit
 whole-cylinder lifting input. The perfect-field strict-invariance entry retains
 its HI transfer-sheaf, ordinary HasExt and coefficient-universe hypotheses.
+
+## Original normalization recovery, 19 October 2026
+
+The [integration record](provenance/normalization-recovery-20261019/README.md)
+maps the two archive snapshots to 94 new sources: 66 general candidates,
+27 motivic implementations and one affected test. Existing Lean sources,
+dependency pins and curated roots are unchanged. Mathematical interfaces and remaining inputs
+are documented in the owning normalization, pencil, action and representative
+guides linked from that record.
+
+Compatible retained checks and focused new runs cover all 93 production origins:
+compilation, 15 declaration linters and a standard-axiom audit of 1,455 public,
+private and generated declarations. All 94 source files pass text/style checks.
+The affected test compiles and introduces no declarations of its own. Structural
+checks pass for 3,369 project/client sources; tooling coverage is 66 passing
+fixtures and one optional skip.
+The exact 94-target portable cache was exported and imported locally, passing
+guarded no-build/rehash acceptance.
+
+The original E5 action endpoints retain their sections, maps and signs. The E3
+original-difference zero results and generic middle-difference lifting adapter
+retain all their displayed premises. Expanded E3 action wrappers and the actual
+common-witness master transport are deferred. Arbitrary HI-presheaf
+sheafification and strict A1 remain open; the existing perfect-field theorem for
+already-HI transfer sheaves is unchanged.

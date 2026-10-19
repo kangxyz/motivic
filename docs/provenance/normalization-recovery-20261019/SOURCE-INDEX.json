@@ -1,0 +1,2786 @@
+{
+  "schema_version": 2,
+  "archives": [
+    {
+      "id": "source-100828",
+      "filename": "motivic-revised-normalization-recovery-source-20261019T100828Z.tar.gz",
+      "sha256": "c56d9682340eadb6a2b72c15d0595f2e0ac8356f8908e956c839fdada5135064",
+      "checkpoint_utc": "2026-10-19T10:08:28.850437+00:00",
+      "raw_base_commit": "901f2e6fdfc55d7cd8842f46db2c890ec07b25a1",
+      "source_status_sha256": "c3ed33b3e0fe2cb29d517c646d51008ee10c30506f9f270da457845251aa12b2",
+      "source_sha256_manifest_sha256": "d36f386c76bf74d08aeab14abe62f9655c019ddf1ed7bf0da184ef77d76a5d63"
+    },
+    {
+      "id": "source-135322",
+      "sha256": "aa03de05cd525d8abacd242ee096e4735fe9012b80aad6e8b6ceaee5aef2536d",
+      "checkpoint_utc": "2026-10-19T13:53:22.562247+00:00",
+      "raw_base_commit": "901f2e6fdfc55d7cd8842f46db2c890ec07b25a1",
+      "source_status_sha256": "13e3e227caba967c006f9255947a06f3d67069459d8e837720cd16a795e91413",
+      "source_sha256_manifest_sha256": "2c5ef079ea19101698a4506d150418956098c4bc30507ef44cef96322291bce4"
+    }
+  ],
+  "deltas": [
+    {
+      "basis": "1836 to 100828",
+      "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/delta-vs-1836.json",
+      "sha256": "05bbe1d425bceeaee3b33aa4345f10f8f260466e92f424d47f7e8272a3d9a8d4",
+      "added": 80,
+      "modified": 5,
+      "removed": 0
+    },
+    {
+      "basis": "100828 to 135322",
+      "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/intake-135322/delta.json",
+      "sha256": "041ea70f5e1d95ffdf1fc8fdac46572e92587d7d6b446e7d091c7be6b4dd6bf1",
+      "added": 16,
+      "modified": 2,
+      "removed": 0
+    }
+  ],
+  "aggregate_vs_1836": {
+    "raw_additions": 96,
+    "raw_modifications": 5,
+    "raw_removed": 0,
+    "correspondence_rows": 101,
+    "selection_arithmetic": "96 additions + one focused NormUnit extraction - two deferred legacy original master providers - one omitted Lambda shim = 94 native additions."
+  },
+  "current_source_binding": {
+    "mathematical_entry_head": "64cf8e2987412f3a56b1f133f3553b2604b76d88",
+    "governing_workflow_head": "5e773feee484885928bdfb0cb6449b6e25887791",
+    "observed_head": "5e773feee484885928bdfb0cb6449b6e25887791",
+    "source_epoch": "accepted94-repair01-omit-unused-integral-K",
+    "source_manifest_sha256": "f2eb876498af2f329f0538f56ae26135b20eb84485f16a5c2627e8e8d25a9adb",
+    "source_changes_sha256": "73fddcd3d9dbfdd629cf3941c269dbfb171f589bfde323c05463ebcea5e27517",
+    "new_sources": 94,
+    "production_providers": 93,
+    "layers": {
+      "candidate": 66,
+      "host": 27,
+      "test": 1
+    },
+    "retained_existing_providers": 5,
+    "modified_existing_lean_sources": 0,
+    "retained_byte_identical_sources": 77,
+    "retained_validated_providers": 76,
+    "new_or_replaced_production_providers": 17,
+    "binding_state": "Exact current94 source binding. Current93 providers pass kernel, enabled exact-origin15 linters and standard3 audit; style94 and selected test pass. Cache delivery remains separate.",
+    "source_file_inventory": "Current native destinations and hashes occur once in raw_source_correspondence; retained existing providers are marked separately."
+  },
+  "admission_basis": {
+    "initial_map_sha256": "6766328c3fb38d86934811a6d367eefcd343df0a0aad2a892d54d3efb2aaf292",
+    "revised_map_sha256": "9295635c05193a0cf7142954867fb7944d6e037ea7fb5f760ab86ffc1a97d23c",
+    "revised_source_boundary_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/intake-135322/source-boundary/admission-18.json",
+    "revised_source_boundary_sha256": "4bb821fb732e480e1d7b4a31500ccb49bb174043ffdb1e59af5a78319e58fa6b",
+    "latest_delta_admitted": 17,
+    "latest_delta_omitted_unused_shim": 1,
+    "e5_source_identity": {
+      "original_variable_context_identical": true,
+      "full_two_public_theorem_tail_identical": true,
+      "tail_sha256": "166eb95504cd6f8ca7fc80fa63c4cc6c53ab594e39e7d37ff7db41f7558a6062",
+      "old_first_public_theorem_line": 541,
+      "new_first_public_theorem_line": 718,
+      "new_source_sha256": "493efc61b3c84284bcfa816e13839167f60b74e5f35519de885bd3c51bba1092"
+    },
+    "dimension_reconciliation": "The two general dimension sources are admitted by exact owning production/hash and targeted public-trust evidence although absent from SOURCE_STATUS rows. Their source-only comments are superseded."
+  },
+  "source_reconciliations": {
+    "native_routes": [
+      "Pure dependent two-entry helper uses Fin.twoCases and its four literal evaluation lemmas in Data/Fin/TwoCases.",
+      "The two NormUnit declarations are extracted beside unchanged RelativeCurve/Pencils/Boundary/SectionPairNormIdeal; actual path includes RelativeCurve.",
+      "General original-correction scheme/smooth-site maps use native Scheme.RelativeCurvePencil; original maps, signs and universes retained."
+    ],
+    "public_unused_class_omissions": [
+      {
+        "declaration": "AlgebraicGeometry.Scheme.RelativeCurvePencil.normProductMap_preimage_boundary_subset_sectionUnitOpen",
+        "omitted": [
+          "IsOpenImmersion j",
+          "IsClosedImmersion (z \u226b jA)"
+        ]
+      },
+      {
+        "declaration": "AlgebraicGeometry.Scheme.RelativeCurvePencil.originalCorrectionNorm_boundary_subset_goodOpen",
+        "omitted": [
+          "IsOpenImmersion jB",
+          "IsClosedImmersion (z \u226b jA)"
+        ]
+      },
+      {
+        "declaration": "Motivic.Cor.originalComponentLambda_eq_principal",
+        "omitted": [
+          "IsIntegral K"
+        ]
+      },
+      {
+        "declaration": "Motivic.Cor.originalComponentLambdaDifference_eq_principal",
+        "omitted": [
+          "IsIntegral K"
+        ]
+      }
+    ],
+    "module_docstring_reconciliations": [
+      {
+        "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Charts/FlatOfFreeCharts.lean",
+        "before_sha256": "0a53ee2344bc6cd462263a7f0dc7790725f33d6fe957df6cd588c48fa8a88c18",
+        "after_sha256": "da8b8c22fe13a4803c19bfedf8ef39912b000560c9d9e11639ffeda523c6a4f6",
+        "scope": "Only module docstring status prose; declaration/proof/options suffix byte-identical."
+      },
+      {
+        "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Dimension/FiniteFlatComponents.lean",
+        "before_sha256": "791b1e13d6ba940a09a2ec187e71b01afef5bbf76c025493862b1701456ddc10",
+        "after_sha256": "54f8d2e39fc1438cdcd7d619e679baca564049a73813485bc918098d1fe40d81",
+        "scope": "Only module docstring status prose; declaration/proof/options suffix byte-identical."
+      },
+      {
+        "path": "Motivic/Aglib/RingTheory/KrullDimension/PolynomialFiniteFlatComponents.lean",
+        "before_sha256": "9a3965f2828946e4486b86cd9afbc3f1446e9b9dce07414ed929b053dd3852d4",
+        "after_sha256": "a7ba335fcb7877f083e2868d65bff3881ddb7a43c9242172f9e3c71140dca3ec",
+        "scope": "Only module docstring status prose; declaration/proof/options suffix byte-identical."
+      }
+    ],
+    "current_options": {
+      "package_default_maxHeartbeats": 200000,
+      "maxHeartbeats_overrides_in_current_94": [],
+      "scope": "Read-only lexical scan of the current94 sources. Prior 400000/1000000 failed-attempt exceptions are outside current production; no claim that those attempts validated this packet."
+    }
+  },
+  "raw_source_correspondence": [
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/AffineBoundaryScalarRestriction.lean",
+      "raw_sha256": "7e55b53c3b9037fdeb75a09e521cb62e57c8f7bcf12a0a87d254a089882e254f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/AffineBoundaryScalarRestriction.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.AffineBoundaryScalarRestriction",
+          "sha256": "e8a034ba1b6ca9c416f4c9fa528a51cc2ac2b679ee6fc12cbcd701263ef80a59",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.FiniteSchemeNormBaseChange"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.AffineBoundaryScalarRestriction",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/CoproductBoundarySections.lean",
+      "raw_sha256": "03385c1c4f87d541b0f59f5bc470b777e056153eccd5dd3cbd59310246d96c5d",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Scheme/Sections/CoproductBoundary.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Scheme.Sections.CoproductBoundary",
+          "sha256": "00e8804b4e88ed2ada8bdfd0a15794c770f3f26fa8420d0ac3a735400d5223f3",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Scheme/Sections/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Scheme.Sections.CoproductBoundary",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/FiniteSchemeFreeCartesianOpen.lean",
+      "raw_sha256": "b5c8d2cd040809be137b4db2d1b871cb6bd6c995d3cfcf77ddda66ce9c16c020",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Flat/FreeCartesianOpen.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Flat.FreeCartesianOpen",
+          "sha256": "22ede865148d5d945fcbaad9c8cf005bf86d636cb3ed13cf20c086a2b6043b7c",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.FiniteSchemeNormBaseChange"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Flat.FreeCartesianOpen",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.Unit",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalRetainedNormMaps"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/FunctionalQuotientAffineChart.lean",
+      "raw_sha256": "9a59ae31a9c25d38ec563aa876257a8203c0424f69af3aed6ca7aa72c47553c7",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/FunctionalQuotientAffineChart.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.FunctionalQuotientAffineChart",
+          "sha256": "fe13d33f089d6da9c9a64026b371486f04a747585478c1cc86ae16ea10e42a09",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Modules.Invertible"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Modules.Invertible.FunctionalQuotientAffineChart",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIdentity",
+            "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIso",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalUnitBoundary",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionInfinityUnits",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairTargetGenericRatio"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/AffineBaseLocalizedFreeCharts.lean",
+      "raw_sha256": "03935dcadaec1755610ffb7f05961a881f5b74fa21e0cdb5947aa7f0cf6cb09d",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/ProjectiveMap/AffineSourceLocalizedFreeCharts.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.ProjectiveMap.AffineSourceLocalizedFreeCharts",
+          "sha256": "0e7d6bbbf2c29ff9134b38227914249aff6a129c930b12d6dc96420976910ed3",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.ConstantCurve"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.ProjectiveMap.AffineSourceLocalizedFreeCharts",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFreeCharts"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FunctionalNormProductUnit.lean",
+      "raw_sha256": "61897aa737d0eabbe599b00beddc3520b650eb8ce25d53cff64a8d85bbc5e88c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/FunctionalProduct/Unit.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.Unit",
+          "sha256": "b2119217c427fc9dc960fcbee23c6a2e419a9f3f625acbeffe310a8a1f08bc7b",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.Unit",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FunctionalNormProductUnitDomain.lean",
+      "raw_sha256": "29eb58e1eb60983076998388649dcffb44cb41c67199c330822b7b0f6468f809",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/FunctionalProduct/UnitDomain.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.UnitDomain",
+          "sha256": "d23d9ffe9ac84ebca556a4eac4a19075cb0c8913a26476e9e69018c0333c5908",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.UnitDomain",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.Unit",
+            "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.UnitDomainGeneric",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalUnitBoundary"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/FunctionalNormProductUnitDomainGeneric.lean",
+      "raw_sha256": "08c834005de6c06803f045cad0d0428262566efb18c8d8e505a52d4b1dd84e5c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/FunctionalProduct/UnitDomainGeneric.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.UnitDomainGeneric",
+          "sha256": "22ddddfb53fd21f081cfe18cfa7a039f19f25c787d9107e6f7ebd55cbfd524ed",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FunctionalProduct.UnitDomainGeneric",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/GenericFiberLineRatioIdentity.lean",
+      "raw_sha256": "1d7d5c37519e82d4e3ecf3f8713c204a3ed67b8432da954814691e7480444c4f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/GenericFiber/LineRatioIdentity.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIdentity",
+          "sha256": "b7f4c78e814ffbf1f5065bbdc0165171f4cea094bab62a48a88c0eaf9f539c4d",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Modules.Invertible",
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIdentity",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/GenericFiberLineRatioIso.lean",
+      "raw_sha256": "9c2da5daeaff2036eec85b27fb0e17eab7d53d39bc3ad91457df3b917f478f0f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/GenericFiber/LineRatioIso.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIso",
+          "sha256": "94a040dee32471ecb35d9069cba781c9005dc2fed400174f632cff2417b6226b",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIso",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterGenericRatio"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/NormalizedOriginalSectionChoice.lean",
+      "raw_sha256": "b055fb9ab862ee4553f273c4d90f9b1fa5c8111af9d98cf2a7a47f6ef29889c5",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/OriginalSectionChoice.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.OriginalSectionChoice",
+          "sha256": "10d7c7f6ab165dee822b53e128c6d653768102c870ec5b4a9f3afe2469953e14",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.OriginalSectionChoice",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Norm.RefinedSectionChoice"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalCoefficientFreeCharts.lean",
+      "raw_sha256": "8e2b508fd059685c52c4812973e081d87f45d694cf630c94f2faf82d546a1675",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/CoefficientFreeCharts.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFreeCharts",
+          "sha256": "4bd36a298fb823676bf56dd69388b1a2769fe017b3a015d4267a6bf2762aade9",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFreeCharts",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFlat",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCanonicalPrincipalAction",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalCoefficientNormalDomain.lean",
+      "raw_sha256": "e872c8230ce9cfb897bbd15d5555e7ec1134215df0029bcfc4920486edc38b45",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/CoefficientNormalDomain.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientNormalDomain",
+          "sha256": "b1f056a82f7b7c994324dbfdd4cc70477b587b7989691ca8df5ef6733597ce6a",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientNormalDomain",
+          "direct_import_consumers": []
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalNativeComplement.lean",
+      "raw_sha256": "9dcf2ec0e4581fa0ff7f06e74cb3eb2ac31e193bc9d845ac837e0f79ea8c6d7d",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/NativeComplement.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.NativeComplement",
+          "sha256": "b0e53c2cf2ce3d1c76f9b13860ed2295ff5ac837d17a86c2317f79bfc5e5a58a",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme",
+            "AlgebraicGeometry.RelativeProjectiveLine"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.NativeComplement",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.OriginalSectionChoice",
+            "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.ThickenedBoundaryAffineAmbients",
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientCover",
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientFieldLifting",
+            "Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedSource",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalRestrictionActions"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalRestrictedSourceInclusion.lean",
+      "raw_sha256": "a79210ef4a06241d46a6f4302aa11f817a64e045f20e7002b0af7d6b9bfb7912",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/RestrictedSourceInclusion.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.RestrictedSourceInclusion",
+          "sha256": "6024cf4d74d198e439bd443a67bf40b00eedfd9288a89feeb3c6c7e9dbefcd7f",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.RestrictedSourceInclusion",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairParameterComponents"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/SchemeNormIso.lean",
+      "raw_sha256": "daa250f7592ca76571aa37cda13f1f61ac40302fc3fb94780b3a93e9c9a622d4",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/Norm/SchemeIso.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.SchemeIso",
+          "sha256": "cd3c314a88a9b9c50b64e70676646408225cde6ecf75cc240e57ebc814c1c279",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.FiniteSchemeNormBaseChange"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.SchemeIso",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.GenericFiber.LineRatioIso",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormParameterNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/OpenFactorBoundarySections.lean",
+      "raw_sha256": "ea84bb8e480607567b15688d047dbcb78dcd3f013929976d2ace2bedd52093ec",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/BoundarySections.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.BoundarySections",
+          "sha256": "b6f7f9513fe08d95929e5a88e068a94f4da94f5dbd3032fb8d8a78aedf547bb6",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.BoundarySections",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionNormAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NativePunctureTransport.lean",
+      "raw_sha256": "64c6811640976f88fb095c93264b214c9c04196ea7175212840292a793ee0f0f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/Source/NativePunctureTransport.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Source.NativePunctureTransport",
+          "sha256": "a424301735f804f9263a78627f8b248cffa7ecde20e97673bcc5a1b2b4cff386",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.RelativeProjectiveLine"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Source.NativePunctureTransport",
+          "direct_import_consumers": []
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/NormBoundaryNonempty.lean",
+      "raw_sha256": "3c0a976356962fe829c8bb99254d57be0f09ba98f6dd24eea3eb87d06d8b8192",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/Boundary/NormNonempty.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Boundary.NormNonempty",
+          "sha256": "cb5ff2308dc3a5883200c1e16cc17bbdd2b02962e9f3718b22016d5a4cf8b981",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.RelativeProjectiveLine"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Boundary.NormNonempty",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionNormAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/TargetAffineSpecSquare.lean",
+      "raw_sha256": "4788f9297552718975d414fdaf2ec9a5db3af12788c69bf3834bd9f0922a03fc",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/Target/AffineSpecSquare.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Target.AffineSpecSquare",
+          "sha256": "c55711c177da9212d7858899f9a17090a7d2bfd76308d975c602627670704870",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.RelativeProjectiveLine"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Target.AffineSpecSquare",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.CoefficientCartesianSquare"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionFunctionalChartInfinityNorm.lean",
+      "raw_sha256": "0ff854bfc5048c5fe911f5a14376e1e657c4d4ff0ba586d76fc9e149a7e0b1cd",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/FunctionalChartInfinityNorm.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalChartInfinityNorm",
+          "sha256": "7b522a1c8a1220504312d68fd18f9ab069b3beb07b08f7e0a3ee94f4a5c99f50",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalChartInfinityNorm",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalInfinityProduct"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionFunctionalInfinityProduct.lean",
+      "raw_sha256": "5330cf790c8e3de2214e628559a0196edf6ceb94549aadff77235c5610e61096",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/FunctionalInfinityProduct.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalInfinityProduct",
+          "sha256": "ac45b6d5c3741544045ae0a15cdb48f43006fbcac699d7551f21fd36db201d0e",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalInfinityProduct",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormChart"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionFunctionalMarkedProduct.lean",
+      "raw_sha256": "829fbd34d7070e67500ab2bcdd4c80e18e38b6ca4e27e2bc86465045f48fb0dd",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/FunctionalMarkedProduct.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalMarkedProduct",
+          "sha256": "ab19672d2dbbca574f4fc96f1bc011d261c0aac13a8bdc9d994c43508c8f95a2",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalMarkedProduct",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormChart"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionFunctionalUnitBoundary.lean",
+      "raw_sha256": "d73c31534d4ae0ecddc0849c0b5d0c7da9723787fef16c522f4792002adb35b6",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/FunctionalUnitBoundary.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalUnitBoundary",
+          "sha256": "df256564750c2540355101d8e0ee7d3a73f9fa3697af9a6d4f4f8c623ea806cd",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalUnitBoundary",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionNormBoundaryCover.lean",
+      "raw_sha256": "88718bbfd6c802e4d420ca2a7c280983cdb47be10d4fe0610f582654b17f402d",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/NormBoundaryCover.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormBoundaryCover",
+          "sha256": "50460216fe501edb816d2358e3ea8a30673b0f9795a3d1ed0b2e3f787c8f337d",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormBoundaryCover",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionNormAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionNormalizedUnit.lean",
+      "raw_sha256": "24d0b77cde4961804506e921f5a6ddde16cb79665826f3d0bac2b1dc704a2dfb",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/NormalizedUnit.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit",
+          "sha256": "36543dc82c5648b216e73042c2dd634c75a57632d5639c788c2ddb1db8bb9ad7",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeCorrectionNormalizedUnit"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NativeCorrectionBoundaryFactors.lean",
+      "raw_sha256": "d96ec77747a295edfcded0b90c8a3c41866a66e8fed8ba24027f050de0483e2c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/NativeCorrectionBoundaryFactors.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeCorrectionBoundaryFactors",
+          "sha256": "ddfdc4334400c7ba6d6a82f1baeb188efcbe3af008ba83a3c772ecf518566b9d",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeCorrectionBoundaryFactors",
+          "direct_import_consumers": []
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NativeCorrectionNormalizedUnit.lean",
+      "raw_sha256": "69d762cd751efcf0113bee3ebd931f9f672b941585cd282343b80b985f16cabc",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/NativeCorrectionNormalizedUnit.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeCorrectionNormalizedUnit",
+          "sha256": "aefd9d82dc8e0038af68642b2bdabb1a2b5d54240b26f5d60b5fee0279683394",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeCorrectionNormalizedUnit",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionNormAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NativeSectionPairNormalizedUnit.lean",
+      "raw_sha256": "97b14894ab605341d7322207be950d81bca93c15312907cd865478cef1d8af5a",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/NativeSectionPairNormalizedUnit.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairNormalizedUnit",
+          "sha256": "79629967c16075eedb4d9a6da41fb59c0c59fc95bf4107f68553648ce49dc755",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairNormalizedUnit",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCanonicalPrincipalAction",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NativeSectionPairParameterComponents.lean",
+      "raw_sha256": "0229d7b87ba38053c630d2b287ac30b629084fa2a6d74eff863fd66c1fc8878b",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/NativeSectionPairParameterComponents.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairParameterComponents",
+          "sha256": "0fd331385e89bd638982be59f70088dfd8977b1dbe6bd4e8cb4769e980f0e66a",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairParameterComponents",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairNormalizedUnit",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalComponentActions"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/NativeTargetCorrectionSections.lean",
+      "raw_sha256": "cb211bf3a15b5f930b9597fe69e155e4db0917dc7d236f9cb10f8f245212167a",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/NativeTargetCorrectionSections.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeTargetCorrectionSections",
+          "sha256": "52fd19624e74a3402a31f2d4a82ba54a7bb9c35ee0072e49b5ae7be120de8c27",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NativeTargetCorrectionSections",
+          "direct_import_consumers": []
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalCorrectionActionGeometry.lean",
+      "raw_sha256": "12b80837dfe482b0d04077709cd231556168d0eeda296a63aced62775f83ab02",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/OriginalCorrectionActionGeometry.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionActionGeometry",
+          "sha256": "53b93fcc96b3afec694fbef7c3db6473062d8a96c19e2e452d27bdf2551f6a39",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.FiniteSchemeNormBaseChange",
+            "AlgebraicGeometry.Scheme.Hom",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionActionGeometry",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormBoundaryUnits",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionPairMiddle",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionTransferAction",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCanonicalPrincipalAction",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairTransferAction",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalTargetLambda"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalCorrectionInfinityUnits.lean",
+      "raw_sha256": "86be8e6d20ff1946037cc1326da2db1cc7657d8e5bfe00875ab58ab3b31912a6",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/OriginalCorrectionInfinityUnits.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionInfinityUnits",
+          "sha256": "08fdb9b62918d29c2d78f37a1c120cf5b38b1406d1fea5b0a54407d4ab1cca40",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Modules.Invertible",
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionInfinityUnits",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormBoundaryUnits",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalCorrectionNormChart.lean",
+      "raw_sha256": "b72d1f6bbce88eee8201cb21f620bc8239ddcad1050fe52aadd89ad14493aae4",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/OriginalCorrectionNormChart.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormChart",
+          "sha256": "643979fd079ca66c0542fd73b1a1cc787cb7f32056f699464d4edab5e9998055",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormChart",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormalizedUnit"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalCorrectionNormDiagram.lean",
+      "raw_sha256": "6e02a70b06ac60178f611d8d2f02115cad875a18887d927942f6f411dbd0390b",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/OriginalCorrectionNormDiagram.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormDiagram",
+          "sha256": "ade5cba492f4bff86e82feaad7d691d427d55d0ae6a311328ee7f1f68a22df30",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormDiagram",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionActionGeometry"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalNormBoundaryRange.lean",
+      "raw_sha256": "6938a31317b50d860a04ab855acffc22797c0776a717e3193bdb15d26fc77f91",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalNormBoundaryRange.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormBoundaryRange",
+          "sha256": "427d82d42bdeb4ffcfe5b673a9fd0dd2050b6f4861ff7fd6443d4443b9dfc165",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormBoundaryRange",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.FunctionalUnitBoundary",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.NormBoundaryCover",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalNormMarkedChart.lean",
+      "raw_sha256": "554969dc1f85667444a781c07941da2f8a2b42122ec7d095bae7b556d7334e32",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalNormMarkedChart.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormMarkedChart",
+          "sha256": "0b355822d8a745d4c6a4a0c3d91ed839db2c26f11f60f5675c1687ac62b5a8b2",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormMarkedChart",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormChart",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalNormParameterChart.lean",
+      "raw_sha256": "fbae1625de75ef49ff7735350d966d09f1654cf6ac8c0fbafb1900d14e0e13db",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalNormParameterChart.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterChart",
+          "sha256": "3413978c65fa931bbb3ed8c60d4a3b2d5cfc890902b2783f7d4cffca747598e4",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterChart",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterGenericRatio",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormDiagram",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormParameterNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalNormParameterGenericRatio.lean",
+      "raw_sha256": "40c902f32b3bbd3e78c07dd0a45070e8ff6b0cf9a930f11e8d5e59ffa0c928f2",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalNormParameterGenericRatio.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterGenericRatio",
+          "sha256": "1052a90ac6210a3560197e8ca9c9de002b18672a88fe3ede8dce3590552f54c8",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterGenericRatio",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCanonicalPrincipalAction",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalNormParameterTargetMap.lean",
+      "raw_sha256": "e724c346db9ef84cb506fbb3578dac2fdeadde3641980a63d986f65fc5c65f32",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalNormParameterTargetMap.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterTargetMap",
+          "sha256": "e3f2719f8e7b853f4e5eb71baaa094af07386c7b9671a387c8e6b402b753d48b",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterTargetMap",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairActionConversion",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCorSpecialization",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairDifferenceZero",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairGlobalDifferenceZero"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalOverlapSectionChoice.lean",
+      "raw_sha256": "4e1957f6f37b9c8eaeaf9d9fdb76283f03be2aefb7ce21bbff6c341297492e5a",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Common/OriginalOverlapSectionChoice.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.OriginalOverlapSectionChoice",
+          "sha256": "42b6d3decb9ae100cbc7b28f26223095257966a2d084275f00863f7d9ee3efff",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.OriginalOverlapSectionChoice",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.OriginalSectionChoice",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalRestrictionActions"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalPairCases.lean",
+      "raw_sha256": "ecb5becf00559e126797e481fed7049af11a9eb600a377b157afdbe0376a190c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/Data/Fin/TwoCases.lean",
+          "module": "Motivic.Aglib.Data.Fin.TwoCases",
+          "sha256": "3571dc2794f7cdaa6c30e1e0ffa4b969795944e1771b453ac2845b30addff36f",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/Data/Fin/README.md",
+          "namespace_blocks": [
+            "Fin"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.Data.Fin.TwoCases",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormDiagram",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormDiagram",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionPairMiddle",
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalPairNormBoundaryUnits.lean",
+      "raw_sha256": "8cf560007d5b8d4b6d97f28791ca63648d9167c6aa490343b88b52a0c96a366b",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalPairNormBoundaryUnits.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormBoundaryUnits",
+          "sha256": "4269b17575e94c1f5391afc1f0e5298bd0e79014f033672ae57ead43d5d49549",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "AlgebraicGeometry.Scheme.Hom",
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormBoundaryUnits",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalPairTransferAction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalPairNormDiagram.lean",
+      "raw_sha256": "f2f493f90142db2cf412e3407d464bf34ac95a6411c2fb0bbfb3751c7c521622",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalPairNormDiagram.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormDiagram",
+          "sha256": "f79312153840348f7b2b9d7de07bb24cef64e6be765b42969cb076113ab7cf8c",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormDiagram",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormSectionData"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalPairNormSectionData.lean",
+      "raw_sha256": "d2b8b5f111b604cdb28834adb94e18cbb38bd7d676f13b48d27049ffc0442d78",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalPairNormSectionData.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormSectionData",
+          "sha256": "0dd4ebc1e74e2959691264f5eb1e661f802296ed427eb91b368fde74ae3339df",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormSectionData",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalPairNormBoundaryUnits"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalRetainedNormMaps.lean",
+      "raw_sha256": "ce49b3c7a56b32ec117e95a93a4510fdeb2d47bfdd960cae8d8af131fc08d9ef",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/OriginalRetainedNormMaps.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalRetainedNormMaps",
+          "sha256": "280b4fa4b4e7dc1207e2c13544f97da2ed8e2997fae9b81daa70e64f3cae653b",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalRetainedNormMaps",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.OriginalCorrectionNormDiagram",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormBoundaryRange",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormMarkedChart",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterChart",
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.OriginalNormParameterTargetMap"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/OriginalRetainedSourceRestriction.lean",
+      "raw_sha256": "365d5994bcafe3a1e3ec4e8e7f13ee8141d5e4a29d2b0b14cbb2253dcee41038",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Boundary/BaseChange/OriginalRetainedSourceRestriction.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.OriginalRetainedSourceRestriction",
+          "sha256": "f00512394c82d689b3726b4fa3a62665c0b101384ffbf11daf559b08f22a0576",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.OriginalRetainedSourceRestriction",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalRestrictionActions"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairNormNeighborhood.lean",
+      "raw_sha256": "b5af558ef7e2e10aa97d531ca0b1ad83f4b16b9732352d6336e5a48bc404363e",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/SectionPairNormNeighborhood.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood",
+          "sha256": "ad2d88b38145ccb8472f4e320b3859010800088e8c782d9a81e05d311f5fb994",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormParameterNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairNormParameterNeighborhood.lean",
+      "raw_sha256": "7f08c74967a8333d01f6f8347349d632da622161f0028406563798521fbc29f7",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/SectionPairNormParameterNeighborhood.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormParameterNeighborhood",
+          "sha256": "23d5787add469e84324a0a7ef764ab0f60b1e32c07dfb5b4dcb54fcbf4edeefc",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormParameterNeighborhood",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.NativeSectionPairNormalizedUnit"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairNormSpec.lean",
+      "raw_sha256": "821e0355983d760e41edd4a94d50a3fe49e0207e4d513d7deee8e062c5b6d902",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/SectionPairNormSpec.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormSpec",
+          "sha256": "3e6fa00b930acc16c4f5c4aaa4148f598235aab5a5d7ec0797dc637098e977f2",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormSpec",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairNormalizedUnit.lean",
+      "raw_sha256": "db8cc6e1f45a4bb36e979fce0c45257433719f13f4c98e67421345c7a12a6fbb",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/SectionPairNormalizedUnit.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormalizedUnit",
+          "sha256": "b162cde5ec60ffb64ba526c6a79065c113b287c157e979236fe13d9a3809dc05",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.Hom",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormalizedUnit",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairTargetGenericRatio.lean",
+      "raw_sha256": "f062247e7e34885933df3401db6e6a8ab0306a7e3cc28037c26f26ab9642544f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Norm/SectionPairTargetGenericRatio.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairTargetGenericRatio",
+          "sha256": "17d0b566cb7b6d5a2780d345badd538dfd0b69ab98591c9e2920f97d0d45111a",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairTargetGenericRatio",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Norm.SectionPairNormNeighborhood"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/OriginalCoefficientCartesianSquare.lean",
+      "raw_sha256": "8051b542bd990338cd66e65b0eee6372330cb9cd2b33af43c7bf473456543d2f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/CoefficientCartesianSquare.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.CoefficientCartesianSquare",
+          "sha256": "c73c8dd5b74f3aeef0ccab726abdd7d7558706894a92afce946bbb9065d07fd1",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.CoefficientCartesianSquare",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalBase"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeCorrectionNormAction.lean",
+      "raw_sha256": "377dd77c082732abd64dfc198eebccdae6c7b28a2dbff7ad6446e2a8671492eb",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeCorrectionNormAction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionNormAction",
+          "sha256": "55651015c714ae620b9e8a10ceb2b9191a4bb688f2e626131bef3d0e2fc1eb7f",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.RelativeProjectiveLine",
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeCorrectionTransferAction.lean",
+      "raw_sha256": "493efc61b3c84284bcfa816e13839167f60b74e5f35519de885bd3c51bba1092",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "previous_100828_raw_sha256": "4a29ae194d5a3905ea5eae8fe268c740063210d8f9790fd672a4f8f16972e43a",
+      "adoption": "replace previous E5 source with admitted revised originalPairs/originalPsi implementation",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeCorrectionTransferAction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionTransferAction",
+          "sha256": "b1e34d45e7346505a57b6033222e4722f51142064762ecdb70218e211bace5cb",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Actual E5 originalPairs/originalPsi production/public-trust pass. Original variable context and entire two-public-theorem tail byte-identical; private representation repair only.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeOriginalComponentActions.lean",
+      "raw_sha256": "d0fc2ef0c7a0971efefddc013b56a882ff99ea62a0692f0845035235347458ce",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeOriginalComponentActions.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalComponentActions",
+          "sha256": "43b72257cb414118006b2f91d9d490f56ca6332488cebcc67297a43fc78cd142",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeOriginalPairTransferAction.lean",
+      "raw_sha256": "97a6f4bd17eec8c6c619d737851bc9c800edf0fa5d49d629022bacc7dd3a5de1",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeOriginalPairTransferAction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalPairTransferAction",
+          "sha256": "902fc7457cacbf986d1edbd77658071a41c2504086a408b8c29f315aa24a4371",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers",
+            "Motivic.Cor"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeOriginalRestrictionActions.lean",
+      "raw_sha256": "69c31612db0846bdb17ca14879b8399ac113259a779a0ce0f2c703604520d6c5",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeOriginalRestrictionActions.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalRestrictionActions",
+          "sha256": "c0897f6feca8ed793caca0262fefb30c94934574eae5d83db511f4ca8a61c54d",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairActionConversion.lean",
+      "raw_sha256": "44dc45557f86b4c9294b2e663329c870ed84a9df1567bf13c3fb39b55c2111d0",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairActionConversion.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairActionConversion",
+          "sha256": "95c45b4a269a015f4f18a9e76c8372cf55ff4dc2078730fd3cf0c4cbfae7b2d7",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairLambdaAction.lean",
+      "raw_sha256": "12a20f94a5ea44590f32cce5f59f6603400fc2a71e663515709e5993abf41c8c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "previous_100828_raw_sha256": "9b51b5e6be1d6b0ceef665d285fab2d20f1588d989b23337f5652631d7922eaf",
+      "adoption": "omit unused eighteen-line compatibility shim; no expanded E3 endpoint is declared or admitted",
+      "destinations": [],
+      "removed_native_attempt": {
+        "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairLambdaAction.lean",
+        "sha256": "a7fef0294f55d51b6d8c75d02b709bc51d99ec4cc3afe7a440a2e00e22408001",
+        "snapshot": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/intake-135322/deferred-native-attempts/Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairLambdaAction.lean",
+        "reason": "User deferred unaccepted upper consumers; old native attempt preserved before removal."
+      },
+      "latest_raw_admission": {
+        "decision": "defer-unverified-facade",
+        "scope": "18-line import-only compatibility facade to accepted global difference-zero leaf. No expanded E3 declarations. No own matching receipt/status record; defer under completed-scope instruction.",
+        "receipt_identity_basis": null
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairTransferAction.lean",
+      "raw_sha256": "342332dc8c57d083ff432804529afd9a16f0bd7e792f6dcabdc5bea236e4b266",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairTransferAction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairTransferAction",
+          "sha256": "ea6dd6ebe2f08182c9a5555901e7dce39ae1a524772af5f00e25e4385c2b60d9",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification",
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil",
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NisnevichImageComponentActions.lean",
+      "raw_sha256": "c55f36fb34e8c7a31d11ccd146d9e5c7ad538351dbbc1ad4bfa11056505ad948",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Components/NisnevichImage.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Components.NisnevichImage",
+          "sha256": "09dbc0c20807db4184d4344c6404679d145bc0d1398365885455fd3189b39f2d",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairNormActionDictionary.lean",
+      "raw_sha256": "171f32c57c2c9e69b28225865ec246eaf9efc2f3bb0b9415d459131f5d0ddfdf",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/OriginalPairNormDictionary.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalPairNormDictionary",
+          "sha256": "ab78e7e93eb3856c60316b8ed424fa7c8720fba76a7c5b359df38e01a8410d3c",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalRefinedRepresentativeRestriction.lean",
+      "raw_sha256": "503765a98ab68e802f4c1f927b74237da7a26eaafa9ce9ec9afa1e114f3b1835",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Sheafification/Representatives/RefinedRestriction.lean",
+          "module": "Motivic.Transfers.Presheaf.Sheafification.Representatives.RefinedRestriction",
+          "sha256": "53e58cb9a4891057138b756ff8f314fe833848fd174ad4884517659c0a0c47a5",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Sheafification/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalRefinedSectionChoice.lean",
+      "raw_sha256": "0bb854cbf964308144d5cad98600a9deb6c854975b05735d52e8f9ada697ff66",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Norm/RefinedSectionChoice.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Norm.RefinedSectionChoice",
+          "sha256": "06e4af9b721b09443afaa501fa514f6226c224b4bf70f53c616d54815a1f0c2e",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalTargetLambda.lean",
+      "raw_sha256": "61ba2b2b7f32d3e631f65b81ad8c96cad4b8bda26594b0a9f446923cfba2a0c4",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/OriginalTargetLambda.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalTargetLambda",
+          "sha256": "be657762dfd20c2a0a81c56d93d3c8ede31460493e7836da3ccd56d48e5b7baa",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/SectionChosenDistinguishedRepresentatives.lean",
+      "raw_sha256": "8415e6faeecb3faa8a14f2682f944e484489ae2ffa2fb3bcde3c5b8ef08431e1",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Sheafification/Representatives/SectionChosen.lean",
+          "module": "Motivic.Transfers.Presheaf.Sheafification.Representatives.SectionChosen",
+          "sha256": "1fb163bc06030112104a60a8d35ad132fe81ceeee06938a2a681878474c39c84",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Sheafification/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteCartesianCylinderIso.lean",
+      "raw_sha256": "d6290bbb7ad78830802991ddaccc0544e0c0185508e44f01fe86dbccc78cee6a",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/CartesianCylinderIso.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.CartesianCylinderIso",
+          "sha256": "db2c233f20ca5365de80dd1b146421511dd82e7ac2c6818137643349b3115bd2",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.CartesianCylinderIso",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalCylinder"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeCoefficientCover.lean",
+      "raw_sha256": "7c087b521fa955c8944ac40b0b1e659fb81822c5428a6e2c1869116b8e1af053",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/Nisnevich/NativeCoefficientCover.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientCover",
+          "sha256": "51c1349703a33794eaaf3f1a6ee66b9fa61763b468ba747b2323abe5ac6d9efe",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientCover",
+          "direct_import_consumers": []
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeCoefficientFieldLifting.lean",
+      "raw_sha256": "fe8db93263d45ed95bad9c0341d9ee32835496f66e6054230e268eac293610cd",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/Nisnevich/NativeCoefficientFieldLifting.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientFieldLifting",
+          "sha256": "42b4e3e99c0fbd08e1e2e03786ff5a185758272776be4ffb41b0c7b9e5f23c0b",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientFieldLifting",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientCover",
+            "Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedCover"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeOriginalBase.lean",
+      "raw_sha256": "4b61110c741225d290e7a2153fe98618727680a3541f63ad864fbba6441e1305",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/NativeOriginalBase.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalBase",
+          "sha256": "196279fc7b4015c443b541faa8bb9fb5727121fffa5b6bb8ababeb8a95b39725",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalBase",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalLineRestriction"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeOriginalCylinder.lean",
+      "raw_sha256": "a973db500a6c7370375965ef3be0ed7a7bc0a14849dcb47120fe5de8d828fd60",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/NativeOriginalCylinder.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalCylinder",
+          "sha256": "451fa2f3c5a1a5ffda7e742b890700c8a372f0202fb1e24d87b86479a69a1d67",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalCylinder",
+          "direct_import_consumers": [
+            "Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedSource"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeOriginalLineRestriction.lean",
+      "raw_sha256": "f95218c4bd1779a1b11939310e7ea81bd0d7c2d1e051c74ba51f191b9a06901f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/NativeOriginalLineRestriction.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalLineRestriction",
+          "sha256": "83a5c1338f3313d9aad0935f9dc144e16d863c2ff60d46cfeaaac0d1b9688e59",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalLineRestriction",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalCylinder"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeOriginalRefinedCover.lean",
+      "raw_sha256": "f6e5de4458cfca410f31aeb7a7393bc5d3b5a1aaff72484953ce46f44c8584b5",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/NativeOriginalRefinedCover.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedCover",
+          "sha256": "412fd8f2a4a09cc8ad2d0c7aff41a6d74ed6320e303088019bef9b714d38366e",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeOriginalRefinedPuncture.lean",
+      "raw_sha256": "16f0bca29719886d0e0fceac9971709943610022ac33ad472f4be21d3b22a907",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/NativeOriginalRefinedPuncture.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedPuncture",
+          "sha256": "c9e26df30bf04cc0be06c468cafc54d533ff5731d8c5e8b18457deeba2f2aefa",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteNativeOriginalRefinedSource.lean",
+      "raw_sha256": "0e502006497ce30e5f62cf7ee925036aa7c2616090dd59bb94be47b50a4716e4",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/NativeOriginalRefinedSource.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedSource",
+          "sha256": "d2bac0d202fe81d1defd3964c2d12468d2107959fc48e974842cb34361ca8e5d",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.SmoothSite"
+          ],
+          "native_cohort": "retained_validated_provider"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteOriginalCoefficientRestriction.lean",
+      "raw_sha256": "b998e3475144d707afa4c94ac081c3206fad6024d3f29a046d7a230e48d6743d",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/OriginalCoefficientRestriction.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.OriginalCoefficientRestriction",
+          "sha256": "0c5cfb95348cd6e0f13c155f4354e426467f715542f11cef289a9eeebd4ba0e1",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme",
+            "AlgebraicGeometry.Scheme.SmoothSite",
+            "AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates",
+            "AlgebraicGeometry.RelativeProjectiveLine",
+            "AlgebraicGeometry.Scheme"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.OriginalCoefficientRestriction",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientCover"
+          ]
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteOriginalNativeFieldCompatibility.lean",
+      "raw_sha256": "16bd295e6697ca213be387a7b28e93873e08bc5114c6e07547b21d64b841477c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "defer legacy original master provider by user scope; absent from production",
+      "destinations": [],
+      "removed_native_attempt": {
+        "path": "Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalNativeFieldCompatibility.lean",
+        "sha256": "2df35587a95a7f81bad244d0c6d8ae77b36b8348b385641c87705ed96ece9205",
+        "snapshot": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/intake-135322/deferred-native-attempts/Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalNativeFieldCompatibility.lean",
+        "reason": "User deferred unaccepted upper consumers; old native attempt preserved before removal."
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/SmoothSiteOriginalRefinedCover.lean",
+      "raw_sha256": "9908833faa71ebe4ca2b2ce5feabee271bafd63f12fb933137dd9a77684b4d88",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "defer legacy original master provider by user scope; absent from production",
+      "destinations": [],
+      "removed_native_attempt": {
+        "path": "Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalRefinedCover.lean",
+        "sha256": "771e0094fa063c86d9930f3ff2f469bb365283c100f95e67a9082ab5b2e3bd00",
+        "snapshot": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/intake-135322/deferred-native-attempts/Motivic/Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalRefinedCover.lean",
+        "reason": "User deferred unaccepted upper consumers; old native attempt preserved before removal."
+      }
+    },
+    {
+      "raw_path": "MotivicTest/OriginalOverlapSectionChoice.lean",
+      "raw_sha256": "065168711bdacea96605a6c74f4ee410fff312098a028503051864b957fb77b9",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "added",
+      "prior_raw_sha256": null,
+      "adoption": "new native source",
+      "destinations": [
+        {
+          "path": "MotivicTest/OriginalOverlapSectionChoice.lean",
+          "module": "MotivicTest.OriginalOverlapSectionChoice",
+          "sha256": "50d3488e418c05a6f477f83dcf48094bec556cae2bf0abf92950ea6d82fd24a6",
+          "layer": "test",
+          "family_guide": null,
+          "namespace_blocks": [],
+          "native_cohort": "unchanged_test"
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/CorrectionTargetMarkedCoordinate.lean",
+      "raw_sha256": "2eedf8b1ec8c5f6820c34c66bea3ee1f8a0c19d15395c3fd060a2d8534692971",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "modified",
+      "prior_raw_sha256": "eef48f894b7feee2c17114437ee32e57214486a1e8a383c63637720eae43e1fb",
+      "adoption": "retain repaired current provider unchanged",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Correction/TargetMarkedCoordinate.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Correction.TargetMarkedCoordinate",
+          "sha256": "47de06b1b2649745f5477d35c932fec56b6c51e7af842546a2b1a219eb2e46f4",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "matches_retained_provider_sha256": true
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairNormIdeal.lean",
+      "raw_sha256": "45c3125c45f9834720d7610d2d7f316c5525f3afd6e12b3a0d77791b06d4af8c",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "modified",
+      "prior_raw_sha256": "f58f072d309f09d060d1b2440f448b46780c5af08734c753fef59e18a8f94703",
+      "adoption": "retain repaired current provider; extract two new theorem declarations into adjacent leaf",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Boundary/SectionPairNormIdeal.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Boundary.SectionPairNormIdeal",
+          "sha256": "7b93ea5e6b33e7de267f33580ea4315c300258da201da0d82731e7e364fcec45",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "matches_retained_provider_sha256": true
+        },
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/Boundary/SectionPairNormUnit.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Boundary.SectionPairNormUnit",
+          "sha256": "420ee216b0a41eed7f23e6ac4c4a8aed0ee004dde45f16c254f0f8ee4e505203",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "native_cohort": "retained_validated_provider",
+          "intended_upstream": "Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Boundary.SectionPairNormUnit",
+          "direct_import_consumers": []
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NormalizedDistinguishedRepresentatives.lean",
+      "raw_sha256": "778a777f1f2a6a55a20c68fcd5abe60fbca92339bc129d29fe4117dd88b32f81",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "modified",
+      "prior_raw_sha256": "dbc7fe97f57d1be817234b2aa78497ba9d303a65d4f86c4b44cbf95b5f58b74a",
+      "adoption": "retain repaired current provider unchanged",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Sheafification/Representatives/Normalized.lean",
+          "module": "Motivic.Transfers.Presheaf.Sheafification.Representatives.Normalized",
+          "sha256": "930b4c891aacd04782ac11204cdd996de4623c19c2564b98691d2a66792bbdfe",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Sheafification/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "matches_retained_provider_sha256": true
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairNormProduct.lean",
+      "raw_sha256": "8564dd718ff14717c45fc72f901a8a542dfd1a1f4fbc57cd9d8d2623593ae4bd",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "modified",
+      "prior_raw_sha256": "4782c177ddd4e72a2003669d48a8b40da97453ea3db6157060b209945faf5286",
+      "adoption": "retain repaired current provider unchanged",
+      "destinations": [
+        {
+          "path": "Motivic/AlgebraicGeometry/Correspondences/Moving/Pencils/Norm/OriginalPairNormProduct.lean",
+          "module": "Motivic.AlgebraicGeometry.Correspondences.Moving.Pencils.Norm.OriginalPairNormProduct",
+          "sha256": "48eb151af48a7f4c7898938418658db126e62dea924d562e6b67d83aa915fa78",
+          "layer": "host",
+          "family_guide": "Motivic/AlgebraicGeometry/Correspondences/README.md",
+          "namespace_blocks": [
+            "Motivic.Cor"
+          ],
+          "matches_retained_provider_sha256": true
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/RelativeCurveRestrictionActions.lean",
+      "raw_sha256": "b6ebe6396594cd3b040be65a19b3d71c4c055819e0dd5a856e934ad033edde77",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-100828",
+      "change_kind_vs_1836": "modified",
+      "prior_raw_sha256": "92450122dc1984bcb2faa16e55af95977b97ed53f10aa4be6a25e209cc08908d",
+      "adoption": "retain repaired current provider unchanged",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/Restriction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.Restriction",
+          "sha256": "d3bf7f0da36ef23d3faf7c8fae2583b25e2bd975c638cae0e5ec2357776af35c",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeCurvePencil"
+          ],
+          "matches_retained_provider_sha256": true
+        }
+      ]
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalCoefficientFlat.lean",
+      "raw_sha256": "6de77eae5f6d349117b7e60e8c6d41035be45750e53455af860aca75b4517e5b",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/CoefficientFlat.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFlat",
+          "sha256": "fd0bbf283afe17f01bd4a460289cc72c2f84bec4ef510e119ac6137b713437ca",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "new_or_replaced_production",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFlat",
+          "direct_import_consumers": []
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Flatness of literal original/final maps from unchanged original free-chart witnesses; no native fiber comparison or complete standard triple.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalThickenedBoundaryAffineAmbients.lean",
+      "raw_sha256": "970b6e10866f63e4b7664ab36db564e5361348f3bb089ef42319b6b62dc1aeed",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/Normalization/Compactification/RelativeAffineLine/ThickenedBoundaryAffineAmbients.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.ThickenedBoundaryAffineAmbients",
+          "sha256": "afdaf8e1c39a6756b765c448a79055ae4db0d2bcd2cba722e26b5191a3caf920",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.ProjectiveSpace",
+            "AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification"
+          ],
+          "native_cohort": "new_or_replaced_production",
+          "intended_upstream": "Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.ThickenedBoundaryAffineAmbients",
+          "direct_import_consumers": []
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Whole source/target boundary affine ambients after additional explicit localizations; keeps original witnesses but does not assemble the actual common-section/master consumer.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/FiniteFlatComponentDimension.lean",
+      "raw_sha256": "daef90057f1b750d04c3c90d1c3d834916e33fad879cee78dcd917cbd68a6d95",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Dimension/FiniteFlatComponents.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Dimension.FiniteFlatComponents",
+          "sha256": "54f8d2e39fc1438cdcd7d619e679baca564049a73813485bc918098d1fe40d81",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.FiniteSchemeNormBaseChange",
+            "AlgebraicGeometry.Scheme",
+            "AlgebraicGeometry.RelativeProjectiveLine"
+          ],
+          "native_cohort": "new_or_replaced_production",
+          "intended_upstream": "Aglib.AlgebraicGeometry.ProjectiveLine.Dimension.FiniteFlatComponents",
+          "direct_import_consumers": []
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "General finite-flat source over native P1 over a field has dimension-one irreducible components. SOURCE_STATUS omits this later accepted source; owning current provenance and copied pass receipts supersede old source-only comments.",
+        "receipt_identity_basis": "Owning current production-pass exact hash + identical accepted snapshot + copied production/public-audit receipts"
+      }
+    },
+    {
+      "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/FlatOfFreeCharts.lean",
+      "raw_sha256": "75a2c982d0027d2d4704325743144f18b837e7c56657a7c72d259f6164a70935",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Charts/FlatOfFreeCharts.lean",
+          "module": "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Charts.FlatOfFreeCharts",
+          "sha256": "da8b8c22fe13a4803c19bfedf8ef39912b000560c9d9e11639ffeda523c6a4f6",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.RelativeProjectiveLine"
+          ],
+          "native_cohort": "new_or_replaced_production",
+          "intended_upstream": "Aglib.AlgebraicGeometry.ProjectiveLine.Charts.FlatOfFreeCharts",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFlat"
+          ]
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "General affine morphism to native P1 is flat from freeness over both actual polynomial charts; empty/disconnected sources permitted.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/Aglib/RingTheory/PolynomialFiniteFlatComponentDimension.lean",
+      "raw_sha256": "4f20d13e7bb0b0bbdbb35b11cea61219b14f52d4d14c1584b65de48f69bf0e07",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Aglib/RingTheory/KrullDimension/PolynomialFiniteFlatComponents.lean",
+          "module": "Motivic.Aglib.RingTheory.KrullDimension.PolynomialFiniteFlatComponents",
+          "sha256": "a7ba335fcb7877f083e2868d65bff3881ddb7a43c9242172f9e3c71140dca3ec",
+          "layer": "candidate",
+          "family_guide": "Motivic/Aglib/RingTheory/KrullDimension/README.md",
+          "namespace_blocks": [
+            "Ideal",
+            "PrimeSpectrum"
+          ],
+          "native_cohort": "new_or_replaced_production",
+          "intended_upstream": "Aglib.RingTheory.KrullDimension.PolynomialFiniteFlatComponents",
+          "direct_import_consumers": [
+            "Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Dimension.FiniteFlatComponents"
+          ]
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "General finite-flat polynomial algebra over a field has dimension-one irreducible components; stronger integral torsion-free form also explicit. SOURCE_STATUS omission does not negate exact current-hash production evidence.",
+        "receipt_identity_basis": "Owning current affine-production-pass exact source hash + copied selected production success log + clean public audit resource/log"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeCorrectionPairMiddle.lean",
+      "raw_sha256": "5d2259ed0c821e7f255c4e41a49032432524335e5728859ae94f26abbfae4917",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeCorrectionPairMiddle.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeCorrectionPairMiddle",
+          "sha256": "8153b833b4b51020059c5f1f9bab67e7690e6925f5c0ae27b05cacdd98d89a45",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.Cor"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Ordinary shared middle correspondence and canonical/generic/empty-source adapters. No norm-germ or transfer-action premise.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairCanonicalPrincipalAction.lean",
+      "raw_sha256": "a40c49d311b501177ec4434b1b1426626db431aa8d93af8706bab30353366caa",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairCanonicalPrincipalAction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCanonicalPrincipalAction",
+          "sha256": "109f454f71ce229d074db14f05c29af35330a30188d13d7f57945a63ad24ff02",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Canonical presentation of same internally produced native principal-zero tuple; not expanded lambda action.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairCorSpecialization.lean",
+      "raw_sha256": "8ffb1bc94440d9c66999d023c69c1f99fb5e2f88422bdff6d4e10cb7620c45c9",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairCorSpecialization.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairCorSpecialization",
+          "sha256": "d12a3d1e0133ea3b6d951e76d19a51725633bb825444e79889d830538ce107a8",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "AlgebraicGeometry.Scheme",
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Actual native shared original difference equals principal, with the same normalized tuple still explicit; no presheaf, HI or desired Cor/action premise.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairDifferenceZero.lean",
+      "raw_sha256": "cb47876e29672118016178683ff774cd18eb00db923d2d9b566162e99cbf31ff",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairDifferenceZero.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairDifferenceZero",
+          "sha256": "6076a2ba622ae0f4e5edb44896a49cb61f748471eb1cf783f42817c43b15822f",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Actual local shared-difference zero transfer; constructs normalized tuple internally, no desired action premise.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairGlobalDifferenceZero.lean",
+      "raw_sha256": "65d20add5ee9ab63176bf7134543532b2a543f2022f98323a7a87eef9398349f",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairGlobalDifferenceZero.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairGlobalDifferenceZero",
+          "sha256": "6dc3317ff9c79c301a90de95448ed57e99050ae87e7180bcc1a68a0332b6bd66",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Actual global shared-difference zero on Nisnevich image by separatedness; empty/disconnected whole source allowed; expanded wrappers absent.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairPrincipalPresentation.lean",
+      "raw_sha256": "1583ab9d002fa6c688357489c90e1a3b9fed2e76f40738db8e8ae3b8b0c84619",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/NativeSectionPairPrincipalPresentation.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairPrincipalPresentation",
+          "sha256": "609d60a69c2450bba75e7ba62c6ee41c585da29849635ffb510e7b04b5aca6a5",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Generic equality between native/canonical principal presentations fixing actual schemes/maps/W/r/hr; no actual action construction by itself.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalComponentLambdaDifference.lean",
+      "raw_sha256": "50a8843860050d517338b0cf018b14cf1cea4e89328d981bc29ba0c9b772c1da",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/OriginalComponentLambdaDifference.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalComponentLambdaDifference",
+          "sha256": "5b16380624eaf902136a70e5456b70dc62eae55982d2e7e82fee5e05d16177a4",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.Cor"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Shared original component Cor difference definition and principal comparison at free geometry.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalComponentLambdaDifferenceAction.lean",
+      "raw_sha256": "fd97e38e6fba0a8d454f2c10181da56d27c9388c867ec34ef4efb2917a0a2ac5",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/OriginalComponentLambdaDifferenceAction.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalComponentLambdaDifferenceAction",
+          "sha256": "c4ec4e4dfa21d33058031086f5abdc68eed0fd832a898df74af33ca21cd0bbfd",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.Cor"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Conditional additive conversion from zero action of shared component difference to lambda-action equality at free geometry.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalLambdaDifference.lean",
+      "raw_sha256": "284ad7d7fa1314c1db664b82881e380b5f9da8adec14729db777cba731a36fd0",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/OriginalLambdaDifference.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalLambdaDifference",
+          "sha256": "0922f4ef1a43d9a9362275bcba45c3bc768c55780fb697167ca5b6b6d4389aa8",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.Cor"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Global original Cor difference independent of component, precomposition equality and conditional free-variable additive conversion.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairMarkedNormMiddle.lean",
+      "raw_sha256": "39ed451c9540ffdf9a4e79ff4c6aa1d099318bc85f92c2282fb9d2777b2bc55e",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Transfers/Presheaf/Actions/Pencils/OriginalPairMarkedNormMiddle.lean",
+          "module": "Motivic.Transfers.Presheaf.Actions.Pencils.OriginalPairMarkedNormMiddle",
+          "sha256": "99c25c5ff9820d546e441fa18d6481bf4bf87d99bc568323cfa43ad6d71d3d75",
+          "layer": "host",
+          "family_guide": "Motivic/Transfers/Presheaf/Actions/README.md",
+          "namespace_blocks": [
+            "Motivic.Cor"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Opaque wrapper retains complete old marked-product telescope and genuine norm-germ premise; concludes shared middle equals unchanged principal correspondence.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    },
+    {
+      "raw_path": "Motivic/Cohomology/A1/SheafificationMiddleLiftDifference.lean",
+      "raw_sha256": "3fa1fa66dc8199c99ddebdd2aab23bc94d14b41fcaad8558e58df2209e9697f3",
+      "source_archive": "source-135322",
+      "first_seen_archive": "source-135322",
+      "change_kind_vs_1836": "added",
+      "adoption": "new native source from admitted revised-archive scope",
+      "destinations": [
+        {
+          "path": "Motivic/Cohomology/A1/Sheafification/MiddleLiftDifference.lean",
+          "module": "Motivic.Cohomology.A1.Sheafification.MiddleLiftDifference",
+          "sha256": "c824e0d305b6119d411f8fd0f08f067d54432126c6f2a0d1fb7bf49e674afac3",
+          "layer": "host",
+          "family_guide": "Motivic/Cohomology/A1/README.md",
+          "namespace_blocks": [
+            "Motivic.PresheafWithTransfers"
+          ],
+          "native_cohort": "new_or_replaced_production"
+        }
+      ],
+      "latest_raw_admission": {
+        "decision": "admit-completed-scope",
+        "scope": "Accepted CONDITIONAL generic whole-cylinder adapter; still explicitly assumes cover, E2/E3-difference/E4/E5 relations and representative compatibility.",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt"
+      }
+    }
+  ],
+  "family_guides": [
+    "Motivic/Aglib/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/Morphisms/Finite/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/Modules/Invertible/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/README.md",
+    "Motivic/Transfers/Presheaf/Actions/README.md",
+    "Motivic/Transfers/Presheaf/Sheafification/README.md",
+    "Motivic/Aglib/Data/Fin/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/Neighborhood/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/Morphisms/OpenImmersion/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/Scheme/Sections/README.md",
+    "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/README.md",
+    "Motivic/Aglib/RingTheory/KrullDimension/README.md",
+    "Motivic/Cohomology/A1/README.md"
+  ],
+  "boundary": {
+    "evidence": "Raw selected production/trust receipts are source-admission evidence. Current native compilation, exact declaration/style/standard-axiom coverage, affected tests and cache delivery have their separate scopes in CHECKS.json; authoring assigns no established status.",
+    "admitted_interfaces": "The revised archive supplies local/global original E3 difference-zero APIs, literal originalPairs/originalPsi E5 endpoints, general flatness/component dimension/affine-ambient APIs and a generic difference-form middle-lift adapter, all with their displayed premises.",
+    "deferred_or_omitted": "Two legacy original master providers are deferred; the unused Lambda shim is omitted. Expanded E3 lambda endpoint and actual same-witness master are absent from this admitted selection.",
+    "open": "The actual common-witness transport to original representatives and ModelWholeCylinderLifting producer remain unresolved. Arbitrary original HI-presheaf sheafification/strict A1 remains OPEN. Existing perfect-field HI transfer-sheaf strict invariance is unchanged.",
+    "historical_boundary": "The 100828 checkpoint left original E3/E5 upper consumers unaccepted. That old scope is superseded for the precise original-difference and E5 APIs admitted from135322; it is not relabelled as current native validation.",
+    "current_formal_api_verification": "The selected93 current formal provider APIs are kernel/lint/standard3 verified under all displayed premises. This does not supply deferred expanded E3/master code, common-witness transport or ModelWholeCylinderLifting."
+  }
+}

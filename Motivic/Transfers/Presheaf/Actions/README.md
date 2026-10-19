@@ -57,3 +57,149 @@ on the [actual unit image](../Sheafification/README.md), their common geometric
 witnesses, or the input of the [conditional A1 assembly](../../../Cohomology/A1/Sheafification/README.md).
 The latter guide owns the open whole-cylinder boundary. General norm geometry
 and zero-cycle maps have their [candidate owners](../../../Aglib/AlgebraicGeometry/Morphisms/Finite/README.md).
+
+## Native R3/R5 principal actions from fixed section records
+
+The [general constructors](../../../Aglib/AlgebraicGeometry/RelativeCurve/Pencils/README.md)
+produce normalized units from the original section records. In the native
+namespace `Motivic.PresheafWithTransfers`,
+[Pencils/NativeSectionPairTransferAction](Pencils/NativeSectionPairTransferAction.lean)
+supplies `exists_nativeSectionPairPrincipalAction_zero` on each actual integral
+parameter component; [NativeCorrectionNormAction](Pencils/NativeCorrectionNormAction.lean)
+supplies `exists_nativeCorrectionPrincipalAction_zero` on the original
+nonempty affine puncture. The former keeps `PresheafWithTransfers.{w} k`, the
+latter `PresheafWithTransfers.{v} k`, with these coefficient universes independent
+of `k : Type u`. Both take `Pst.IsA1Invariant` and an actual smooth coefficient
+structure map. Neither takes a sheaf hypothesis or HI of sheafification.
+
+The interfaces retain the normal Noetherian original coefficient domain,
+actual finite map and whole free charts, flat retained map and its literal
+commuting equation, open smooth relative curves, Cartesian marked square,
+fixed `BoundarySectionData`, target Serre divisor data, prescribed full-boundary
+frames/units, actual residual and inverse-infinity factors, and the displayed
+small-open cover conditions. The R3 statement also retains the original source
+normalization and its component cover. The R5 statement retains its original
+small retained target map and structure equation. Their conclusions construct
+the good open, regular unit, original generic germ, nonempty whole boundary,
+its factor and complement cover, value one, and zero action of the corresponding
+`PrincipalOrderCorrespondence.correspondence`. The units and their boundary
+equalities are outputs; they are not an assumed normalization tuple.
+
+[Pencils/NativeOriginalRestrictionActions](Pencils/NativeOriginalRestrictionActions.lean)
+gives `BoundarySectionData.native_original_restriction_actions`, retaining
+the same source record for the E2/E4 restrictions.
+[OriginalPairNormDictionary](Pencils/OriginalPairNormDictionary.lean) identifies
+the literal lambda and psi correspondences with original whole-zero terms:
+lambda is numerator minus pole, while psi is denominator minus numerator.
+[OriginalTargetLambda](Pencils/OriginalTargetLambda.lean) defines the one target
+lambda used by the two middle comparisons. All comparison targets must be
+identified with this same datum and actual map.
+
+## Original differences and the E3 zero-action APIs
+
+[Pencils/NativeOriginalPairTransferAction](Pencils/NativeOriginalPairTransferAction.lean)
+is an intermediate consumer: `Motivic.Cor.originalComponentLambda_eq_principal`
+retains its normalized-unit, generic-germ, full-boundary, normality and free-chart
+inputs, with integral Noetherian parameter product `T`.
+[OriginalComponentLambdaDifference](Pencils/OriginalComponentLambdaDifference.lean)
+names the literal original component difference and its principal comparison;
+[OriginalLambdaDifference](Pencils/OriginalLambdaDifference.lean) names the
+one global difference. In the shared target, write
+
+`δ = λB ; graph(uA) − graph(p) ; λA`,
+
+where `λB` comes from the fixed source `BoundarySectionData`, `λA` is
+`originalTargetLambda` of the fixed target pair and `uA` is the smooth-site
+arrow induced by the displayed small-target map `vA`. Then
+`originalComponentLambdaDifference_eq_comp_originalLambdaDifference`
+identifies `δᵢ` with `graph(αᵢ) ; δ` for the actual component inclusion.
+All original graph, restriction and target maps are retained.
+[OriginalComponentLambdaDifferenceAction](Pencils/OriginalComponentLambdaDifferenceAction.lean)
+and `originalLambda_action_eq_of_difference_zero` are additive bridges:
+they turn zero action of the supplied difference into the two original action
+equalities. Their difference-zero premise remains explicit; they require no
+HI or sheaf hypothesis for that additive implication.
+
+[NativeSectionPairPrincipalPresentation](Pencils/NativeSectionPairPrincipalPresentation.lean)
+identifies the two principal presentations on the same schemes, arrows, open,
+function and unit witness; only proof and smooth-site instance presentations
+differ. [NativeSectionPairCanonicalPrincipalAction](Pencils/NativeSectionPairCanonicalPrincipalAction.lean)
+constructs the R3 tuple with zero action in this canonical presentation.
+[NativeSectionPairCorSpecialization](Pencils/NativeSectionPairCorSpecialization.lean)
+specializes the original correspondence comparison to that same tuple and
+Cartesian generic germ, retaining its displayed unit/germ premises.
+Neither comparison assumes a desired correspondence or action equality.
+
+[NativeSectionPairDifferenceZero](Pencils/NativeSectionPairDifferenceZero.lean)
+supplies `transfer_nativeSectionPair_originalDifference_zero` for
+`Pst : PresheafWithTransfers.{w} k` with `Pst.IsA1Invariant`.
+It constructs the normalized tuple internally on each actual integral component.
+Its source hypotheses retain the original normalization and component cover,
+finite/free projective charts, flat retained map, fixed source section record,
+target Serre divisor data, full marked/infinity frames, residual and
+inverse-infinity factors, small-target compatibility and original cover
+conditions. No desired zero-action relation is an input.
+[NativeSectionPairGlobalDifferenceZero](Pencils/NativeSectionPairGlobalDifferenceZero.lean)
+supplies `nisnevichImage_transfer_nativeSectionPair_originalDifference_zero`
+for `P : PresheafWithTransfers.{u+1} k` with `P.IsA1Invariant`. It descends the
+component result by separatedness of the actual Nisnevich image, using the
+literal global difference. Empty or disconnected sources are included; the
+whole source need not be integral.
+
+## The original E5 pair and psi endpoints
+
+[Pencils/NativeCorrectionPairMiddle](Pencils/NativeCorrectionPairMiddle.lean)
+defines `Motivic.Cor.originalPairMarkedMiddle` as the target numerator-minus-pole
+correspondence, minus the correction denominator-minus-numerator correspondence,
+minus the actual restriction graph. Its canonical and generic original finite-pair presentations land in
+this one middle term. The empty-parameter branch gives the zero correspondence.
+[OriginalPairMarkedNormMiddle](Pencils/OriginalPairMarkedNormMiddle.lean)
+then retains the complete original norm-product telescope and genuine norm-germ
+premise when comparing that middle term to the principal correspondence.
+This wrapper does not construct the norm-germ input.
+
+[NativeCorrectionTransferAction](Pencils/NativeCorrectionTransferAction.lean)
+supplies `transfer_nativeCorrection_originalPairs` and
+`transfer_nativeCorrection_originalPsi`. They keep
+`Pst : PresheafWithTransfers.{v} k`, `Pst.IsA1Invariant`, the actual smooth
+field-structure map, fixed source record `c`, target pair and `iA` divisor
+witnesses, original full-boundary equations, residual/infinity factors,
+whole free charts and all displayed small-target/restriction compatibilities.
+The normalized unit and generic germ are constructed from those same sections.
+The public statements include an empty `A` branch rather than assuming
+nonemptiness of that parameter. In schematic notation their sign is
+
+`transfer(graph(a);λA) = transfer(ψ;graph(uA)) + transfer(graph(rA))`.
+
+Here `rA : A ⟶ U` is the displayed small parameter map with `rA ≫ u = a`;
+the source theorem uses `correctionSmallParameterMap` for its smooth-site
+arrow. The graph is not silently replaced by an identity. The target identity
+leg of the finite-pair norm diagram takes no norm along a parameter-change map.
+The revised archive has selected production/trust evidence for these two
+endpoints and for the local/global E3 difference-zero APIs; current native
+coverage is recorded separately in
+[provenance](../../../../docs/provenance/normalization-recovery-20261019/README.md)
+under every displayed premise.
+
+## Refined covers and the remaining original-goal joins
+
+[Components/NisnevichImage](Components/NisnevichImage.lean) detects transfer
+equality on a given Nisnevich or open cover.
+[NativeOriginalComponentActions](Pencils/NativeOriginalComponentActions.lean)
+uses the actual native component cover for that detection.
+[NativeOriginalRefinedCover](Norm/NativeRefinement/NativeOriginalRefinedCover.lean)
+retains the original source/puncture arrows, restriction squares, coefficient
+field lifting and whole-cylinder coordinates for its actual cover interface.
+The different legacy `OriginalRefinedCover` and `OriginalNativeFieldCompatibility`
+providers are deferred and absent from the admitted selection. The unused
+Lambda compatibility shim is omitted, and the expanded native E3 lambda
+endpoint and same-witness master are not supplied by this selection.
+
+The [difference-form middle-lift adapter](../../../Cohomology/A1/README.md)
+retains an actual cover, E2/E3-difference/E4/E5 relations and original matching
+representatives as inputs. Its generic additive implication does not identify
+the admitted suppliers' inputs with one common geometric and representative
+choice. That actual same-witness transport and the producer of
+`ModelWholeCylinderLifting` remain open. Arbitrary original HI-presheaf
+sheafification/strict A1 remains OPEN; the perfect-field result for already-HI
+transfer sheaves has its distinct unchanged boundary.

@@ -1,0 +1,765 @@
+{
+  "schema_version": 2,
+  "archives": [
+    {
+      "id": "source-100828",
+      "filename": "motivic-revised-normalization-recovery-source-20261019T100828Z.tar.gz",
+      "sha256": "c56d9682340eadb6a2b72c15d0595f2e0ac8356f8908e956c839fdada5135064",
+      "checkpoint_utc": "2026-10-19T10:08:28.850437+00:00",
+      "raw_base_commit": "901f2e6fdfc55d7cd8842f46db2c890ec07b25a1",
+      "source_status_sha256": "c3ed33b3e0fe2cb29d517c646d51008ee10c30506f9f270da457845251aa12b2",
+      "source_sha256_manifest_sha256": "d36f386c76bf74d08aeab14abe62f9655c019ddf1ed7bf0da184ef77d76a5d63"
+    },
+    {
+      "id": "source-135322",
+      "sha256": "aa03de05cd525d8abacd242ee096e4735fe9012b80aad6e8b6ceaee5aef2536d",
+      "checkpoint_utc": "2026-10-19T13:53:22.562247+00:00",
+      "raw_base_commit": "901f2e6fdfc55d7cd8842f46db2c890ec07b25a1",
+      "source_status_sha256": "13e3e227caba967c006f9255947a06f3d67069459d8e837720cd16a795e91413",
+      "source_sha256_manifest_sha256": "2c5ef079ea19101698a4506d150418956098c4bc30507ef44cef96322291bce4"
+    }
+  ],
+  "supplied_historical_evidence": {
+    "archives": [
+      {
+        "archive_id": "source-100828",
+        "source_status_sha256": "c3ed33b3e0fe2cb29d517c646d51008ee10c30506f9f270da457845251aa12b2",
+        "source_sha256_manifest_sha256": "d36f386c76bf74d08aeab14abe62f9655c019ddf1ed7bf0da184ef77d76a5d63",
+        "archive_manifest_entries": 5953,
+        "checkpoint_utc": "2026-10-19T10:08:28.850437+00:00",
+        "verified_raw_hashes": {
+          "entries": 318,
+          "matches": 318,
+          "aggregate_delta_members_in_this_set": 0
+        },
+        "selected_production_reference_summary": {
+          "records": 50,
+          "raw_current_hash_matches": 50,
+          "receipt_states": {
+            "completed": 50
+          },
+          "receipt_exit_codes": {
+            "0": 50
+          },
+          "post_receipt_source_touch_flags": 4
+        },
+        "source_touched_records": [
+          {
+            "target": "Motivic.Aglib.AlgebraicGeometry.Normalization.FunctionalNormProductUnitDomain",
+            "raw_source_sha256": "29eb58e1eb60983076998388649dcffb44cb41c67199c330822b7b0f6468f809",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-E5-SCOPE-REPAIR2/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          },
+          {
+            "target": "Motivic.AlgebraicGeometry.PresheavesWithTransfers.NativeOriginalPairTransferAction",
+            "raw_source_sha256": "97a6f4bd17eec8c6c619d737851bc9c800edf0fa5d49d629022bacc7dd3a5de1",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-GM-COR-CORE-AUDITED/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          },
+          {
+            "target": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CorrectionFunctionalMarkedProduct",
+            "raw_source_sha256": "829fbd34d7070e67500ab2bcdd4c80e18e38b6ca4e27e2bc86465045f48fb0dd",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-E5-PRODUCTS-SCALAR-REPAIR/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          },
+          {
+            "target": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CorrectionFunctionalInfinityProduct",
+            "raw_source_sha256": "5330cf790c8e3de2214e628559a0196edf6ceb94549aadff77235c5610e61096",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-E5-PRODUCTS-SCALAR-REPAIR/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          }
+        ],
+        "supplied_validation_boundary": "No independent final whole-goal acceptance; selected current receipts only.",
+        "meaning": "Historical raw-source/status/receipt data only; neither current native compilation nor established mathematical status."
+      },
+      {
+        "archive_id": "source-135322",
+        "source_status_sha256": "13e3e227caba967c006f9255947a06f3d67069459d8e837720cd16a795e91413",
+        "source_sha256_manifest_sha256": "2c5ef079ea19101698a4506d150418956098c4bc30507ef44cef96322291bce4",
+        "archive_manifest_entries": 6654,
+        "checkpoint_utc": "2026-10-19T13:53:22.562247+00:00",
+        "verified_raw_hashes": {
+          "entries": 318,
+          "matches": 318,
+          "aggregate_delta_members_in_this_set": 0
+        },
+        "selected_production_reference_summary": {
+          "records": 92,
+          "raw_current_hash_matches": 92,
+          "receipt_states": {
+            "completed": 92
+          },
+          "receipt_exit_codes": {
+            "0": 92
+          },
+          "post_receipt_source_touch_flags": 4
+        },
+        "source_touched_records": [
+          {
+            "target": "Motivic.Aglib.AlgebraicGeometry.Normalization.FunctionalNormProductUnitDomain",
+            "raw_source_sha256": "29eb58e1eb60983076998388649dcffb44cb41c67199c330822b7b0f6468f809",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-E5-SCOPE-REPAIR2/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          },
+          {
+            "target": "Motivic.AlgebraicGeometry.PresheavesWithTransfers.NativeOriginalPairTransferAction",
+            "raw_source_sha256": "97a6f4bd17eec8c6c619d737851bc9c800edf0fa5d49d629022bacc7dd3a5de1",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-GM-COR-CORE-AUDITED/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          },
+          {
+            "target": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CorrectionFunctionalMarkedProduct",
+            "raw_source_sha256": "829fbd34d7070e67500ab2bcdd4c80e18e38b6ca4e27e2bc86465045f48fb0dd",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-E5-PRODUCTS-SCALAR-REPAIR/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          },
+          {
+            "target": "Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CorrectionFunctionalInfinityProduct",
+            "raw_source_sha256": "5330cf790c8e3de2214e628559a0196edf6ceb94549aadff77235c5610e61096",
+            "source_touched_after_receipt": true,
+            "receipt_locator": "verification/recovery-current/RECOVERY-E5-PRODUCTS-SCALAR-REPAIR/graph-build.json",
+            "supplied_receipt_state": "completed",
+            "supplied_receipt_exit_code": 0
+          }
+        ],
+        "supplied_validation_boundary": "No independent final whole-goal acceptance; selected current receipts only.",
+        "meaning": "Historical raw-source/status/receipt data only; neither current native compilation nor established mathematical status."
+      }
+    ],
+    "historical_source_records": "Complete raw records remain at their identified archive SOURCE_STATUS/receipt locators; summaries preserve successful states, explicit source-touch flags and coverage without copying the attempt tree."
+  },
+  "revised_raw_admission": {
+    "source_boundary_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/intake-135322/source-boundary/admission-18.json",
+    "source_boundary_sha256": "4bb821fb732e480e1d7b4a31500ccb49bb174043ffdb1e59af5a78319e58fa6b",
+    "admitted_records": 17,
+    "matching_source_status_rows": 15,
+    "additional_owning_dimension_receipts": 2,
+    "records": [
+      {
+        "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalCoefficientFlat.lean",
+        "source_sha256": "6de77eae5f6d349117b7e60e8c6d41035be45750e53455af860aca75b4517e5b",
+        "scope": "Flatness of literal original/final maps from unchanged original free-chart witnesses; no native fiber comparison or complete standard triple.",
+        "owning_provenance": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md:22",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-SAME-FREE-CHARTS-FLAT-PRODUCTION/graph-build.json",
+        "receipt_sha256": "45bbf4e5d231a210df0514aca49b41c96ec2848691b2442a144376061f3f5215"
+      },
+      {
+        "raw_path": "Motivic/Aglib/AlgebraicGeometry/Normalization/OriginalThickenedBoundaryAffineAmbients.lean",
+        "source_sha256": "970b6e10866f63e4b7664ab36db564e5361348f3bb089ef42319b6b62dc1aeed",
+        "scope": "Whole source/target boundary affine ambients after additional explicit localizations; keeps original witnesses but does not assemble the actual common-section/master consumer.",
+        "owning_provenance": "provenance/checked-affine-boundary-pilot-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-GM-AFFINE-BOUNDARY-PILOT/graph-build.json",
+        "receipt_sha256": "95aa8e4644b29299c6b1e76974713b201c3bcaf0ab5f3eabe47b8495cac65d12"
+      },
+      {
+        "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/FiniteFlatComponentDimension.lean",
+        "source_sha256": "daef90057f1b750d04c3c90d1c3d834916e33fad879cee78dcd917cbd68a6d95",
+        "scope": "General finite-flat source over native P1 over a field has dimension-one irreducible components. SOURCE_STATUS omits this later accepted source; owning current provenance and copied pass receipts supersede old source-only comments.",
+        "owning_provenance": "provenance/working-drafts/finite-flat-projective-line-component-dimension/production-pass.md",
+        "receipt_identity_basis": "Owning current production-pass exact hash + identical accepted snapshot + copied production/public-audit receipts",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "provenance/working-drafts/finite-flat-projective-line-component-dimension/production-receipts/production/graph-build.json",
+        "receipt_sha256": "83b822876b30a7356a7c57e692aa4bdfc6bfbd7c65db59a7d5d9a0e15cd5d357",
+        "additional_public_trust_receipt": {
+          "locator": "provenance/working-drafts/finite-flat-projective-line-component-dimension/production-receipts/public-audit.json",
+          "sha256": "90c242921acc3439251e5e96262abf0ecffbe8027576aec110ca866fa83f8c6c"
+        }
+      },
+      {
+        "raw_path": "Motivic/Aglib/AlgebraicGeometry/ProjectiveLine/FlatOfFreeCharts.lean",
+        "source_sha256": "75a2c982d0027d2d4704325743144f18b837e7c56657a7c72d259f6164a70935",
+        "scope": "General affine morphism to native P1 is flat from freeness over both actual polynomial charts; empty/disconnected sources permitted.",
+        "owning_provenance": "Motivic/Aglib/AlgebraicGeometry/Normalization/README.md:22",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-SAME-FREE-CHARTS-FLAT-PRODUCTION/graph-build.json",
+        "receipt_sha256": "45bbf4e5d231a210df0514aca49b41c96ec2848691b2442a144376061f3f5215"
+      },
+      {
+        "raw_path": "Motivic/Aglib/RingTheory/PolynomialFiniteFlatComponentDimension.lean",
+        "source_sha256": "4f20d13e7bb0b0bbdbb35b11cea61219b14f52d4d14c1584b65de48f69bf0e07",
+        "scope": "General finite-flat polynomial algebra over a field has dimension-one irreducible components; stronger integral torsion-free form also explicit. SOURCE_STATUS omission does not negate exact current-hash production evidence.",
+        "owning_provenance": "provenance/working-drafts/finite-flat-projective-line-component-dimension/affine-production-pass.md",
+        "receipt_identity_basis": "Owning current affine-production-pass exact source hash + copied selected production success log + clean public audit resource/log",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/POLYNOMIAL-FINITE-FLAT-PRODUCTION-20261019T1308/production.log",
+        "receipt_sha256": "009f306b321ded3b6206cd0c833f6bb20ed1a67d3192aea27de90836d2194fff",
+        "additional_public_trust_receipt": {
+          "locator": "verification/recovery-current/POLYNOMIAL-FINITE-FLAT-PUBLIC-AUDIT-CLEAN-20261019T1310/resource.json",
+          "sha256": "58f22ad9d1c4ee100fcb2d1f2f676dadbcae25bdd37a81d84f599eb09a14417f"
+        },
+        "receipt_limit": "Original production graph-build JSON is cited by the owning document but not copied at this locator; production success log and clean public-audit receipt are copied."
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeCorrectionPairMiddle.lean",
+        "source_sha256": "5d2259ed0c821e7f255c4e41a49032432524335e5728859ae94f26abbfae4917",
+        "scope": "Ordinary shared middle correspondence and canonical/generic/empty-source adapters. No norm-germ or transfer-action premise.",
+        "owning_provenance": "provenance/checked-native-correction-action-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E5-MIDDLE-PRODUCTION/graph-build.json",
+        "receipt_sha256": "e4699d07754de001f88e346e4594b3322ae0aa9f024175cf7b29e78510011aa1"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairCanonicalPrincipalAction.lean",
+        "source_sha256": "a40c49d311b501177ec4434b1b1426626db431aa8d93af8706bab30353366caa",
+        "scope": "Canonical presentation of same internally produced native principal-zero tuple; not expanded lambda action.",
+        "owning_provenance": "provenance/checked-e3-actual-principal-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-CANONICAL-PRINCIPAL-PRODUCTION/graph-build.json",
+        "receipt_sha256": "46e17a9c9e960782bc5e8d5038885b0f03677fffbfa342c64556a61ecaf43f9d"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairCorSpecialization.lean",
+        "source_sha256": "8ffb1bc94440d9c66999d023c69c1f99fb5e2f88422bdff6d4e10cb7620c45c9",
+        "scope": "Actual native shared original difference equals principal, with the same normalized tuple still explicit; no presheaf, HI or desired Cor/action premise.",
+        "owning_provenance": "provenance/checked-e3-native-shared-cor-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-NATIVE-SHARED-COR-PRODUCTION/graph-build.json",
+        "receipt_sha256": "f9948da70ee22691e5f7db820e23904ee44c25ef284304800d2f744a89e09943"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairDifferenceZero.lean",
+        "source_sha256": "cb47876e29672118016178683ff774cd18eb00db923d2d9b566162e99cbf31ff",
+        "scope": "Actual local shared-difference zero transfer; constructs normalized tuple internally, no desired action premise.",
+        "owning_provenance": "provenance/checked-e3-native-difference-zero-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-NATIVE-DIFFERENCE-ZERO-PRODUCTION/graph-build.json",
+        "receipt_sha256": "ed7959682ede817ecebb03b32d55cdbb3f4e85709303ad195ac76666c58d2270"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairGlobalDifferenceZero.lean",
+        "source_sha256": "65d20add5ee9ab63176bf7134543532b2a543f2022f98323a7a87eef9398349f",
+        "scope": "Actual global shared-difference zero on Nisnevich image by separatedness; empty/disconnected whole source allowed; expanded wrappers absent.",
+        "owning_provenance": "provenance/checked-e3-global-difference-zero-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-GLOBAL-DIFFERENCE-ZERO-PRODUCTION/graph-build.json",
+        "receipt_sha256": "392a48dfe23f51e71ad84dfc091b2c8f1951c87e5e4422815d876956d7fe4025"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeSectionPairPrincipalPresentation.lean",
+        "source_sha256": "1583ab9d002fa6c688357489c90e1a3b9fed2e76f40738db8e8ae3b8b0c84619",
+        "scope": "Generic equality between native/canonical principal presentations fixing actual schemes/maps/W/r/hr; no actual action construction by itself.",
+        "owning_provenance": "provenance/checked-e3-principal-presentation-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-PRINCIPAL-PRESENTATION-PRODUCTION/graph-build.json",
+        "receipt_sha256": "680db3648efeb30bf472f3d017d234ec15f0db1ed7eee81a86f9ea10bda631be"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalComponentLambdaDifference.lean",
+        "source_sha256": "50a8843860050d517338b0cf018b14cf1cea4e89328d981bc29ba0c9b772c1da",
+        "scope": "Shared original component Cor difference definition and principal comparison at free geometry.",
+        "owning_provenance": "provenance/checked-e3-shared-difference-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-SHARED-DIFFERENCE/graph-build.json",
+        "receipt_sha256": "9e8a4f86bfc11f6ca5b74bac92614e8696f2aef48cd7da6264478008670fa219"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalComponentLambdaDifferenceAction.lean",
+        "source_sha256": "fd97e38e6fba0a8d454f2c10181da56d27c9388c867ec34ef4efb2917a0a2ac5",
+        "scope": "Conditional additive conversion from zero action of shared component difference to lambda-action equality at free geometry.",
+        "owning_provenance": "provenance/checked-e3-shared-action-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-SHARED-DIFFERENCE-ACTION-LINT/graph-build.json",
+        "receipt_sha256": "11827e66fe3cbdb8fbdadc5125d2b41faa21a01ce084f5b49eecbf58403e2d70"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalLambdaDifference.lean",
+        "source_sha256": "284ad7d7fa1314c1db664b82881e380b5f9da8adec14729db777cba731a36fd0",
+        "scope": "Global original Cor difference independent of component, precomposition equality and conditional free-variable additive conversion.",
+        "owning_provenance": "provenance/checked-e3-global-difference-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E3-GLOBAL-DIFFERENCE-HELPERS/graph-build.json",
+        "receipt_sha256": "53c13383fe4b8cff0d3338d2387375ea667ae7f04bd6a93ad4a631a61b4fe249"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairMarkedNormMiddle.lean",
+        "source_sha256": "39ed451c9540ffdf9a4e79ff4c6aa1d099318bc85f92c2282fb9d2777b2bc55e",
+        "scope": "Opaque wrapper retains complete old marked-product telescope and genuine norm-germ premise; concludes shared middle equals unchanged principal correspondence.",
+        "owning_provenance": "provenance/checked-native-correction-action-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E5-GENERIC-MIDDLE-PRODUCTION/graph-build.json",
+        "receipt_sha256": "0576efb84cdd0ebe4b7dccc8e8828d927f208030d0d49655bda8b853b7ee8dd1"
+      },
+      {
+        "raw_path": "Motivic/Cohomology/A1/SheafificationMiddleLiftDifference.lean",
+        "source_sha256": "3fa1fa66dc8199c99ddebdd2aab23bc94d14b41fcaad8558e58df2209e9697f3",
+        "scope": "Accepted CONDITIONAL generic whole-cylinder adapter; still explicitly assumes cover, E2/E3-difference/E4/E5 relations and representative compatibility.",
+        "owning_provenance": "provenance/working-drafts/master-standalone/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-MASTER-MIDDLE-DIFFERENCE-PRODUCTION-TERM/graph-build.json",
+        "receipt_sha256": "584a81fd25596a66204212ea922d0b2c752ff876c813355e66a5c1a8c461d7b1"
+      },
+      {
+        "raw_path": "Motivic/AlgebraicGeometry/PresheavesWithTransfers/NativeCorrectionTransferAction.lean",
+        "source_sha256": "493efc61b3c84284bcfa816e13839167f60b74e5f35519de885bd3c51bba1092",
+        "scope": "Actual E5 originalPairs/originalPsi production/public-trust pass. Original variable context and entire two-public-theorem tail byte-identical; private representation repair only.",
+        "owning_provenance": "provenance/checked-native-correction-action-20261019/README.md",
+        "receipt_identity_basis": "SOURCE_STATUS exact current source hash + copied selected-production receipt",
+        "receipt_result": {
+          "state": "completed",
+          "exit_code": 0,
+          "guard_failure": null,
+          "owned_group_gone": true
+        },
+        "receipt_locator": "verification/recovery-current/RECOVERY-E5-NATIVE-ACTION-PRODUCTION/graph-build.json",
+        "receipt_sha256": "add619beaf9fcde9ae6d6c57b3b6bc327556efd7d0c320f72045bed2ec1dbe58"
+      }
+    ],
+    "scope": "Raw selected production/targeted public-trust evidence admitted by the principal; no fresh native-relocation verification or established-status assignment. The unused Lambda shim is omitted by the current selection."
+  },
+  "current_source_binding": {
+    "mathematical_entry_head": "64cf8e2987412f3a56b1f133f3553b2604b76d88",
+    "governing_workflow_head": "5e773feee484885928bdfb0cb6449b6e25887791",
+    "observed_head": "5e773feee484885928bdfb0cb6449b6e25887791",
+    "source_epoch": "accepted94-repair01-omit-unused-integral-K",
+    "source_manifest_sha256": "f2eb876498af2f329f0538f56ae26135b20eb84485f16a5c2627e8e8d25a9adb",
+    "source_changes_sha256": "73fddcd3d9dbfdd629cf3941c269dbfb171f589bfde323c05463ebcea5e27517",
+    "new_sources": 94,
+    "production_providers": 93,
+    "layers": {
+      "candidate": 66,
+      "host": 27,
+      "test": 1
+    },
+    "retained_existing_providers": 5,
+    "modified_existing_lean_sources": 0,
+    "retained_byte_identical_sources": 77,
+    "retained_validated_providers": 76,
+    "new_or_replaced_production_providers": 17,
+    "binding_state": "Exact current94 source binding. Current93 providers pass kernel, enabled exact-origin15 linters and standard3 audit; style94 and selected test pass. Cache delivery remains separate.",
+    "source_file_inventory": "Current native destinations and hashes occur once in raw_source_correspondence; retained existing providers are marked separately."
+  },
+  "current_validation": {
+    "order": "Changed providers and applicable exact-origin lint/style/trust precede the selected test; cache delivery is separate.",
+    "provider_compilation": {
+      "status": "PASS",
+      "current_production_provider_origins": 93,
+      "compatible_retained_successes": 76,
+      "new_or_replaced_successes": 17,
+      "coverage_composition": "76 retained +11 successful first-phase providers +6 successful exact retry providers; no whole-surface replay and no failed/canceled phase relabelled PASS.",
+      "source_manifest_sha256": "f2eb876498af2f329f0538f56ae26135b20eb84485f16a5c2627e8e8d25a9adb",
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-source-validation.json",
+      "receipt_sha256": "d4569b4ded9dcf373ed291b624739bea59b9b497abe774df144623ae6b412fb7"
+    },
+    "declaration_and_text_style_lint": {
+      "status": "PASS",
+      "enabled_native_declaration_linters": 15,
+      "exact_defining_origin_count": 93,
+      "enumeration_scope": "Actual public/private/generated declarations of the selected defining origins; no zero-count producer.",
+      "selected_source_style_count": 94,
+      "style_coverage": {
+        "compatible_retained_sources": 77,
+        "new17_style_exit": 0,
+        "one_changed_source_replacement_style_exit": 0,
+        "current_source_count": 94,
+        "basis": "First17 style pass, then exact one repaired source replaced by its current style pass. No unchanged replay."
+      },
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-source-validation.json",
+      "receipt_sha256": "d4569b4ded9dcf373ed291b624739bea59b9b497abe774df144623ae6b412fb7"
+    },
+    "source_and_trust": {
+      "status": "PASS",
+      "standard_axiom_origin_count": 93,
+      "actual_public_private_generated_declarations": 1455,
+      "zero_count_producer_origins": [],
+      "axioms_allowed": [
+        "propext",
+        "Classical.choice",
+        "Quot.sound"
+      ],
+      "method": "Pinned importAll=true/getAllDecls/exact defining module index filter/Lean.collectAxioms; standard3 only. Imported environments reuse guarded compiled providers; no separate kernel replay claim.",
+      "driver_sha256": "970f240903aac35471eb6c4cc654ccbe65a97cacffc96daf222f53959e5fc579",
+      "std3_receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-std3.json",
+      "std3_receipt_sha256": "4cf448b6c78f3ce5556034d934d89e954850bf3cbce5b2c9d7663eb009d31407",
+      "structural_check": {
+        "status": "PASS",
+        "exit_code": 0,
+        "lean_source_count": 3369,
+        "command": "python3 scripts/check_repository.py",
+        "scope": "PASS0; actual scripts/check_repository.py,3369 Lean sources, source boundaries/import DAG/generated facades/isolation/tokens/pins; not native client compilation"
+      }
+    },
+    "affected_tests_and_clients": {
+      "status": "PASS",
+      "selected_test_module": "MotivicTest.OriginalOverlapSectionChoice",
+      "native_exit": 0,
+      "transport_exit": 0,
+      "frontend_invocations": 1,
+      "frontend_successes": 1,
+      "seconds": 8.925126180052757,
+      "literal_smoke": "Three native #check commands and one #print axioms; actual compile transcript kept separately.",
+      "actual_own_origin_declaration_count": 0,
+      "declaration_lint": "N/A_EMPTY_ORIGIN",
+      "own_axiom_audit": "N/A_EMPTY_ORIGIN",
+      "origin_count_basis": "Actual pinned importAll/exact-defining-origin enumeration; not textual inference.",
+      "origin_enumeration_receipt": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-test-origin-current432/decl-0-receipt.json",
+      "client_selected": false,
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-source-validation.json",
+      "receipt_sha256": "d4569b4ded9dcf373ed291b624739bea59b9b497abe774df144623ae6b412fb7"
+    },
+    "compatible_retained_providers": {
+      "status": "PASS",
+      "origin_count": 76,
+      "kernel_origin_count": 76,
+      "exact_15_linter_origin_count": 76,
+      "standard_axiom_origin_count": 76,
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-retained76-projection.json",
+      "receipt_sha256": "046076b258cf85b9b1ae093601d3408bd044d2af9628dfe3011fc317b20b2a95",
+      "frozen_basis_manifest_sha256": "480c0b20850412283e5179489e0a255579467cd6f4e5c14071252259adc38f0a",
+      "current_source_hash_matches": 76,
+      "current_scope_selector": "native_cohort=retained_validated_provider in SOURCE-INDEX.json",
+      "retention_composition": {
+        "previously_accepted_kernel_origins": 73,
+        "fresh_successful_kernel_origins_in_closed_phase": [
+          "Motivic.Transfers.Presheaf.Actions.Pencils.NativeOriginalPairTransferAction",
+          "Motivic.Transfers.Presheaf.Actions.Pencils.NativeSectionPairActionConversion",
+          "Motivic.Transfers.Presheaf.Sheafification.Representatives.RefinedRestriction"
+        ],
+        "previously_accepted_exact15_and_std3": 72,
+        "fresh_successful_exact15_and_std3_in_closed_phase": 4
+      },
+      "source_import_compatibility": "All76 exact source bytes unchanged; new16 and replacementCorrection cannot occur in previously closed import closures. Prior defining-origin import/SimpSet context retained. No new proof replay.",
+      "closed_phase_boundary": "Whole prior phase exited1: two actual pencil failures plus user-deferred Cover cancellation. Those4unaccepted origins and all old1M/private diagnostics are excluded from retained76. This projection does not relabel whole prior phase PASS.",
+      "all_prior_frontend_events_closed": true,
+      "all_prior_owned_groups_closed": true,
+      "evidence": [
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/provider-06-inputs.json",
+          "sha256": "216e5f918fb5a28a1533a02d3d04ffca44d2b4e39bb5eb46d27161383869e6db"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/provider-06-combined/completion.json",
+          "sha256": "ecd6d8ea5fc931ec0488f196f9593b3c3b1b238d6fb8638f1e32ce52ac6478d6"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/provider-06-combined/resource-receipt.json",
+          "sha256": "858a20c22fe42956a12bf63f11088aa5c1bb4ea19134b35031340914666230e1"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/provider-06-combined/compiler-events.jsonl",
+          "sha256": "0faf6a321eed3639ab3013ebe35cdcf6fb030ed0cad818d81c9f7892cf640ecb"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/provider-06-combined/providers.log",
+          "sha256": "a5b5909dc554226972ba543c6796a5ea4ec9f2b76feadc7ec9a4f9795e1f8189"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/canonical06-user-deferred-closure.json",
+          "sha256": "dc4c8784747ffbbd48f56800538eed8acf510ed91c8a53cc2bf44c4867951d23"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/std3-closed-72-completion.json",
+          "sha256": "b6eef2d781f8c966888a0fb78fed07c5d26878767f18fad358f3c13d94b8ea51"
+        }
+      ],
+      "boundary": "This retained76 scope does not label an earlier failed/canceled whole phase PASS and does not cover the new/replaced17."
+    },
+    "tooling_fixtures": {
+      "status": "passed_with_optional_skip",
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/tool-validation/final-tooling-coverage.json",
+      "receipt_sha256": "22ac7bf02dfcd85734ede1430742693b3c6dc1258563307375e77ffadd5fe627",
+      "scope": "Current67tool fixtures via compatible retained results and focused repairs; not a fresh whole-suite rerun.",
+      "current_test_count": 67,
+      "passed": 66,
+      "optional_skipped": 1,
+      "retained_passed": 60,
+      "fresh_current_checks": {
+        "root_workflow_client_order": 1,
+        "DeclarationOriginTests": 5
+      },
+      "new_regressions": [
+        "DeclarationOriginTests.test_distinct_origins_run_in_separate_processes_with_the_same_adapter",
+        "DeclarationOriginTests.test_origin_process_failure_stops_later_origins_and_preserves_exit_code"
+      ],
+      "old_validate_test_methods_AST_unchanged": 16,
+      "lint_runtime_driver": "Pinned Batteries adapter/ENUMERATION/origin filter/linters unchanged; only fresh process per deduplicated origin.",
+      "evidence": [
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/tool-validation/root-fixtures.json",
+          "sha256": "af4e51f03bd2c56bb351de349c2c81810a52c4c44c2f2b42a9cc95441eeffe6e"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/lint-runtime/declaration-origin-tests.log",
+          "sha256": "dbeda83bfbe090b854ed0a9942e0d4230b5d9915195fe1bd3f9e9b743d2b0036"
+        }
+      ],
+      "source_hashes": {
+        "scripts/lint_declarations.py": "6013e20c073904e077ad27c1e17d651e95d9c2c00db0dd3af6c9a35d15f5ed2b",
+        "scripts/test_validate.py": "8d8c6a5ed7737d722a5c8c2e4be0cf145e14f1eecc6918278eb9d6cccc818894",
+        "scripts/test_build_client.py": "26b5e616e675492babc3b5b2034f3aa3e49c214f6753b136b62e5dbd2b037529"
+      },
+      "skip_reason": "Optional native style scoping fixture requires an explicitly prepared MOTIVIC_NATIVE_STYLE_ROOT; actual selected native style coverage is separate."
+    },
+    "documentation_static_checks": {
+      "status": "passed",
+      "command": "python3 /private/tmp/r5-investigations/motivic-normalization-recovery-20261019/family-docs/check_documentation.py",
+      "scope": "Assigned Markdown/JSON only; links, exact module references and raw/native source correspondence. No Lean compilation, native lint or mathematical verdict.",
+      "markdown_files": 18,
+      "json_files_parsed": 2,
+      "relative_links_checked": 177,
+      "exact_module_references_checked": 77,
+      "excluded_namespace_prefix_or_declaration_references": [
+        "Motivic.Aglib",
+        "Motivic.Cohomology.A1",
+        "Motivic.Cor.originalComponentLambda_eq_principal",
+        "Motivic.Cor.originalPairMarkedMiddle",
+        "Motivic.FiniteFlatCurveFamily",
+        "Motivic.PresheafWithTransfers",
+        "Motivic.SheafWithTransfers",
+        "Motivic.SheafWithTransfers.isStrictA1Invariant_of_perfect",
+        "Motivic.motivicComplex"
+      ],
+      "raw_correspondence_rows": 101,
+      "raw_source_hashes_checked": 101,
+      "native_source_hashes_checked": 99,
+      "source_epoch": "accepted94-repair01-omit-unused-integral-K",
+      "broken_links": [],
+      "missing_exact_modules": [],
+      "raw_hash_errors": [],
+      "native_hash_errors": [],
+      "missing_family_guides": [],
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/family-docs/static-checks.json",
+      "receipt_sha256": "920bb70c434c2da50a3c8f7a56a44ebec2bab0b4f147dd92e3409f903ee61d72"
+    },
+    "immutable_terminal_source_receipts": [
+      {
+        "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-source-validation.json",
+        "sha256": "d4569b4ded9dcf373ed291b624739bea59b9b497abe774df144623ae6b412fb7"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-std3.json",
+        "sha256": "4cf448b6c78f3ce5556034d934d89e954850bf3cbce5b2c9d7663eb009d31407"
+      }
+    ],
+    "source_identity": {
+      "source_manifest": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-source-manifest.json",
+      "source_manifest_sha256": "f2eb876498af2f329f0538f56ae26135b20eb84485f16a5c2627e8e8d25a9adb",
+      "validator_plan": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/accepted94-final-validation-plan.json",
+      "validator_plan_sha256": "0072f5c9f6139a4718d3e594431b6063e682914716c1945f6e565e463a003b4d",
+      "mathematical_entry_head": "64cf8e2987412f3a56b1f133f3553b2604b76d88",
+      "governing_workflow_head": "5e773feee484885928bdfb0cb6449b6e25887791",
+      "native_workspace_source_digest": "4b1545b0ae4086c5dce4beb5567bab8b5666728126af33f1cc28256bd8d336a3",
+      "source_binding_boundary": "Exact selected94 sources and needed import/config guards current; unselected oldNorm remote source retains identified prior basis. No whole current global-tree claim.",
+      "Mathlib": "d13f23b723b8a846827a245b89c10fc7d3f11612",
+      "Aglib": "b11b71d11bf03cf231f0e06b947a7b63d4344a9e",
+      "lean_version": "Lean (version 4.34.1, x86_64-unknown-linux-gnu, commit 5045d0056413266e57c625dcd7c365b10e377c52, Release)",
+      "root_config_sha256": {
+        "lakefile.toml": "546801e042455cb75a12cf6cfe1dcf67e7c42cf7200bc53bc2dae52f5bf87b27",
+        "lake-manifest.json": "b13984316a63065c6ad3fd44ce093582d6cefc2d945ae8de44d455e3c26aebb8",
+        "lean-toolchain": "d5edba4e4b8faad9c1baeadb265716d20d03be4d1a2647dc5e35b0c0325bea7b"
+      }
+    },
+    "all_owned_validation_groups_closed": true
+  },
+  "artifact_delivery": {
+    "cache_export": {
+      "status": "PASS",
+      "receipt_path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/delivery-completion.json",
+      "receipt_sha256": "7a5125cf457c88eac38cd8699d5590ee9b55cdcc9ef6bf8c171ec9989fe8b69b",
+      "source_manifest_sha256": "f2eb876498af2f329f0538f56ae26135b20eb84485f16a5c2627e8e8d25a9adb",
+      "separate_source_validation_receipt_sha256": "d4569b4ded9dcf373ed291b624739bea59b9b497abe774df144623ae6b412fb7",
+      "selected_target_count": 94,
+      "actual_official_archive_count": 94,
+      "artifact_payload_bytes": 4211748,
+      "transport_tar_bytes": 4474880,
+      "transport_tar_sha256": "a09f6b55b6bfe2b0900a9fa66ce9710b3ce707a0bdd2085cad35072eae5b54a3",
+      "selected_mapping_sha256": "10ba211d2b6269407db823233caeda04649402c09d1cbd397689fecaffebc420",
+      "remote_export_and_stage_exit_codes": [
+        0,
+        0
+      ],
+      "download_transport_exit": 0,
+      "local_formal_import": [
+        {
+          "phase": "unstage",
+          "exit_code": 0,
+          "seconds": 7.319184583961032,
+          "peak_rss_bytes": 700416000,
+          "group_gone": true,
+          "guard_failure": null
+        },
+        {
+          "phase": "acceptance",
+          "exit_code": 0,
+          "seconds": 12.032947915955447,
+          "peak_rss_bytes": 803110912,
+          "group_gone": true,
+          "guard_failure": null
+        }
+      ],
+      "local_acceptance": "lake --no-build --rehash --no-ansi build exact94 explicit modules; actualexit0, no Built/sourcecompile",
+      "source_compilations": 0,
+      "trace_key_platform_rewrites": false,
+      "wrong_arch_native_libraries_objects_copied": false,
+      "input_source_config_guards_before_after": "PASS",
+      "all_owned_groups_closed": true,
+      "usable_local_cache": "/Users/kang/Documents/New project/tmp/motivic/.lake/build",
+      "local_formal_completion": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/local-formal-import/completion.json",
+      "official_cache_key_payload_checks": "Actual module trace depHash mapped to official .ltar; all archive and map hashes verified; official Lake stage/unstage only.",
+      "evidence": [
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-inputs.json",
+          "sha256": "ffe9011adfca08ddeb2e861b2ac4520cbae1c17b8860da73e7e3bd34fc74c963"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/download-receipt.json",
+          "sha256": "9ed9696551b3febf1db626942e690203e41f34745f92f2d1b38013b96a0b15f7"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/transport.json",
+          "sha256": "f884c224a032a5ed93546a58c59b0ee2d113c11a66d3eb89637b6d5083b7ee8c"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/download/receipt.json",
+          "sha256": "ae264f7233f6f3e211d64fedbbec798a5ca3d2854e0797d5fbbe08c1127a9c07"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/download/selected-native-outputs.jsonl",
+          "sha256": "10ba211d2b6269407db823233caeda04649402c09d1cbd397689fecaffebc420"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/download/export-native/export.json",
+          "sha256": "f1bef556b4a8c4e0ed65503c1f28a96349f4a1c7d4dbfd7089018dbcc9cbee02"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/local-formal-import/completion.json",
+          "sha256": "8e097939cb953894bd198a107a0d77b51ec71958d4776f366701ec70b3820935"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/local-formal-import/input-bindings.json",
+          "sha256": "ada05626c0c8c841338d7975e9203d178accd9073a822fba9140d7a0bc1ffe27"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/local-formal-import/unstage-receipt.json",
+          "sha256": "f39d7f5b4dcb7f30fa7a607825ce6574633e21991e6229c9f679169026cad2c4"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/local-formal-import/acceptance-receipt.json",
+          "sha256": "5bd4d0eacd732cdb3223f5252403c60f08e05eb74d72cc9aeb4d4f536452e20f"
+        },
+        {
+          "path": "/private/tmp/r5-investigations/motivic-normalization-recovery-20261019/remote-validation/cache-return-accepted94-f2eb8764/local-formal-import/acceptance.log",
+          "sha256": "dac694fd8a5eefaf3c5604ae8c99fffc07310f739b067d9ceca8b790a7190e03"
+        }
+      ],
+      "boundary": "No old959 cache replay/export; unaccepted master/Lambda/Cover/field-compatibility consumers excluded. Source validation is the separately frozen receipt; this artifact receipt never edits it."
+    }
+  },
+  "mathematical_boundary": {
+    "evidence": "Raw selected production/trust receipts are source-admission evidence. Current native compilation, exact declaration/style/standard-axiom coverage, affected tests and cache delivery have their separate scopes in CHECKS.json; authoring assigns no established status.",
+    "admitted_interfaces": "The revised archive supplies local/global original E3 difference-zero APIs, literal originalPairs/originalPsi E5 endpoints, general flatness/component dimension/affine-ambient APIs and a generic difference-form middle-lift adapter, all with their displayed premises.",
+    "deferred_or_omitted": "Two legacy original master providers are deferred; the unused Lambda shim is omitted. Expanded E3 lambda endpoint and actual same-witness master are absent from this admitted selection.",
+    "open": "The actual common-witness transport to original representatives and ModelWholeCylinderLifting producer remain unresolved. Arbitrary original HI-presheaf sheafification/strict A1 remains OPEN. Existing perfect-field HI transfer-sheaf strict invariance is unchanged.",
+    "historical_boundary": "The 100828 checkpoint left original E3/E5 upper consumers unaccepted. That old scope is superseded for the precise original-difference and E5 APIs admitted from135322; it is not relabelled as current native validation.",
+    "current_formal_api_verification": "The selected93 current formal provider APIs are kernel/lint/standard3 verified under all displayed premises. This does not supply deferred expanded E3/master code, common-witness transport or ModelWholeCylinderLifting."
+  }
+}

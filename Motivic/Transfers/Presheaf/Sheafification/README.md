@@ -39,3 +39,43 @@ neither their geometric witnesses nor a curve-gluing theorem. See the
 [conditional whole-cylinder and middle-lift guide](../../../Cohomology/A1/Sheafification/README.md)
 for its exact role, and [original actions](../Actions/README.md) for the distinct
 norm/principal/pencil interfaces.
+
+## The same representatives with a produced section choice
+
+[Representatives/SectionChosen](Representatives/SectionChosen.lean) supplies
+`exists_sectionChosen_distinguished_nisnevichImage_representatives` in
+`Motivic.PresheafWithTransfers`. For `k : Type u`, `[Field k]`,
+`P : PresheafWithTransfers.{u+1} k`, an affine integral smooth-site `X` and
+a section of the actual sheafification over `a1Cylinder X`, it constructs a
+nonempty affine original base open, a whole-cylinder presentation, the
+original open/étale distinguished cover, its full marked scheme finite over
+the base, the original image representatives and their matching equations.
+It then retains one nonzero coefficient restriction and an affine source open
+containing the entire restricted marked fiber, with its actual Cartesian
+square, original restricted representative and overlap equation.
+No A1-invariance hypothesis is needed for this representative constructor.
+
+The output also includes `OriginalRefinedSectionChoice`, defined in
+[Actions/Norm/RefinedSectionChoice](../Actions/Norm/RefinedSectionChoice.lean).
+`originalRefinedSectionChoice_of_square` derives the native normal Noetherian
+coefficient-domain, étale/separated/quasi-compact source and finite marked
+conditions from the displayed affine refinement and marked square, then invokes
+one [normalization/section constructor](../../../Aglib/AlgebraicGeometry/Normalization/README.md).
+The common normalization, thickening, frames and source/target sections are
+therefore tied to these same original representatives.
+
+[Representatives/RefinedRestriction](Representatives/RefinedRestriction.lean)
+retains their actual source/puncture restrictions to the native refined sites.
+`originalRefinedSource_representative_image` and
+`originalRefinedPuncture_representative_image` preserve the original
+sheafification-image equations, and `originalRefined_representatives_matching`
+compares the same two restrictions over the literal overlap. These statements
+construct no section of the image over the whole original cylinder. The
+[original E3 difference-zero, E5 and native refined-cover interfaces](../Actions/README.md)
+still need their common-witness binding to these original representatives,
+followed by the producer of `ModelWholeCylinderLifting`. The
+[difference-form middle-lift adapter](../../../Cohomology/A1/README.md) retains
+the cover and E2/E3-difference/E4/E5 relations as premises. Its additive
+implication and verification of a formal supplier do not supply those joins.
+Arbitrary-HI-presheaf sheafification-HI and its strict A1 consumer retain that
+OPEN boundary.

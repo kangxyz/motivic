@@ -80,3 +80,25 @@ not a substituted dual-line coordinate.
 Rational-unit gluing retains the caller's original local unit/germ equations,
 boundary equations and coverage. The boundary source may be nonreduced; its
 value-one equation is equality of actual sections, not residue values.
+
+## Literal functional quotients on affine charts
+
+[FunctionalQuotientAffineChart](FunctionalQuotientAffineChart.lean) works in
+`AlgebraicGeometry.Scheme.Modules.Invertible`, for schemes in universe `u`
+and the caller's actual module functionals `a,c : M ⟶ 𝟙`.
+`functionalQuotient_pullback` identifies the pullback of `c⁻¹ ≫ a` with
+the quotient of the composite pullbacks, retaining denominator-invertibility
+on the two displayed maps. `functionalQuotient_comp` compares nested and
+composite pullbacks when the denominator is invertible on the composite.
+`pullbackUnitMap_comp_isIso_of_nested` needs invertibility only on the nested
+chart; it does not infer a unit on the intermediate parameter scheme.
+
+For an affine open `U`, `functionalQuotient_fromSpec_coefficient` identifies
+the coefficient on `U` transported by `U.topIso` with the coefficient on its
+canonical `Spec Γ(X,U)` chart transported by `ΓSpecIso`. The parameter version
+`functionalQuotient_parameter_fromSpec_coefficient` retains a prior actual
+parameter map and both displayed composite denominator-unit hypotheses.
+The canonical pullback-composition maps appear in these equations; a dual
+of a newly chosen pulled section is not substituted for the original
+functional. Generic-fiber isomorphism comparisons and the
+[R3/R5 constructors](../../RelativeCurve/Pencils/README.md) consume these identities.

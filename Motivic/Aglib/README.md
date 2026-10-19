@@ -38,9 +38,10 @@ Occupied general families have their own interfaces and reuse routes:
 - [Algebra and homology](Algebra/README.md).
 - [Algebraic geometry](AlgebraicGeometry/README.md).
 - [Category and site theory](CategoryTheory/README.md).
+- [Dependent `Fin 2` families](Data/Fin/README.md).
 - [Field theory](FieldTheory/README.md).
 - [Linear algebra](LinearAlgebra/README.md).
-- [Ring theory](RingTheory/README.md).
+- [Ring theory](RingTheory/README.md), including [Krull dimension](RingTheory/KrullDimension/README.md).
 - [Topology](Topology/README.md).
 
 See [architecture](../../docs/ARCHITECTURE.md) for ownership and dependency rules,

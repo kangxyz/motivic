@@ -46,6 +46,11 @@ Use the [cycle guide](Cycles/README.md), [site guide](Sites/README.md),
 [finite morphisms](Morphisms/Finite/README.md),
 [relative curves](RelativeCurve/README.md) and
 [Cartier divisors](EffectiveCartierDivisor/README.md) for detailed boundaries.
+The occupied [projective-line guide](ProjectiveLine/README.md) records its chart,
+flatness and dimension interfaces. Its [neighborhoods](ProjectiveLine/Neighborhood/README.md),
+[open-factor boundary sections](Morphisms/OpenImmersion/README.md) and
+[coproduct boundary sections](Scheme/Sections/README.md) retain the actual
+coefficient squares and scheme-level section equalities used there.
 General graph/Tor interfaces retain original stalk scalar actions; flat ambient
 maps do not imply flat support maps. Generic Tor and diagonal prerequisites are
 candidates before their correspondence specializations consume them.

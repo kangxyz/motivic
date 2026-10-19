@@ -9,6 +9,8 @@ import tempfile
 import unittest
 
 from build_client import prepare
+from ci_targets import make_plan
+from validate import commands
 
 
 class ClientBuildTests(unittest.TestCase):
@@ -99,14 +101,23 @@ sys.exit(int(os.environ.get('FIXTURE_EXIT','0')))
 
     def test_workflow_accepts_client_before_publishing(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        export = workflow.index('name: Export current core and selected-target native mappings')
-        client = workflow.index('name: Build the independent public client')
-        self.assertLess(workflow.index('id: build\n'), export)
-        self.assertLess(export, client)
-        self.assertLess(client, workflow.index('id: native-stage'))
-        client_step = workflow[client:].split('\n      - name:', 1)[0]
-        self.assertIn("needs.source.outputs.client == 'true' ||", client_step)
-        self.assertIn("(github.event_name == 'push' && github.ref == 'refs/heads/main')", client_step)
+        validation = workflow.index('id: build\n')
+        stage = workflow.index('id: native-stage')
+        self.assertLess(validation, stage)
+        validation_step = workflow[validation:stage]
+        self.assertIn('python3 scripts/validate.py --plan', validation_step)
+        self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', validation_step)
+        self.assertIn('mappings: ${{ runner.temp }}/native-outputs.jsonl', workflow[stage:])
+
+        (self.root / 'Motivic.lean').write_text('module\n')
+        plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
+        selected = commands(self.root, plan, self.root / 'receipts',
+                            outputs=self.root / 'native-outputs.jsonl',
+                            skip_static=True, skip_cache=True)
+        client = next(i for i, argv in enumerate(selected)
+                      if Path(argv[1]).name == 'build_client.py')
+        export = next(i for i, argv in enumerate(selected) if '--export-only' in argv)
+        self.assertLess(client, export)
         # Keep the existing GitHub cache path schema/version for both restore and save.
         self.assertEqual(workflow.count('          path: .lake/build\n'), 2)
         self.assertNotIn('path: examples/downstream/.lake/build', workflow)

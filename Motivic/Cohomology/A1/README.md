@@ -96,3 +96,24 @@ The [sheafification reduction guide](Sheafification/README.md) records the
 actual-unit image, dense detection, whole-cylinder input and conditional
 middle-lift assembly. It distinguishes that open presheaf-entry problem from
 the already-HI Nisnevich transfer-sheaf strict theorem above.
+
+[Sheafification.MiddleLiftDifference](Sheafification/MiddleLiftDifference.lean)
+supplies
+`nisnevichImage_wholeCylinder_lift_of_middle_difference_relations` in
+`Motivic.PresheafWithTransfers`. For `k : Type u`, `[Field k]` and
+`P : PresheafWithTransfers.{u+1} k`, it retains the original nonempty base-open
+restriction, whole-cylinder map and its equation, actual two-arrow Nisnevich
+cover, source/puncture restriction maps, correspondences and matching image
+representatives. The E2 and E4 relations, the E5 signed relation and
+
+`transfer(λB ; graph(bA) − graph(v′) ; λA) = 0`
+
+are explicit inputs. Additivity changes only this E3 difference-zero input
+into the equality required by the existing middle-lift theorem. The conclusion
+is an image section on the whole cylinder over the specified nonempty original
+base open, with its original sheafification-unit equation. This conditional
+adapter needs no additional A1-invariance premise, and constructs none of the
+cover or relation inputs. The [admitted action suppliers](../../Transfers/Presheaf/Actions/README.md)
+still require their actual common-witness transport to these representatives;
+the adapter is not a producer of `ModelWholeCylinderLifting` or a proof of
+general HI-presheaf sheafification-HI.
