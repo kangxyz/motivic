@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodSerreSectionPair
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Sections.SerrePair
 /-! Actual graph numerator and denominator are produced on the common base shrink. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

@@ -1,5 +1,5 @@
 module
-public import Motivic.Cohomology.H1PencilGeometryTransport
+public import Motivic.Cohomology.A1.LocalVanishing.H1.Pencil.Transport
 /-! # Native original-H1 pencil input and endpoint comparison audit -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
@@ -9,7 +9,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 open Scheme.AffineLineEtaleCompactification
 universe w u
 namespace Motivic.SheafCohomology.AffineLineH1LiftData
-open AffineLineReducedComplement
+open _root_.AlgebraicGeometry.Scheme _root_.CategoryTheory.Sheaf.LargeCohomology
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 variable {k : Type u} [Field k]
   [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
   [EnoughInjectives

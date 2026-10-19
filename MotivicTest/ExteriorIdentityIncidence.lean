@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityIncidence
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.Incidence
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-!
 # Actual simplex exterior-incidence consumers
@@ -22,15 +22,16 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ExteriorIdentityIncidence
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
   (B : FiniteCorrespondenceGenerator Y.hom Z.hom) (n : ℕ)
 
 example :
-    pullback (A.incidenceSource B ≫ X.hom) (AlgebraicSimplex.smoothSiteObj k n).hom ≅
-      (A.exteriorIdentityGenerator (AlgebraicSimplex.smoothSiteObj k n)).incidence
-        (B.exteriorIdentityGenerator (AlgebraicSimplex.smoothSiteObj k n)) :=
+    pullback (A.incidenceSource B ≫ X.hom) (_root_.AlgebraicSimplex.smoothSiteObj k n).hom ≅
+      (A.exteriorIdentityGenerator (_root_.AlgebraicSimplex.smoothSiteObj k n)).incidence
+        (B.exteriorIdentityGenerator (_root_.AlgebraicSimplex.smoothSiteObj k n)) :=
   A.exteriorIdentityIncidenceIso B _
 
 example (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom] :

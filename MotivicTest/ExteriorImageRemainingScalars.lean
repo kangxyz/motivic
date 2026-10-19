@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageRemainingScalars
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.RemainingScalars
 public import MotivicTest.IntegralGenericFiniteImage
 
 /-!
@@ -27,6 +27,10 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (stalkQuotientKerEquiv)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Intersection (coefficientStalkMap)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleInclusion)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.ExteriorImageComponentGeometry
 open MotivicTest.IntegralGenericFiniteImage
@@ -51,7 +55,7 @@ variable {k : Type u} [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
 theorem originalImage_remaining_scalar :
     let e := remainingToExterior F G H (imageSupport F G z) P hC w
     let r := remainingExteriorAmbientList F G H (imageSupport F G z) P hC w s
-    let a := Intersection.coefficientStalkMap
+    let a := coefficientStalkMap
       (correspondenceTripleInclusion X.hom Z.hom W.hom) (P.incidenceInclusion H w)
       (P.supportProductInclusion H)
       ((exteriorIso F G H (imageSupport F G z) P hC).hom e)
@@ -66,7 +70,7 @@ theorem originalImage_remaining_scalar :
 theorem originalImage_remaining_quotient :
     let e := remainingToExterior F G H (imageSupport F G z) P hC w
     let r := remainingExteriorAmbientList F G H (imageSupport F G z) P hC w s
-    let a := Intersection.coefficientStalkMap
+    let a := coefficientStalkMap
       (correspondenceTripleInclusion X.hom Z.hom W.hom) (P.incidenceInclusion H w)
       (P.supportProductInclusion H)
       ((exteriorIso F G H (imageSupport F G z) P hC).hom e)

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichPoint
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.Basic
 public import Motivic.Aglib.CategoryTheory.Sites.Point.SkyscraperCohomology
 public import Lean.Util.CollectAxioms
 
@@ -18,10 +18,12 @@ and equalization maps, restriction/coefficients in the fiber colimit, and the
 single-point ordinary-cohomology consequence.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v w e e'
 
@@ -80,7 +82,8 @@ variable [HasExt.{e} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u 
   [HasExt.{e'} AddCommGrpCat.{u + 1}]
 
 example (M : AddCommGrpCat.{u + 1}) (n : ℕ) (Y : SmoothSite (Spec (.of k)))
-    (a : SheafCohomology.H.{e, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
+    (a : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{e, u + 1, u, u + 1} (nisnevichTopology (Spec
+        (.of k)))
       ((nisnevichPoint X x).skyscraperSheaf M) (n + 1) Y) : a = 0 :=
   GrothendieckTopology.Point.skyscraper_cohomology_eq_zero.{e, e', u + 1, u, u + 1}
     (nisnevichPoint X x) M n Y a
@@ -89,12 +92,12 @@ end ArbitraryField
 
 open Lean in
 run_cmd do
-  for name in #[``Motivic.SmoothSite.exists_smoothNeighborhood_refinement,
-      ``Motivic.SmoothSite.nisnevichNeighborhoodFunctor,
-      ``Motivic.SmoothSite.nisnevichNeighborhood_cover_lifting,
-      ``Motivic.SmoothSite.nisnevichPoint,
-      ``Motivic.SmoothSite.isColimitNisnevichPointFiberCocone,
-      ``Motivic.SmoothSite.nisnevichPointFiberCocone_naturality] do
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_smoothNeighborhood_refinement,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichNeighborhoodFunctor,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichNeighborhood_cover_lifting,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichPoint,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isColimitNisnevichPointFiberCocone,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichPointFiberCocone_naturality] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

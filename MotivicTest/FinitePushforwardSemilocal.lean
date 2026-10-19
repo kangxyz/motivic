@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardSemilocal
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Semilocal
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
 
 /-!
 # Actual whole-fiber finite-generation and zero-detection consumers
@@ -30,8 +30,9 @@ open scoped TensorProduct
 universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardSemilocal
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward
 
-open FiniteSchemeEuler
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteEuler
 
 /-- Every whole coordinate coefficient uses the original finite-map section action. -/
 local instance coordinateAlgebra {X Y : Scheme.{u}} (f : X ⟶ Y) (U : Y.Opens) :
@@ -56,7 +57,7 @@ theorem actualImageProductFinite
       Module.Finite ((F.leftIntermediateSupportProduct G H).presheaf.stalk x.1)
         (originalSourceStalkModule N x.1)) :
     Module.Finite
-      (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, U)
+      (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, U)
         Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ U) p)
       (originalWholeLocalizedModule (F.leftIntermediateImageMap G H) hU p N) :=
   originalWholeModule_finite _ hU p N hN
@@ -87,12 +88,12 @@ theorem finiteTildeSourceStalk (x : Spec B) :
     Module.Finite ((Spec B).presheaf.stalk x)
       (originalSourceStalkModule ((tilde.functor B).obj M) x) := by
   have : Module.Finite ((Spec B).presheaf.stalk x)
-      ((AffinePushforward.stalkTensorFunctor B x).obj M) := by
+      ((Affine.stalkTensorFunctor B x).obj M) := by
     change Module.Finite ((Spec B).presheaf.stalk x) ((Spec B).presheaf.stalk x ⊗[B] M)
     infer_instance
   exact Module.Finite.of_surjective
-    ((AffinePushforward.tildeStalkIso B x).app M).toLinearEquiv.toLinearMap
-    ((AffinePushforward.tildeStalkIso B x).app M).toLinearEquiv.surjective
+    ((Affine.tildeStalkIso B x).app M).toLinearEquiv.toLinearMap
+    ((Affine.tildeStalkIso B x).app M).toLinearEquiv.surjective
 
 variable {Y : Scheme.{u}} (f : Spec B ⟶ Y) [IsFinite f]
   {U : Y.Opens} (hU : IsAffineOpen U) (p : Spec Γ(Y, U))
@@ -100,7 +101,7 @@ variable {Y : Scheme.{u}} (f : Spec B ⟶ Y) [IsFinite f]
 /-- The actual finite tilde module supplies every source witness; the theorem
 constructs finite generation of its whole localized inverse-image coefficient. -/
 theorem actualFiniteTildeWhole :
-    Module.Finite (FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p)
+    Module.Finite (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p)
       (originalWholeLocalizedModule f hU p ((tilde.functor B).obj M)) :=
   originalWholeModule_finite f hU p ((tilde.functor B).obj M)
     (fun x => finiteTildeSourceStalk B M x.1)

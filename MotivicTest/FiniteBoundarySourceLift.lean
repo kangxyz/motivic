@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteBoundarySourceLift
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.Boundary.BoundarySourceLift
 /-! # The entire source boundary over a fixed finite target bad boundary -/
 set_option linter.hashCommand false
 public section

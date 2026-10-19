@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticOriginalEmbedding
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Compactification.OriginalEmbedding
 /-! The actual original affine embedding needs only the given algebra generators. -/
 set_option linter.hashCommand false
 public noncomputable section

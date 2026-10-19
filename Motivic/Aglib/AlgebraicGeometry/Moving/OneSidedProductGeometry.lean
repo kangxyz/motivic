@@ -4,8 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FactorBoundaryGeometry
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedGraph
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.FactorBoundary
+public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Graph.Retained
 /-! # Original target and good target in the one-sided parameter product
 
 The parameter open is not substituted for the retained target. The actual graph

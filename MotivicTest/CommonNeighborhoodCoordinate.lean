@@ -1,6 +1,6 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodCoordinate
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodBoundaryMaps
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.Coordinate
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.Boundary.Maps
 /-! # Strict consumers of the original whole-boundary relative coordinate comparison -/
 open CategoryTheory AlgebraicGeometry
 open AlgebraicGeometry.RelativeProjectiveLine

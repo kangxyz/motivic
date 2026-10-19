@@ -1,7 +1,7 @@
 module
-import Motivic.Aglib.RingTheory.CenteredNoetherNormalization
+import Motivic.Aglib.RingTheory.NoetherNormalization.Centered
 /-! # Monic elimination and first jets for the same actual coordinate change -/
-open MvPolynomial Polynomial
+open _root_.MvPolynomial Polynomial
 
 example {k : Type} [Field k] {n : ℕ}
     (f : MvPolynomial (Fin (n + 1)) k)

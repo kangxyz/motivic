@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.MonicGenericSectionSpread
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Sections.MonicGenericSectionSpread
 public import Lean
 /-! # Direct consumers preserve the original generic section of the nonreduced divisor -/
 public noncomputable section

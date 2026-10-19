@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.ImageIncidenceGenericSupport
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.ImageIncidenceGenericSupport
 
 /-!
 # Global actual image-incidence support consumers
@@ -24,6 +24,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

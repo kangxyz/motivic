@@ -5,13 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.CorrespondenceCycle
-public import Motivic.AlgebraicGeometry.Cycles.FiniteResidueDegree
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.CorrespondenceCycle
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.ResidueDegree
 
 /-! # Actual ideal-sheaf cycles, finite residue degrees, and correspondence consumers -/
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (FiniteSupportCycle IntegralClosedSubscheme IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme.Hom (residueDegree_pos)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

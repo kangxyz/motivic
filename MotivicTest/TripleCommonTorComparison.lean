@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleTwoListTorComparison
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.TwoListTorComparison
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual common-list comparison with canonical triple total Tor
@@ -21,11 +22,12 @@ complexes with the already canonical triple-incidence coefficient.
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry RingTheory.Sequence
-open Motivic.LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
 namespace Motivic.MotivicTest.TripleCommonTorComparison
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable (k : Type u) [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -70,8 +72,9 @@ theorem actualCommonTotalTor (w : genericPoints (F.tripleIncidence G H)) :
         ((correspondenceSixfoldFirstMiddlePair X.hom Y.hom Z.hom W.hom).stalkMap p).hom
       let s' := s.map
         ((correspondenceSixfoldSecondMiddlePair X.hom Y.hom Z.hom W.hom).stalkMap p).hom
-      let K := HomologicalComplex.tensorObj (Koszul.chainComplex s')
-        (Koszul.coefficientComplex (F.tripleIncidenceSupportStalkModule G H w.val) t')
+      let K := HomologicalComplex.tensorObj (_root_.ChainComplex.Koszul.chainComplex s')
+        (_root_.ChainComplex.Koszul.coefficientComplex (F.tripleIncidenceSupportStalkModule G H
+            w.val) t')
       ∃ hK : FiniteHomology K,
         (∀ n : ℕ, Nonempty (F.tripleIncidenceTor G H w.val n ≅ K.homology n)) ∧
         F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w = chainEuler K hK :=
@@ -91,10 +94,10 @@ theorem actualBothTotalOrders (w : genericPoints (F.tripleIncidence G H)) :
       let s' := s.map
         ((correspondenceSixfoldSecondMiddlePair X.hom Y.hom Z.hom W.hom).stalkMap p).hom
       let M := F.tripleIncidenceSupportStalkModule G H w.val
-      let K := HomologicalComplex.tensorObj (Koszul.chainComplex s')
-        (Koszul.coefficientComplex M t')
-      let L := HomologicalComplex.tensorObj (Koszul.chainComplex t')
-        (Koszul.coefficientComplex M s')
+      let K := HomologicalComplex.tensorObj (_root_.ChainComplex.Koszul.chainComplex s')
+        (_root_.ChainComplex.Koszul.coefficientComplex M t')
+      let L := HomologicalComplex.tensorObj (_root_.ChainComplex.Koszul.chainComplex t')
+        (_root_.ChainComplex.Koszul.coefficientComplex M s')
       ∃ (hK : FiniteHomology K) (hL : FiniteHomology L),
         F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w = chainEuler K hK ∧
         F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w = chainEuler L hL :=

@@ -5,11 +5,11 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.RingTheory.Bertini.SimultaneousQuadraticParameters
-public import Motivic.Aglib.AlgebraicGeometry.AffineFiberPrincipalNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Smooth.Bertini.WholeFiberPrincipalNeighborhood
 
 /-! # One actual affine whole-fiber smooth neighborhood for the simultaneous parameters -/
 @[expose] public noncomputable section
-open MvPolynomial AlgebraicGeometry CategoryTheory
+open _root_.MvPolynomial AlgebraicGeometry CategoryTheory
 universe u
 namespace QuadraticIncidence
 

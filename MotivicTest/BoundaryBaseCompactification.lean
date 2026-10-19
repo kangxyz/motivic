@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseCompactification
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.Compactification
 /-! # Original cover, full boundary and fixed compactification after the actual shrink -/
 set_option linter.hashCommand false
 public section

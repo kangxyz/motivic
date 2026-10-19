@@ -5,12 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermTupleCoverComparison
+public import Motivic.Transfers.Sheaf.Germs.Tuples.CoverComparison
 public import Lean.Util.CollectAxioms
 
 /-! Direct descent-coordinate checks on the unchanged original germ tuples. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u w
 namespace MotivicTest.OriginalGermTupleCoverComparison
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

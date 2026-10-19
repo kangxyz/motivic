@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FiniteStalkLength
-public import Motivic.AlgebraicGeometry.Cycles.FundamentalStalk
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.StalkLength
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.FundamentalStalk
 
 /-!
 # Finite-map Euler and actual generic-stalk consumers
@@ -19,11 +19,12 @@ formula or intersection associativity is assumed or asserted.
 
 @[expose] public section
 
-open CategoryTheory AlgebraicGeometry Motivic.LengthEuler
+open CategoryTheory AlgebraicGeometry _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u v
 
 namespace Motivic.MotivicTest.FiniteStalkEuler
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Hom
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) [IsFinite f] (x : X)
 

@@ -5,13 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteBaseChangeProducts
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChangeProducts
 
 /-! # Consumers of actual relative product comparisons under arbitrary base change -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
@@ -51,10 +56,10 @@ example {X' Y' : SmoothSite S} (a : X ≅ X') (b : Y ≅ Y') :
     (productIso a b).hom ≫ productSnd X' Y' = productSnd X Y ≫ b.hom := by simp
 
 set_option linter.hashCommand false in
-#print axioms Motivic.SmoothSite.baseChangeBaseIso
+#print axioms baseChangeBaseIso
 set_option linter.hashCommand false in
-#print axioms Motivic.SmoothSite.baseChangeProductIso
+#print axioms baseChangeProductIso
 set_option linter.hashCommand false in
-#print axioms Motivic.SmoothSite.productIso
+#print axioms productIso
 
 end MotivicTest.SmoothSiteBaseChangeProducts

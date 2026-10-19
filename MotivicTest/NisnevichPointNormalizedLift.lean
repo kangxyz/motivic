@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichPointNormalizedLift
-public import Motivic.Aglib.AlgebraicGeometry.ClosedCentersFiniteSupport
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Points.NormalizedLift
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.QuasiFinite.Fibers.ClosedCentersFiniteSupport
 public import Lean.Util.CollectAxioms
 
 /-! # Actual finite-center representatives and controlled correspondence branches -/
@@ -15,6 +15,7 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

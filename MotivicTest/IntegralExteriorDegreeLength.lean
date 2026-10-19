@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.IntegralExteriorDegreeLength
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.BaseChange.DegreeLength
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 public import MotivicTest.IntegralExteriorResidueTensor
 
 /-!
@@ -36,9 +37,12 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite genericMultiplicity ringLength_eq_of_ringEquiv)
+open _root_.AlgebraicGeometry.Scheme.Hom (residueDegree_comp residueDegree_of_surjectiveOnStalks)
+open _root_.ChainComplex.Koszul (coefficientClosedFiber)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open MotivicTest.IntegralGenericFiniteImage MotivicTest.IntegralExteriorResidueTensor
-open Motivic.IntegralExteriorDegreeLength
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.DegreeLength
 
 universe u
 
@@ -110,10 +114,10 @@ theorem actualPairExterior_closedFiberLengthBalance
             (pairExteriorInclusion F G H z w.1.1) : ℤ)) =
       ((F.incidenceMap G).residueDegree z.1 : ℤ) *
         ((Module.length
-          (Koszul.coefficientClosedFiber
+          (coefficientClosedFiber
             ((pullback.fst (imageStructure F G) (H.projection ≫ Z.hom)).stalkMap
               (imageExteriorInclusion F G H z v.1)).hom)
-          (Koszul.coefficientClosedFiber
+          (coefficientClosedFiber
             ((pullback.fst (imageStructure F G) (H.projection ≫ Z.hom)).stalkMap
               (imageExteriorInclusion F G H z v.1)).hom)).toNat : ℤ) := by
   classical

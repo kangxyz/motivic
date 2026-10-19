@@ -5,13 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalFiniteFundamentalEvaluation
+public import Motivic.Cohomology.Diagonal.FiniteFundamentalEvaluation
 public import Lean.Util.CollectAxioms
 
 /-! Whole finite fibers, including local lengths and proper-image residue degrees. -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalPointNorm
 open Motivic.DiagonalFinitePointEvaluation Motivic.DiagonalFiniteFundamentalEvaluation
@@ -21,6 +23,7 @@ open scoped BigOperators
 universe u
 
 namespace MotivicTest.DiagonalFiniteFundamentalEvaluation
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable (k : Type u) [Field k] [CharZero k]
 

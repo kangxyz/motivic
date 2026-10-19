@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NoetherianSupport
+public import Motivic.AlgebraicGeometry.Correspondences.Support.Noetherian
 
 /-!
 # Noetherian incidence over the actual smooth site
@@ -22,6 +22,7 @@ open CategoryTheory AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.CorrespondenceNoetherianSupport
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable (K : Type u) [Field K] (X Y Z : SmoothSite (Spec (.of K)))
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)

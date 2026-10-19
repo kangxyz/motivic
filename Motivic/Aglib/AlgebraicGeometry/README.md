@@ -1,87 +1,66 @@
-# Local algebraic-geometry candidates and dependency boundaries
+# General algebraic-geometry candidates
 
-These are native local `Motivic.Aglib` modules under the project's exact pinned
-Aglib and Mathlib versions. This location records mathematical reuse potential;
-it does not mean that every file can already be imported in a standalone Aglib
-checkout. Exact dependency imports remain visible in each source.
+These maintained candidates mirror intended `Aglib.AlgebraicGeometry` owners.
+They extend actual schemes, scheme maps, module sheaves and native mathematical
+namespaces. Their complete import closure uses only Mathlib, Aglib and general
+candidates. The motivating motivic consumer does not weaken this condition.
 
-## Finite supports and line bundles
+| Exact import | Interface and boundary |
+| --- | --- |
+| `Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.AdjoinRootBaseChange` | Actual affine base changes and generic-component transport. |
+| `Motivic.Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.AffineProduct` | Polynomial quotient and Laurent affine schemes, scalar maps and branch identifications. |
+| `Motivic.Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.BaseChange.ClosedImageBaseChange` | Closed/open immersions, étale and finite morphisms, actual fibers and component images. |
+| `Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.BoundaryCanonicalCoordinate` | Actual Cartier ideals, complement and boundary maps; relative finiteness keeps flatness. |
+| `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.ActualPair` | Affine finite-free restriction neighborhoods and literal scalar evaluations. |
+| `Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineCoprimeOpenPresentation` | Actual affine-line opens and polynomial presentations. |
+| `Motivic.Aglib.AlgebraicGeometry.IdealSheaf.Complement.AffineOpenComplementIdeal` | Ideal-sheaf complements and original stalk/pullback maps. |
+| `Motivic.Aglib.AlgebraicGeometry.Cycles.BaseChange.BranchTransport` | Finite signed cycles, actual pushforwards and generic multiplicities. |
+| `Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.FiniteGraphSections` | Projective and relative-curve section constructions with stated twist/vanishing inputs. |
+| `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.CanonicalFrame` | General relative curves, frames, sections, pencils and endpoint geometry. |
+| `Motivic.Aglib.AlgebraicGeometry.Modules.Gluing.AffineCharts` | Actual module sheaves, gluing, pullback, finite pushforward and invertible modules. |
+| `Motivic.Aglib.AlgebraicGeometry.Properties.Discrete.DiscreteReducedCoproduct` | Discrete/reduced scheme decompositions under their actual hypotheses. |
+| `Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.AffineLine.Basic` | Finite-curve normalization, compactification and actual function fields. |
+| `Motivic.Aglib.AlgebraicGeometry.ResidueField.FiniteFieldResidueDegree` | Literal residue-field lifts and finite-field residue degrees. |
+| [Graph morphisms and stalk comparisons](Graph/README.md) | General graph maps, pair bridges and original support/stalk maps. |
+| `Motivic.Aglib.AlgebraicGeometry.Divisors.Order.IdealFrameOrderCancellation` | Ideal-frame order and cancellation with actual scalar maps. |
+| `Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedAffineSections` | General one-sided sections and pencils, retaining their supplied geometry. |
+| `Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.ArtinianNeighborhood` | Smooth and Nisnevich objects, covers, neighborhoods and original germs. |
+| `Motivic.Aglib.AlgebraicGeometry.Products.Diagonal.BaseChange` | Scheme products and actual diagonal ideals. |
+| `Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Charts.BaseChange` | Charts, coheight and affine/étale neighborhood constructions. |
+| `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.GraphClosureEquations` | Twists, schematic images and graph closures. |
+| `Motivic.Aglib.AlgebraicGeometry.QuasiAffine.FiniteNeighborhood` | Actual quasi-affine finite neighborhoods. |
+| `Motivic.Aglib.AlgebraicGeometry.Stalk.Dimension.SmoothStalkFiniteRank` | Original stalk, dimension and generic-component interfaces. |
+| `Motivic.Aglib.AlgebraicGeometry.Simplex.AffineBoundaryOneComplex` | Scheme realizations of the existing algebraic-simplex coordinate rings. |
+| `Motivic.Aglib.AlgebraicGeometry.Intersection.AffineClosedSupportTor` | Tor coefficients and coherent restrictions on actual intersections. |
+| `Motivic.Aglib.AlgebraicGeometry.Diagonal.AffineClosedSupportCoordinates` | Original diagonal supports, scalar actions and Koszul comparisons. |
+| `Motivic.Aglib.AlgebraicGeometry.Scheme.DomainStalkComponents` | Normality, reduced components and original stalk localization. |
 
-The finite-center, finite-neighborhood, and invertible-module leaves give actual
-scheme maps and unit isomorphisms under their stated hypotheses. In particular,
-triviality near finite supports is not a statement that a line bundle on an
-arbitrary complete curve fiber is trivial. See the owning
-[finite-morphism](Morphisms/Finite/README.md) and
-[invertible-module](Modules/Invertible/README.md) families.
+The table gives a concrete lower import for each occupied subject, rather than
+an aggregate importing every result. Inspect the selected leaf for its full
+hypotheses and maps. General frame/pencil and line-bundle interfaces stay here;
+actual finite correspondences and their adapters live in
+[the host correspondence family](../../AlgebraicGeometry/Correspondences/README.md).
 
-`ProjectiveSpace/TwistFrameTransport` provides
-`AlgebraicGeometry.ProjectiveSpace.twistingSectionsEquiv_eqToHom_opens`
-for transport along equality of opens. The pinned Aglib theorem
-`twistingSectionsEquiv_eqToHom` instead transports the twist degree.
+Use the [cycle guide](Cycles/README.md), [site guide](Sites/README.md),
+[invertible modules](Modules/Invertible/README.md),
+[finite morphisms](Morphisms/Finite/README.md),
+[relative curves](RelativeCurve/README.md) and
+[Cartier divisors](EffectiveCartierDivisor/README.md) for detailed boundaries.
+General graph/Tor interfaces retain original stalk scalar actions; flat ambient
+maps do not imply flat support maps. Generic Tor and diagonal prerequisites are
+candidates before their correspondence specializations consume them.
 
-## Relative endpoint scalar and graph adapters
+Finite-fiber triviality concerns the actual finite support scheme, including
+nonreduced and empty fibers. It does not trivialize an arbitrary proper curve
+fiber.
 
-`FlatPolynomialComponentRegularity` proves that the literal parameter `t - a`
-acts regularly on every actual reduced generic component of a whole flat
-polynomial family, and on its original ambient kernel quotient. It imposes no
-finiteness or quasi-compactness assumption on the whole family. Dominance and
-actual germ maps supply regularity; no component flatness over a larger relative
-base is inferred. The mathematical statement is general scheme theory; its
-current imports reuse the project's finite-curve scalar and closed-stalk APIs.
+Each candidate module names its intended upstream module, hypotheses and current
+consumer. See the [candidate policy](../README.md) and
+[architecture](../../../docs/ARCHITECTURE.md). Historical source/check locators
+remain in [provenance](../../../docs/provenance/README.md); relocation does not
+turn an old check into validation of current bytes.
 
-`GraphPolynomialBlock`, `GraphClosedSupportBlock`, and `GraphPolynomialTor`
-are downstream adapters. They currently depend on `Motivic.Graph`, actual
-correspondence-product support infrastructure, and the project's proved Koszul
-and Tor constructions. They are not yet standalone upstream imports. They keep
-literal graph, closed-support, and endpoint stalk maps and exact scalar actions.
-Only explicitly stated ambient maps are flat; support maps need not be flat.
-The Tor adapter retains all homological degrees and the full principal-quotient
-length, before any integer conversion.
-
-These local results do not alone identify the four-factor correspondence
-incidence modules or prove the relative-base endpoint correspondence. The imported snapshot referenced additional graph-block consumer notes that
-were not included in the supplied source package. Use the actual source
-statements and [historical check index](../../../doc/provenance/source-checks.json)
-for retained scope and evidence.
-
-Downstream original triple-support, four-factor incidence, and component
-fundamental-correspondence attachments retain the same dependency boundary;
-their separately referenced consumer notes were not part of this source package. The whole-family weighted replacement
-is now supplied by `RelativeFiniteFlatFiberGenerics`,
-`ClosedImmersionPointCoefficient`, `PolynomialFiberCycleSpecialization`, and
-`RelativeFiniteFlatSpecialization`, with native `AlgebraicGeometry` namespaces.
-They use proven generic support preservation to control off-generic coefficients
-of positive-dimensional endpoint fibers. Use the exact statements of those leaves for their scope.
-The relative endpoint correspondence assembly remains downstream; the
-separately referenced assembly notes were not included in this source package.
-Boundary-avoiding moving-divisor construction is still a separate geometric input.
-
-Upstream extraction needs the relevant general prerequisites moved or replaced
-first. Motivic correspondence assembly and strict-A¹ consumers remain downstream.
-
-## Generic-base and original-open geometry
-
-[AffineEtaleClosedSectionNeighborhood](AffineEtaleClosedSectionNeighborhood.lean)
-constructs a principal refinement preserving the full original closed base
-change and its section. [RelativeCurveOverlapShrinking](RelativeCurveOverlapShrinking.lean)
-and [RelativeOpenImmersionOverlapShrinking](RelativeOpenImmersionOverlapShrinking.lean)
-keep the prescribed scheme while shrinking over an actual generic base open.
-The relative-line application is in the optional
-[generic-base cohomology entry](../../Cohomology/AffineLine/GenericBase.lean).
-Dimension-one bounds concern the actual generic fiber.
-
-The original étale presentation and one-sided moving constructions feed the
-[affine local-zero detection entry](../../Cohomology/A1/GenericDetection.lean).
-The [source record](../../../doc/provenance/generic-detection-20261017/README.md)
-separates admitted results from unlogged archival inputs.
-
-## Smooth Cartier support
-
-[CartierComplementDense](CartierComplementDense.lean) records density of the
-actual complement. [ClosedFiberEtaleEqualization](ClosedFiberEtaleEqualization.lean)
-keeps the whole closed fiber in its etale comparison.
-[SmoothCartierAtPrime](SmoothCartierAtPrime.lean) and
-[SmoothStalkFiniteRank](SmoothStalkFiniteRank.lean) support the explicitly
-conditional positive-rank reduction. Supplying a smooth Cartier pair in the
-[cohomology boundary entry](../../Cohomology/A1/CartierBoundary.lean) has its own
-hypotheses; it does not solve the remaining marked restriction-Mono inputs.
+The [normalization and retained-chart guide](Normalization/README.md) records
+one original cover/boundary choice and the actual inverse-chart maps. The
+[finite-morphism guide](Morphisms/Finite/README.md) records whole finite norm
+charts and generic ratios.

@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteCoproducts
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Coproducts
 
 /-! # Consumers of the actual smooth-site disjoint union -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 universe u
 

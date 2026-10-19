@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FiniteDomainGenericFiber
-public import Motivic.AlgebraicGeometry.Cycles.FiniteAffineChart
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.FiniteDomainGenericFiber
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.AffineChart
 
 /-!
 # Actual finite dominant integral-map consumers
@@ -29,7 +29,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory AlgebraicGeometry
-open Motivic.FiniteFiber Motivic.FiniteDomainGenericFiber Motivic.FiniteAffineChart
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteFiber
+open _root_.PrimeSpectrum.FiniteFiber
+open _root_.AlgebraicGeometry.Scheme.GenericFiber.FiniteDomain
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteAffineChart
 
 universe u
 

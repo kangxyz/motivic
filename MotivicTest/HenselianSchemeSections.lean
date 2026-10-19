@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.HenselianEtaleSections
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Sections.HenselianEtaleSections
 
 /-!
 # Consumers of henselian étale scheme sections
@@ -17,7 +17,11 @@ The affine consumer checks the bridge from an étale algebra and its residue
 point to a scheme section.
 -/
 
-open CategoryTheory AlgebraicGeometry IsLocalRing Motivic.HenselianEtale
+open CategoryTheory
+open AlgebraicGeometry
+open IsLocalRing
+open _root_.Algebra.Etale.Henselian
+open _root_.AlgebraicGeometry.Scheme.Hom.HenselianEtale
 
 universe u
 
@@ -71,6 +75,6 @@ example {R B : Type u} [CommRing R] [CommRing B] [HenselianLocalRing R]
   exact φ.commutes r
 
 set_option linter.hashCommand false in
-#print axioms Motivic.HenselianEtale.exists_section_of_etale
+#print axioms exists_section_of_etale
 set_option linter.hashCommand false in
-#print axioms Motivic.HenselianEtale.exists_section_of_etale_of_artinian
+#print axioms exists_section_of_etale_of_artinian

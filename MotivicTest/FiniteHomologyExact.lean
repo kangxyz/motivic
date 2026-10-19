@@ -5,14 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.FiniteHomologyExact
+public import Motivic.Aglib.Algebra.Homology.FiniteSupport.ShortExact
 public import Mathlib.Algebra.Homology.HomologicalComplexAbelian
 
 /-! # Actual product and split-complex consumers of finite homology exactness -/
 
 @[expose] public section
 
-open CategoryTheory CategoryTheory.Limits Motivic.LengthEuler
+open CategoryTheory CategoryTheory.Limits _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u v w
 

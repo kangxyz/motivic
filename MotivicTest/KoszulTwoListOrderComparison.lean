@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulTwoListOrderComparison
+public import Motivic.Aglib.Algebra.Homology.Koszul.TwoListOrderComparison
 
 /-!
 # Signed actual common-total consumers
@@ -23,7 +23,7 @@ noncomputable section
 universe u
 
 open CategoryTheory CategoryTheory.MonoidalCategory HomologicalComplex
-open Motivic.Koszul Motivic.LengthEuler
+open _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulTwoListOrderComparison
 
@@ -32,9 +32,10 @@ variable {R : Type u} [CommRing R]
 /-- The exact signed symmetry used in the common total is negative on odd-odd
 summands, not the unsigned flip of the underlying graded modules. -/
 theorem oddOddBraiding (K L : ChainComplex (ModuleCat R) ℕ) :
-    ιTensorObj K L 1 1 2 rfl ≫ (Motivic.TorComparison.tensorTotalSymmetryIso K L).hom.f 2 =
+    ιTensorObj K L 1 1 2 rfl ≫ (_root_.ModuleCat.TorComparison.tensorTotalSymmetryIso K L).hom.f 2 =
       -((β_ (K.X 1) (L.X 1)).hom ≫ ιTensorObj L K 1 1 2 rfl) := by
-  simp only [Motivic.TorComparison.tensorTotalSymmetryIso, Iso.trans_hom, HomologicalComplex.comp_f,
+  simp only [_root_.ModuleCat.TorComparison.tensorTotalSymmetryIso, Iso.trans_hom,
+      HomologicalComplex.comp_f,
     HomologicalComplex₂.total.mapIso_hom, ιTensorObj, ιMapBifunctor]
   erw [← Category.assoc, HomologicalComplex₂.ιTotal_map, Category.assoc]
   change (β_ (K.X 1) (L.X 1)).hom ≫

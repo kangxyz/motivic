@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichSignedLocalLift
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.SignedLocalLift
 
 /-!
 # Signed local Nisnevich correspondence lifting consumers
@@ -15,6 +15,7 @@ No effectivity, connectedness, or perfect-field hypothesis is imposed.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

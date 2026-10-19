@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FinitePointBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.ScalarExtension.FinitePointBaseChange
 public import Mathlib.RingTheory.DualNumber
 public import Lean.Util.CollectAxioms
 
@@ -13,12 +13,13 @@ public import Lean.Util.CollectAxioms
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.FinitePointBaseChange
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.Cycles.FinitePointBaseChange
 
 universe u
 
 namespace MotivicTest.FinitePointBaseChange
+open _root_.AlgebraicGeometry.Scheme.Cycles.FinitePointBaseChange
 
 variable {k L E : Type u} [Field k] [Field L] [Field E]
   [Algebra k E] [Module.Finite k E] (φ : k →+* L)
@@ -32,20 +33,24 @@ instance extensionMap_finite : IsFinite (extensionMap (k := k) (E := E)) :=
 
 /-- Every component of the literal scalar extension is retained in the pushforward. -/
 theorem whole_extension :
-    IntegralCycle.finitePushforward
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward
       (map φ (extensionMap (k := k) (E := E)) (𝟙 _))
-      (fundamentalCycle (source φ (extensionMap (k := k) (E := E)) (𝟙 _))) =
+      (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (source φ (extensionMap (k := k) (E := E))
+          (𝟙 _))) =
       ((extensionMap (k := k) (E := E)).residueDegree
-        (genericPoint (Spec (.of E))) : ℤ) • fundamentalCycle (target φ (𝟙 _)) :=
+        (genericPoint (Spec (.of E))) : ℤ) • _root_.AlgebraicGeometry.Scheme.fundamentalCycle
+            (target φ (𝟙 _)) :=
   finitePushforward_fundamentalCycle φ _ _
 
 /-- Signed coefficients are transported by the actual cycle pushforward. -/
 theorem signed_whole_extension (n : ℤ) :
-    IntegralCycle.finitePushforward
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward
       (map φ (extensionMap (k := k) (E := E)) (𝟙 _))
-      (n • fundamentalCycle (source φ (extensionMap (k := k) (E := E)) (𝟙 _))) =
+      (n • _root_.AlgebraicGeometry.Scheme.fundamentalCycle (source φ (extensionMap (k := k) (E :=
+          E)) (𝟙 _))) =
       n • (((extensionMap (k := k) (E := E)).residueDegree
-        (genericPoint (Spec (.of E))) : ℤ) • fundamentalCycle (target φ (𝟙 _))) := by
+        (genericPoint (Spec (.of E))) : ℤ) • _root_.AlgebraicGeometry.Scheme.fundamentalCycle
+            (target φ (𝟙 _))) := by
   rw [map_zsmul, whole_extension]
 
 omit [Module.Finite k E] in
@@ -68,8 +73,8 @@ theorem dual_number_generic (x : Spec (.of (DualNumber k))) :
 
 open Lean in
 run_cmd do
-  for name in #[``Motivic.FinitePointBaseChange.finitePushforward_fundamentalCycle,
-      ``Motivic.FinitePointBaseChange.mem_genericPoints_of_finite,
+  for name in #[``finitePushforward_fundamentalCycle,
+      ``mem_genericPoints_of_finite,
       ``whole_extension, ``signed_whole_extension, ``literal_projection,
       ``dual_number_generic] do
     for dependency in ← collectAxioms name do

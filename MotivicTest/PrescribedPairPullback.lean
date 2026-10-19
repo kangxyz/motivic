@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.PrescribedPairPullback
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.PrescribedPairPullback
 /-! Source change preserves the specified frame and coordinate, not merely triviality. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

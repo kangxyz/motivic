@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardSchemeEuler
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
-public import Motivic.Algebra.Homology.KoszulHyperhomologyPlacement
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.SchemeEuler
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyPlacement
 
 /-!
 # Genuine global finite-pushforward numerical consumers
@@ -31,8 +31,10 @@ open CategoryTheory AlgebraicGeometry HomologicalComplex
 universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardSchemeEuler
+open _root_.AlgebraicGeometry.Scheme.Hom
 
-open FiniteSchemeEuler LengthEuler
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 section Correspondence
 
@@ -87,13 +89,14 @@ attribute [local instance] Algebra.TensorProduct.rightAlgebra
 /-- A genuine original QC sheaf complex with an explicit scalar-one contraction. -/
 abbrev unitTildeComplex (L : ChainComplex (ModuleCat.{u} B) ℕ) :=
   ((tilde.functor B).mapHomologicalComplex (ComplexShape.down ℕ)).obj
-    (tensorObj (Koszul.singleComplex B 1) L)
+    (tensorObj (_root_.ChainComplex.Koszul.singleComplex B 1) L)
 
 /-- Each term is the actual quasi-coherent tilde of its original module term. -/
 instance unitTildeComplex_quasicoherent (L : ChainComplex (ModuleCat.{u} B) ℕ) (n : ℕ) :
     ((unitTildeComplex B L).X n).IsQuasicoherent :=
   inferInstanceAs
-    (((tilde.functor B).obj ((tensorObj (Koszul.singleComplex B 1) L).X n)).IsQuasicoherent)
+    (((tilde.functor B).obj ((tensorObj (_root_.ChainComplex.Koszul.singleComplex B 1) L).X
+        n)).IsQuasicoherent)
 
 /-- The actual whole-chart localization carries the mapped original contraction.
 No finite-length, finite-generation, boundedness or homology premise is placed on L. -/
@@ -105,10 +108,10 @@ theorem contractibleTildeWholeFinite (L : ChainComplex (ModuleCat.{u} B) ℕ) :
   let F := tilde.functor B ⋙ Scheme.Modules.restrictFunctor (FiniteAffineChart.sourceChart f hU) ⋙
     moduleSpecΓFunctor ⋙ ModuleCat.extendScalars
       (algebraMap Γ(Spec B, f ⁻¹ᵁ U)
-        (FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p))
-  apply Koszul.finiteHomology_of_identity_homotopy
+        (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p))
+  apply _root_.ChainComplex.Koszul.finiteHomology_of_identity_homotopy
   exact (Homotopy.ofEq ((F.mapHomologicalComplex _).map_id _).symm).trans
-    ((F.mapHomotopy (Koszul.singleUnitTensorHomotopy L)).trans
+    ((F.mapHomotopy (_root_.ChainComplex.Koszul.singleUnitTensorHomotopy L)).trans
       (Homotopy.ofEq ((F.mapHomologicalComplex _).map_zero _ _)))
 
 variable [IsNoetherianRing (Y.presheaf.stalk (hU.fromSpec p))]

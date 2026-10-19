@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.RawFieldChange
+public import Motivic.Cohomology.SuslinVoevodsky.RawFieldChange
 
 /-!
 # Actual arbitrary-field raw motivic complex consumers
@@ -16,8 +16,10 @@ cochain differential are checked without restricting the field extension.
 
 @[expose] public noncomputable section
 
+open _root_.CategoryTheory.SingularComplex.Indexing (singularDegree)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic Opposite
-open Motivic.PresheafWithTransfers
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u v
 
@@ -53,16 +55,16 @@ theorem signedBaseCycle (q : ℕ)
 theorem everySimplexMap {m n : SimplexCategory} (f : m ⟶ n) :
     (SmoothSite.fieldBaseChange φ).map
       (SmoothSite.productMap (𝟙 (SmoothSite.base (Spec (.of k))))
-        ((AlgebraicSimplex.cosimplicialSmoothSite k).map f)) ≫
+        ((cosimplicialSmoothSite k).map f)) ≫
           (SmoothSite.baseSimplexFieldChangeIso φ n).hom =
       (SmoothSite.baseSimplexFieldChangeIso φ m).hom ≫
         SmoothSite.productMap (𝟙 (SmoothSite.base (Spec (.of L))))
-          ((AlgebraicSimplex.cosimplicialSmoothSite L).map f) :=
+          ((cosimplicialSmoothSite L).map f) :=
   SmoothSite.baseSimplexFieldChangeIso_naturality φ f
 
 /-- The canonical occupied-degree dictionary retains the actual singular map. -/
 theorem allOccupiedDegrees (q r : ℕ) :
-    (motivicRawBaseComplexMap φ q).f (Indexing.singularDegree q r) =
+    (motivicRawBaseComplexMap φ q).f (singularDegree q r) =
       (motivicRawBaseComplexXIso k q r).hom ≫
         (reducedTorusSingularFieldChange φ q).f r ≫
           (motivicRawBaseComplexXIso L q r).inv :=
@@ -84,8 +86,8 @@ open Lean in
 run_cmd do
   for name in #[``quotientAxes, ``signedBaseCycle, ``everySimplexMap, ``allOccupiedDegrees,
       ``allDifferentials, ``weightOneDifferential,
-      ``SmoothSite.baseChangeProductIso_naturality,
-      ``SmoothSite.baseSimplexFieldChangeIso_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangeProductIso_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplexFieldChangeIso_naturality,
       ``Cor.baseSimplexFieldChangeIso,
       ``torusFieldChange, ``reducedTorusFieldChange,
       ``reducedTorusFieldChange_quotient, ``baseTorusCycleFieldChange,

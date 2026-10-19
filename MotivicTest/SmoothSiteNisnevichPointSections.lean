@@ -5,15 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichPointSections
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.Sections
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of actual zero representatives in the Nisnevich point fiber -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v
 
@@ -44,12 +46,13 @@ example (hs : sectionToNisnevichPoint F X x s = 0)
   exists_normalized_zero_representative F s hs T hT hclosed hx
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
   for name in #[``AlgebraicGeometry.Scheme.Hom.isIso_residueFieldMap_of_canonicalPoint_lift,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.isIso_residueFieldMap_center,
-      ``Motivic.SmoothSite.sectionToNisnevichPoint,
-      ``Motivic.SmoothSite.sectionToNisnevichPoint_eq_zero_iff,
-      ``Motivic.SmoothSite.exists_normalized_zero_representative] do
+      ``isIso_residueFieldMap_center,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.sectionToNisnevichPoint,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.sectionToNisnevichPoint_eq_zero_iff,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_normalized_zero_representative] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichPointNormalization
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.Normalization
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -16,10 +16,12 @@ are tested over arbitrary affine bases. The common-refinement consumer uses
 the existing cofiltered neighborhood category and original fiber colimit maps.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v w
 
@@ -76,11 +78,12 @@ example (F : (SmoothSite S)ᵒᵖ ⥤ A) :
 end Neighborhoods
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
   for name in #[``AlgebraicGeometry.Scheme.Hom.exists_open_isolating_finite_closed_fibers,
       ``AlgebraicGeometry.Scheme.Hom.exists_affine_isolating_finite_closed_fibers,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.refinement_point,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.exists_normalized_refinement] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.refinement_point,
+      ``exists_normalized_refinement] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

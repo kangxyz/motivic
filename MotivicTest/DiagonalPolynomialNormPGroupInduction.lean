@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalPolynomialNormPGroupInduction
+public import Motivic.Cohomology.Diagonal.PolynomialNormPGroupInduction
 public import Lean.Util.CollectAxioms
 
 /-!

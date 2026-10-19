@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FullBoundaryFrames
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.FullBoundaryFrames
 /-! # Actual whole-boundary frames, with no smooth compactification premise -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

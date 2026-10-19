@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichPointClosedCenterKernel
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Points.ClosedCenterKernel
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,8 +18,9 @@ centers in the chosen finite fiber, without a global covering premise.
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open Motivic _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 

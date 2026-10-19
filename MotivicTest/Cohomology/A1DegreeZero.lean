@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.DegreeZero
+public import Motivic.Cohomology.A1.StrictInvariance.DegreeZero
 
 /-!
 # Direct standard-Ext consumers of the strict-invariance base case
@@ -18,6 +18,7 @@ free-sheaf Ext classes, including the nontrivial inverse identity on the cylinde
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian AlgebraicGeometry Opposite Motivic
 
 universe u
@@ -34,10 +35,11 @@ local instance : HasExt.{u + 2}
 theorem actual_ext_projection_bijective (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) (X : SmoothSite (Spec (.of k))) :
     Function.Bijective (fun x : Ext
-      (Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) X)
       ((SheafWithTransfers.toSheaf k).obj F) 0 =>
-        (Ext.mk₀ ((Hypercohomology.freeAbelianSheafFunctor.{u + 1, u, u + 1}
+        (Ext.mk₀ ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor.{u + 1, u, u
+          + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k)))).map
             (SmoothSite.a1Projection (.of k) X))).comp x (zero_add 0)) :=
   (ConcreteCategory.isIso_iff_bijective _).mp
@@ -47,13 +49,14 @@ theorem actual_ext_projection_bijective (F : SheafWithTransfers.{u + 1} k)
 on the actual Ext classes, not only on an abstractly isomorphic group. -/
 theorem actual_ext_zero_section_inverse (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) (X : SmoothSite (Spec (.of k)))
-    (x : Ext (Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
+    (x : Ext (_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) (SmoothSite.a1Cylinder (.of k) X))
       ((SheafWithTransfers.toSheaf k).obj F) 0) :
-    (Ext.mk₀ ((Hypercohomology.freeAbelianSheafFunctor.{u + 1, u, u + 1}
+    (Ext.mk₀ ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor.{u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))).map
           (SmoothSite.a1Projection (.of k) X))).comp
-      ((Ext.mk₀ ((Hypercohomology.freeAbelianSheafFunctor.{u + 1, u, u + 1}
+      ((Ext.mk₀ ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor.{u + 1, u, u +
+        1}
           (SmoothSite.nisnevichTopology (Spec (.of k)))).map
             (SmoothSite.a1Section (.of k) X 0))).comp x (zero_add 0)) (zero_add 0) = x := by
   have h := ConcreteCategory.congr_hom
@@ -67,7 +70,7 @@ theorem actual_ext_zero_section_inverse (F : SheafWithTransfers.{u + 1} k)
 /-- The degree-zero equivalence tests the original sections projection at every object. -/
 theorem actual_projection_iff (F : SheafWithTransfers.{u + 1} k)
     (X : SmoothSite (Spec (.of k))) :
-    IsIso ((SheafCohomology.presheaf.{u + 2, u + 1}
+    IsIso ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 2, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) ((SheafWithTransfers.toSheaf k).obj F)
         0).map (SmoothSite.a1Projection (.of k) X).op) ↔
       IsIso (PresheafWithTransfers.transfer F.obj
@@ -82,12 +85,12 @@ theorem strict_implies_original_HI (F : SheafWithTransfers.{u + 1} k)
 /-- The concrete zero-section inverse is natural under every actual smooth-site map. -/
 theorem inverse_natural_in_source (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y) :
-    (SheafCohomology.presheaf.{u + 2, u + 1}
+    (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 2, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) ((SheafWithTransfers.toSheaf k).obj F)
         0).map (SmoothSite.a1Map (.of k) f).op ≫
         (SheafWithTransfers.degreeZeroProjectionIso F hF X).inv =
       (SheafWithTransfers.degreeZeroProjectionIso F hF Y).inv ≫
-        (SheafCohomology.presheaf.{u + 2, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 2, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 0).map f.op :=
   SheafWithTransfers.degreeZeroProjectionIso_inv_naturality F hF f
@@ -97,10 +100,10 @@ theorem inverse_natural_in_coefficients {F G : SheafWithTransfers.{u + 1} k}
     (η : F ⟶ G) (hF : F.obj.IsA1Invariant) (hG : G.obj.IsA1Invariant)
     (X : SmoothSite (Spec (.of k))) :
     (SheafWithTransfers.degreeZeroProjectionIso F hF X).inv ≫
-        ((SheafCohomology.presheafFunctor.{u + 2, u + 1}
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor.{u + 2, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k))) 0).map
             ((SheafWithTransfers.toSheaf k).map η)).app (op X) =
-      ((SheafCohomology.presheafFunctor.{u + 2, u + 1}
+      ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor.{u + 2, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k))) 0).map
             ((SheafWithTransfers.toSheaf k).map η)).app
               (op (SmoothSite.a1Cylinder (.of k) X)) ≫

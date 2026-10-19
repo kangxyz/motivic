@@ -5,8 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ClosedIntersectionTorChartStalk
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedIntersectionTorChartStalk
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.IntermediateModules
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
 
 /-!
 # Actual pair and six-factor Tor chart-sheaf stalk consumers
@@ -20,11 +23,12 @@ Tor modules. No stalk comparison or target module is supplied as a hypothesis.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open CategoryTheory AlgebraicGeometry Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
 namespace MotivicTest.ClosedIntersectionTorChartStalk
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
@@ -32,21 +36,26 @@ variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i :
 
 /-- The actual chart-sheaf stalk is the original pair incidence Tor module. -/
 def actualPairChartStalkIso [Flat f] [Smooth g] [Flat h]
-    (U : (correspondenceIntersectionAmbient f g h).affineOpens) (w : F.incidence G)
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceIntersectionAmbient f g
+        h).affineOpens) (w : F.incidence G)
     (hw : F.incidenceAmbientInclusion G w ∈ U.1) (n : ℕ) :
-    closedIntersectionTorChartStalk (correspondenceTripleInclusion f g h)
+    closedIntersectionTorChartStalk
+        (_root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h)
       (F.supportProductInclusion G) (F.incidenceInclusion G) (F.incidenceToSupportProduct G)
       (F.incidence_ambient_isPullback G) U w hw n ≅ F.incidenceTorOnIncidence G w n :=
-  closedIntersectionTorChartStalkIso (correspondenceTripleInclusion f g h)
+  closedIntersectionTorChartStalkIso
+      (_root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h)
     (F.supportProductInclusion G) (F.incidenceInclusion G) (F.incidenceToSupportProduct G)
     (F.incidence_ambient_isPullback G) U w hw n
 
 /-- The actual six-factor first-stage sheaf stalk has the original full support action. -/
 def actualExteriorChartStalkIso
-    (U : (correspondenceSixfoldAmbient f g h i).affineOpens)
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h
+        i).affineOpens)
     (w : F.leftIntermediateSupportProduct G H)
     (hw : F.leftIntermediateAmbientInclusion G H w ∈ U.1) (n : ℕ) :=
-  closedIntersectionTorChartStalkIso (correspondenceFirstDiagonalInclusion f g h i)
+  closedIntersectionTorChartStalkIso
+      (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
     (F.tripleSupportProductInclusion G H) (F.leftIntermediateSupportInclusion G H)
     (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H) U w hw n
 
@@ -54,10 +63,12 @@ def actualExteriorChartStalkIso
 original finite-type geometry over a locally Noetherian base. -/
 theorem actualPairChartStalk_finite [IsLocallyNoetherian S]
     [LocallyOfFiniteType f] [LocallyOfFiniteType g] [LocallyOfFiniteType h]
-    (U : (correspondenceIntersectionAmbient f g h).affineOpens) (w : F.incidence G)
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceIntersectionAmbient f g
+        h).affineOpens) (w : F.incidence G)
     (hw : F.incidenceAmbientInclusion G w ∈ U.1) (n : ℕ) :
     Module.Finite ((F.incidence G).presheaf.stalk w)
-      (closedIntersectionTorChartStalk (correspondenceTripleInclusion f g h)
+      (closedIntersectionTorChartStalk
+          (_root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h)
         (F.supportProductInclusion G) (F.incidenceInclusion G) (F.incidenceToSupportProduct G)
         (F.incidence_ambient_isPullback G) U w hw n) := by
   have := isLocallyNoetherian_correspondenceIntersectionAmbient f g h
@@ -68,15 +79,17 @@ integrality, generic-point, or nonempty hypothesis. -/
 theorem actualExteriorChartStalk_finite [IsLocallyNoetherian S]
     [LocallyOfFiniteType f] [LocallyOfFiniteType g] [LocallyOfFiniteType h]
     [LocallyOfFiniteType i]
-    (U : (correspondenceSixfoldAmbient f g h i).affineOpens)
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h
+        i).affineOpens)
     (w : F.leftIntermediateSupportProduct G H)
     (hw : F.leftIntermediateAmbientInclusion G H w ∈ U.1) (n : ℕ) :
     Module.Finite ((F.leftIntermediateSupportProduct G H).presheaf.stalk w)
-      (closedIntersectionTorChartStalk (correspondenceFirstDiagonalInclusion f g h i)
+      (closedIntersectionTorChartStalk
+          (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
         (F.tripleSupportProductInclusion G H) (F.leftIntermediateSupportInclusion G H)
         (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H)
         U w hw n) := by
-  have := isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
+  have := _root_.AlgebraicGeometry.Scheme.isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
   infer_instance
 
 /-- Original smooth-site objects over every field instantiate the finite actual
@@ -86,12 +99,14 @@ theorem actualSmoothExteriorChartStalk_finite (K : Type u) [Field K]
     (F : FiniteCorrespondenceGenerator X.hom Y.hom)
     (G : FiniteCorrespondenceGenerator Y.hom Z.hom)
     (H : FiniteCorrespondenceGenerator Z.hom W.hom)
-    (U : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).affineOpens)
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient X.hom Y.hom Z.hom
+        W.hom).affineOpens)
     (w : F.leftIntermediateSupportProduct G H)
     (hw : F.leftIntermediateAmbientInclusion G H w ∈ U.1) (n : ℕ) :
     Module.Finite ((F.leftIntermediateSupportProduct G H).presheaf.stalk w)
       (closedIntersectionTorChartStalk
-        (correspondenceFirstDiagonalInclusion X.hom Y.hom Z.hom W.hom)
+        (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion X.hom Y.hom
+            Z.hom W.hom)
         (F.tripleSupportProductInclusion G H) (F.leftIntermediateSupportInclusion G H)
         (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H)
         U w hw n) :=

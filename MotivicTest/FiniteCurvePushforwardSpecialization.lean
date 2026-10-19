@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteCurvePushforwardSpecialization
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Endpoints.FiniteCurvePushforwardSpecialization
 
 /-!
 # Consumers of genuine finite Cartier-fiber geometry
@@ -17,7 +17,7 @@ finite algebra and then assembled into the unconditional scheme equality.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic
+open CategoryTheory AlgebraicGeometry
 open AlgebraicGeometry.FiniteFlatCurve
 open scoped Polynomial
 
@@ -43,7 +43,8 @@ theorem originalResidueWeight (a : k) (x : fiber (j ≫ f) a) :
 
 /-- The target endpoint retains its original, possibly nonreduced local length. -/
 theorem originalTargetLength [IsNoetherian D] (a : k) (y : fiber f a) :
-    IntegralCycle.toPoints (fundamentalCycle (fiber f a)) y =
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.toPoints
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f a)) y =
       ((Module.length (D.presheaf.stalk (fiberInclusion f a y))
         ((D.presheaf.stalk (fiberInclusion f a y)) ⧸
           Ideal.ofList [scalar f a (fiberInclusion f a y)])).toNat : ℤ) :=
@@ -51,8 +52,9 @@ theorem originalTargetLength [IsNoetherian D] (a : k) (y : fiber f a) :
 
 /-- The zero endpoint keeps every original source point with its own weight. -/
 theorem zeroEndpointCoefficient [IsNoetherian C] (y : fiber f (0 : k)) :
-    IntegralCycle.toPoints (IntegralCycle.finitePushforward (fiberMap f 0 j)
-        (fundamentalCycle (fiber (j ≫ f) 0))) y =
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.toPoints
+        (_root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberMap f 0 j)
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (j ≫ f) 0))) y =
       ∑ᶠ x : {x : C // j x = fiberInclusion f 0 y},
         (j.residueDegree x.1 : ℤ) *
           ((Module.length (C.presheaf.stalk x.1)
@@ -61,8 +63,9 @@ theorem zeroEndpointCoefficient [IsNoetherian C] (y : fiber f (0 : k)) :
 
 /-- The one endpoint uses the unchanged equation t−1 and all original branches. -/
 theorem oneEndpointCoefficient [IsNoetherian C] (y : fiber f (1 : k)) :
-    IntegralCycle.toPoints (IntegralCycle.finitePushforward (fiberMap f 1 j)
-        (fundamentalCycle (fiber (j ≫ f) 1))) y =
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.toPoints
+        (_root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberMap f 1 j)
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (j ≫ f) 1))) y =
       ∑ᶠ x : {x : C // j x = fiberInclusion f 1 y},
         (j.residueDegree x.1 : ℤ) *
           ((Module.length (C.presheaf.stalk x.1)
@@ -72,9 +75,10 @@ theorem oneEndpointCoefficient [IsNoetherian C] (y : fiber f (1 : k)) :
 /-- Arbitrary endpoints use the actual generic degree of the finite curve map. -/
 theorem arbitraryEndpoint [IsIntegral C] [IsIntegral D]
     [Surjective f] [Surjective j] [IsNoetherian C] [IsNoetherian D] (a : k) :
-    IntegralCycle.finitePushforward (fiberMap f a j)
-        (fundamentalCycle (fiber (j ≫ f) a)) =
-      (j.residueDegree (genericPoint C) : ℤ) • fundamentalCycle (fiber f a) :=
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberMap f a j)
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (j ≫ f) a)) =
+      (j.residueDegree (genericPoint C) : ℤ) • _root_.AlgebraicGeometry.Scheme.fundamentalCycle
+          (fiber f a) :=
   finiteCurve_finitePushforward_fiber f j a
 
 /-- Signed coefficients and any further genuine finite pushforward retain
@@ -82,11 +86,12 @@ both the complete endpoint cycle and the original generic multiplier. -/
 theorem signedEndpoint [IsIntegral C] [IsIntegral D]
     [Surjective f] [Surjective j] [IsNoetherian C] [IsNoetherian D]
     (a : k) {Q : Scheme.{u}} (g : fiber f a ⟶ Q) [IsFinite g] (n : ℤ) :
-    IntegralCycle.finitePushforward (fiberMap f a j ≫ g)
-        (n • fundamentalCycle (fiber (j ≫ f) a)) =
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberMap f a j ≫ g)
+        (n • _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (j ≫ f) a)) =
       (n * (j.residueDegree (genericPoint C) : ℤ)) •
-        IntegralCycle.finitePushforward g (fundamentalCycle (fiber f a)) := by
-  rw [IntegralCycle.finitePushforward_comp, AddMonoidHom.comp_apply,
+        _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward g
+            (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f a)) := by
+  rw [_root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward_comp, AddMonoidHom.comp_apply,
     map_zsmul, arbitraryEndpoint f j a, map_zsmul, map_zsmul, smul_smul]
 
 open Lean in
@@ -97,11 +102,14 @@ run_cmd do
       ``fiber_fundamentalCoefficient, ``fiberMapPointEquiv,
       ``fiberMapPointEquiv_apply_val, ``fiberGenericPointEquiv,
       ``fiberMap_fundamentalCoefficient, ``finitePushforward_fiber_of_cartierLength,
-      ``Koszul.finiteAlgebra_cartierEuler, ``Koszul.cartierQuotientRingEquiv,
-      ``Koszul.cartierQuotient_length_ringEquiv, ``Koszul.cartier_regular_ringEquiv,
+      ``_root_.ChainComplex.Koszul.finiteAlgebra_cartierEuler,
+          ``_root_.ChainComplex.Koszul.cartierQuotientRingEquiv,
+      ``_root_.ChainComplex.Koszul.cartierQuotient_length_ringEquiv,
+          ``_root_.ChainComplex.Koszul.cartier_regular_ringEquiv,
       ``localScalar, ``alignedStalkMap_scalar,
       ``originalSourceLocalizationIso_scalar, ``originalSourceLocalizationIso_cartierLength,
-      ``originalSourceLocalizationIso_regular, ``Koszul.finiteAlgebra_domainCartierLength,
+      ``originalSourceLocalizationIso_regular,
+          ``_root_.ChainComplex.Koszul.finiteAlgebra_domainCartierLength,
       ``originalCartierLength_sum,
       ``AlgebraicGeometry.finiteCurve_finitePushforward_fiber,
       ``arbitraryEndpoint, ``signedEndpoint,

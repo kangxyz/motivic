@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulDimensionVanishing
+public import Motivic.Aglib.Algebra.Homology.Koszul.DimensionVanishing
 
 /-!
 # Consumers of full Koszul dimension vanishing
@@ -21,7 +21,7 @@ positive dimension and need not have finite length.
 
 universe u
 
-open CategoryTheory Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulDimensionVanishing
 

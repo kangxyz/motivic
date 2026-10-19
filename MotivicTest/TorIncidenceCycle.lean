@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TorIncidenceCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.TorCycle
 
 /-!
 # Consumers of actual diagonal-Tor incidence correspondences
@@ -20,6 +20,7 @@ comparison with traditional triple-product Tor is a separate obligation.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Motivic
 

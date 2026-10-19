@@ -15,6 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory AlgebraicGeometry Motivic
 universe u w
 namespace Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 variable (k B : Type u) [Field k] [Infinite k] [CommRing B] [IsDomain B] [Algebra k B]
   [Algebra.Smooth k B]
 

@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticSelectedPointOpen
 
 /-! # Full-rank selected-point condition in the same compactifying quadratic tuple -/
 @[expose] public noncomputable section
-open Module MvPolynomial TensorProduct KaehlerDifferential
+open Module _root_.MvPolynomial TensorProduct KaehlerDifferential
 universe u
 namespace QuadraticIncidence
 variable {k R L σ : Type u} [Field k] [CommRing R] [Field L]

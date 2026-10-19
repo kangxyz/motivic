@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichFiniteSplitting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.FiniteSplitting
 public import Mathlib.Data.ZMod.Basic
 
 /-!

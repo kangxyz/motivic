@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.AffineIncidenceComparison
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.AffineComparison
 
 /-! # Actual affine-generator consumers of local Tor length and Euler comparison -/
 
@@ -13,7 +13,10 @@ public import Motivic.AlgebraicGeometry.Correspondences.AffineIncidenceCompariso
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic.Intersection Motivic.AffineMiddle
+open CategoryTheory
+open AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.Intersection
+open _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal
 
 universe u
 
@@ -33,15 +36,18 @@ theorem actualDegreeLength (w : F.incidence G) (n : ℕ) :
 
 /-- Finite-length evidence for actual incidence Tor transfers to the original pulled schemes. -/
 theorem actualFiniteSupport (w : F.incidence G)
-    (h : LengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
-    LengthEuler.FiniteLengthSupport (pulledIncidenceStalkTor k A B C F G w) :=
+    (h : _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (pulledIncidenceStalkTor k A B C
+        F G w) :=
   (incidenceTor_finiteLengthSupport_iff_pulled k A B C F G w).mp h
 
 /-- Every higher correction is retained in the actual alternating local coefficient. -/
 theorem actualAlternatingCoefficient (w : F.incidence G)
-    (h : LengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
-    LengthEuler.signedLengthSum (F.incidenceTor G w) (fun n ↦ (-1 : ℤ) ^ n) h =
-      LengthEuler.signedLengthSum (pulledIncidenceStalkTor k A B C F G w)
+    (h : _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
+    _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (F.incidenceTor G w) (fun n ↦ (-1 :
+        ℤ) ^ n) h =
+      _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (pulledIncidenceStalkTor k A B C F
+          G w)
         (fun n ↦ (-1 : ℤ) ^ n) (actualFiniteSupport k A B C F G w h) :=
   incidenceTor_signedLengthSum_eq_pulled k A B C F G w _ h
 
@@ -53,14 +59,16 @@ variable [LocallyOfFiniteType (structureMap k A)] [LocallyOfFiniteType (structur
 
 /-- The existing smooth generic-incidence theorem supplies genuine source evidence. -/
 theorem genericPulledFiniteSupport (w : genericPoints (F.incidence G)) :
-    LengthEuler.FiniteLengthSupport (pulledIncidenceStalkTor k A B C F G w.val) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (pulledIncidenceStalkTor k A B C
+        F G w.val) :=
   actualFiniteSupport k A B C F G w.val
     (F.incidenceTor_finiteLengthSupport G w.val w.property)
 
 /-- The existing actual generic-incidence coefficient equals the pulled-support Tor Euler sum. -/
 theorem genericCoefficient (w : genericPoints (F.incidence G)) :
     F.incidenceTorCoefficient G w =
-      LengthEuler.signedLengthSum (pulledIncidenceStalkTor k A B C F G w.val)
+      _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (pulledIncidenceStalkTor k A B C F
+          G w.val)
         (fun n ↦ (-1 : ℤ) ^ n) (genericPulledFiniteSupport k A B C F G w) :=
   incidenceTor_signedLengthSum_eq_pulled k A B C F G w.val _
     (F.incidenceTor_finiteLengthSupport G w.val w.property)

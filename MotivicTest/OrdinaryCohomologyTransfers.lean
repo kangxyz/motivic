@@ -5,11 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.SheafCohomologyWithTransfers
+public import Motivic.Transfers.Cohomology.Basic
 public import Lean.Util.CollectAxioms
 
 /-! Signed transfers on original ordinary H, with literal graph and coefficient maps. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian AlgebraicGeometry Opposite
 universe w w' u
 namespace MotivicTest.OrdinaryCohomologyTransfers
@@ -22,15 +23,15 @@ variable (k : Type u) [Field k]
 /-- The transferred group is literally the original ordinary cohomology group. -/
 example (X : Cor k) :
     (ordinaryCohomologyTransfers.{w, w', u} k F n).sections X =
-      SheafCohomology.H.{w', u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.LargeCohomology.H.{w', u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) ((toSheaf k).obj F) n X.toSmoothSite := rfl
 
 /-- Every actual graph acts by the old ordinary restriction, not a new map. -/
 theorem actual_graph_restriction {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y)
-    (e : SheafCohomology.H.{w', u + 1, u, u + 1}
+    (e : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{w', u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) ((toSheaf k).obj F) n Y) :
     (ordinaryCohomologyTransfers.{w, w', u} k F n).transfer ((Cor.graphFunctor k).map f) e =
-      (SheafCohomology.presheaf.{w', u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w', u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) ((toSheaf k).obj F) n).map f.op e :=
   ordinaryCohomologyTransfers_graph k F n f e
 
@@ -66,7 +67,7 @@ variable (k : Type u) [Field k]
 /-- No transfer-category Ext or acyclicity assumption is required by the final endpoint. -/
 example (F : SheafWithTransfers.{u + 1} k) (n : ℕ) (X : Cor k) :
     (SheafCohomology.withTransfers k F n).sections X =
-      SheafCohomology.H.{w, u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.LargeCohomology.H.{w, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         ((SheafWithTransfers.toSheaf k).obj F) n X.toSmoothSite := rfl
 

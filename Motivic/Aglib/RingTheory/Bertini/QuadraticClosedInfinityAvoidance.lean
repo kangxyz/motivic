@@ -19,7 +19,7 @@ possibly nonreduced closed subscheme is not replaced by its reduction.
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence.InfinityChart
 

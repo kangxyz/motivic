@@ -1,8 +1,8 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPencilSpanGeometry
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Pencil.SpanGeometry
 /-! Original relative sources and target become actual smooth-site objects. -/
 set_option linter.hashCommand false
-open CategoryTheory AlgebraicGeometry Motivic RelativeProjectiveLine
+open CategoryTheory AlgebraicGeometry RelativeProjectiveLine
 universe u
 variable (k R : Type u) [Field k] [CommRing R]
   (b : Spec (.of R) ⟶ Spec (.of k)) [Smooth b]

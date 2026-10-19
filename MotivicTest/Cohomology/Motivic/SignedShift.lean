@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.SignedShift
+public import Motivic.Aglib.Algebra.Homology.SingularComplex.SignedShift
 public import Mathlib.Algebra.Category.Grp.Abelian
 
 /-!
@@ -20,7 +20,7 @@ topology with no assumed comparison isomorphism.
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite
-open Motivic.SingularComplex
+open _root_.CategoryTheory.SingularComplex
 open scoped Simplicial
 
 universe v u w
@@ -32,7 +32,7 @@ example (q : ℕ) : cochainObj Δ P q ≅ (cochainObj Δ P 0)⟦-(q : ℤ)⟧ :=
   cochainShiftIso Δ P q
 
 example (q r : ℕ) :
-    (cochainShiftIso Δ P q).hom.f (Motivic.Indexing.singularDegree q r) =
+    (cochainShiftIso Δ P q).hom.f (Indexing.singularDegree q r) =
       (-1 : ℤ) ^ (q * r) •
         ((cochainXIso Δ P q r).hom ≫ (shiftedCochainXIso Δ P q r).inv) :=
   cochainShiftIso_hom_f Δ P q r
@@ -40,7 +40,7 @@ example (q r : ℕ) :
 /-- Weight one has a negative chain-one comparison component. -/
 example : (cochainShiftIso Δ P 1).hom.f 0 =
     (-1 : ℤ) • ((cochainXIso Δ P 1 1).hom ≫ (shiftedCochainXIso Δ P 1 1).inv) := by
-  change (cochainShiftIso Δ P 1).hom.f (Motivic.Indexing.singularDegree 1 1) =
+  change (cochainShiftIso Δ P 1).hom.f (Indexing.singularDegree 1 1) =
     (-1 : ℤ) • ((cochainXIso Δ P 1 1).hom ≫ (shiftedCochainXIso Δ P 1 1).inv)
   simpa only [Nat.one_mul, pow_one] using cochainShiftIso_hom_f Δ P 1 1
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.PrescribedTrivialization
+public import Motivic.Aglib.LinearAlgebra.InvertibleModule.PrescribedTrivialization
 public import Mathlib.LinearAlgebra.TensorProduct.Tower
 
 /-! # Consumers retaining a specified coordinate on the whole closed boundary -/

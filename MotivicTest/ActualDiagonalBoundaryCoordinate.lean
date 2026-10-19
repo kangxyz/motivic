@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualDiagonalBoundaryCoordinate
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.Normalized.Diagonal.BoundaryCoordinate
 /-! # The chosen original diagonal frame retains both literal component coordinates -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true

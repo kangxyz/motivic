@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOnePointNorm
+public import Motivic.Cohomology.WeightOne.PointNorm
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,8 +19,9 @@ motivic cohomology computation.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Opposite
-open Motivic Motivic.WeightOnePointNorm Motivic.PresheafWithTransfers
+open Motivic Motivic.WeightOnePointNorm _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.IntegralExteriorClosedFiber
-public import Motivic.AlgebraicGeometry.Cycles.GenericFinitePushforward
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorGeneric
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.BaseChange.ClosedFiber
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.GenericFinitePushforward
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorGeneric
 
 /-!
 # Original pair and integral-image exterior closed-fiber consumers
@@ -32,6 +32,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -150,7 +151,7 @@ theorem actualImageProjection (v : genericPoints (imageIntegralExterior F G H z)
 /-- The actual target support-product stalk is the whole image-product closed fiber
 over the original image point; the whole image-product stalk itself is not replaced. -/
 def actualImageClosedFiberEquiv (v : genericPoints (imageIntegralExterior F G H z)) :
-    Koszul.coefficientClosedFiber
+    _root_.ChainComplex.Koszul.coefficientClosedFiber
         ((pullback.fst
           ((F.incidenceMap G).imageι ≫ pullback.snd X.hom Z.hom ≫ Z.hom)
           (H.projection ≫ Z.hom)).stalkMap (imageIntegralExteriorInclusion F G H z v.1)).hom ≃+*
@@ -185,7 +186,7 @@ with its original image-product action. -/
 def actualImageClosedFiberModuleIso (v : genericPoints (imageIntegralExterior F G H z)) :
     ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk
         (imageIntegralExteriorInclusion F G H z v.1))
-        (Koszul.coefficientClosedFiber
+        (_root_.ChainComplex.Koszul.coefficientClosedFiber
           ((pullback.fst
             ((F.incidenceMap G).imageι ≫ pullback.snd X.hom Z.hom ≫ Z.hom)
             (H.projection ≫ Z.hom)).stalkMap (imageIntegralExteriorInclusion F G H z v.1)).hom) ≅
@@ -201,7 +202,7 @@ def actualImageClosedFiberModuleIso (v : genericPoints (imageIntegralExterior F 
 theorem actualImageClosedFiberLength (v : genericPoints (imageIntegralExterior F G H z)) :
     Module.length ((F.leftIntermediateImageProduct G H).presheaf.stalk
         (imageIntegralExteriorInclusion F G H z v.1))
-        (Koszul.coefficientClosedFiber
+        (_root_.ChainComplex.Koszul.coefficientClosedFiber
           ((pullback.fst
             ((F.incidenceMap G).imageι ≫ pullback.snd X.hom Z.hom ≫ Z.hom)
             (H.projection ≫ Z.hom)).stalkMap (imageIntegralExteriorInclusion F G H z v.1)).hom) =

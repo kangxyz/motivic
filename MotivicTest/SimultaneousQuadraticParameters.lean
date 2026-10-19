@@ -9,7 +9,7 @@ public import Lean
 
 /-! # Actual one-tuple smooth, étale and full-infinity conditions with no open premise -/
 public noncomputable section
-open MvPolynomial AlgebraicGeometry QuadraticIncidence
+open _root_.MvPolynomial AlgebraicGeometry QuadraticIncidence
 universe u
 
 example (k R : Type u) [Field k] [Infinite k]

@@ -10,7 +10,7 @@ public import Lean
 
 /-! # Original minimal components and whole-fiber smoothness share one quadratic tuple -/
 public noncomputable section
-open MvPolynomial AlgebraicGeometry QuadraticIncidence QuadraticIncidence.InfinityChart
+open _root_.MvPolynomial AlgebraicGeometry QuadraticIncidence QuadraticIncidence.InfinityChart
 universe u
 namespace MotivicTest.QuadraticClosedInfinityAvoidance
 

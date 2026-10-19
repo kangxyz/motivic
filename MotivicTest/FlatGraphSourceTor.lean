@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.FlatGraphSourceTor
+import Motivic.AlgebraicGeometry.Correspondences.Graph.Flat.SourceTor
 
 /-! Direct checks of actual flat-source incidence Tor vanishing. -/
 

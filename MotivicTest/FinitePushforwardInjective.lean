@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Cycles.FinitePushforwardInjective
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Injective
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 
@@ -18,33 +18,41 @@ a nonreduced ambient scheme. No smoothness, field or purity input is used.
 
 @[expose] public section
 
-open CategoryTheory AlgebraicGeometry Motivic
+open CategoryTheory AlgebraicGeometry
 
 universe u
 
 namespace MotivicTest.FinitePushforwardInjective
+open _root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme
+open _root_.AlgebraicGeometry.Scheme.IntegralCycle
 
 example {X Y : Scheme.{u}} (f : X ⟶ Y) [IsClosedImmersion f]
-    (α β : IntegralCycle X)
-    (h : IntegralCycle.finitePushforward f (α - β) = 0) : α = β := by
+    (α β : _root_.AlgebraicGeometry.Scheme.IntegralCycle X)
+    (h : _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward f (α - β) = 0) : α = β :=
+        by
   apply sub_eq_zero.mp
-  exact IntegralCycle.finitePushforward_injective_of_isClosedImmersion f
+  exact
+      _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward_injective_of_isClosedImmersion
+      f
     (h.trans (map_zero _).symm)
 
 example {X Y : Scheme.{u}} (f : X ⟶ Y) [IsClosedImmersion f]
-    (A B : IntegralClosedSubscheme X) (h : A.finiteImage f = B.finiteImage f) : A = B :=
-  IntegralClosedSubscheme.finiteImage_injective_of_isClosedImmersion f h
+    (A B : _root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme X) (h : A.finiteImage f =
+        B.finiteImage f) : A = B :=
+  _root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.finiteImage_injective_of_isClosedImmersion
+      f h
 
 example (I : (Spec (.of (ZMod 4))).IdealSheafData)
-    (α β : IntegralCycle I.subscheme)
-    (h : IntegralCycle.finitePushforward I.subschemeι α =
-      IntegralCycle.finitePushforward I.subschemeι β) : α = β :=
-  IntegralCycle.finitePushforward_injective_of_isClosedImmersion I.subschemeι h
+    (α β : _root_.AlgebraicGeometry.Scheme.IntegralCycle I.subscheme)
+    (h : _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward I.subschemeι α =
+      _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward I.subschemeι β) : α = β :=
+  _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward_injective_of_isClosedImmersion
+      I.subschemeι h
 
 open Lean in
 run_cmd do
-  for name in #[``IntegralClosedSubscheme.finiteImage_injective_of_isClosedImmersion,
-      ``IntegralCycle.finitePushforward_injective_of_isClosedImmersion] do
+  for name in #[``finiteImage_injective_of_isClosedImmersion,
+      ``finitePushforward_injective_of_isClosedImmersion] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

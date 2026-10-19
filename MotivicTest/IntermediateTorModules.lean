@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateTorModules
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.IntermediateModules
 
 /-! # Literal scalar-action consumers for actual intermediate homology -/
 
@@ -18,6 +18,7 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.IntermediateTorModules
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable {S X Y Z : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
@@ -46,12 +47,14 @@ variable [IsSeparated g] (w : F.incidence G)
 
 /-- Actual coefficient homology descends without a regular-sequence premise. -/
 theorem actualKoszulRecovered
-    (x : (Koszul.coefficientComplex (F.incidenceSupportStalkModule G w) s).homology n) :
+    (x : (_root_.ChainComplex.Koszul.coefficientComplex (F.incidenceSupportStalkModule G w)
+        s).homology n) :
     (F.incidenceKoszulOnIncidenceRestrictIso G w s hker n).hom x = x := rfl
 
 /-- All ambient scalar actions are retained on the genuinely descended homology. -/
 theorem actualKoszulScalar (r : F.incidenceAmbientStalk G w)
-    (x : (Koszul.coefficientComplex (F.incidenceSupportStalkModule G w) s).homology n) :
+    (x : (_root_.ChainComplex.Koszul.coefficientComplex (F.incidenceSupportStalkModule G w)
+        s).homology n) :
     (F.incidenceKoszulOnIncidenceRestrictIso G w s hker n).hom (r • x) =
       r • (F.incidenceKoszulOnIncidenceRestrictIso G w s hker n).hom x :=
   map_smul (F.incidenceKoszulOnIncidenceRestrictIso G w s hker n).hom.hom r x

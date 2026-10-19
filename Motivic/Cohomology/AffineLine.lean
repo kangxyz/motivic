@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyAffineLineRankZero
+public import Motivic.Cohomology.AffineLine.RankZero
 
 /-!
 # Ordinary Nisnevich cohomology of the affine line

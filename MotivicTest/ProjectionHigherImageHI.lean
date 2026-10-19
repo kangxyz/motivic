@@ -5,14 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.ProjectionHigherImageHI
+public import Motivic.Cohomology.A1.HigherImages.ProjectionHI
 import Lean
 
 /-! # Actual positive projection images and all-test-object point detection -/
 
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 universe u
 
 /-- The consumer retains the actual small-site higher direct image and original HI premise. -/
@@ -33,11 +35,12 @@ theorem actual_projection_higher_image_zero
 /-- Detection covers all points on every test object, without a Noetherian premise. -/
 example {S : Scheme.{u}}
     (G : Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})
-    (h : ∀ (V : FiniteEtaleSite S) (z : V.left),
+    (h : ∀ (V : EtaleSeparatedFiniteType S) (z : V.left),
       IsZero ((markedResiduePoint V z).sheafFiber.obj G)) : IsZero G :=
   isZero_of_all_marked_residue_fibers G h
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType in
 run_cmd do
   for name in #[``actual_projection_higher_image_zero,
       ``projectionHigherImage_isZero_of_cohomology_HI,

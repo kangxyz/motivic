@@ -1,5 +1,5 @@
 module
-import Motivic.Cohomology.A1.ZeroNeighborhoodLocalLifting
+import Motivic.Cohomology.A1.LocalVanishing.ZeroNeighborhood.LocalLifting
 /-! # Original punctured-neighborhood sections lift on one original base shrink -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry Opposite

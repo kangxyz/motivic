@@ -5,21 +5,21 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentMarkedSection
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.Persistent.MarkedSection
 import Lean
 
 /-! # Persistent detection on arbitrary test objects of the unchanged small site -/
 
 public noncomputable section
 open CategoryTheory AlgebraicGeometry Opposite Topology
-open Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 universe u
 
 /-- The original coefficient is a sheaf on S, while the section is evaluated on arbitrary V. -/
 theorem original_test_section_persistent_detection
     {S X : Scheme.{u}}
     (G : Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})
-    (V : Motivic.FiniteEtaleSite S) [IsNoetherian V.left]
+    (V : Scheme.EtaleSeparatedFiniteType S) [IsNoetherian V.left]
     (g : V.left ⟶ X) (x : X) (s : G.obj.obj (op V))
     (hs : ∀ z : V.left, g z ⤳ x →
       (markedResiduePoint V z).toPresheafFiber V (markedResidueElement V z) G.obj s = 0) :
@@ -28,10 +28,11 @@ theorem original_test_section_persistent_detection
   exists_open_test_restriction_eq_zero_of_persistent_marked_germs G V g x s hs
 
 /-- The endpoint arrow is exactly the original open inclusion, not a coefficient comparison. -/
-example {S : Scheme.{u}} (V : Motivic.FiniteEtaleSite S) [IsNoetherian V.left]
+example {S : Scheme.{u}} (V : Scheme.EtaleSeparatedFiniteType S) [IsNoetherian V.left]
     (O : V.left.Opens) : (testOpenInclusion V O).left = O.ι := rfl
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType in
 run_cmd do
   for name in #[``original_test_section_persistent_detection,
       ``exists_open_test_restriction_eq_zero_of_persistent_marked_germs] do

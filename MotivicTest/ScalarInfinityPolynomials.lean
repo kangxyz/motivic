@@ -7,7 +7,7 @@ module
 
 public import Motivic.Aglib.RingTheory.Bertini.QuadraticScalarInfinityPolynomials
 public import Mathlib.RingTheory.Flat.Stability
-import all Motivic.Aglib.RingTheory.MinimalPrimeGoingDown
+import all Motivic.Aglib.RingTheory.Spectrum.Prime.GoingDown
 import all Motivic.Aglib.RingTheory.Bertini.QuadraticBoundaryScalarMap
 import all Motivic.Aglib.RingTheory.Bertini.QuadraticScalarInfinityAvoidance
 import all Motivic.Aglib.RingTheory.Bertini.QuadraticScalarBoundaryAvoidance
@@ -21,7 +21,7 @@ public import Mathlib.Tactic.Linter.TextBased
 
 @[expose] public noncomputable section
 
-open MvPolynomial QuadraticIncidence.InfinityChart
+open _root_.MvPolynomial QuadraticIncidence.InfinityChart
 open scoped TensorProduct
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
@@ -58,7 +58,7 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.RingTheory.MinimalPrimeGoingDown,
+    `Motivic.Aglib.RingTheory.Spectrum.Prime.GoingDown,
     `Motivic.Aglib.RingTheory.Bertini.QuadraticBoundaryScalarMap,
     `Motivic.Aglib.RingTheory.Bertini.QuadraticScalarInfinityAvoidance,
     `Motivic.Aglib.RingTheory.Bertini.QuadraticScalarBoundaryAvoidance,
@@ -90,7 +90,7 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.RingTheory.MinimalPrimeGoingDown,
+    `Motivic.Aglib.RingTheory.Spectrum.Prime.GoingDown,
     `Motivic.Aglib.RingTheory.Bertini.QuadraticBoundaryScalarMap,
     `Motivic.Aglib.RingTheory.Bertini.QuadraticScalarInfinityAvoidance,
     `Motivic.Aglib.RingTheory.Bertini.QuadraticScalarBoundaryAvoidance,

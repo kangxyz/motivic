@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorRemainingList
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorRemainingList
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual smooth-site whole-coefficient remaining-list consumers
@@ -23,8 +24,10 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.PrimeSpectrum.FiniteFiber (localAlgebra)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.FiniteSchemeEuler
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteEuler
 
 universe u
 
@@ -51,11 +54,12 @@ theorem actualSmoothWholeFiberRemainingList (w : F.tripleIncidence G H)
         Ideal.ofList s ∧
       ∀ (x : {x : F.leftIntermediateSupportProduct G H //
           F.leftIntermediateImageMap G H x = V.2.fromSpec p}) (n : ℕ),
-        Nonempty (Koszul.coefficientComplex
+        Nonempty (_root_.ChainComplex.Koszul.coefficientComplex
           (F.firstStageWholeOriginalStalkModule (S := Spec (.of K)) G H V p x n)
           ((F.leftTargetRemainingList G H (V.2.fromSpec p) s).map
             (originalFiberStalkMap (F.leftIntermediateImageMap G H) V.2 p x).hom) ≅
-          Koszul.coefficientComplex (F.firstStageSupportedStalkTor (S := Spec (.of K)) G H x.1 n)
+          _root_.ChainComplex.Koszul.coefficientComplex (F.firstStageSupportedStalkTor (S :=
+              Spec (.of K)) G H x.1 n)
             ((F.leftFiberMiddleList G H (V.2.fromSpec p) s x).map
               ((F.leftSupportMiddlePair G H).stalkMap x.1).hom)) := by
   have hy : ∃ z : Z.left, pullback.diagonal Z.hom z =
@@ -78,7 +82,7 @@ maximal point of the single whole finite algebra used by the actual coefficient.
 theorem actualWholeRemainingCoversFiber
     (x : {x : F.leftIntermediateSupportProduct G H //
       F.leftIntermediateImageMap G H x = V.2.fromSpec p}) :
-    ∃ q : MaximalSpectrum (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
+    ∃ q : MaximalSpectrum (localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ V) p),
       wholeAlgebraFiberEquiv (F.leftIntermediateImageMap G H) V.2 p q = x :=
   (wholeAlgebraFiberEquiv (F.leftIntermediateImageMap G H) V.2 p).surjective x
@@ -88,7 +92,7 @@ localized remaining Koszul complex, with original geometric supported Tor as tar
 def actualSmoothWholeRemainingLocalizedIso
     (s : List ((pullback Z.hom Z.hom).presheaf.stalk
       (F.leftImageMiddlePair G H (V.2.fromSpec p))))
-    (q : MaximalSpectrum (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
+    (q : MaximalSpectrum (localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ V) p))
     (n : ℕ) :=
   F.firstStageWholeRemainingLocalizedIso (S := Spec (.of K)) G H V p q s n

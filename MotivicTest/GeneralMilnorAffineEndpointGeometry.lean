@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 
-import Motivic.KTheory.MilnorK.AffineEndpointGeometry
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.MilnorK.AffineEndpointGeometry
 import Lean.Util.CollectAxioms
 
 /-! Original endpoint multiplicities and original ground-field norms. -/

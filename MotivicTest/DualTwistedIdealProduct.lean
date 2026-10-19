@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdealProduct
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.Product
 /-! # Original global line comparison and literal section products -/
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Scheme.Modules Scheme.Modules.Invertible

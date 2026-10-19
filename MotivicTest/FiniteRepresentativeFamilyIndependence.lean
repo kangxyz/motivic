@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.FiniteRepresentativeFamilyIndependence
+public import Motivic.Transfers.Sheaf.Germs.FiniteRepresentatives.FamilyIndependence
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -15,6 +15,8 @@ Both signed families are packed into the actual finite disjoint union. Ordinary
 Nisnevich sheaf gluing supplies its representative section. The common source,
 support and matching germs are constructed by the previous actual comparisons.
 -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
@@ -22,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 universe u
 namespace MotivicTest.FiniteRepresentativeFamilyIndependence
-open Motivic Motivic.PresheafWithTransfers
+open Motivic  _root_.Motivic.PresheafWithTransfers
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)
   (hP : Presheaf.IsSheaf (SmoothSite.nisnevichTopology (Spec (.of k))) ((toPresheaf k).obj P))
   {X Y : SmoothSite (Spec (.of k))} {n : ℕ} (y : Fin n → Y.left)

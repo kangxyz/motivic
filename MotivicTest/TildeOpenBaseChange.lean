@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.TildeOpenBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildeBaseChange.Basic
 public import MotivicTest.TorQuotientFiniteness
 
 /-! # Actual principal-open restriction of tilde, including supported nonzero higher Tor -/
@@ -21,7 +21,12 @@ universe u
 
 namespace Motivic.MotivicTest.TildeOpenBaseChange
 
-open Motivic.TildeOpenBaseChange Motivic.TorComparison TorQuotientFiniteness
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine.TildeBaseChange
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
+open TorQuotientFiniteness
 
 /-- Every principal localization gives the actual natural tilde/open comparison. -/
 def principalIso (A : CommRingCat.{u}) (r : A) :
@@ -48,7 +53,7 @@ theorem principal_unit_coordinate (A : CommRingCat.{u}) (r : A)
       (Scheme.Modules.restrictAdjunction
         (Spec.map (CommRingCat.ofHom (algebraMap A (Localization.Away r)))))).homEquiv M _
         ((principalIso A r).hom.app M) ≫
-      (Motivic.AffinePushforward.globalSectionsIso
+      (Scheme.Modules.Pushforward.Affine.globalSectionsIso
         (CommRingCat.ofHom (algebraMap A (Localization.Away r)))).hom.app
         (tilde ((ModuleCat.extendScalars (algebraMap A (Localization.Away r))).obj M))) m =
       (tilde.isoTop (R := CommRingCat.of (Localization.Away r))

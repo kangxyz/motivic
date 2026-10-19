@@ -3,7 +3,7 @@ Copyright (c) 2026 Motivic Cohomology contributors.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
-import Motivic.Aglib.AlgebraicGeometry.PolynomialPencilFiniteFlat
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Pencils.Polynomial.FiniteFlat
 
 /-! # Literal polynomial family finite-flat consumer and axiom audit -/
 noncomputable section

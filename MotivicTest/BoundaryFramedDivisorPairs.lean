@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryFramedDivisorPairs
-import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed
-import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedTensor
-import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryFramedDivisorPairs
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.BoundaryFramed
+import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.Basic
+import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.Tensor
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.BoundaryFramed
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -42,7 +42,8 @@ theorem exists_pair_with_original_picard_relation
     (a : C ⟶ ProjectiveSpace R ι) [IsFinite a]
     (z : W ⟶ C) [IsClosedImmersion z]
     (eQ : ∀ d : ℕ, (moduleTensorLeftFunctor W
-      ((Scheme.Modules.pullback z).obj ((Scheme.Modules.pullback a).obj (twistingSheaf R ι (d : ℤ))))).obj
+      ((Scheme.Modules.pullback z).obj ((Scheme.Modules.pullback a).obj (twistingSheaf R ι (d :
+          ℤ))))).obj
         ((Scheme.Modules.pullback z).obj (SheafOfModules.unit C.ringCatSheaf)) ≅
           SheafOfModules.unit W.ringCatSheaf)
     (j : U ⟶ C) [IsOpenImmersion j] [U.IsQuasiAffine]
@@ -76,9 +77,9 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedTensor,
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryFramedDivisorPairs]
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.Basic,
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.Tensor,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.BoundaryFramed]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

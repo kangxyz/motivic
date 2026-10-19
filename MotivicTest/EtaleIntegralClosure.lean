@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.Etale.IntegralClosure
+public import Motivic.Aglib.RingTheory.Etale.IntegralClosure
 public import Mathlib.RingTheory.Etale.Pi
 public import Mathlib.Algebra.Ring.Fin
 
@@ -24,6 +24,7 @@ open scoped TensorProduct
 universe u v
 
 namespace Motivic.MotivicTest.EtaleIntegralClosure
+open _root_.Algebra.Etale _root_.Algebra.TensorProduct
 
 example (R : Type u) (C : Type v) [CommRing R] [IsDomain R] [CommRing C]
     [Algebra R C] [Algebra.EssFiniteType R C] [Algebra.FormallyUnramified R C] :

@@ -5,12 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PointedCylinderPositiveChartVanishing
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinarySupportNaturality
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedPresheafFiber
-import all Motivic.Cohomology.A1.ContractionChartSupport
-import all Motivic.Cohomology.A1.PointedCylinderPositiveSupport
-import all Motivic.Cohomology.A1.PointedCylinderPositiveChartVanishing
+public import Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveChartVanishing
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.SupportNaturality
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.PresheafFiber
+import all Motivic.Cohomology.A1.Contraction.ChartSupport
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveSupport
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveChartVanishing
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -25,8 +25,9 @@ public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian AlgebraicGeometry Opposite
-open Motivic Motivic.FiniteEtaleSite
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 universe u
 namespace MotivicTest.PointedCylinderPositiveChartVanishing
 
@@ -61,13 +62,13 @@ canonical boundary epimorphism is the proved one, not a supplied input. -/
 theorem original_positive_coefficient_kernel_germ_zero
     (V : (Φ).fiber.Elements)
     (s : (pointedCylinderValues (.of k) Φ
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) G (n + 2))
       (pointedBase (.of k) Φ)).obj (op V))
     (hs : ((pointedCylinderOrdinaryIso (.of k) E Φ G (n + 2)).hom.app (op V) s).comp
       (Ext.mk₀ (restrictionToDirectImage G j₁)) (add_zero (n + 2)) = 0) :
     colimit.ι (pointedCylinderValues (.of k) Φ
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) G (n + 2))
       (pointedBase (.of k) Φ)) (op V) s = 0 := by
   exact pointedCylinder_positive_germ_zero_of_chart_coefficient_kernel
@@ -76,11 +77,13 @@ theorem original_positive_coefficient_kernel_germ_zero
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinarySupportNaturality,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedPresheafFiber,
-    `Motivic.Cohomology.A1.ContractionChartSupport,
-    `Motivic.Cohomology.A1.PointedCylinderPositiveSupport,
-    `Motivic.Cohomology.A1.PointedCylinderPositiveChartVanishing]
+  let sourceModules :=
+      #[(`Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary).str
+    "SupportNaturality",
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.PresheafFiber,
+    `Motivic.Cohomology.A1.Contraction.ChartSupport,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveSupport,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveChartVanishing]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -103,6 +106,7 @@ run_cmd do
       failed := true
   if failed then
     throwError "The exact-origin declaration lint found errors."
-  logInfo m!"Positive coefficient-kernel germ: {declarations.size} declarations passed lint and std3."
+  logInfo
+    m!"Positive coefficient-kernel germ: {declarations.size} declarations passed lint and std3."
 
 end MotivicTest.PointedCylinderPositiveChartVanishing

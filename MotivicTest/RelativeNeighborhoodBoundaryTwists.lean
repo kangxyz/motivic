@@ -1,6 +1,6 @@
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.RelativeNeighborhoodBoundaryTwists
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Twists.RelativeNeighborhood
 
 /-! # Relative whole-boundary twist consumers without a field hypothesis -/
 

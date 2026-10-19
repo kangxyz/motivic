@@ -5,10 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyNaturality
-public import Motivic.Cohomology.HypercohomologyNaturality
-public import Motivic.Cohomology.RelativeSheafCohomologyNaturality
-public import Motivic.Cohomology.Motivic
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Naturality
+public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Naturality
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Relative.Naturality
+
+public import Motivic.Cohomology.SuslinVoevodsky
+public import Motivic.Cohomology.Coefficients.Finite
 
 /-!
 # Sheaf and motivic cohomology

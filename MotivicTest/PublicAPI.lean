@@ -26,13 +26,13 @@ example : Category (Motivic.Cor k) := inferInstance
 example : Preadditive (Motivic.Cor k) := inferInstance
 
 variable [HasExt.{w}
-  (Sheaf (Motivic.SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+  (Sheaf (Scheme.SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- The exported transfer structure acts on the original ordinary group. -/
 example (F : Motivic.SheafWithTransfers.{u + 1} k) (n : ℕ) (X : Motivic.Cor k) :
     (Motivic.SheafCohomology.withTransfers k F n).sections X =
-      Motivic.SheafCohomology.H.{w, u + 1, u, u + 1}
-        (Motivic.SmoothSite.nisnevichTopology (Spec (.of k)))
+      Sheaf.LargeCohomology.H.{w, u + 1, u, u + 1}
+        (Scheme.SmoothSite.nisnevichTopology (Spec (.of k)))
         ((Motivic.SheafWithTransfers.toSheaf k).obj F) n X.toSmoothSite := rfl
 
 end MotivicTest.PublicAPI

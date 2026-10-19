@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.LengthEulerChain
-import Motivic.Algebra.Homology.LengthEulerSingle
+import Motivic.Aglib.Algebra.Homology.LengthEuler.Chain
+import Motivic.Aglib.Algebra.Homology.LengthEuler.Single
 
 /-!
 # Consumers of genuine finite-length homology Euler characteristics
@@ -16,7 +16,7 @@ on a residue module over a general commutative ring. The residue module is
 not assumed free, and the coefficient ring is not assumed to be a field.
 -/
 
-open CategoryTheory HomologicalComplex Motivic.LengthEuler
+open CategoryTheory HomologicalComplex _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u v
 

@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RightExteriorPairStalks
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.RightPairStalks
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual arbitrary-field right exterior stalk consumers
@@ -26,6 +27,10 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Intersection (closedIntersectionSupportedStalkTor)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceSecondAmbientInclusion
+  correspondenceTripleInclusion)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -85,7 +90,7 @@ theorem actualOriginalPairGeneric (w : F.rightIntermediateSupportProduct G H)
 fiber, rather than replacing its possibly nonreduced length by one. -/
 theorem actualRightSupportedMultiplicity (w : F.rightIntermediateSupportProduct G H) (n : ℕ) :
     Module.length ((F.rightIntermediateSupportProduct G H).presheaf.stalk w)
-        (Intersection.closedIntersectionSupportedStalkTor
+        (closedIntersectionSupportedStalkTor
           (correspondenceSecondAmbientInclusion X.hom Y.hom Z.hom W.hom)
           (F.tripleSupportProductInclusion G H)
           (F.rightIntermediateSupportInclusion G H) (F.rightIntermediateToTripleSupport G H)

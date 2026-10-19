@@ -23,7 +23,7 @@ public import Mathlib.Tactic.Linter.TextBased
 
 @[expose] public noncomputable section
 
-open MvPolynomial
+open _root_.MvPolynomial
 
 namespace MotivicTest.LargePrimeFullTupleParameters
 

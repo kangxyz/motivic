@@ -5,14 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalPolynomialNormPrimeInduction
-public import Motivic.Cohomology.Motivic.DiagonalRestrictionSylow
+public import Motivic.Cohomology.Diagonal.PolynomialNormPrimeInduction
+public import Motivic.Cohomology.Diagonal.RestrictionSylow
 public import Lean.Util.CollectAxioms
 
 /-! The genuine prime comparison step retains its strict lower-degree premise. -/
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Motivic
-open PresheafWithTransfers DiagonalMilnorSymbol DiagonalCorestriction
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
+open DiagonalMilnorSymbol
+open DiagonalCorestriction
 open MilnorK.PolynomialResidue MilnorK.PolynomialNorm
 open DiagonalPolynomialNormInduction
 universe u

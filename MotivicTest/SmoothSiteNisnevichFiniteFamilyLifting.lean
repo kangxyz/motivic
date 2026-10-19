@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichFiniteFamilyLifting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.FiniteFamilyLifting
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 
@@ -20,7 +20,8 @@ support, and disconnected finite support.
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 universe u v
 
@@ -125,7 +126,8 @@ theorem disconnected_family {R : Type u} [CommRing R] {I : Type v}
 
 open Lean in
 run_cmd do
-  for name in #[``SmoothSite.exists_nisnevich_family_lift_of_isFinite,
+  for name in
+      #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_nisnevich_family_lift_of_isFinite,
       ``field_family_lift, ``empty_family_gives_zero_partition,
       ``nonreduced_infinite_family, ``disconnected_family] do
     for dependency in ← collectAxioms name do

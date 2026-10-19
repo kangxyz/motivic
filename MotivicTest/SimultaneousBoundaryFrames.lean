@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SimultaneousBoundaryFrames
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.SimultaneousBoundaryFrames
 /-! # Same-base constructed graph and all-degree full boundary frames -/
 set_option linter.hashCommand false
 public section

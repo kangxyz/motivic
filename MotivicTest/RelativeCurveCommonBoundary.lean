@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CommonBoundaryCoordinate
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.BoundaryCoordinate
 /-! # Literal relative whole-boundary agreement on the actual source-change products -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

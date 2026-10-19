@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.SectionDualDivisor
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Pencils.SectionDualDivisor
 
 /-! # Actual global sections give whole finite flat zero schemes -/
 noncomputable section

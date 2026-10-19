@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeCycle
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.Cycle
 
 /-!
 # Consumers of actual signed field change
@@ -21,12 +21,15 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open scoped BigOperators
 
 universe u
 
 namespace MotivicTest.FieldBaseChangeCycle
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y : SmoothSite.overField k} (A : FiniteCorrespondenceGenerator X.hom Y.hom)

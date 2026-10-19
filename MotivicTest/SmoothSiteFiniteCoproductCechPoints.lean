@@ -5,21 +5,25 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteFiniteCoproductCechPoints
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.FiniteCoproductCechPoints
 public import Lean.Util.CollectAxioms
 
 /-! Actual finite-total Čech points lift to designated original components. -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic.SmoothSite
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
 namespace MotivicTest.SmoothSiteFiniteCoproductCechPoints
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
-variable {S : Scheme.{u}} {Y : Motivic.SmoothSite S} {n : ℕ}
-  {V : Fin n → Motivic.SmoothSite S} (q : ∀ i, V i ⟶ Y) [∀ i, Etale (q i).left]
+variable {S : Scheme.{u}} {Y : Scheme.SmoothSite S} {n : ℕ}
+  {V : Fin n → Scheme.SmoothSite S} (q : ∀ i, V i ⟶ Y) [∀ i, Etale (q i).left]
 
 /-- The component-pair comparison is definitionally the native scheme pullback map. -/
 theorem actual_pair_map_is_literal (i j : Fin n) :
@@ -50,9 +54,11 @@ theorem actual_designated_point_lift (i j : Fin n)
 open Lean in
 run_cmd do
   for name in #[``actual_pair_map_is_literal, ``actual_designated_point_lift,
-      ``finiteCoproductCechMap_isOpenImmersion, ``finiteCoproductCechMap_etale,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.finiteCoproductCechMap_isOpenImmersion,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.finiteCoproductCechMap_etale,
       ``finiteCoproductCechMap_residueFieldMap_isIso,
-      ``finiteCoproductCechMap_fst, ``finiteCoproductCechMap_snd] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.finiteCoproductCechMap_fst,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.finiteCoproductCechMap_snd] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

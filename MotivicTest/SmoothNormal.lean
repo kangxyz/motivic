@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.Smooth.Normal
+public import Motivic.Aglib.RingTheory.Smooth.Normal
 public import Mathlib.RingTheory.Etale.Pi
 
 /-!
@@ -22,6 +22,7 @@ consumers requires a global domain hypothesis.
 universe u v
 
 namespace Motivic.MotivicTest.SmoothNormal
+open _root_.Algebra.Smooth
 
 example (R : Type u) (A : Type v) [CommRing R] [IsDomain R] [IsIntegrallyClosed R]
     [CommRing A] [Algebra R A] [Algebra.Smooth R A] (q : Ideal A) [q.IsPrime] :

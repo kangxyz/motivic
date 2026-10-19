@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Graph.Transversality
+public import Motivic.Aglib.AlgebraicGeometry.Graph.Transversality
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -25,13 +25,17 @@ open RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.SmoothGraph
+open _root_.AlgebraicGeometry.Scheme
 
 /-- The actual correspondence graph has a regular stalk kernel for an arbitrary source. -/
 theorem arbitrary_source_kernel {X Y S : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ S)
     [Smooth g] (x : X) :
-    ∃ rs : List ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x)),
-      IsRegular ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x)) rs ∧
-      RingHom.ker ((correspondenceGraph f g).stalkMap x).hom = Ideal.ofList rs :=
+    ∃ rs : List ((pullback (f ≫ g) g).presheaf.stalk
+      (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph f g x)),
+      IsRegular ((pullback (f ≫ g) g).presheaf.stalk
+        (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph f g x)) rs ∧
+      RingHom.ker ((_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph f g).stalkMap x).hom
+        = Ideal.ofList rs :=
   Graph.exists_regular_kernel_of_smooth f g x
 
 /-- The smooth graph theorem applies to a genuinely nonreduced source. -/
@@ -41,7 +45,8 @@ theorem nonreduced_source_common_list {Y S : Scheme}
     ∃ rs : List ((pullback g g).presheaf.stalk (pullback.diagonal g (f x))),
       IsRegular ((pullback g g).presheaf.stalk (pullback.diagonal g (f x))) rs ∧
       RingHom.ker ((pullback.diagonal g).stalkMap (f x)).hom = Ideal.ofList rs ∧
-      IsRegular ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x))
+      IsRegular ((pullback (f ≫ g) g).presheaf.stalk
+        (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph f g x))
         (rs.map (Graph.diagonalStalkMap f g x).hom) :=
   Graph.exists_common_regular_list_of_smooth f g x
 
@@ -52,7 +57,8 @@ theorem disconnected_source_common_list {Y S : Scheme}
     ∃ rs : List ((pullback g g).presheaf.stalk (pullback.diagonal g (f x))),
       IsRegular ((pullback g g).presheaf.stalk (pullback.diagonal g (f x))) rs ∧
       RingHom.ker ((pullback.diagonal g).stalkMap (f x)).hom = Ideal.ofList rs ∧
-      IsRegular ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x))
+      IsRegular ((pullback (f ≫ g) g).presheaf.stalk
+        (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph f g x))
         (rs.map (Graph.diagonalStalkMap f g x).hom) :=
   Graph.exists_common_regular_list_of_smooth f g x
 
@@ -63,13 +69,16 @@ theorem original_diagonal_list_action {X Y S : Scheme.{u}} (f : X ⟶ Y) (g : Y 
     ∃ rs : List ((pullback g g).presheaf.stalk (pullback.diagonal g (f x))),
       IsRegular ((pullback g g).presheaf.stalk (pullback.diagonal g (f x))) rs ∧
       RingHom.ker ((pullback.diagonal g).stalkMap (f x)).hom = Ideal.ofList rs ∧
-      IsWeaklyRegular ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x)) rs := by
+      IsWeaklyRegular ((pullback (f ≫ g) g).presheaf.stalk
+        (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph f g x)) rs := by
   let := (Graph.diagonalStalkMap f g x).hom.toAlgebra
   obtain ⟨rs, hrs, hker, hreg⟩ := Graph.exists_common_regular_list_of_smooth f g x
   refine ⟨rs, hrs, hker, ?_⟩
   exact (isWeaklyRegular_map_algebraMap_iff
-    ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x))
-    ((pullback (f ≫ g) g).presheaf.stalk (correspondenceGraph f g x)) rs).mp
+    ((pullback (f ≫ g) g).presheaf.stalk (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph
+      f g x))
+    ((pullback (f ≫ g) g).presheaf.stalk (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph
+      f g x)) rs).mp
       hreg.toIsWeaklyRegular
 
 end Motivic.MotivicTest.SmoothGraph

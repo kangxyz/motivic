@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.IdealSheaf.StalkKernel
-public import Motivic.AlgebraicGeometry.IdealSheaf.StalkPullback
+public import Motivic.Aglib.AlgebraicGeometry.IdealSheaf.StalkKernel
+public import Motivic.Aglib.AlgebraicGeometry.IdealSheaf.StalkPullback
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 
 /-!

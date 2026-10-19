@@ -1,0 +1,558 @@
+{
+  "schema_version": 1,
+  "archive_sha256": "04d26acb4fb33d75751332b76488715cb7c7248aa0d77d339e89dddf5a605a05",
+  "admission": {
+    "status": "Frozen3275source layout; final hash/producer/lint/private-audit acceptance pending",
+    "current_kernel_receipts": [],
+    "independent_mathematical_acceptance": "not assigned by this documentation packet",
+    "derived_conditional_strict_boundary": "Public corollary extracted from existing new test, same explicit ModelWholeCylinderLifting and ordinary perfect-field/u+1/HasExt projection signature; test remains consumer. No unconditional theorem.",
+    "initial_source_scope": {
+      "destinations": 262,
+      "new": 255,
+      "existing": 7,
+      "raw_new_sources": 245,
+      "prior_origins": 9,
+      "derived_public_modules": 1
+    },
+    "current_source_scope": {
+      "destinations": 264,
+      "new": 257,
+      "existing": 7,
+      "raw_new_sources": 245,
+      "prior_origins": 9,
+      "derived_modules": 3
+    }
+  },
+  "supplied_historical_reduction": {
+    "status": "PASS",
+    "scope": [
+      "Motivic/AlgebraicGeometry/PresheavesWithTransfers/HomotopyInvariantImage.lean",
+      "Motivic/Cohomology/A1/SheafificationDenseDetection.lean",
+      "Motivic/Cohomology/A1/SheafificationCylinderCriterion.lean",
+      "MotivicTest/HIPresheafSheafificationReduction.lean"
+    ],
+    "accepted_mathematical_scope": "Actual-unit image HI/separatedness and canonical sheafification dense detection; HI and strict conclusions conditional on ModelWholeCylinderLifting. No lifting producer or unconditional full theorem.",
+    "exact_origin_declarations": 62,
+    "test_assertions": 11,
+    "scope_completed_utc": "2026-10-18T11:07:53Z",
+    "terminal_receipt": ".lake/verification/hi-presheaf-reduction-final/build-1/graph-build.json",
+    "terminal_receipt_sha256": "4b0ddf815111ba6fc3a8486da42e5295c5a28e31baeac71f6f7a766a29aac4fa"
+  },
+  "supplied_latest_production": {
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/BoundaryFunctionalNormCommuting.lean": {
+      "receipt": ".lake/verification/boundary-functional-norm-commuting-production-1/graph-build.json",
+      "receipt_timestamp": 1792348410.863262,
+      "receipt_utc": "2026-10-18T18:33:30.863262+00:00",
+      "snapshot_sha256": "9f74a9653a531bae7afe5f19ac62d55b75015c892901ccf3e2f3adb79e3bd7a2",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    },
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairMarkedNormDifference.lean": {
+      "receipt": ".lake/verification/original-pair-commuting-chain-production-2/cached-check.json",
+      "receipt_timestamp": 1792348517.0413291,
+      "receipt_utc": "2026-10-18T18:35:17.041329+00:00",
+      "snapshot_sha256": "7e3536056eafca5e6e360a482e854a2b710c9025d2c55bd46def9db06fee230f",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    },
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairNormDifference.lean": {
+      "receipt": ".lake/verification/original-pair-commuting-chain-production-2/cached-check.json",
+      "receipt_timestamp": 1792348517.0413291,
+      "receipt_utc": "2026-10-18T18:35:17.041329+00:00",
+      "snapshot_sha256": "c1679916d84789762857388efe74e73f2621ac0bbfc2976603e8b78f0c0faedd",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    },
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/OriginalPairNormAction.lean": {
+      "receipt": ".lake/verification/original-pair-commuting-chain-production-2/cached-check.json",
+      "receipt_timestamp": 1792348517.0413291,
+      "receipt_utc": "2026-10-18T18:35:17.041329+00:00",
+      "snapshot_sha256": "74d78cc27e3d648beb82dce96fce9901a96a536ec11e4538cb9b34813516c639",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    },
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/RelativeCurveLambdaDictionary.lean": {
+      "receipt": ".lake/verification/original-pair-commuting-chain-production-2/cached-check.json",
+      "receipt_timestamp": 1792348517.0413291,
+      "receipt_utc": "2026-10-18T18:35:17.041329+00:00",
+      "snapshot_sha256": "50813723bb4859f097aac5a027f9541e6bf44ef0ed996c7468371d1f144569cf",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    },
+    "Motivic/AlgebraicGeometry/PresheavesWithTransfers/BoundaryFunctionalNormSupport.lean": {
+      "receipt": ".lake/verification/boundary-functional-norm-support-production-3/graph-build.json",
+      "receipt_timestamp": 1792348270.3456485,
+      "receipt_utc": "2026-10-18T18:31:10.345649+00:00",
+      "snapshot_sha256": "ae98dcda692f145c11c03c2891f4f8472a4238f826faf063678a91a09599d315",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    },
+    "Motivic/Aglib/AlgebraicGeometry/RelativeCurve/SectionPairNormBoundaryEquality.lean": {
+      "receipt": ".lake/verification/section-pair-norm-boundary-equality-production-4/graph-build.json",
+      "receipt_timestamp": 1792348306.6075766,
+      "receipt_utc": "2026-10-18T18:31:46.607577+00:00",
+      "snapshot_sha256": "13ffc929f58b5376b7e4580eea6d9949ccf8cc37a65006ed13e8ee6cadeaf530",
+      "source_touched_after_receipt": false,
+      "scope": "Successful selected-target production at receipt time only. A source touched later is NOT validated by this receipt for current snapshot bytes. No independent joint-final audit."
+    }
+  },
+  "archive_hash_membership": [
+    {
+      "label": "SOURCE_SHA256",
+      "entries": 4945,
+      "missing": [],
+      "mismatches": []
+    },
+    {
+      "label": "verified_source_hashes",
+      "entries": 318,
+      "missing": [],
+      "mismatches": []
+    }
+  ],
+  "source_touched_flags_boundary": "Flags are supplied snapshot metadata; false does not itself establish integrated-source validation. Records retain their own timestamps and raw hashes.",
+  "current_validation": {
+    "local_closure": {
+      "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/validation-final/final-local-coverage-closure.json",
+      "sha256": "49216837bd931745b039d1d520415e57352c59d192cef07ede06bf390d9b6952",
+      "source_tree_sha256": "9d75c53ebf0c20fe676b636c28fe0ff361760aa8908f033b015f5ac88ae5a3a8",
+      "production": "PASS retained compatible",
+      "production_maximal_targets": 135,
+      "production_closure": 2289,
+      "unchanged_production_roots_retained": 3,
+      "declaration_origins": 919,
+      "default_linters": 15,
+      "declaration_coverage": "Original906full15/private/generated/kernel/std3 audit findings repaired;69clean of72 retained where compatible; latest8 full15 had7clean and one unusedNormbinder, repaired and freshlycheckedNorm1. Remaining compatible14checks retained; finalSimpNF911fresh+7sameSimpSet+Norm1 covers919.",
+      "latest8_status_boundary": "exit1 honestlyretained as7clean plus soleNormfinding; never relabeled entire8PASS",
+      "Graph": {
+        "serialized_declarations": 0,
+        "declaration_lint": "N/A, not PASS",
+        "consumer": "Actual samefullhyp nativeexample +original6providerstd3PASS"
+      },
+      "source_style": "PASS applicable by changed-file receipts and unchanged-hash retention; not3275freshchecks",
+      "client": {
+        "result": "PASS retained compatible",
+        "core_sources": 630,
+        "producer_fallback": false
+      },
+      "documentation": {
+        "four_controls": "Actual docs04 PASS, retained compatible on current inputs",
+        "Milnor_fence4": "UpstreamMilnor original fence4 retained docs02PASS unchangedpin/source; no projectsource dependency"
+      },
+      "tool_fixture_cases": {
+        "repository": 12,
+        "generator": 10,
+        "CI_selector": 20,
+        "status": "PASS retained by actualhashes"
+      },
+      "retention_basis": {
+        "previous_source_tree_sha256": "4ed97c1ab576d452e89a67d8c17b05a6ccc4e9a77a5e864cfeb08843bed2698f",
+        "source_delta": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/adoption/post-repair-19/repair.json",
+          "sha256": "9dc8e03b09d4c1147c478faefe7e68aafc52042b7eca31f07a632c7b6fd9d088"
+        },
+        "facts": "59 test files only; zero production/config/pin/client/doc changes. All local production/declaration/client/doc input closures retain their previously guarded source basis.",
+        "later_test_only_delta": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/adoption/post-repair-20/repair.json",
+          "sha256": "c5527b6a0218cbd273af2b121873fd7a8dc6162653347862e16369f6cbe672ec"
+        },
+        "final_test_only_delta": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/adoption/post-repair-21/repair.json",
+          "sha256": "5c647a5e71903ce010eb6dd2ba819d0bbf12ddb5019ed19eeb8d9485e6ce8546"
+        },
+        "last_test_only_delta": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/adoption/post-repair-22/repair.json",
+          "sha256": "bd95baf5b95d21a42d8749f72e968329855ab4291429130553180e3ca9e3e864"
+        }
+      },
+      "latest_source_style": {
+        "result": "PASS applicable by changed-file receipts and unchanged-hash retention; not3275freshchecks",
+        "latest59": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/lint-now/source-20/receipt.json",
+          "sha256": "8ac19a53ac349b23d10037b467889e6adcb52a2c3823d79c28ef5ab6e2a21674"
+        },
+        "previous1": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/lint-now/source-19/receipt.json",
+          "sha256": "97e2c04b1e8e080cde52ba62e2abc369443d3a17c140035b78ac04d8e982fb93"
+        },
+        "history": "Priorchanged-source/intake/baselineTextBased+naming passes retained by actual unchangedfilehashes; compiler-integratedlinters keptenabled",
+        "latest9": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/lint-now/source-21/receipt.json",
+          "sha256": "11c4e89717f68e4e0cc32dec59aeed767d9a97eb1589d0597beef2e6dae0f9fa"
+        },
+        "latest13": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/lint-now/source-22/receipt.json",
+          "sha256": "f9a76e4a16f3af57d0e00b42c859e7677e1d2cf4828fc01051b88c3c49aa5b1a"
+        },
+        "last1": {
+          "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/incoming-1836/lint-now/source-23/receipt.json",
+          "sha256": "5f1d72642b8196fa37068fbc88b8bfefd77dd6b98e4c4865e9878d1475475978"
+        }
+      },
+      "remote_final_coverage": {
+        "prior19": "PASS separately retained by selected124guards",
+        "remaining700": {
+          "result": "PASS actualnative+matchingkeyretention",
+          "affected_tests": 956,
+          "additional_prerequisite_tests": 3,
+          "total_checked_or_retained_test_modules": 959,
+          "closure940": "934retained+6finalcompiledPASS",
+          "coverage_record": {
+            "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-final-coverage.json",
+            "sha256": "07951e37897895f15a6d6559ac3d4ab5bcb915e8ce1be2bfc6a9eb5a81f1a5ca",
+            "previous_metadata_sha256": "1dffb2b11c1fe17994486a12c2132c1ac1f8c73d8e93d6e4b699849c787a109e"
+          },
+          "local_cache_import": {
+            "status": "PASS",
+            "official_archives": 959,
+            "mapping_sha256": "4ea2e6f1475c3ecf5719a8926fccb42ba1b3bcc7972a12b1fed467a54d1e9354",
+            "completion": {
+              "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/cache-return-current-9d75c53/local-formal-import/completion.json",
+              "sha256": "2ea7fc7c6fb5201550e9c5e7e9c27099f5654d7ad43e52c12804d1f2db861a63"
+            },
+            "minimal_acceptance": "Three maximal targets of final six-test closure --no-build --rehash exit0, zero source compilations; no959-proofreplay claim",
+            "input_guard": "2985selected sources +3configs unchangedbefore/after"
+          }
+        }
+      }
+    },
+    "original_scope": {
+      "declaring_origins": 906,
+      "statement_only_Graph": 1,
+      "selected_origins": 907,
+      "additional_affected_origins": 13,
+      "current_selected_origins": 920
+    },
+    "public_name_membership": {
+      "canonical_public_provider_obligations": 5372,
+      "retained_659slice": 3873,
+      "fresh_247slice": 1499,
+      "membership_failures": 0,
+      "actual_private_local_environment_identity_rows": 33,
+      "identity_failures": 0,
+      "public_named_local_instances": 7,
+      "boundary": "Earlier exact membership/env lookups retained by unchanged QName/definingmodule/localvisibility; not5372newlyrerunon4ed. Later changes have targeted origin rechecks."
+    },
+    "portable_transport": {
+      "status": "PASS",
+      "raw_Darwin_parts": 6,
+      "Linux_consumer": "meta import-all, typed use, #eval",
+      "consumer_exit": 0,
+      "producer_compilation": 0,
+      "official_unstage_and_no_build_exits": [
+        0,
+        0
+      ],
+      "preexisting_mapping_and_output": false,
+      "official_producer_archives": 2289,
+      "official_payload_bytes": 44015996,
+      "outer_source_metadata_archive_bytes": 51404800,
+      "extra_archives": {
+        "actually_compatible_test_archives": 474,
+        "foreign_MinimalPrimes": 1,
+        "outer_bytes": 4536320
+      },
+      "boundary": "Compatible closed archives admitted individually; no claim of all625failed-package01 tests passing. a086 producer basis and current4ed differ only by Norm outside700closure.",
+      "phase": "Initial Darwin-to-Linux probe and producer17 export before later test repairs; distinct from final959testcache return",
+      "source_identity_boundary": "The initial producer export retains its a086 source basis. Optional Norm change is outside actual700closure; subsequent test-only epochs are covered by their own actual final remote receipts and returned archives."
+    },
+    "remote_first_attempt": {
+      "status": "FAILED",
+      "test_closure": 940,
+      "official_unpacked": 476,
+      "new_compiled_pass": 388,
+      "compiled_fail": 59,
+      "unreached": 17,
+      "successful_current_bound_outputs_retained": 864,
+      "production_cache_only_preflight": {
+        "modules": 2025,
+        "status": "PASS",
+        "production_compilers": 0
+      },
+      "boundary": "First attempt only; no final700PASS or returned-cache claim. Sourcea086, Norm-only4ed difference outside closure."
+    },
+    "remote_tests": {
+      "status": "PASS actual native checks and input-compatible retention",
+      "current_source_tree_sha256": "9d75c53ebf0c20fe676b636c28fe0ff361760aa8908f033b015f5ac88ae5a3a8",
+      "native_source_digest": "4fefe026bec27f6cf09cfbcfde4addf7938e05bd019e5fb8730eb07eb8006dc2",
+      "original_maximal_targets": 700,
+      "selected_source_closure": 2965,
+      "production_cache_only_closure": 2025,
+      "test_closure": 940,
+      "retained_successful_tests": 934,
+      "final_fresh_successes": 6,
+      "prior_separately_current_compatible_affected_tests": 19,
+      "affected_test_modules_total": 956,
+      "unchanged_test_prerequisites": 3,
+      "covered_test_modules_total": 959,
+      "receipt": {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-final-coverage.json",
+        "sha256": "07951e37897895f15a6d6559ac3d4ab5bcb915e8ce1be2bfc6a9eb5a81f1a5ca",
+        "previous_metadata_sha256": "655212086c9e9142cf1a223aa9771d55257716a8ee8d126c64632e74e876a3b4"
+      },
+      "boundary": "Three earlier failed phases are separate; no claim that the initial700run passed. Optional Norm production change lies outside actual remote closure."
+    },
+    "receipt_bindings": [
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/darwin-portable-probe/linux-result/receipt.json",
+        "sha256": "af103eb2fbd32672822588fa4c96333be8ab180bf8e672c47ee713217d13d942"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/darwin-portable-probe/linux-result/consumer.log",
+        "sha256": "c19156210d0c82791e614e73f8accff723f84811be31ab03f0a54a99bb382e65"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/darwin-portable-probe/linux-result/native-cache-receipt.json",
+        "sha256": "f5e14742357802cd0a91e447eaca1f0b90cc4513afd53fc8fa600376c78324dd"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/darwin-portable-probe/linux-result/download-manifest.json",
+        "sha256": "e0ab8254d6577a41f2a7759595468412a2daa0b6c2667bd418fa2f58207bc983"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-first-run-result.json",
+        "sha256": "85e14a16b1fcd98698416d5c862a33e43262a37381feb1817cbb2e3ce7960a93"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-first-run-failures.json",
+        "sha256": "248d168b19cbc418aeb87e55d71af90013b00b169f86e4a08ee8eb23381135bc"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-retry19-result.json",
+        "sha256": "c9b0c1875223966d980e00ac6243630cf484b78c5edf7e94aef00a20b18dd289"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-retry19-client-exit.json",
+        "sha256": "3d8be0552775f881656df1a30173bbabd95efb965bee23b4ab06cd000bae9c91"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-retry19-tail-probe-reconciliation.json",
+        "sha256": "1af93dad983e092b178700b2c7647d7a3d9e08c3006b4898a6e3a487008a5374"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/runs/remote-7b625f84dd294487b1923a6188605e24/receipt.json",
+        "sha256": "d20913b604088530f046af29a42cf33a6080b67d5f58badce21be8a9ae2abcdb"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/remaining700-retry21-result.json",
+        "sha256": "2afb5cb109cf7f46c66e309ea5d9c123a3cb25b6ca9f9e6f80f6ebe839e85598"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/runs/remote-184595380e394c3ca7e65754cbdedc5d/receipt.json",
+        "sha256": "1dfc7f78d71768a15435534f5c4e9e3bebadf4e1f7f177b023911d8b23956d68"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/cache-return-current-9d75c53/download-receipt.json",
+        "sha256": "475ad50a8efd5f01b0656de3a9392a1e64e0f91f80e0352321ea78eea151cb62"
+      },
+      {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/cache-return-current-9d75c53/download/receipt.json",
+        "sha256": "e5147a9ec79ede40c117aff2441bc97774c2ac608d4473725e41e171cd8942e1"
+      }
+    ],
+    "documentation": "No links/fences changed in this metadata-only update; existing local closure receipt preserves actual versus compatible-retained controls.",
+    "root_owned_overall_summary": "docs/VERIFICATION.md is maintained separately by the principal.",
+    "remote_second_attempt": {
+      "status": "FAILED naturally, no stop",
+      "new_compiled_pass": 53,
+      "compiled_fail": 9,
+      "unreached": 14,
+      "successful_current_bound_outputs_retained": 917,
+      "scope_test_closure": 940,
+      "source_phase": "post-repair19 a4b2a2; next9fix adopted as cf98",
+      "receipt_binding": "Exact retry19 result, client-exit and natural-terminal runtime receipt identities below; no signals sent."
+    },
+    "post_retry_repairs": {
+      "post_repair20": {
+        "test_files": 9,
+        "source21": "PASS9"
+      },
+      "post_repair21": {
+        "preventive_blocked_test_files": 13,
+        "source22": "PASS13"
+      },
+      "boundary": "No production/client/docs/config inputs changed; final local closure artifact updated by central and will be rebound at final source closure."
+    },
+    "remote_third_attempt": {
+      "status": "FAILED",
+      "new_compiled_pass": 17,
+      "compiled_fail": 1,
+      "unreached": 5,
+      "successful_current_bound_outputs_retained": 934,
+      "scope_test_closure": 940,
+      "source_phase": "30463a, final next test-only source epoch pending",
+      "receipt_binding": "Exact retry21 result and authoritative natural-terminal receipt identities below."
+    },
+    "cache_return": {
+      "status": "PASS official export/stage/download and formal LOCAL unstage/minimal acceptance",
+      "project_test_archives": 959,
+      "foreign_producer_artifacts": 0,
+      "native_object_library_files": 0,
+      "outer_archive_bytes": 10997760,
+      "outer_archive_sha256": "bb7afab0abb378234842dc3a6394408127587f68fbd8761cd86a9b05953d6435",
+      "selected_mapping_sha256": "4ea2e6f1475c3ecf5719a8926fccb42ba1b3bcc7972a12b1fed467a54d1e9354",
+      "project_source_basis": "9d75c53ebf0c20fe676b636c28fe0ff361760aa8908f033b015f5ac88ae5a3a8",
+      "native_source_digest": "4fefe026bec27f6cf09cfbcfde4addf7938e05bd019e5fb8730eb07eb8006dc2",
+      "source_union": 2985,
+      "pins": 3,
+      "official_no_build_export_exit": 0,
+      "official_stage_exit": 0,
+      "download_ssh_exit": 0,
+      "all_download_SHA_verified": true,
+      "ltar_payload_bytes": 8653939,
+      "selected_mapping_bytes": 43168,
+      "remote_all959_no_build_cache_acceptance_exit": 0,
+      "remote_cache_acceptance_is_new_frontend_build": false,
+      "local_formal_acceptance": {
+        "path": "/private/tmp/r5-investigations/motivic-layout-landing-20261018/remote-validation/cache-return-current-9d75c53/local-formal-import/completion.json",
+        "sha256": "2ea7fc7c6fb5201550e9c5e7e9c27099f5654d7ad43e52c12804d1f2db861a63",
+        "official_unstaged_archives": 959,
+        "minimal_maximal_targets": 3,
+        "minimal_closure": 6,
+        "no_build_rehash_exit": 0,
+        "source_compilations": 0,
+        "owned_groups_closed": true,
+        "source_pin_guards": "2985 source files +3 pins before/after PASS"
+      }
+    },
+    "status": "PASS in the exact actual-checked and compatible-retained finite scopes recorded here",
+    "source_tree_sha256": "9d75c53ebf0c20fe676b636c28fe0ff361760aa8908f033b015f5ac88ae5a3a8",
+    "mathematical_boundary": "Kernel/lint/test and transport evidence is bounded by selected sources and actual receipt identities; it does not close the conditional whole-cylinder input or supply independent proof acceptance.",
+    "receipt_metadata_reconciliation": {
+      "reason": "The producer appended cache-return closure metadata to the coverage summary after the first documentation projection. Its source inputs, targets, native results and immutable run receipts are unchanged.",
+      "scope": "Only current coverage-summary references are refreshed. Previous metadata hashes are preserved alongside them; historical archive and phase records are unchanged.",
+      "frozen_coverage_sha256": "07951e37897895f15a6d6559ac3d4ab5bcb915e8ce1be2bfc6a9eb5a81f1a5ca"
+    }
+  },
+  "mathematical_boundary": {
+    "already_HI_NST_perfect_strict": "retained existing endpoint",
+    "arbitrary_original_HI_PST_sheafification": "OPEN",
+    "ModelWholeCylinderLifting": "explicit unprovided conditional input",
+    "support_sensitive_action": "preserves original zero support and actual commuting maps; separate parameter Cartesian hypotheses and geometric joins remain"
+  },
+  "archive_base": "901f2e6fdfc55d7cd8842f46db2c890ec07b25a1",
+  "integration_base_observed": "901f2e6fdfc55d7cd8842f46db2c890ec07b25a1",
+  "bounded_source_applicability": {
+    "report_sha256": "dafd474b1ef09d38c04c0138da9936a866090b92f929861c933a601910199b87",
+    "interfaces_sha256": "e46704f8ad34fc9be6044f4cb676183eb3bc49f7ef966478a1b57fe6eb42790d",
+    "scope": "Six targets plus20bounded dependencies; original actions/unit retained; conditional whole-cylinder and middle/action input boundary interpreted.",
+    "kind": "source-applicability only; not independent proof review, kernel PASS or established status",
+    "historical_test_exact_origin_scope": "Image,dense-detection,cylinder; does not audit the exact origins of MiddleLift or NormAction",
+    "no_lifting_supplier": "Exact-symbol search found no hL supplier or direct assembly/action caller under the inspected names; not a global nonexistence theorem."
+  },
+  "source_only_packet": {
+    "sha256": "267a862a495a51cec1a93ae2eb63696da72339da0e87eea83c59878c9390f43b",
+    "counts": {
+      "destinations": 262,
+      "new_sources": 255,
+      "existing_guarded_targets": 7,
+      "original_new245": 245,
+      "prior_required8generic_plus1host": 9,
+      "exact_five_fragment_relocations": 5,
+      "reviewed_code_deltas": 3,
+      "promoted_conditional_strict_production_module": 1
+    },
+    "ready_record_sha256": "30c03b3859574bf15afc28b7b3349102f9e613c9089cc69c736e5832792a1a9b",
+    "source_body_certificate_sha256": "90135e94bf663ff82275ae3f3ab51e4371038c6d20e14662a7f7bb1340ecd4eb",
+    "qname_provider_dictionary_sha256": "9aa495a7ac73d8daf0f0262eb20fc12a59166c2455368795716df83eac434cca",
+    "qname_provider_rows": 821,
+    "private_origin_helpers": 58,
+    "local_named_helpers": 12,
+    "private_origin_source_files": 41,
+    "boundary": "Source transport/graph/purity/body gates only; not Lean elaboration, independent proof review or current mathematical acceptance.",
+    "phase": "initial frozen262destination source-transport packet",
+    "origin_visibility_boundary": "The initial syntactic origin-enrollment counts below are not the compiled private/public split; current visibility is795public+26private, including7public named local instances."
+  },
+  "actual_source_adoption": {
+    "source_packet_sha256": "267a862a495a51cec1a93ae2eb63696da72339da0e87eea83c59878c9390f43b",
+    "adoption_record_sha256": "322c7433e4e041be57a9f57f95887f00a4a435033040f5f6cfe89d86d0d394dd",
+    "source_tree_sha256": "41883d86c1f86c772264747468bd5dc342c9e9f894fed21671d9372615d8b25d",
+    "maintained_Lean_files": 3273,
+    "changed_destinations": 262,
+    "new_sources": 255,
+    "current_source_updates": 7,
+    "boundary": "Coherent physical source adoption; not current native/lint/audit or independent proof acceptance.",
+    "phase": "initial3273source intake; not relabelled as repair3274"
+  },
+  "default_declaration_lint_findings": {
+    "inspected_origins": 14,
+    "finding": "Only two unused residual Module.Finite Q E/Module.Free Q E premises in marked norm interface",
+    "repair": "Source removes exactly those two binders; original R/S finite-free assumptions and maps retained",
+    "current_overall_verdict": "pending producer and matching current lint/audit receipts",
+    "phase": "Earlier14origin inspection and repair; not the final overall audit scope"
+  },
+  "recorded_source_reconciliations": [
+    {
+      "phase": "post-adoption coherent repair3274; not kernel acceptance",
+      "source_tree_sha256": "7ba2cd9d3bc37d37138508e3a3a68f0dd58a6e9dd16e84618559d7d50503bff6",
+      "previous_source_tree_sha256": "41883d86c1f86c772264747468bd5dc342c9e9f894fed21671d9372615d8b25d",
+      "maintained_Lean_files": 3274,
+      "production_files": 2289,
+      "test_files": 984,
+      "client_files": 1,
+      "source_scope": {
+        "destinations": 263,
+        "new": 256,
+        "existing": 7,
+        "raw_new_sources": 245,
+        "prior_origins": 9,
+        "derived_modules": 2
+      },
+      "repair_record_sha256": "da900c583b9c1cdf715c49fa3fcb3a60466e09bd1c07276b27a313b88033505f",
+      "source_snapshot_sha256": "45f7b08ec331fc013bef75e302b0aac2cfb4f3075c5f5a66dcd0edbecc6b4150",
+      "formatting_packet_sha256": "4f2ca9afef8d7072272b05f04dec18c3f4c4c09b4338464df4100bc59a013bda",
+      "formatting_boundary": "241formatting inputs; whitespace,23comment-metadata prefix/suffix changes,and finite controlled constant opens only; raw source identity retained",
+      "four_helper_provider": {
+        "path": "Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/IntegralComponents.lean",
+        "sha256": "695dd6bf494f10c7f67d71be1eb3aca77ec4bd5b5386e4fc45af87d1a3e16898"
+      },
+      "marked_norm_cleanup": {
+        "path": "Motivic/Aglib/RingTheory/Norm/FiniteFree/MarkedFiber.lean",
+        "sha256": "d93a79e29def87d573519a22146463226e39617a3fea1a795e44820c65c69d9b",
+        "removed_only": [
+          "Module.Finite Q E",
+          "Module.Free Q E"
+        ],
+        "retained": "Original R/S finite-free premises, proof/name/maps unchanged; no residual finite/free premise is inferred."
+      }
+    }
+  ],
+  "recorded_source_text_naming": {
+    "status": "PASS for243actual changed sources only",
+    "source_tree_sha256": "7ba2cd9d3bc37d37138508e3a3a68f0dd58a6e9dd16e84618559d7d50503bff6",
+    "receipt_sha256": "a6cb834ab2907ace1ce18d60fd6bccb1ad4ba8b9c51220e273456d675b7e2d86",
+    "input_bindings_sha256": "7f3e7cf1a608f8555ad3eadb97299f1873fcd3ba64e08a1c0c42ae12ea78b45b",
+    "header_line_source_check_sha256": "5f5638a35ed3f2a23bb2d7f589aaa4647c7cf0ca4c0aeb11ab90097bcbc1abaa",
+    "exit_code": 0,
+    "guard_failure": null,
+    "owned_group_gone": true,
+    "boundary": "Source-text/naming and supplemental pinned source rules only; not current kernel/default-declaration-lint/private-audit acceptance.",
+    "phase": "Recorded243source check at repair3274; not promoted to final-current coverage"
+  },
+  "current_structure": {
+    "status": "Frozen final source layout and byte identity",
+    "maintained_Lean_files": 3275,
+    "production_files": 2290,
+    "test_files": 984,
+    "client_files": 1,
+    "source_scope": {
+      "destinations": 264,
+      "new": 257,
+      "existing": 7,
+      "raw_new_sources": 245,
+      "prior_origins": 9,
+      "derived_modules": 3
+    },
+    "source_tree_sha256": "9d75c53ebf0c20fe676b636c28fe0ff361760aa8908f033b015f5ac88ae5a3a8",
+    "source_hash_binding": "Actual final workingtree source bytes; historical snapshots remain separately labelled.",
+    "verification_results": "Explicit checked/retained/transported scopes in CHECKS.json; no independent mathematical acceptance inferred."
+  },
+  "current_visibility": {
+    "incoming_public": 795,
+    "incoming_private": 26,
+    "incoming_total": 821,
+    "named_local_instance_public_constants": 7,
+    "public_name_check_scope": 5372,
+    "boundary": "Visibility and public-name coverage scope; named local instances are public constants. Validation outcomes have their own receipt bindings."
+  }
+}

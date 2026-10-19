@@ -5,15 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.SingularComplex
+public import Motivic.Transfers.SingularComplex.Presheaf
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of the actual singular complex of transfer presheaves -/
 
 @[expose] public noncomputable section
 
+open _root_.CategoryTheory.SingularComplex (presheafConstruction)
+open _root_.CategoryTheory.SingularComplex.Indexing (singularDegree)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 open scoped Simplicial
 
 universe v u
@@ -82,19 +84,19 @@ example {P Q : PresheafWithTransfers.{v} k} (η : P ⟶ Q) :
     ((singularComplexFunctor ⋙ (toPresheaf k).mapHomologicalComplex
       (ComplexShape.down ℕ)).map η) ≫ (singularComplexUnderlyingIso Q).hom =
       (singularComplexUnderlyingIso P).hom ≫
-        ((toPresheaf k ⋙ SingularComplex.presheafConstruction
-          (AlgebraicSimplex.cosimplicialSmoothSite k)).map η) :=
+        ((toPresheaf k ⋙ presheafConstruction
+          (cosimplicialSmoothSite k)).map η) :=
   singularComplexUnderlyingNatIso.hom.naturality η
 
 /-- The odd sign cannot be dropped in weight one and chain degree one. -/
 theorem weightOne_odd_sign (P : PresheafWithTransfers.{v} k) :
     (singularCochainShiftIso P 1).hom.f 0 =
       (-1 : ℤ) • ((singularCochainXIso P 1 1).hom ≫ (singularShiftedCochainXIso P 1 1).inv) := by
-  simpa [Indexing.singularDegree] using
+  simpa [singularDegree] using
     singularCochainShiftIso_hom_f P 1 1
 
 example (P : PresheafWithTransfers.{v} k) (r : ℕ) :
-    (singularCochainShiftIso P 2).hom.f (Indexing.singularDegree 2 r) =
+    (singularCochainShiftIso P 2).hom.f (singularDegree 2 r) =
       (singularCochainXIso P 2 r).hom ≫ (singularShiftedCochainXIso P 2 r).inv :=
   singularCochainShiftIso_two_hom_f P r
 

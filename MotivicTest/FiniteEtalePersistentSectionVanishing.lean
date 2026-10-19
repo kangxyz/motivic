@@ -5,20 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtalePersistentSectionVanishing
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.Persistent.SectionVanishing
 import Lean
 
 /-! # Arbitrary original small-Nis section detection and transitive trust audit -/
 
 public noncomputable section
 open CategoryTheory AlgebraicGeometry Opposite Topology
-open Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 universe u
 
 /-- Direct consumer: the coefficient sheaf is genuinely arbitrary on the small site. -/
 theorem arbitrary_small_sheaf_persistent_detection
     {U X : Scheme.{u}} [IsNoetherian U] (g : U ⟶ X) (x : X)
-    (G : Sheaf (Motivic.FiniteEtaleSite.nisnevichTopology U) AddCommGrpCat.{u + 1})
+    (G : Sheaf (nisnevichTopology U) AddCommGrpCat.{u + 1})
     (s : G.obj.obj (op (baseObject U)))
     (hs : ∀ z : U, g z ⤳ x →
       (residuePoint U z).toPresheafFiber (baseObject U)
@@ -32,6 +32,7 @@ example {U X : Scheme.{u}} [IsNoetherian U] (g : U ⟶ X) (W : X.Opens) :
     (toBaseObject (openObject (g ⁻¹ᵁ W))).left = (g ⁻¹ᵁ W).ι := rfl
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType in
 run_cmd do
   for name in #[``arbitrary_small_sheaf_persistent_detection,
       ``exists_open_restriction_eq_zero_of_persistent_residue_germs,

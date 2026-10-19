@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ProductDiagonal
+public import Motivic.Aglib.AlgebraicGeometry.Products.Diagonal.Basic
 
 /-!
 # Consumers of the product-diagonal decomposition

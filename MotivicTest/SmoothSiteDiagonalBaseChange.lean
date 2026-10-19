@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteDiagonalBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.DiagonalBaseChange
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of the literal middle-diagonal square under arbitrary field change -/
@@ -16,7 +16,13 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Diagonal (baseChangeStalkMap)
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 open RingTheory.Sequence
 
 universe u
@@ -62,7 +68,7 @@ example : fieldBaseChangePairProjection φ Y ≫ pullback.snd Y.hom Y.hom =
 /-- Point alignment is the existing actual Cartesian stalk map, not a chosen ring map. -/
 theorem literal_stalk_map (y : ((fieldBaseChange φ).obj Y).left) :
     fieldBaseChangeDiagonalStalkMap φ Y y =
-      Diagonal.baseChangeStalkMap (fieldBaseChangeDiagonal_isPullback φ Y) y := rfl
+      baseChangeStalkMap (fieldBaseChangeDiagonal_isPullback φ Y) y := rfl
 
 example (y : ((fieldBaseChange φ).obj Y).left) :
     (fieldBaseChangeDiagonalStalkMap φ Y y).hom.Flat :=
@@ -88,14 +94,22 @@ end Fields
 
 open Lean in
 run_cmd do
-  for name in #[``baseChangePairProjection, ``baseChangePairProjection_fst,
-      ``baseChangePairProjection_snd, ``baseChangePairProjection_flat,
-      ``baseChangeProductIso_diagonal, ``baseChangeDiagonal_isPullback,
-      ``baseChangeDiagonalStalkMap, ``baseChangeDiagonal_regular_kernel,
-      ``fieldBaseChangePairProjection, ``fieldBaseChangePairProjection_fst,
-      ``fieldBaseChangePairProjection_snd, ``fieldBaseChangePairProjection_flat,
-      ``fieldBaseChangeDiagonal_isPullback, ``fieldBaseChangeDiagonalStalkMap,
-      ``fieldBaseChangeDiagonalStalkMap_flat, ``fieldBaseChangeDiagonal_regular_kernel,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangePairProjection,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangePairProjection_fst,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangePairProjection_snd,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangePairProjection_flat,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangeProductIso_diagonal,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangeDiagonal_isPullback,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangeDiagonalStalkMap,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseChangeDiagonal_regular_kernel,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangePairProjection,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangePairProjection_fst,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangePairProjection_snd,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangePairProjection_flat,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeDiagonal_isPullback,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeDiagonalStalkMap,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeDiagonalStalkMap_flat,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeDiagonal_regular_kernel,
       ``arbitrary_base_square, ``literal_pair_projection, ``arbitrary_field_square,
       ``literal_stalk_map, ``given_regular_list] do
     for dependency in ← collectAxioms name do

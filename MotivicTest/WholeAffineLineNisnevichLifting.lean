@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.WholeAffineLineNisnevichLifting
+public import Motivic.Cohomology.A1.LocalVanishing.AffineLine.NisnevichLifting
 import Lean
 
 /-! # Direct original-square consumer of whole affine-line base-only correction -/

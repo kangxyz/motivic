@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticOriginalCompactification
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Compactification.OriginalCompactification
 /-! Actual original affine open in its same quadratic proper closure. -/
 set_option linter.hashCommand false
 public noncomputable section

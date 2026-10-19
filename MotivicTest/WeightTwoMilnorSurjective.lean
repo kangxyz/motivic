@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoMilnorSurjective
+public import Motivic.Cohomology.WeightTwo.MilnorSurjective
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers in the original raw, derived, and finite weight-two groups -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open MilnorK.K2 WeightTwoMilnorSymbol WeightTwoMilnorSurjective
 

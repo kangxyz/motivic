@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NormalCharts
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Charts.FieldNormal
 public import Mathlib.RingTheory.KrullDimension.PID
 
 /-! # Codimension of actual nongeneric projective-line points -/

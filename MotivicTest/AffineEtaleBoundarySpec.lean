@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.AffineEtaleBoundarySpec
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.AffineBoundarySpec
 
 /-! The original affine-line base and full finite boundary are retained. -/
 @[expose] public noncomputable section

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.HypercohomologyNisnevich
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Hypercohomology
 
 /-! # Consumer of unbounded Nisnevich hypercohomology at a field -/
 
@@ -13,12 +13,12 @@ public import Motivic.Cohomology.HypercohomologyNisnevich
 
 universe u
 
-open CategoryTheory AlgebraicGeometry Motivic.Hypercohomology
+open CategoryTheory AlgebraicGeometry _root_.CategoryTheory.Sheaf.Hypercohomology
 
 attribute [local instance] HasDerivedCategory.standard in
 example (K : Type u) [Field K]
-    (M : CochainComplex (Sheaf Motivic.Nisnevich.topology AddCommGrpCat.{u + 1}) ℤ)
+    (M : CochainComplex (Sheaf Nisnevich.topology AddCommGrpCat.{u + 1}) ℤ)
     (p : ℤ) :
-    H.{_, u + 1, u, u + 1} Motivic.Nisnevich.topology M p (Spec (.of K)) ≃+
-      (((Motivic.Nisnevich.evaluation K).mapHomologicalComplex (.up ℤ)).obj M).homology p :=
+    H.{_, u + 1, u, u + 1} Nisnevich.topology M p (Spec (.of K)) ≃+
+      (((Nisnevich.evaluation K).mapHomologicalComplex (.up ℤ)).obj M).homology p :=
   nisnevichFieldEvaluationComparison K M p

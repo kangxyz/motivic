@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.DenseOpenRestrictionMono
-import all Motivic.Cohomology.A1.DenseOpenRestrictionMono
-import all Motivic.Aglib.AlgebraicGeometry.CartierComplementDense
+public import Motivic.Cohomology.A1.LocalVanishing.DenseOpen.RestrictionMono
+import all Motivic.Cohomology.A1.LocalVanishing.DenseOpen.RestrictionMono
+import all Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Complement.CartierComplementDense
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -21,7 +21,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace MotivicTest.DenseOpenRestrictionMono
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 
 /-- Native Cartier density requires no field, smoothness, or Noetherian premise. -/
 theorem actual_cartier_complement_dense {Z Y : Scheme.{u}} (i : Z ⟶ Y)
@@ -65,14 +66,16 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.CartierComplementDense,
-    `Motivic.Cohomology.A1.DenseOpenRestrictionMono]
+  let sourceModules :=
+      #[`Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Complement.CartierComplementDense,
+    `Motivic.Cohomology.A1.LocalVanishing.DenseOpen.RestrictionMono]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
       if modules[env.const2ModIdx[name]?.get!]! then declarations.push name else declarations
   unless declarations.size ≥ 8 do
-    throwError "The Cartier density and original coefficient declarations are missing from this lint."
+    throwError
+      "The Cartier density and original coefficient declarations are missing from this lint."
   let linters ← Lean.Elab.Command.liftCoreM (getChecks true none none)
   unless !linters.isEmpty do
     throwError "No declaration linters were selected."

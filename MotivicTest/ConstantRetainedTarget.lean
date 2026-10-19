@@ -3,7 +3,7 @@ Copyright (c) 2026 Motivic Cohomology contributors.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantRetainedTarget
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Constant.RetainedTarget
 
 /-! The smooth quasi-affine retained curve maps to the original overlap. -/
 @[expose] public noncomputable section

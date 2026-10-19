@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.BoundaryOneRationalFunctions
+public import Motivic.Aglib.RingTheory.Polynomial.BoundaryOneRationalFunctions.Basic
 public import Lean.Util.CollectAxioms
 
 /-! # Direct consumers of actual boundary-one localized rational functions -/

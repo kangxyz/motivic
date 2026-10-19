@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.ExteriorModuleBicomplex
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.ExteriorModuleBicomplex
 
 /-! Real consumers of scalar restriction, both bicomplex differentials, and naturality. -/
 
@@ -14,7 +14,7 @@ public import Motivic.Algebra.Homology.TorComparison.ExteriorModuleBicomplex
 noncomputable section
 
 open CategoryTheory HomologicalComplex
-open Motivic.TorComparison.ExteriorModule
+open _root_.ModuleCat.TorComparison.ExteriorModule
 
 universe u
 

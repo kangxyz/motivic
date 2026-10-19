@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedSerreSections
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineSourceDivisorPairs
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.AffineSource
 /-! # One-sided moving sections on the original affine parameter scheme
 
 The spectrum presentation is used only inside Serre lifting. Both the retained

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.Yoneda
-public import Motivic.Algebra.Homology.SingularComplexPresheaf
+public import Motivic.Transfers.Presheaf.Yoneda
+public import Motivic.Aglib.Algebra.Homology.SingularComplex.Presheaf
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -22,7 +22,7 @@ composition or transfer-preserving sheafification hypothesis is introduced.
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite Motivic
-open Motivic.PresheafWithTransfers
+open  _root_.Motivic.PresheafWithTransfers
 
 universe v u v' u'
 
@@ -85,7 +85,7 @@ example (G : C ⥤ Cor k) : (restrictAlong.{v} G).Additive := inferInstance
 noncomputable def restrictedSingularComplex [HasBinaryProducts C]
     (G : C ⥤ Cor k) (Δ : CosimplicialObject C) (P : PresheafWithTransfers.{v} k) :
     ChainComplex (Cᵒᵖ ⥤ AddCommGrpCat.{v}) ℕ :=
-  Motivic.SingularComplex.presheafObj Δ ((restrictAlong G).obj P)
+  _root_.CategoryTheory.SingularComplex.presheafObj Δ ((restrictAlong G).obj P)
 
 open Lean in
 run_cmd do

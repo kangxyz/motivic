@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.AdjoinRootSimpleFactorLocalization
+public import Motivic.Aglib.RingTheory.AdjoinRoot.SimpleFactorLocalization
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 

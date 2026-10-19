@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCoordinateCycleEvaluation
+public import Motivic.Cohomology.WeightTwo.CoordinateCycleEvaluation
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -20,6 +20,9 @@ group. No boundary annihilation or homology descent is asserted.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Motivic Motivic.WeightTwoCoordinateEvaluation
 open Motivic.WeightTwoCoordinateCycleEvaluation Motivic.WeightTwoCorestriction

@@ -9,7 +9,7 @@ public import Lean
 /-! # Original affine-line restriction, with no sheaf or infinite-field assumption -/
 public noncomputable section
 open CategoryTheory AlgebraicGeometry Polynomial
-open Motivic Motivic.PolynomialOpenSpans Motivic.AffineLineReducedComplement
+open Motivic Motivic.PolynomialOpenSpans _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 universe v u
 namespace MotivicTest.AffineLineOpenRestrictionInjective
 

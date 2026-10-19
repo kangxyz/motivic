@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.TensorTotalCofiber
+public import Motivic.Aglib.Algebra.Homology.Bifunctor.TotalCofiber
 public import Mathlib.Algebra.Category.ModuleCat.Colimits
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.Algebra.Category.ModuleCat.Monoidal.Closed
@@ -30,7 +30,7 @@ noncomputable def arbitraryModuleMap :
       (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ)) ≅
     mapBifunctor (homotopyCofiber f) G
       (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ) :=
-  TorComparison.tensorTotalCofiberIso (curriedTensor (ModuleCat R)) f G
+  tensorTotalCofiberIso (curriedTensor (ModuleCat R)) f G
 
 /-- The construction applies to the literal augmentation of an arbitrary resolution. -/
 noncomputable def literalResolutionAugmentation {M : ModuleCat.{u} R}
@@ -39,13 +39,13 @@ noncomputable def literalResolutionAugmentation {M : ModuleCat.{u} R}
       (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ)) ≅
     mapBifunctor (homotopyCofiber P.π) G
       (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ) :=
-  TorComparison.tensorTotalCofiberIso (curriedTensor (ModuleCat R)) P.π G
+  tensorTotalCofiberIso (curriedTensor (ModuleCat R)) P.π G
 
 /-- The forward isomorphism is the actual canonical cofiber-desc map. -/
 theorem literalForwardMap :
     (arbitraryModuleMap f G).hom =
-      TorComparison.tensorTotalCofiberMap (curriedTensor (ModuleCat R)) f G :=
-  TorComparison.tensorTotalCofiberIso_hom (curriedTensor (ModuleCat R)) f G
+      tensorTotalCofiberMap (curriedTensor (ModuleCat R)) f G :=
+  tensorTotalCofiberIso_hom (curriedTensor (ModuleCat R)) f G
 
 /-- The isomorphism intertwines the signed differential in every degree. -/
 theorem signedDifferential (i j : ℕ) :

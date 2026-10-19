@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorSourceTotal
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorSourceTotal
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual fixed-list source-total attachment for smooth-site correspondences
@@ -29,6 +30,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorSourceTotal
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)

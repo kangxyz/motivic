@@ -8,13 +8,13 @@ module
 public import Motivic.Aglib.RingTheory.Bertini.SelectedMinorFieldExtension
 public import Motivic.Aglib.RingTheory.Bertini.QuadraticDiagonalFieldExtension
 public import Motivic.Aglib.RingTheory.Bertini.MovingPointScalarBadPointExclusion
-public import Motivic.Aglib.RingTheory.ResiduePolynomialFiberEvaluation
+public import Motivic.Aglib.RingTheory.Polynomial.Residue.FiberEvaluation
 
 /-! # The same scalar tuple is independent at every original coefficient-algebra point -/
 
 @[expose] public noncomputable section
 
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 open scoped TensorProduct
 
 namespace QuadraticIncidence

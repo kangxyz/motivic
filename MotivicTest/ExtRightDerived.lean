@@ -6,17 +6,18 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedCoefficient
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryDerivedSections
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.DerivedSections
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
 /-! Direct audit of original ordinary cohomology on actual geometric neighborhoods. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.ExtRightDerived
-open Motivic Motivic.FiniteEtaleSite
-variable {S T : Scheme.{u}} (b : T ⟶ S) (V : FiniteEtaleSite S)
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+variable {S T : Scheme.{u}} (b : T ⟶ S) (V : EtaleSeparatedFiniteType S)
 
 local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
@@ -24,7 +25,7 @@ local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 
 /-- The original Ext group is computed by actual right-derived neighborhood sections. -/
 def original_ordinary_sections
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) (n : ℕ) :
-    Motivic.SheafCohomology.H.{u + 1, u + 1, u, u + 1}
+    _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 1, u + 1, u, u + 1}
       (nisnevichTopology T) F n ((baseChange b).obj V) ≃+
         (((pulledBackNeighborhoodSections b V).rightDerived n).obj F) :=
   ordinaryNeighborhoodDerivedSections b V (injectiveResolution F) n

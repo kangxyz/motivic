@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FlatBaseChangeGeneric
+public import Motivic.Aglib.AlgebraicGeometry.BaseChange.GenericComponents
 
 /-!
 # Consumers of generic preservation under arbitrary flat base change
@@ -18,11 +18,13 @@ an actual irreducible component of the new target.
 
 @[expose] public section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme)
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 universe u
 
 namespace MotivicTest.FlatBaseChangeGeneric
+open _root_.AlgebraicGeometry.Scheme.Hom
 
 /-- Arbitrary field extensions preserve genericity in the actual affine
 pullback, even for a nonreduced or disconnected original affine support. -/
@@ -78,12 +80,12 @@ theorem disconnectedAmbientComponentImage
 
 open Lean in
 run_cmd do
-  for name in #[``Motivic.mem_genericPoints_pullbackFst_spec_flat,
-      ``Motivic.mem_genericPoints_of_isPullback_flat_affine,
-      ``Motivic.mem_genericPoints_of_isPullback_flat_integral,
-      ``Motivic.surjective_pointClosure_of_isPullback_flat_integral,
-      ``Motivic.mem_genericPoints_of_isPullback_flat_domainStalks,
-      ``Motivic.mem_genericPoints_of_isPullback_flat_component,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.Hom.mem_genericPoints_pullbackFst_spec_flat,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.mem_genericPoints_of_isPullback_flat_affine,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.mem_genericPoints_of_isPullback_flat_integral,
+      ``surjective_pointClosure_of_isPullback_flat_integral,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.mem_genericPoints_of_isPullback_flat_domainStalks,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.mem_genericPoints_of_isPullback_flat_component,
       ``arbitraryFieldExtension, ``arbitraryFlatIntegralSquare,
       ``disconnectedAmbientGenericImage, ``disconnectedAmbientComponentImage] do
     let dependencies ← collectAxioms name

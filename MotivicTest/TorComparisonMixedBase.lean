@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.MixedBaseComplex
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.MixedBaseComplex
 
 /-! # Consumers of the actual mixed-base tensor and total-complex comparison -/
 
@@ -14,16 +14,16 @@ public import Motivic.Algebra.Homology.TorComparison.MixedBaseComplex
 noncomputable section
 
 open CategoryTheory TensorProduct
-open scoped ChangeOfRings Motivic.TorComparison.ExteriorModule
+open scoped ChangeOfRings ModuleCat.TorComparison.ExteriorModule
 
 universe u
 
 namespace Motivic.MotivicTest.TorComparisonMixedBase
 
-open Motivic.TorComparison.MixedBase
+open _root_.ModuleCat.TorComparison.MixedBase
 
-attribute [local instance] Motivic.TorComparison.ExteriorModule.baseModule
-  Motivic.TorComparison.ExteriorModule.baseScalarTower
+attribute [local instance] _root_.ModuleCat.TorComparison.ExteriorModule.baseModule
+  _root_.ModuleCat.TorComparison.ExteriorModule.baseScalarTower
 
 variable {k U V Q : Type u} [CommRing k] [CommRing U] [CommRing V] [CommRing Q]
   [Algebra k U] [Algebra k V] (μ : U ⊗[k] V →+* Q)
@@ -68,7 +68,7 @@ def bicomplexComparison (K : ChainComplex (ModuleCat.{u} U) ℕ)
 def totalComparison (K : ChainComplex (ModuleCat.{u} U) ℕ)
     (L : ChainComplex (ModuleCat.{u} V) ℕ) :
     ((ModuleCat.extendScalars μ).mapHomologicalComplex (ComplexShape.down ℕ)).obj
-        ((Motivic.TorComparison.ExteriorModule.exteriorBicomplex k U V K L).total
+        ((_root_.ModuleCat.TorComparison.ExteriorModule.exteriorBicomplex k U V K L).total
           (ComplexShape.down ℕ)) ≅
       (extendedFactorsBicomplex k U V Q μ K L).total (ComplexShape.down ℕ) :=
   totalIso k U V Q μ K L

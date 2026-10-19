@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeSupport
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.Support
 
 /-!
 # Actual-support field-change consumers
@@ -18,11 +18,13 @@ particular an inseparable example can have coefficient `p`, not coefficient one.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
 
 namespace MotivicTest.FieldBaseChangeSupport
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y : SmoothSite.overField k} (A : FiniteCorrespondenceGenerator X.hom Y.hom)

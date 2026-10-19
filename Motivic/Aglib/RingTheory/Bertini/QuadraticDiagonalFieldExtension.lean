@@ -15,7 +15,7 @@ public import Mathlib.RingTheory.Flat.Basic
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u v
 namespace QuadraticIncidence
 namespace ClosedPoint

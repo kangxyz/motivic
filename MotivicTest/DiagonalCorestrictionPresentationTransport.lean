@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalCorestrictionPresentationTransport
+public import Motivic.Cohomology.Diagonal.CorestrictionPresentationTransport
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,6 +19,7 @@ original derived comparison.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalMilnorSymbol Motivic.DiagonalCorestriction
 

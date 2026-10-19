@@ -5,12 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedCycle
-import all Motivic.Aglib.AlgebraicGeometry.PrincipalOrderCancellation
-import all Motivic.Aglib.AlgebraicGeometry.IdealFrameOrderCancellation
-import all Motivic.AlgebraicGeometry.Cycles.IdealFrameCancellation
-import all Motivic.AlgebraicGeometry.Cycles.IdealFrameSupport
-import all Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedCycle
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedCycle
+import all Motivic.Aglib.AlgebraicGeometry.Divisors.Order.PrincipalOrderCancellation
+import all Motivic.Aglib.AlgebraicGeometry.Divisors.Order.IdealFrameOrderCancellation
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.Cancellation
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.Support
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedCycle
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -25,7 +25,7 @@ No graph specialization, frame existence, or principal A1 relation is asserted.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic
+open CategoryTheory AlgebraicGeometry
 open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 
 universe u
@@ -44,24 +44,26 @@ theorem original_sum_boundary_avoidance_and_finiteness
     [IsAffine S] [V.IsQuasiAffine] (q : C ⟶ S) [IsProper q]
     (j : V ⟶ C) [IsOpenImmersion j]
     (hW : (Set.range j)ᶜ ⊆ (W.val : Set C)) :
-    (∀ x ∈ W.val, idealFrameMovedCycle i W e b hb x = 0) ∧
-      (∀ x, idealFrameMovedCycle i W e b hb x ≠ 0 →
+    (∀ x ∈ W.val, _root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle i W e b hb x = 0) ∧
+      (∀ x, _root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle i W e b hb x ≠ 0 →
         closure ({x} : Set C) ⊆ (W.val : Set C)ᶜ ∧
-          IsFinite ((IntegralClosedSubscheme.pointClosure x).val.subschemeι ≫ q)) := by
-  refine ⟨fun _ hx => idealFrameMovedCycle_eq_zero_on_frame i W e b hb hI hx, ?_⟩
+          IsFinite ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+              x).val.subschemeι ≫ q)) := by
+  refine ⟨fun _ hx => _root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle_eq_zero_on_frame i W e b
+      hb hI hx, ?_⟩
   intro x hx
-  exact ⟨idealFrameMovedCycle_support_closure i W e b hb hI x hx,
-    idealFrameMovedCycle_support_isFinite i W e b hb hI q j hW x hx⟩
+  exact ⟨_root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle_support_closure i W e b hb hI x hx,
+    _root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle_support_isFinite i W e b hb hI q j hW x hx⟩
 
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalOrderCancellation,
-    `Motivic.Aglib.AlgebraicGeometry.IdealFrameOrderCancellation,
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameCancellation,
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameSupport,
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedCycle]
+    `Motivic.Aglib.AlgebraicGeometry.Divisors.Order.PrincipalOrderCancellation,
+    `Motivic.Aglib.AlgebraicGeometry.Divisors.Order.IdealFrameOrderCancellation,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.Cancellation,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.Support,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedCycle]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -88,11 +90,11 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalOrderCancellation,
-    `Motivic.Aglib.AlgebraicGeometry.IdealFrameOrderCancellation,
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameCancellation,
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameSupport,
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedCycle,
+    `Motivic.Aglib.AlgebraicGeometry.Divisors.Order.PrincipalOrderCancellation,
+    `Motivic.Aglib.AlgebraicGeometry.Divisors.Order.IdealFrameOrderCancellation,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.Cancellation,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.Support,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedCycle,
     `MotivicTest.IdealFrameMovedCycle]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

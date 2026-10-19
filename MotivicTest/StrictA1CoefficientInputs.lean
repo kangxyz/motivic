@@ -5,17 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.StrictInvarianceCoefficientInputs
-public import Motivic.Cohomology.A1.FiniteCoefficientLocalZero
+public import Motivic.Cohomology.A1.StrictInvariance.CoefficientInputs
+public import Motivic.Cohomology.A1.LocalVanishing.FiniteField.CoefficientLocalZero
 
-import all Motivic.Cohomology.A1.CoefficientLocalZero
-import all Motivic.Cohomology.A1.FiniteCoefficientLocalZero
-import all Motivic.Cohomology.A1.ContractionBoundaryInputs
-import all Motivic.Cohomology.A1.ContractionCohomologyInputs
-import all Motivic.Cohomology.A1.PointedCartierH1RestrictionInputs
-import all Motivic.Cohomology.A1.ContractionChartHigherImageInputs
-import all Motivic.Cohomology.A1.PointedCartierPositiveRestrictionInputs
-import all Motivic.Cohomology.A1.StrictInvarianceCoefficientInputs
+import all Motivic.Cohomology.A1.LocalVanishing.Coefficient
+import all Motivic.Cohomology.A1.LocalVanishing.FiniteField.CoefficientLocalZero
+import all Motivic.Cohomology.A1.Boundary.Contraction.Inputs
+import all Motivic.Cohomology.A1.Contraction.CohomologyInputs
+import all Motivic.Cohomology.A1.Cartier.Restriction.H1RestrictionInputs
+import all Motivic.Cohomology.A1.Contraction.ChartHigherImageInputs
+import all Motivic.Cohomology.A1.Cartier.Restriction.PositiveRestrictionInputs
+import all Motivic.Cohomology.A1.StrictInvariance.CoefficientInputs
 import Mathlib.Tactic.Linter
 import Mathlib.Tactic.Linter.TextBased
 
@@ -27,6 +27,7 @@ Epi as a geometric input. None asserts unconditional finite-field strict invaria
 -/
 
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 universe u
 namespace MotivicTest.StrictA1CoefficientInputs
@@ -44,7 +45,7 @@ theorem original_projection_isIso [PerfectField k]
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
     (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     IsIso (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   SheafWithTransfers.isStrictA1Invariant_of_coefficient_inputs hD hE F hF n X
@@ -87,7 +88,7 @@ theorem finite_original_projection_isIso_of_boundary_epi
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
     (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     IsIso (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   SheafWithTransfers.isStrictA1Invariant_of_coefficient_inputs
@@ -99,14 +100,14 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Cohomology.A1.CoefficientLocalZero,
-    `Motivic.Cohomology.A1.FiniteCoefficientLocalZero,
-    `Motivic.Cohomology.A1.ContractionBoundaryInputs,
-    `Motivic.Cohomology.A1.ContractionCohomologyInputs,
-    `Motivic.Cohomology.A1.PointedCartierH1RestrictionInputs,
-    `Motivic.Cohomology.A1.ContractionChartHigherImageInputs,
-    `Motivic.Cohomology.A1.PointedCartierPositiveRestrictionInputs,
-    `Motivic.Cohomology.A1.StrictInvarianceCoefficientInputs]
+    `Motivic.Cohomology.A1.LocalVanishing.Coefficient,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.CoefficientLocalZero,
+    `Motivic.Cohomology.A1.Boundary.Contraction.Inputs,
+    `Motivic.Cohomology.A1.Contraction.CohomologyInputs,
+    `Motivic.Cohomology.A1.Cartier.Restriction.H1RestrictionInputs,
+    `Motivic.Cohomology.A1.Contraction.ChartHigherImageInputs,
+    `Motivic.Cohomology.A1.Cartier.Restriction.PositiveRestrictionInputs,
+    `Motivic.Cohomology.A1.StrictInvariance.CoefficientInputs]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -133,14 +134,14 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Cohomology.A1.CoefficientLocalZero,
-    `Motivic.Cohomology.A1.FiniteCoefficientLocalZero,
-    `Motivic.Cohomology.A1.ContractionBoundaryInputs,
-    `Motivic.Cohomology.A1.ContractionCohomologyInputs,
-    `Motivic.Cohomology.A1.PointedCartierH1RestrictionInputs,
-    `Motivic.Cohomology.A1.ContractionChartHigherImageInputs,
-    `Motivic.Cohomology.A1.PointedCartierPositiveRestrictionInputs,
-    `Motivic.Cohomology.A1.StrictInvarianceCoefficientInputs,
+    `Motivic.Cohomology.A1.LocalVanishing.Coefficient,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.CoefficientLocalZero,
+    `Motivic.Cohomology.A1.Boundary.Contraction.Inputs,
+    `Motivic.Cohomology.A1.Contraction.CohomologyInputs,
+    `Motivic.Cohomology.A1.Cartier.Restriction.H1RestrictionInputs,
+    `Motivic.Cohomology.A1.Contraction.ChartHigherImageInputs,
+    `Motivic.Cohomology.A1.Cartier.Restriction.PositiveRestrictionInputs,
+    `Motivic.Cohomology.A1.StrictInvariance.CoefficientInputs,
     `MotivicTest.StrictA1CoefficientInputs]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

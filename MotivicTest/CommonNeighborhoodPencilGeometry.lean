@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodPencilGeometry
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.Pencil.Geometry
 /-! # Direct consumers of the actual common relative pencil geometry -/
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open AlgebraicGeometry.RelativeProjectiveLine

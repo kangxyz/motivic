@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryEdgeMap
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.EdgeMap
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageResolutionWindow
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
@@ -15,7 +15,8 @@ public import Lean.Util.CollectAxioms
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.FiniteEtaleFiniteEdge
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {S T : Scheme.{u}} (b : T ⟶ S)
 local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
@@ -24,7 +25,7 @@ local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 
 attribute [local instance] HasDerivedCategory.standard
 
 /-- The actual degree-zero ordinary edge requires no acyclicity or comparison hypothesis. -/
-theorem actual_ordinary_edge_zero (V : FiniteEtaleSite S)
+theorem actual_ordinary_edge_zero (V : EtaleSeparatedFiniteType S)
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :
     Function.Bijective (ordinaryEdgeMap b V F 0) := ordinaryEdgeMap_zero_bijective b V F
 

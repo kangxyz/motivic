@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteBaseChange
-public import Motivic.AlgebraicGeometry.SmoothSiteSimplex
-public import Motivic.Algebra.Homology.SingularComplex
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Simplex.Basic
+public import Motivic.Aglib.Algebra.Homology.SingularComplex.Basic
 
 /-!
 # Smooth-site algebraic simplex consumers
@@ -21,7 +21,7 @@ one without a proved pullback comparison.
 @[expose] public section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic.AlgebraicSimplex Motivic.SmoothSite
+open _root_.AlgebraicSimplex _root_.AlgebraicGeometry.Scheme.SmoothSite
 open scoped Simplicial
 
 universe u
@@ -56,16 +56,16 @@ example {K L : Type u} [Field K] [Field L] (φ : K →+* L) (n : ℕ) :
 
 /-- The existing all-degree singular construction now accepts actual smooth-site presheaves. -/
 def smoothPresheafComplex (R : Type u) [CommRing R]
-    (P : (Motivic.SmoothSite (Spec (CommRingCat.of R)))ᵒᵖ ⥤ AddCommGrpCat.{u}) :
+    (P : (Scheme.SmoothSite (Spec (CommRingCat.of R)))ᵒᵖ ⥤ AddCommGrpCat.{u}) :
     ChainComplex AddCommGrpCat.{u} ℕ :=
-  Motivic.SingularComplex.obj (cosimplicialSmoothSite R) P
+  SingularComplex.obj (cosimplicialSmoothSite R) P
 
 example (R : Type u) [CommRing R]
-    (P : (Motivic.SmoothSite (Spec (CommRingCat.of R)))ᵒᵖ ⥤ AddCommGrpCat.{u}) (n : ℕ) :
+    (P : (Scheme.SmoothSite (Spec (CommRingCat.of R)))ᵒᵖ ⥤ AddCommGrpCat.{u}) (n : ℕ) :
     (smoothPresheafComplex R P).X n = P.obj (op (smoothSiteObj R n)) := rfl
 
 example (R : Type u) [CommRing R]
-    (P : (Motivic.SmoothSite (Spec (CommRingCat.of R)))ᵒᵖ ⥤ AddCommGrpCat.{u}) (n : ℕ) :
+    (P : (Scheme.SmoothSite (Spec (CommRingCat.of R)))ᵒᵖ ⥤ AddCommGrpCat.{u}) (n : ℕ) :
     (smoothPresheafComplex R P).d (n + 2) (n + 1) ≫
       (smoothPresheafComplex R P).d (n + 1) n = 0 :=
   (smoothPresheafComplex R P).d_comp_d _ _ _

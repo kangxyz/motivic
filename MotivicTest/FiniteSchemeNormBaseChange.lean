@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteSchemeNormBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FiniteSchemeNormBaseChange
 public import Mathlib.RingTheory.Flat.Basic
 public import Mathlib.RingTheory.DualNumber
 public import Mathlib.LinearAlgebra.Basis.Fin

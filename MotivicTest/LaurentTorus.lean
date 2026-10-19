@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.LaurentTorus
+public import Motivic.Aglib.AlgebraicGeometry.Spec.PolynomialLaurent.Torus
 public import Mathlib.Algebra.Ring.PUnit
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms

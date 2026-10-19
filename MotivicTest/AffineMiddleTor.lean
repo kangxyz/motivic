@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.AffineMiddleTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.AffineMiddleTor
 
 /-! # Consumers of the actual local middle-diagonal intersection comparison -/
 
@@ -13,14 +13,14 @@ public import Motivic.AlgebraicGeometry.Intersection.AffineMiddleTor
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic.Intersection
-open scoped TensorProduct Motivic.MiddleDiagonal
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Scheme.Intersection
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 universe u
 
 namespace Motivic.MotivicTest.AffineMiddleTor
 
-open Intersection.AffineMiddleTor
+open _root_.AlgebraicGeometry.Scheme.Intersection.AffineMiddleTor
 
 variable (k A B C : Type u) [Field k] [CommRing A] [CommRing B] [CommRing C]
   [Algebra k A] [Algebra k B] [Algebra k C]
@@ -40,16 +40,20 @@ theorem actualInverse (n : ℕ) :
 
 /-- Genuine finite support on the actual ambient stalk Tor transfers to the pulled supports. -/
 theorem transferActualFiniteSupport
-    (h : LengthEuler.FiniteLengthSupport (ambientStalkTor k A B C I J l r t hq hp)) :
-    LengthEuler.FiniteLengthSupport (pulledStalkTor k A B C I J l r hq) :=
+    (h : _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (ambientStalkTor k A B C I
+        J l r t hq hp)) :
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (pulledStalkTor k A B C I J l r
+        hq) :=
   (stalkTor_finiteLengthSupport_iff k A B C I J l r t hq hp).mp h
 
 /-- The usual alternating local Tor coefficient follows from actual finite-length evidence. -/
 theorem actualAlternatingCoefficient
-    (h : LengthEuler.FiniteLengthSupport (ambientStalkTor k A B C I J l r t hq hp)) :
-    LengthEuler.signedLengthSum (ambientStalkTor k A B C I J l r t hq hp)
+    (h : _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (ambientStalkTor k A B C I
+        J l r t hq hp)) :
+    _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (ambientStalkTor k A B C I J l r t
+        hq hp)
       (fun n ↦ (-1 : ℤ) ^ n) h =
-    LengthEuler.signedLengthSum (pulledStalkTor k A B C I J l r hq)
+    _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (pulledStalkTor k A B C I J l r hq)
       (fun n ↦ (-1 : ℤ) ^ n) (transferActualFiniteSupport k A B C I J l r t hq hp h) :=
   stalkTor_signedLengthSum k A B C I J l r t hq hp _ h
 

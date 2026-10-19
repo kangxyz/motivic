@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichPointLifting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.Lifting
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -16,10 +16,12 @@ finite support are retained. No smoothness, reducedness or flatness is imposed
 on the support; no algebraic closure is imposed on the base field.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
@@ -70,12 +72,13 @@ example : ∃ (N : NisnevichNeighborhood X x) (b : pullback p N.toBase.left ⟶ 
 end FiniteSupport
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
   for name in #[``AlgebraicGeometry.Scheme.Hom.residueFieldPointLift,
       ``AlgebraicGeometry.Scheme.Hom.residueFieldPointLift_comp,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.ofResidueFieldIso,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.toBase,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.exists_lift_of_isFinite] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.ofResidueFieldIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.toBase,
+      ``exists_lift_of_isFinite] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

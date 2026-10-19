@@ -5,12 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.BinaryCoproducts
+public import Motivic.AlgebraicGeometry.Correspondences.Coproducts.Binary
 
 /-! # Consumers of actual disjoint-union coproducts in finite correspondences -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

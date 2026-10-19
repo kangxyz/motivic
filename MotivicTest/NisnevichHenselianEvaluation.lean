@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Sites.NisnevichHenselianEvaluation
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.HenselianEvaluation
 
 /-!
 # Consumers of ordinary henselian Nisnevich evaluation
@@ -17,7 +17,7 @@ at the size supported by the existing ordinary sheafification APIs.
 -/
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic.Nisnevich
+open _root_.AlgebraicGeometry.Nisnevich
 
 universe u
 
@@ -74,18 +74,18 @@ example (R : Type u) [CommRing R] [IsLocalRing R] [IsArtinianRing R]
 example (K : Type u) [Field K] : ringEvaluation K = fieldEvaluation topology K := rfl
 
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.surjective_app_of_isLocallySurjective_of_henselian
+#print axioms surjective_app_of_isLocallySurjective_of_henselian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.injective_app_of_isLocallyInjective_of_artinian
+#print axioms injective_app_of_isLocallyInjective_of_artinian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.isIso_toSheafify_app_of_henselian
+#print axioms isIso_toSheafify_app_of_henselian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.isIso_toSheafify_app_of_artinian
+#print axioms isIso_toSheafify_app_of_artinian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.surjective_app_of_epi_of_henselian
+#print axioms surjective_app_of_epi_of_henselian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.surjective_app_of_epi_of_artinian
+#print axioms surjective_app_of_epi_of_artinian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.exact_map_ringEvaluation_of_henselian
+#print axioms exact_map_ringEvaluation_of_henselian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.exact_map_ringEvaluation_of_artinian
+#print axioms exact_map_ringEvaluation_of_artinian

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorExteriorDecomposition
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorExteriorDecomposition
 public import MotivicTest.IntegralGenericFiniteImage
 
 /-!
@@ -30,8 +30,9 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite fundamentalCycle genericMultiplicity)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.WholeFiberTorExteriorDecomposition
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.ComponentDecomposition
 open MotivicTest.IntegralGenericFiniteImage
 open scoped BigOperators
 

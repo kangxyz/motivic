@@ -5,11 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichSheafification
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichSheavesWithTransfers
-public import Motivic.AlgebraicGeometry.SmoothSiteProducts
-public import Motivic.AlgebraicGeometry.SmoothSiteSimplex
-public import Motivic.Algebra.Homology.SheafificationSingular
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Sheafification
+public import Motivic.Transfers.Sheaf.Basic
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Products
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Simplex.Basic
+public import Motivic.Aglib.Algebra.Homology.Sheafification.Singular
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -22,11 +22,15 @@ affine bases. No connectedness or arbitrary-pullback assumptions are added.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.CategoryTheory.SingularComplex (presheafObj sheafCochainObj sheafCochainXIso)
+open _root_.CategoryTheory.SingularComplex.Indexing (singularDegree)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe v u
 
 namespace MotivicTest.SmoothSiteNisnevich
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable {k : Type u} [Field k]
 
@@ -92,16 +96,17 @@ using the proved products and actual barycentric simplex of the smooth category.
 def ordinaryNisnevichSingularCochains (P : PresheafWithTransfers.{v} k) (q : ℕ) :
     CochainComplex (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
       AddCommGrpCat.{v}) ℤ :=
-  SingularComplex.sheafCochainObj (SmoothSite.nisnevichTopology (Spec (.of k)))
-    (AlgebraicSimplex.cosimplicialSmoothSite k) ((PresheafWithTransfers.toPresheaf k).obj P) q
+  sheafCochainObj (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (_root_.AlgebraicSimplex.cosimplicialSmoothSite k) ((PresheafWithTransfers.toPresheaf k).obj P)
+        q
 
 /-- Each placed ordinary term is the actual sheafification of its singular presheaf term. -/
 example (P : PresheafWithTransfers.{v} k) (q r : ℕ) :
-    (ordinaryNisnevichSingularCochains P q).X (Indexing.singularDegree q r) ≅
+    (ordinaryNisnevichSingularCochains P q).X (singularDegree q r) ≅
       (presheafToSheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{v}).obj
-        ((SingularComplex.presheafObj (AlgebraicSimplex.cosimplicialSmoothSite k)
+        ((presheafObj (_root_.AlgebraicSimplex.cosimplicialSmoothSite k)
           ((PresheafWithTransfers.toPresheaf k).obj P)).X r) :=
-  SingularComplex.sheafCochainXIso _ _ _ q r
+  sheafCochainXIso _ _ _ q r
 
 end OrdinarySheafification
 
@@ -126,15 +131,15 @@ end RestrictionComparison
 open Lean in
 run_cmd do
   let interfaces := #[
-    ``SmoothSite.etalePullbackConeIsLimit,
-    ``SmoothSite.ofArrows_mem_nisnevichPrecoverage_iff,
-    ``SmoothSite.mem_nisnevichTopology_iff,
-    ``SmoothSite.exists_nisnevich_refinement,
-    ``SmoothSite.nisnevichTopology_eq_restrictedTopology,
-    ``SmoothSite.nisnevichTopology_eq_inducedTopology,
-    ``SmoothSite.restrictNisnevichSheaf,
-    ``SmoothSite.restrictNisnevichSheafificationIso,
-    ``SmoothSite.toSheafify_restrictNisnevichSheafificationIso,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.etalePullbackConeIsLimit,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.ofArrows_mem_nisnevichPrecoverage_iff,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.mem_nisnevichTopology_iff,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_nisnevich_refinement,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichTopology_eq_restrictedTopology,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichTopology_eq_inducedTopology,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.restrictNisnevichSheaf,
+    ``_root_.AlgebraicGeometry.Scheme.SmoothSite.restrictNisnevichSheafificationIso,
+    ``toSheafify_restrictNisnevichSheafificationIso,
     ``PresheafWithTransfers.IsNisnevichSheaf,
     ``SheafWithTransfers.toSheaf,
     ``ordinaryNisnevichSingularCochains]

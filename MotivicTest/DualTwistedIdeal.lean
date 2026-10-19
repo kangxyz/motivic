@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdeal
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.Basic
 
 /-! # Literal line-bundle domains for the product-section construction -/
 

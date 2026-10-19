@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.RegularProductSections
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.RegularProductSections
 
 /-! Direct check that the actual tensor product section is regular. -/
 

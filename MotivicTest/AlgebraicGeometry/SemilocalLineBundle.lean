@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.FiniteFiber
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.FiniteFiber
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Actual semilocal and whole-fibre trivialization consumers -/

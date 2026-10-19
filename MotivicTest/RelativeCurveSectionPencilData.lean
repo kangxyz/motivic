@@ -1,12 +1,13 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SectionPencilData
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Data.BoundarySections
 /-! # Original relative correcting data from actual prescribed sections -/
 set_option linter.hashCommand false
 public noncomputable section
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Scheme.Modules Scheme.Modules.Invertible PolynomialBoundaryPencil
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] {S X Y A B Z C D V : Scheme.{u}}
@@ -49,7 +50,7 @@ example
     [IsIso (pullbackSectionMap (psiBoundaryInclusion q π j p hq a z s hs d) nS)]
     [IsIso (pullbackSectionMap (psiBoundaryInclusion q π j p hq a z s hs d) dS)]
     (φ : B ⟶ V) (hφ : φ ≫ v = α ≫ j) :
-    DiagonalSignedPencilProducer.Data
+    GraphDivisorPencil.Data
       (relativeAlpha k t π j α) (relativeBeta k t q π j a α p hq β h)
       (relativeGraphMap k t π j α v φ hφ) :=
   dataOfBoundarySections k t q π j p hq a α β h z s hs H e ha d hd

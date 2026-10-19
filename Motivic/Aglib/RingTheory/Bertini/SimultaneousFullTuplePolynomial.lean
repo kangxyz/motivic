@@ -7,7 +7,7 @@ module
 
 public import Motivic.Aglib.RingTheory.Bertini.AuxiliaryQuadraticParameter
 public import Motivic.Aglib.RingTheory.Bertini.QuadraticFullSelectedPointOpen
-public import Motivic.Aglib.RingTheory.FiniteExtensionResiduePolynomialAvoidance
+public import Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial
 
 /-! # One polynomial controls the auxiliary row and all original rows
 
@@ -18,7 +18,7 @@ asserted here.
 
 @[expose] public noncomputable section
 
-open Module MvPolynomial
+open Module _root_.MvPolynomial
 open scoped TensorProduct
 
 namespace QuadraticIncidence

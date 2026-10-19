@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.AlgebraicSimplexScheme
-public import Motivic.AlgebraicGeometry.AlgebraicSimplexPolynomial
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.AlgebraicSimplexScheme
+public import Motivic.Aglib.RingTheory.AlgebraicSimplex.Polynomial
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -21,7 +21,7 @@ in an algebraic simplex.
 @[expose] public section
 
 open CategoryTheory AlgebraicGeometry
-open Motivic.AlgebraicSimplex
+open _root_.AlgebraicSimplex
 open scoped Simplicial
 
 noncomputable section

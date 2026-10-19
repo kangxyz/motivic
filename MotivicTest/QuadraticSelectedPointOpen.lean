@@ -10,7 +10,7 @@ public import Lean
 
 /-! # The selected-point and whole off-diagonal conditions use one coefficient tuple -/
 public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial QuadraticIncidence
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial QuadraticIncidence
 universe u
 namespace MotivicTest.QuadraticSelectedPointOpen
 

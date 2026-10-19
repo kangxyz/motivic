@@ -173,11 +173,18 @@ public import MotivicTest.WeightTwoCorestrictionTower
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u
 
 namespace MotivicTest.MotivicIntegration
+open _root_.AlgebraicGeometry.Scheme.Cycles.FinitePointBaseChange
+open _root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve
+open _root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood
 
 variable (k : Type u) [Field k]
 
@@ -268,9 +275,9 @@ theorem correspondenceFieldFunctor_comp {L : Type u} [Field L] (φ : k →+* L)
 
 /-- Every simplex operator commutes with the actual arbitrary-field parameter comparison. -/
 def simplexFieldComparison {L : Type u} [Field L] (φ : k →+* L) :
-    AlgebraicSimplex.cosimplicialSmoothSite k ⋙ SmoothSite.fieldBaseChange φ ≅
-      AlgebraicSimplex.cosimplicialSmoothSite L :=
-  AlgebraicSimplex.cosimplicialFieldBaseChangeIso φ
+    _root_.AlgebraicSimplex.cosimplicialSmoothSite k ⋙ SmoothSite.fieldBaseChange φ ≅
+      _root_.AlgebraicSimplex.cosimplicialSmoothSite L :=
+  _root_.AlgebraicSimplex.cosimplicialFieldBaseChangeIso φ
 
 /-- All torus powers use the literal new-field scheme, without a finite-type extension premise. -/
 def torusFieldComparison {L : Type u} [Field L] (φ : k →+* L) (q : ℕ) :
@@ -431,16 +438,16 @@ run_cmd do
       ``WeightTwoMilnorMixedNorm.raw_mixed,
       ``WeightTwoMilnorMixedNorm.derived_mixed,
       ``WeightTwoMilnorMixedNorm.finite_mixed,
-      ``FinitePointBaseChange.finitePushforward_fundamentalCycle,
+      ``finitePushforward_fundamentalCycle,
       ``FinitePointCorrespondenceBaseChange.toIntegralCycle_fieldBaseChange_of_finitePoint,
       ``FinitePointCorrespondenceBaseChange.supportMap_original,
       ``FinitePointCorrespondenceBaseChange.supportMap_base,
       ``AdjoinRoot.branchEquivMaximal,
       ``AdjoinRoot.scalar_local_length_eq_one,
       ``AdjoinRoot.scalarExtensionEquiv,
-      ``AdjoinRootScalarBranches.scalar_isPullback,
-      ``AdjoinRootScalarBranches.scalar_fundamentalCycle_eq_sum_branches,
-      ``AdjoinRootScalarBranches.branchMap_scalarMap,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.scalar_isPullback,
+      ``scalar_fundamentalCycle_eq_sum_branches,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.branchMap_scalarMap,
       ``MilnorK.K3.PolynomialNorm.totalNorm_totalResidue,
       ``MilnorK.K3.PolynomialNorm.totalNorm_unique,
       ``MilnorK.K3.PolynomialNorm.finite_rational_reciprocity,
@@ -503,9 +510,10 @@ run_cmd do
       ``WeightTwoMixedNorm.finite_point_prepend, ``WeightTwoMixedNorm.finite_point_append,
       ``FiniteCorrespondence.toIntegralCycle_fieldBaseChange_comp,
       ``FiniteCorrespondence.toIntegralCycle_fieldBaseChange_id,
-      ``GenericFinitePushforwardMultiplicity.scheme_genericLength,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.GenericMultiplicity.scheme_genericLength,
       ``AlgebraicGeometry.finiteCurve_finitePushforward_fiber,
-      ``Koszul.domainCartier_chainEuler, ``Koszul.domainCartier_quotient_length,
+      ``_root_.ChainComplex.Koszul.domainCartier_chainEuler,
+          ``_root_.ChainComplex.Koszul.domainCartier_quotient_length,
       ``WeightOneFinitePointNorm.cycleNorm_unitPointCorrespondence,
       ``WeightOneFinitePointNorm.cycleNorm_eq_norm_of_finite_fundamental,
       ``WeightTwoCubicBoundary.cubic_cycleClass_endpoints,
@@ -522,7 +530,7 @@ run_cmd do
       ``MilnorK.twoEquiv, ``MilnorK.threeEquiv,
       ``MilnorK.twoEquiv_map, ``MilnorK.threeEquiv_map,
       ``IsDiscreteValuationRing.length_quotient_span_eq_addVal,
-      ``FiniteCurveNormalization.fiber_fundamentalCoefficient_eq_sum_branchOrders,
+      ``fiber_fundamentalCoefficient_eq_sum_branchOrders,
       ``DiagonalTopDegree.raw_d_top, ``DiagonalTopDegree.quotientToRawEquiv,
       ``DiagonalTopDegree.quotientToMotivicEquiv,
       ``MilnorK.product, ``MilnorK.product_assoc,
@@ -573,15 +581,15 @@ run_cmd do
       ``MilnorK.PolynomialNorm.finite_rational_reciprocity,
       ``MilnorK.PolynomialNorm.polynomialNorm_map_constants,
       ``MilnorK.PolynomialNorm.polynomialNorm_product_constants_left,
-      ``SmoothSite.a1Section_projection,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.a1Section_projection,
       ``A1.projectionPullback_naturality,
       ``A1.projectionPullback_coefficient_naturality,
       ``A1.sectionPullback_eq,
       ``PresheafWithTransfers.transfer_homotopy_endpoints,
       ``SheafWithTransfers.isStrictA1Invariant_iff,
-      ``SheafCohomology.ordinaryComparison,
-      ``SheafCohomology.singleComparison_restriction,
-      ``SheafCohomology.singleComparison_coefficient,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.ordinaryComparison,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.singleComparison_restriction,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.singleComparison_coefficient,
       ``SheafWithTransfers.exact_toSheaf_iff,
       ``SheafWithTransfers.underlyingCokernelIso_π_hom,
       ``Cor.ofFiniteFlatSpan,
@@ -590,8 +598,8 @@ run_cmd do
       ``Scheme.Hom.isFinite_and_locallyOfFinitePresentation_of_proper_flat_cartier,
       ``Scheme.Hom.pushforwardStructureSheaf_isFiniteLocallyFree_of_proper_flat_cartier,
       ``RelativeCartierDivisor.toIntegralCycle_correspondence,
-      ``SheafCohomology.zeroSections_restriction,
-      ``SheafCohomology.zeroSections_naturality,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections_restriction,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections_naturality,
       ``SheafWithTransfers.degreeZeroTransfer_graph,
       ``SheafWithTransfers.degreeZeroTransfer_comp,
       ``SheafWithTransfers.degreeZeroUnderlyingIso,
@@ -629,7 +637,7 @@ run_cmd do
       ``SheafWithTransfers.degreeZero_isInvariant,
       ``SheafWithTransfers.IsStrictA1Invariant.isA1Invariant,
       ``SheafWithTransfers.degreeZeroProjectionIso_inv,
-      ``SmoothSite.parameterProduct_op_comp_isSheaf,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.parameterProduct_op_comp_isSheaf,
       ``PresheafWithTransfers.withParameter_isNisnevichSheaf,
       ``PresheafWithTransfers.contraction_isNisnevichSheaf,
       ``SheafWithTransfers.contraction_isA1Invariant,
@@ -647,25 +655,25 @@ run_cmd do
       ``Cor.graph_evaluation_ofFiniteFlatSpan,
       ``RelativeCartierDivisor.productMap_closed_of_target_closed,
       ``RelativeCartierDivisor.graph_evaluation_correspondence,
-      ``SmoothSite.nisnevichNeighborhood_cover_lifting,
-      ``SmoothSite.nisnevichPoint,
-      ``SmoothSite.isColimitNisnevichPointFiberCocone,
-      ``SmoothSite.nisnevichPointFiberCocone_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichNeighborhood_cover_lifting,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichPoint,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isColimitNisnevichPointFiberCocone,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichPointFiberCocone_naturality,
       ``MilnorK.mixedSpan_eq_top_of_degree_gap,
       ``MilnorK.mixedSpan_eq_top_of_natDegree_le_two,
       ``MilnorK.exists_mixed_expansion_of_degree_gap,
       ``CategoryTheory.uliftYoneda_map_app_injective,
-      ``Hypercohomology.freeAbelianSheafFunctor_map_mono,
-      ``SheafCohomology.relativePresentation_shortExact,
-      ``SheafCohomology.relativeSequence_eq,
-      ``SheafCohomology.relativeSequence_exact,
-      ``SheafCohomology.relativeBoundary_apply,
-      ``SheafCohomology.relative_lift_of_restriction_zero,
-      ``SheafCohomology.restriction_lift_of_relativeBoundary_zero,
-      ``SheafCohomology.relativeBoundary_lift_of_forget_zero,
+      ``_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor_map_mono,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relativePresentation_shortExact,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relativeSequence_eq,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relativeSequence_exact,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_apply,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relative_lift_of_restriction_zero,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.restriction_lift_of_relativeBoundary_zero,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_lift_of_forget_zero,
       ``AlgebraicGeometry.Scheme.Hom.residueFieldPointLift_comp,
-      ``SmoothSite.NisnevichNeighborhood.exists_lift_of_isFinite,
-      ``SmoothSite.NisnevichNeighborhood.exists_family_lift_of_isFinite,
+      ``exists_lift_of_isFinite,
+      ``exists_family_lift_of_isFinite,
       ``FiniteCorrespondenceGenerator.exists_pointed_graph_family_factorization,
       ``MilnorK.FiniteDescent.exists_finite_relation,
       ``MilnorK.FiniteDescent.exists_finite_intermediate_map_eq_zero,
@@ -688,32 +696,32 @@ run_cmd do
       ``MilnorK.exists_finite_coprime_mixed_expansion,
       ``AdjoinRoot.coefficientEquiv_coefficientMap,
       ``MilnorK.PolynomialNorm.exists_coprime_restriction_eq_of_algEquiv,
-      ``SmoothSite.NisnevichNeighborhood.exists_normalized_refinement,
-      ``SmoothSite.sectionToNisnevichPoint_eq_zero_iff,
+      ``exists_normalized_refinement,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.sectionToNisnevichPoint_eq_zero_iff,
       ``PresheafWithTransfers.transfer_germ_eq_of_eq_on_support,
-      ``SheafCohomology.relativeBoundary_restriction,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_restriction,
       ``SheafWithTransfers.contractionToRelative_restriction_naturality,
-      ``SheafCohomology.H_succ_base_eq_zero,
-      ``Graph.polynomialTor_length,
-      ``Graph.polynomialTor_component_isZero_succ,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.H_succ_base_eq_zero,
+      ``_root_.AlgebraicGeometry.Scheme.Graph.polynomialTor_length,
+      ``_root_.AlgebraicGeometry.Scheme.Graph.polynomialTor_component_isZero_succ,
       ``MilnorK.PolynomialNorm.polynomialNorm_map_algEquiv_of_prime_normal,
-      ``SmoothSite.exists_section_of_mem_nisnevichPrecoverage_of_henselian,
-      ``SheafCohomology.H_succ_eq_zero_of_henselian,
+      ``exists_section_of_mem_nisnevichPrecoverage_of_henselian,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.H_succ_eq_zero_of_henselian,
       ``MilnorK.DVR.residue_ramified_restrict_apply,
       ``MilnorK.PolynomialNorm.residue_polynomialNorm_ring_units_eq,
       ``MilnorK.PolynomialNorm.residue_polynomialNorm_one_eq,
       ``FiniteCorrespondenceGenerator.exists_graph_family_factorization_with_support_lift,
       ``FiniteCorrespondenceGenerator.exists_pointed_graph_family_factorization_with_support,
       ``FiniteCorrespondenceGenerator.exists_normalized_pointed_graph_family_factorization,
-      ``SmoothSite.nisnevichPointFiberCocone_eq_of_center_germ_eq,
+      ``nisnevichPointFiberCocone_eq_of_center_germ_eq,
       ``GlobalIncidenceAmbientTorComparison.incidenceTor_length_eq_pulled,
-      ``RelativeEndpointDiagram.component_incidenceTor_koszul_length,
-      ``RelativeEndpointDiagram.rightSupport_endpointScalar_regular,
-      ``RelativeEndpointDiagram.component_incidenceTor_isZero_succ,
-      ``RelativeEndpointDiagram.component_incidenceTorCorrespondence_eq_fundamental,
-      ``RelativeEndpointDiagram.component_toIntegralCycle_incidenceTorCorrespondence,
+      ``component_incidenceTor_koszul_length,
+      ``rightSupport_endpointScalar_regular,
+      ``component_incidenceTor_isZero_succ,
+      ``component_incidenceTorCorrespondence_eq_fundamental,
+      ``component_toIntegralCycle_incidenceTorCorrespondence,
       ``Algebra.residue_intNorm_eq_norm_residue_pow,
-      ``SheafCohomology.zeroSieve_mem_succ,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSieve_mem_succ,
       ``PresheafWithTransfers.transfer_germ_eq_of_single_center,
       ``PresheafWithTransfers.fixed_lift_germ_evaluation_eq,
       ``MilnorK.PolynomialNorm.residue_polynomialNorm_final_ring_unit,

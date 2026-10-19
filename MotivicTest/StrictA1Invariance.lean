@@ -5,11 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.StrictInvariance
-import all Motivic.Cohomology.A1.ContractionChartHigherImageVanishing
-import all Motivic.Cohomology.A1.PointedCylinderPositiveRestriction
-import all Motivic.Cohomology.A1.PointedCartierPositiveRestriction
-import all Motivic.Cohomology.A1.StrictInvariance
+public import Motivic.Cohomology.A1.StrictInvariance.InfiniteField
+import all Motivic.Cohomology.A1.Contraction.ChartHigherImageVanishing
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveRestriction
+import all Motivic.Cohomology.A1.Cartier.Restriction.PositiveRestriction
+import all Motivic.Cohomology.A1.StrictInvariance.InfiniteField
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -24,6 +24,7 @@ this consumer. Finite-field descent is outside this endpoint.
 -/
 
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 universe u
 namespace MotivicTest.StrictA1Invariance
@@ -37,7 +38,7 @@ puncture monomorphism or positive-degree invariance premise. -/
 theorem original_allDegree_projection_isIso (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     IsIso (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   SheafWithTransfers.isStrictA1Invariant_of_isA1Invariant F hF n X
@@ -46,7 +47,7 @@ theorem original_allDegree_projection_isIso (F : SheafWithTransfers.{u + 1} k)
 theorem original_allDegree_projection_bijective (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     Function.Bijective (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   (ConcreteCategory.isIso_iff_bijective _).mp (original_allDegree_projection_isIso k F hF n X)
@@ -54,10 +55,10 @@ theorem original_allDegree_projection_bijective (F : SheafWithTransfers.{u + 1} 
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.ContractionChartHigherImageVanishing,
-    `Motivic.Cohomology.A1.PointedCylinderPositiveRestriction,
-    `Motivic.Cohomology.A1.PointedCartierPositiveRestriction,
-    `Motivic.Cohomology.A1.StrictInvariance]
+  let sourceModules := #[`Motivic.Cohomology.A1.Contraction.ChartHigherImageVanishing,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveRestriction,
+    `Motivic.Cohomology.A1.Cartier.Restriction.PositiveRestriction,
+    `Motivic.Cohomology.A1.StrictInvariance.InfiniteField]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -87,10 +88,10 @@ run_cmd do
   let options : Lean.Linter.LinterOptions := {
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
-  let modules := #[`Motivic.Cohomology.A1.ContractionChartHigherImageVanishing,
-    `Motivic.Cohomology.A1.PointedCylinderPositiveRestriction,
-    `Motivic.Cohomology.A1.PointedCartierPositiveRestriction,
-    `Motivic.Cohomology.A1.StrictInvariance, `MotivicTest.StrictA1Invariance]
+  let modules := #[`Motivic.Cohomology.A1.Contraction.ChartHigherImageVanishing,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.PositiveRestriction,
+    `Motivic.Cohomology.A1.Cartier.Restriction.PositiveRestriction,
+    `Motivic.Cohomology.A1.StrictInvariance.InfiniteField, `MotivicTest.StrictA1Invariance]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules
   let filenameErrors ← modulesOSForbidden options modules

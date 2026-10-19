@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOriginalFiberSections
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Original.FiberSections
 public import Lean.Util.CollectAxioms
 
 /-! Actual original-point fiber sections and their original restriction square. -/
@@ -13,8 +13,9 @@ public import Lean.Util.CollectAxioms
 open CategoryTheory Opposite AlgebraicGeometry
 universe u
 namespace MotivicTest.OriginalFiberSections
-open Motivic.FiniteEtaleSite
-variable {X : Scheme.{u}} {V U : Motivic.FiniteEtaleSite X} (x : X) (g : U ⟶ V)
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+variable {X : Scheme.{u}} {V U : Scheme.EtaleSeparatedFiniteType X} (x : X) (g : U ⟶ V)
   (F : Sheaf (nisnevichTopology (Spec (X.residueField x))) AddCommGrpCat.{u + 1})
 
 /-- The consumer uses the original field-map restriction and original fiber index. -/
@@ -30,9 +31,9 @@ theorem actual_restriction_square
 open Lean in
 run_cmd do
   for name in #[``actual_restriction_square,
-      ``Motivic.FiniteEtaleSite.originalFiberSectionsEquiv,
-      ``Motivic.FiniteEtaleSite.originalFiberObjects_mem_precoverage,
-      ``Motivic.FiniteEtaleSite.originalFiberSectionsEquiv_naturality] do
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.originalFiberSectionsEquiv,
+      ``originalFiberObjects_mem_precoverage,
+      ``originalFiberSectionsEquiv_naturality] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

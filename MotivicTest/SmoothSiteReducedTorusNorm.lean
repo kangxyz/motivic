@@ -5,15 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteReducedTorusNorm
+public import Motivic.Cohomology.WeightOne.Geometry.ReducedTorusNorm
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of the original ordinary reduced norm and its singular sheaf map -/
 
 @[expose] public noncomputable section
 
+open _root_.CategoryTheory.SingularComplex (sheafObj)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.SmoothSiteTorusDivisor Motivic.PresheafWithTransfers
+open Motivic.SmoothSiteTorusDivisor _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 
@@ -25,11 +27,11 @@ def actual_reduced_norm : (toPresheaf k).obj (reducedTorus k 1) ⟶
     SmoothSite.largeUnitsPresheaf (Spec (.of k)) := reducedNorm
 
 def actual_reduced_norm_chain_map :
-    SingularComplex.sheafObj (SmoothSite.nisnevichTopology (Spec (.of k)))
-        (AlgebraicSimplex.cosimplicialSmoothSite k)
+    sheafObj (SmoothSite.nisnevichTopology (Spec (.of k)))
+        (cosimplicialSmoothSite k)
         ((toPresheaf k).obj (reducedTorus k 1)) ⟶
-      SingularComplex.sheafObj (SmoothSite.nisnevichTopology (Spec (.of k)))
-        (AlgebraicSimplex.cosimplicialSmoothSite k)
+      sheafObj (SmoothSite.nisnevichTopology (Spec (.of k)))
+        (cosimplicialSmoothSite k)
         (SmoothSite.largeUnitsPresheaf (Spec (.of k))) := reducedNormSheafMap
 
 open Lean in

@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.RingTheory.FiniteProjectionWithDifferentialMinors
+public import Motivic.Aglib.RingTheory.NoetherNormalization.Differential.Projection
 public import Motivic.Aglib.RingTheory.Kaehler.SimultaneousResidueCoordinates
 public import Mathlib.LinearAlgebra.FiniteDimensional.Lemmas
 
@@ -12,7 +12,7 @@ joined. No polynomial presentation, relation, chart, or residue minor is supplie
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open Module TensorProduct KaehlerDifferential MvPolynomial ParameterizedNoetherNormalization
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial ParameterizedNoetherNormalization
 universe u v w
 namespace KaehlerDifferential
 

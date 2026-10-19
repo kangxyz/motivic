@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichCechIncidencePairing
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Cech.IncidencePairing
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -17,6 +17,8 @@ compatibility equations. No flatness, reduction or separability is assumed.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.FiniteCorrespondenceGenerator
 

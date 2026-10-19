@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichTopology
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Topology
 public import Motivic.Aglib.CategoryTheory.SheafifyAdditive
 
 /-! # Consumers of the actual singleton-cover Nisnevich topology on `Cor` -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

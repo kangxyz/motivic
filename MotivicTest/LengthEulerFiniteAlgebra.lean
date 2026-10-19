@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.LengthEulerFiniteAlgebra
-public import Motivic.Algebra.Homology.LengthEulerSingle
+public import Motivic.Aglib.Algebra.Homology.LengthEuler.FiniteAlgebra
+public import Motivic.Aglib.Algebra.Homology.LengthEuler.Single
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 
 /-!
@@ -27,7 +27,7 @@ universe u
 
 namespace Motivic.MotivicTest.LengthEulerFiniteAlgebra
 
-open LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 variable (R S : Type u) [CommRing R] [IsLocalRing R] [IsNoetherianRing R]
   [CommRing S] [Algebra R S] [Module.Finite R S]

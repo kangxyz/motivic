@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IntersectionAmbientIdeal
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.AmbientIdeal
 
 /-!
 # Consumers of the actual diagonal-intersection ambient diagram
@@ -16,6 +16,9 @@ sum. No hypothesis makes the incidence scheme integral, reduced, or flat.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceIntersectionAmbient
+  correspondenceMiddlePair correspondenceTripleInclusion correspondenceTripleMiddle
+  correspondenceTripleProduct correspondenceTriple_isPullback ker_correspondenceTripleInclusion)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

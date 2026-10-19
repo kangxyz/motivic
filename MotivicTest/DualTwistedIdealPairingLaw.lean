@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdealPairingLaw
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.PairingLaw
 /-! # Direct consumer test of original dual twisted ideal evaluation -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true

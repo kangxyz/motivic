@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulHyperhomologyBounded
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyBounded
 public import Mathlib.Data.ZMod.QuotientRing
 public import Mathlib.RingTheory.KrullDimension.PID
 public import Mathlib.Algebra.Ring.Int.Field
@@ -22,7 +22,10 @@ homology or finite-length chain-term assumptions.
 
 @[expose] public section
 
-open CategoryTheory HomologicalComplex Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory
+open HomologicalComplex
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulHyperhomologyIntegers
 

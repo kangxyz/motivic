@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.FiniteSupportGermLocality
+public import Motivic.Transfers.Sheaf.Germs.FiniteSupportLocality
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,8 +19,9 @@ action or independence of untracked correspondence lifts is assumed.
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open Motivic _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v w
 

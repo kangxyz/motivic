@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdealBoundary
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.Boundary
 /-! # Original pulled line comparison consumes the exact two-factor boundary section equation -/
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Scheme.Modules Scheme.Modules.Invertible

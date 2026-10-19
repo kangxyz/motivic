@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulSemilocalLengthDescent
-public import Motivic.Algebra.Homology.KoszulExteriorCoefficientComparison
-public import Motivic.Algebra.Homology.KoszulHyperhomologyPlacement
+public import Motivic.Aglib.Algebra.Homology.Koszul.SemilocalLengthDescent
+public import Motivic.Aglib.Algebra.Homology.Koszul.ExteriorCoefficientComparison
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyPlacement
 
 /-!
 # Generic maximal-localization finite-length descent consumers
@@ -32,7 +32,7 @@ universe u
 
 namespace Motivic.MotivicTest.KoszulSemilocalLengthDescent
 
-open LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 /-- The generic module conclusion uses only actual maximal-localized lengths. -/
 theorem actualModuleFiniteLength (R : Type u) [CommRing R] [Finite (MaximalSpectrum R)]
@@ -47,24 +47,25 @@ theorem actualModuleFiniteLength (R : Type u) [CommRing R] [Finite (MaximalSpect
 these constructed witnesses supply whole Koszul finite homology by descent. -/
 theorem actualArbitraryCoefficientUnit (R : Type u) [CommRing R]
     [Finite (MaximalSpectrum R)] (M : ModuleCat.{u} R) :
-    FiniteHomology (Koszul.coefficientComplex M [1]) := by
-  apply Koszul.coefficient_finiteHomology_of_maximal R M [1]
+    FiniteHomology (_root_.ChainComplex.Koszul.coefficientComplex M [1]) := by
+  apply _root_.ChainComplex.Koszul.coefficient_finiteHomology_of_maximal R M [1]
   intro q
   let φ := algebraMap R (Localization.AtPrime q.asIdeal)
   let N := (ModuleCat.extendScalars φ).obj M
-  have h : FiniteHomology (Koszul.coefficientComplex N [1]) :=
-    Koszul.finiteHomology_of_identity_homotopy _
-      (Koszul.singleUnitTensorHomotopy ((ChainComplex.single₀ (ModuleCat _)).obj N))
-  have hmap : FiniteHomology (Koszul.coefficientComplex N ([1].map φ)) := by
+  have h : FiniteHomology (_root_.ChainComplex.Koszul.coefficientComplex N [1]) :=
+    _root_.ChainComplex.Koszul.finiteHomology_of_identity_homotopy _
+      (_root_.ChainComplex.Koszul.singleUnitTensorHomotopy ((ChainComplex.single₀ (ModuleCat _)).obj
+          N))
+  have hmap : FiniteHomology (_root_.ChainComplex.Koszul.coefficientComplex N ([1].map φ)) := by
     simpa only [List.map_cons, List.map_nil, map_one] using h
   exact hmap.of_iso (fun n => (HomologicalComplex.homologyFunctor _ _ n).mapIso
-    (Koszul.coefficientExtendIso φ M [1]).symm)
+    (_root_.ChainComplex.Koszul.coefficientExtendIso φ M [1]).symm)
 
 /-- The empty maximal spectrum is included, with no nonempty-fiber assumption. -/
 theorem actualEmptyMaximalSpectrum (R : Type u) [CommRing R]
     [IsEmpty (MaximalSpectrum R)] (M : ModuleCat.{u} R) (s : List R) :
-    FiniteHomology (Koszul.coefficientComplex M s) := by
-  apply Koszul.coefficient_finiteHomology_of_maximalLengths R M s
+    FiniteHomology (_root_.ChainComplex.Koszul.coefficientComplex M s) := by
+  apply _root_.ChainComplex.Koszul.coefficient_finiteHomology_of_maximalLengths R M s
   intro q
   exact isEmptyElim q
 

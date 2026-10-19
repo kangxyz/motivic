@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.ProductSectionAssociator
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.Product.Associator
 
 /-! Direct audit of literal product compatibility with the native associator. -/
 set_option linter.hashCommand false

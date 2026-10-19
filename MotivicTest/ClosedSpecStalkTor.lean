@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ClosedSpecTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedSpecTor
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -20,7 +20,7 @@ No target comparison or regularity assumption is supplied.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic.Intersection
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 

@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IncidenceTor
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.Tor
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual incidence Tor consumers over arbitrary fields
@@ -23,6 +24,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.IncidenceTor
+open _root_.AlgebraicGeometry.Scheme
 
 variable (k : Type u) [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -50,7 +52,8 @@ theorem actualSupportStalk (w : A.incidence B) :
 /-- The coefficient sums actual Tor lengths with every finite higher correction retained. -/
 theorem actualCoefficientFormula (w : genericPoints (A.incidence B)) :
     actualCoefficient k A B w =
-      LengthEuler.signedLengthSum (A.incidenceTor B w.val) (fun n => (-1 : ℤ) ^ n)
+      _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (A.incidenceTor B w.val) (fun n =>
+          (-1 : ℤ) ^ n)
         (A.incidenceTor_finiteLengthSupport (S := Spec (.of k)) B w.val w.property) := rfl
 
 end Motivic.MotivicTest.IncidenceTor

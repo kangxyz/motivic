@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.FiniteOpenCoverGluingSigned
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Gluing.FiniteOpenCover.Signed
 public import MotivicTest.OpenCoverGluing
 public import Mathlib.Algebra.Polynomial.Basic
 public import Mathlib.AlgebraicGeometry.Properties
@@ -30,7 +30,7 @@ universe u
 
 namespace Motivic.MotivicTest.FiniteOpenCoverGluing
 
-open Scheme.Modules Motivic.FiniteOpenModuleGluing
+open Scheme.Modules _root_.AlgebraicGeometry.Scheme.Modules.Gluing.FiniteOpenCover
 
 variable (R : CommRingCat.{0}) (r : R)
 

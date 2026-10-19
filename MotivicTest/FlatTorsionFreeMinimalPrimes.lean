@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.FlatTorsionFreeMinimalPrimes
+public import Motivic.Aglib.RingTheory.Spectrum.Prime.FlatScalarMinimalPrimes
 public import Mathlib.Algebra.TrivSqZeroExt.Basic
 
 /-!

@@ -1,20 +1,20 @@
 # Motivic
 
-A Lean library for motivic cohomology, finite correspondences, Nisnevich
-sheaves with transfers, and Milnor K-theory.
+A Lean library for motivic cohomology, correspondences and transfer sheaves, with maintained general-theory candidates for Aglib.
 
 ```lean
 import Motivic
 ```
 
-Use the [library guide](Motivic/README.md) for focused imports and source families.
+The [library guide](Motivic/README.md) gives focused and optional imports.
 Lean and dependencies are pinned in `lean-toolchain` and `lake-manifest.json`.
 
 ## Documentation
 
-- [Development](doc/DEVELOPMENT.md): setup, incremental builds, tests and caches.
-- [Interfaces and scope](doc/INTERFACES.md): theorem assumptions and current boundaries.
-- [Architecture](doc/ARCHITECTURE.md) and [naming](doc/NAMING.md).
-- [Verification](doc/VERIFICATION.md) and [source provenance](doc/provenance/README.md).
+- [Reading routes](docs/README.md): first import, theorem search and extending a family.
+- [Development](docs/DEVELOPMENT.md): setup, incremental builds, tests and caches.
+- [Interfaces](docs/INTERFACES.md): actual maps, hypotheses and current boundaries.
+- [Architecture](docs/ARCHITECTURE.md) and [naming](docs/NAMING.md).
+- [Verification](docs/VERIFICATION.md) and [source provenance](docs/provenance/README.md).
 
 License: [Apache-2.0](LICENSE).

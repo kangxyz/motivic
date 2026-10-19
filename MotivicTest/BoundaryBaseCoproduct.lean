@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseCoproduct
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.Coproduct
 /-! # The original full boundary frame, without replacing either component by its reduction -/
 set_option linter.hashCommand false
 public noncomputable section

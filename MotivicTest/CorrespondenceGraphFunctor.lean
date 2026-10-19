@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.GraphFunctor
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Functor
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -25,6 +25,7 @@ open CategoryTheory AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.CorrespondenceGraphFunctor
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
 

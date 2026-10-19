@@ -1,8 +1,8 @@
 module
-import Motivic.Aglib.RingTheory.ParameterizedFiniteElimination
-import Motivic.Aglib.RingTheory.SimultaneousResiduePolynomialAvoidance
+import Motivic.Aglib.RingTheory.NoetherNormalization.FiniteElimination.Parameterized
+import Motivic.Aglib.RingTheory.Polynomial.Avoidance.SimultaneousResidue
 /-! # Direct finite-coordinate and residue-selection consumers -/
-open MvPolynomial ParameterizedNoetherNormalization
+open _root_.MvPolynomial ParameterizedNoetherNormalization
 
 example {k : Type} [Field k] {n : ℕ}
     (f : MvPolynomial (Fin (n + 1)) k)

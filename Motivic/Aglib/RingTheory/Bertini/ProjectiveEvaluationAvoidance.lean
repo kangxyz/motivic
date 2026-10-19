@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.ProjectiveEvaluationDimension
 
 /-! # Parameter relations exclude actual common zeros of the unchanged linear forms -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace ProjectiveEvaluationIncidence
 variable (k A K : Type u) [Field k] [CommRing A] [Field K]

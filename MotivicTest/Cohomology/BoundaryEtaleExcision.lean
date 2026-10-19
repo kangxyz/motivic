@@ -1,6 +1,6 @@
 module
 
-public import Motivic.Cohomology.A1.BoundaryEtaleExcision
+public import Motivic.Cohomology.A1.Boundary.Etale.Excision
 
 /-! # Actual boundary-sheaf étale excision regression tests
 
@@ -9,8 +9,9 @@ is provided. Both targets are the original small-site boundary cokernels.
 -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.FiniteEtaleSite
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 universe u
 namespace MotivicTest.BoundaryEtaleExcision
 

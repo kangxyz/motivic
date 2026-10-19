@@ -14,7 +14,7 @@ The parameters lie in the original infinite ground field and may also be chosen
 in any supplied nonempty principal open of that same parameter family.
 -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 variable (k R B : Type u) [Field k] [CommRing R] [CommRing B]

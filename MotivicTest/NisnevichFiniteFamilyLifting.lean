@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichFiniteFamilyLifting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.FiniteFamilyLifting
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 

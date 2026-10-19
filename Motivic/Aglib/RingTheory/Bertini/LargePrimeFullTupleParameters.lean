@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.RingTheory.Bertini.SimultaneousFullTuplePolynomial
-public import Motivic.Aglib.AlgebraicGeometry.LargePrimeScalarExtension
+public import Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.LargePrime
 
 /-! # Two unchanged prime extensions satisfy the full original parameter condition
 
@@ -20,7 +20,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-open Module MvPolynomial AlgebraicGeometry
+open Module _root_.MvPolynomial AlgebraicGeometry
 open scoped TensorProduct
 
 namespace QuadraticIncidence

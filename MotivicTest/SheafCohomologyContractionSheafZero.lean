@@ -5,15 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyContractionSheafZero
-public import Motivic.Cohomology.A1.ContractionIntegralWholeZeroRefinement
+public import Motivic.Cohomology.Sheaf.ContractionSheafZero
+public import Motivic.Cohomology.A1.Contraction.IntegralWholeZeroRefinement
 import all Motivic.Aglib.CategoryTheory.Sites.SheafifyLocallyZero
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.NisnevichLocalZero
-import all Motivic.Cohomology.A1.DenseOpenLocalDetection
-import all Motivic.Cohomology.A1.PresheafGenericModelDetection
-import all Motivic.Cohomology.A1.FiniteEtaleGenericModelDetection
-import all Motivic.Cohomology.SheafCohomologyContractionSheafZero
-import all Motivic.Cohomology.A1.ContractionIntegralWholeZeroRefinement
+import all Motivic.Transfers.Presheaf.NisnevichLocalZero
+import all Motivic.Cohomology.A1.LocalVanishing.DenseOpen.Detection
+import all Motivic.Cohomology.A1.LocalVanishing.Presheaf.GenericModel.Detection
+import all Motivic.Cohomology.A1.LocalVanishing.FiniteField.EtaleGenericModelDetection
+import all Motivic.Cohomology.Sheaf.ContractionSheafZero
+import all Motivic.Cohomology.A1.Contraction.IntegralWholeZeroRefinement
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -21,6 +21,8 @@ public import Batteries.Tactic.Lint
 
 public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -30,10 +32,13 @@ namespace MotivicTest.SheafCohomologyContractionSheafZero
 variable (k : Type u) [Field k] [Infinite k]
 
 example (X : SmoothSite (Spec (.of k)))
-    (W : FiniteEtaleSite (SmoothSite.a1Cylinder (.of k) X).left)
-    (w : ((FiniteEtaleSite.baseChange (SmoothSite.a1Section (.of k) X 0).left).obj W).left) :
-    ∃ (V : FiniteEtaleSite X.left)
-      (v : V ⟶ (FiniteEtaleSite.baseChange (SmoothSite.a1Section (.of k) X 0).left).obj W),
+    (W : EtaleSeparatedFiniteType (SmoothSite.a1Cylinder (.of k) X).left)
+    (w : ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.baseChange
+        (SmoothSite.a1Section (.of k) X 0).left).obj W).left)
+        :
+    ∃ (V : EtaleSeparatedFiniteType X.left)
+      (v : V ⟶ (_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.baseChange
+          (SmoothSite.a1Section (.of k) X 0).left).obj W),
       IsAffine V.left ∧ IsIntegral V.left ∧ IsOpenImmersion v.left ∧ w ∈ Set.range v.left := by
   obtain ⟨V, v, hV, hI, hv, hw, _⟩ :=
     FiniteEtaleSite.exists_integral_whole_zero_neighborhood_refinement X W w
@@ -70,9 +75,11 @@ example (F : SheafWithTransfers.{u + 1} k) (n : ℕ)
 example (F : SheafWithTransfers.{u + 1} k) (n : ℕ)
     (hP : (SheafCohomology.withTransfers k F (n + 1)).IsA1Invariant)
     (X : SmoothSite (Spec (.of k))) :
-    IsZero ((presheafToSheaf (FiniteEtaleSite.nisnevichTopology X.left)
+    IsZero ((presheafToSheaf
+        (_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.nisnevichTopology X.left)
       AddCommGrpCat.{u + 1}).obj
-      ((FiniteEtaleSite.toSmoothSite X).op ⋙ (PresheafWithTransfers.toPresheaf k).obj
+      ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.toSmoothSite X).op ⋙
+          (PresheafWithTransfers.toPresheaf k).obj
         (PresheafWithTransfers.contraction (SheafCohomology.withTransfers k F (n + 1))))) :=
   SheafCohomology.isZero_smallSheafify_contraction_succ k F n hP X
 
@@ -118,6 +125,7 @@ run_cmd do
   for (linter, findings) in results do
     for (name, message) in findings.toArray do
       throwError "{linter.name}: {name}: {message}"
-  logInfo "Original generic detection and both contraction sheafifications: declaration lint passed."
+  logInfo
+    "Original generic detection and both contraction sheafifications: declaration lint passed."
 
 end MotivicTest.SheafCohomologyContractionSheafZero

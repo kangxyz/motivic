@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.AlgebraicGeometry.AlgebraicSimplexScheme
-import Motivic.Algebra.Homology.SingularComplexPresheaf
-import Motivic.Algebra.Homology.SingularComplexNormalization
-import Motivic.Cohomology.Motivic.Indexing
+import Motivic.Aglib.AlgebraicGeometry.Simplex.AlgebraicSimplexScheme
+import Motivic.Aglib.Algebra.Homology.SingularComplex.Presheaf
+import Motivic.Aglib.Algebra.Homology.SingularComplex.Normalization
+import Motivic.Aglib.Algebra.Homology.SingularComplex.Indexing
 import Mathlib.AlgebraicGeometry.Limits
 import Mathlib.CategoryTheory.Limits.Constructions.Over.Basic
 import Mathlib.Algebra.Category.Grp.Abelian
@@ -26,7 +26,7 @@ the actual Moore normalization inclusion for this geometric input.
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic.AlgebraicSimplex Motivic.SingularComplex
+open _root_.AlgebraicSimplex _root_.CategoryTheory.SingularComplex
 open scoped Simplicial
 
 universe u w

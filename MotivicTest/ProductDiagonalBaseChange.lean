@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ProductDiagonalBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Products.Diagonal.BaseChange
 
 /-!
 # Consumers of base-changed product diagonals

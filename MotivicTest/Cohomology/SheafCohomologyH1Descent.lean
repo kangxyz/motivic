@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyH1Descent
+public import Motivic.Cohomology.Sheaf.H1.Descent
+public import Motivic.Transfers.Sheaf.Basic
 public import Mathlib.Algebra.Category.Grp.AB
 public import Mathlib.CategoryTheory.Abelian.GrothendieckAxioms.Sheaf
 public import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives
@@ -21,6 +22,7 @@ actual Nisnevich precoverage, with no assumption of arbitrary pullbacks.
 -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
 
@@ -58,7 +60,7 @@ local notation "F₀" => Functor.obj (SheafWithTransfers.toSheaf k) F
 /-- Every original coefficient H1 class has a quotient section with actual Nisnevich local lifts. -/
 theorem actual_transfer_class_local_lifts
     (X : SmoothSite (Spec (.of k)))
-    (x : SheafCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 X) :
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 X) :
     ∃ s : (cokernel (Injective.ι F₀)).obj.obj (op X),
       SheafCohomology.injectiveSectionBoundary.{u + 2, u + 1, u, u + 1} J F₀ X s = x ∧
       ∃ (ι : Type (u + 1)) (U : ι → SmoothSite (Spec (.of k))) (p : ∀ i, U i ⟶ X),
@@ -85,13 +87,14 @@ theorem actual_pairwise_difference
   let : (Presieve.ofArrows U p).HasPairwisePullbacks :=
     (SmoothSite.nisnevichPrecoverage (Spec (.of k))).hasPairwisePullbacks_of_mem hp
   exact Sheaf.existsUnique_localLiftDifference J
-    (SheafCohomology.injectivePresentation_shortExact.{u + 1, u, u + 1} J F₀) (p i) (p j)
+    (_root_.CategoryTheory.Sheaf.LargeCohomology.injectivePresentation_shortExact.{u + 1, u, u +
+        1} J F₀) (p i) (p j)
     (pullback.fst _ _) (pullback.snd _ _) pullback.condition s (l i) (l j) (hl i) (hl j)
 
 /-- A literal Cech coboundary kills the represented standard ordinary H1 class. -/
 theorem actual_coboundary_kills_class
     {X : SmoothSite (Spec (.of k))}
-    (x : SheafCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 X)
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 X)
     (s : (cokernel (Injective.ι F₀)).obj.obj (op X))
     (hs : SheafCohomology.injectiveSectionBoundary.{u + 2, u + 1, u, u + 1} J F₀ X s = x)
     {ι : Type*} {U : ι → SmoothSite (Spec (.of k))} (p : ∀ i, U i ⟶ X)
@@ -115,9 +118,10 @@ theorem actual_coboundary_kills_class
 theorem actual_boundary_formula (X : SmoothSite (Spec (.of k)))
     (s : (cokernel (Injective.ι F₀)).obj.obj (op X)) :
     SheafCohomology.injectiveSectionBoundary.{u + 2, u + 1, u, u + 1} J F₀ X s =
-      ((SheafCohomology.zeroSections.{u + 2, u + 1, u, u + 1} J
+      ((_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections.{u + 2, u + 1, u, u + 1} J
         (cokernel (Injective.ι F₀)) X).symm s).comp
-        (SheafCohomology.injectivePresentation_shortExact.{u + 1, u, u + 1} J F₀).extClass rfl :=
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.injectivePresentation_shortExact.{u + 1, u,
+            u + 1} J F₀).extClass rfl :=
   rfl
 
 open Lean in

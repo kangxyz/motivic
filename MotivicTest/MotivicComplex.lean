@@ -5,15 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.Complex
+public import Motivic.Cohomology.SuslinVoevodsky.Complex
 public import Lean.Util.CollectAxioms
 
 /-! # Canonical motivic complex: concrete input, signed shift, and term dictionaries -/
 
 @[expose] public noncomputable section
 
+open _root_.CategoryTheory.SingularComplex.Indexing (singularDegree)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 open scoped Simplicial
 
 universe u
@@ -47,7 +49,7 @@ example (q r : ℕ) (U : SmoothSite (Spec (.of k))) :
 example (q r : ℕ) {U V : SmoothSite (Spec (.of k))} (f : U ⟶ V) :
     (motivicSingularPresheaf k q r).map f.op =
       transfer (reducedTorus k q) ((Cor.graphFunctor k).map
-        (SmoothSite.productMap f (𝟙 ((AlgebraicSimplex.cosimplicialSmoothSite k).obj ⦋r⦌)))) :=
+        (SmoothSite.productMap f (𝟙 ((cosimplicialSmoothSite k).obj ⦋r⦌)))) :=
   motivicSingularPresheaf_map k q r f
 
 /-- The coefficients at every product are actual quotient groups of signed cycles. -/
@@ -72,7 +74,7 @@ example (q : ℕ) {P Q : PresheafWithTransfers.{u + 1} k} (η : P ⟶ Q) :
   (motivicComplexPlacementNatIso k q).hom.naturality η
 
 example (q r : ℕ) :
-    (motivicComplexPlacementIso k q).hom.f (Indexing.singularDegree q r) =
+    (motivicComplexPlacementIso k q).hom.f (singularDegree q r) =
       (-1 : ℤ) ^ (q * r) •
         ((singularSheafCochainXIso k (reducedTorus k q) q r).hom ≫
           (motivicComplexXIso k q r).inv) :=
@@ -81,7 +83,7 @@ example (q r : ℕ) :
 /-- The actual ordinary sheaf is the Nisnevich sheafification of the literal product presheaf. -/
 def ordinaryTerm (q r : ℕ) :
     (SheafWithTransfers.toSheaf k).obj
-        ((motivicComplex k q).X (Indexing.singularDegree q r)) ≅
+        ((motivicComplex k q).X (singularDegree q r)) ≅
       (presheafToSheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
         AddCommGrpCat.{u + 1}).obj (motivicSingularPresheaf k q r) :=
   motivicComplexUnderlyingXIso k q r
@@ -131,7 +133,7 @@ example : (motivicComplexPlacementIso k 1).hom.f 0 =
 
 /-- All even-weight comparison components carry positive sign. -/
 example (r : ℕ) :
-    (motivicComplexPlacementIso k 2).hom.f (Indexing.singularDegree 2 r) =
+    (motivicComplexPlacementIso k 2).hom.f (singularDegree 2 r) =
       (singularSheafCochainXIso k (reducedTorus k 2) 2 r).hom ≫
         (motivicComplexXIso k 2 r).inv := motivicComplexPlacementIso_two_hom_f k r
 

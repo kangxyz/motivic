@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.FiniteRepresentativeSourceIndependence
+public import Motivic.Transfers.Sheaf.Germs.FiniteRepresentatives.SourceIndependence
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -15,6 +15,8 @@ The regression supplies only the original lifts, their original graph equations,
 actual center controls and a fixed finite representative tuple. It supplies no
 common support, common source, Čech matching or substitute point-fiber structure.
 -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 @[expose] public noncomputable section
 
@@ -27,8 +29,9 @@ open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 universe u v
 
 namespace MotivicTest.FiniteRepresentativeSourceIndependence
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
-open Motivic Motivic.PresheafWithTransfers
+open Motivic  _root_.Motivic.PresheafWithTransfers
 
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{max (u + 1) v} k)
   {X Y : SmoothSite (Spec (.of k))} {n : ℕ} (y : Fin n → Y.left)
@@ -73,7 +76,7 @@ run_cmd do
   for name in #[``actual_source_neighborhood_independence,
       ``transfer_cocone_eq_of_finite_representatives_common_source,
       ``FiniteCorrespondence.target_mem_of_mem_flat_graph_comp,
-      ``SmoothSite.nisnevichPointFiberCocone_eq_of_center_germ_eq] do
+      ``nisnevichPointFiberCocone_eq_of_center_germ_eq] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

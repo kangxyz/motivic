@@ -10,7 +10,7 @@ public import Motivic.Aglib.RingTheory.Etale.AdaptedPolynomialCylinder
 
 /-! # A retained polynomial coordinate is the literal affine-line parameter -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace Algebra
 

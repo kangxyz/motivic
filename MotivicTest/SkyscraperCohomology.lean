@@ -17,7 +17,6 @@ and vanishing for arbitrary abelian coefficient groups.
 -/
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian Opposite
-open Motivic
 
 universe e e' w v u
 
@@ -34,30 +33,33 @@ example {M N : AddCommGrpCat.{max v w}} (f : M ⟶ N) [Epi f] (X : C) :
   exact (AddCommGrpCat.epi_iff_surjective _).mp inferInstance
 
 example (X : C) :
-    Projective (Φ.sheafFiber.obj (Hypercohomology.freeAbelianSheaf J X)) :=
+    Projective (Φ.sheafFiber.obj (_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheaf J X))
+        :=
   Φ.projective_sheafFiber_freeAbelianSheaf X
 
 variable [HasExt.{e} (Sheaf J AddCommGrpCat.{max v w})]
   [HasExt.{e'} AddCommGrpCat.{max v w}]
 
 example (M : AddCommGrpCat.{max v w}) (n : ℕ) {X Y : C} (f : X ⟶ Y)
-    (x : SheafCohomology.H J (Φ.skyscraperSheaf M) n Y) :
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H J (Φ.skyscraperSheaf M) n Y) :
     Φ.skyscraperCohomologyComparison M n X
-        ((SheafCohomology.presheaf J (Φ.skyscraperSheaf M) n).map f.op x) =
-      (Ext.mk₀ (Φ.sheafFiber.map ((Hypercohomology.freeAbelianSheafFunctor J).map f))).comp
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf J (Φ.skyscraperSheaf M) n).map f.op
+            x) =
+      (Ext.mk₀ (Φ.sheafFiber.map
+          ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor J).map f))).comp
         (Φ.skyscraperCohomologyComparison M n Y x) (zero_add n) :=
   Φ.skyscraperCohomologyComparison_restriction M n f x
 
 example {M N : AddCommGrpCat.{max v w}} (f : M ⟶ N) (n : ℕ) (X : C)
-    (x : SheafCohomology.H J (Φ.skyscraperSheaf M) n X) :
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H J (Φ.skyscraperSheaf M) n X) :
     Φ.skyscraperCohomologyComparison N n X
-        (((SheafCohomology.presheafFunctor J n).map
+        (((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor J n).map
           (Φ.skyscraperSheafFunctor.map f)).app (op X) x) =
       (Φ.skyscraperCohomologyComparison M n X x).comp (Ext.mk₀ f) (add_zero n) :=
   Φ.skyscraperCohomologyComparison_coefficient f n X x
 
 example (M : AddCommGrpCat.{max v w}) (n : ℕ) (X : C)
-    (x : SheafCohomology.H J (Φ.skyscraperSheaf M) (n + 1) X) : x = 0 :=
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H J (Φ.skyscraperSheaf M) (n + 1) X) : x = 0 :=
   Φ.skyscraper_cohomology_eq_zero M n X x
 
 open Lean in

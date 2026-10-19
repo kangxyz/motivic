@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.Modules.Pullback.OpenRestrictionUnit
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.SectionPairNormalization
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.PairNormalization
 public import Aglib.AlgebraicGeometry.Modules.Pullback.Tensor.Restriction
 
 /-! # Normalization of the actual restricted unit coefficient -/

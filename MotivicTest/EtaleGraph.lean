@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Graph.AffineEtale
+public import Motivic.Aglib.AlgebraicGeometry.Graph.AffineEtale
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -20,9 +20,10 @@ ring, not merely a separately chosen regular presentation of its kernel.
 @[expose] public noncomputable section
 
 open RingTheory.Sequence AlgebraicGeometry
-open Motivic.PolynomialTensorGraph
+open _root_.Algebra.TensorProduct.PolynomialGraph
 
 namespace Motivic.MotivicTest.EtaleGraph
+open _root_.Algebra.TensorProduct _root_.AlgebraicGeometry.Scheme.Graph
 
 /-- An arbitrary polynomial map has the claimed actual local graph kernel. -/
 theorem polynomial_localGraph (R A : Type*) [CommRing R] [CommRing A] [Algebra R A]
@@ -77,7 +78,7 @@ theorem original_diagonalList_on_graph (R A : Type*)
     IsWeaklyRegular
       (Localization.AtPrime (graphPrime R (Fin n) A (MvPolynomial (Fin n) R) f p))
       ((List.finRange n).map
-        (RelativePolynomialTensor.localDifference R (Fin n) (MvPolynomial (Fin n) R)
+        (RelativePolynomial.localDifference R (Fin n) (MvPolynomial (Fin n) R)
           (p.comap (f : MvPolynomial (Fin n) R →+* A)))) := by
   let := g.toAlgebra
   exact isWeaklyRegular_diagonalList_on_graph R (Fin n) A (MvPolynomial (Fin n) R)
@@ -89,16 +90,16 @@ theorem nonreduced_scheme_graph (n : ℕ) (g : MvPolynomial (Fin n) ℤ →ₐ[�
     letI := g.toAlgebra
     let f := Algebra.ofId (MvPolynomial (Fin n) ℤ) (ZMod 4)
     IsRegular
-      ((AffineGraph.product ℤ (ZMod 4) (MvPolynomial (Fin n) ℤ)).presheaf.stalk
-        (AffineGraph.graph ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f p))
+      ((Affine.product ℤ (ZMod 4) (MvPolynomial (Fin n) ℤ)).presheaf.stalk
+        (Affine.graph ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f p))
       ((List.finRange n).map
-        (AffineGraph.stalkDifference ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f p)) ∧
+        (Affine.stalkDifference ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f p)) ∧
     RingHom.ker
-      ((AffineGraph.graph ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f).stalkMap p).hom =
+      ((Affine.graph ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f).stalkMap p).hom =
       Ideal.ofList ((List.finRange n).map
-        (AffineGraph.stalkDifference ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f p)) := by
+        (Affine.stalkDifference ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ) f p)) := by
   let := g.toAlgebra
-  exact AffineGraph.etale_stalkPresentation ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ)
+  exact Affine.etale_stalkPresentation ℤ (Fin n) (ZMod 4) (MvPolynomial (Fin n) ℤ)
     (Algebra.ofId (MvPolynomial (Fin n) ℤ) (ZMod 4)) p (List.finRange n)
       (List.nodup_finRange n) List.mem_finRange
 

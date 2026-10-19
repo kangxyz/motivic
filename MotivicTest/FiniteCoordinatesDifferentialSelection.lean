@@ -1,9 +1,9 @@
 module
-import Motivic.Aglib.RingTheory.FiniteCoordinatesDifferentialSelection
+import Motivic.Aglib.RingTheory.NoetherNormalization.Differential.Coordinates
 import Mathlib.RingTheory.Derivation.Basic
 
 /-! # Actual residue-field derivations and the finite-coordinate selection -/
-open MvPolynomial ParameterizedNoetherNormalization
+open _root_.MvPolynomial ParameterizedNoetherNormalization
 
 example {k : Type} [Field k] [Infinite k] {n d : ℕ}
     (f : MvPolynomial (Fin (n + 1)) k)

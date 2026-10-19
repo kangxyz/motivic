@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteCurveNormalization
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteCurve.Basic
 
 /-!
 # Consumers of normalization over the unchanged finite curve base
@@ -18,13 +18,14 @@ Cartier multiplicities and allow arbitrary signed cycle coefficients.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic
-open AlgebraicGeometry.FiniteFlatCurve Motivic.FiniteCurveNormalization
+open CategoryTheory AlgebraicGeometry
+open AlgebraicGeometry.FiniteFlatCurve _root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve
 open scoped Polynomial
 
 universe u
 
 namespace MotivicTest.FiniteCurveNormalization
+open _root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve
 
 variable {k : Type u} [Field k] [CharZero k]
   (B : Type u) [CommRing B] [IsDomain B]
@@ -56,7 +57,7 @@ theorem genericDegreeOne :
   let : Module.Finite B (ring B) := ring_finite (k := k) B
   exact normalizationMap_residueDegree B
 
-omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] in
+omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] [IsDomain B] in
 /-- The scalar t-a is unchanged by the original normalization inclusion. -/
 theorem originalEndpointScalar (a : k) :
     algebraMap B (ring B) (algebraMap k[X] B (Polynomial.X - Polynomial.C a)) =
@@ -66,12 +67,15 @@ theorem originalEndpointScalar (a : k) :
 /-- No normality, flatness, branch choice, or reduced endpoint premise is supplied. -/
 theorem wholeEndpoint (a : k) :
     letI : IsFinite (normalizationMap B) := normalizationMap_isFinite (k := k) B
-    letI : IsNoetherian (Spec (.of B)) := isNoetherian_of_finiteType (baseMap (k := k) B)
+    letI : IsNoetherian (Spec (.of B)) := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType
+        (baseMap (k := k) B)
     letI : IsNoetherian (Spec (.of (ring B))) :=
-      isNoetherian_of_finiteType (normalizationMap B)
-    IntegralCycle.finitePushforward (fiberMap (baseMap (k := k) B) a (normalizationMap B))
-        (fundamentalCycle (fiber (normalizationMap B ≫ baseMap (k := k) B) a)) =
-      fundamentalCycle (fiber (baseMap (k := k) B) a) :=
+      _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (normalizationMap B)
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberMap (baseMap (k := k) B) a
+        (normalizationMap B))
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (normalizationMap B ≫ baseMap (k :=
+            k) B) a)) =
+      _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (baseMap (k := k) B) a) :=
   finitePushforward_fiber B a
 
 /-- Every target point retains the sum of all normalized branch lengths,
@@ -89,27 +93,34 @@ theorem wholeEndpointLengths (a : k) (y : fiber (baseMap (k := k) B) a) :
           Ideal.ofList [scalar (baseMap (k := k) B) a
             (fiberInclusion (baseMap (k := k) B) a y)])).toNat : ℤ) := by
   let : IsFinite (normalizationMap B) := normalizationMap_isFinite (k := k) B
-  let : IsNoetherian (Spec (.of B)) := isNoetherian_of_finiteType (baseMap (k := k) B)
+  let : IsNoetherian (Spec (.of B)) := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType
+      (baseMap (k := k) B)
   let : IsNoetherian (Spec (.of (ring B))) :=
-    isNoetherian_of_finiteType (normalizationMap B)
-  have h := congrArg (fun z => IntegralCycle.toPoints z y) (wholeEndpoint B a)
+    _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (normalizationMap B)
+  have h := congrArg (fun z => _root_.AlgebraicGeometry.Scheme.IntegralCycle.toPoints z y)
+      (wholeEndpoint B a)
   simpa only [fiberMap_fundamentalCoefficient, fiber_fundamentalCoefficient] using h
 
 /-- Both endpoint signs, and any further genuine finite pushforward, are retained. -/
 theorem signedEndpoint (a : k) {Q : Scheme.{u}}
     (g : fiber (baseMap (k := k) B) a ⟶ Q) [IsFinite g] (n : ℤ) :
     letI : IsFinite (normalizationMap B) := normalizationMap_isFinite (k := k) B
-    letI : IsNoetherian (Spec (.of B)) := isNoetherian_of_finiteType (baseMap (k := k) B)
+    letI : IsNoetherian (Spec (.of B)) := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType
+        (baseMap (k := k) B)
     letI : IsNoetherian (Spec (.of (ring B))) :=
-      isNoetherian_of_finiteType (normalizationMap B)
-    IntegralCycle.finitePushforward (fiberMap (baseMap (k := k) B) a (normalizationMap B) ≫ g)
-        (n • fundamentalCycle (fiber (normalizationMap B ≫ baseMap (k := k) B) a)) =
-      n • IntegralCycle.finitePushforward g (fundamentalCycle (fiber (baseMap (k := k) B) a)) := by
+      _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (normalizationMap B)
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberMap (baseMap (k := k) B) a
+        (normalizationMap B) ≫ g)
+        (n • _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (normalizationMap B ≫ baseMap
+            (k := k) B) a)) =
+      n • _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward g
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (baseMap (k := k) B) a)) := by
   let : IsFinite (normalizationMap B) := normalizationMap_isFinite (k := k) B
-  let : IsNoetherian (Spec (.of B)) := isNoetherian_of_finiteType (baseMap (k := k) B)
+  let : IsNoetherian (Spec (.of B)) := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType
+      (baseMap (k := k) B)
   let : IsNoetherian (Spec (.of (ring B))) :=
-    isNoetherian_of_finiteType (normalizationMap B)
-  rw [IntegralCycle.finitePushforward_comp, AddMonoidHom.comp_apply,
+    _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (normalizationMap B)
+  rw [_root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward_comp, AddMonoidHom.comp_apply,
     map_zsmul, wholeEndpoint, map_zsmul]
 
 /-- The identity finite curve is admitted without a separate normalization package. -/
@@ -118,13 +129,24 @@ example : IsFinite (normalizationMap k[X]) := normalizationMap_isFinite (k := k)
 open Lean in
 run_cmd do
   for name in #[
-      ``ring_isFractionRing, ``ring_isIntegrallyClosed, ``ring_finrank,
-      ``ring_algebraMap_injective, ``normalizationMap_surjective,
-      ``normalizationMap_residueDegree, ``fractionRing_finite, ``fractionRing_separable,
-      ``ring_isIntegralClosure_base, ``ring_finite_base, ``ring_isDedekindDomain,
-      ``ring_finite, ``baseMap_isFinite, ``baseMap_surjective,
-      ``normalizationMap_isFinite, ``normalizationMap_baseMap,
-      ``finitePushforward_fiber, ``genericDegreeOne, ``originalEndpointScalar,
+      ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_isFractionRing,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_isIntegrallyClosed,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_finrank,
+      ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_algebraMap_injective,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.normalizationMap_surjective,
+      ``normalizationMap_residueDegree,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.fractionRing_finite,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.fractionRing_separable,
+      ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_isIntegralClosure_base,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_finite_base,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_isDedekindDomain,
+      ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_finite,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.baseMap_isFinite,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.baseMap_surjective,
+      ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.normalizationMap_isFinite,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.normalizationMap_baseMap,
+      ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.finitePushforward_fiber,
+          ``genericDegreeOne, ``originalEndpointScalar,
       ``wholeEndpoint, ``wholeEndpointLengths, ``signedEndpoint] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodFiniteFlatSectionPair
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Sections.FiniteFlatPair
 /-! Actual prescribed sections give whole finite flat zero schemes. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Bertini.QuadraticIncidenceBaseChange
 import Lean.Util.CollectAxioms
 
 /-! # Exact base change of the original quadratic incidence equations -/
-open Module TensorProduct MvPolynomial KaehlerDifferential QuadraticIncidence
+open Module TensorProduct _root_.MvPolynomial KaehlerDifferential QuadraticIncidence
 
 noncomputable section
 variable (k R A K : Type) [CommRing k] [CommRing R] [CommRing A] [CommRing K]

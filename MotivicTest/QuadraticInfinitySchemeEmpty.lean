@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticInfinitySchemeEmpty
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Infinity.InfinitySchemeEmpty
 /-! The whole same-family infinity scheme is empty, without reducing its equations. -/
 set_option linter.hashCommand false
 public noncomputable section

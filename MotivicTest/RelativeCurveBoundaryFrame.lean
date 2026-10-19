@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryFramePullback
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.BoundaryFramePullback
 /-! # Full finite-boundary frames on arbitrary smooth relative curves -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

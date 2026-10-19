@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageGeneric
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorGeneric
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.Generic
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorGeneric
 
 /-!
 # Original smooth-site exterior image generic consumers
@@ -30,6 +30,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ExteriorImageGeneric
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)

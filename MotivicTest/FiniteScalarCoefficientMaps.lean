@@ -5,13 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparisonDifference
-public import Motivic.AlgebraicGeometry.SmoothSiteFieldBaseChangeA1
-public import Motivic.Cohomology.A1.RelativeCurveLocalLifting
-import all Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarComparison
-import all Motivic.AlgebraicGeometry.SmoothSiteFieldBaseChangeA1
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparison
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparisonDifference
+public import Motivic.Transfers.Presheaf.FiniteScalarComparisonDifference
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FieldBaseChangeA1
+public import Motivic.Cohomology.A1.LocalVanishing.RelativeCurve.LocalLifting
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarComparison
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FieldBaseChangeA1
+import all Motivic.Transfers.Presheaf.FiniteScalarComparison
+import all Motivic.Transfers.Presheaf.FiniteScalarComparisonDifference
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -24,8 +24,9 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.PresheafWithTransfers
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 
@@ -85,10 +86,10 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarComparison,
-    `Motivic.AlgebraicGeometry.SmoothSiteFieldBaseChangeA1,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparison,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparisonDifference]
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarComparison,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FieldBaseChangeA1,
+    `Motivic.Transfers.Presheaf.FiniteScalarComparison,
+    `Motivic.Transfers.Presheaf.FiniteScalarComparisonDifference]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -119,10 +120,10 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarComparison,
-    `Motivic.AlgebraicGeometry.SmoothSiteFieldBaseChangeA1,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparison,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarComparisonDifference,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarComparison,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FieldBaseChangeA1,
+    `Motivic.Transfers.Presheaf.FiniteScalarComparison,
+    `Motivic.Transfers.Presheaf.FiniteScalarComparisonDifference,
     `MotivicTest.FiniteScalarCoefficientMaps]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

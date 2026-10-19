@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalCycleSymbols
+public import Motivic.Cohomology.Diagonal.CycleSymbols
 public import Lean.Util.CollectAxioms
 
 /-!

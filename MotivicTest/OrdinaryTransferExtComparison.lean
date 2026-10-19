@@ -5,12 +5,13 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Transfers.OrdinaryTransferExtComparison
+import Motivic.Transfers.Cohomology.Ext.OrdinaryComparison
 import Lean
 
 /-! # Actual transfer-to-ordinary Ext comparison, independent universes -/
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian AlgebraicGeometry Opposite
 open Motivic Motivic.SheafWithTransfers
 universe w w' u
@@ -22,7 +23,7 @@ variable (k : Type u) [Field k]
 /-- This tests the original cohomology group, not a replacement provider. -/
 example (X : SmoothSite (Spec (.of k))) (F : SheafWithTransfers.{u + 1} k) (n : ℕ) :
     Ext.{w} ((transferRepresentable k).obj (Cor.mk X)) F n ≃+
-      SheafCohomology.H.{w', u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.LargeCohomology.H.{w', u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) ((toSheaf k).obj F) n X :=
   transferExtEquiv k X F n
 
@@ -33,7 +34,8 @@ example {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y)
     transferExtEquiv k X F n
       ((Ext.mk₀ ((transferRepresentable k).map ((Cor.graphFunctor k).map f))).comp e
         (zero_add n)) =
-      (SheafCohomology.presheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf (SmoothSite.nisnevichTopology (Spec (.of
+        k)))
         ((toSheaf k).obj F) n).map f.op (transferExtEquiv k Y F n e) :=
   transferExtEquiv_naturality_graph k f F n e
 

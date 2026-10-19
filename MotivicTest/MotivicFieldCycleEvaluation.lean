@@ -5,13 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.FieldCycleEvaluation
+public import Motivic.Cohomology.SuslinVoevodsky.FieldCycleEvaluation
 public import Lean.Util.CollectAxioms
 
 /-! # Exact evaluation by the full literal signed reduced-cycle complex -/
 
 @[expose] public noncomputable section
 
+open _root_.CategoryTheory.SingularComplex.Indexing (singularDegree)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Opposite
 open Motivic
 
@@ -31,7 +33,7 @@ example (q : ℕ) : motivicRawBaseComplex k q =
 
 /-- Literal products remain visible after every arbitrary-degree placement. -/
 example (q r : ℕ) :
-    (motivicRawBaseComplex k q).X (Indexing.singularDegree q r) ≅
+    (motivicRawBaseComplex k q).X (singularDegree q r) ≅
       PresheafWithTransfers.sections (PresheafWithTransfers.reducedTorus k q)
         (Cor.simplexProduct (Cor.mk (SmoothSite.base (Spec (.of k)))) r) :=
   motivicRawBaseComplexXIso k q r

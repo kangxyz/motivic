@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardRelativeKoszul
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.RelativeKoszul
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
 
 /-!
 # Actual relative-QC finite-pushforward consumers
@@ -30,8 +30,14 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardRelative
+open _root_.AlgebraicGeometry.Scheme.Hom
+open _root_.AlgebraicGeometry.Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent
 
-open Scheme.Modules FiniteSchemeEuler LengthEuler
+open Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) [IsFinite f]
   {U : Y.Opens} (hU : IsAffineOpen U) (p : Spec Γ(Y, U))
@@ -51,7 +57,7 @@ instance ambientModule_relativeQuasicoherent (E : (f ⁻¹ᵁ U).toScheme.Module
 theorem actualAffineRestriction (E : (f ⁻¹ᵁ U).toScheme.Modules) [E.IsQuasicoherent] :
     ((restrictFunctor (FiniteAffineChart.sourceChart f hU)).obj
       (ambientModule f E)).IsQuasicoherent :=
-  RelativeAffineQuasicoherent.sourceChart_quasicoherent f hU (ambientModule f E)
+  RelativeAffine.sourceChart_quasicoherent f hU (ambientModule f E)
 
 /-- The actual whole coefficient is finite from all original source-stalk witnesses,
 with the relative QC witness constructed from the genuine open counit. -/
@@ -59,15 +65,15 @@ theorem relativeWholeFinite (E : (f ⁻¹ᵁ U).toScheme.Modules) [E.IsQuasicohe
     (hE : ∀ x : {x : X // f x = hU.fromSpec p},
       Module.Finite (X.presheaf.stalk x.1) (originalSourceStalkModule (ambientModule f E) x.1)) :
     letI : Algebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) := (f.app U).hom.toAlgebra
-    Module.Finite (FiniteFiber.localAlgebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) p)
+    Module.Finite (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(Y, U) Γ(X, f ⁻¹ᵁ U) p)
       (originalWholeLocalizedModule f hU p (ambientModule f E)) :=
-  RelativeFiniteSchemeEuler.originalWholeModule_finite f hU p (ambientModule f E) hE
+  RelativeFiniteEuler.originalWholeModule_finite f hU p (ambientModule f E) hE
 
 /-- An empty original fiber kills the actual whole localized module with no finite-rank premise. -/
 theorem emptyFiberWholeZero (E : (f ⁻¹ᵁ U).toScheme.Modules) [E.IsQuasicoherent]
     [IsEmpty {x : X // f x = hU.fromSpec p}] :
     Subsingleton (originalWholeLocalizedModule f hU p (ambientModule f E)) :=
-  RelativeFiniteSchemeEuler.originalWholeModule_subsingleton f hU p (ambientModule f E)
+  RelativeFiniteEuler.originalWholeModule_subsingleton f hU p (ambientModule f E)
     (fun x => isEmptyElim x)
 
 /-- Whole localized boundedness uses pointwise bounds and the actual relative-QC construction. -/
@@ -77,7 +83,7 @@ theorem relativeWholeBound (E : ℕ → (f ⁻¹ᵁ U).toScheme.Modules)
       Subsingleton (originalSourceStalkModule (ambientModule f (E n)) x.1)) :
     ∃ b : ℕ, ∀ n, b ≤ n →
       Subsingleton (originalWholeLocalizedModule f hU p (ambientModule f (E n))) :=
-  RelativeFiniteSchemeEuler.originalWholeFamily_exists_bound f hU p
+  RelativeFiniteEuler.originalWholeFamily_exists_bound f hU p
     (fun n => ambientModule f (E n)) hE
 
 /-- Actual pushforward maps every term and differential of a whole-open complex. -/
@@ -96,16 +102,16 @@ theorem relativeOriginalDifferential
     (E : ChainComplex (f ⁻¹ᵁ U).toScheme.Modules ℕ) [∀ n, (E.X n).IsQuasicoherent]
     (q : Spec Γ(X, f ⁻¹ᵁ U)) (n m : ℕ) :
     let K := ambientComplex f E
-    let C := ((tilde.functor Γ(X, f ⁻¹ᵁ U) ⋙ ModuleStalk.functor q).mapHomologicalComplex
+    let C := ((tilde.functor Γ(X, f ⁻¹ᵁ U) ⋙ Stalk.functor q).mapHomologicalComplex
       (ComplexShape.down ℕ)).obj
-        (AffineQuasicoherent.wholeChartCoordinateComplex (ComplexShape.down ℕ) f hU K)
+        (Affine.wholeChartCoordinateComplex (ComplexShape.down ℕ) f hU K)
     let D := (Functor.mapHomologicalComplex
-      (ModuleStalk.functor (FiniteAffineChart.sourceChart f hU q) ⋙
+      (Stalk.functor (FiniteAffineChart.sourceChart f hU q) ⋙
         ModuleCat.restrictScalars (inv ((FiniteAffineChart.sourceChart f hU).stalkMap q)).hom)
       (ComplexShape.down ℕ)).obj K
-    let e := RelativeAffineQuasicoherent.wholeChartStalkIso f hU (ComplexShape.down ℕ) K q
+    let e := RelativeAffine.wholeChartStalkIso f hU (ComplexShape.down ℕ) K q
     e.hom.f n ≫ D.d n m = C.d n m ≫ e.hom.f m :=
-  (RelativeAffineQuasicoherent.wholeChartStalkIso f hU (ComplexShape.down ℕ)
+  (RelativeAffine.wholeChartStalkIso f hU (ComplexShape.down ℕ)
     (ambientComplex f E) q).hom.comm n m
 
 /-- The same actual list, whole fiber and literal scheme residue weights work from relative QC. -/
@@ -115,11 +121,11 @@ theorem relativeOriginalProjection
     (s : List (Y.presheaf.stalk (hU.fromSpec p)))
     (hE : FiniteHomology (originalWholeKoszulTotal f hU p (ambientComplex f E) s)) :
     chainEuler (originalPushforwardKoszul f hU p (ambientComplex f E) s)
-      (RelativeFiniteSchemeEuler.originalPushforwardKoszul_finiteHomology f hU p _ s hE) =
+      (RelativeFiniteEuler.originalPushforwardKoszul_finiteHomology f hU p _ s hE) =
     ∑ᶠ x : {x : X // f x = hU.fromSpec p}, (f.residueDegree x.1 : ℤ) *
       chainEuler (originalFiberKoszul f hU p (ambientComplex f E) s x)
-        (RelativeFiniteSchemeEuler.originalFiberKoszul_finiteHomology f hU p _ s hE x) :=
-  RelativeFiniteSchemeEuler.originalFinitePushforwardKoszulEuler f hU p _ s hE
+        (RelativeFiniteEuler.originalFiberKoszul_finiteHomology f hU p _ s hE x) :=
+  RelativeFiniteEuler.originalFinitePushforwardKoszulEuler f hU p _ s hE
 
 section Correspondence
 
@@ -143,13 +149,13 @@ theorem actualRelativeRemainingProjection
       (s.map ((F.leftImageMiddlePair G H).stalkMap (hV.fromSpec p)).hom))) :
     let t := s.map ((F.leftImageMiddlePair G H).stalkMap (hV.fromSpec p)).hom
     chainEuler (originalPushforwardKoszul (F.leftIntermediateImageMap G H) hV p K t)
-      (RelativeFiniteSchemeEuler.originalPushforwardKoszul_finiteHomology _ hV p K t hK) =
+      (RelativeFiniteEuler.originalPushforwardKoszul_finiteHomology _ hV p K t hK) =
     ∑ᶠ x : {x : F.leftIntermediateSupportProduct G H //
         F.leftIntermediateImageMap G H x = hV.fromSpec p},
       ((F.leftIntermediateImageMap G H).residueDegree x.1 : ℤ) *
         chainEuler (originalFiberKoszul (F.leftIntermediateImageMap G H) hV p K t x)
-          (RelativeFiniteSchemeEuler.originalFiberKoszul_finiteHomology _ hV p K t hK x) :=
-  RelativeFiniteSchemeEuler.originalFinitePushforwardKoszulEuler _ hV p K _ hK
+          (RelativeFiniteEuler.originalFiberKoszul_finiteHomology _ hV p K t hK x) :=
+  RelativeFiniteEuler.originalFinitePushforwardKoszulEuler _ hV p K _ hK
 
 end Correspondence
 

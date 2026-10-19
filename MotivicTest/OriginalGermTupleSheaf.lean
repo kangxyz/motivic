@@ -5,13 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermTupleSheaf
+public import Motivic.Transfers.Sheaf.Germs.Tuples.Sheaf
 public import Motivic.Transfers.OriginalGermTupleEmbedding
 public import Lean.Util.CollectAxioms
 
 /-! Direct ordinary Nisnevich sheafness of the actual signed germ-tuple presheaf. -/
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.OriginalGermTupleSheaf
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.AffineQuasicoherentComplex
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
-public import Motivic.Algebra.Homology.KoszulCoefficientComplex
+public import Motivic.Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.Complex
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
+public import Aglib.Algebra.Homology.Koszul.Coefficient
 
 /-!
 # Actual quasi-coherent whole-chart complex consumers
@@ -32,26 +32,29 @@ universe u
 
 namespace Motivic.MotivicTest.AffineQuasicoherentComplex
 
-open Motivic.AffineQuasicoherent Motivic.FiniteAffineChart Motivic.ModuleStalk
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteAffineChart
+open _root_.AlgebraicGeometry.Scheme.Modules.Stalk
 
 /-- A genuine arbitrary-ideal coefficient Koszul complex is recovered from
 its actual sheaf global sections, without regularity or reducedness. -/
 def quotientKoszulCoordinates (A : CommRingCat.{u}) (I : Ideal A) (s : List A) :
     let L := ((tilde.functor A).mapHomologicalComplex _).obj
-      (Koszul.coefficientComplex (ModuleCat.of A (A ⧸ I)) s)
+      (_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of A (A ⧸ I)) s)
     ((tilde.functor A).mapHomologicalComplex _).obj
       (coordinateComplex A _ L) ≅ L := by
   intro L
   have (n : ℕ) : (L.X n).IsQuasicoherent :=
     inferInstanceAs
-      (tilde ((Koszul.coefficientComplex (ModuleCat.of A (A ⧸ I)) s).X n)).IsQuasicoherent
+      (tilde ((_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of A (A ⧸ I)) s).X
+          n)).IsQuasicoherent
   exact coordinateComplexIso A _ L
 
 /-- The concrete quotient-Koszul comparison preserves the literal Koszul differential. -/
 theorem quotientKoszulDifferential (A : CommRingCat.{u}) (I : Ideal A) (s : List A)
     (n m : ℕ) :
     let L := ((tilde.functor A).mapHomologicalComplex _).obj
-      (Koszul.coefficientComplex (ModuleCat.of A (A ⧸ I)) s)
+      (_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of A (A ⧸ I)) s)
     (((tilde.functor A).mapHomologicalComplex _).obj
       (coordinateComplex A _ L)).d n m ≫ (quotientKoszulCoordinates A I s).hom.f m =
         (quotientKoszulCoordinates A I s).hom.f n ≫ L.d n m :=

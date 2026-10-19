@@ -15,19 +15,24 @@ namespace MotivicTest.SheafCohomologyRelativeLineHigherVanishing
 public noncomputable section
 open CategoryTheory AlgebraicGeometry Opposite
 open AlgebraicGeometry.Scheme.Hom
-open Motivic Motivic.SheafCohomology Motivic.RelativePolynomialOpenSpans
+open Motivic
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.CategoryTheory.Sheaf.LargeCohomology
+open _root_.Motivic.SheafCohomology
+open _root_.Algebra.Smooth
+open _root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite
 universe w u
 variable {k R : Type u} [Field k] [CommRing R] [IsDomain R]
   [Algebra k R] [Algebra.Smooth k R]
-  [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+  [HasExt.{w} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 attribute [local instance] away_smooth
 
 /-- An arbitrary ordinary sheaf, arbitrary smooth integral affine base, and the
 literal original Ext restriction. No transfers or homotopy invariance premise. -/
 theorem original_relative_line_higher_class_eventually_zero
-    (F : Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})
+    (F : Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})
     (n : ℕ)
-    (x : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (x : H.{w, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
       F (n + 2) (lineSite (k := k) (R := R))) :
     ∃ (r : R) (hr : r ≠ 0),
       let : IsDomain (Localization.Away r) := Localization.Away.isDomain hr
@@ -35,9 +40,9 @@ theorem original_relative_line_higher_class_eventually_zero
         let : IsDomain (Localization.Away s) := Localization.Away.isDomain hs
         ∃ V : (Spec (.of (Localization.Away s))).Opens,
           IsAffineOpen V ∧ genericPoint (Spec (.of (Localization.Away s))) ∈ V ∧
-          (presheaf.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
+          (presheaf.{w, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
             F (n + 2)).map
-            (SmoothSite.openInclusion (lineSite (k := k) (R := Localization.Away s))
+            (openInclusion (lineSite (k := k) (R := Localization.Away s))
               (boundaryBaseSourceOpen (boundaryLineProjection (Localization.Away s)) ⊤ V) ≫
                 lineMap (IsScalarTower.toAlgHom k (Localization.Away r) (Localization.Away s)) ≫
                 lineMap (IsScalarTower.toAlgHom k R (Localization.Away r))).op x = 0 :=
@@ -51,7 +56,7 @@ run_cmd do
       ``exists_relative_monic_open_restriction_eq_zero,
       ``exists_relative_monic_positive_zero_square,
       ``ordinary_restriction_eq_zero_of_square_refinement,
-      ``ordinaryOpenBaseSquare_iso_complement,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.ordinaryOpenBaseSquare_iso_complement,
       ``Scheme.exists_base_principal_openImmersion_overlap_shrinking,
       ``Scheme.Hom.isIso_pullback_snd_of_open_source_of_mono_base,
       ``AlgebraicGeometry.PolynomialOpenQuotient.range_inclusion_complement] do

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichFiniteFamilyLifting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.FiniteFamilyLifting
 public import Lean.Util.CollectAxioms
 
 /-! # Exact chosen residue-lift values on finite support fibers at arbitrary points -/

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeCartierDivisor
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Cartier.Divisor
 
 /-!
 # Consumers of proper flat relative Cartier correspondences
@@ -17,6 +17,8 @@ with an explicit boundary-avoidance condition on the whole Cartier subscheme.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite IntegralCycle)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 

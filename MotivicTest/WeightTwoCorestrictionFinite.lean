@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionFinite
+public import Motivic.Cohomology.WeightTwo.CorestrictionFinite
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -17,6 +17,7 @@ with the original integral reduction, without a level or characteristic restrict
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open WeightTwoCorestriction WeightOnePointNorm
 

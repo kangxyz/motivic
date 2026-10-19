@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulDimensionZeroHead
-public import Motivic.Algebra.Homology.KoszulDimensionSupport
+public import Motivic.Aglib.Algebra.Homology.Koszul.DimensionZeroHead
+public import Motivic.Aglib.Algebra.Homology.Koszul.DimensionSupport
 
 /-!
 # Consumers of actual Koszul dimension-induction steps
@@ -22,7 +22,7 @@ No complete prime-filtration dimension-vanishing theorem is asserted here.
 
 universe u
 
-open CategoryTheory Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulDimensionSteps
 

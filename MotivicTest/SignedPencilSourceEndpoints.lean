@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.SignedPencilSourceEndpoints
+import Motivic.AlgebraicGeometry.Correspondences.Moving.Pencils.SignedSourceEndpoints
 
 /-! Direct check of the actual two-source signed affine-line endpoint. -/
 

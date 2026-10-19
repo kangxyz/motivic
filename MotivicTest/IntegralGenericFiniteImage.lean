@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.IntegralGenericFiniteImage
-public import Motivic.AlgebraicGeometry.Cycles.IntegralExteriorClosedFiber
-public import Motivic.AlgebraicGeometry.Graph.CommonStalkTransport
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorGeneric
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.Pushforward.Finite.FiniteImage
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.BaseChange.ClosedFiber
+public import Motivic.Aglib.AlgebraicGeometry.Graph.CommonStalkTransport
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorGeneric
 
 /-!
 # Original pair/image finite integral-support factorization
@@ -36,6 +36,10 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Graph (alignedStalkMap alignedStalkMap_naturality
+  alignedStalkMap_rfl)
+open _root_.AlgebraicGeometry.Scheme.Hom (residueDegree_comp residueDegree_of_surjectiveOnStalks)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -179,7 +183,7 @@ instance pairExteriorMap_isFinite : IsFinite (pairExteriorMap F G H z) :=
 /-- The actual exterior square retains the original ambient stalk action,
 with its equal-point transport displayed explicitly. -/
 theorem pairExteriorMap_stalkSquare (w : pairExterior F G H z) :
-    Graph.alignedStalkMap (F.leftIntermediateImageMap G H)
+    alignedStalkMap (F.leftIntermediateImageMap G H)
         (pairExteriorInclusion F G H z w)
         (imageExteriorInclusion F G H z (pairExteriorMap F G H z w))
         (by
@@ -187,8 +191,8 @@ theorem pairExteriorMap_stalkSquare (w : pairExterior F G H z) :
       (pairExteriorInclusion F G H z).stalkMap w =
     (imageExteriorInclusion F G H z).stalkMap (pairExteriorMap F G H z w) ≫
       (pairExteriorMap F G H z).stalkMap w := by
-  simpa only [Graph.alignedStalkMap_rfl] using
-    Graph.alignedStalkMap_naturality (F.leftIntermediateImageMap G H)
+  simpa only [alignedStalkMap_rfl] using
+    alignedStalkMap_naturality (F.leftIntermediateImageMap G H)
       (pairExteriorMap F G H z) (pairExteriorInclusion F G H z)
       (imageExteriorInclusion F G H z) (pairExteriorMap_ambient F G H z)
       w (pairExteriorMap F G H z w) rfl
@@ -228,7 +232,7 @@ theorem pairExteriorClosedFiberEquiv_scalarSquare
 /-- The actual target closed fiber is its entire exterior support stalk,
 without identifying it with a field or choosing a branch. -/
 def imageExteriorClosedFiberEquiv (v : genericPoints (imageExterior F G H z)) :
-    Koszul.coefficientClosedFiber
+    _root_.ChainComplex.Koszul.coefficientClosedFiber
       ((pullback.fst (imageStructure F G) (H.projection ≫ Z.hom)).stalkMap
         (imageExteriorInclusion F G H z v.1)).hom ≃+*
       (imageExterior F G H z).presheaf.stalk v.1 :=

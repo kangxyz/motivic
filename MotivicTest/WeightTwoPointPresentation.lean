@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoPointPresentation
+public import Motivic.Cohomology.WeightTwo.PointPresentation
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ all accepted declarations are checked against standard foundational axioms.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
 open WeightTwoPointPresentation WeightTwoCorestriction
 open MilnorK.K3.PolynomialResidue

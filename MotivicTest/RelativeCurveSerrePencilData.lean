@@ -1,12 +1,13 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SerrePencilData
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Data.Serre
 /-! # Actual Serre sections and finite-flat families produce original correcting data -/
 set_option linter.hashCommand false
 public section
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic ProjectiveSpace
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry ProjectiveSpace
 open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R]
@@ -42,7 +43,7 @@ example
     (eN : affineBoundaryTwistFrames R ι (a ≫ q) f
       (psiBoundaryInclusion q (f ≫ toSpec R ι) j p hq a z s hs d))
     (φ : B ⟶ V) (hφ : φ ≫ v = α ≫ j) :
-    Nonempty (DiagonalSignedPencilProducer.Data
+    Nonempty (GraphDivisorPencil.Data
       (relativeAlpha k t (f ≫ toSpec R ι) j α)
       (relativeBeta k t q (f ≫ toSpec R ι) j a α p hq β h)
       (relativeGraphMap k t (f ≫ toSpec R ι) j α v φ hφ)) :=

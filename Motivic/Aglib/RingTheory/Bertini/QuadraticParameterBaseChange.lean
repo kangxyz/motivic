@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticParameterTuple
 
 /-! # Literal coefficient extension of the original quadratic tuple -/
 @[expose] public noncomputable section
-open Module MvPolynomial
+open Module _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 variable {A B σ : Type u} [CommRing A] [CommRing B]

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBasePuncturedSquare
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.PuncturedSquare
 /-! # Original target compatibility in the actual refined punctured square -/
 set_option linter.hashCommand false
 public section

@@ -4,14 +4,14 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.FixedBadLocusRetainedPresentation
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalRetainedBaseRestriction
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.QuotientRetainedBadCover
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.FixedBadLocusRetainedPresentation
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Compactification.Retained.NormalRetainedBaseRestriction
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.QuotientRetainedBadCover
 public import Lean
 
 /-! # The original étale problem supplies its finite bad scheme and actual target presentation -/
 public noncomputable section
-open CategoryTheory AlgebraicGeometry MvPolynomial
+open CategoryTheory AlgebraicGeometry _root_.MvPolynomial
 open AlgebraicGeometry.Scheme.RelativeCurve QuadraticIncidence QuadraticIncidence.InfinityChart
 universe u
 

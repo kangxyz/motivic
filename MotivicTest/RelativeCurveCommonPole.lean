@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CommonPoleFiniteFlat
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.PoleFiniteFlat
 /-! # Actual relative pole divisor, retaining all scheme multiplicities -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

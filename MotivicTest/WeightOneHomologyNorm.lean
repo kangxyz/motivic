@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneHomologyNorm
+public import Motivic.Cohomology.WeightOne.HomologyNorm
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -18,6 +18,7 @@ an arbitrary field. No injectivity or weight-one equivalence is presumed.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.WeightOneHomologyNorm
 

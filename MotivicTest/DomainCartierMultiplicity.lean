@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.DomainCartierMultiplicity
+public import Motivic.Aglib.RingTheory.Multiplicity.Cartier.Domain
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,7 +18,7 @@ length finite before conversion to an integer.
 
 @[expose] public noncomputable section
 
-open Motivic.Koszul Motivic.LengthEuler
+open _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
@@ -49,9 +49,12 @@ theorem actual_finiteness (hM : IsSMulRegular M t) :
 
 open Lean in
 run_cmd do
-  for name in #[``domainGenericPrime, ``domainGenericLength,
-      ``domainCartierFiniteHomology, ``domainCartier_chainEuler,
-      ``domainCartier_quotient_length, ``domainCartier_quotient_length_ne_top,
+  for name in #[``_root_.ChainComplex.Koszul.domainGenericPrime,
+      ``_root_.ChainComplex.Koszul.domainGenericLength,
+      ``_root_.ChainComplex.Koszul.domainCartierFiniteHomology,
+          ``_root_.ChainComplex.Koszul.domainCartier_chainEuler,
+      ``_root_.ChainComplex.Koszul.domainCartier_quotient_length,
+          ``_root_.ChainComplex.Koszul.domainCartier_quotient_length_ne_top,
       ``actual_euler, ``actual_quotient, ``actual_finiteness] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

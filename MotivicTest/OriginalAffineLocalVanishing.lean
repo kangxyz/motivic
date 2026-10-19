@@ -4,8 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.OriginalAffineLocalVanishing
-public import Motivic.Topology.JacobsonOpenCover
+public import Motivic.Cohomology.A1.LocalVanishing.Original.AffineLocalVanishing
+public import Motivic.Aglib.Topology.JacobsonOpenCover
 /-! Direct original-section moving and genuine missing-boundary audit. -/
 set_option linter.hashCommand false
 public noncomputable section
@@ -13,6 +13,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 universe u w
 namespace Motivic.PresheafWithTransfers

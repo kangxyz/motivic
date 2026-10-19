@@ -10,7 +10,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticSelectedEtaleOpen
 
 /-! # One quadratic tuple has whole-fiber smoothness, infinity avoidance, and generic étaleness -/
 @[expose] public noncomputable section
-open MvPolynomial AlgebraicGeometry
+open _root_.MvPolynomial AlgebraicGeometry
 universe u
 namespace QuadraticIncidence
 

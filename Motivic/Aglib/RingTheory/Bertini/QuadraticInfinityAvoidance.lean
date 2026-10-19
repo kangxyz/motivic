@@ -9,7 +9,7 @@ public import Motivic.Aglib.RingTheory.Bertini.ProjectiveEvaluationAvoidance
 
 /-! # One same-family principal open has no field-valued quadratic infinity basepoints -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace ProjectiveEvaluationIncidence
 

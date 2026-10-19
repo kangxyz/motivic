@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CommonPencilFiniteFlat
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.PencilFiniteFlat
 /-! # Actual relative polynomial-family consumer, with no finite-flat family premise -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

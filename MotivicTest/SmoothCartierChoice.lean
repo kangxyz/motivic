@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothCartierAtPrime
-import all Motivic.Aglib.AlgebraicGeometry.SmoothCartierAtPrime
+public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.SmoothCartierAtPrime
+import all Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.Smooth.SmoothCartierAtPrime
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -52,7 +52,8 @@ run_cmd do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"
-  logInfo "Actual smooth Cartier choice at original positive-rank points: standard foundations only."
+  logInfo
+    "Actual smooth Cartier choice at original positive-rank points: standard foundations only."
 
 open Lean Batteries.Tactic.Lint in
 run_cmd do

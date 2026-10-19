@@ -5,28 +5,30 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.RankZeroCylinderVanishing
+public import Motivic.Cohomology.A1.LocalVanishing.RankZero.Vanishing
 public import MotivicTest.RelativeGenericBaseCylinderZero
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleRankZeroPointRefinement
-import all Motivic.Cohomology.A1.RankZeroCylinderColimit
-import all Motivic.Cohomology.A1.RankZeroCylinderVanishing
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.RankZeroPointRefinement
+import all Motivic.Cohomology.A1.LocalVanishing.RankZero.Colimit
+import all Motivic.Cohomology.A1.LocalVanishing.RankZero.Vanishing
 public import Lean.Util.CollectAxioms
 
 /-! Arbitrary field-valued markers and the unchanged cylinder neighborhood index. -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite EtaleSeparatedFiniteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe u
 
 namespace MotivicTest.RankZeroCylinderColimit
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 
 variable {k : Type u} [Field k] (X : SmoothSite (Spec (.of k)))
   (K : Type u) [Field K] (b : Spec (.of K) ⟶ X.left) (p : Spec (.of K))
   (P : (SmoothSite (Spec (.of k)))ᵒᵖ ⥤ AddCommGrpCat.{u + 1})
 
 /-- No residue-field splitting or finite-type hypothesis on the field marker is added. -/
-theorem field_marker_rank (V : FiniteEtaleSite X.left)
+theorem field_marker_rank (V : EtaleSeparatedFiniteType X.left)
     (a : (relativeFieldPoint b K (𝟙 _)).fiber.obj V) :
     ringKrullDim (V.left.presheaf.stalk
       ((relativeFieldPointFiberEquiv b K (𝟙 _) V a).left p)) =
@@ -58,7 +60,7 @@ continuity, rational-marker or infinite-ground-field premise. -/
 theorem original_rank_zero_cylinder_colimit (hF : F.obj.IsA1Invariant) (n : ℕ)
     (hd : ringKrullDim (X.left.presheaf.stalk (b p)) = 0) :
     IsZero (colimit (pointedCylinderValues (.of k) (relativeFieldPoint b K (𝟙 _))
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) (n + 1))
       (pointedBase (.of k) (relativeFieldPoint b K (𝟙 _))))) :=
@@ -67,7 +69,7 @@ theorem original_rank_zero_cylinder_colimit (hF : F.obj.IsA1Invariant) (n : ℕ)
 /-- Detection at an arbitrary original marked test object uses its actual
 residue field and the higher direct image on the unchanged original base. -/
 theorem original_rank_zero_marked_higher_image (hF : F.obj.IsA1Invariant) (n : ℕ)
-    (V : FiniteEtaleSite X.left) (x : V.left)
+    (V : EtaleSeparatedFiniteType X.left) (x : V.left)
     (hd : ringKrullDim (V.left.presheaf.stalk x) = 0)
     [HasExt.{u + 1}
       (Sheaf (nisnevichTopology (SmoothSite.a1Cylinder (.of k) X).left)
@@ -81,7 +83,7 @@ theorem original_rank_zero_marked_higher_image (hF : F.obj.IsA1Invariant) (n : �
 open Lean in
 run_cmd do
   for name in #[``field_marker_rank,
-      ``fieldPoint_stalk_rank_eq,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldPoint_stalk_rank_eq,
       ``fieldPoint_eq_genericPoint_of_rank_zero,
       ``exists_integral_affine_point_open_refinement,
       ``original_index_representative_zero,
@@ -102,7 +104,7 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let declarations := #[``field_marker_rank,
-    ``fieldPoint_stalk_rank_eq,
+    ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldPoint_stalk_rank_eq,
     ``fieldPoint_eq_genericPoint_of_rank_zero,
     ``exists_integral_affine_point_open_refinement,
     ``original_index_representative_zero,

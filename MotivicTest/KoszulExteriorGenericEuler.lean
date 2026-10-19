@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulExteriorGenericEuler
-public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddleSupports
+public import Motivic.Aglib.Algebra.Homology.Koszul.ExteriorGenericEuler
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.AffineMiddleSupports
 
 /-!
 # Actual support consumers of alternating exterior coefficients
@@ -22,8 +22,8 @@ noncomputable section
 
 universe u
 
-open CategoryTheory Motivic.Koszul
-open scoped TensorProduct Motivic.MiddleDiagonal
+open CategoryTheory _root_.ChainComplex.Koszul
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 namespace MotivicTest.KoszulExteriorGenericEuler
 
@@ -31,12 +31,16 @@ variable (k A B C D : Type u) [Field k] [CommRing A] [CommRing B] [CommRing C] [
   [Algebra k A] [Algebra k B] [Algebra k C] [Algebra k D]
   (I : Ideal (A ⊗[k] B)) (J : Ideal (B ⊗[k] C)) (K : Ideal (C ⊗[k] D))
 
-local notation "P₀" => Motivic.MiddleDiagonal.ambientRing k A B C
+local notation "P₀" => _root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C
 local notation "T₀" => ((A ⊗[k] B) ⧸ I) ⊗[k] ((B ⊗[k] C) ⧸ J)
 local notation "E₀" => (C ⊗[k] D) ⧸ K
 local notation "S₀" => P₀ ⊗[k] E₀
-local notation "σ₀" => Motivic.AffineMiddle.supportRingMap k A B C I J
-local notation "hσ₀" => Motivic.AffineMiddle.supportRingMap_surjective k A B C I J
+local notation "σ₀" =>
+  _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap
+    k A B C I J
+local notation "hσ₀" =>
+  _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap_surjective
+    k A B C I J
 local notation "q₀" => Ideal.Quotient.mkₐ k K
 local notation "λ₀" => (Algebra.TensorProduct.includeLeft : P₀ →ₐ[k] S₀)
 
@@ -49,7 +53,7 @@ local instance pairSupportAlgebra : Algebra k T₀ := inferInstance
 /-- Cache the same canonical exterior scalar ring used by prime localization. -/
 local instance exteriorScalarCommRing : CommRing S₀ := inferInstance
 
-variable (Q : Ideal (Motivic.MiddleDiagonal.ambientRing k A B C ⊗[k]
+variable (Q : Ideal (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C ⊗[k]
   ((C ⊗[k] D) ⧸ K))) [Q.IsPrime]
 
 /-- The actual pair generic point is the literal prime contraction. -/
@@ -58,8 +62,9 @@ theorem actualPairGenericPrime (t : List P₀)
       (λ₀).toRingHom).minimalPrimes) :
     (coordinatePairGenericPrime σ₀ Q t hQ).1 = Q.under P₀ := rfl
 
-variable [IsNoetherianRing (Motivic.MiddleDiagonal.ambientRing k A B C)]
-  [IsNoetherianRing (Motivic.MiddleDiagonal.ambientRing k A B C ⊗[k] ((C ⊗[k] D) ⧸ K))]
+variable [IsNoetherianRing (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C)]
+  [IsNoetherianRing (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C ⊗[k] ((C ⊗[k]
+      D) ⧸ K))]
 
 /-- The actual alternating exterior coefficient is the existing pair replacement
 coefficient multiplied by the retained genuine fiber multiplicity. -/

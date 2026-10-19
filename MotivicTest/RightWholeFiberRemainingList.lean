@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RightWholeFiberRemainingList
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.WholeFiber.RightRemainingList
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual right whole-fiber remaining-Y list consumers
@@ -23,11 +24,14 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Graph (alignedStalkMap)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberRemainingList
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -46,7 +50,7 @@ theorem actualSmoothRightWholeFiberRemainingList (w : F.tripleIncidence G H) :
         (pullback.diagonal Y.hom).ker.stalk (F.rightSupportMiddlePair G H x.1) =
             Ideal.ofList (F.rightFiberMiddleList G H y s x) ∧
           (F.rightTargetRemainingList G H y s).map
-              (Graph.alignedStalkMap (F.rightIntermediateImageMap G H) x.1 y x.2.symm).hom =
+              (alignedStalkMap (F.rightIntermediateImageMap G H) x.1 y x.2.symm).hom =
             ((F.rightFiberMiddleList G H y s x).map
               (F.rightAmbientMiddleStalkMap G H x.1).hom).map
                 ((F.rightIntermediateAmbientInclusion G H).stalkMap x.1).hom := by
@@ -67,7 +71,7 @@ theorem actualSmoothRightImageWholeFiberList (y : F.rightImageIncidence G H) :
         (pullback.diagonal Y.hom).ker.stalk (F.rightSupportMiddlePair G H x.1) =
             Ideal.ofList (F.rightFiberMiddleList G H (F.rightImageIncidenceInclusion G H y) s x) ∧
           (F.rightTargetRemainingList G H (F.rightImageIncidenceInclusion G H y) s).map
-              (Graph.alignedStalkMap (F.rightIntermediateImageMap G H) x.1
+              (alignedStalkMap (F.rightIntermediateImageMap G H) x.1
                 (F.rightImageIncidenceInclusion G H y) x.2.symm).hom =
             (F.rightFiberMiddleList G H (F.rightImageIncidenceInclusion G H y) s x).map
               ((F.rightSupportMiddlePair G H).stalkMap x.1).hom := by
@@ -97,7 +101,7 @@ theorem actualRightOriginalFiberRemainingList
     (x : {w : F.rightIntermediateSupportProduct G H //
       F.rightIntermediateImageMap G H w = V.2.fromSpec p}) :
     (F.rightTargetRemainingList G H (V.2.fromSpec p) s).map
-        (FiniteSchemeEuler.originalFiberStalkMap (F.rightIntermediateImageMap G H) V.2 p x).hom =
+        (FiniteEuler.originalFiberStalkMap (F.rightIntermediateImageMap G H) V.2 p x).hom =
       (F.rightFiberMiddleList G H (V.2.fromSpec p) s x).map
         ((F.rightSupportMiddlePair G H).stalkMap x.1).hom :=
   F.rightOriginalFiberRemainingList_map G H V p s x

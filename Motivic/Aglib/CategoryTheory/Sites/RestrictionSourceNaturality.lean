@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyRestrictionSource
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.RestrictionSource
 public import Motivic.Aglib.CategoryTheory.Sites.FreeAbelianSheafPushout
 
 /-! # Naturality of the original free sources for site restriction -/
@@ -13,7 +13,7 @@ public import Motivic.Aglib.CategoryTheory.Sites.FreeAbelianSheafPushout
 set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits Opposite
 universe t v u u'
-namespace Motivic.Hypercohomology
+namespace CategoryTheory.Sheaf.Hypercohomology
 variable {C : Type u} [Category.{v} C] {D : Type u'} [Category.{v} D]
   (J : GrothendieckTopology C) (K : GrothendieckTopology D)
   [HasSheafify J AddCommGrpCat.{max v t}]
@@ -76,4 +76,4 @@ theorem restrictionSourceIso_naturality {X Y : C} (f : X ⟶ Y) :
   rw [Adjunction.homEquiv_naturality_left, Adjunction.homEquiv_naturality_right]
   exact restrictionSourceHom_naturality J K G f
 
-end Motivic.Hypercohomology
+end CategoryTheory.Sheaf.Hypercohomology

@@ -14,7 +14,7 @@ public import Mathlib.LinearAlgebra.TensorProduct.Basis
 
 @[expose] public noncomputable section
 
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 open scoped TensorProduct
 
 namespace QuadraticIncidence

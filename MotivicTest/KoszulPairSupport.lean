@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.KoszulPairLocalSupport
+public import Motivic.Aglib.RingTheory.LocalLength.KoszulPairLocalSupport
 
 /-!
 # Consumers of support-sensitive Koszul finite length

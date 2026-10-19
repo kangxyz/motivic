@@ -16,7 +16,7 @@ minimal primes of the original, possibly nonreduced ideal.
 
 @[expose] public noncomputable section
 
-open MvPolynomial
+open _root_.MvPolynomial
 
 universe u
 

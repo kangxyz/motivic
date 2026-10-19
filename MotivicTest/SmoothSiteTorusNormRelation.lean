@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteTorusNormRelation
+public import Motivic.Cohomology.WeightOne.Geometry.TorusNormRelation
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of the actual identity-graph and ordinary reduced relation -/
@@ -13,8 +13,12 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.AffineTorusPolynomialPresentation Motivic.SmoothSiteTorusDivisor
-open Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent
+open _root_.AlgebraicGeometry.Scheme.PolynomialLaurent
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.Motivic.AffineTorusPolynomialPresentation
+open Motivic.SmoothSiteTorusDivisor
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 

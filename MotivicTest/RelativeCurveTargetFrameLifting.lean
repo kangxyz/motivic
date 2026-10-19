@@ -1,5 +1,5 @@
 module
-public import Motivic.Cohomology.A1.RelativeCurveTargetFrameLifting
+public import Motivic.Cohomology.A1.LocalVanishing.RelativeCurve.TargetFrameLifting
 /-! # Original-section quotient lifting with one full-target boundary frame -/
 set_option linter.hashCommand false
 public section

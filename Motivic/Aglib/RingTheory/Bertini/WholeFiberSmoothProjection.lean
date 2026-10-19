@@ -13,7 +13,7 @@ public import Motivic.Aglib.RingTheory.Kaehler.ResidueIndependentSmoothMap
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open Module TensorProduct KaehlerDifferential MvPolynomial AlgebraicGeometry
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial AlgebraicGeometry
 universe u
 namespace QuadraticIncidence
 

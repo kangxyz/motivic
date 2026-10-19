@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexSingularTransferMaps
+public import Motivic.AlgebraicGeometry.Correspondences.Singular.Maps
 
 /-!
 # Consumers of actual singular transfer chain maps
@@ -16,7 +16,12 @@ all chain degrees, every original simplex operator, and signed multiplicities.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 open scoped Simplicial
 
 universe v u
@@ -53,7 +58,7 @@ example (n : ℕ) :
     (singularObj P X).d (n + 1) n =
       ∑ i : Fin (n + 2), (-1 : ℤ) ^ (i : ℕ) •
         transfer P ((Cor.graphFunctor k).map (SmoothSite.productMap (𝟙 X.toSmoothSite)
-          ((AlgebraicSimplex.cosimplicialSmoothSite k).δ i))) :=
+          ((cosimplicialSmoothSite k).δ i))) :=
   singularObj_d P X n
 
 example : singularTransfer P ((-3 : ℤ) • α) = (-3 : ℤ) • singularTransfer P α := by

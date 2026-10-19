@@ -5,17 +5,23 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleFieldObjectEvaluation
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Field.ObjectEvaluation
 public import Lean.Util.CollectAxioms
 
 /-! Ordinary sheaf evaluation is exact on every actual finite étale field object. -/
 
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic Motivic.FiniteEtaleSite
+open CategoryTheory
+open CategoryTheory.Limits
+open Opposite
+open AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 universe u
 namespace MotivicTest.FiniteEtaleFieldObjectEvaluation
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 
-variable {K : Type u} [Field K] (V : FiniteEtaleSite (Spec (.of K)))
+variable {K : Type u} [Field K] (V : EtaleSeparatedFiniteType (Spec (.of K)))
 
 /-- The comparison uses the original canonical residue-field restrictions. -/
 theorem literal_component_restriction
@@ -39,7 +45,8 @@ open Lean in
 run_cmd do
   for name in #[``literal_component_restriction, ``arbitrary_object_epi_surjective,
       ``ordinary_short_exact_evaluation, ``residueComponents_mem_precoverage,
-      ``finite_residueComponents, ``residueComponent_restriction_bijective,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.finite_residueComponents,
+          ``residueComponent_restriction_bijective,
       ``residueComponentSectionsEquiv, ``objectEvaluation_surjective_of_epi] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

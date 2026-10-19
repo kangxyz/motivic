@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.RingTheory.SimultaneousResidueLinearProjection
+import Motivic.Aglib.RingTheory.NoetherNormalization.Residue.LinearProjection
 import Mathlib.RingTheory.Derivation.Basic
 
 /-! # Simultaneous actual function selection from residue-field derivations -/

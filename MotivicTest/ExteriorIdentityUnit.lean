@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityUnit
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.Unit
 
 /-!
 # Actual exterior identities on arbitrary smooth sources
@@ -17,6 +17,7 @@ and the identity of every object after product with an algebraic simplex.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

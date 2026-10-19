@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IncidenceCycle
-public import Motivic.AlgebraicGeometry.Correspondences.CompositionSupportGraphs
-public import Motivic.AlgebraicGeometry.Cycles.FundamentalClosedSubscheme
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.Cycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Support.Graphs
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.Fundamental.ClosedSubscheme
 
 /-!
 # Consumers of degree-weighted incidence-cycle assembly
@@ -21,6 +21,9 @@ No theorem here identifies ordinary local lengths with derived intersections.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (closedFundamentalCycle closedFundamentalCycle_of_isIntegral
+  finitePushforward_fundamentalCycle fundamentalCycle isNoetherian_of_finiteType)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Motivic
 open scoped BigOperators

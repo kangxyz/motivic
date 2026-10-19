@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleInfinityBoundary
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.Boundary.InfinityBoundary
 
 /-! The actual full boundary is finite, rather than a supplied finite subset. -/
 @[expose] public noncomputable section

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorMixedNorm
+public import Motivic.Cohomology.Diagonal.MilnorMixedNorm
 public import Lean.Util.CollectAxioms
 
 /-! Audit of actual all-weight mixed norm compatibility. -/

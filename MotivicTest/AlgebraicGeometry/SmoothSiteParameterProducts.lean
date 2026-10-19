@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteParameterProducts
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Products.ParameterProducts
 
 /-!
 # Literal smooth parameter-product consumers
@@ -15,10 +15,12 @@ universes. They test the displayed product maps as well as pullback
 preservation, Nisnevich continuity and preservation of sheaf conditions.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v w
 

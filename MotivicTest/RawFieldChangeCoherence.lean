@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.RawFieldChangeCoherence
+public import Motivic.Cohomology.SuslinVoevodsky.RawFieldChangeCoherence
 
 /-!
 # Consumers of the original all-degree field-change coherence
@@ -17,6 +17,7 @@ coefficient-level invertibility or finite-generation hypothesis is supplied.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe w u
@@ -83,25 +84,25 @@ theorem characteristicLevelTower (φ : k →+* L) (ψ : L →+* M) (p : ℤ) (q 
 open Lean in
 run_cmd do
   for name in [
-      ``Motivic.SmoothSite.fieldBaseChangeObjectIdIso_naturality,
-      ``Motivic.SmoothSite.torusBaseChangeIso_id,
-      ``Motivic.SmoothSite.fieldBaseChangeComparison_inv_original,
-      ``Motivic.SmoothSite.torusBaseChangeIso_comp_inv,
-      ``Motivic.SmoothSite.torusBaseChangeIso_comp,
-      ``Motivic.SmoothSite.torusPowerBaseChangeIso_id,
-      ``Motivic.SmoothSite.torusPowerBaseChangeIso_comp,
-      ``Motivic.SmoothSite.simplexBaseChangeIso_id,
-      ``Motivic.SmoothSite.simplexBaseChangeIso_comp_inv,
-      ``Motivic.SmoothSite.simplexBaseChangeIso_comp,
-      ``Motivic.SmoothSite.baseSimplexFieldChangeIso_hom_snd,
-      ``Motivic.SmoothSite.baseSimplexFieldChangeIso_id,
-      ``Motivic.SmoothSite.baseSimplexFieldChangeIso_comp,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeObjectIdIso_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_id,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeComparison_inv_original,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_comp_inv,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_comp,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso_id,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso_comp,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.simplexBaseChangeIso_id,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.simplexBaseChangeIso_comp_inv,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.simplexBaseChangeIso_comp,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplexFieldChangeIso_hom_snd,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplexFieldChangeIso_id,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplexFieldChangeIso_comp,
       ``Motivic.Cor.fieldBaseChange_id_graph,
       ``Motivic.Cor.fieldBaseChange_comp_graph,
-      ``Motivic.SmoothSite.baseSimplex_isIntegral,
-      ``Motivic.SmoothSite.fieldBaseChange_baseSimplex_isIntegral,
-      ``Motivic.SmoothSite.baseSimplexFieldChangeIso_comp_inv,
-      ``Motivic.SmoothSite.baseSimplexFieldChangeIso_id_inv,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplex_isIntegral,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChange_baseSimplex_isIntegral,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplexFieldChangeIso_comp_inv,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.baseSimplexFieldChangeIso_id_inv,
       ``Motivic.PresheafWithTransfers.reducedTorusSingularFieldChange_id,
       ``Motivic.PresheafWithTransfers.reducedTorusSingularCycleFieldChange_comp,
       ``Motivic.PresheafWithTransfers.reducedTorusSingularFieldChange_comp,

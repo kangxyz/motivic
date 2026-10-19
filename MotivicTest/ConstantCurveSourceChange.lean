@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantCurveSourceChange
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Constant.CurveSourceChange
 /-! Both the original target and original graph survive actual source change. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

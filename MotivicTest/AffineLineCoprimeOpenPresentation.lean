@@ -5,16 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.AffineLineCoprimeOpenPresentation
+public import Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineCoprimeOpenPresentation
 public import Mathlib.Algebra.Field.ZMod
 public import Lean
 
 /-! # Original affine-line opens and coprime monic equations -/
 public noncomputable section
 open AlgebraicGeometry Polynomial
-open Motivic.AffineLineReducedComplement
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 universe u
 namespace MotivicTest.AffineLineCoprimeOpenPresentation
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 
 /-- The consumer retains the original opens, including over finite fields. -/
 theorem actual_open_pair (k : Type u) [Field k]

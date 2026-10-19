@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseCanonicalFrame
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.CanonicalFrame
 /-! # Actual affine simultaneous shrink and original canonical graph frame -/
 set_option linter.hashCommand false
 public section

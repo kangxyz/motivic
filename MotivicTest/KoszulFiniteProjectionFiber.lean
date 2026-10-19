@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteProjectionEuler
-public import Motivic.RingTheory.Localization.FiniteFiberPoints
+public import Motivic.Aglib.Algebra.Homology.Koszul.FiniteProjection.Euler
+public import Motivic.Aglib.RingTheory.Localization.FiniteFiberPoints
 
 /-!
 # Finite Koszul projection over an actual finite-morphism point fiber
@@ -22,7 +22,9 @@ noncomputable section
 
 universe u
 
-open Motivic.Koszul Motivic.LengthEuler Motivic.FiniteFiber
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
+open _root_.PrimeSpectrum.FiniteFiber
 
 namespace MotivicTest.KoszulFiniteProjectionFiber
 

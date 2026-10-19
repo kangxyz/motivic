@@ -9,7 +9,7 @@ public import Motivic.Aglib.RingTheory.Bertini.WholeFiberSmoothProjection
 
 /-! # The same quadratic projection has whole-fiber smoothness and infinity avoidance -/
 @[expose] public noncomputable section
-open MvPolynomial AlgebraicGeometry
+open _root_.MvPolynomial AlgebraicGeometry
 universe u
 namespace QuadraticIncidence
 

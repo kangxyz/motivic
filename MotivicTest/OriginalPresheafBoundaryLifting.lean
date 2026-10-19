@@ -5,50 +5,50 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PresheafContractionBoundaryEpi
-public import Motivic.Cohomology.A1.ContractionBoundarySheafComparison
-public import Motivic.Cohomology.A1.ContractionBoundaryMono
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPunctureIdentification
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPunctureBaseChange
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodOriginalAmbientMaps
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.PolynomialZeroOriginalEtalePresentation
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleJacobsonOpenCover
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSmoothNeighborhood
-import all Motivic.AlgebraicGeometry.SmoothSiteAffineLineZeroCoordinates
-import all Motivic.AlgebraicGeometry.SmoothSiteAffineZeroPoint
-import all Motivic.AlgebraicGeometry.SmoothSiteFixedPsiTorus
-import all Motivic.AlgebraicGeometry.SmoothSiteNeighborhoodLambdaCylinder
-import all Motivic.Cohomology.A1.OriginalPresentationOpenImage
-import all Motivic.Cohomology.A1.ZeroNeighborhoodOriginalLifting
-import all Motivic.Cohomology.A1.ZeroPointOriginalLifting
-import all Motivic.Cohomology.A1.FixedTargetOriginalOverlapLifting
-import all Motivic.Cohomology.A1.OriginalPresentationSiteMaps
-import all Motivic.Cohomology.A1.RestrictionDifferenceRestriction
-import all Motivic.Cohomology.A1.OriginalPresentationOverlapLifting
-import all Motivic.Cohomology.A1.OriginalPresentationPolynomialPuncture
-import all Motivic.Cohomology.A1.RestrictionDifferenceComposition
-import all Motivic.Cohomology.A1.RestrictionDifferenceCartesianComposition
-import all Motivic.Cohomology.A1.RestrictionDifferenceMarkedComposition
-import all Motivic.Cohomology.A1.OriginalPresentationSecondCorrection
-import all Motivic.Cohomology.A1.OriginalPresentationCorrectionSquare
-import all Motivic.Cohomology.A1.NeighborhoodCorrectionCoordinates
-import all Motivic.Cohomology.A1.OriginalPresentationSecondCylinder
-import all Motivic.Cohomology.A1.OriginalPresentationCombinedCorrection
-import all Motivic.Cohomology.A1.RestrictionDifferenceIsoAmbient
-import all Motivic.Cohomology.A1.PresheafBoundaryPolynomialOverlap
-import all Motivic.Cohomology.A1.PresheafBoundaryPolynomialImage
-import all Motivic.Cohomology.A1.PresheafContractionBoundaryEpi
-import all Motivic.Cohomology.A1.PresheafBoundaryGeneratorEpi
-import all Motivic.Cohomology.A1.PresheafBoundaryGeometricImage
-import all Motivic.Cohomology.A1.PresheafBoundaryGeometricRefinement
-import all Motivic.Cohomology.A1.PuncturedCylinderCoordinates
-import all Motivic.Cohomology.A1.PresheafBoundaryCokernel
-import all Motivic.Cohomology.A1.PresheafBoundaryGenerators
-import all Motivic.Cohomology.A1.PresheafContractionBoundary
-import all Motivic.Cohomology.A1.PresheafContractionBoundaryRepresentatives
-import all Motivic.Cohomology.A1.PresheafBoundaryLaurentImage
-import all Motivic.Cohomology.A1.PresheafBoundaryLiftingRelation
-import all Motivic.Cohomology.A1.PresheafBoundaryRefinementImage
+public import Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Epi
+public import Motivic.Cohomology.A1.Boundary.Contraction.SheafComparison
+public import Motivic.Cohomology.A1.Boundary.Contraction.Mono
+import all Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Retained.Identification
+import all Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Retained.BaseChange
+import all Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.OriginalAmbientMaps
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.PolynomialZeroOriginalEtalePresentation
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.JacobsonOpenCover
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.SmoothNeighborhood
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.LineZeroCoordinates
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.ZeroPoint
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.PunctureTorus
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NeighborhoodCylinder
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.OpenImage
+import all Motivic.Cohomology.A1.LocalVanishing.ZeroNeighborhood.OriginalLifting
+import all Motivic.Cohomology.A1.LocalVanishing.ZeroNeighborhood.OriginalPointLifting
+import all Motivic.Cohomology.A1.LocalVanishing.FixedTarget.OriginalOverlapLifting
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.SiteMaps
+import all Motivic.Cohomology.A1.Boundary.RestrictionDifference.Restriction
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.OverlapLifting
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.PolynomialPuncture
+import all Motivic.Cohomology.A1.Boundary.RestrictionDifference.Composition
+import all Motivic.Cohomology.A1.Boundary.RestrictionDifference.CartesianComposition
+import all Motivic.Cohomology.A1.Boundary.RestrictionDifference.MarkedComposition
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.SecondCorrection
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.CorrectionSquare
+import all Motivic.Cohomology.A1.LocalVanishing.NeighborhoodCorrectionCoordinates
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.SecondCylinder
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.CombinedCorrection
+import all Motivic.Cohomology.A1.Boundary.RestrictionDifference.IsoAmbient
+import all Motivic.Cohomology.A1.Boundary.Presheaf.PolynomialOverlap
+import all Motivic.Cohomology.A1.Boundary.Presheaf.PolynomialImage
+import all Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Epi
+import all Motivic.Cohomology.A1.Boundary.Presheaf.GeneratorEpi
+import all Motivic.Cohomology.A1.Boundary.Presheaf.GeometricImage
+import all Motivic.Cohomology.A1.Boundary.Presheaf.GeometricRefinement
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.PuncturedCoordinates
+import all Motivic.Cohomology.A1.Boundary.Presheaf.Cokernel
+import all Motivic.Cohomology.A1.Boundary.Presheaf.Generators
+import all Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Basic
+import all Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Representatives
+import all Motivic.Cohomology.A1.Boundary.Presheaf.LaurentImage
+import all Motivic.Cohomology.A1.Boundary.Presheaf.LiftingRelation
+import all Motivic.Cohomology.A1.Boundary.Presheaf.RefinementImage
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
 
@@ -62,10 +62,13 @@ whole-zero maps and actual open-image cover; no lifting family is supplied.
 set_option linter.hashCommand false
 public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic Opposite
 open AlgebraicGeometry.RelativeProjectiveLine
 open AlgebraicGeometry.Scheme.RelativeCurve.OriginalEtalePresentation
-open Motivic.SmoothSiteAffineCoordinates Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 
 universe v u
 
@@ -138,16 +141,18 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPunctureIdentification,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPunctureBaseChange,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodOriginalAmbientMaps,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.PolynomialZeroOriginalEtalePresentation,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleJacobsonOpenCover,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSmoothNeighborhood,
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineLineZeroCoordinates,
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineZeroPoint,
-    `Motivic.AlgebraicGeometry.SmoothSiteFixedPsiTorus,
-    `Motivic.AlgebraicGeometry.SmoothSiteNeighborhoodLambdaCylinder]
+  let sourceModules :=
+      #[`Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Retained.Identification,
+    `Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Retained.BaseChange,
+    `Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.OriginalAmbientMaps,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "PolynomialZeroOriginalEtalePresentation",
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.JacobsonOpenCover,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.SmoothNeighborhood,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.LineZeroCoordinates,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.ZeroPoint,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.PunctureTorus,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NeighborhoodCylinder]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -167,17 +172,17 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.OriginalPresentationOpenImage,
-    `Motivic.Cohomology.A1.ZeroNeighborhoodOriginalLifting,
-    `Motivic.Cohomology.A1.ZeroPointOriginalLifting,
-    `Motivic.Cohomology.A1.FixedTargetOriginalOverlapLifting,
-    `Motivic.Cohomology.A1.OriginalPresentationSiteMaps,
-    `Motivic.Cohomology.A1.RestrictionDifferenceRestriction,
-    `Motivic.Cohomology.A1.OriginalPresentationOverlapLifting,
-    `Motivic.Cohomology.A1.OriginalPresentationPolynomialPuncture,
-    `Motivic.Cohomology.A1.RestrictionDifferenceComposition,
-    `Motivic.Cohomology.A1.RestrictionDifferenceCartesianComposition,
-    `Motivic.Cohomology.A1.RestrictionDifferenceMarkedComposition]
+  let sourceModules := #[`Motivic.Cohomology.A1.LocalVanishing.Presentation.OpenImage,
+    `Motivic.Cohomology.A1.LocalVanishing.ZeroNeighborhood.OriginalLifting,
+    `Motivic.Cohomology.A1.LocalVanishing.ZeroNeighborhood.OriginalPointLifting,
+    `Motivic.Cohomology.A1.LocalVanishing.FixedTarget.OriginalOverlapLifting,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.SiteMaps,
+    `Motivic.Cohomology.A1.Boundary.RestrictionDifference.Restriction,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.OverlapLifting,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.PolynomialPuncture,
+    `Motivic.Cohomology.A1.Boundary.RestrictionDifference.Composition,
+    `Motivic.Cohomology.A1.Boundary.RestrictionDifference.CartesianComposition,
+    `Motivic.Cohomology.A1.Boundary.RestrictionDifference.MarkedComposition]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -197,16 +202,16 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.OriginalPresentationSecondCorrection,
-    `Motivic.Cohomology.A1.OriginalPresentationCorrectionSquare,
-    `Motivic.Cohomology.A1.NeighborhoodCorrectionCoordinates,
-    `Motivic.Cohomology.A1.OriginalPresentationSecondCylinder,
-    `Motivic.Cohomology.A1.OriginalPresentationCombinedCorrection,
-    `Motivic.Cohomology.A1.RestrictionDifferenceIsoAmbient,
-    `Motivic.Cohomology.A1.PresheafBoundaryPolynomialOverlap,
-    `Motivic.Cohomology.A1.PresheafBoundaryPolynomialImage,
-    `Motivic.Cohomology.A1.PresheafContractionBoundaryEpi,
-    `Motivic.Cohomology.A1.PresheafBoundaryGeneratorEpi]
+  let sourceModules := #[`Motivic.Cohomology.A1.LocalVanishing.Presentation.SecondCorrection,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.CorrectionSquare,
+    `Motivic.Cohomology.A1.LocalVanishing.NeighborhoodCorrectionCoordinates,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.SecondCylinder,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.CombinedCorrection,
+    `Motivic.Cohomology.A1.Boundary.RestrictionDifference.IsoAmbient,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.PolynomialOverlap,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.PolynomialImage,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Epi,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.GeneratorEpi]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -226,16 +231,16 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.PresheafBoundaryGeometricImage,
-    `Motivic.Cohomology.A1.PresheafBoundaryGeometricRefinement,
-    `Motivic.Cohomology.A1.PuncturedCylinderCoordinates,
-    `Motivic.Cohomology.A1.PresheafBoundaryCokernel,
-    `Motivic.Cohomology.A1.PresheafBoundaryGenerators,
-    `Motivic.Cohomology.A1.PresheafContractionBoundary,
-    `Motivic.Cohomology.A1.PresheafContractionBoundaryRepresentatives,
-    `Motivic.Cohomology.A1.PresheafBoundaryLaurentImage,
-    `Motivic.Cohomology.A1.PresheafBoundaryLiftingRelation,
-    `Motivic.Cohomology.A1.PresheafBoundaryRefinementImage]
+  let sourceModules := #[`Motivic.Cohomology.A1.Boundary.Presheaf.GeometricImage,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.GeometricRefinement,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.PuncturedCoordinates,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.Cokernel,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.Generators,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Basic,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.Contraction.Representatives,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.LaurentImage,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.LiftingRelation,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.RefinementImage]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.TensorProduct.EtaleDiagonal
+public import Motivic.Aglib.RingTheory.TensorProduct.EtaleDiagonal
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -21,7 +21,7 @@ exercise zero, one, and two coordinates without requiring a regular base.
 noncomputable section
 
 open scoped TensorProduct
-open RingTheory.Sequence Motivic.RelativePolynomialTensor
+open RingTheory.Sequence _root_.Algebra.TensorProduct.RelativePolynomial
 
 namespace Motivic.MotivicTest.EtaleDiagonal
 

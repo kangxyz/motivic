@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.OriginalEtaleLocalLifting
+public import Motivic.Cohomology.A1.LocalVanishing.Original.EtaleLocalLifting
 public import Lean
 
 /-! # Original affine étale local lifting over an infinite field -/

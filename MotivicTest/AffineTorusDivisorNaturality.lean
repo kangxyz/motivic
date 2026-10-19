@@ -5,19 +5,25 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.AffineTorusDivisorNaturality
+public import Motivic.AlgebraicGeometry.Correspondences.Torus.Affine.DivisorNaturality
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of actual ordinary affine divisor naturality -/
 
 @[expose] public noncomputable section
 
-open Motivic Motivic.AffineTorusPolynomialPresentation Polynomial.BoundaryOneRationalFunctions
+open Motivic
+open _root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent
+open _root_.AlgebraicGeometry.Scheme.PolynomialLaurent
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.Motivic.AffineTorusPolynomialPresentation
+open Polynomial.BoundaryOneRationalFunctions
 open Polynomial AlgebraicGeometry AlgebraicGeometry.Scheme.PolynomialLaurent
 
 universe u
 
 namespace MotivicTest.AffineTorusDivisorNaturality
+open _root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent
 
 variable {k R S : Type u} [Field k] [CommRing R] [CommRing S]
   [Algebra k R] [Algebra k S] [Algebra.Smooth k R] [Algebra.Smooth k S]
@@ -31,10 +37,18 @@ theorem actual_graph_divisor_natural (φ : R →ₐ[k] S) (f : Additive (group R
 open Lean in
 run_cmd do
   for name in #[``AdjoinRootBaseChange.square, ``AdjoinRootBaseChange.isPushout,
-      ``AdjoinRootBaseChange.isPullback, ``polynomialBaseChangeMap, ``polynomial_isPullback,
-      ``polynomialConstant_map_unit, ``polynomialBaseChangeMap_laurent,
-      ``ambientIso_hom_snd, ``polynomialBaseChangeMap_target, ``baseMap_smooth,
-      ``baseMap_separated, ``baseMap_quasiCompact, ``affineSite, ``affineMorphism,
+      ``AdjoinRootBaseChange.isPullback,
+          ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent.polynomialBaseChangeMap,
+          ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent.polynomial_isPullback,
+      ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent.polynomialConstant_map_unit,
+          ``polynomialBaseChangeMap_laurent,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.ambientIso_hom_snd,
+          ``polynomialBaseChangeMap_target,
+          ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.baseMap_smooth,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.baseMap_separated,
+          ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.baseMap_quasiCompact,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.affineSite,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.affineMorphism,
       ``generator_projection_flat, ``supportBaseChange_isPullback, ``supportBaseChangeIso,
       ``supportBaseChangeIso_fst, ``supportBaseChangeIso_snd, ``supportBaseChangeIso_inclusion,
       ``graph_generator_eq_polynomialCycle, ``affineRestriction, ``affineRestriction_generator,

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.FieldBoundaryRelativeTwists
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Twists.FieldRelative
 
 /-! # Original relative boundary-coefficient unit consumer -/
 

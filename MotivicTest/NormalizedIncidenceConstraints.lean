@@ -4,7 +4,7 @@ import Motivic.Aglib.RingTheory.Bertini.QuadraticJetParameters
 import Lean.Util.CollectAxioms
 
 /-! # Actual quadratic parameters in a normalized bad-fiber incidence chart -/
-open MvPolynomial LinearMap
+open _root_.MvPolynomial LinearMap
 
 example (K : Type) [Field K] {σ ι : Type} [Finite σ] [Fintype ι]
     (a b : σ → K) (hab : a ≠ b) (w : ι → K) (i₀ : ι) (hw : w i₀ = 1) :

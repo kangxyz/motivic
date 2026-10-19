@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticAffineImageChart
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Charts.AffineImageChart
 /-! Actual quadratic coordinate maps and their native schematic images, not assumed chart rings. -/
 set_option linter.hashCommand false
 public noncomputable section

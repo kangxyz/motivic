@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.FieldChangeCoherence
+public import Motivic.Cohomology.SuslinVoevodsky.FieldChangeCoherence
 
 /-!
 # Consumers of the actual whole-support field-tower comparisons
@@ -21,13 +21,17 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle genericMultiplicity
+  isNoetherian_of_finiteType)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open WholeFiberTorExteriorDecomposition
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.ComponentDecomposition
 open scoped BigOperators
 
 universe u
 
 namespace MotivicTest.FieldChangeCoherence
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 /-- Generic flat tower comparison, with neither a reducedness assumption nor
 finite type of either base change. -/
@@ -162,21 +166,21 @@ run_cmd do
       ``fieldBaseChangeComponentSecondIso_hom_base,
       ``toIntegralCycle_fieldBaseChangeComponentCycle,
       ``toIntegralCycle_fieldBaseChangeCycle_iterated,
-      ``SmoothSite.fieldBaseChangeComp_inv_original,
-      ``SmoothSite.fieldBaseChangeComp_inv_base,
-      ``SmoothSite.fieldBaseChangeProductTowerIso,
-      ``SmoothSite.fieldBaseChangeProductTowerIso_hom_fst,
-      ``SmoothSite.fieldBaseChangeProductTowerIso_hom_snd,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeComp_inv_original,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeComp_inv_base,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeProductTowerIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeProductTowerIso_hom_fst,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeProductTowerIso_hom_snd,
       ``fieldBaseChangeComponentSecondIso_hom_ambient,
       ``toIntegralCycle_fieldBaseChange_comp_cycle,
       ``FiniteCorrespondence.toIntegralCycle_fieldBaseChange_comp,
-      ``IntegralCycle.finitePushforward_congr,
-      ``SmoothSite.fieldBaseChangeIdProjection_isIso,
-      ``SmoothSite.fieldBaseChangeObjectIdIso,
-      ``SmoothSite.fieldBaseChangeObjectIdIso_hom_left,
-      ``SmoothSite.fieldBaseChangeProductIdIso,
-      ``SmoothSite.fieldBaseChangeProductIdIso_hom_fst,
-      ``SmoothSite.fieldBaseChangeProductIdIso_hom_snd,
+      ``_root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward_congr,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeIdProjection_isIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeObjectIdIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeObjectIdIso_hom_left,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeProductIdIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeProductIdIso_hom_fst,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.fieldBaseChangeProductIdIso_hom_snd,
       ``fieldBaseChangeSupportIdIso_hom_ambient,
       ``toIntegralCycle_fieldBaseChange_id_cycle,
       ``FiniteCorrespondence.toIntegralCycle_fieldBaseChange_id,

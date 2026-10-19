@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualDiagonalBoundary
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.Normalized.Diagonal.Boundary
 
 /-! The whole prescribed boundary is constructed on the original compactification. -/
 @[expose] public noncomputable section

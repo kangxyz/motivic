@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.AffineEtale
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.AffineEtale
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -23,9 +23,10 @@ noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open scoped TensorProduct
-open RingTheory.Sequence Motivic.AffineDiagonal
+open RingTheory.Sequence _root_.AlgebraicGeometry.Scheme.Diagonal.Affine
 
 namespace Motivic.MotivicTest.AffineEtaleDiagonal
+open _root_.Algebra.TensorProduct
 
 universe u
 
@@ -40,7 +41,7 @@ example (p : PrimeSpectrum S) :
     let rs := (List.finRange n).map (fun i =>
       (stalkEquiv R S p).symm
         (algebraMap (S ⊗[R] S)
-          (Localization.AtPrime (RelativePolynomialTensor.diagonalPrime R S p.asIdeal))
+          (Localization.AtPrime (RelativePolynomial.diagonalPrime R S p.asIdeal))
           (1 ⊗ₜ[R] algebraMap (MvPolynomial (Fin n) R) S (MvPolynomial.X i) -
             algebraMap (MvPolynomial (Fin n) R) S (MvPolynomial.X i) ⊗ₜ[R] 1)))
     IsRegular ((pullback f f).presheaf.stalk (pullback.diagonal f p)) rs ∧

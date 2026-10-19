@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PrincipalRetainedBoundary
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Compactification.Retained.PrincipalRetainedBoundary
 public import Lean
 
 /-! # Full retained boundary and original prescribed scheme on one principal base -/

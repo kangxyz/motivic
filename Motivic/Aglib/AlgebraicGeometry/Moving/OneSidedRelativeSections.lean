@@ -6,8 +6,8 @@ Authors: kangxyz
 module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedAffineSections
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedProductGeometry
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FullBoundaryCoordinate
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FullBoundaryTwistFrames
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.FullBoundaryCoordinate
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.FullBoundaryTwistFrames
 /-! # Actual one-sided sections from the original target boundary frames
 
 The full divisor frame is constructed with its canonical infinity value. Only

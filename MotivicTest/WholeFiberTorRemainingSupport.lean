@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorRemainingSupport
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorRemainingSupport
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original smooth-site consumers of remaining-diagonal finite length
@@ -22,11 +23,20 @@ coefficient-regularity, or common-dimension premise is supplied.
 
 noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Motivic.Intersection
+open _root_.AlgebraicGeometry.Scheme (SmoothSite correspondenceSixfoldAmbient_isSeparated
+  isLocallyNoetherian_correspondenceSixfoldAmbient)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceFirstDiagonalInclusion
+  correspondenceSixfoldAmbient)
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
 namespace MotivicTest.WholeFiberTorRemainingSupport
+open _root_.AlgebraicGeometry.Scheme.Modules
 
 variable (K : Type u) [Field K]
   (X Y Z W : SmoothSite (Spec (.of K)))
@@ -57,7 +67,8 @@ theorem exists_actualRemainingList (w : F.tripleIncidence G H) :
         RingTheory.Sequence.IsRegular ((pullback Z.hom Z.hom).presheaf.stalk p) s ∧
           (pullback.diagonal Z.hom).ker.stalk p = Ideal.ofList s := by
     subst p
-    obtain ⟨s, hs, hker⟩ := Diagonal.exists_regular_kernel_of_smooth Z.hom z
+    obtain ⟨s, hs, hker⟩ :=
+      _root_.AlgebraicGeometry.Scheme.Diagonal.exists_regular_kernel_of_smooth Z.hom z
     exact ⟨s, hs, ((pullback.diagonal Z.hom).ker_stalk z).trans hker⟩
   exact aux _ _ (congrArg (fun k => k w) (F.remainingDiagonal_isPullback G H).w)
 
@@ -78,7 +89,7 @@ homology length is finite, in all first-stage Tor degrees. -/
 theorem actualSmoothRemaining_length_ne_top (n m : ℕ) :
     Module.length ((F.leftIntermediateSupportProduct G H).presheaf.stalk
       (F.tripleIncidenceToLeftSupportProduct G H w))
-      ((Koszul.coefficientComplex
+      ((_root_.ChainComplex.Koszul.coefficientComplex
         (F.leftWholeFiberTorOriginalStalk G H U
           (F.tripleIncidenceToLeftSupportProduct G H w) n)
         (s.map ((F.leftSupportMiddlePair G H).stalkMap
@@ -91,9 +102,9 @@ the literal open-inclusion scalar map, rather than an abstract stalk equivalence
 theorem actualSmoothWholeCoefficientRemaining_finiteHomology (n : ℕ) :
     let x : ((F.leftIntermediateImageMap G H) ⁻¹ᵁ U).toScheme :=
       ⟨F.tripleIncidenceToLeftSupportProduct G H w, hU⟩
-    LengthEuler.FiniteHomology
-      (Koszul.coefficientComplex
-        ((ModuleStalk.functor x).obj
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteHomology
+      (_root_.ChainComplex.Koszul.coefficientComplex
+        ((Stalk.functor x).obj
           (wholeFiberTorCoefficient (F.tripleSupportProductInclusion G H)
             (correspondenceFirstDiagonalInclusion X.hom Y.hom Z.hom W.hom)
             (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)
@@ -114,8 +125,8 @@ theorem exists_actualSmoothRemaining_finiteHomology :
         (pullback.diagonal Z.hom).ker.stalk
           (F.leftSupportMiddlePair G H (F.tripleIncidenceToLeftSupportProduct G H w)) =
             Ideal.ofList s ∧
-        ∀ n, LengthEuler.FiniteHomology
-          (Koszul.coefficientComplex
+        ∀ n, _root_.HomologicalComplex.ModuleLengthEuler.FiniteHomology
+          (_root_.ChainComplex.Koszul.coefficientComplex
             (F.leftWholeFiberTorOriginalStalk G H U
               (F.tripleIncidenceToLeftSupportProduct G H w) n)
             (s.map ((F.leftSupportMiddlePair G H).stalkMap

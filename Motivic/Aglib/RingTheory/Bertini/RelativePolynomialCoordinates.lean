@@ -10,7 +10,7 @@ public import Mathlib.RingTheory.RingHom.Finite
 
 /-! # Canonical separation of the auxiliary row from the unchanged base coordinates -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 

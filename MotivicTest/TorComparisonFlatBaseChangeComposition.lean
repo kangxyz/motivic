@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.FlatBaseChangeIdentity
-public import Motivic.Algebra.Homology.TorComparison.FlatBaseChangeLocalization
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.FlatBaseChangeIdentity
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.FlatBaseChangeLocalization
 public import MotivicTest.TorQuotientFiniteness
 
 /-!
@@ -50,15 +50,15 @@ theorem successivePrincipal (r s : R) (M N : ModuleCat.{u} R) (n : ℕ) :
       (algebraMap (first r) (second r s))).hom.app
         (((Tor (ModuleCat R) n).obj M).obj N) ≫
       (ModuleCat.extendScalars (algebraMap (first r) (second r s))).map
-        (TorComparison.flatBaseChangeTorIso (algebraMap R (first r))
+        (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso (algebraMap R (first r))
           (RingHom.flat_algebraMap_iff.mpr (IsLocalization.flat (first r) (.powers r)))
           M N n).hom ≫
-      (TorComparison.flatBaseChangeTorIso (algebraMap (first r) (second r s))
+      (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso (algebraMap (first r) (second r s))
         (RingHom.flat_algebraMap_iff.mpr
           (IsLocalization.flat (second r s) (.powers (algebraMap R (first r) s))))
         ((ModuleCat.extendScalars (algebraMap R (first r))).obj M)
         ((ModuleCat.extendScalars (algebraMap R (first r))).obj N) n).hom =
-      (TorComparison.flatBaseChangeTorIso
+      (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso
         ((algebraMap (first r) (second r s)).comp (algebraMap R (first r)))
         ((RingHom.flat_algebraMap_iff.mpr
           (IsLocalization.flat (first r) (.powers r))).comp
@@ -75,7 +75,7 @@ theorem successivePrincipal (r s : R) (M N : ModuleCat.{u} R) (n : ℕ) :
           ModuleCat.extendScalars (algebraMap (first r) (second r s))).obj M)).map
           ((ModuleCat.extendScalarsComp (algebraMap R (first r))
             (algebraMap (first r) (second r s))).hom.app N) :=
-  TorComparison.flatBaseChangeTorIso_hom_comp _ _ _ _ M N n
+  _root_.ModuleCat.TorComparison.flatBaseChangeTorIso_hom_comp _ _ _ _ M N n
 
 /-- The concrete degree-one test has a genuinely nonzero starting Tor module. -/
 theorem concreteHigherTorNonzero :
@@ -91,10 +91,12 @@ theorem nonradicalTorOneSuccessive :
     let M := ModuleCat.of ℤ TorQuotientFiniteness.Q
     ∃ (hf : f.Flat) (hg : g.Flat),
       ((ModuleCat.extendScalarsComp f g).hom.app (((Tor (ModuleCat ℤ) 1).obj M).obj M) ≫
-        (ModuleCat.extendScalars g).map (TorComparison.flatBaseChangeTorIso f hf M M 1).hom ≫
-        (TorComparison.flatBaseChangeTorIso g hg ((ModuleCat.extendScalars f).obj M)
+        (ModuleCat.extendScalars g).map (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso f hf M
+            M 1).hom ≫
+        (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso g hg ((ModuleCat.extendScalars f).obj
+            M)
           ((ModuleCat.extendScalars f).obj M) 1).hom =
-      (TorComparison.flatBaseChangeTorIso (g.comp f) (hf.comp hg) M M 1).hom ≫
+      (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso (g.comp f) (hf.comp hg) M M 1).hom ≫
         ((Tor (ModuleCat (second (3 : ℤ) 5)) 1).map
           ((ModuleCat.extendScalarsComp f g).hom.app M)).app
           ((ModuleCat.extendScalars (g.comp f)).obj M) ≫
@@ -108,16 +110,17 @@ theorem nonradicalTorOneSuccessive :
     RingHom.flat_algebraMap_iff.mpr
       (IsLocalization.flat (second (3 : ℤ) 5)
         (.powers (algebraMap ℤ (first (3 : ℤ)) 5))), ?_, concreteHigherTorNonzero⟩
-  exact TorComparison.flatBaseChangeTorIso_hom_comp _ _ _ _ _ _ _
+  exact _root_.ModuleCat.TorComparison.flatBaseChangeTorIso_hom_comp _ _ _ _ _ _ _
 
 /-- The same nonzero degree-one Tor also satisfies the genuine scalar identity law. -/
 theorem nonradicalTorOneIdentity :
     let M := ModuleCat.of ℤ TorQuotientFiniteness.Q
-    (TorComparison.flatBaseChangeTorIso (RingHom.id ℤ) (RingHom.Flat.id ℤ) M M 1).hom ≫
+    (_root_.ModuleCat.TorComparison.flatBaseChangeTorIso (RingHom.id ℤ) (RingHom.Flat.id ℤ) M M
+        1).hom ≫
         ((Tor (ModuleCat ℤ) 1).map ((ModuleCat.extendScalarsId ℤ).hom.app M)).app
           ((ModuleCat.extendScalars (RingHom.id ℤ)).obj M) ≫
         ((Tor (ModuleCat ℤ) 1).obj M).map ((ModuleCat.extendScalarsId ℤ).hom.app M) =
       (ModuleCat.extendScalarsId ℤ).hom.app (((Tor (ModuleCat ℤ) 1).obj M).obj M) :=
-  TorComparison.flatBaseChangeTorIso_hom_id _ _ _
+  _root_.ModuleCat.TorComparison.flatBaseChangeTorIso_hom_id _ _ _
 
 end Motivic.MotivicTest.TorComparisonFlatBaseChangeComposition

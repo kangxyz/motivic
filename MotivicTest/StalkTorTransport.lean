@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.StalkTorTransport
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.StalkTorTransport
 
 /-!
 # Actual open-restriction and coordinate-scheme consumers
@@ -21,7 +21,7 @@ coordinate quotients. No module or Tor isomorphism is an input.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic.Intersection
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 

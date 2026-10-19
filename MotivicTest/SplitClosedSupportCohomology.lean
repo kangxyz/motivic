@@ -5,31 +5,33 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedCohomology
-import all Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedNeighborhood
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedPointFiber
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedComap
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedSupportUnit
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedImageExact
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedCohomology
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleDirectImageOpenSupport
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageComposition
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Cohomology
+import all Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.ClosedFiberEtaleEqualization
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Neighborhood
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.PointFiber
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Comap
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.SupportUnit
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.ImageExact
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Cohomology
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.DirectImageOpenSupport
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.InverseImageComposition
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
 /-! Original sections and ordinary Ext on an actual supported split-closed chart. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe u
 namespace MotivicTest.SplitClosedSupportCohomology
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {Z U Y : Scheme.{u}} (i : Z ⟶ Y) [IsClosedImmersion i] [IsNoetherian Y]
   (p : Y ⟶ Z) (hip : i ≫ p = 𝟙 Z)
   (j : U ⟶ Y) [IsOpenImmersion j] [QuasiCompact j]
   (hcomp : Set.range i = (Set.range j)ᶜ)
   (G : Sheaf (nisnevichTopology Y) AddCommGrpCat.{u + 1})
-  (hG : IsZero ((inverseImage j).obj G)) (V : FiniteEtaleSite Y)
+  (hG : IsZero ((inverseImage j).obj G)) (V : EtaleSeparatedFiniteType Y)
 
 include p hip j hcomp hG
 
@@ -46,7 +48,8 @@ variable [HasExt.{u + 1} (Sheaf (nisnevichTopology Y) AddCommGrpCat.{u + 1})]
 /-- The comparison is bijective for the original inverse-image Ext map, not
 merely for an unrelated choice of isomorphic groups. -/
 theorem original_inverseImage_bijective (n : ℕ) :
-    Function.Bijective (fun x : SheafCohomology.H.{u + 1, u + 1, u, u + 1}
+    Function.Bijective (fun x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 1, u + 1, u, u +
+      1}
       (nisnevichTopology Y) G n V =>
       (Abelian.Ext.mk₀ (inverseImageSourceIso i V).inv).comp
         (x.mapExactFunctor (inverseImage i)) (zero_add n)) := by
@@ -57,14 +60,14 @@ theorem original_inverseImage_bijective (n : ℕ) :
 open Lean in
 run_cmd do
   for name in #[``actual_unit_sections_bijective, ``original_inverseImage_bijective,
-      ``Motivic.FiniteEtaleSite.splitClosed_support_unit_isIso,
-      ``Motivic.FiniteEtaleSite.splitClosedComap_unit_compare,
-      ``Motivic.FiniteEtaleSite.splitClosedDirectImage_preservesFiniteColimits,
-      ``Motivic.FiniteEtaleSite.splitClosedOrdinaryEdgeMap_bijective,
-      ``Motivic.FiniteEtaleSite.etaleRestriction_directImage_isZero_of_disjoint,
-      ``Motivic.FiniteEtaleSite.inverseImage_directImage_isZero_of_disjoint,
-      ``Motivic.FiniteEtaleSite.fieldPoint_directImage_isZero_of_mem_disjoint_open,
-      ``Motivic.FiniteEtaleSite.fieldPoint_directImage_isZero_of_not_mem_range] do
+      ``splitClosed_support_unit_isIso,
+      ``splitClosedComap_unit_compare,
+      ``splitClosedDirectImage_preservesFiniteColimits,
+      ``splitClosedOrdinaryEdgeMap_bijective,
+      ``etaleRestriction_directImage_isZero_of_disjoint,
+      ``inverseImage_directImage_isZero_of_disjoint,
+      ``fieldPoint_directImage_isZero_of_mem_disjoint_open,
+      ``fieldPoint_directImage_isZero_of_not_mem_range] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"
@@ -74,15 +77,15 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.ClosedFiberEtaleEqualization,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedNeighborhood,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedPointFiber,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedComap,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedSupportUnit,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedImageExact,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSplitClosedCohomology,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleDirectImageOpenSupport,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageComposition]
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.ClosedFiberEtaleEqualization,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Neighborhood,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.PointFiber,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Comap,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.SupportUnit,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.ImageExact,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Closed.Split.Cohomology,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.DirectImageOpenSupport,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.InverseImageComposition]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

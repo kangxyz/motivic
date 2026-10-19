@@ -1,13 +1,14 @@
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneHypercohomology
-public import Motivic.AlgebraicGeometry.SmoothSiteTorusGraphNorm
+public import Motivic.Cohomology.WeightOne.Hypercohomology
+public import Motivic.Cohomology.WeightOne.Geometry.TorusGraphNorm
 public import Lean.Util.CollectAxioms
 
 /-! # Direct all-smooth-source weight-one comparison audit -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe w w' u
@@ -19,13 +20,14 @@ variable (k : Type u) [Field k]
 
 example (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     motivicCohomology.{w, u} k ((n : ℤ) + 1) 1 X ≃+
-      SheafCohomology.H.{w', u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
+      _root_.CategoryTheory.Sheaf.LargeCohomology.H.{w', u + 1, u, u + 1}
+        (SmoothSite.nisnevichTopology (Spec (.of k)))
         (SmoothSite.largeUnitsSheaf (Spec (.of k))) n X :=
   weightOneSheafCohomologyEquiv k n X
 
 open Lean in
 run_cmd do
-  for name in #[``Hypercohomology.shiftPresheafIso,
+  for name in #[``_root_.CategoryTheory.Sheaf.Hypercohomology.shiftPresheafIso,
       ``weightOneHypercohomologyPresheafIso,
       ``weightOneSheafCohomologyEquiv] do
     for dependency in ← collectAxioms name do

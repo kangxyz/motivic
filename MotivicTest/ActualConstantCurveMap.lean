@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.ActualConstantCurveMap
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.RelativeCurve.ActualConstantCurveMap
 
 /-! The actual source map and the original target twist are both retained. -/
 @[expose] public noncomputable section

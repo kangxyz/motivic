@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichFamilyLocalLift
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Families.LocalLift
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ an empty family without a covering or nonemptiness hypothesis.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u v

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GenericDominance
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Generalizing.GenericPoints
 public import Mathlib.AlgebraicGeometry.Morphisms.UniversallyOpen
 
 /-!
@@ -40,7 +40,7 @@ theorem image_closure_mem_irreducibleComponents_of_finite_generalizing
     (x : X) (hx : x ∈ genericPoints X) :
     f '' closure ({x} : Set X) ∈ irreducibleComponents Y := by
   rw [image_closure_singleton_of_isFinite]
-  exact Motivic.mem_genericPoints_of_generalizing f hf x hx
+  exact mem_genericPoints_of_generalizing f hf x hx
 
 /-- Every generic component of a finite flat scheme maps onto an actual
 component of its base. Empty schemes and nilpotents are allowed. -/

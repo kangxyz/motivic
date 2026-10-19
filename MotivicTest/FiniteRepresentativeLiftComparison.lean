@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.FiniteRepresentativeLiftComparison
+public import Motivic.Transfers.Sheaf.Germs.FiniteRepresentatives.LiftComparison
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -15,6 +15,8 @@ The Čech matching condition is proved, not assumed. Common finite support and
 actual branch-controlled lifts remain explicit; this is not yet an envelope
 functor or an ordinary-cohomology acyclicity theorem.
 -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
@@ -22,7 +24,8 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 universe u v
 namespace MotivicTest.FiniteRepresentativeLiftComparison
-open Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open Motivic  _root_.Motivic.PresheafWithTransfers
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{max (u + 1) v} k)
   {X Y : SmoothSite (Spec (.of k))} {n : ℕ} (y : Fin n → Y.left)
   (N : ∀ i, SmoothSite.NisnevichNeighborhood Y (y i))
@@ -68,9 +71,9 @@ theorem actual_original_transfer_germ_comparison
 open Lean in
 run_cmd do
   for name in #[``actual_original_transfer_germ_comparison,
-      ``SmoothSite.finite_representative_cech_matching,
-      ``SmoothSite.exists_section_with_finite_representative_cech_matching,
-      ``SmoothSite.exists_original_germ_representative] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.finite_representative_cech_matching,
+      ``exists_section_with_finite_representative_cech_matching,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_original_germ_representative] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

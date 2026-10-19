@@ -1,6 +1,6 @@
 module
 public import Motivic.Aglib.RingTheory.Kaehler.ResidueFunctionBasis
-public import Motivic.Aglib.RingTheory.SimultaneousResidueLinearProjection
+public import Motivic.Aglib.RingTheory.NoetherNormalization.Residue.LinearProjection
 
 /-! # Common original functions with independent residue differentials
 

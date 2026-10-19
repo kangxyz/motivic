@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.ContractionRelativeNaturality
+public import Motivic.Cohomology.A1.Contraction.RelativeNaturality
 
 /-!
 # Direct Ext consumers of contraction-boundary naturality
@@ -18,6 +18,7 @@ coefficient universe and the literal transfer contraction maps.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian AlgebraicGeometry Opposite Motivic
 
 universe u
@@ -44,7 +45,7 @@ theorem actual_ext_coefficient_naturality {F G : SheafWithTransfers.{u + 1} k}
 theorem actual_ext_restriction_naturality (F : SheafWithTransfers.{u + 1} k)
     {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y)
     (c : PresheafWithTransfers.sections (PresheafWithTransfers.contraction F.obj) (Cor.mk Y)) :
-    (Ext.mk₀ (SheafCohomology.relativeSourceMap.{u + 1, u, u + 1}
+    (Ext.mk₀ (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeSourceMap.{u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k)))
       (SmoothSite.contractionOpen (.of k) X) (SmoothSite.contractionOpen (.of k) Y)
       (SmoothSite.productMap f (𝟙 (SmoothSite.torus (.of k)))) (SmoothSite.a1Map (.of k) f)

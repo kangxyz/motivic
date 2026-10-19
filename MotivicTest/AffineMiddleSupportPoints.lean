@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddleSupportPoints
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Diagonal.AffineMiddleSupportPoints
 
 /-! # Consumers of actual incidence-prime compatibility in all four coordinate rings -/
 
@@ -14,13 +14,14 @@ public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddleSupportPoints
 noncomputable section
 
 open CategoryTheory AlgebraicGeometry
-open scoped TensorProduct Motivic.MiddleDiagonal
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 universe u
 
 namespace Motivic.MotivicTest.AffineMiddleSupportPoints
+open _root_.Algebra.TensorProduct
 
-open Motivic.AffineMiddle
+open _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal
 
 variable (k A B C : Type u) [CommRing k] [CommRing A] [CommRing B] [CommRing C]
   [Algebra k A] [Algebra k B] [Algebra k C]

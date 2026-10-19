@@ -5,20 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.Category
-public import Motivic.AlgebraicGeometry.Correspondences.GraphFunctor
-public import Motivic.AlgebraicGeometry.Correspondences.BinaryCoproducts
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichCechLocalExactness
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichTopology
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichSignedLocalLift
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichFamilyLocalLift
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexSingularTransferFunctor
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.GraphRestriction
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.NisnevichComparison
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.NisnevichSheafification
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.Yoneda
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichSheafification
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichSheavesWithTransfers
+public import Motivic.AlgebraicGeometry.Correspondences.Basic
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Functor
+public import Motivic.AlgebraicGeometry.Correspondences.Coproducts.Binary
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Cech.LocalExactness
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Topology
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.SignedLocalLift
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Families.LocalLift
+public import Motivic.AlgebraicGeometry.Correspondences.Singular.Functor
+public import Motivic.Transfers.Presheaf.GraphRestriction
+public import Motivic.Transfers.Presheaf.NisnevichComparison
+public import Motivic.Transfers.Presheaf.NisnevichSheafification
+public import Motivic.Transfers.Presheaf.Yoneda
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Sheafification
+public import Motivic.Transfers.Sheaf.Basic
 
 /-!
 # Finite correspondences and presheaves with transfers

@@ -9,7 +9,7 @@ import Lean.Util.CollectAxioms
 
 /-! # Original parameter relations hold at every actual bad field point -/
 noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 variable (k R A K : Type u) [CommRing k] [CommRing R] [CommRing A] [Field K]

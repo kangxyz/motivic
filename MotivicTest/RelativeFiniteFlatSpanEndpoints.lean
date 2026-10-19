@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeFiniteFlatSpanEndpoints
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.RelativeFiniteFlatSpan
 public import MotivicTest.RelativeEndpointGeneratorComposition
 public import MotivicTest.FiniteFlatSpanForgottenEndpoints
 
@@ -26,10 +26,12 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 open MotivicTest.RelativeEndpointStalkTor MotivicTest.FiniteFlatSpanForgottenEndpoints
 
 namespace MotivicTest.RelativeFiniteFlatSpanEndpoints
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 local instance : IsClosedImmersion
     (pullback.lift relativeDoubleProjection relativeRoot joint_base) :=
@@ -39,8 +41,8 @@ local instance : IsClosedImmersion
 theorem actual_retained_endpoint (a : ℚ) :
     (Cor.graphFunctor ℚ).map (endpointMorphism twoLines a) ≫
         Cor.ofFiniteFlatSpan (X := relativeLineSite twoLines)
-          (Y := FiniteFlatCurveFamily.line ℚ) relativeDoubleProjection relativeRoot joint_base =
-      Cor.relativeFiniteFlatSpanEndpoint (X := twoLines) (Y := FiniteFlatCurveFamily.line ℚ)
+          (Y := AffineLineField.line ℚ) relativeDoubleProjection relativeRoot joint_base =
+      Cor.relativeFiniteFlatSpanEndpoint (X := twoLines) (Y := AffineLineField.line ℚ)
         relativeDoubleProjection relativeRoot joint_base a :=
   Cor.graph_relative_endpoint_ofFiniteFlatSpan relativeDoubleProjection relativeRoot joint_base a
 
@@ -49,11 +51,11 @@ forgetting of the root. No finiteness hypothesis on the forgetting map is used. 
 theorem actual_forgotten_endpoint (a : ℚ) :
     (Cor.graphFunctor ℚ).map (endpointMorphism twoLines a) ≫
         Cor.ofFiniteFlatSpan (X := relativeLineSite twoLines)
-          (Y := FiniteFlatCurveFamily.point ℚ) relativeDoubleProjection
+          (Y := AffineLineField.point ℚ) relativeDoubleProjection
           (relativeRoot ≫ (forgetRoot ℚ).left)
           (Cor.finiteFlatSpan_postcompose_base (X := relativeLineSite twoLines)
             relativeDoubleProjection relativeRoot joint_base (forgetRoot ℚ)) =
-      Cor.relativeFiniteFlatSpanEndpoint (X := twoLines) (Y := FiniteFlatCurveFamily.point ℚ)
+      Cor.relativeFiniteFlatSpanEndpoint (X := twoLines) (Y := AffineLineField.point ℚ)
         relativeDoubleProjection (relativeRoot ≫ (forgetRoot ℚ).left)
         (Cor.finiteFlatSpan_postcompose_base (X := relativeLineSite twoLines)
           relativeDoubleProjection relativeRoot joint_base (forgetRoot ℚ)) a :=

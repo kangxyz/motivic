@@ -11,7 +11,7 @@ public import Motivic.Aglib.RingTheory.Etale.ResidueCoordinateCriterion
 
 /-! # The unchanged full quadratic tuple is étale at the selected point on a true open -/
 @[expose] public noncomputable section
-open Module MvPolynomial TensorProduct KaehlerDifferential
+open Module _root_.MvPolynomial TensorProduct KaehlerDifferential
 universe u
 namespace QuadraticIncidence
 

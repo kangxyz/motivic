@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseOpenGeometry
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.OpenGeometry
 /-! # The actual full finite boundary after simultaneous source and base shrinking -/
 set_option linter.hashCommand false
 public section

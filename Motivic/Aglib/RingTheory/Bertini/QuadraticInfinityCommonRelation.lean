@@ -9,7 +9,7 @@ public import Mathlib.Algebra.MvPolynomial.Funext
 
 /-! # One nonzero relation controls all original quadratic infinity charts -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence.InfinityChart
 variable (k R : Type u) [Field k] [CommRing R] [IsDomain R] [Algebra k R]

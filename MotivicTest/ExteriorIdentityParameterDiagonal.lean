@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityParameterDiagonal
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.ParameterDiagonal
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-!
 # Actual exterior coefficient parameter-diagonal consumers
@@ -23,16 +23,18 @@ open RingTheory.Sequence
 universe u
 
 namespace MotivicTest.ExteriorIdentityParameterDiagonal
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
   (B : FiniteCorrespondenceGenerator Y.hom Z.hom) (n : ℕ)
 
-example : Flat (A.exteriorCoefficientParameterPair (AlgebraicSimplex.smoothSiteObj k n) B) :=
+example : Flat (A.exteriorCoefficientParameterPair (_root_.AlgebraicSimplex.smoothSiteObj k n) B) :=
   inferInstance
 
 example : IsClosedImmersion
-    (A.exteriorParameterDiagonalInclusion (AlgebraicSimplex.smoothSiteObj k n) B) := inferInstance
+    (A.exteriorParameterDiagonalInclusion (_root_.AlgebraicSimplex.smoothSiteObj k n) B) :=
+        inferInstance
 
 example (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom]
     (z : A.exteriorParameterDiagonal T B) :
@@ -43,13 +45,15 @@ example (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom]
     let f := ((A.exteriorParameterDiagonalInclusion T B).stalkMap z).hom
     ∃ t : List R, IsRegular R t ∧ RingHom.ker f = Ideal.ofList t ∧
       ∀ (s : List R) (d : ℕ),
-        Module.length R ((Koszul.coefficientComplex (ModuleCat.of R R) (t ++ s)).homology d) =
+        Module.length R ((_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of R R) (t ++
+            s)).homology d) =
           Module.length S
-            ((Koszul.coefficientComplex (ModuleCat.of S S) (s.map f)).homology d) := by
+            ((_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of S S) (s.map
+                f)).homology d) := by
   dsimp only
   obtain ⟨t, ht, hker⟩ := A.exteriorParameterDiagonal_exists_regular_kernel T B z
   refine ⟨t, ht, hker, fun s d => ?_⟩
-  exact Koszul.regularBlockHomology_length
+  exact _root_.ChainComplex.Koszul.regularBlockHomology_length
     ((A.exteriorParameterDiagonalInclusion T B).stalkMap z).hom
     ((A.exteriorParameterDiagonalInclusion T B).stalkMap_surjective z)
     t s hker ht.toIsWeaklyRegular d

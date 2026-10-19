@@ -5,14 +5,21 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichFiniteDescent
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.FiniteDescent
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-! # Consumer tests for ordinary finite-coproduct Nisnevich descent -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+open Opposite
+open Motivic
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v w
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeEndpointComponentTor
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Relative.ComponentTor
 public import MotivicTest.RelativeEndpointStalkTor
 
 /-!
@@ -23,14 +23,19 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme.Graph (polynomialAmbientStalk polynomialTor)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleProduct)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 
 namespace MotivicTest.RelativeEndpointComponentTor
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
 
 variable (a : ℚ) (E : Set twoLines.left) (hE : E ∈ irreducibleComponents twoLines.left)
   (G : FiniteCorrespondenceGenerator (relativeLineHom twoLines.hom)
-    (FiniteFlatCurveFamily.line ℚ).hom)
+    (AffineLineField.line ℚ).hom)
 
 abbrev leftGraph := endpointComponentGenerator twoLines a E hE
 
@@ -48,30 +53,30 @@ def rightPointMap :=
 
 /-- The literal endpoint-fiber point supplied by this component incidence. -/
 abbrev endpointPoint (w : (leftGraph a E hE).incidence G) :=
-  incidenceToEndpointFiber twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom a
+  incidenceToEndpointFiber twoLines.hom (AffineLineField.line ℚ).hom a
     (leftGraph a E hE) G (endpointComponentGenerator_target twoLines a E hE) w
 
 /-- The original left support image agrees with the actual whole endpoint point. -/
 theorem leftPoint_image (w : (leftGraph a E hE).incidence G) :
-    originalLeftInclusion twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom (leftGraph a E hE)
+    originalLeftInclusion twoLines.hom (AffineLineField.line ℚ).hom (leftGraph a E hE)
         (leftPointMap a E hE G w) =
-      endpointTriplePoint twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom a G.inclusion
+      endpointTriplePoint twoLines.hom (AffineLineField.line ℚ).hom a G.inclusion
         (endpointPoint a E hE G w) := by
   rw [endpointComponent_incidence_point]
   exact congrArg (fun q => q w) (show leftPointMap a E hE G ≫
-    originalLeftInclusion twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom (leftGraph a E hE) =
+    originalLeftInclusion twoLines.hom (AffineLineField.line ℚ).hom (leftGraph a E hE) =
       (leftGraph a E hE).incidenceInclusion G by
         simp [leftPointMap, originalLeftInclusion])
 
 /-- The original right support image has the identical actual ambient point. -/
 theorem rightPoint_image (w : (leftGraph a E hE).incidence G) :
-    originalRightInclusion twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom G
+    originalRightInclusion twoLines.hom (AffineLineField.line ℚ).hom G
         (rightPointMap a E hE G w) =
-      endpointTriplePoint twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom a G.inclusion
+      endpointTriplePoint twoLines.hom (AffineLineField.line ℚ).hom a G.inclusion
         (endpointPoint a E hE G w) := by
   rw [endpointComponent_incidence_point]
   exact congrArg (fun q => q w) (show rightPointMap a E hE G ≫
-    originalRightInclusion twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom G =
+    originalRightInclusion twoLines.hom (AffineLineField.line ℚ).hom G =
       (leftGraph a E hE).incidenceInclusion G by
         simp [rightPointMap, originalRightInclusion])
 
@@ -80,23 +85,23 @@ original pulled-ideal Tor length, with both original scalar actions. -/
 theorem disconnected_component_pulled_tor (w : (leftGraph a E hE).incidence G) (n : ℕ) :
     Module.length
       ((correspondenceTripleProduct twoLines.hom (relativeLineHom twoLines.hom)
-        (FiniteFlatCurveFamily.line ℚ).hom).presheaf.stalk
-        (endpointTriplePoint twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom a G.inclusion
+        (AffineLineField.line ℚ).hom).presheaf.stalk
+        (endpointTriplePoint twoLines.hom (AffineLineField.line ℚ).hom a G.inclusion
           (endpointPoint a E hE G w)))
-      (originalComponentPulledTor twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom a
+      (originalComponentPulledTor twoLines.hom (AffineLineField.line ℚ).hom a
         (leftGraph a E hE) G (endpointPoint a E hE G w)
         (leftPointMap a E hE G w) (rightPointMap a E hE G w)
         (leftPoint_image a E hE G w) (rightPoint_image a E hE G w) n) =
       Module.length
-        (Graph.polynomialAmbientStalk
-          (endpointAmbientSource twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) twoLines.hom
-          (ambientParameter twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) a G.inclusion
+        (polynomialAmbientStalk
+          (endpointAmbientSource twoLines.hom (AffineLineField.line ℚ).hom) twoLines.hom
+          (ambientParameter twoLines.hom (AffineLineField.line ℚ).hom) a G.inclusion
           (endpointPoint a E hE G w))
-        (Graph.polynomialTor
-          (endpointAmbientSource twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) twoLines.hom
-          (ambientParameter twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) a G.inclusion
+        (polynomialTor
+          (endpointAmbientSource twoLines.hom (AffineLineField.line ℚ).hom) twoLines.hom
+          (ambientParameter twoLines.hom (AffineLineField.line ℚ).hom) a G.inclusion
           (endpointPoint a E hE G w) n) :=
-  originalComponentPulledTor_length twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom a
+  originalComponentPulledTor_length twoLines.hom (AffineLineField.line ℚ).hom a
     (leftGraph a E hE) G (endpointComponentGenerator_target twoLines a E hE)
     (endpointPoint a E hE G w) (leftPointMap a E hE G w) (rightPointMap a E hE G w)
     (leftPoint_image a E hE G w) (rightPoint_image a E hE G w) n

@@ -9,10 +9,17 @@ public import Motivic.Transfers.PointedGermLiftGraph
 public import Lean.Util.CollectAxioms
 
 /-! Regression checks for actual graph witnesses on arbitrary original germs. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.PointedGermLiftGraph
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)
   {X Y : SmoothSite (Spec (.of k))}
 set_option quotPrecheck false in
@@ -54,7 +61,7 @@ run_cmd do
   for name in #[``arbitrary_map_witness, ``arbitrary_graph_value,
       ``original_germ_pullback_add, ``original_germ_pullback_section,
       ``PointedGermLiftWitness.graphFromRepresentative_value,
-      ``SmoothSite.NisnevichNeighborhood.pullbackAlongToTarget_center,
+      ``pullbackAlongToTarget_center,
       ``FiniteCorrespondenceGenerator.projection_target_of_mem_graph] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

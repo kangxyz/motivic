@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulExteriorCoefficientLocalization
-public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddleSupports
-public import Motivic.AlgebraicGeometry.Intersection.ClosedSpecTor
+public import Motivic.Aglib.Algebra.Homology.Koszul.ExteriorCoefficientLocalization
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.AffineMiddleSupports
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedSpecTor
 
 /-!
 # Localized actual six-factor exterior homology consumers
@@ -23,8 +23,8 @@ noncomputable section
 
 universe u
 
-open CategoryTheory Motivic.Koszul
-open scoped TensorProduct Motivic.MiddleDiagonal
+open CategoryTheory _root_.ChainComplex.Koszul
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 namespace MotivicTest.KoszulExteriorCoefficientLocalization
 
@@ -32,14 +32,16 @@ variable (k A B C D : Type u) [Field k] [CommRing A] [CommRing B] [CommRing C] [
   [Algebra k A] [Algebra k B] [Algebra k C] [Algebra k D]
   (I : Ideal (A ⊗[k] B)) (J : Ideal (B ⊗[k] C)) (K : Ideal (C ⊗[k] D))
 
-local notation "P₀" => Motivic.MiddleDiagonal.ambientRing k A B C
+local notation "P₀" => _root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C
 local notation "T₀" => ((A ⊗[k] B) ⧸ I) ⊗[k] ((B ⊗[k] C) ⧸ J)
 local notation "W₀" => C ⊗[k] D
 local notation "E₀" => (C ⊗[k] D) ⧸ K
 local notation "S₀" => P₀ ⊗[k] E₀
 local notation "P₆" => P₀ ⊗[k] W₀
 local notation "N₆" => T₀ ⊗[k] E₀
-local notation "σ₀" => Motivic.AffineMiddle.supportRingMap k A B C I J
+local notation "σ₀" =>
+  _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap
+    k A B C I J
 local notation "q₀" => Ideal.Quotient.mkₐ k K
 local notation "λ₀" => (Algebra.TensorProduct.includeLeft : P₀ →ₐ[k] S₀)
 local notation "ρ₀" => (Algebra.TensorProduct.map (AlgHom.id k P₀) q₀)
@@ -52,7 +54,7 @@ local instance pairSupportCommRing : CommRing T₀ := inferInstance
 local instance pairSupportAlgebra : Algebra k T₀ := inferInstance
 
 
-variable (Q : Ideal (Motivic.MiddleDiagonal.ambientRing k A B C ⊗[k]
+variable (Q : Ideal (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C ⊗[k]
   ((C ⊗[k] D) ⧸ K))) [Q.IsPrime]
 
 /-- Every actual first-stage homology localizes to the tensor of localized pair

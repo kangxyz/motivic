@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseTwistFrame
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.TwistFrame
 /-! # The same prescribed whole-boundary frame in native relative projective coordinates -/
 set_option linter.hashCommand false
 public noncomputable section

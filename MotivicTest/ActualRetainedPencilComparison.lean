@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualRetainedPencilComparison
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Normalized.Retained.PencilComparison
 /-! # Direct retained endpoint comparison and foundational audit -/
 noncomputable section
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

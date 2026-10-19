@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.AffineEtaleBoundaryRefinement
+import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.AffineBoundaryRefinement
 
 /-! Direct checks of the original full-boundary affine refinement. -/
 set_option linter.hashCommand false

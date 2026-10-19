@@ -5,9 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IncidenceLocalLength
-public import Motivic.AlgebraicGeometry.Cycles.FundamentalClosedSubscheme
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.LocalLength
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.Fundamental.ClosedSubscheme
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Generic-support local-length consumers
@@ -20,6 +21,10 @@ local rings Artinian.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite genericMultiplicity
+  genericMultiplicity_eq_ambient_length length_ne_top_of_generic_stalk_support
+  stalk_quotient_ker_isArtinian)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleProduct)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u v

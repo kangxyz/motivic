@@ -5,15 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.AffineLineOpenCoordinate
+public import Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineOpenCoordinate
 public import Lean
 
 /-! # Direct original-open coordinate consumers -/
 public noncomputable section
 open CategoryTheory AlgebraicGeometry Polynomial
-open Motivic.AffineLineReducedComplement
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 universe u
 namespace MotivicTest.AffineLineOpenCoordinate
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 variable {k : Type u} [Field k]
 
 /-- All affine-ring hypotheses come from the original nonempty open and its equation. -/

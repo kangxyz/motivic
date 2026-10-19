@@ -5,14 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.AffineTorusPolynomialPresentation
+public import Motivic.AlgebraicGeometry.Correspondences.Torus.Affine.PolynomialPresentation
 public import Lean.Util.CollectAxioms
 
 /-! # Direct consumers for original integral finite torus support algebras -/
 
 @[expose] public noncomputable section
 
-open Polynomial Motivic.AffineTorusPolynomialPresentation
+open Polynomial
+open _root_.AlgebraicGeometry.Scheme.PolynomialLaurent
+open _root_.Motivic.AffineTorusPolynomialPresentation
 
 universe u
 
@@ -36,8 +38,11 @@ theorem actual_support_finite_free :
 
 open Lean in
 run_cmd do
-  for name in #[``baseMap, ``Generator, ``ambient_isPullback, ``ambientIso,
-      ``ambientIso_hom_fst, ``supportAffine, ``coordinateDomain, ``scalarMap,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.baseMap, ``Generator,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.ambient_isPullback,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.ambientIso,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialLaurent.ambientIso_hom_fst, ``supportAffine,
+          ``coordinateDomain, ``scalarMap,
       ``coordinateAlgebra, ``coordinateFinite, ``laurentEmbedding,
       ``laurentEmbedding_closed, ``laurentEmbedding_projection, ``laurentPullback,
       ``coordinateUnit, ``laurentPullback_C, ``laurent_eval_surjective,

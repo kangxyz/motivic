@@ -1,8 +1,8 @@
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.AffineTorusDivisorExact
-public import Motivic.Aglib.RingTheory.BoundaryOnePointedExact
-public import Motivic.AlgebraicGeometry.Correspondences.IntegralSourceBaseCorrespondences
+public import Motivic.AlgebraicGeometry.Correspondences.Torus.Affine.DivisorExact
+public import Motivic.Aglib.RingTheory.Polynomial.BoundaryOneRationalFunctions.PointedExact
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.IntegralSource
 public import Lean.Util.CollectAxioms
 
 /-! # Direct foundation audit of the actual affine divisor exact sequence -/

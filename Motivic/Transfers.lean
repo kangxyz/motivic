@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.SheafCohomologyWithTransfers
+public import Motivic.Transfers.Cohomology.Basic
 
 /-!
 # Ordinary cohomology with transfers

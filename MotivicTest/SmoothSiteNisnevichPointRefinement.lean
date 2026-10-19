@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichPointRefinement
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.Refinement
 public import Lean.Util.CollectAxioms
 
 /-! # Actual composed-neighborhood and original cocone consumers -/
@@ -13,11 +13,11 @@ public import Lean.Util.CollectAxioms
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
-open Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v
 
-variable {S : Scheme.{u}} [IsAffine S] {X : Motivic.SmoothSite S} {x : X.left}
+variable {S : Scheme.{u}} [IsAffine S] {X : Scheme.SmoothSite S} {x : X.left}
   (N : NisnevichNeighborhood X x)
 
 example (M : NisnevichNeighborhood ((nisnevichNeighborhoodFunctor X x).obj N) N.center) :
@@ -27,7 +27,7 @@ example (M : NisnevichNeighborhood ((nisnevichNeighborhoodFunctor X x).obj N) N.
       IsIso t.left ∧ t ≫ M.toBase = (nisnevichNeighborhoodFunctor X x).map q :=
   N.exists_refinement_of_center_neighborhood M
 
-variable (F : (Motivic.SmoothSite S)ᵒᵖ ⥤ AddCommGrpCat.{max (u + 1) v})
+variable (F : (Scheme.SmoothSite S)ᵒᵖ ⥤ AddCommGrpCat.{max (u + 1) v})
   (s t : F.obj (op ((nisnevichNeighborhoodFunctor X x).obj N)))
 
 example (hst : sectionToNisnevichPoint F ((nisnevichNeighborhoodFunctor X x).obj N) N.center s =
@@ -37,11 +37,13 @@ example (hst : sectionToNisnevichPoint F ((nisnevichNeighborhoodFunctor X x).obj
   nisnevichPointFiberCocone_eq_of_center_germ_eq F N s t hst
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
   for name in #[``AlgebraicGeometry.Scheme.Hom.exists_residueField_factorization,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.exists_refinement_of_center_neighborhood,
-      ``Motivic.SmoothSite.nisnevichPointFiberCocone_eq_zero_of_center_germ_eq_zero,
-      ``Motivic.SmoothSite.nisnevichPointFiberCocone_eq_of_center_germ_eq] do
+      ``exists_refinement_of_center_neighborhood,
+      ``nisnevichPointFiberCocone_eq_zero_of_center_germ_eq_zero,
+      ``nisnevichPointFiberCocone_eq_of_center_germ_eq] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

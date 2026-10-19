@@ -5,14 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.ContractionNaturality
+public import Motivic.Transfers.Presheaf.ContractionNaturality
 
 /-! Consumers of contraction use genuine Laurent restriction and signed exterior transfers. -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe v u
 

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.PrescribedLineBundlePair
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.PrescribedLineBundlePair
 
 /-! # Direct finite-boundary generating section consumer -/
 @[expose] public section

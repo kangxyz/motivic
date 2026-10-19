@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.GlobalIncidenceAmbientTorComparison
-public import Motivic.AlgebraicGeometry.Correspondences.TorIncidenceCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.GlobalAmbientTorComparison
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.TorCycle
 
 /-!
 # Original global ambient-comparison consumers
@@ -27,8 +27,9 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.GlobalIncidenceAmbientTorComparison
+open _root_.AlgebraicGeometry.Scheme
 
-open Intersection _root_.Motivic.GlobalIncidenceAmbientTorComparison
+open _root_.AlgebraicGeometry.Scheme.Intersection _root_.Motivic.GlobalIncidenceAmbientTorComparison
 
 variable (k : Type u) [Field k]
 
@@ -49,14 +50,15 @@ variable {X Y Z : SmoothSite (Spec (.of k))}
 /-- Smooth-site geometry proves finite length and bounded degree support for
 original triple-product Tor at every actual generic incidence point. -/
 theorem originalPulledFiniteLengthSupport (w : genericPoints (F.incidence G)) :
-    LengthEuler.FiniteLengthSupport (pulledStalkTor F G w.val) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (pulledStalkTor F G w.val) :=
   (incidenceTor_finiteLengthSupport_iff_pulled k F G w.val).mp
     (F.incidenceTor_finiteLengthSupport (S := Spec (.of k)) G w.val w.property)
 
 /-- The standard triple-product Tor Euler coefficient uses the original
 pulled ideal subschemes and the proved finite-length support. -/
 def originalPulledCoefficient (w : genericPoints (F.incidence G)) : ℤ :=
-  LengthEuler.signedLengthSum (pulledStalkTor F G w.val) (fun n ↦ (-1 : ℤ) ^ n)
+  _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (pulledStalkTor F G w.val) (fun n ↦
+      (-1 : ℤ) ^ n)
     (originalPulledFiniteLengthSupport k F G w)
 
 /-- The actual generic diagonal-incidence coefficient agrees with every higher

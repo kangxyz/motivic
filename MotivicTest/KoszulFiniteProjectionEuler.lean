@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteProjectionEuler
-public import Motivic.Algebra.Homology.KoszulHyperhomologyPlacement
+public import Motivic.Aglib.Algebra.Homology.Koszul.FiniteProjection.Euler
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyPlacement
 public import MotivicTest.LengthEulerFiniteAlgebra
 public import Mathlib.RingTheory.Flat.TorsionFree
 
@@ -24,7 +24,10 @@ noncomputable section
 
 universe u
 
-open CategoryTheory CategoryTheory.MonoidalCategory Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory
+open CategoryTheory.MonoidalCategory
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulFiniteProjectionEuler
 

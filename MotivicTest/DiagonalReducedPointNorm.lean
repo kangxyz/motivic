@@ -5,16 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalReducedPointNorm
+public import Motivic.Cohomology.Diagonal.ReducedPointNorm
 public import Aglib.KTheory.MilnorK.Dedekind.StalkResidue
-public import Motivic.KTheory.MilnorK.NormalizedAffineEndpointNorm
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.MilnorK.NormalizedAffineEndpointNorm
 public import Lean.Util.CollectAxioms
 
 /-! Actual reduced quotient evaluation and original local/normalization audit. -/
 
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Motivic Opposite
-open Motivic.PresheafWithTransfers Motivic.DiagonalReducedPointNorm
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers Motivic.DiagonalReducedPointNorm
 
 universe u
 namespace MotivicTest.DiagonalReducedPointNorm
@@ -33,7 +33,7 @@ run_cmd do
       ``relation_largeCycleNorm, ``reducedNormLarge, ``toReducedTorus_reducedNormLarge,
       ``reducedNorm, ``reducedNorm_quotient, ``reducedNorm_rationalTuple,
       ``MilnorK.DedekindStalkResidue.residue_eq,
-      ``Motivic.FiniteCurveNormalization.normalized_endpoint_sum_eq] do
+      ``_root_.AlgebraicGeometry.FiniteCurveNormalization.normalized_endpoint_sum_eq] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.AdjoinRootScalarBranches
+public import Motivic.Aglib.AlgebraicGeometry.Spec.PolynomialQuotient.ScalarBranches
 public import Aglib.KTheory.MilnorK.K3.ResidueBaseChangeSupport
 public import Lean.Util.CollectAxioms
 
@@ -22,12 +22,14 @@ applying any cycle class, norm, or motivic quotient.
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Polynomial AdjoinRoot
 open MilnorK.K3.PolynomialResidue
-open Motivic.AdjoinRootScalarBranches
+open _root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches
 open scoped BigOperators
 
 universe u
 
 namespace Motivic.MotivicTest.AdjoinRootScalarBranchesGeometry
+open _root_.AlgebraicGeometry.Scheme
+open _root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches
 
 variable {k L : Type u} [Field k] [Field L]
 
@@ -84,10 +86,13 @@ theorem original_place_projection (φ : k →+* L) (p : MonicIrreducible k)
 
 open Lean in
 run_cmd do
-  for name in #[``scalarSchemeIso, ``scalarSchemeIso_hom_fst, ``scalarSchemeIso_hom_snd,
-      ``scalar_isPullback, ``branchMap_genericPoint, ``finitePushforward_branchMap,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.scalarSchemeIso,
+      ``scalarSchemeIso_hom_fst, ``scalarSchemeIso_hom_snd,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.scalar_isPullback,
+          ``branchMap_genericPoint, ``finitePushforward_branchMap,
       ``fundamentalCycle_eq_sum_branches, ``scalar_fundamentalCycle_eq_sum_branches,
-      ``branchMap_scalarMap, ``original_places_fundamentalCycle, ``original_scalar_square,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.branchMap_scalarMap,
+          ``original_places_fundamentalCycle, ``original_scalar_square,
       ``inverse_original_projection, ``original_place_projection] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

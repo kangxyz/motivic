@@ -5,14 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.StalkKernelMinimalPrimes
-public import Motivic.AlgebraicGeometry.Correspondences.IteratedIncidenceSupport
-public import Motivic.AlgebraicGeometry.Correspondences.TripleGenericDominance
+public import Motivic.Aglib.AlgebraicGeometry.Stalk.KernelMinimalPrimes
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.IncidenceSupport
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.GenericDominance
 
 /-! # Actual triple-incidence kernel-prime and component consumers -/
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite stalkKernelGenericEquiv)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

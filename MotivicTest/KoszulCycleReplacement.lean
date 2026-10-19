@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulCycleReplacement
+public import Motivic.Aglib.Algebra.Homology.Koszul.CycleReplacement
 public import Mathlib.LinearAlgebra.TensorProduct.Prod
 
 /-!
@@ -20,7 +20,7 @@ while the generic summand has length one.
 
 @[expose] public section
 
-open CategoryTheory Motivic.Koszul Motivic.LengthEuler Module
+open CategoryTheory _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler Module
 open scoped TensorProduct
 
 universe u

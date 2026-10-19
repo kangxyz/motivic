@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightWholeFiberTorTargetGenericStalk
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightWholeFiberTorTargetGenericStalk
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original smooth-site right generic target stalk consumers
@@ -32,6 +33,9 @@ open scoped TensorProduct
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberTorTargetGenericStalk
+open _root_.AlgebraicGeometry.Scheme
+open _root_.AlgebraicGeometry.Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -88,7 +92,7 @@ def actualOriginalPushforwardSpecialization (n : ℕ) :
     (ModuleCat.extendScalars
       ((F.rightIntermediateImageProduct G H).presheaf.stalkSpecializes q.2).hom).obj
         (F.rightFirstStagePushforwardCoefficient (S := Spec (.of K)) G H V p n) ≅
-      (ModuleStalk.functor q.1.1).obj
+      (Stalk.functor q.1.1).obj
         ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
           (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n)) :=
   F.rightFirstStagePushforwardGenericSpecializationIso (S := Spec (.of K)) G H V p q n
@@ -126,7 +130,7 @@ def actualOriginalPushforwardGenericIso (n : ℕ) :
       (ModuleCat.restrictScalars
         (genericStalkLocalizationIso (F.rightIntermediateImageProduct G H)
           (V.2.fromSpec p) q).inv.hom).obj
-        ((ModuleStalk.functor q.1.1).obj
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
             (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) :=
   F.rightFirstStagePushforwardTargetGenericIso (S := Spec (.of K)) G H V p q n
@@ -140,7 +144,7 @@ theorem actualOriginalPushforwardGenericLength (n : ℕ) :
           (V.2.fromSpec p)]
           (F.rightFirstStagePushforwardCoefficient (S := Spec (.of K)) G H V p n)) =
       Module.length ((F.rightIntermediateImageProduct G H).presheaf.stalk q.1.1)
-        ((ModuleStalk.functor q.1.1).obj
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
             (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) :=
   F.rightFirstStagePushforwardTargetGeneric_length (S := Spec (.of K)) G H V p q n
@@ -148,7 +152,7 @@ theorem actualOriginalPushforwardGenericLength (n : ℕ) :
 /-- The generic length is finite before conversion to an integer. -/
 theorem actualOriginalPushforwardGenericFinite (n : ℕ) :
     Module.length ((F.rightIntermediateImageProduct G H).presheaf.stalk q.1.1)
-        ((ModuleStalk.functor q.1.1).obj
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
             (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) ≠ ⊤ :=
   F.rightFirstStagePushforwardGenericStalk_length_ne_top (S := Spec (.of K)) G H V p q n
@@ -157,8 +161,8 @@ theorem actualOriginalPushforwardGenericFinite (n : ℕ) :
 theorem actualOriginalPushforwardGenericWeight (n : ℕ) :
     F.rightFirstStagePushforwardGenericLength (S := Spec (.of K)) G H V p n
         ((F.rightFirstStageTargetGenericEquiv G H V p).symm q) =
-      LengthEuler.integerLength
-        ((ModuleStalk.functor q.1.1).obj
+      _root_.HomologicalComplex.ModuleLengthEuler.integerLength
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
             (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n)))
         (actualOriginalPushforwardGenericFinite K X Y Z W F G H V p q n) :=
@@ -169,7 +173,7 @@ generic pushed stalk, retaining all branches and nonreduced scalar actions. -/
 theorem actualOriginalPushforwardGenericBound :
     ∃ b : ℕ, ∀ n, b ≤ n →
       ∀ q : {q : genericPoints (F.rightIntermediateImageProduct G H) // q.1 ⤳ V.2.fromSpec p},
-        Subsingleton ((ModuleStalk.functor q.1.1).obj
+        Subsingleton ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
             (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) :=
   F.rightFirstStagePushforwardGenericStalk_exists_bound (S := Spec (.of K)) G H V p
@@ -177,7 +181,8 @@ theorem actualOriginalPushforwardGenericBound :
 /-- Actual generic modules have finite full lengths and finite nonzero-degree
 support before any signed integer Euler sum is used. -/
 theorem actualOriginalPushforwardFiniteLengthSupport :
-    LengthEuler.FiniteLengthSupport (fun n => (ModuleStalk.functor q.1.1).obj
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (fun n => (Stalk.functor
+        q.1.1).obj
       ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
         (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) :=
   F.rightFirstStagePushforwardGenericStalk_finiteLengthSupport
@@ -188,7 +193,8 @@ of the original finite-pushed sheaf stalks, at the exact original global generic
 theorem actualOriginalPushforwardSignedEuler :
     F.rightFirstStagePushforwardGenericEuler (S := Spec (.of K)) G H V p
         ((F.rightFirstStageTargetGenericEquiv G H V p).symm q) =
-      LengthEuler.signedLengthSum (fun n => (ModuleStalk.functor q.1.1).obj
+      _root_.HomologicalComplex.ModuleLengthEuler.signedLengthSum (fun n => (Stalk.functor
+          q.1.1).obj
         ((Scheme.Modules.pushforward (F.rightIntermediateImageMap G H)).obj
           (F.rightFirstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n)))
         (fun n : ℕ => (-1 : ℤ) ^ n)

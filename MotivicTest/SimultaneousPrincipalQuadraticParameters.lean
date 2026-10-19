@@ -9,7 +9,7 @@ public import Lean
 
 /-! # Direct actual simultaneous affine neighborhood consumer and axiom audit -/
 public noncomputable section
-open MvPolynomial AlgebraicGeometry CategoryTheory QuadraticIncidence
+open _root_.MvPolynomial AlgebraicGeometry CategoryTheory QuadraticIncidence
 universe u
 
 example (k R : Type u) [Field k] [Infinite k]

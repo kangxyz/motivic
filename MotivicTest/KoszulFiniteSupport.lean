@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteSupportEuler
+public import Motivic.Aglib.Algebra.Homology.Koszul.FiniteSupport.Euler
 
 /-!
 # Consumers of arbitrary finite Koszul support and Euler finiteness
@@ -22,7 +22,7 @@ regularity is smuggled into the Tor or finiteness statements.
 universe u
 
 open CategoryTheory CategoryTheory.Limits
-open Motivic.Koszul Motivic.LengthEuler
+open _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace Motivic.MotivicTest.KoszulFiniteSupport
 

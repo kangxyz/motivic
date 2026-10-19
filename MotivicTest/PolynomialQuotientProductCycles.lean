@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.PolynomialQuotientProductCycles
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.PolynomialQuotient.Product
 public import Lean
 
 /-! # Whole quotient cycle additivity, including a repeated zero root -/
@@ -33,9 +33,9 @@ theorem actual_cycle_definition (R : Type u) [CommRing R] [IsNoetherianRing R]
     (p : R[X]) (hp : p.Monic) :
     letI : IsFinite (source p) := source_finite p hp
     letI : IsNoetherian (Spec (.of (AdjoinRoot p))) :=
-      Motivic.isNoetherian_of_finiteType (source p)
-    quotientCycle p hp = Motivic.IntegralCycle.finitePushforward (inclusion p)
-      (Motivic.fundamentalCycle (Spec (.of (AdjoinRoot p)))) := rfl
+      Scheme.isNoetherian_of_finiteType (source p)
+    quotientCycle p hp = Scheme.IntegralCycle.finitePushforward (inclusion p)
+      (Scheme.fundamentalCycle (Spec (.of (AdjoinRoot p)))) := rfl
 
 open Lean in
 run_cmd do

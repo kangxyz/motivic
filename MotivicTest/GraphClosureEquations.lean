@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.GraphClosureEquations
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.GraphClosureEquations
 /-! Direct unchanged-coordinate consumer; only the original graph satisfies the equations. -/
 set_option linter.hashCommand false
 public section

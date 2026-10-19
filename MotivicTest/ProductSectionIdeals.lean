@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.ProductSectionIdeals
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.Product.Ideals
 
 /-! Direct checks of the literal tensor product and regular stalk generators. -/
 

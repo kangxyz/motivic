@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodRelativeBoundaryTwist
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.RelativeBoundaryTwist
 /-! Actual all-degree units use only one original base shrink. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

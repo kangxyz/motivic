@@ -5,13 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexSingularTransferFunctor
+public import Motivic.AlgebraicGeometry.Correspondences.Singular.Functor
 
 /-! # Actual transfer identities, compositions, and signed all-degree singular maps -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Opposite Motivic Motivic.PresheafWithTransfers
+open CategoryTheory
+open AlgebraicGeometry
+open Opposite
+open Motivic
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 
 universe v u
 

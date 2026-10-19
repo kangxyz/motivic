@@ -7,7 +7,7 @@ module
 public import Motivic.Aglib.RingTheory.Kaehler.SmoothCotangentTrdeg
 public import Motivic.Aglib.RingTheory.Kaehler.ResidueFunctionBasis
 public import Motivic.Aglib.RingTheory.Etale.ResidueCoordinateCriterion
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantEtaleCurve
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Constant.EtaleCurve
 
 /-! # Original independent functions give a relative curve near the original prime -/
 @[expose] public noncomputable section

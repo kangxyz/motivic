@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.SupportLiftImageSumControl
+public import Motivic.AlgebraicGeometry.Correspondences.Support.LiftImage.SumControl
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of literal support maps through arbitrary signed image sums -/
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Motivic Motivic.FiniteCorrespondenceGenerator
 

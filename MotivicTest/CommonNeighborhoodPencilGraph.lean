@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodPencilGraph
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.Pencil.Graph
 /-! The actual global graph section is the literal compact zero endpoint. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

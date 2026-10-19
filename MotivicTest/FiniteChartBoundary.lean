@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.FiniteChartBoundary
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.FiniteChartBoundary
 /-! Whole, possibly nonreduced closed boundary consumer. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry

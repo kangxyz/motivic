@@ -3,7 +3,7 @@ Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
-import Motivic.AlgebraicGeometry.Correspondences.PolynomialPencilCycles
+import Motivic.AlgebraicGeometry.Correspondences.Moving.Pencils.PolynomialCycles
 
 /-! Direct whole-scheme endpoint cycle checks. -/
 

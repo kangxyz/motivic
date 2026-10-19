@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.EnoughInjectives
+public import Motivic.Transfers.Sheaf.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
 /-!

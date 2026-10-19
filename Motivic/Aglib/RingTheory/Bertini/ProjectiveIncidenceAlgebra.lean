@@ -9,7 +9,7 @@ cut out precisely the vanishing of the universal vector after arbitrary base
 change. This retains the original module and allows nonreduced coefficient rings.
 -/
 @[expose] public noncomputable section
-open TensorProduct MvPolynomial Module
+open TensorProduct _root_.MvPolynomial Module
 universe u v w
 namespace ProjectiveIncidence
 variable {R : Type u} [CommRing R] {V : Type v} [AddCommGroup V] [Module R V]

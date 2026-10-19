@@ -5,19 +5,19 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyCartierBoundaryZero
-public import Motivic.Cohomology.A1.PresheafBoundaryOpenSupport
-import all Motivic.AlgebraicGeometry.SmoothSiteCartierCylinderComparison
-import all Motivic.AlgebraicGeometry.SmoothSiteCartierPunctureComparison
-import all Motivic.Cohomology.A1.PresheafBoundaryCoefficientIso
-import all Motivic.Cohomology.A1.PresheafSmoothCartierBoundaryZero
-import all Motivic.Cohomology.SheafCohomologyCartierBoundaryZero
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageComposition
-import all Motivic.Cohomology.A1.PresheafBoundaryPointComparison
-import all Motivic.Cohomology.A1.PresheafBoundaryOpenZero
-import all Motivic.Cohomology.A1.PresheafBoundaryOpenSupport
-import all Motivic.Cohomology.A1.PresheafBoundaryEtaleLocalization
-import all Motivic.Cohomology.A1.PresheafBoundaryEtaleExcision
+public import Motivic.Cohomology.Cartier.BoundaryZero
+public import Motivic.Cohomology.A1.Boundary.Presheaf.OpenSupport
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cartier.CylinderComparison
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cartier.PunctureComparison
+import all Motivic.Cohomology.A1.Boundary.Presheaf.CoefficientIso
+import all Motivic.Cohomology.A1.Boundary.Presheaf.SmoothCartierZero
+import all Motivic.Cohomology.Cartier.BoundaryZero
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.InverseImageComposition
+import all Motivic.Cohomology.A1.Boundary.Presheaf.PointComparison
+import all Motivic.Cohomology.A1.Boundary.Presheaf.OpenZero
+import all Motivic.Cohomology.A1.Boundary.Presheaf.OpenSupport
+import all Motivic.Cohomology.A1.Boundary.Presheaf.EtaleLocalization
+import all Motivic.Cohomology.A1.Boundary.Presheaf.EtaleExcision
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -25,6 +25,7 @@ public import Batteries.Tactic.Lint
 
 public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules Scheme.Modules.Invertible
 
@@ -47,8 +48,9 @@ example {U Y : SmoothSite (Spec (.of k))} (j : U ⟶ Y) [IsOpenImmersion j.left]
     {Z : Scheme.{u}} (i : Z ⟶ Y.left) [IsClosedImmersion i] [Smooth (i ≫ Y.hom)]
     (hI : IsLocallyRankOne Y.left (Scheme.Hom.idealModule i))
     (hcomp : Set.range i = (Set.range j.left)ᶜ) :
-    IsZero ((FiniteEtaleSite.inverseImage i).obj (FiniteEtaleSite.presheafBoundaryAmbient
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+    IsZero ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.inverseImage i).obj
+        (FiniteEtaleSite.presheafBoundaryAmbient
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         ((SheafWithTransfers.toSheaf k).obj F) (n + 1)) j)) :=
   SheafCohomology.isZero_cartierBoundary_succ_of_epi k F n hP hE j i hI hcomp
@@ -59,8 +61,9 @@ theorem higherDirectImage_isZero_of_original_epi
     {Z : Scheme.{u}} (i : Z ⟶ Y.left) [IsClosedImmersion i] [Smooth (i ≫ Y.hom)]
     (hI : IsLocallyRankOne Y.left (Scheme.Hom.idealModule i))
     (hcomp : Set.range i = (Set.range j.left)ᶜ) :
-    IsZero (((FiniteEtaleSite.directImage j.left).rightDerived (n + 1)).obj
-      ((FiniteEtaleSite.restrict U AddCommGrpCat).obj
+    IsZero (((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.directImage
+        j.left).rightDerived (n + 1)).obj
+      ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.restrict U AddCommGrpCat).obj
         ((SheafWithTransfers.toSheaf k).obj F))) :=
   FiniteEtaleSite.higherDirectImage_isZero_of_positiveBoundary_zero (.of k) j i hcomp
     ((SheafWithTransfers.toSheaf k).obj F) n
@@ -69,8 +72,8 @@ theorem higherDirectImage_isZero_of_original_epi
 open Lean in
 run_cmd do
   for name in #[``higherDirectImage_isZero_of_original_epi,
-      ``SmoothSite.exists_cartier_cylinder_comparison,
-      ``SmoothSite.exists_cartier_puncture_comparison,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_cartier_cylinder_comparison,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_cartier_puncture_comparison,
       ``FiniteEtaleSite.presheafBoundaryAmbientCoefficientIso_projection,
       ``FiniteEtaleSite.etaleSheafificationIso_unit,
       ``FiniteEtaleSite.presheafNeighborhoodQuotientEtaleIso_π,
@@ -87,17 +90,17 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.AlgebraicGeometry.SmoothSiteCartierCylinderComparison,
-    `Motivic.AlgebraicGeometry.SmoothSiteCartierPunctureComparison,
-    `Motivic.Cohomology.A1.PresheafBoundaryCoefficientIso,
-    `Motivic.Cohomology.A1.PresheafSmoothCartierBoundaryZero,
-    `Motivic.Cohomology.SheafCohomologyCartierBoundaryZero,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtalePointInverseImageComposition,
-    `Motivic.Cohomology.A1.PresheafBoundaryPointComparison,
-    `Motivic.Cohomology.A1.PresheafBoundaryOpenZero,
-    `Motivic.Cohomology.A1.PresheafBoundaryOpenSupport,
-    `Motivic.Cohomology.A1.PresheafBoundaryEtaleLocalization,
-    `Motivic.Cohomology.A1.PresheafBoundaryEtaleExcision]
+  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cartier.CylinderComparison,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cartier.PunctureComparison,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.CoefficientIso,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.SmoothCartierZero,
+    `Motivic.Cohomology.Cartier.BoundaryZero,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.InverseImageComposition,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.PointComparison,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.OpenZero,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.OpenSupport,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.EtaleLocalization,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.EtaleExcision]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

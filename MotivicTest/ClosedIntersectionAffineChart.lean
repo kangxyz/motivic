@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ClosedIntersectionAffineChart
-public import Motivic.AlgebraicGeometry.Correspondences.TripleDiagonalAmbient
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedIntersectionAffineChart
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
 
 /-!
 # Actual correspondence and quotient consumers of canonical affine charts
@@ -20,7 +20,11 @@ integrality, radicality or fixed component dimension is imposed.
 
 noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Motivic.Intersection
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
@@ -32,27 +36,32 @@ variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S}
   (H : FiniteCorrespondenceGenerator h i)
 
 /-- The whole actual first-stage affine preimage is the literal sum-ideal quotient. -/
-def firstStageAffineQuotient (U : (correspondenceSixfoldAmbient f g h i).affineOpens) :
-    Γ(correspondenceSixfoldAmbient f g h i, U) ⧸
-        ((correspondenceFirstDiagonalInclusion f g h i).ker.ideal U ⊔
+def firstStageAffineQuotient (U :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i).affineOpens) :
+    Γ(_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i, U) ⧸
+        ((_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h
+            i).ker.ideal U ⊔
           (F.tripleSupportProductInclusion G H).ker.ideal U) ≃+*
       Γ(F.leftIntermediateSupportProduct G H,
         (F.leftIntermediateAmbientInclusion G H) ⁻¹ᵁ U) :=
   closedIntersectionAffineQuotientEquiv (F.tripleSupportProductInclusion G H)
     (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)
-    (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediate_ambient_isPullback G H) U
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+        (F.leftIntermediate_ambient_isPullback G H) U
 
 /-- This first-stage chart has the exact ambient-to-support section map. -/
-theorem firstStageAffineQuotient_mk (U : (correspondenceSixfoldAmbient f g h i).affineOpens)
-    (r : Γ(correspondenceSixfoldAmbient f g h i, U)) :
+theorem firstStageAffineQuotient_mk (U :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i).affineOpens)
+    (r : Γ(_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i, U)) :
     firstStageAffineQuotient F G H U (Ideal.Quotient.mk _ r) =
       (F.leftIntermediateAmbientInclusion G H).app U r :=
   closedIntersectionAffineQuotientEquiv_mk _ _ _ _ _ U r
 
 /-- Refinement compares the original source sections, not independently chosen charts. -/
-theorem firstStageRefinement {U V : (correspondenceSixfoldAmbient f g h i).affineOpens}
+theorem firstStageRefinement {U V :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i).affineOpens}
     (hUV : U ≤ V)
-    (x : Γ(correspondenceSixfoldAmbient f g h i, V) ⧸
+    (x : Γ(_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i, V) ⧸
       (F.leftIntermediateAmbientInclusion G H).ker.ideal V) :
     closedAffineQuotientEquiv (F.leftIntermediateAmbientInclusion G H) U
         (closedAffineQuotientRestriction (F.leftIntermediateAmbientInclusion G H) hUV x) =
@@ -64,7 +73,8 @@ theorem firstStageRefinement {U V : (correspondenceSixfoldAmbient f g h i).affin
 omit [IsSeparated g] in
 /-- Repeated genuine refinements obey the original quotient restriction composition. -/
 theorem firstStageRefinement_comp
-    {U V T : (correspondenceSixfoldAmbient f g h i).affineOpens}
+    {U V T : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h
+        i).affineOpens}
     (hUV : U ≤ V) (hVT : V ≤ T) :
     (closedAffineQuotientRestriction (F.leftIntermediateAmbientInclusion G H) hUV).comp
         (closedAffineQuotientRestriction (F.leftIntermediateAmbientInclusion G H) hVT) =

@@ -3,7 +3,7 @@ Copyright (c) 2026 Motivic Cohomology contributors.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualDiagonalDivisors
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.Normalized.Diagonal.Divisors
 
 /-! Direct original-overlap finite-flat divisor consumer. -/
 @[expose] public noncomputable section

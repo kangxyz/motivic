@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.MvPolynomial.Graph
+public import Motivic.Aglib.RingTheory.MvPolynomial.Graph
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -19,7 +19,7 @@ admits the weak-regularity statement, without a false proper-quotient claim.
 @[expose] public noncomputable section
 
 open RingTheory.Sequence
-open Motivic.PolynomialGraph
+open _root_.MvPolynomial.Graph
 
 namespace Motivic.MotivicTest.PolynomialGraph
 

@@ -5,20 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PointedCartierH1RestrictionMono
-import all Motivic.AlgebraicGeometry.SmoothSiteProductPermutation
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleSmoothNeighborhood
-import all Motivic.Cohomology.A1.ContractionBoundaryProjectionGeometry
-import all Motivic.Cohomology.A1.ContractionBoundaryProjection
-import all Motivic.Cohomology.A1.ContractionBoundaryProjectionCompatibility
-import all Motivic.Cohomology.A1.ContractionBoundaryProjectionSupport
-import all Motivic.Cohomology.A1.ContractionBoundaryProjectionExcisionGeometry
-import all Motivic.Cohomology.A1.ContractionBoundaryProjectionExcision
-import all Motivic.AlgebraicGeometry.SmoothSiteContractionDensity
-import all Motivic.Cohomology.A1.PointedCylinderLocalEffacement
-import all Motivic.Cohomology.A1.PointedCylinderH1ChartVanishing
-import all Motivic.Cohomology.A1.PointedEtaleCylinderRestriction
-import all Motivic.Cohomology.A1.PointedCartierH1RestrictionMono
+public import Motivic.Cohomology.A1.Cartier.Restriction.H1RestrictionMono
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Products.ProductPermutation
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.SmoothNeighborhood
+import all Motivic.Cohomology.A1.Boundary.Contraction.ProjectionGeometry
+import all Motivic.Cohomology.A1.Boundary.Contraction.Projection
+import all Motivic.Cohomology.A1.Boundary.Contraction.ProjectionCompatibility
+import all Motivic.Cohomology.A1.Boundary.Contraction.ProjectionSupport
+import all Motivic.Cohomology.A1.Boundary.Contraction.ProjectionExcisionGeometry
+import all Motivic.Cohomology.A1.Boundary.Contraction.ProjectionExcision
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cartier.ContractionDensity
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.LocalEffacement
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.H1ChartVanishing
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.EtaleRestriction
+import all Motivic.Cohomology.A1.Cartier.Restriction.H1RestrictionMono
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -26,6 +26,7 @@ public import Batteries.Tactic.Lint
 
 public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules Scheme.Modules.Invertible
 
@@ -51,8 +52,8 @@ theorem original_H1_cartier_puncture_injective
     (K : Type u) [Field K] (b : Spec (.of K) ⟶ Y.left) (s : Spec (.of K))
     (hb : b s ∈ Set.range i) :
     Function.Injective (colim.map (FiniteEtaleSite.pointedCylinderRestriction (.of k) j
-      (FiniteEtaleSite.relativeFieldPoint b K (𝟙 _))
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.relativeFieldPoint b K (𝟙 _))
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 1))) := by
   apply (AddCommGrpCat.mono_iff_injective _).mp
@@ -77,19 +78,19 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.AlgebraicGeometry.SmoothSiteProductPermutation,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleSmoothNeighborhood,
-    `Motivic.Cohomology.A1.ContractionBoundaryProjectionGeometry,
-    `Motivic.Cohomology.A1.ContractionBoundaryProjection,
-    `Motivic.Cohomology.A1.ContractionBoundaryProjectionCompatibility,
-    `Motivic.Cohomology.A1.ContractionBoundaryProjectionSupport,
-    `Motivic.Cohomology.A1.ContractionBoundaryProjectionExcisionGeometry,
-    `Motivic.Cohomology.A1.ContractionBoundaryProjectionExcision,
-    `Motivic.AlgebraicGeometry.SmoothSiteContractionDensity,
-    `Motivic.Cohomology.A1.PointedCylinderLocalEffacement,
-    `Motivic.Cohomology.A1.PointedCylinderH1ChartVanishing,
-    `Motivic.Cohomology.A1.PointedEtaleCylinderRestriction,
-    `Motivic.Cohomology.A1.PointedCartierH1RestrictionMono]
+  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Products.ProductPermutation,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.SmoothNeighborhood,
+    `Motivic.Cohomology.A1.Boundary.Contraction.ProjectionGeometry,
+    `Motivic.Cohomology.A1.Boundary.Contraction.Projection,
+    `Motivic.Cohomology.A1.Boundary.Contraction.ProjectionCompatibility,
+    `Motivic.Cohomology.A1.Boundary.Contraction.ProjectionSupport,
+    `Motivic.Cohomology.A1.Boundary.Contraction.ProjectionExcisionGeometry,
+    `Motivic.Cohomology.A1.Boundary.Contraction.ProjectionExcision,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cartier.ContractionDensity,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.LocalEffacement,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.H1ChartVanishing,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.EtaleRestriction,
+    `Motivic.Cohomology.A1.Cartier.Restriction.H1RestrictionMono]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

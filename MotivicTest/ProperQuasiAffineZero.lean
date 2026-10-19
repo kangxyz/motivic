@@ -1,6 +1,6 @@
 module
 
-import Motivic.Aglib.AlgebraicGeometry.ProperQuasiAffineZero
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.ProperQuasiAffine
 
 /-! Direct checks of genuine proper/quasi-affine finiteness and zero-scheme regularity. -/
 

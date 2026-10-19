@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.SingularComplexPresheaf
-import Motivic.Cohomology.Motivic.Indexing
+import Motivic.Aglib.Algebra.Homology.SingularComplex.Presheaf
+import Motivic.Aglib.Algebra.Homology.SingularComplex.Indexing
 
 /-!
 # Consumer tests for singular chains and weight-two indexing
@@ -21,7 +21,7 @@ noncomputable section
 
 open CategoryTheory CategoryTheory.Limits Opposite
 open scoped Simplicial
-open Motivic.SingularComplex
+open _root_.CategoryTheory.SingularComplex
 
 universe v u w
 
@@ -55,8 +55,8 @@ example : (cochainObj Δ P 2).X (-1) ≅ P.obj (op (Δ.obj ⦋3⦌)) :=
 example : IsZero ((cochainObj Δ P 2).X 3) :=
   isZero_cochainObj_X Δ P 2 3 (by decide)
 
-example : Motivic.Indexing.singularDegree 2 1 = 1 ∧
-    Motivic.Indexing.blochDegree 2 1 = 3 := by
+example : Indexing.singularDegree 2 1 = 1 ∧
+    Indexing.blochDegree 2 1 = 3 := by
   constructor <;> rfl
 
 variable [HasBinaryProducts C]

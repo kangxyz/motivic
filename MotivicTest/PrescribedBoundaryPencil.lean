@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.PrescribedBoundaryPencil
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Pencils.PrescribedBoundaryPencil
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Constructed affine pencils and whole scheme-theoretic fibers -/

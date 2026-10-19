@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorBoundaryDescent
+public import Motivic.Cohomology.Diagonal.MilnorBoundaryDescent
 public import Lean.Util.CollectAxioms
 
 /-! The actual all-weight boundary descent, retaining the original homology and Milnor group. -/

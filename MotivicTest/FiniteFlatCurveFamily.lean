@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FiniteFlatCurveFamily
+public import Motivic.AlgebraicGeometry.Correspondences.Spans.FiniteFlat.CurveFamily
 
 /-!
 # Consumers of whole finite-flat curve correspondences
@@ -17,12 +17,14 @@ all components and nilpotents, including at the literal zero and one fibers.
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.FiniteFlatCurveFamily
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.AffineLineField _root_.Motivic.FiniteFlatCurveFamily
 open scoped Polynomial
 
 universe u
 
 namespace MotivicTest.FiniteFlatCurveFamily
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.AffineLineField
 
 variable {k : Type u} [Field k] {Y : SmoothSite (Spec (.of k))}
 
@@ -38,7 +40,7 @@ theorem wholePointCycle {P : Scheme.{u}} [IsNoetherian P]
     (hj : j ≫ pullback.fst (point k).hom Y.hom = f) :
     FiniteCorrespondence.toIntegralCycle (f := (point k).hom) (g := Y.hom)
       (pointFundamentalCorrespondence f j hj) =
-        IntegralCycle.finitePushforward j (fundamentalCycle P) :=
+        IntegralCycle.finitePushforward j (_root_.AlgebraicGeometry.Scheme.fundamentalCycle P) :=
   toIntegralCycle_pointFundamentalCorrespondence f j hj
 
 section Curve
@@ -52,7 +54,7 @@ variable {P : Scheme.{u}} [IsNoetherian P]
 theorem wholeCurveCycle :
     FiniteCorrespondence.toIntegralCycle (f := (line k).hom) (g := Y.hom)
       (fundamentalCorrespondence f j hj) =
-        IntegralCycle.finitePushforward j (fundamentalCycle P) :=
+        IntegralCycle.finitePushforward j (_root_.AlgebraicGeometry.Scheme.fundamentalCycle P) :=
   toIntegralCycle_fundamentalCorrespondence f j hj
 
 /-- Every actual graph restriction retains the full scheme-theoretic fiber. -/
@@ -60,7 +62,7 @@ theorem wholeGraphRestriction (a : k) :
     FiniteCorrespondence.toIntegralCycle (f := (point k).hom) (g := Y.hom)
       ((Cor.graphFunctor k).map (evaluationPoint k a) ≫ fundamentalCorrespondence f j hj) =
         IntegralCycle.finitePushforward (fiberInclusion f j hj a)
-          (fundamentalCycle (fiber f a)) :=
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f a)) :=
   toIntegralCycle_graph_restriction f j hj a
 
 /-- The zero endpoint uses the complete original special fiber. -/
@@ -68,7 +70,7 @@ theorem zeroGraphRestriction :
     FiniteCorrespondence.toIntegralCycle (f := (point k).hom) (g := Y.hom)
       ((Cor.graphFunctor k).map (evaluationPoint k 0) ≫ fundamentalCorrespondence f j hj) =
         IntegralCycle.finitePushforward (fiberInclusion f j hj 0)
-          (fundamentalCycle (fiber f 0)) :=
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f 0)) :=
   wholeGraphRestriction f j hj 0
 
 /-- The one endpoint likewise retains every component and its original length. -/
@@ -76,16 +78,18 @@ theorem oneGraphRestriction :
     FiniteCorrespondence.toIntegralCycle (f := (point k).hom) (g := Y.hom)
       ((Cor.graphFunctor k).map (evaluationPoint k 1) ≫ fundamentalCorrespondence f j hj) =
         IntegralCycle.finitePushforward (fiberInclusion f j hj 1)
-          (fundamentalCycle (fiber f 1)) :=
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f 1)) :=
   wholeGraphRestriction f j hj 1
 
 end Curve
 
 open Lean in
 run_cmd do
-  for name in #[``line, ``evaluationPoint,
-      ``genericComponentGenerator, ``genericFundamentalCorrespondence,
-      ``toIntegralCycle_genericFundamentalCorrespondence,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineLineField.line,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineLineField.evaluationPoint,
+      ``_root_.Motivic.FiniteFlatCurveFamily.genericComponentGenerator,
+          ``_root_.Motivic.FiniteFlatCurveFamily.genericFundamentalCorrespondence,
+      ``_root_.Motivic.FiniteFlatCurveFamily.toIntegralCycle_genericFundamentalCorrespondence,
       ``pointFundamentalCorrespondence, ``toIntegralCycle_pointFundamentalCorrespondence,
       ``fundamentalCorrespondence, ``toIntegralCycle_fundamentalCorrespondence,
       ``fiberInclusion_closed, ``componentGenerator_flat,

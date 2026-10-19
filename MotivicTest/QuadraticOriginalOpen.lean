@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticOriginalOpen
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Compactification.OriginalOpen
 /-! The original affine source, not a further neighborhood, is detected by h on each chart. -/
 set_option linter.hashCommand false
 public noncomputable section

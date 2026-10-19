@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SerreDivisorPairs
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.Serre
 /-! # Actual generated sections and their original finite-flat zero schemes -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry

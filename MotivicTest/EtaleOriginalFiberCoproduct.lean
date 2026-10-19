@@ -1,6 +1,6 @@
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.EtaleOriginalFiberCoproduct
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Fibers.OriginalFiberCoproduct
 
 /-! # Original residue fields and original points in the actual étale fiber -/
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichCechSupportPairing
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Cech.SupportPairing
 public import Lean.Util.CollectAxioms
 
 /-! # Actual support-point witnesses for signed Čech pairings -/
@@ -14,6 +14,7 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.FiniteCorrespondenceGenerator
 

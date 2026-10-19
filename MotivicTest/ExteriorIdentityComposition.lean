@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityComposition
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.Composition
 
 /-! # Signed exterior composition, actual simplices, and zero coefficients -/
 

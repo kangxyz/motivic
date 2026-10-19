@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.RelativeFiniteFlatSpecialization
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Endpoints.RelativeFiniteFlatSpecialization
 public import MotivicTest.RelativeEndpointIncidenceTor
 
 /-!
@@ -23,24 +23,28 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite IntegralCycle fundamentalCycle genericMultiplicity
+  isNoetherian_of_finiteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open AlgebraicGeometry.FiniteTwoUnitPolynomialFamily
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 open MotivicTest.FiniteFlatSpanEndpoints
 open scoped BigOperators
 
 namespace MotivicTest.RelativeFiniteFlatSpecialization
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 /-- A rational point in the first of the two actual source components. -/
-def sourcePoint : FiniteFlatCurveFamily.point ℚ ⟶ twoLines :=
-  FiniteFlatCurveFamily.evaluationPoint ℚ 0 ≫
-    SmoothSite.coproductInl (FiniteFlatCurveFamily.line ℚ) (FiniteFlatCurveFamily.line ℚ)
+def sourcePoint : AffineLineField.point ℚ ⟶ twoLines :=
+  AffineLineField.evaluationPoint ℚ 0 ≫
+    SmoothSite.coproductInl (AffineLineField.line ℚ) (AffineLineField.line ℚ)
 
 /-- The literal parameter projection has a section supplied by that source point. -/
-def parameterSection : (FiniteFlatCurveFamily.line ℚ).left ⟶ relativeBase twoLines :=
-  pullback.lift ((FiniteFlatCurveFamily.line ℚ).hom ≫ sourcePoint.left) (𝟙 _) (by
+def parameterSection : (AffineLineField.line ℚ).left ⟶ relativeBase twoLines :=
+  pullback.lift ((AffineLineField.line ℚ).hom ≫ sourcePoint.left) (𝟙 _) (by
     rw [Category.assoc, MorphismProperty.Over.w]
-    change (FiniteFlatCurveFamily.line ℚ).hom ≫ 𝟙 _ = 𝟙 _ ≫ _
+    change (AffineLineField.line ℚ).hom ≫ 𝟙 _ = 𝟙 _ ≫ _
     simp)
 
 @[reassoc (attr := simp)]

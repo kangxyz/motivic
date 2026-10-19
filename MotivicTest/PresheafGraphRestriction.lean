@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.GraphRestriction
-public import Motivic.Algebra.Homology.SingularComplexPresheaf
+public import Motivic.Transfers.Presheaf.GraphRestriction
+public import Motivic.Aglib.Algebra.Homology.SingularComplex.Presheaf
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,10 +18,12 @@ composition, faithful additive forgetfulness, actual-cycle representables,
 and compatibility with the pre-existing singular-presheaf construction.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
-open Motivic.PresheafWithTransfers
+open  _root_.Motivic.PresheafWithTransfers
 
 universe v u
 
@@ -63,7 +65,7 @@ def ordinarySingularComplex
     (Δ : CosimplicialObject (SmoothSite (Spec (.of k))))
     (P : PresheafWithTransfers.{v} k) :
     ChainComplex ((SmoothSite (Spec (.of k)))ᵒᵖ ⥤ AddCommGrpCat.{v}) ℕ :=
-  Motivic.SingularComplex.presheafObj Δ ((toPresheaf k).obj P)
+  _root_.CategoryTheory.SingularComplex.presheafObj Δ ((toPresheaf k).obj P)
 
 open Lean in
 run_cmd do

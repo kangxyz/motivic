@@ -10,7 +10,7 @@ import Motivic.Aglib.RingTheory.Bertini.ClosedPointMovingCoefficients
 import Lean.Util.CollectAxioms
 
 /-! # Actual ground parameters uniformly control the original closed-point fiber -/
-open QuadraticIncidence MvPolynomial
+open QuadraticIncidence _root_.MvPolynomial
 
 example (k R : Type) [Field k] [Infinite k] [CommRing R] [IsDomain R]
     [Algebra k R] [Algebra.Smooth k R] (x : PrimeSpectrum R) [x.asIdeal.IsMaximal]

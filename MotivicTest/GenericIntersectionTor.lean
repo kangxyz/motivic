@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.GenericTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.GenericTor
 
 /-!
 # Consumers of actual generic closed-intersection Tor
@@ -18,7 +18,9 @@ are conclusions; neither is supplied as an assumed target record.
 @[expose] public section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.Intersection Motivic.LengthEuler RingTheory.Sequence
+open _root_.AlgebraicGeometry.Scheme.Intersection
+open _root_.HomologicalComplex.ModuleLengthEuler
+open RingTheory.Sequence
 
 universe u
 
@@ -71,9 +73,9 @@ include hs in
 theorem actualEulerComparison :
     actualCoefficient a b i j sq w hw hregular =
       chainEuler
-        (Koszul.coefficientComplex
+        (_root_.ChainComplex.Koszul.coefficientComplex
           (coefficientStalkModule i (a w) j (b w) (point_eq a b i j sq w)) s)
-        (Intersection.finiteHomology a b i j sq w hw s hker) :=
+        (finiteHomology a b i j sq w hw s hker) :=
   torEulerCoefficient_eq_chainEuler a b i j sq w hw s hker hs hregular
 
 end Motivic.MotivicTest.GenericIntersectionTor

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.OpenRestrictionStalk
-public import Motivic.AlgebraicGeometry.Cycles.FiniteAffineChart
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Restriction.Open.RestrictionStalk
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.AffineChart
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
 
 /-!
 # Actual whole-preimage and quotient-module stalk restriction consumers
@@ -32,7 +32,8 @@ universe u
 
 namespace Motivic.MotivicTest.OpenRestrictionStalk
 
-open Motivic.ModuleStalk Motivic.FiniteAffineChart
+open _root_.AlgebraicGeometry.Scheme.Modules.Stalk
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteAffineChart
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) [IsFinite f]
   {U : Y.Opens} (hU : IsAffineOpen U)

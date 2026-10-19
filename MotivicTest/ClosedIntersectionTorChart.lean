@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ClosedIntersectionTorChart
-public import Motivic.AlgebraicGeometry.Intersection.ExteriorKoszulTorSupport
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedIntersectionTorChart
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.ExteriorKoszulTorSupport
 
 /-!
 # Actual first-stage affine Tor coefficient sheaves
@@ -21,7 +21,7 @@ coefficient, transition or cocycle is assumed or constructed by these consumers.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open CategoryTheory AlgebraicGeometry Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
@@ -33,42 +33,51 @@ variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S}
   (H : FiniteCorrespondenceGenerator h i)
 
 /-- The genuine first-stage affine coefficient over the original support section ring. -/
-def firstStageCoefficient (U : (correspondenceSixfoldAmbient f g h i).affineOpens) (n : ℕ) :
+def firstStageCoefficient (U :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i).affineOpens) (n
+    : ℕ) :
     ModuleCat Γ(F.leftIntermediateSupportProduct G H,
       (F.leftIntermediateAmbientInclusion G H) ⁻¹ᵁ U) :=
   closedIntersectionAffineTor (F.tripleSupportProductInclusion G H)
     (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)
-    (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediate_ambient_isPullback G H) U n
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+        (F.leftIntermediate_ambient_isPullback G H) U n
 
 /-- Its ambient restriction is the actual categorical Tor of both literal section quotients. -/
-def firstStageAmbientIso (U : (correspondenceSixfoldAmbient f g h i).affineOpens) (n : ℕ) :=
+def firstStageAmbientIso (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient
+    f g h i).affineOpens) (n : ℕ) :=
   closedIntersectionAffineTorAmbientIso (F.tripleSupportProductInclusion G H)
     (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)
-    (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediate_ambient_isPullback G H) U n
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+        (F.leftIntermediate_ambient_isPullback G H) U n
 
 /-- Actual locally finite-type geometry gives finite coefficients in every degree. -/
 theorem firstStageCoefficient_finite [IsLocallyNoetherian S]
     [LocallyOfFiniteType f] [LocallyOfFiniteType g] [LocallyOfFiniteType h]
     [LocallyOfFiniteType i]
-    (U : (correspondenceSixfoldAmbient f g h i).affineOpens) (n : ℕ) :
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h
+        i).affineOpens) (n : ℕ) :
     Module.Finite Γ(F.leftIntermediateSupportProduct G H,
       (F.leftIntermediateAmbientInclusion G H) ⁻¹ᵁ U) (firstStageCoefficient F G H U n) := by
-  have := isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
+  have := _root_.AlgebraicGeometry.Scheme.isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
   exact inferInstanceAs (Module.Finite _
     (closedIntersectionAffineTor (F.tripleSupportProductInclusion G H)
       (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)
-      (correspondenceFirstDiagonalInclusion f g h i)
+      (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
       (F.leftIntermediate_ambient_isPullback G H) U n))
 
 /-- Tilde constructs a real sheaf on each actual first-stage closed affine inverse image. -/
-def firstStageChartSheaf (U : (correspondenceSixfoldAmbient f g h i).affineOpens) (n : ℕ) :=
+def firstStageChartSheaf (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient
+    f g h i).affineOpens) (n : ℕ) :=
   closedIntersectionTorChartSheaf (F.tripleSupportProductInclusion G H)
     (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)
-    (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediate_ambient_isPullback G H) U n
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+        (F.leftIntermediate_ambient_isPullback G H) U n
 
 /-- The local first-stage sheaf has proved quasi-coherence, not a supplied QC premise. -/
 theorem firstStageChartSheaf_quasicoherent
-    (U : (correspondenceSixfoldAmbient f g h i).affineOpens) (n : ℕ) :
+    (U : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h
+        i).affineOpens) (n : ℕ) :
     (firstStageChartSheaf F G H U n).IsQuasicoherent :=
   closedIntersectionTorChartSheaf_quasicoherent _ _ _ _ _ _ _
 

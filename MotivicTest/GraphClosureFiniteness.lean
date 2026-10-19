@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.GraphClosureFiniteness
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.GraphClosureFiniteness
 /-! Direct finiteness of the unchanged affine coordinate map from its actual empty boundary. -/
 set_option linter.hashCommand false
 public section

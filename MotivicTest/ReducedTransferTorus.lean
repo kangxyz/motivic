@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.ReducedTorus
+public import Motivic.Transfers.Presheaf.ReducedTorus
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -20,8 +20,9 @@ or hypercohomology comparison is asserted.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
-open Motivic.PresheafWithTransfers
+open  _root_.Motivic.PresheafWithTransfers
 
 universe u
 

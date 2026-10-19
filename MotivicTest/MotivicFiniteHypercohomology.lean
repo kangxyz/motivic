@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.FiniteHypercohomology
+public import Motivic.Cohomology.Coefficients.Finite.Hypercohomology
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of genuine finite motivic cohomology and field coefficient exactness -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 open Motivic
 
@@ -22,7 +23,8 @@ namespace MotivicTest.MotivicFiniteHypercohomology
 variable (k : Type u) [Field k]
 
 example (q n : ℕ) :
-    motivicFiniteBaseComplex k q n ≅ finiteCoefficients (motivicBaseComplex k q) n :=
+    motivicFiniteBaseComplex k q n ≅ _root_.CochainComplex.finiteCoefficients (motivicBaseComplex k
+      q) n :=
   motivicFiniteBaseComplexIso k q n
 
 example (p : ℤ) (q n : ℕ) :
@@ -37,7 +39,7 @@ variable [HasDerivedCategory.{w}
 /-- The group is definitionally the actual unbounded derived-Hom group. -/
 example (p : ℤ) (q n : ℕ) (X : SmoothSite (Spec (.of k))) :
     motivicFiniteCohomology k p q n X =
-      Hypercohomology.H.{w, u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.Hypercohomology.H.{w, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         (motivicFiniteSheafComplex k q n) p X := rfl
 
@@ -63,14 +65,14 @@ example (p : ℤ) (q n : ℕ) :
 /-- The derived field group is compared to the integral complex's actual coefficient cone. -/
 example (p : ℤ) (q n : ℕ) :
     motivicFiniteCohomology k p q n (SmoothSite.base (Spec (.of k))) ≃+
-      (finiteCoefficients (motivicBaseComplex k q) n).homology p :=
+      (_root_.CochainComplex.finiteCoefficients (motivicBaseComplex k q) n).homology p :=
   motivicFiniteBaseConeComparison k p q n
 
 /-- This is the canonical cone reduction, through the proved base comparisons. -/
 example (p : ℤ) (q n : ℕ)
     (x : motivicCohomology k p q (SmoothSite.base (Spec (.of k)))) :
     motivicFiniteBaseConeComparison k p q n (motivicBaseIntegralReduction k p q n x) =
-      finiteCoefficients.integralHomology (motivicBaseComplex k q) n p
+      _root_.CochainComplex.finiteCoefficients.integralHomology (motivicBaseComplex k q) n p
         (motivicBaseEvaluationComparison k p q x) :=
   motivicBaseIntegralReduction_comparison k p q n x
 
@@ -78,7 +80,7 @@ example (p : ℤ) (q n : ℕ)
 example (p : ℤ) (q n : ℕ)
     (x : motivicFiniteCohomology k p q n (SmoothSite.base (Spec (.of k)))) :
     motivicBaseEvaluationComparison k (p + 1) q (motivicBaseBockstein k p q n x) =
-      finiteCoefficients.bocksteinHomology (motivicBaseComplex k q) n p
+      _root_.CochainComplex.finiteCoefficients.bocksteinHomology (motivicBaseComplex k q) n p
         (motivicFiniteBaseConeComparison k p q n x) :=
   motivicBaseBockstein_comparison k p q n x
 

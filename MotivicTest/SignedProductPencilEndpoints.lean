@@ -1,12 +1,12 @@
-import Motivic.AlgebraicGeometry.Correspondences.SignedProductPencilEndpoints
+import Motivic.AlgebraicGeometry.Correspondences.Moving.Pencils.SignedProductEndpoints
 
 /-! Direct checks of the actual signed polynomial family endpoints. -/
 
 set_option linter.hashCommand false
-#check Motivic.SignedProductPencilEndpoints.signedCorrespondence
-#check Motivic.SignedProductPencilEndpoints.signed_diagonal_zero
-#check Motivic.SignedProductPencilEndpoints.signed_one_product
-#print axioms Motivic.SignedProductPencilEndpoints.graph_family
-#print axioms Motivic.SignedProductPencilEndpoints.signed_diagonal_zero
-#print axioms Motivic.SignedProductPencilEndpoints.signed_one_product
-#print axioms Motivic.SignedProductPencilEndpoints.signed_one_four_sections
+#check _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.signedCorrespondence
+#check _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.signed_diagonal_zero
+#check _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.signed_one_product
+#print axioms _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.graph_family
+#print axioms _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.signed_diagonal_zero
+#print axioms _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.signed_one_product
+#print axioms _root_.AlgebraicGeometry.Scheme.SmoothSite.PolynomialPencil.signed_one_four_sections

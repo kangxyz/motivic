@@ -4,9 +4,9 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 
-import Motivic.Cohomology.Motivic.AffineEndpointGeometricNorm
-import Motivic.Cohomology.Motivic.DiagonalBoundaryFiberEvaluation
-import Motivic.Cohomology.Motivic.DiagonalBoundaryEvaluation
+import Motivic.Cohomology.WeightTwo.Endpoints.GeometricNorm
+import Motivic.Cohomology.Diagonal.BoundaryFiberEvaluation
+import Motivic.Cohomology.Diagonal.BoundaryEvaluation
 import Lean.Util.CollectAxioms
 
 /-! Original full geometric endpoint norm sums and actual singular cofaces. -/

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.TildeOpenBaseChangeCocycle
+public import Motivic.Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildeBaseChange.Cocycle
 public import MotivicTest.TildeOpenBaseChangeIdentity
 
 /-! # Successive principal-open tilde restriction on actual nonzero supported higher Tor -/
@@ -21,7 +21,12 @@ universe u
 
 namespace Motivic.MotivicTest.TildeOpenBaseChangeComposition
 
-open Motivic.TildeOpenBaseChange Motivic.TorComparison TorQuotientFiniteness
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine.TildeBaseChange
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
+open TorQuotientFiniteness
 
 local instance {A B C : CommRingCat.{u}} (φ : A ⟶ B) (ψ : B ⟶ C)
     [IsOpenImmersion (Spec.map φ)] [IsOpenImmersion (Spec.map ψ)] :

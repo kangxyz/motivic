@@ -1,8 +1,8 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.AffineSourceDivisorPairs
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.AffineSource
 import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SectionDivisorBaseIso
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalizedDivisorPairs
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalizedScalarDivisorPairs
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.Normalized
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.NormalizedScalar
 /-! # Direct unchanged-source Serre divisor consumers -/
 set_option linter.hashCommand false
 noncomputable section

@@ -1,6 +1,6 @@
 module
 
-import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.RankOneReciprocity
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.RankOneReciprocity
 
 /-! # Rank-one reciprocity on arbitrary open sections -/
 

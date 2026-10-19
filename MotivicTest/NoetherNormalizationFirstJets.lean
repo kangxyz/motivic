@@ -1,7 +1,7 @@
 module
-import Motivic.Aglib.RingTheory.NoetherNormalizationFirstJets
+import Motivic.Aglib.RingTheory.NoetherNormalization.FirstJets
 /-! # Direct first-order audit of the actual native normalization substitution -/
-open MvPolynomial
+open _root_.MvPolynomial
 
 example {k : Type} [Field k] {n : ℕ}
     (f : MvPolynomial (Fin (n + 1)) k) (c : k) :

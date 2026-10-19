@@ -5,12 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermTupleOpenRestriction
+public import Motivic.Transfers.Sheaf.Germs.Tuples.OpenRestriction
 public import Lean.Util.CollectAxioms
 
 /-! Direct surjectivity on the original germ tuple groups, not a replacement stalk. -/
 @[expose] public noncomputable section
-open CategoryTheory AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.OriginalGermTupleOpenRestriction
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.FieldExtensionBaseChangeLength
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorGeneric
+public import Motivic.Aglib.RingTheory.LocalLength.FieldExtensionBaseChangeLength
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorGeneric
 public import Mathlib.Algebra.TrivSqZeroExt.Basic
 
 /-!
@@ -32,6 +32,7 @@ open scoped TensorProduct
 universe u v
 
 namespace MotivicTest.FieldExtensionBaseChangeLength
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 open Module
 
@@ -94,7 +95,7 @@ local instance pairResidueAlgebra :
 local instance pairResidueFinite :
     Module.Finite ((pullback X.hom Z.hom).residueField (F.incidenceMap G z.1))
       ((F.incidence G).residueField z.1) :=
-  residueFieldMap_finite (F.incidenceMap G) z.1
+  _root_.AlgebraicGeometry.Scheme.Hom.residueFieldMap_finite (F.incidenceMap G) z.1
 
 variable (R : Type v) [CommRing R] [IsLocalRing R] [IsArtinianRing R]
   [Algebra ((pullback X.hom Z.hom).residueField (F.incidenceMap G z.1)) R]
@@ -142,7 +143,8 @@ theorem actualWholePairResidueDegreeBalance :
         ((pullback X.hom Z.hom).residueField
           (F.incidenceMap G (F.firstStageWholeGenericPair G H V w).1))
         ((F.incidence G).residueField (F.firstStageWholeGenericPair G H V w).1) :=
-      residueFieldMap_finite (F.incidenceMap G) (F.firstStageWholeGenericPair G H V w).1
+      _root_.AlgebraicGeometry.Scheme.Hom.residueFieldMap_finite (F.incidenceMap G)
+          (F.firstStageWholeGenericPair G H V w).1
     fieldExtensionBaseChangeLengthSum
         ((pullback X.hom Z.hom).residueField
           (F.incidenceMap G (F.firstStageWholeGenericPair G H V w).1))

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardResidueDegree
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.ResidueDegree
 public import MotivicTest.KoszulFiniteProjectionFiber
 
 /-!
@@ -25,7 +25,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory AlgebraicGeometry
-open Motivic.Koszul Motivic.LengthEuler Motivic.FiniteFiber
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteFiber
+open _root_.PrimeSpectrum.FiniteFiber
 
 universe u
 

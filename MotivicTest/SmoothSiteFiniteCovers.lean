@@ -5,13 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteFiniteCovers
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.FiniteCovers
 
 /-! # Consumer tests for actual finite total Nisnevich covers -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.SmoothSite
+open CategoryTheory AlgebraicGeometry  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v
 

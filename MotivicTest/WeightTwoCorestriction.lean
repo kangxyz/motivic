@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestriction
+public import Motivic.Cohomology.WeightTwo.Corestriction
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,8 +18,10 @@ This test does not assert boundary preservation or homology corestriction.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
-open WeightTwoCorestriction PresheafWithTransfers
+open WeightTwoCorestriction _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 

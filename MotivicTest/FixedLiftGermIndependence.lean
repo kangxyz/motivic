@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.FixedLiftGermIndependence
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichPointNormalizedLift
+public import Motivic.Transfers.Sheaf.Germs.FixedLiftIndependence
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Points.NormalizedLift
 public import Lean.Util.CollectAxioms
 
 /-! # Single-center locality and actual constructed fixed-lift consumers -/
@@ -15,6 +15,7 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
 
 universe u v
@@ -68,7 +69,7 @@ example (A : FiniteCorrespondenceGenerator X.hom Y.hom) (x : X.left)
     (fun j ↦ (SmoothSite.nisnevichNeighborhoodFunctor Y (label j).val).obj (M (label j)))
     (fun j ↦ (M (label j)).center) β hbranch s t hst
 
-open Lean Motivic.PresheafWithTransfers in
+open Lean  _root_.Motivic.PresheafWithTransfers in
 run_cmd do
   for name in #[``generator_transfer_germ_eq_zero_of_single_center,
       ``transfer_germ_eq_zero_of_single_center, ``transfer_germ_eq_of_single_center,

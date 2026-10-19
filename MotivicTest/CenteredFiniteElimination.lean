@@ -1,7 +1,7 @@
 module
-import Motivic.Aglib.RingTheory.CenteredFiniteElimination
+import Motivic.Aglib.RingTheory.NoetherNormalization.FiniteElimination.Centered
 /-! # Finite original-quotient projection with prescribed surviving first jets -/
-open MvPolynomial
+open _root_.MvPolynomial
 
 example {k : Type} [Field k] {n : ℕ}
     (f : MvPolynomial (Fin (n + 1)) k)

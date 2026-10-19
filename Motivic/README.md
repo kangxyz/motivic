@@ -1,25 +1,50 @@
-# Source families
+# Source families and public imports
 
-The public entry is [Motivic.lean](../Motivic.lean). Select a focused family
-or exact implementation leaf for development.
+[Motivic.lean](../Motivic.lean) selects four curated entries. Use an exact lower
+leaf for implementation work or a focused facade for its public interface.
+Module paths identify source owners; native declaration namespaces identify
+mathematical objects.
 
-| Entry | Source owner |
+| Core import | Actual interface |
 | --- | --- |
-| [Cor](Cor.lean) | [Correspondences](AlgebraicGeometry/Correspondences/README.md), presheaves and smooth Nisnevich sites |
-| [Transfers](Transfers.lean) | [Ordinary cohomology transfers](Transfers/README.md) |
-| [Cohomology](Cohomology.lean) | [Ordinary and motivic cohomology](Cohomology/README.md) |
-| [Affine-line cohomology](Cohomology/AffineLine.lean) | Optional ordinary higher/positive-degree vanishing over fields |
-| [Affine generic detection](Cohomology/A1/GenericDetection.lean) | Local-zero neighborhoods for HI presheaves with transfers over infinite fields |
-| [Strict affine-line invariance](Cohomology/A1/StrictInvariancePerfectField.lean) | All-degree ordinary Nisnevich invariance for HI transfer sheaves over every perfect field |
-| [Relative affine-line generic base](Cohomology/AffineLine/GenericBase.lean) | Classwise generic-base vanishing: ordinary higher degrees and all positive degrees for HI transfer sheaves |
-| [Cartier boundaries](Cohomology/A1/CartierBoundary.lean) | Original boundary and higher open direct-image zero, with explicit current-degree HI and boundary Epi inputs |
-| [Milnor K](KTheory/MilnorK.lean) | [Integral symbol groups](KTheory/MilnorK/README.md) |
-| [Milnor norms](KTheory/MilnorK/Norms.lean) | Optional characteristic-zero finite-extension norms |
-| [Diagonal](Cohomology/Motivic/Diagonal.lean) | Optional characteristic-zero comparison |
-| [Weight one](Cohomology/Motivic/WeightOne.lean) | Optional unit-sheaf/hypercohomology computation |
+| `Motivic.Cor` | Signed finite correspondences on smooth separated finite-type schemes over a field; [guide](AlgebraicGeometry/Correspondences/README.md) |
+| `Motivic.Transfers` | Original ordinary Nisnevich cohomology with transfers in every natural degree, retaining ordinary `HasExt`; [guide](Transfers/README.md) |
+| `Motivic.Cohomology` | Curated cohomology interface and the current motivic model; [guide](Cohomology/README.md) |
+| `Motivic.KTheory.MilnorK` | Small bridge to independent Aglib's canonical Milnor theory; [guide](KTheory/README.md) |
 
-`Algebra`, `RingTheory` and the inherited [Aglib candidates](Aglib/README.md)
-hold local foundations. Their exact imports determine usable dependency
-boundaries. Further retained leaves remain directly selectable and are not
-all admitted by the curated root. See [provenance](../doc/provenance/README.md)
-for original successful-check coverage and unverified source boundaries.
+## Focused optional imports
+
+| Exact import | Scope and conditions |
+| --- | --- |
+| `Motivic.Cohomology.SuslinVoevodsky` | Current complex and ordinary hypercohomology; [model guide](Cohomology/SuslinVoevodsky/README.md) |
+| `Motivic.Cohomology.Coefficients.Finite` | Actual cone, hypercohomology and original coefficient maps; [guide](Cohomology/Coefficients/Finite/README.md) |
+| `Motivic.Cohomology.A1.StrictInvariance` | Every-perfect-field strict invariance, HI transfer sheaves, coefficient `u+1`, ordinary `HasExt.{u+1}`; [A1 guide](Cohomology/A1/README.md) |
+| `Motivic.Cohomology.A1.GenericDetection` | Infinite-field affine local-zero detection for original HI presheaves |
+| `Motivic.Cohomology.AffineLine` | Ordinary higher vanishing and positive vanishing for HI transfer sheaves |
+| `Motivic.Cohomology.AffineLine.GenericBase` | Classwise generic-base vanishing with the original whole line and restrictions |
+| `Motivic.Cohomology.A1.CartierBoundary` | Genuine higher direct-image vanishing retaining stated current-degree HI and boundary-Epi inputs |
+| `Motivic.KTheory.MilnorK.Norms` | Aglib characteristic-zero finite-extension norms with original tower data |
+| `Motivic.Cohomology.Diagonal` | Optional characteristic-zero diagonal comparison; [guide](Cohomology/Diagonal/README.md) |
+| `Motivic.Cohomology.WeightOne` | Optional original unit-sheaf and hypercohomology comparisons; [guide](Cohomology/WeightOne/README.md) |
+| `Motivic.Cohomology.WeightTwo` | Opt-in implemented weight-two computation family; [family guide](Cohomology/WeightTwo/README.md) |
+
+## General foundations and host applications
+
+[Motivic/Aglib](Aglib/README.md) is the active maintained candidate layer for
+general theory, mirroring intended upstream subjects with native declaration
+namespaces. Its closure uses Mathlib, Aglib and designated candidates only.
+[General geometry](Aglib/AlgebraicGeometry/README.md) owns schemes, morphisms,
+modules, sites and cycles, including general curve/frame/pencil interfaces.
+The independent Aglib package supplies already accepted APIs, including
+canonical Milnor K-theory and Koszul basics. Do not duplicate them locally.
+
+[Correspondences](AlgebraicGeometry/Correspondences/README.md),
+[transfer presheaves](Transfers/Presheaf/README.md),
+[transfer sheaves](Transfers/Sheaf/README.md),
+[singular complexes](Transfers/SingularComplex/README.md) and their cohomology
+are host constructions. Their applications consume general primitives.
+
+Use the [documentation routes](../docs/README.md) for theorem search, extension
+and validation. [Verification](../docs/VERIFICATION.md) and
+[provenance](../docs/provenance/README.md) retain identified evidence boundaries;
+the curated root does not import or certify every retained leaf.

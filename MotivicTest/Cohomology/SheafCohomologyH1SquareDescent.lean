@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyH1SquareDescent
+public import Motivic.Cohomology.Sheaf.H1.SquareDescent
+public import Motivic.Transfers.Sheaf.Basic
 public import Mathlib.Algebra.Category.Grp.AB
 public import Mathlib.CategoryTheory.Abelian.GrothendieckAxioms.Sheaf
 public import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives
@@ -21,6 +22,7 @@ universe, standard ordinary Ext and actual ordinary-injective presentation.
 -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
 
@@ -75,7 +77,8 @@ theorem actual_square_quotient_lift
     ∃ l : (Injective.under F₀).obj.obj (op sq.X₄),
       (cokernel.π (Injective.ι F₀)).hom.app (op sq.X₄) l = s :=
   Sheaf.exists_section_lift_of_square_difference_surjective J
-    (SheafCohomology.injectivePresentation_shortExact.{u + 1, u, u + 1} J F₀)
+    (_root_.CategoryTheory.Sheaf.LargeCohomology.injectivePresentation_shortExact.{u + 1, u, u +
+        1} J F₀)
     sq hI hQ hsurj s lA lY hA hY
 
 /-- The actual positive extension-class boundary vanishes under square descent. -/
@@ -87,12 +90,14 @@ theorem actual_square_boundary_vanishes
     (hsurj : Function.Surjective (fun a :
         E.X₁.obj.obj (op sq.X₂) × E.X₁.obj.obj (op sq.X₃) =>
       E.X₁.obj.map sq.f₁₂.op a.1 - E.X₁.obj.map sq.f₁₃.op a.2))
-    (y : SheafCohomology.H.{u + 2, u + 1, u, u + 1} J E.X₃ 0 sq.X₄)
+    (y : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1} J E.X₃ 0 sq.X₄)
     (lA : E.X₂.obj.obj (op sq.X₂)) (lY : E.X₂.obj.obj (op sq.X₃))
     (hA : E.g.hom.app (op sq.X₂) lA = E.X₃.obj.map sq.f₂₄.op
-      (SheafCohomology.zeroSections.{u + 2, u + 1, u, u + 1} J E.X₃ sq.X₄ y))
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections.{u + 2, u + 1, u, u + 1} J E.X₃
+        sq.X₄ y))
     (hY : E.g.hom.app (op sq.X₃) lY = E.X₃.obj.map sq.f₃₄.op
-      (SheafCohomology.zeroSections.{u + 2, u + 1, u, u + 1} J E.X₃ sq.X₄ y)) :
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections.{u + 2, u + 1, u, u + 1} J E.X₃
+        sq.X₄ y)) :
     y.comp hE.extClass rfl = 0 :=
   SheafCohomology.boundary_eq_zero_of_square_difference_surjective
     J hE sq h₂ h₃ hsurj y lA lY hA hY
@@ -107,7 +112,7 @@ theorem actual_square_class_vanishes
     (hsurj : Function.Surjective (fun a :
         (F₀).obj.obj (op sq.X₂) × (F₀).obj.obj (op sq.X₃) =>
       (F₀).obj.map sq.f₁₂.op a.1 - (F₀).obj.map sq.f₁₃.op a.2))
-    (x : SheafCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 sq.X₄)
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 sq.X₄)
     (s : (cokernel (Injective.ι F₀)).obj.obj (op sq.X₄))
     (hs : SheafCohomology.injectiveSectionBoundary.{u + 2, u + 1, u, u + 1}
       J F₀ sq.X₄ s = x)

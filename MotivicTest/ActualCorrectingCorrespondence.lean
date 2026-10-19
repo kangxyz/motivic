@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualCorrectingCorrespondence
+public import Motivic.AlgebraicGeometry.Correspondences.Pencils.NormalizedCurve.CorrectingCorrespondence
 /-! Direct consumer of the literal correcting endpoint construction. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

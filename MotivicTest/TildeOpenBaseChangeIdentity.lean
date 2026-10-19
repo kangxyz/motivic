@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.TildeOpenBaseChangeIdentity
+public import Motivic.Aglib.AlgebraicGeometry.Modules.QuasiCoherent.Affine.TildeBaseChange.Identity
 public import MotivicTest.TildeOpenBaseChange
 
 /-! # Canonical tilde/open unit on actual nonzero supported higher Tor -/
@@ -18,7 +18,12 @@ open CategoryTheory AlgebraicGeometry
 
 namespace Motivic.MotivicTest.TildeOpenBaseChangeIdentity
 
-open Motivic.TildeOpenBaseChange Motivic.TorComparison TorQuotientFiniteness
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine.TildeBaseChange
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
+open TorQuotientFiniteness
 
 /-- The actual supported higher-Tor sheaf comparison obeys the genuine geometric/scalar unit law. -/
 theorem higherTor_unit :

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichFiniteSubfamily
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.FiniteSubfamily
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -16,7 +16,7 @@ retain actual residue-field isomorphisms, include the empty scheme and empty
 indexing type, and specialize to fields and the nonreduced ring `ZMod 4`.
 -/
 
-open CategoryTheory AlgebraicGeometry Motivic.Nisnevich
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Nisnevich
 
 universe u v
 
@@ -67,6 +67,6 @@ example {ι : Type v} {Y : ι → Scheme.{0}}
 example : (2 : ZMod 4) ≠ 0 ∧ (2 : ZMod 4) ^ 2 = 0 := by decide
 
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.exists_finset_residueFieldLifting
+#print axioms exists_finset_residueFieldLifting
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.exists_finset_of_mem_precoverage
+#print axioms exists_finset_of_mem_precoverage

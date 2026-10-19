@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteFieldResidueDegree
+public import Motivic.Aglib.AlgebraicGeometry.ResidueField.FiniteFieldResidueDegree
 public import Lean.Util.CollectAxioms
 
 /-!

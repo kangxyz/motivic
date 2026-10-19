@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneNormFieldChange
+public import Motivic.Cohomology.WeightOne.NormFieldChange
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -17,9 +17,15 @@ supports, and reduced-torus quotient maps, over arbitrary field homomorphisms.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.WeightOnePointNorm Motivic.WeightOneFundamentalNorm
-open Motivic.WeightOneNormFieldChange Motivic.PresheafWithTransfers
+open Motivic
+open Motivic.WeightOnePointNorm
+open _root_.AlgebraicGeometry.Scheme.FiniteAlgebra
+open _root_.Motivic.WeightOneFundamentalNorm
+open Motivic.WeightOneNormFieldChange _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 

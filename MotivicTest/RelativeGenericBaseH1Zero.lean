@@ -6,9 +6,9 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.AffineLine.GenericBase
-import all Motivic.Cohomology.WholeAffineLineBaseOpenMaps
-import all Motivic.Cohomology.RelativeMonicH1BaseZero
-import all Motivic.Cohomology.RelativeGenericBaseH1Zero
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.WholeBase.OpenMaps
+import all Motivic.Cohomology.A1.LocalVanishing.Monic.H1BaseZero
+import all Motivic.Cohomology.A1.LocalVanishing.GenericBase.H1Zero
 import Lean
 public import Batteries.Tactic.Lint
 
@@ -22,17 +22,20 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Polynomial
 open AlgebraicGeometry.Scheme.Hom AlgebraicGeometry.PolynomialOpenQuotient
 universe w u
 namespace MotivicTest.RelativeGenericBaseH1Zero
-open Motivic Motivic.SheafCohomology
-open Motivic.RelativePolynomialOpenSpans
+open Motivic
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.CategoryTheory.Sheaf.LargeCohomology
+open _root_.Motivic.SheafCohomology
+open _root_.Algebra.Smooth _root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite
 variable {k R : Type u} [Field k] [CommRing R] [IsDomain R]
   [Algebra k R] [Algebra.Smooth k R]
-  [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+  [HasExt.{w} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 attribute [local instance] away_smooth
 
 /-- The original H¹ group and both actual nonzero base localizations stay explicit. -/
 theorem original_model_class_zero
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
-    (x : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (x : H.{w, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) 1 (lineSite (k := k) (R := R))) :
     ∃ (r : R) (hr : r ≠ 0),
       let : IsDomain (Localization.Away r) := Localization.Away.isDomain hr
@@ -40,15 +43,16 @@ theorem original_model_class_zero
         let : IsDomain (Localization.Away s) := Localization.Away.isDomain hs
         ∃ V : (Spec (.of (Localization.Away s))).Opens,
           IsAffineOpen V ∧ genericPoint (Spec (.of (Localization.Away s))) ∈ V ∧
-          (presheaf.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
+          (presheaf.{w, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
             ((SheafWithTransfers.toSheaf k).obj F) 1).map
-            (SmoothSite.openInclusion (lineSite (k := k) (R := Localization.Away s))
+            (openInclusion (lineSite (k := k) (R := Localization.Away s))
               (boundaryBaseSourceOpen (boundaryLineProjection (Localization.Away s)) ⊤ V) ≫
                 lineMap (IsScalarTower.toAlgHom k (Localization.Away r) (Localization.Away s)) ≫
                 lineMap (IsScalarTower.toAlgHom k R (Localization.Away r))).op x = 0 :=
   exists_relative_generic_base_h_one_zero F hF x
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification in
 run_cmd do
   for name in #[``original_model_class_zero, ``exists_relative_generic_base_h_one_zero,
       ``exists_monic_h_one_base_open_zero,
@@ -60,7 +64,7 @@ run_cmd do
       ``fullNeighborhoodSection_isPullback,
       ``exists_relative_monic_open_restriction_eq_zero,
       ``exists_relative_monic_positive_zero_square,
-      ``Scheme.RelativeAffineLineEtaleCompactification.exists_original_h_one_base_restriction_eq_zero]
+      ``exists_original_h_one_base_restriction_eq_zero]
       do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

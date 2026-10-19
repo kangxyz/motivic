@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageRemainingLiftCases
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.RemainingLiftCases
 
 /-!
 # Actual smooth-generator remaining lift cases
@@ -22,11 +22,12 @@ point, literal exterior ideal quotient, and original middle list.
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.ExteriorImageComponentGeometry Motivic.LengthEuler
+open Motivic.ExteriorImageComponentGeometry _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
 namespace MotivicTest.ExteriorImageRemainingLiftCases
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -62,7 +63,7 @@ theorem actualNoLift_chainEuler_zero (y : genericPoints (F.leftImageIncidence G 
       componentRemainingMap F G H z w.1 = y.1)
     (s : List ((pullback Z.hom Z.hom).presheaf.stalk
       (F.leftImageMiddlePair G H (F.leftImageIncidenceInclusion G H y.1)))) :
-    chainEuler (Koszul.coefficientComplex
+    chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
       (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk
         (F.leftImageIncidenceInclusion G H y.1))
         (((F.leftIntermediateImageProduct G H).presheaf.stalk

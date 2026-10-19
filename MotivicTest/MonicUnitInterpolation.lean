@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.MonicUnitInterpolation
+public import Motivic.Aglib.RingTheory.Polynomial.Interpolation.MonicUnit
 public import Mathlib.Algebra.Field.ZMod
 
 /-!

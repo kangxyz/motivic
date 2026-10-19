@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.AffineLineRetainedTarget
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.AffineLine.RetainedTarget
 
 /-! The actual overlap, not its projection to U, is the retained target. -/
 @[expose] public noncomputable section

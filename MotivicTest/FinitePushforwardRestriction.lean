@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.FinitePushforwardRestriction
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.OpenRestriction
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
 
 /-!
 # Actual finite image-product open-base-change consumers
@@ -32,8 +32,11 @@ universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardRestriction
 
-open Scheme.Modules Motivic.FiniteAffineChart Motivic.AffineQuasicoherent
-  Motivic.FinitePushforwardRestriction Motivic.ModuleStalk
+open Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteAffineChart
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine
+  _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteRestriction
+      _root_.AlgebraicGeometry.Scheme.Modules.Stalk
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}

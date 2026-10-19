@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBasePencilSites
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.PencilSites
 /-! # The actual smaller parameter inside the unchanged base-restricted target
 
 This is the identity-cover specialization without replacing either target by the

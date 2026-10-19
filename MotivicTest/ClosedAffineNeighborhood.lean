@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ClosedAffineNeighborhood
-public import Motivic.AlgebraicGeometry.Correspondences.IncidenceTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedAffineNeighborhood
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.Tor
 
 /-! # Actual non-affine incidence consumers of constructed quotient neighborhoods -/
 
@@ -19,8 +19,9 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.ClosedAffineNeighborhood
+open _root_.AlgebraicGeometry.Scheme.Products
 
-open Intersection
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable {S X Y Z : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
@@ -42,10 +43,11 @@ theorem actualIncidenceQuotientLengths :
 
 /-- Only genuine original finite-length evidence yields finite quotient-coordinate Tor. -/
 theorem actualIncidenceFiniteCoordinates
-    (hfin : LengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
+    (hfin : _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
     ∃ R : CommRingCat.{u}, ∃ I J : Ideal R,
     ∃ q : PrimeSpectrum (R ⧸ I),
-      LengthEuler.FiniteLengthSupport (quotientLocalizedTor R I J q) := by
+      _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (quotientLocalizedTor R I J q)
+          := by
   obtain ⟨R, I, J, q, r, hqr, hlen⟩ := actualIncidenceQuotientLengths F G w
   refine ⟨R, I, J, q, ⟨?_, ?_⟩⟩
   · intro n

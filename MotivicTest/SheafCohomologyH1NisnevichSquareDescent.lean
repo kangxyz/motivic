@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyH1NisnevichSquareDescent
+public import Motivic.Cohomology.Sheaf.H1.NisnevichSquareDescent
 public import Lean.Util.CollectAxioms
 
 /-! # Geometric square descent for the original ordinary H¹ class -/
@@ -14,20 +14,22 @@ public import Lean.Util.CollectAxioms
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.SmoothSite (a1Cylinder a1Section nisnevichTopology)
 open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits AlgebraicGeometry Opposite
 
 universe w u
 
-open Motivic Motivic.SheafCohomology
+open Motivic _root_.CategoryTheory.Sheaf.LargeCohomology _root_.Motivic.SheafCohomology
 
 namespace MotivicTest.SheafCohomologyH1NisnevichSquareDescent
 
 variable {S : Scheme.{u}}
-  [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1})]
-  [EnoughInjectives (Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1})]
+  [HasExt.{w} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})]
+  [EnoughInjectives (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})]
 
 example
-    (F : Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1})
+    (F : Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})
     (sq : Square (SmoothSite S)) (hpb : sq.IsPullback)
     [IsOpenImmersion sq.f₂₄.left] [Etale sq.f₃₄.left]
     {Z : Scheme.{u}} (z : Z ⟶ sq.X₄.left) [IsClosedImmersion z]
@@ -35,9 +37,9 @@ example
     [IsIso (pullback.snd sq.f₃₄.left z)]
     (hsurj : Function.Surjective (fun a : F.obj.obj (op sq.X₂) × F.obj.obj (op sq.X₃) =>
       F.obj.map sq.f₁₂.op a.1 - F.obj.map sq.f₁₃.op a.2))
-    (x : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology S) F 1 sq.X₄)
+    (x : H.{w, u + 1, u, u + 1} (nisnevichTopology S) F 1 sq.X₄)
     (s : (cokernel (Injective.ι F)).obj.obj (op sq.X₄))
-    (hs : injectiveSectionBoundary (SmoothSite.nisnevichTopology S) F sq.X₄ s = x)
+    (hs : injectiveSectionBoundary (nisnevichTopology S) F sq.X₄ s = x)
     (lA : (Injective.under F).obj.obj (op sq.X₂))
     (lY : (Injective.under F).obj.obj (op sq.X₃))
     (hA : (cokernel.π (Injective.ι F)).hom.app (op sq.X₂) lA =
@@ -48,15 +50,15 @@ example
     hsurj x s hs lA lY hA hY
 
 example
-    (F : Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1})
+    (F : Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})
     (sq : Square (SmoothSite S)) (hpb : sq.IsPullback)
     [IsOpenImmersion sq.f₂₄.left] [Etale sq.f₃₄.left]
     {Z : Scheme.{u}} (z : Z ⟶ sq.X₄.left) [IsClosedImmersion z]
     (hcomp : Set.range z = (Set.range sq.f₂₄.left)ᶜ)
     [IsIso (pullback.snd sq.f₃₄.left z)]
-    (x : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology S) F 1 sq.X₄)
+    (x : H.{w, u + 1, u, u + 1} (nisnevichTopology S) F 1 sq.X₄)
     (s : (cokernel (Injective.ι F)).obj.obj (op sq.X₄))
-    (hs : injectiveSectionBoundary (SmoothSite.nisnevichTopology S) F sq.X₄ s = x)
+    (hs : injectiveSectionBoundary (nisnevichTopology S) F sq.X₄ s = x)
     (lA : (Injective.under F).obj.obj (op sq.X₂))
     (lY : (Injective.under F).obj.obj (op sq.X₃))
     (hA : (cokernel.π (Injective.ι F)).hom.app (op sq.X₂) lA =
@@ -72,8 +74,8 @@ example
     F sq hpb z hcomp x s hs lA lY hA hY aA aY hcorr
 
 variable {k : Type u} [Field k]
-  [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
-  [EnoughInjectives (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+  [HasExt.{w} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+  [EnoughInjectives (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 example
     (F : SheafWithTransfers.{u + 1} k)
@@ -83,10 +85,10 @@ example
     {Z : Scheme.{u}} (z : Z ⟶ sq.X₄.left) [IsClosedImmersion z]
     (hcomp : Set.range z = (Set.range sq.f₂₄.left)ᶜ)
     [IsIso (pullback.snd sq.f₃₄.left z)]
-    (x : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (x : H.{w, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) 1 sq.X₄)
     (s : (cokernel (Injective.ι ((SheafWithTransfers.toSheaf k).obj F))).obj.obj (op sq.X₄))
-    (hs : injectiveSectionBoundary (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (hs : injectiveSectionBoundary (nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) sq.X₄ s = x)
     (lA : (Injective.under ((SheafWithTransfers.toSheaf k).obj F)).obj.obj (op sq.X₂))
     (lY : (Injective.under ((SheafWithTransfers.toSheaf k).obj F)).obj.obj (op sq.X₃))
@@ -96,10 +98,10 @@ example
       (cokernel (Injective.ι ((SheafWithTransfers.toSheaf k).obj F))).obj.map sq.f₃₄.op s)
     {B : SmoothSite (Spec (.of k))} (jB : sq.X₁ ⟶ B)
     (lam : Cor.mk sq.X₃ ⟶ Cor.mk B) (ψ : Cor.mk sq.X₂ ⟶ Cor.mk B)
-    (α : Cor.mk (SmoothSite.a1Cylinder (.of k) sq.X₁) ⟶ Cor.mk B)
-    (h₀ : (Cor.graphFunctor k).map (SmoothSite.a1Section (.of k) sq.X₁ 0) ≫ α =
+    (α : Cor.mk (a1Cylinder (.of k) sq.X₁) ⟶ Cor.mk B)
+    (h₀ : (Cor.graphFunctor k).map (a1Section (.of k) sq.X₁ 0) ≫ α =
       (Cor.graphFunctor k).map jB)
-    (h₁ : (Cor.graphFunctor k).map (SmoothSite.a1Section (.of k) sq.X₁ 1) ≫ α =
+    (h₁ : (Cor.graphFunctor k).map (a1Section (.of k) sq.X₁ 1) ≫ α =
       (Cor.graphFunctor k).map sq.f₁₃ ≫ lam - (Cor.graphFunctor k).map sq.f₁₂ ≫ ψ)
     (d : ((SheafWithTransfers.toSheaf k).obj F).obj.obj (op B))
     (hd : (Injective.under ((SheafWithTransfers.toSheaf k).obj F)).obj.map sq.f₁₂.op lA -

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.ScalarExtensionSimplexEndpoint
+public import Motivic.Cohomology.SuslinVoevodsky.ScalarExtensionSimplexEndpoint
 
 /-!
 # Consumers of literal scalar-extension simplex endpoint charts

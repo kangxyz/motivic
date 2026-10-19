@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.Hypercohomology
+public import Motivic.Cohomology.SuslinVoevodsky.Hypercohomology
 public import Lean.Util.CollectAxioms
 
 /-! # Genuine derived motivic cohomology and its exact base-field comparison -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Opposite
 open Motivic
 
@@ -30,7 +31,8 @@ example (q : ℕ) (i j : ℤ) :
       (SheafWithTransfers.toSheaf k).map ((motivicComplex k q).d i j) := rfl
 
 example (q r : ℕ) :
-    (motivicSheafComplex k q).X (Indexing.singularDegree q r) ≅
+    (motivicSheafComplex k q).X (_root_.CategoryTheory.SingularComplex.Indexing.singularDegree q r)
+      ≅
       (presheafToSheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
         AddCommGrpCat.{u + 1}).obj (motivicSingularPresheaf k q r) :=
   motivicSheafComplexXIso k q r
@@ -43,7 +45,7 @@ variable [HasDerivedCategory.{w}
 /-- This is definitionally the existing unbounded derived-Hom hypercohomology. -/
 example (p : ℤ) (q : ℕ) (X : SmoothSite (Spec (.of k))) :
     motivicCohomology k p q X =
-      Hypercohomology.H.{w, u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.Hypercohomology.H.{w, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) (motivicSheafComplex k q) p X := rfl
 
 example (p : ℤ) (q : ℕ) (X : SmoothSite (Spec (.of k))) :

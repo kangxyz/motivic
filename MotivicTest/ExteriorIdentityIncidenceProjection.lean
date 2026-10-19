@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityIncidenceProjection
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.IncidenceProjection
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Consumers of the actual Cartesian exterior-incidence projection -/
 
@@ -17,6 +17,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ExteriorIdentityIncidenceProjection
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -34,17 +35,18 @@ example : Flat (A.exteriorIncidenceOriginalCoordinate B T) := inferInstance
 example (w : (A.exteriorIdentityGenerator T).incidence (B.exteriorIdentityGenerator T)) :
     Module.length ((A.exteriorParameterDiagonal T B).presheaf.stalk
         (A.exteriorIncidenceToCoefficientQuotient B T w))
-      (Koszul.coefficientClosedFiber (Diagonal.baseChangeStalkMap
+      (_root_.ChainComplex.Koszul.coefficientClosedFiber
+          (_root_.AlgebraicGeometry.Scheme.Diagonal.baseChangeStalkMap
         (A.exteriorIncidenceProjection_isPullback B T) w).hom) =
     Module.length
       (((A.exteriorIdentityGenerator T).incidence (B.exteriorIdentityGenerator T)).presheaf.stalk w)
-      (Koszul.coefficientClosedFiber
+      (_root_.ChainComplex.Koszul.coefficientClosedFiber
         ((A.exteriorIncidenceOriginalCoordinate B T).stalkMap w).hom) :=
   A.exteriorIncidenceProjection_closedFiber_length B T w
 
 omit [GeometricallyIntegral T.hom] in
 example (n : ℕ) :
-    Flat (A.exteriorIncidenceOriginalCoordinate B (AlgebraicSimplex.smoothSiteObj k n)) :=
+    Flat (A.exteriorIncidenceOriginalCoordinate B (_root_.AlgebraicSimplex.smoothSiteObj k n)) :=
   inferInstance
 
 end MotivicTest.ExteriorIdentityIncidenceProjection

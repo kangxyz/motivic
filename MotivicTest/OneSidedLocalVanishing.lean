@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.OneSidedLocalVanishing
+public import Motivic.Cohomology.A1.LocalVanishing.OneSided
 /-! Direct original-section consumer of local moving with no supplied frames. -/
 set_option linter.hashCommand false
 public noncomputable section
@@ -15,6 +15,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry ProjectiveSpace
 open Scheme.Hom Scheme.Moving Motivic.OneSidedMovingEndpoints
 universe u w
 namespace Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme
 variable {k : Type u} [Field k] (R : Type u) [CommRing R] [IsNoetherianRing R]
   (ι : Type u) (n : ℕ) (eι : ι ≃ Fin (n + 1)) [Finite ι]
   {X A : SmoothSite (Spec (.of k))} [IsAffine X.left] [IsAffine A.left]

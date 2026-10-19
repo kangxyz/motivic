@@ -5,17 +5,19 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteTorus
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Torus.Basic
 public import Mathlib.Algebra.Ring.PUnit
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 
 /-! # Actual smooth torus powers and identity-coordinate consumers -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open AlgebraicGeometry.Scheme.PolynomialLaurent Motivic.SmoothSite
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
+open AlgebraicGeometry.Scheme.PolynomialLaurent _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
@@ -76,12 +78,22 @@ example (q : ℕ) (i : Fin (q + 1)) :
 
 open Lean in
 run_cmd do
-  for name in #[``torus, ``torusOne, ``torusPower, ``torusCoordinate, ``torusPowerLift,
-      ``torusPowerLift_coordinate, ``torusPower_hom_ext, ``torusInsertOne,
-      ``torusInsertOne_coordinate_self, ``torusInsertOne_coordinate_succAbove,
-      ``torusInsertOne_left_coordinate_self, ``torusInsertOne_left_coordinate_succAbove,
-      ``torusInsertOne_deleteCoordinate, ``instIsClosedImmersionTorusInsertOne,
-      ``torusPowerOneIso, ``torusInsertOne_zero_powerOneIso] do
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.torus,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusOne,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPower,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusCoordinate,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerLift,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerLift_coordinate,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPower_hom_ext,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne_coordinate_self,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne_coordinate_succAbove,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne_left_coordinate_self,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne_left_coordinate_succAbove,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne_deleteCoordinate,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.instIsClosedImmersionTorusInsertOne,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerOneIso,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusInsertOne_zero_powerOneIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

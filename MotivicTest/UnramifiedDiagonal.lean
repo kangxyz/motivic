@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.TensorProduct.UnramifiedDiagonal
+public import Motivic.Aglib.RingTheory.TensorProduct.UnramifiedDiagonal
 public import Mathlib.RingTheory.Etale.Basic
 public import Mathlib.Data.ZMod.Basic
 
@@ -21,7 +21,7 @@ They include etale polynomial coordinates and polynomial rings over `ZMod 4`.
 noncomputable section
 
 open scoped TensorProduct
-open Motivic.RelativePolynomialTensor
+open _root_.Algebra.TensorProduct.RelativePolynomial
 
 namespace Motivic.MotivicTest.UnramifiedDiagonal
 

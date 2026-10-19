@@ -5,13 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestriction
-import all Motivic.Aglib.RingTheory.FiniteFreeWeilRestriction
-import all Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionHom
-import all Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionPresentation
-import all Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionEtale
-import all Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionEtalePresentation
-import all Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestriction
+public import Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Basic
+import all Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Basic
+import all Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Hom
+import all Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Presentation
+import all Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Etale
+import all Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.EtalePresentation
+import all Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Basic
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -68,12 +68,12 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestriction,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionHom,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionPresentation,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionEtale,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionEtalePresentation,
-    `Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestriction]
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Basic,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Hom,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Presentation,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Etale,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.EtalePresentation,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Basic]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -100,12 +100,12 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestriction,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionHom,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionPresentation,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionEtale,
-    `Motivic.Aglib.RingTheory.FiniteFreeWeilRestrictionEtalePresentation,
-    `Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestriction,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Basic,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Hom,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Presentation,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.Etale,
+    `Motivic.Aglib.RingTheory.WeilRestriction.FiniteFree.EtalePresentation,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Basic,
     `MotivicTest.FiniteFreeWeilRestriction]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

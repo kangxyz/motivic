@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.CorrespondenceIsoTransport
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.IsoTransport
 
 /-!
 # Consumers of actual correspondence transport by scheme isomorphisms
@@ -18,6 +18,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.CorrespondenceIsoTransport
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable (k : Type u) [Field k] {X X' Y Y' : SmoothSite (Spec (.of k))}
   (e : X ≅ X') (d : Y ≅ Y') [IsIntegral X'.left]

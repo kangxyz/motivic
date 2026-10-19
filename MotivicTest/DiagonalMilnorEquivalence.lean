@@ -5,13 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorEquivalence
+public import Motivic.Cohomology.Diagonal.MilnorEquivalence
 public import Lean.Util.CollectAxioms
 
 /-! Both directions of comparison with the original derived diagonal group, in every weight. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
-open PresheafWithTransfers DiagonalMilnorSymbol DiagonalMilnorBoundaryDescent
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
+open DiagonalMilnorSymbol
+open DiagonalMilnorBoundaryDescent
 universe w u
 namespace MotivicTest.DiagonalMilnorEquivalence
 variable (k : Type u) [Field k] [CharZero k] (q : ℕ)

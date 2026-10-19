@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageComponentGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.ComponentGeometry
 public import MotivicTest.IntegralExteriorCyclePushforward
 
 /-!
@@ -30,6 +30,9 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite stalkQuotientKerEquiv)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceMiddlePair)
+open _root_.AlgebraicGeometry.Scheme.StalkTransport (pointedMap)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open MotivicTest.IntegralGenericFiniteImage
 open MotivicTest.IntegralExteriorCyclePushforward
@@ -215,7 +218,7 @@ theorem actualExterior_middleList_quotient (e : imageExterior F G H z)
         (imageExteriorInclusion F G H z e)).hom).map
         (Ideal.Quotient.mk (RingHom.ker ((imageExteriorInclusion F G H z).stalkMap e).hom))).map
         (stalkQuotientKerEquiv (imageExteriorInclusion F G H z) e) =
-      (s.map (StalkTransport.pointedMap
+      (s.map (pointedMap
         ((F.smoothIncidenceComponentGenerator k G z).supportProductInclusion H ≫
           correspondenceMiddlePair X.hom Z.hom W.hom)
         ((actualExteriorIso F G H z).hom e)

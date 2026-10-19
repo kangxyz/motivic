@@ -5,9 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleCombinedRegularity
-public import Motivic.AlgebraicGeometry.Intersection.GenericTor
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.Triple.CombinedRegularity
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.GenericTor
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Genuine combined-diagonal regularity on actual smooth-site triples
@@ -26,8 +28,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.TripleCombinedRegularity
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
-open Intersection
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable (k : Type u) [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -56,7 +59,8 @@ theorem actualTotalTorKoszul (w : F.tripleIncidence G H) :
       RingHom.ker (d.stalkMap (a w)).hom = Ideal.ofList r ∧
       ∀ n : ℕ, Nonempty
         ((((Tor (ModuleCat (ambientStalk d (a w))) n).obj M).obj
-          (sourceStalkModule d (a w))) ≅ (Koszul.coefficientComplex M r).homology n) := by
+          (sourceStalkModule d (a w))) ≅ (_root_.ChainComplex.Koszul.coefficientComplex M
+              r).homology n) := by
   dsimp only
   obtain ⟨r, hr, hker⟩ := actualCombinedKernel k (F.tripleIncidenceFourfoldInclusion G H w)
   exact ⟨r, hr, hker, fun n => ⟨torIsoHomology _ _ _ _ _ r hker hr n⟩⟩

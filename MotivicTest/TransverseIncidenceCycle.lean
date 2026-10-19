@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TransverseIncidenceCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.TransverseCycle
 
 /-!
 # Consumers of actual transverse incidence coefficients
@@ -19,6 +19,9 @@ these hypotheses, including possible nilpotents and colliding image supports.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleInclusion)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite genericMultiplicity)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open RingTheory.Sequence Motivic
 

@@ -3,7 +3,7 @@ Copyright (c) 2026 Motivic Cohomology contributors.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleQuasiAffine
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.QuasiAffine
 public import Mathlib.RingTheory.Ideal.Operations
 
 /-! # Affine neighborhoods of finite subsets of quasi-affine schemes -/

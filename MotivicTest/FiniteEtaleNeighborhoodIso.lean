@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteEtaleNeighborhoodIso
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteEtaleNeighborhoodIso
 public import Lean.Util.CollectAxioms
 
 /-!

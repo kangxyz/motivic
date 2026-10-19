@@ -5,14 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermEtalePullback
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Germs.EtalePullback
 public import Lean.Util.CollectAxioms
 
 /-! Regression checks for étale invariance of the unchanged original germ fibers. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 universe u v
 namespace MotivicTest.OriginalGermEtalePullback
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood
 variable {S : Scheme.{u}} [IsAffine S] {X Y : SmoothSite S}
   (F : (SmoothSite S)ᵒᵖ ⥤ AddCommGrpCat.{max (u + 1) v})
   (f : X ⟶ Y) [Etale f.left] (x : X.left) [IsIso (f.left.residueFieldMap x)]
@@ -53,9 +56,9 @@ open Lean in
 run_cmd do
   for name in #[``original_pullback_isIso, ``forward_map_unchanged,
       ``inverse_after_pullback, ``pullback_after_inverse, ``inverse_restricted_section,
-      ``SmoothSite.NisnevichNeighborhood.composePullbackToTarget,
-      ``SmoothSite.NisnevichNeighborhood.toPullbackCompose,
-      ``SmoothSite.originalGermEtaleIso] do
+      ``composePullbackToTarget,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.toPullbackCompose,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.originalGermEtaleIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

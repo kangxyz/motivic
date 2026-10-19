@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionBaseChange
+public import Motivic.Cohomology.WeightTwo.CorestrictionBaseChange
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,14 +19,17 @@ projections are retained, without assuming a transfer comparison as input.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Polynomial Motivic
-open PresheafWithTransfers WeightTwoCorestriction
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers WeightTwoCorestriction
 open MilnorK.K3.PolynomialResidue
 open scoped BigOperators
 
 universe u
 
 namespace MotivicTest.WeightTwoCorestrictionBaseChange
+open _root_.AlgebraicGeometry.Scheme.PolynomialQuotient
+open _root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches
 
 variable {k L : Type u} [Field k] [Field L]
 
@@ -54,7 +57,7 @@ theorem original_new_scalar_projection :
 /-- Each literal branch retains both residue-field coordinate images. -/
 theorem original_branch_coordinates
     (q : AdjoinRoot.IrreducibleBranch (p.val.map (algebraMap k L))) :
-    AdjoinRootScalarBranches.branchMap (p.val.map (algebraMap k L)) q ≫
+    ScalarBranches.branchMap (p.val.map (algebraMap k L)) q ≫
       polynomialChangedPoint (L := L) p a b =
       scalarPoint (k := L) (WeightTwoSymbols.rationalPair (AdjoinRoot q.val.val)
         (Units.map (Polynomial.LocalResidue.adjoinRootMap (algebraMap k L)
@@ -147,14 +150,14 @@ run_cmd do
       ``WeightTwoScalarPairChange.pairMap_torusMap,
       ``WeightTwoScalarPairChange.scalarPoint_rationalPair_comp,
       ``WeightTwoScalarPairChange.rationalPair_scalarSquare,
-      ``AdjoinRootScalarBranches.scalarSchemeIso,
-      ``AdjoinRootScalarBranches.scalarSchemeIso_hom_fst,
-      ``AdjoinRootScalarBranches.scalarSchemeIso_hom_snd,
-      ``AdjoinRootScalarBranches.scalar_isPullback,
-      ``AdjoinRootScalarBranches.finitePushforward_branchMap,
-      ``AdjoinRootScalarBranches.fundamentalCycle_eq_sum_branches,
-      ``AdjoinRootScalarBranches.scalar_fundamentalCycle_eq_sum_branches,
-      ``AdjoinRootScalarBranches.branchMap_scalarMap,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.scalarSchemeIso,
+      ``scalarSchemeIso_hom_fst,
+      ``scalarSchemeIso_hom_snd,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.scalar_isPullback,
+      ``finitePushforward_branchMap,
+      ``fundamentalCycle_eq_sum_branches,
+      ``scalar_fundamentalCycle_eq_sum_branches,
+      ``_root_.AlgebraicGeometry.Scheme.PolynomialQuotient.ScalarBranches.branchMap_scalarMap,
       ``pointPushforward_graph_baseChange, ``corestriction_graphSymbol_baseChange,
       ``original_point_projection, ``original_new_scalar_projection,
       ``original_branch_coordinates, ``actual_cycle_base_change,

@@ -9,7 +9,7 @@ The ambient coordinates are the given algebra generators. The cotangent quotient
 is derived from them, so no separately selected smooth coordinate system is used.
 -/
 @[expose] public noncomputable section
-open Module TensorProduct MvPolynomial KaehlerDifferential LinearMap
+open Module TensorProduct _root_.MvPolynomial KaehlerDifferential LinearMap
 universe u v w z
 namespace KaehlerDifferential
 variable (k : Type u) (R : Type v) (K : Type w)

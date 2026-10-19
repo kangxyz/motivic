@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualFixedOpenSectionPair
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.Normalized.FixedOpen.SectionPair
 /-! # Actual fixed-source psi pairs have no compactification or unit premise -/
 @[expose] public noncomputable section
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

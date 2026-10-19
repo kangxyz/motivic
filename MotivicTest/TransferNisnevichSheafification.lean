@@ -5,14 +5,19 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.NisnevichSheafification
+public import Motivic.Transfers.Presheaf.NisnevichSheafification
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of actual transfer-preserving Nisnevich sheafification -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Opposite Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open AlgebraicGeometry
+open Opposite
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 
 universe u
 

@@ -9,7 +9,7 @@ public import Motivic.Aglib.RingTheory.Kaehler.PolynomialResidueGradient
 
 /-! # One original quadratic tuple controls all field-valued points of the selected fiber -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial QuadraticIncidence
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial QuadraticIncidence
 universe u
 namespace QuadraticIncidence
 

@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Kaehler.FiniteProjectionWithCotangentRank
 import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
 
 /-! # Actual closed quotient and prime-residue consumer of the full elimination induction -/
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 
 example (k R : Type) [Field k] [Infinite k] [CommRing R] [Algebra k R]
     [Algebra.FiniteType k R] (I : Ideal R) (d : ℕ)

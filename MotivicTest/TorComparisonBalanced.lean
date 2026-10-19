@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.Balanced
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.Balanced
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Consumers of actual all-degree balanced Tor -/
@@ -14,7 +14,12 @@ public import Mathlib.Data.ZMod.Basic
 
 noncomputable section
 
-open CategoryTheory HomologicalComplex Motivic.TorComparison
+open CategoryTheory
+open HomologicalComplex
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
 
 universe u
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorCoprimeRestriction
+public import Motivic.Cohomology.Diagonal.MilnorCoprimeRestriction
 public import Lean.Util.CollectAxioms
 
 /-! Audit of original full-branch transfer and finite coprime restriction. -/

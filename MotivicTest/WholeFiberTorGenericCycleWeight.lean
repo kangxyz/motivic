@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorGenericCycleWeight
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorGenericCycleWeight
 
 /-!
 # Actual generic target weight consumers
@@ -33,6 +33,7 @@ open scoped BigOperators
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorGenericCycleWeight
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable {k : Type u} [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -141,7 +142,8 @@ outer-degree exchange, and is independent of any asserted cycle identity. -/
 theorem actualGenericWholeFamily_finiteLengthSupport
     (r : Spec Γ(F.leftIntermediateImageProduct G H, V))
     (hr : V.2.fromSpec r ∈ genericPoints (F.leftIntermediateImageProduct G H)) :
-    LengthEuler.FiniteLengthSupport (F.firstStageWholeLocalizedCoefficient G H V r) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport
+        (F.firstStageWholeLocalizedCoefficient G H V r) :=
   F.firstStageWholeAtGeneric_finiteLengthSupport G H V r hr
 
 end Motivic.MotivicTest.WholeFiberTorGenericCycleWeight

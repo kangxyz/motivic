@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.SmoothCartierEtaleComparisonOverBase
+import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.EtaleComparison.SmoothEtaleComparisonOverBase
 import Lean.Util.CollectAxioms
 
 /-! # Actual smooth Cartier comparison over its field with small-site maps -/

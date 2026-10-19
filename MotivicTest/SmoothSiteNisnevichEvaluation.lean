@@ -5,19 +5,22 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichEvaluation
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Evaluation
 public import Lean.Util.CollectAxioms
 
 /-! # Exact smooth-site evaluation at its actual base field -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
 namespace MotivicTest.SmoothSiteNisnevichEvaluation
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable (k : Type u) [Field k]
 
@@ -55,11 +58,14 @@ example (S : ShortComplex
 open Lean in
 run_cmd do
   for name in #[``exists_section_of_mem_nisnevichPrecoverage_base,
-      ``nisnevich_covering_sieve_base_eq_top, ``mem_nisnevichTopology_base_iff,
-      ``surjective_app_base_of_isLocallySurjective,
-      ``injective_app_base_of_isLocallyInjective, ``nisnevichBaseEvaluation,
-      ``surjective_app_base_of_epi, ``isIso_toSheafify_app_base,
-      ``exact_map_nisnevichBaseEvaluation] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevich_covering_sieve_base_eq_top,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.mem_nisnevichTopology_base_iff,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.surjective_app_base_of_isLocallySurjective,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.injective_app_base_of_isLocallyInjective,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.nisnevichBaseEvaluation,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.surjective_app_base_of_epi,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isIso_toSheafify_app_base,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exact_map_nisnevichBaseEvaluation] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

@@ -1,7 +1,8 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualCorrectingEndpoints
+import Motivic.AlgebraicGeometry.Correspondences.Pencils.NormalizedCurve.CorrectingEndpoints
 /-! Direct consumer of the compact actual endpoint statement. -/
 set_option linter.hashCommand false
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 universe u
 example {k : Type u} [Field k] {X T V Y : SmoothSite (Spec (.of k))}

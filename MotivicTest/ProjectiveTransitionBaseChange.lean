@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.TransitionBaseChange
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.Twisting.TransitionBaseChange
 
 /-! # Native section-valued transition base-change consumers -/
 

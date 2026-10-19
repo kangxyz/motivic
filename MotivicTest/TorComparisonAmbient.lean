@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.AmbientMiddle
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.AmbientMiddle
 
 /-! # Consumers of the actual algebraic ambient and middle-diagonal Tor comparisons -/
 
@@ -13,8 +13,14 @@ public import Motivic.Algebra.Homology.TorComparison.AmbientMiddle
 
 noncomputable section
 
-open CategoryTheory CategoryTheory.MonoidalCategory HomologicalComplex Motivic.TorComparison
-open scoped TensorProduct ChangeOfRings Motivic.MiddleDiagonal
+open CategoryTheory
+open CategoryTheory.MonoidalCategory
+open HomologicalComplex
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
+open scoped TensorProduct ChangeOfRings Algebra.TensorProduct.MiddleDiagonal
 
 universe u
 
@@ -93,18 +99,22 @@ comparison with all factor-flatness hypotheses discharged over every field. -/
 def middleQuotientSupports (k A B C : Type u) [Field k]
     [CommRing A] [CommRing B] [CommRing C] [Algebra k A] [Algebra k B] [Algebra k C]
     (I : Ideal (A ⊗[k] B)) (J : Ideal (B ⊗[k] C)) (n : ℕ) :
-    ((Tor (ModuleCat (Motivic.MiddleDiagonal.ambientRing k A B C)) n).obj
+    ((Tor (ModuleCat (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C)) n).obj
       (ExteriorModule.obj k (A ⊗[k] B) (B ⊗[k] C)
         (ModuleCat.of (A ⊗[k] B) ((A ⊗[k] B) ⧸ I))
         (ModuleCat.of (B ⊗[k] C) ((B ⊗[k] C) ⧸ J)))).obj
-      ((ModuleCat.restrictScalars (Motivic.MiddleDiagonal.quotientMap k A B C).toRingHom).obj
-        (ModuleCat.of (Motivic.MiddleDiagonal.tripleRing k A B C)
-          (Motivic.MiddleDiagonal.tripleRing k A B C))) ≅
-      (ModuleCat.restrictScalars (Motivic.MiddleDiagonal.quotientMap k A B C).toRingHom).obj
-        (((Tor (ModuleCat (Motivic.MiddleDiagonal.tripleRing k A B C)) n).obj
-          ((ModuleCat.extendScalars (Motivic.MiddleDiagonal.leftMap k A B C).toRingHom).obj
+      ((ModuleCat.restrictScalars (_root_.Algebra.TensorProduct.MiddleDiagonal.quotientMap k A B
+          C).toRingHom).obj
+        (ModuleCat.of (_root_.Algebra.TensorProduct.MiddleDiagonal.tripleRing k A B C)
+          (_root_.Algebra.TensorProduct.MiddleDiagonal.tripleRing k A B C))) ≅
+      (ModuleCat.restrictScalars (_root_.Algebra.TensorProduct.MiddleDiagonal.quotientMap k A B
+          C).toRingHom).obj
+        (((Tor (ModuleCat (_root_.Algebra.TensorProduct.MiddleDiagonal.tripleRing k A B C)) n).obj
+          ((ModuleCat.extendScalars (_root_.Algebra.TensorProduct.MiddleDiagonal.leftMap k A B
+              C).toRingHom).obj
             (ModuleCat.of (A ⊗[k] B) ((A ⊗[k] B) ⧸ I)))).obj
-          ((ModuleCat.extendScalars (Motivic.MiddleDiagonal.rightMap k A B C).toRingHom).obj
+          ((ModuleCat.extendScalars (_root_.Algebra.TensorProduct.MiddleDiagonal.rightMap k A B
+              C).toRingHom).obj
             (ModuleCat.of (B ⊗[k] C) ((B ⊗[k] C) ⧸ J)))) :=
   ambientMiddleTorIso k A B C _ _ n
 

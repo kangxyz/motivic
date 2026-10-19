@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodSectionDivisors
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Sections.Divisors
 /-! The entire zero scheme remains finite flat after the original base shrink. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

@@ -4,11 +4,11 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBasePencilMaps
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.PencilMaps
 /-! # The pencil maps have the literal refined projections and original target map -/
 set_option linter.hashCommand false
 public section
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic ProjectiveSpace
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry ProjectiveSpace
 universe u
 namespace AlgebraicGeometry.Scheme.Hom
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)

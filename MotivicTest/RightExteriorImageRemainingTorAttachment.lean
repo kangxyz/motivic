@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightExteriorImageRemainingTorAttachment
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageRemainingLiftCases
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightExteriorImageRemainingTorAttachment
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.RemainingLiftCases
 
 /-!
 # Actual right image components and their original remaining Tor coefficients
@@ -30,8 +30,9 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.Sequence
-open Motivic.RightExteriorImageComponentGeometry Motivic.LengthEuler
+open Motivic.RightExteriorImageComponentGeometry _root_.HomologicalComplex.ModuleLengthEuler
 open Motivic.RightExteriorImageRemainingTorAttachment
   (remainingQuotientEuler_eq_incidenceTorCoefficient_fixedPoint)
 
@@ -102,13 +103,14 @@ theorem actualClosedExteriorRemainingEuler_eq_incidenceTorCoefficient
     (hker : (pullback.diagonal Y.hom).ker.stalk
       (F.rightImageMiddlePair G H (V.2.fromSpec p)) = Ideal.ofList s) :
     letI := F.rightTargetRemainingList_support_isArtinian G H (V.2.fromSpec p) y hy hp s hker
-    chainEuler (Koszul.coefficientComplex
+    chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
       (ModuleCat.of ((F.rightIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
         (((F.rightIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸
           (F.rightImageComponentExteriorInclusion G H (imageSupport G H z)).ker.stalk
             (V.2.fromSpec p)))
       (F.rightTargetRemainingList G H (V.2.fromSpec p) s))
-      (Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥ bot_le) =
+      (_root_.ChainComplex.Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥
+          bot_le) =
       F.incidenceTorCoefficient (G.smoothIncidenceComponentGenerator
         (X := Y) (Y := Z) (Z := W) k H z) w :=
   remainingQuotientEuler_eq_incidenceTorCoefficient_fixedPoint
@@ -129,7 +131,7 @@ theorem exists_actualRemainingList_computes_incidenceTorCoefficient
           (F.rightImageMiddlePair G H (F.rightImageIncidenceInclusion G H y)) = Ideal.ofList s,
         letI := F.rightTargetRemainingList_support_isArtinian G H
           (F.rightImageIncidenceInclusion G H y) y hy rfl s hker
-        chainEuler (Koszul.coefficientComplex
+        chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
           (ModuleCat.of ((F.rightIntermediateImageProduct G H).presheaf.stalk
               (F.rightImageIncidenceInclusion G H y))
             (((F.rightIntermediateImageProduct G H).presheaf.stalk
@@ -137,7 +139,8 @@ theorem exists_actualRemainingList_computes_incidenceTorCoefficient
               (F.rightImageComponentExteriorInclusion G H (imageSupport G H z)).ker.stalk
                 (F.rightImageIncidenceInclusion G H y)))
           (F.rightTargetRemainingList G H (F.rightImageIncidenceInclusion G H y) s))
-          (Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥ bot_le) =
+          (_root_.ChainComplex.Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _
+              ⊥ bot_le) =
           F.incidenceTorCoefficient (G.smoothIncidenceComponentGenerator
             (X := Y) (Y := Z) (Z := W) k H z) w := by
   obtain ⟨s, hsreg, hker⟩ := F.exists_rightImageIncidenceRemainingList G H y

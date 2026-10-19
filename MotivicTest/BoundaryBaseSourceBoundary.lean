@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseSourceBoundary
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.SourceBoundary
 /-! # Full original Z and original target boundary after the actual parameter shrink -/
 set_option linter.hashCommand false
 public section

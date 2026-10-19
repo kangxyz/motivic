@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdealMixedBoundary
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.MixedBoundary
 /-! # Independent lambda and psi source maps retain the original global line comparison -/
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry Scheme.Modules Scheme.Modules.Invertible

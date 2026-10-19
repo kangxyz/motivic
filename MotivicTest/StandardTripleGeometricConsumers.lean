@@ -5,14 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.PrincipalOrder
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.StaticBoundaryPencilAction
-import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryNeighborhoodComplement
-import all Motivic.AlgebraicGeometry.Cycles.CodimensionOneDominance
-import all Motivic.AlgebraicGeometry.Cycles.PrincipalOrderCycle
-import all Motivic.AlgebraicGeometry.Correspondences.PrincipalOrder
-import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedSectionTransport
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.StaticBoundaryPencilAction
+public import Motivic.AlgebraicGeometry.Correspondences.Moving.PrincipalOrder
+public import Motivic.Transfers.Presheaf.StaticBoundaryPencilAction
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.NeighborhoodComplement
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.CodimensionOneDominance
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.PrincipalOrder
+import all Motivic.AlgebraicGeometry.Correspondences.Moving.PrincipalOrder
+import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.SectionTransport
+import all Motivic.Transfers.Presheaf.StaticBoundaryPencilAction
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -32,6 +32,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite principalOrderCycle)
 open CategoryTheory AlgebraicGeometry
 open Scheme.Modules Scheme.Modules.Invertible
 open Motivic
@@ -41,17 +42,20 @@ universe u v
 
 namespace MotivicTest.StandardTripleGeometricConsumers
 
+section OriginalPrincipalCorrespondence
+
+variable {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
+  [IsAffine X.left] {C V : Scheme.{u}} [IsIntegral C] [IsNoetherian C]
+  [V.IsQuasiAffine] (q : C ⟶ X.left) [IsProper q]
+  (j : V ⟶ C) [IsOpenImmersion j] [SmoothOfRelativeDimension 1 (j ≫ q)]
+  (U : C.Opens) [Nonempty U] (hU : (Set.range j)ᶜ ⊆ (U : Set C))
+  (h : Γ(C, U)) (hh : IsUnit h) (g : V ⟶ Y.left)
+  (hbase : j ≫ q ≫ X.hom = g ≫ Y.hom)
+
 open Classical in
 /-- The actual correspondence exists with its original native order and residue
 weights, without a supplied admissible cycle or flatness of its supports. -/
-theorem exists_original_principal_correspondence
-    {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
-    [IsAffine X.left] {C V : Scheme.{u}} [IsIntegral C] [IsNoetherian C]
-    [V.IsQuasiAffine] (q : C ⟶ X.left) [IsProper q]
-    (j : V ⟶ C) [IsOpenImmersion j] [SmoothOfRelativeDimension 1 (j ≫ q)]
-    (U : C.Opens) [Nonempty U] (hU : (Set.range j)ᶜ ⊆ (U : Set C))
-    (h : Γ(C, U)) (hh : IsUnit h) (g : V ⟶ Y.left)
-    (hbase : j ≫ q ≫ X.hom = g ≫ Y.hom) :
+theorem exists_original_principal_correspondence :
     ∃ α : Cor.mk X ⟶ Cor.mk Y,
       ∀ W : FiniteCorrespondenceGenerator X.hom Y.hom,
         (show FiniteCorrespondence X.hom Y.hom from α) W =
@@ -63,6 +67,8 @@ theorem exists_original_principal_correspondence
             else 0 := by
   exact ⟨PrincipalOrderCorrespondence.correspondence q j U hU h hh g hbase,
     PrincipalOrderCorrespondence.correspondence_coefficient q j U hU h hh g hbase⟩
+
+end OriginalPrincipalCorrespondence
 
 /-- Already represented equal boundary-framed classes act identically through
 their original whole zero schemes; the polynomial homotopy is constructed. -/
@@ -88,12 +94,12 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryNeighborhoodComplement,
-    `Motivic.AlgebraicGeometry.Cycles.CodimensionOneDominance,
-    `Motivic.AlgebraicGeometry.Cycles.PrincipalOrderCycle,
-    `Motivic.AlgebraicGeometry.Correspondences.PrincipalOrder,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedSectionTransport,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.StaticBoundaryPencilAction]
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.NeighborhoodComplement,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.CodimensionOneDominance,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.PrincipalOrder,
+    `Motivic.AlgebraicGeometry.Correspondences.Moving.PrincipalOrder,
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.SectionTransport,
+    `Motivic.Transfers.Presheaf.StaticBoundaryPencilAction]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -120,12 +126,12 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryNeighborhoodComplement,
-    `Motivic.AlgebraicGeometry.Cycles.CodimensionOneDominance,
-    `Motivic.AlgebraicGeometry.Cycles.PrincipalOrderCycle,
-    `Motivic.AlgebraicGeometry.Correspondences.PrincipalOrder,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramedSectionTransport,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.StaticBoundaryPencilAction,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.NeighborhoodComplement,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.CodimensionOneDominance,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.PrincipalOrder,
+    `Motivic.AlgebraicGeometry.Correspondences.Moving.PrincipalOrder,
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryFramed.SectionTransport,
+    `Motivic.Transfers.Presheaf.StaticBoundaryPencilAction,
     `MotivicTest.StandardTripleGeometricConsumers]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

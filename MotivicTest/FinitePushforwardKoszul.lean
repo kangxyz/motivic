@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardKoszul
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
-public import Motivic.Algebra.Homology.KoszulHyperhomologyPlacement
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Koszul
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyPlacement
 
 /-!
 # Actual common-middle-list and global Koszul projection consumers
@@ -31,8 +31,10 @@ open CategoryTheory AlgebraicGeometry HomologicalComplex
 universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardKoszul
+open _root_.AlgebraicGeometry.Scheme.Hom
 
-open FiniteSchemeEuler LengthEuler
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 section Correspondence
 
@@ -60,7 +62,8 @@ local instance imageCoordinateAlgebra :
 /-- The common remaining middle list has exactly the same image through whole localization
 and through the original image-product scheme stalk map. -/
 theorem actualRemainingScalarSquare
-    (q : MaximalSpectrum (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, U)
+    (q : MaximalSpectrum (_root_.PrimeSpectrum.FiniteFiber.localAlgebra
+        Γ(F.leftIntermediateImageProduct G H, U)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ U) p))
     (s : List ((CategoryTheory.Limits.pullback h h).presheaf.stalk
       (F.leftImageMiddlePair G H (hU.fromSpec p)))) :
@@ -74,10 +77,11 @@ theorem actualRemainingScalarSquare
 
 /-- The constructed actual first-stage source comparison preserves the original differentials. -/
 theorem actualSourceDifferential
-    (q : MaximalSpectrum (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, U)
+    (q : MaximalSpectrum (_root_.PrimeSpectrum.FiniteFiber.localAlgebra
+        Γ(F.leftIntermediateImageProduct G H, U)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ U) p))
     (n m : ℕ) :
-    let T := FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, U)
+    let T := _root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, U)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ U) p
     let C := finiteAlgebraLocalizedComplex T
       (originalWholeLocalizedComplex (F.leftIntermediateImageMap G H) hU p K) q
@@ -142,13 +146,14 @@ attribute [local instance] Algebra.TensorProduct.rightAlgebra
 /-- The actual tilde of the scalar-one tensor of an unrestricted original complex. -/
 abbrev unitTildeComplex (L : ChainComplex (ModuleCat.{u} B) ℕ) :=
   ((tilde.functor B).mapHomologicalComplex (ComplexShape.down ℕ)).obj
-    (tensorObj (Koszul.singleComplex B 1) L)
+    (tensorObj (_root_.ChainComplex.Koszul.singleComplex B 1) L)
 
 /-- Every original term is genuinely quasi-coherent. -/
 instance unitTildeComplex_quasicoherent (L : ChainComplex (ModuleCat.{u} B) ℕ) (n : ℕ) :
     ((unitTildeComplex B L).X n).IsQuasicoherent :=
   inferInstanceAs
-    (((tilde.functor B).obj ((tensorObj (Koszul.singleComplex B 1) L).X n)).IsQuasicoherent)
+    (((tilde.functor B).obj ((tensorObj (_root_.ChainComplex.Koszul.singleComplex B 1) L).X
+        n)).IsQuasicoherent)
 
 /-- The original contraction maps through the actual whole affine chart and its localization. -/
 def wholeUnitHomotopy (L : ChainComplex (ModuleCat.{u} B) ℕ) :
@@ -160,9 +165,9 @@ def wholeUnitHomotopy (L : ChainComplex (ModuleCat.{u} B) ℕ) :
     Scheme.Modules.restrictFunctor (FiniteAffineChart.sourceChart f hU) ⋙
     moduleSpecΓFunctor ⋙ ModuleCat.extendScalars
       (algebraMap Γ(Spec B, f ⁻¹ᵁ U)
-        (FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p))
+        (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p))
   exact (Homotopy.ofEq ((E.mapHomologicalComplex _).map_id _).symm).trans
-    ((E.mapHomotopy (Koszul.singleUnitTensorHomotopy L)).trans
+    ((E.mapHomotopy (_root_.ChainComplex.Koszul.singleUnitTensorHomotopy L)).trans
       (Homotopy.ofEq ((E.mapHomologicalComplex _).map_zero _ _)))
 
 /-- Every finite target-stalk list preserves the constructed contraction on the
@@ -170,16 +175,18 @@ whole localized coefficient; the original unrestricted complex needs no finitene
 theorem contractedWholeKoszulFinite (L : ChainComplex (ModuleCat.{u} B) ℕ)
     (s : List (Y.presheaf.stalk (hU.fromSpec p))) :
     FiniteHomology (originalWholeKoszulTotal f hU p (unitTildeComplex B L) s) := by
-  let T := FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p
+  let T := _root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(Y, U) Γ(Spec B, f ⁻¹ᵁ U) p
   let C := originalWholeLocalizedComplex f hU p (unitTildeComplex B L)
-  let D := Koszul.chainComplex ((s.map (targetStalkLocalizationIso hU p).hom.hom).map
+  let D := _root_.ChainComplex.Koszul.chainComplex ((s.map (targetStalkLocalizationIso hU
+      p).hom.hom).map
     (algebraMap (Localization.AtPrime p.asIdeal) T))
   have hc := (mapBifunctorMapHomotopy₂ (𝟙 D) (wholeUnitHomotopy B f hU p L)
     (CategoryTheory.MonoidalCategory.curriedTensor (ModuleCat T)) (ComplexShape.down ℕ)).trans
-      (Homotopy.ofEq (Koszul.tensorHom_zero_right D C))
+      (Homotopy.ofEq (_root_.ChainComplex.Koszul.tensorHom_zero_right D C))
   have hid : tensorHom (𝟙 D) (𝟙 C) = 𝟙 (tensorObj D C) := by
-    simpa only [one_smul] using Koszul.tensorHom_scalar_right D C (1 : T)
-  exact Koszul.finiteHomology_of_identity_homotopy _ ((Homotopy.ofEq hid.symm).trans hc)
+    simpa only [one_smul] using _root_.ChainComplex.Koszul.tensorHom_scalar_right D C (1 : T)
+  exact _root_.ChainComplex.Koszul.finiteHomology_of_identity_homotopy _ ((Homotopy.ofEq
+      hid.symm).trans hc)
 
 variable [IsNoetherianRing (Y.presheaf.stalk (hU.fromSpec p))]
 

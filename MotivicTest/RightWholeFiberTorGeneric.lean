@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.RightWholeFiberTorGeneric
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.RightWholeFiberTorGeneric
 
 /-!
 # Actual right whole Tor generic-cycle consumers
@@ -26,6 +26,9 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Intersection (closedIntersectionSupportedStalkTor)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceSecondAmbientInclusion)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -62,7 +65,7 @@ def actualOriginalSupportedStalk (n : ℕ) :
     (ModuleCat.restrictScalars
       (((F.rightIntermediateImageMap G H) ⁻¹ᵁ V).ι.stalkMap w.1).hom).obj
         (F.rightFirstStageWholeGenericStalk G H V w n) ≅
-      Intersection.closedIntersectionSupportedStalkTor
+      closedIntersectionSupportedStalkTor
         (correspondenceSecondAmbientInclusion X.hom Y.hom Z.hom W.hom)
         (F.tripleSupportProductInclusion G H)
         (F.rightIntermediateSupportInclusion G H) (F.rightIntermediateToTripleSupport G H)
@@ -90,7 +93,8 @@ theorem actualClosedFiberLength :
 
 /-- Every actual whole coefficient degree has finite length and finite degree support. -/
 theorem actualWholeFiniteLengthSupport :
-    LengthEuler.FiniteLengthSupport (F.rightFirstStageWholeGenericStalk G H V w) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport
+        (F.rightFirstStageWholeGenericStalk G H V w) :=
   F.rightFirstStageWholeGeneric_finiteLengthSupport G H V w
 
 /-- The original all-degree right whole coefficient has the original G,H weight. -/

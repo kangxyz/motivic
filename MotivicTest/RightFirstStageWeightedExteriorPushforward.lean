@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightFirstStageWeightedExteriorPushforward
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightFirstStageWeightedExteriorPushforward
 
 /-!
 # Arbitrary-field consumers of the actual right weighted exterior pushforward
@@ -27,8 +27,10 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme IntegralCycle SmoothSite
+  fundamentalCycle)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open IntegralClosedSubscheme
+open _root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme
 open scoped BigOperators
 
 universe u

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.GlobalBoundaryUnitPair
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.GlobalUnitPair
 
 /-! Different prescribed units on the same bundle, without a rational-function hypothesis. -/
 @[expose] public noncomputable section

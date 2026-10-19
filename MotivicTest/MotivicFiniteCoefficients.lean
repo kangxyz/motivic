@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.FiniteCoefficients
+public import Motivic.Cohomology.Coefficients.Finite.Complex
 public import Mathlib.Data.ZMod.Basic
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
@@ -21,8 +21,9 @@ explicitly occur together, with no invertibility assumption.
 
 @[expose] public noncomputable section
 
+open _root_.CochainComplex (finiteCoefficients)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 
@@ -141,25 +142,26 @@ example (q n : ℕ) {P Q R : PresheafWithTransfers.{u + 1} k} (f : P ⟶ Q) (g :
 
 /-- The integral map is natural in the original transfer coefficient. -/
 example (q n : ℕ) {P Q : PresheafWithTransfers.{u + 1} k} (f : P ⟶ Q) :
-    finiteCoefficients.integral ((motivicComplexFunctor k q).obj P) n ≫
+    _root_.CochainComplex.finiteCoefficients.integral ((motivicComplexFunctor k q).obj P) n ≫
         (motivicFiniteComplexFunctor k q n).map f =
       (motivicComplexFunctor k q).map f ≫
-        finiteCoefficients.integral ((motivicComplexFunctor k q).obj Q) n :=
-  finiteCoefficients.integral_naturality n ((motivicComplexFunctor k q).map f)
+        _root_.CochainComplex.finiteCoefficients.integral ((motivicComplexFunctor k q).obj Q) n :=
+  _root_.CochainComplex.finiteCoefficients.integral_naturality n ((motivicComplexFunctor k q).map f)
 
 /-- The connecting morphism is natural in the actual transfer coefficient as well. -/
 example (q n : ℕ) {P Q : PresheafWithTransfers.{u + 1} k} (f : P ⟶ Q) :
     (motivicFiniteComplexFunctor k q n).map f ≫
-        finiteCoefficients.bockstein ((motivicComplexFunctor k q).obj Q) n =
-      finiteCoefficients.bockstein ((motivicComplexFunctor k q).obj P) n ≫
+        _root_.CochainComplex.finiteCoefficients.bockstein ((motivicComplexFunctor k q).obj Q) n =
+      _root_.CochainComplex.finiteCoefficients.bockstein ((motivicComplexFunctor k q).obj P) n ≫
         ((motivicComplexFunctor k q).map f)⟦(1 : ℤ)⟧' :=
-  finiteCoefficients.bockstein_naturality n ((motivicComplexFunctor k q).map f)
+  _root_.CochainComplex.finiteCoefficients.bockstein_naturality n ((motivicComplexFunctor k
+      q).map f)
 
 /-- Composite coefficient reduction is natural in every map of the actual integral complex. -/
 example (f : motivicComplex k 2 ⟶ motivicComplex k 2) :
-    finiteCoefficients.map 6 f ≫ motivicFiniteComplex.reduction k 2 2 3 =
-      motivicFiniteComplex.reduction k 2 2 3 ≫ finiteCoefficients.map 2 f :=
-  finiteCoefficients.reduction_naturality (motivicComplex k 2) 2 f 3
+    _root_.CochainComplex.finiteCoefficients.map 6 f ≫ motivicFiniteComplex.reduction k 2 2 3 =
+      motivicFiniteComplex.reduction k 2 2 3 ≫ _root_.CochainComplex.finiteCoefficients.map 2 f :=
+  _root_.CochainComplex.finiteCoefficients.reduction_naturality (motivicComplex k 2) 2 f 3
 
 /-- Level one is included and comes with a real transfer-natural nullhomotopy. -/
 def levelOne (q : ℕ) : Homotopy (𝟙 (motivicFiniteComplex k q 1)) 0 :=

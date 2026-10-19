@@ -5,17 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PointedBaseOrdinaryVanishing
-public import Motivic.AlgebraicGeometry.SmoothSiteInjectives
+public import Motivic.Cohomology.A1.LocalVanishing.PointedBaseOrdinary
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Injectives
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
 /-! Actual original cohomology and actual point-fiber consumers of the zero-section square. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.PointedBaseOrdinaryVanishing
-open Motivic Motivic.FiniteEtaleSite
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 variable (R : CommRingCat.{u}) {X U : SmoothSite (Spec R)} (j : U ⟶ X)
   (Φ : (nisnevichTopology X.left).Point.{u + 1})
   (F : Sheaf (SmoothSite.nisnevichTopology (Spec R)) AddCommGrpCat.{u + 1}) (n : ℕ)
@@ -32,10 +33,10 @@ local instance : HasExt.{u + 1}
 /-- Base-germ vanishing is proved, not assumed, for actual positive ordinary cohomology. -/
 theorem actual_pointFiber_isZero
     [IsIso (colim.map (pointedProjection R Φ
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec R)) F (n + 1)) (pointedPuncture R j Φ)))]
     [Mono (colim.map (pointedCylinderRestriction R j Φ
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec R)) F (n + 1))))] :
     IsZero (Φ.sheafFiber.obj
       (((directImage (SmoothSite.a1Projection R X).left).rightDerived (n + 1)).obj
@@ -47,7 +48,7 @@ run_cmd do
   for name in #[``actual_pointFiber_isZero,
       ``Motivic.FiniteEtaleSite.pointedCylinderRestriction_zeroSection_colimit,
       ``Motivic.FiniteEtaleSite.pointedCylinderRestriction_colimit_eq_zero,
-      ``Motivic.FiniteEtaleSite.a1BaseChangeIso_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.a1BaseChangeIso_naturality,
       ``Motivic.FiniteEtaleSite.pointedBaseColimit_isZero_succ] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

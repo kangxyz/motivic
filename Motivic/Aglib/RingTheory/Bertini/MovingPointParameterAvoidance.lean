@@ -14,7 +14,7 @@ Their product can therefore be combined with any other nonzero open condition
 on that same parameter family without choosing a second projection.
 -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence.MovingPointChart
 variable (k R B : Type u) [Field k] [CommRing R] [IsDomain R] [CommRing B]

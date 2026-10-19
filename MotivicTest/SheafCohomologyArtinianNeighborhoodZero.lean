@@ -5,23 +5,25 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Cohomology.SheafCohomologyArtinianNeighborhoodZero
+import Motivic.Cohomology.Sheaf.ArtinianNeighborhoodZero
 import Lean
 /-! # Direct original-cohomology consumer and foundation audit -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.SmoothSite (nisnevichTopology)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
-open Motivic.SheafCohomology
+open _root_.CategoryTheory.Sheaf.LargeCohomology _root_.Motivic.SheafCohomology
 universe w u
 
 example {S : Scheme.{u}} [IsNoetherian S]
-    [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1})]
-    (F : Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1})
+    [HasExt.{w} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})]
+    (F : Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})
     (n : ℕ) (X : SmoothSite S)
-    (e : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology S) F (n + 1) X)
+    (e : H.{w, u + 1, u, u + 1} (nisnevichTopology S) F (n + 1) X)
     {Z : Scheme.{u}} (z : Z ⟶ X.left) [IsClosedImmersion z] [IsLocallyArtinian Z] :
     ∃ (Y : SmoothSite S) (p : Y ⟶ X), Etale p.left ∧
       IsIso (pullback.snd p.left z) ∧
-      (presheaf.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology S)
+      (presheaf.{w, u + 1, u, u + 1} (nisnevichTopology S)
         F (n + 1)).map p.op e = 0 :=
   exists_etale_neighborhood_restriction_eq_zero F n X e z
 

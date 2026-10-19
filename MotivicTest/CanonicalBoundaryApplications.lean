@@ -5,14 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PointedCartierH1Restriction
-public import Motivic.Cohomology.SheafCohomologyCartierVanishing
-import all Motivic.Cohomology.A1.ContractionBoundaryIso
-import all Motivic.Cohomology.A1.PointedCartierH1Restriction
-import all Motivic.Cohomology.SheafCohomologyCartierVanishing
-import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PresentationMissingBoundary
-import all Motivic.Cohomology.A1.OriginalEtalePresentationLifting
-import all Motivic.Cohomology.A1.PresentationLocalVanishing
+public import Motivic.Cohomology.A1.Cartier.Restriction.H1Restriction
+public import Motivic.Cohomology.Cartier.Vanishing
+import all Motivic.Cohomology.A1.Boundary.Contraction.Iso
+import all Motivic.Cohomology.A1.Cartier.Restriction.H1Restriction
+import all Motivic.Cohomology.Cartier.Vanishing
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.MissingBoundary
+import all Motivic.Cohomology.A1.LocalVanishing.Original.EtalePresentationLifting
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.Local
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -20,6 +20,7 @@ import Batteries.Tactic.Lint
 /-! # Actual Cartier applications with the canonical boundary input discharged -/
 
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules Scheme.Modules.Invertible
 universe u
@@ -39,8 +40,8 @@ theorem original_H1_cartier_puncture_injective
     (K : Type u) [Field K] (b : Spec (.of K) ⟶ Y.left) (s : Spec (.of K))
     (hb : b s ∈ Set.range i) :
     Function.Injective (colim.map (FiniteEtaleSite.pointedCylinderRestriction (.of k) j
-      (FiniteEtaleSite.relativeFieldPoint b K (𝟙 _))
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.relativeFieldPoint b K (𝟙 _))
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 1))) := by
   apply (AddCommGrpCat.mono_iff_injective _).mp
@@ -59,20 +60,21 @@ theorem original_higherDirectImage_isZero
     {Z : Scheme.{u}} (i : Z ⟶ Y.left) [IsClosedImmersion i] [Smooth (i ≫ Y.hom)]
     (hI : IsLocallyRankOne Y.left (Scheme.Hom.idealModule i))
     (hcomp : Set.range i = (Set.range j.left)ᶜ) :
-    IsZero (((FiniteEtaleSite.directImage j.left).rightDerived (n + 1)).obj
-      ((FiniteEtaleSite.restrict U AddCommGrpCat).obj
+    IsZero (((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.directImage
+        j.left).rightDerived (n + 1)).obj
+      ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.restrict U AddCommGrpCat).obj
         ((SheafWithTransfers.toSheaf k).obj F))) :=
   SheafCohomology.higherDirectImage_isZero_of_cartier k F n hP j i hI hcomp
 
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.ContractionBoundaryIso,
-    `Motivic.Cohomology.A1.PointedCartierH1Restriction,
-    `Motivic.Cohomology.SheafCohomologyCartierVanishing,
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PresentationMissingBoundary,
-    `Motivic.Cohomology.A1.OriginalEtalePresentationLifting,
-    `Motivic.Cohomology.A1.PresentationLocalVanishing]
+  let sourceModules := #[`Motivic.Cohomology.A1.Boundary.Contraction.Iso,
+    `Motivic.Cohomology.A1.Cartier.Restriction.H1Restriction,
+    `Motivic.Cohomology.Cartier.Vanishing,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.MissingBoundary,
+    `Motivic.Cohomology.A1.LocalVanishing.Original.EtalePresentationLifting,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.Local]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -102,12 +104,12 @@ run_cmd do
   let options : Lean.Linter.LinterOptions := {
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
-  let modules := #[`Motivic.Cohomology.A1.ContractionBoundaryIso,
-    `Motivic.Cohomology.A1.PointedCartierH1Restriction,
-    `Motivic.Cohomology.SheafCohomologyCartierVanishing,
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PresentationMissingBoundary,
-    `Motivic.Cohomology.A1.OriginalEtalePresentationLifting,
-    `Motivic.Cohomology.A1.PresentationLocalVanishing,
+  let modules := #[`Motivic.Cohomology.A1.Boundary.Contraction.Iso,
+    `Motivic.Cohomology.A1.Cartier.Restriction.H1Restriction,
+    `Motivic.Cohomology.Cartier.Vanishing,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.MissingBoundary,
+    `Motivic.Cohomology.A1.LocalVanishing.Original.EtalePresentationLifting,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.Local,
     `MotivicTest.CanonicalBoundaryApplications]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

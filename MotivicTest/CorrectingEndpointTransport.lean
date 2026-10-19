@@ -1,5 +1,5 @@
 module
-public import Motivic.AlgebraicGeometry.Correspondences.CorrectingEndpointTransport
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.CorrectionTransport
 /-! Direct consumer of the literal correcting endpoint construction. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false
@@ -9,6 +9,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory AlgebraicGeometry
 universe u
 namespace Motivic
+open _root_.AlgebraicGeometry.Scheme
 example {k : Type u} [Field k]
     {X T V Y X' T' V' Y' : SmoothSite (Spec (.of k))}
     (f : X ⟶ T) (g : X ⟶ V) (j : X ⟶ Y)

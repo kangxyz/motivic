@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedBaseRefinement
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SimultaneousNativeFrames
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.SimultaneousNativeFrames
 /-! # The original full-boundary frames on the actual one-sided refinement -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true

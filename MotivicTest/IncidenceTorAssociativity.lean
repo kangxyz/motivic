@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IncidenceTorAssociativity
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.TorAssociativity
 
 /-!
 # Actual arbitrary-field consumers of incidence Tor associativity
@@ -20,6 +20,7 @@ connectedness, integrality, perfectness, or comparison hypothesis is supplied.
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

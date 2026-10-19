@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.EtaleBoundaryIdeal
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.CoproductTrivialization
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.DisjointBoundary.Trivialization
 
 /-! # Canonical trivialization on the actual infinity boundary -/
 @[expose] public noncomputable section

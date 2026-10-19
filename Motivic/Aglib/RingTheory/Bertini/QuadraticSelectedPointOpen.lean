@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.RingTheory.Bertini.QuadraticParameterTuple
-public import Motivic.Aglib.RingTheory.SimultaneousResidueMultivariateAvoidance
+public import Motivic.Aglib.RingTheory.Polynomial.Avoidance.MultivariateResidue
 public import Motivic.Aglib.RingTheory.Kaehler.SmoothCotangentTrdeg
 public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 
@@ -14,7 +14,7 @@ public import Mathlib.LinearAlgebra.Matrix.Determinant.Basic
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open Module MvPolynomial TensorProduct KaehlerDifferential
+open Module _root_.MvPolynomial TensorProduct KaehlerDifferential
 universe u
 namespace QuadraticIncidence
 

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtalePointOrdinaryColimitNaturality
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryDerivedSectionsCoefficient
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.OrdinaryColimitNaturality
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.DerivedSectionsCoefficient
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
@@ -15,7 +15,8 @@ public import Lean.Util.CollectAxioms
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.FiniteEtalePointOrdinaryColimit
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {S T : Scheme.{u}} (b : T ⟶ S) (x : S)
 
 local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :=
@@ -50,10 +51,10 @@ open Lean in
 run_cmd do
   for name in #[``actual_residue_ordinary_colimit,
       ``actual_point_ordinary_colimit_naturality,
-      ``Motivic.FiniteEtaleSite.ordinaryPointHomologyIso,
-      ``Motivic.FiniteEtaleSite.derivedDirectImagePointOrdinaryColimitIso_naturality,
-      ``Motivic.FiniteEtaleSite.ordinaryNeighborhoodDerivedSections_naturality_left,
-      ``Motivic.FiniteEtaleSite.ordinaryNeighborhoodDerivedSections_naturality_right] do
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.ordinaryPointHomologyIso,
+      ``derivedDirectImagePointOrdinaryColimitIso_naturality,
+      ``ordinaryNeighborhoodDerivedSections_naturality_left,
+      ``ordinaryNeighborhoodDerivedSections_naturality_right] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

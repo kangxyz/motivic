@@ -8,7 +8,7 @@ The iterative finite elimination and smooth local charts share their literal
 base functions. The original closed quotient, including nilpotents, is retained.
 -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u v
 namespace Algebra
 

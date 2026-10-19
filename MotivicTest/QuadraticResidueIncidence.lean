@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Bertini.QuadraticResidueIncidence
 import Lean.Util.CollectAxioms
 
 /-! # Original affine generators supply the incidence cotangent quotient -/
-open Module TensorProduct MvPolynomial KaehlerDifferential LinearMap
+open Module TensorProduct _root_.MvPolynomial KaehlerDifferential LinearMap
 
 example (k R K : Type) [CommRing k] [CommRing R] [Field K]
     [Algebra k R] [Algebra R K] [Algebra.EssFiniteType k R]

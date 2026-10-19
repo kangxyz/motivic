@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IteratedIncidenceSupport
-public import Motivic.AlgebraicGeometry.Cycles.IntegralCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.IncidenceSupport
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.IntegralCycle
 public import Mathlib.AlgebraicGeometry.Morphisms.QuasiFinite
 
 /-! # Actual common-incidence and finite intermediate-image consumers -/
@@ -20,6 +20,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.TripleIncidence
+open _root_.AlgebraicGeometry.Scheme
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}

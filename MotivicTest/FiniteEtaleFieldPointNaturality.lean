@@ -5,15 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleFieldPointNaturality
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleFieldEvaluation
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Field.Point.Naturality
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Field.Evaluation
 public import Lean.Util.CollectAxioms
 
 /-! Direct consumers of the actual field restriction and ordinary evaluation. -/
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic Motivic.FiniteEtaleSite
+open CategoryTheory
+open CategoryTheory.Limits
+open Opposite
+open AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 universe u
 namespace MotivicTest.FiniteEtaleFieldPointNaturality
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {S T : Scheme.{u}} (b : S ⟶ T)
   (K L : Type u) [Field K] [Field L]
   (q : Spec (.of K) ⟶ S) (r : Spec (.of L) ⟶ S)
@@ -39,8 +44,9 @@ theorem actual_field_epi
 open Lean in
 run_cmd do
   for name in #[``actual_field_restriction, ``actual_field_epi,
-      ``relativeFieldPointHom_ι, ``relativeFieldPointInverseImageIso_field_naturality,
-      ``fieldEvaluation_shortExact] do
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.relativeFieldPointHom_ι,
+          ``relativeFieldPointInverseImageIso_field_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldEvaluation_shortExact] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

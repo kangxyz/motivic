@@ -4,8 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.PolynomialOpenMovingAction
-public import Motivic.Aglib.AlgebraicGeometry.AffineLineOpenCoordinate
+public import Motivic.Cohomology.A1.Moving.PolynomialOpen
+public import Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineOpenCoordinate
 /-! # Dense-open restriction for an arbitrary homotopy-invariant presheaf with transfers -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
@@ -15,7 +15,8 @@ open CategoryTheory AlgebraicGeometry Polynomial
 open AlgebraicGeometry.PolynomialOpenQuotient
 universe v u
 namespace Motivic.PolynomialOpenSpans
-open AffineLineReducedComplement
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 variable {k : Type u} [Field k]
 
 /-- The actual restriction to D(fg) is injective. No sheaf condition is imposed. -/
@@ -31,7 +32,7 @@ theorem principal_restriction_injective
   let : IsNoetherianRing (openCoordinateRing U) := openCoordinateRing_noetherian U
   let : Algebra.Smooth k (openCoordinateRing U) := openCoordinateRing_smooth U
   let : IsAffine (openObject U).left := ‹IsAffine U.toScheme›
-  let e := SmoothSiteAffineCoordinates.affineIso (openObject U)
+  let e := AffineCoordinates.affineIso (openObject U)
   have hj : e.hom ≫ openInclusion f = coordinateMorphism (openCoordinate U) := by
     apply MorphismProperty.Over.Hom.ext
     exact (spec_eval_eq_original_inclusion U).symm

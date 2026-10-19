@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityCoefficientQuotient
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.CoefficientQuotient
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Consumers of the full exterior coefficient parameter quotient -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -23,11 +24,12 @@ variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (B : FiniteCorrespondenceGenerator Y.hom Z.hom) (n : ℕ)
 
 example :
-    A.exteriorCoefficientQuotientSupport B (AlgebraicSimplex.smoothSiteObj k n) ≅
-      A.exteriorParameterDiagonal (AlgebraicSimplex.smoothSiteObj k n) B :=
+    A.exteriorCoefficientQuotientSupport B (_root_.AlgebraicSimplex.smoothSiteObj k n) ≅
+      A.exteriorParameterDiagonal (_root_.AlgebraicSimplex.smoothSiteObj k n) B :=
   A.exteriorCoefficientQuotientIso B _
 
-example : Flat (A.exteriorCoefficientQuotientProjection B (AlgebraicSimplex.smoothSiteObj k n)) :=
+example : Flat (A.exteriorCoefficientQuotientProjection B (_root_.AlgebraicSimplex.smoothSiteObj k
+    n)) :=
   inferInstance
 
 example (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom] :

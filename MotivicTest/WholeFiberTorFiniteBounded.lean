@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorBounded
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorBounded
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual first-stage whole Tor finiteness and boundedness
@@ -30,8 +31,11 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorFiniteBounded
+open _root_.AlgebraicGeometry.Scheme
+open _root_.AlgebraicGeometry.Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Products
 
-open Intersection
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}
@@ -54,7 +58,8 @@ local instance actualCoordinateAlgebra :
 theorem actualWholeCoefficient_finite [IsLocallyNoetherian S]
     [LocallyOfFiniteType f] [LocallyOfFiniteType g] [LocallyOfFiniteType h]
     [LocallyOfFiniteType i] (n : ℕ) :
-    Module.Finite (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
+    Module.Finite (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G
+        H, V)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ V) p)
       (F.firstStageWholeLocalizedCoefficient G H V p n) := by
   have := isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
@@ -65,7 +70,7 @@ theorem actualFiberPoint_bound [Flat f] [Smooth g] [Flat h] [Flat i]
     (x : {w : F.leftIntermediateSupportProduct G H //
       F.leftIntermediateImageMap G H w = V.2.fromSpec p}) :
     ∃ b : ℕ, ∀ n, b ≤ n →
-      Subsingleton ((ModuleStalk.functor x.1).obj (F.firstStageWholeAmbientCoefficient G H V n)) :=
+      Subsingleton ((Stalk.functor x.1).obj (F.firstStageWholeAmbientCoefficient G H V n)) :=
   F.firstStageWholeStalk_exists_bound G H V x.1
     (wholeFiberTor_source_mem (F.leftIntermediateImageMap G H) V p x)
 
@@ -93,7 +98,8 @@ theorem actualSmoothWholeCoefficient_finite (n : ℕ) :
     letI : Algebra Γ(F.leftIntermediateImageProduct G H, V)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ V) :=
         ((F.leftIntermediateImageMap G H).app V).hom.toAlgebra
-    Module.Finite (FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G H, V)
+    Module.Finite (_root_.PrimeSpectrum.FiniteFiber.localAlgebra Γ(F.leftIntermediateImageProduct G
+        H, V)
       Γ(F.leftIntermediateSupportProduct G H, (F.leftIntermediateImageMap G H) ⁻¹ᵁ V) p)
       (F.firstStageWholeLocalizedCoefficient (S := Spec (.of K)) G H V p n) :=
   actualWholeCoefficient_finite (S := Spec (.of K)) F G H V p n

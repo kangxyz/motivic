@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FiniteSupportShrinking
-public import Motivic.AlgebraicGeometry.SmoothSite
+public import Motivic.AlgebraicGeometry.Correspondences.Support.FiniteShrinking
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Basic
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -22,6 +22,7 @@ connectedness, perfectness, or Nisnevich lifting assumption is introduced.
 
 set_option linter.mathlibStandardSet true
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

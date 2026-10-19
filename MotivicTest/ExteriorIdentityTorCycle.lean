@@ -5,20 +5,21 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityTorCycle
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.TorCycle
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Consumers of the actual exterior incidence Tor cycle -/
 
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.WholeFiberTorExteriorDecomposition
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.ComponentDecomposition
 open scoped BigOperators
 
 universe u
 
 namespace MotivicTest.ExteriorIdentityTorCycle
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -26,11 +27,12 @@ variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom]
 
 local instance : IsNoetherian (A.exteriorIncidenceSupport B T) :=
-  isNoetherian_of_finiteType (pullback.fst (A.incidenceSource B ≫ X.hom) T.hom)
+  _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (pullback.fst (A.incidenceSource B ≫
+      X.hom) T.hom)
 
 local instance (x : genericPoints (A.incidence B)) :
     IsNoetherian (componentExterior (A.incidenceSource B ≫ X.hom) T.hom x) :=
-  isNoetherian_of_finiteType
+  _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType
     (componentExteriorInclusion (A.incidenceSource B ≫ X.hom) T.hom x)
 
 example :
@@ -44,7 +46,8 @@ example :
         A.incidenceTorCoefficient (S := Spec (.of k)) B x •
           IntegralCycle.finitePushforward
             (componentExteriorInclusion (A.incidenceSource B ≫ X.hom) T.hom x)
-            (fundamentalCycle (componentExterior (A.incidenceSource B ≫ X.hom) T.hom x))) :=
+            (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (componentExterior (A.incidenceSource
+                B ≫ X.hom) T.hom x))) :=
   A.exteriorIncidenceTorCycle_eq_component_sum B T
 
 end MotivicTest.ExteriorIdentityTorCycle

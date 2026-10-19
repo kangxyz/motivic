@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
-public import Motivic.Algebra.Homology.KoszulCoefficientComplex
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
+public import Aglib.Algebra.Homology.Koszul.Coefficient
 public import Mathlib.AlgebraicGeometry.Morphisms.QuasiFinite
 
 /-!
@@ -27,6 +27,7 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.IntermediateDiagonalLists
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}
@@ -82,13 +83,14 @@ def actualRemainingCoefficientIso (w : F.leftIntermediateSupportProduct G H)
     (M : ModuleCat ((F.leftIntermediateSupportProduct G H).presheaf.stalk w))
     (s : List ((CategoryTheory.Limits.pullback h h).presheaf.stalk
       (F.leftSupportMiddlePair G H w))) :
-    Koszul.coefficientComplex M
+    _root_.ChainComplex.Koszul.coefficientComplex M
         ((s.map (F.leftImageMiddleStalkMap G H w).hom).map
           ((F.leftIntermediateImageMap G H).stalkMap w).hom) ≅
-      Koszul.coefficientComplex M
+      _root_.ChainComplex.Koszul.coefficientComplex M
         ((s.map (F.leftAmbientMiddleStalkMap G H w).hom).map
           ((F.leftIntermediateAmbientInclusion G H).stalkMap w).hom) :=
-  eqToIso (congrArg (Koszul.coefficientComplex M) (F.leftRemainingList_square G H w s))
+  eqToIso (congrArg (_root_.ChainComplex.Koszul.coefficientComplex M) (F.leftRemainingList_square G
+      H w s))
 
 /-- The relevant finite fiber is that of the true intermediate-image product
 map, without using the generally nonfinite right-pair projection. -/

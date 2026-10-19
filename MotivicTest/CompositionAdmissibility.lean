@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.CompositionAdmissibility
-public import Motivic.AlgebraicGeometry.Cycles.IntegralCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Admissibility
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.IntegralCycle
 
 /-!
 # Consumers of actual finite-image admissibility
@@ -24,10 +24,11 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.CompositionAdmissibility
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme IntegralCycle)
 
 example {W T X : Scheme.{u}} (a : W ⟶ T) (p : T ⟶ X)
     [IsFinite (a ≫ p)] [IsSeparated p] [LocallyOfFiniteType p] :
-    IsFinite (a.imageι ≫ p) := isFinite_image_projection a p
+    IsFinite (a.imageι ≫ p) := _root_.AlgebraicGeometry.Scheme.Hom.isFinite_image_projection a p
 
 variable {S X Y Z : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S}
 variable (A : FiniteCorrespondenceGenerator f g) (B : FiniteCorrespondenceGenerator g h)

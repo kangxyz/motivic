@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.HenselianEtaleSections
+public import Motivic.Aglib.RingTheory.Etale.HenselianSections
 
 /-!
 # Consumers of henselian étale sections
@@ -17,7 +17,7 @@ The final consumer derives henselianity for a local Artinian base, without any
 reducedness assumption, from maximal-ideal completeness.
 -/
 
-open IsLocalRing Motivic.HenselianEtale
+open IsLocalRing _root_.Algebra.Etale.Henselian
 
 universe u v
 
@@ -75,10 +75,10 @@ example {R : Type u} {B : Type v} [CommRing R] [CommRing B]
   exact ψ.commutes r
 
 set_option linter.hashCommand false in
-#print axioms Motivic.HenselianEtale.exists_lift_of_standardEtalePair
+#print axioms exists_lift_of_standardEtalePair
 set_option linter.hashCommand false in
-#print axioms Motivic.HenselianEtale.exists_lift_of_isStandardEtale
+#print axioms exists_lift_of_isStandardEtale
 set_option linter.hashCommand false in
-#print axioms Motivic.HenselianEtale.exists_lift_of_etale
+#print axioms exists_lift_of_etale
 set_option linter.hashCommand false in
-#print axioms Motivic.HenselianEtale.exists_lift_of_etale_of_artinian
+#print axioms exists_lift_of_etale_of_artinian

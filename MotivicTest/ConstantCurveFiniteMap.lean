@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.ConstantCurveFiniteMap
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.RelativeCurve.ConstantCurveFiniteMap
 
 /-! The actual relative finite map and its structural equation. -/
 @[expose] public noncomputable section

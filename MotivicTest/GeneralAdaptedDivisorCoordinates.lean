@@ -1,5 +1,5 @@
-import Motivic.Aglib.AlgebraicGeometry.AffineDivisorEtaleComparison
-import Motivic.Aglib.AlgebraicGeometry.AffinePrincipalDivisorChart
+import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.EtaleComparison.AffineDivisorEtaleComparison
+import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.EtaleComparison.AffinePrincipalDivisorChart
 import Lean.Util.CollectAxioms
 
 /-! # Direct consumer and axiom audit for actual adapted smooth-divisor coordinates -/

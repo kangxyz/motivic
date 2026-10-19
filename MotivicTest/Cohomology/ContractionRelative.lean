@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.ContractionRelative
+public import Motivic.Cohomology.A1.Contraction.Relative
 
 /-!
 # Standard-Ext consumers of the actual contraction boundary
@@ -18,6 +18,7 @@ and the exact image condition, without a homotopy-invariance hypothesis.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian AlgebraicGeometry Opposite Motivic
 
 universe u
@@ -45,10 +46,10 @@ theorem actual_negative_boundary
     (s : PresheafWithTransfers.sections (PresheafWithTransfers.torusSections F.obj) X) :
     SheafWithTransfers.contractionToRelative.{u + 2} F X
         ((PresheafWithTransfers.toContraction F.obj).hom.app (op X) s) =
-      -((SheafCohomology.relativeExtClass.{u + 2, u + 1}
+      -((_root_.CategoryTheory.Sheaf.LargeCohomology.relativeExtClass.{u + 2, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         (SmoothSite.contractionOpen (.of k) X.toSmoothSite)).comp
-        ((SheafCohomology.zeroSections.{u + 2, u + 1}
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections.{u + 2, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf.{u + 1} k).obj F)
           (SmoothSite.torusCylinder (.of k) X.toSmoothSite)).symm s) (by decide)) := by
@@ -58,7 +59,7 @@ theorem actual_negative_boundary
 /-- The actual quotient image is exactly the kernel of forgetting the relative condition. -/
 theorem actual_image_ker :
     (SheafWithTransfers.contractionToRelative.{u + 2} F X).range =
-      (SheafCohomology.relativeForget.{u + 2, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeForget.{u + 2, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         (SmoothSite.contractionOpen (.of k) X.toSmoothSite)
         ((SheafWithTransfers.toSheaf.{u + 1} k).obj F) 1).hom.ker :=
@@ -70,7 +71,7 @@ theorem actual_representative_iff
     (z : SheafWithTransfers.contractionRelativeH.{u + 2} F X) :
     (∃ c : PresheafWithTransfers.sections (PresheafWithTransfers.contraction F.obj) X,
       SheafWithTransfers.contractionToRelative.{u + 2} F X c = z) ↔
-      (Ext.mk₀ (SheafCohomology.relativeSourceπ.{u + 1, u, u + 1}
+      (Ext.mk₀ (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeSourceπ.{u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         (SmoothSite.contractionOpen (.of k) X.toSmoothSite))).comp z (zero_add 1) = 0 :=
   SheafWithTransfers.contractionToRelative_mem_range_iff F X z

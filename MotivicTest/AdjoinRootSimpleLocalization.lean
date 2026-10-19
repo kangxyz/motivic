@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.AdjoinRootSimpleLocalization
-public import Motivic.Aglib.RingTheory.MonicUnitInterpolation
+public import Motivic.Aglib.RingTheory.AdjoinRoot.SimpleLocalization
+public import Motivic.Aglib.RingTheory.Polynomial.Interpolation.MonicUnit
 public import Mathlib.Algebra.Field.ZMod
 
 /-!

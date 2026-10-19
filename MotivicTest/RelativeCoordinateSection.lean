@@ -1,7 +1,7 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CoordinateSection
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.RelativeChartBaseChange
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.AffineZeroNeighborhood
+import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.ProjectiveLine.CoordinateSection.Basic
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Charts.BaseChange
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.AffineZeroNeighborhood
 /-! Literal original graph ideal and nonmonic affine neighborhood consumers. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

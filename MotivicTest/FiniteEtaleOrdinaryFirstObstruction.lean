@@ -5,16 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryFirstObstruction
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.FirstObstruction
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
 /-! Actual ordinary first-obstruction exactness and transitive trust audit. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.FiniteEtaleOrdinaryFirstObstruction
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {S T : Scheme.{u}} (b : T ⟶ S)
 local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
@@ -22,10 +23,10 @@ local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 
   hasExt_of_enoughInjectives _
 
 /-- Neither a derived comparison nor an obstruction map is assumed. -/
-theorem actual_first_obstruction_exact (V : FiniteEtaleSite S)
+theorem actual_first_obstruction_exact (V : EtaleSeparatedFiniteType S)
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) (N : ℕ) (hN : 0 < N)
     (hR : ∀ q : ℕ, 0 < q → q < N → IsZero (((directImage b).rightDerived q).obj F))
-    (x : SheafCohomology.H.{u + 1, u + 1, u, u + 1}
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 1, u + 1, u, u + 1}
       (nisnevichTopology T) F N ((baseChange b).obj V)) :
     ordinaryFirstObstruction b V F N x = 0 ↔
       ∃ z, ordinaryEdgeMap b V F N z = x :=

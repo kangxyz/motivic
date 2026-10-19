@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.TwoUnitMonicDeformation
+public import Motivic.Aglib.RingTheory.Polynomial.Interpolation.TwoUnitDeformation
 public import Lean.Util.CollectAxioms
 
 /-!

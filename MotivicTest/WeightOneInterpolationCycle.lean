@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneInterpolationCycle
+public import Motivic.Cohomology.WeightOne.InterpolationCycle
 
 /-!
 # Consumers of the actual whole monic interpolation correspondence
@@ -24,6 +24,7 @@ open Motivic.WeightOneInterpolationCycle
 universe u
 
 namespace Motivic.MotivicTest.WeightOneInterpolationCycle
+open _root_.AlgebraicGeometry.Scheme
 
 variable {k : Type u} [Field k]
 

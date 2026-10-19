@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.OpenProductNeighborhoods
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.OpenProductNeighborhoods
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Support.Embedding
 
 /-! # Actual point and scalar-module consumers of product neighborhoods -/
 
@@ -13,13 +14,16 @@ public import Motivic.AlgebraicGeometry.Diagonal.OpenProductNeighborhoods
 
 noncomputable section
 
+open _root_.Motivic (FiniteCorrespondenceGenerator)
 open CategoryTheory AlgebraicGeometry
 
 universe u
 
 namespace Motivic.MotivicTest.OpenProductNeighborhoods
+open _root_.AlgebraicGeometry.Scheme.Products
 
-open Motivic.OpenProductNeighborhoods Intersection
+open _root_.AlgebraicGeometry.Scheme.Products.OpenNeighborhoods
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable {S X Y Z X' Y' Z' : Scheme.{u}}
   (f : X ⟶ S) (g : Y ⟶ S) (h : Z ⟶ S)

@@ -4,8 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteEtaleAwayFunctionField
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.FunctionFieldOpenComposition
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.FiniteChart.EtaleAwayFunctionField
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.FunctionField.OpenComposition
 public import Lean
 
 /-! # Original finite coordinates and selected étale chart give the actual field extension -/

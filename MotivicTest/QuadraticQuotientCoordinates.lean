@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticQuotientCoordinates
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Charts.QuotientCoordinates
 /-! Exact generators and coordinates on the original quotient, including nilpotent thickenings. -/
 set_option linter.hashCommand false
 public noncomputable section

@@ -9,7 +9,7 @@ quotient, retaining every original parameter coordinate and the original
 cotangent module. No field or flatness assumption is needed.
 -/
 @[expose] public noncomputable section
-open MvPolynomial Module TensorProduct KaehlerDifferential
+open _root_.MvPolynomial Module TensorProduct KaehlerDifferential
 universe u v
 namespace QuadraticIncidence
 

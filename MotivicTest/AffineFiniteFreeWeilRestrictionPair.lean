@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionPair
-import all Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionPair
+public import Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Pair
+import all Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Pair
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -54,7 +54,7 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionPair]
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Pair]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -81,7 +81,7 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionPair,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Pair,
     `MotivicTest.AffineFiniteFreeWeilRestrictionPair]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorRemainingProjection
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorRemainingProjection
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original finite-map remaining projection on actual smooth correspondences
@@ -30,8 +31,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorRemainingProjection
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
-open LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)

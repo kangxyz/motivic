@@ -33,10 +33,10 @@ theorem imageExtendedι_mapExtendIso :
     extendMap_f I.ι ComplexShape.embeddingUpNat (i := 0) rfl]
   have hh (a : Option ℕ) (h : a = some 0) :
       (extend.XIso ((R.mapHomologicalComplex (.up ℕ)).obj I.cocomplex) h).inv ≫
-        (mapExtendXIso I.cocomplex R a).inv = R.map (extend.XIso I.cocomplex h).inv := by
+        (extend.mapXIso I.cocomplex R a).inv = R.map (extend.XIso I.cocomplex h).inv := by
     subst a
-    simp [extend.XIso, mapExtendXIso, extend.X, Functor.mapHomologicalComplex]
-  simp only [mapExtendIso, imageι_f_zero, imageComplex,
+    simp [extend.XIso, extend.mapXIso, extend.X, Functor.mapHomologicalComplex]
+  simp only [mapExtendIso, mapExtendXIso, imageι_f_zero, imageComplex,
     singleObjXSelf, singleObjXIsoOfEq, extendXIso,
     Functor.mapHomologicalComplex_obj_X, CochainComplex.single₀_obj_zero,
     Iso.refl_inv, Category.id_comp, ComplexShape.embeddingUpNat_f, Int.cast_ofNat_Int,

@@ -5,9 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RightTripleDiagonalAmbient
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorFinite
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Right.DiagonalAmbient
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.Tor.WholeFiber.Finite
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Right-first whole inverse-image Tor coefficient
@@ -25,11 +26,18 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open _root_.AlgebraicGeometry.Scheme (SmoothSite correspondenceSixfoldAmbient_isSeparated
+  isLocallyNoetherian_correspondenceSixfoldAmbient)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceSecondAmbientInclusion
+  correspondenceSixfoldAmbient)
+open _root_.PrimeSpectrum.FiniteFiber (localAlgebra)
+open CategoryTheory AlgebraicGeometry Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberTorCoefficient
+open _root_.AlgebraicGeometry.Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine
 
 variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S}
   {h : Z ⟶ S} {i : W ⟶ S} [S.IsSeparated]
@@ -79,7 +87,7 @@ def actualWholeSectionModule
 
 /-- The actual affine tilde equivalence reconstructs the original whole-preimage sheaf. -/
 def actualWholeTildeIso (U : (F.rightIntermediateImageProduct G H).affineOpens) (n : ℕ) :
-    (AffineOpenTilde.chartTilde (wholeFiberTorAffineOpen (F.rightIntermediateImageMap G H) U)).obj
+    (OpenTilde.chartTilde (wholeFiberTorAffineOpen (F.rightIntermediateImageMap G H) U)).obj
       (actualWholeSectionModule F G H U n) ≅ actualWholeCoefficient F G H U n :=
   wholeFiberTorTildeIso _ _ _ _ _ _ _ _
 
@@ -101,7 +109,7 @@ theorem actualWholeStalk_finite [IsLocallyNoetherian S]
     (U : (F.rightIntermediateImageProduct G H).affineOpens)
     (x : ((F.rightIntermediateImageMap G H) ⁻¹ᵁ U).toScheme) (n : ℕ) :
     Module.Finite (((F.rightIntermediateImageMap G H) ⁻¹ᵁ U).toScheme.presheaf.stalk x)
-      ((ModuleStalk.functor x).obj
+      ((Stalk.functor x).obj
         (wholeFiberTorCoefficient (F.tripleSupportProductInclusion G H)
           (correspondenceSecondAmbientInclusion f g h i) (F.rightIntermediateSupportInclusion G H)
           (F.rightIntermediateToTripleSupport G H) (F.rightIntermediate_ambient_isPullback G H)
@@ -129,7 +137,7 @@ theorem actualWholeLocalizedSections_finite [IsLocallyNoetherian S]
     letI : Algebra Γ(F.rightIntermediateImageProduct G H, U)
       Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ U) :=
         ((F.rightIntermediateImageMap G H).app U).hom.toAlgebra
-    Module.Finite (FiniteFiber.localAlgebra Γ(F.rightIntermediateImageProduct G H, U)
+    Module.Finite (localAlgebra Γ(F.rightIntermediateImageProduct G H, U)
       Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ U) p)
       (actualWholeLocalizedSections F G H U p n) := by
   have := isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
@@ -154,7 +162,7 @@ stalks without algebraic closure, nonemptiness or a fixed common dimension. -/
 theorem actualSmoothWholeStalk_finite
     (x : ((F.rightIntermediateImageMap G H) ⁻¹ᵁ U).toScheme) (n : ℕ) :
     Module.Finite (((F.rightIntermediateImageMap G H) ⁻¹ᵁ U).toScheme.presheaf.stalk x)
-      ((ModuleStalk.functor x).obj
+      ((Stalk.functor x).obj
         (actualWholeCoefficient (S := Spec (.of K)) F G H U n)) :=
   actualWholeStalk_finite (S := Spec (.of K)) F G H U x n
 
@@ -165,7 +173,7 @@ theorem actualSmoothWholeLocalizedSections_finite
     letI : Algebra Γ(F.rightIntermediateImageProduct G H, U)
       Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ U) :=
         ((F.rightIntermediateImageMap G H).app U).hom.toAlgebra
-    Module.Finite (FiniteFiber.localAlgebra Γ(F.rightIntermediateImageProduct G H, U)
+    Module.Finite (localAlgebra Γ(F.rightIntermediateImageProduct G H, U)
       Γ(F.rightIntermediateSupportProduct G H, (F.rightIntermediateImageMap G H) ⁻¹ᵁ U) p)
       (actualWholeLocalizedSections (S := Spec (.of K)) F G H U p n) :=
   actualWholeLocalizedSections_finite (S := Spec (.of K)) F G H U p n

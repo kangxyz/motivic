@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.LowerRankPersistentPuncture
-public import Motivic.AlgebraicGeometry.SmoothSiteInjectives
+public import Motivic.Cohomology.A1.LocalVanishing.Puncture.LowerRankPersistent
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Injectives
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
@@ -15,10 +15,12 @@ public import Lean.Util.CollectAxioms
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe u
 namespace MotivicTest.LowerRankPersistentPuncture
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 variable {k : Type u} [Field k] {X U : SmoothSite (Spec (.of k))} (j : U ⟶ X)
   (K : Type u) [Field K] (b : Spec (.of K) ⟶ X.left) (p : Spec (.of K))
   (F : SheafWithTransfers.{u + 1} k)
@@ -38,7 +40,7 @@ theorem actual_pointFiber_isZero
       (SheafCohomology.withTransfers k F q).IsA1Invariant)
     (hIH : LowerRankCylinderGermsZero F (n + 1) d)
     [Mono (colim.map (pointedCylinderRestriction (.of k) j (relativeFieldPoint b K (𝟙 _))
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) ((SheafWithTransfers.toSheaf k).obj F)
           (n + 1))))] :
     IsZero ((relativeFieldPoint b K (𝟙 _)).sheafFiber.obj
@@ -54,8 +56,8 @@ run_cmd do
       ``AlgebraicGeometry.Scheme.stalk_rank_lt_of_proper_generization,
       ``Motivic.FiniteEtaleSite.persistentPunctureImageZero_of_lowerRank,
       ``Motivic.FiniteEtaleSite.pointedPunctureProjection_colimit_isIso,
-      ``Motivic.FiniteEtaleSite.baseOpenPunctureIso_hom_inclusion,
-      ``Motivic.FiniteEtaleSite.exists_point_open_refinement_of_mem] do
+      ``baseOpenPunctureIso_hom_inclusion,
+      ``exists_point_open_refinement_of_mem] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

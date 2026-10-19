@@ -4,12 +4,12 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.AffineFiberPrincipalNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Smooth.Bertini.WholeFiberPrincipalNeighborhood
 public import Lean
 
 /-! # Actual principal affine neighborhoods of whole closed fibers -/
 public noncomputable section
-open CategoryTheory AlgebraicGeometry QuadraticIncidence MvPolynomial
+open CategoryTheory AlgebraicGeometry QuadraticIncidence _root_.MvPolynomial
 universe u
 namespace MotivicTest.AffineFiberPrincipalNeighborhood
 

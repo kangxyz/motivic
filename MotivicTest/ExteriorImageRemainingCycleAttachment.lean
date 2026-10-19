@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.ExteriorImageRemainingCycleAttachment
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.ExteriorImageRemainingCycleAttachment
 
 /-!
 # Actual smooth-component remaining cycle attachment
@@ -27,11 +27,12 @@ noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.Sequence
 open Motivic.ExteriorImageComponentGeometry Motivic.ExteriorImageRemainingCycleAttachment
-open Motivic.LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
 namespace MotivicTest.ExteriorImageRemainingCycleAttachment
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme IntegralCycle SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -92,16 +93,16 @@ theorem actualRemainingPushforwardCoefficient_replacement
         IntegralCycle.toPoints
           (IntegralCycle.finitePushforward
             (exteriorInclusion F G H (imageComponent F G z) ∣_ V.1)
-            (fundamentalCycle
+            (_root_.AlgebraicGeometry.Scheme.fundamentalCycle
               (exteriorInclusion F G H (imageComponent F G z) ⁻¹ᵁ V.1).toScheme))
           ⟨q.1.1, q.2.mem_open V.1.isOpen
             (V.2.range_fromSpec.subset (Set.mem_range_self p))⟩ *
-          chainEuler (Koszul.coefficientComplex
+          chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
             (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
               (((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸
                 ((F.firstStageTargetGenericEquiv G H V p).symm q).1))
             (F.leftTargetRemainingList G H (V.2.fromSpec p) s))
-            (Koszul.fixedSupport_prime_finiteHomology
+            (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology
               (F.leftTargetRemainingList G H (V.2.fromSpec p) s) ⊥
               ((F.firstStageTargetGenericEquiv G H V p).symm q).1
               ((F.firstStageTargetGenericEquiv G H V p).symm q).2.le) := by
@@ -125,7 +126,7 @@ theorem actualOutsideExterior_chainEuler_and_pushforward_zero
         componentRemainingMap F G H z w.1 = y.1 :=
       fun hw => hout ((remainingToImage_exists_generic_iff F G H (imageComponent F G z)
         (F.smoothIncidenceComponentGenerator k G z) (smoothComponent_imageKernel k F G z) y).mp hw)
-    chainEuler (Koszul.coefficientComplex
+    chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
       (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk
         (F.leftImageIncidenceInclusion G H y.1))
         (((F.leftIntermediateImageProduct G H).presheaf.stalk

@@ -5,13 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.FiniteExtensionPolynomialAvoidance
-public import Motivic.Aglib.RingTheory.FiniteExtensionWholeFiberAvoidance
-public import Motivic.Aglib.RingTheory.FiniteExtensionResiduePolynomialAvoidance
+public import Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial
+public import Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.WholeFiber
+public import Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial
 public import Motivic.Aglib.RingTheory.Bertini.FiniteExtensionMovingPointParameters
-import all Motivic.Aglib.RingTheory.FiniteExtensionPolynomialAvoidance
-import all Motivic.Aglib.RingTheory.FiniteExtensionWholeFiberAvoidance
-import all Motivic.Aglib.RingTheory.FiniteExtensionResiduePolynomialAvoidance
+import all Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial
+import all Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.WholeFiber
+import all Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial
 import all Motivic.Aglib.RingTheory.Bertini.FiniteExtensionMovingPointParameters
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
@@ -33,7 +33,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 open scoped TensorProduct
-open MvPolynomial
+open _root_.MvPolynomial
 
 universe u v w z
 
@@ -98,9 +98,9 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.RingTheory.FiniteExtensionPolynomialAvoidance,
-    `Motivic.Aglib.RingTheory.FiniteExtensionWholeFiberAvoidance,
-    `Motivic.Aglib.RingTheory.FiniteExtensionResiduePolynomialAvoidance,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.WholeFiber,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial,
     `Motivic.Aglib.RingTheory.Bertini.FiniteExtensionMovingPointParameters]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
@@ -128,9 +128,9 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.RingTheory.FiniteExtensionPolynomialAvoidance,
-    `Motivic.Aglib.RingTheory.FiniteExtensionWholeFiberAvoidance,
-    `Motivic.Aglib.RingTheory.FiniteExtensionResiduePolynomialAvoidance,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.WholeFiber,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial,
     `Motivic.Aglib.RingTheory.Bertini.FiniteExtensionMovingPointParameters,
     `MotivicTest.FiniteExtensionParameterAvoidance]
   let errors ← lintModules options #[] modules .humanReadable false

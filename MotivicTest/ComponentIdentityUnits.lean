@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ComponentIdentityUnits
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Identity.Units
 
 /-!
 # Consumers of genuine full componentwise identity laws
@@ -21,6 +21,7 @@ open CategoryTheory AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ComponentIdentityUnits
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable (k : Type u) [Field k] {X Y : SmoothSite (Spec (.of k))}
 

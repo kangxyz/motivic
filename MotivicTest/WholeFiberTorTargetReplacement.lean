@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorTargetReplacement
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorTargetReplacement
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original smooth-site target replacement consumers
@@ -30,8 +31,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorTargetReplacement
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
-open LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -80,11 +82,11 @@ theorem actualTargetDegreeReplacement
       ∑ᶠ q : minimalPrimes
           ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)),
         F.firstStagePushforwardGenericLength (S := Spec (.of K)) G H V p n q *
-          chainEuler (Koszul.coefficientComplex
+          chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
             (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
               (((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸ q.1))
             (F.leftTargetRemainingList G H (V.2.fromSpec p) s))
-            (Koszul.fixedSupport_prime_finiteHomology
+            (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology
               (F.leftTargetRemainingList G H (V.2.fromSpec p) s) ⊥ q.1 q.2.le) :=
   F.firstStagePushforwardRemainingEuler_replacement (S := Spec (.of K))
     G H V p s y hy hp hs n
@@ -103,11 +105,11 @@ theorem actualTargetOuterReplacement
       ∑ᶠ q : minimalPrimes
           ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)),
         F.firstStagePushforwardGenericEuler (S := Spec (.of K)) G H V p q *
-          chainEuler (Koszul.coefficientComplex
+          chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
             (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
               (((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸ q.1))
             (F.leftTargetRemainingList G H (V.2.fromSpec p) s))
-            (Koszul.fixedSupport_prime_finiteHomology
+            (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology
               (F.leftTargetRemainingList G H (V.2.fromSpec p) s) ⊥ q.1 q.2.le) :=
   F.firstStagePushforwardRemainingOuter_replacement (S := Spec (.of K))
     G H V p s y hy hp hs
@@ -141,13 +143,13 @@ theorem actualTargetGlobalReplacement
       ∑ᶠ q : {q : genericPoints (F.leftIntermediateImageProduct G H) // q.1 ⤳ V.2.fromSpec p},
         F.firstStagePushforwardGenericEuler (S := Spec (.of K)) G H V p
             ((F.firstStageTargetGenericEquiv (S := Spec (.of K)) G H V p).symm q) *
-          chainEuler (Koszul.coefficientComplex
+          chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
             (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
               (((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸
                 (genericStalkLocalizationPrime (F.leftIntermediateImageProduct G H)
                   (V.2.fromSpec p) q).asIdeal))
             (F.leftTargetRemainingList G H (V.2.fromSpec p) s))
-            (Koszul.fixedSupport_prime_finiteHomology
+            (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology
               (F.leftTargetRemainingList G H (V.2.fromSpec p) s) ⊥
               (genericStalkLocalizationPrime (F.leftIntermediateImageProduct G H)
                 (V.2.fromSpec p) q).asIdeal bot_le) :=

@@ -1,6 +1,6 @@
 module
 
-import Motivic.Cohomology.Motivic.WeightOneSheafComparison
+import Motivic.Cohomology.WeightOne.SheafComparison
 
 import Lean.Util.CollectAxioms
 
@@ -15,7 +15,7 @@ universe u
 example (k : Type u) [Field k] :
     Motivic.motivicSheafComplex k 1 ⟶
       ((HomologicalComplex.single _ (ComplexShape.up ℤ) 0).obj
-        (Motivic.SmoothSite.largeUnitsSheaf (Spec (.of k))))⟦(-1 : ℤ)⟧ :=
+        (Scheme.SmoothSite.largeUnitsSheaf (Spec (.of k))))⟦(-1 : ℤ)⟧ :=
   Motivic.weightOneSheafComparison k
 
 example (k : Type u) [Field k] : QuasiIso (Motivic.weightOneSheafComparison k) :=

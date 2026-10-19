@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddlePulledSupports
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Diagonal.AffineMiddlePulledSupports
 
 /-! # Consumers of actual exterior quotient support coordinates and pulled ideal subschemes -/
 
@@ -14,13 +14,14 @@ public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddlePulledSupports
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open scoped TensorProduct Motivic.MiddleDiagonal
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 universe u
 
 namespace Motivic.MotivicTest.AffineMiddleSupports
+open _root_.Algebra.TensorProduct
 
-open Motivic.AffineMiddle
+open _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal
 
 variable (k A B C : Type u) [CommRing k] [CommRing A] [CommRing B] [CommRing C]
   [Algebra k A] [Algebra k B] [Algebra k C]

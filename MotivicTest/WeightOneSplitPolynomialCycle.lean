@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneSplitPolynomialCycle
+public import Motivic.Cohomology.WeightOne.SplitPolynomialCycle
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,8 @@ separability restriction.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
 open CategoryTheory AlgebraicGeometry Polynomial
 open Motivic Motivic.WeightOnePointNorm Motivic.WeightOneInterpolationCycle
 open Motivic.WeightOneSplitPolynomialCycle

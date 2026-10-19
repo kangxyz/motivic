@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SerreDivisorPairs
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.Serre
 /-! # Finite-flat section divisors retain their original affine source -/
 @[expose] public noncomputable section
 open CategoryTheory AlgebraicGeometry

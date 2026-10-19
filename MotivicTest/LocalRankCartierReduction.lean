@@ -5,11 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothStalkFiniteRank
-public import Motivic.Cohomology.A1.PositiveRankCartierReduction
-import all Motivic.Aglib.AlgebraicGeometry.SmoothStalkFiniteRank
-import all Motivic.Cohomology.A1.PointedOpenCylinderComparison
-import all Motivic.Cohomology.A1.PositiveRankCartierReduction
+public import Motivic.Aglib.AlgebraicGeometry.Stalk.Dimension.SmoothStalkFiniteRank
+public import Motivic.Cohomology.A1.Cartier.PositiveRankReduction
+import all Motivic.Aglib.AlgebraicGeometry.Stalk.Dimension.SmoothStalkFiniteRank
+import all Motivic.Cohomology.A1.LocalVanishing.Cylinder.OpenComparison
+import all Motivic.Cohomology.A1.Cartier.PositiveRankReduction
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 
@@ -19,11 +19,12 @@ public import Batteries.Tactic.Lint
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace MotivicTest.LocalRankCartierReduction
-open Motivic Motivic.FiniteEtaleSite
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 
 /-- No perfectness or global dimension bound is needed for finite local rank. -/
 theorem actual_stalk_finite_rank {k : Type u} [Field k] {X : Scheme.{u}}
@@ -60,10 +61,10 @@ theorem nonzero_original_germ_obstructs_cartier_restriction_mono
     (hIH : LowerRankCylinderGermsZero F (n + 1) d)
     (hne : ¬ IsZero (colimit (pointedCylinderValues (.of k)
       (relativeFieldPoint b K (𝟙 _))
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) ((SheafWithTransfers.toSheaf k).obj F)
           (n + 1)) (pointedBase (.of k) (relativeFieldPoint b K (𝟙 _)))))) :
-    let P := SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+    let P := _root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) ((SheafWithTransfers.toSheaf k).obj F)
         (n + 1)
     ∃ (O : X.left.Opens) (hO : b p ∈ O), IsAffineOpen O ∧
@@ -94,9 +95,9 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.SmoothStalkFiniteRank,
-    `Motivic.Cohomology.A1.PointedOpenCylinderComparison,
-    `Motivic.Cohomology.A1.PositiveRankCartierReduction]
+  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.Stalk.Dimension.SmoothStalkFiniteRank,
+    `Motivic.Cohomology.A1.LocalVanishing.Cylinder.OpenComparison,
+    `Motivic.Cohomology.A1.Cartier.PositiveRankReduction]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

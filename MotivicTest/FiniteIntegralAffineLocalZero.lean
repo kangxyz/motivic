@@ -5,14 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.FiniteIntegralAffineLocalZero
-public import Motivic.Cohomology.A1.CoefficientLocalZero
-import all Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarMarkedOpen
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarLocalZero
-import all Motivic.Cohomology.A1.PresentationOriginalOpenVanishing
-import all Motivic.Cohomology.A1.FiniteScalarPresentationLocalZero
-import all Motivic.Cohomology.A1.FiniteAffineLocalVanishing
-import all Motivic.Cohomology.A1.FiniteIntegralAffineLocalZero
+public import Motivic.Cohomology.A1.LocalVanishing.FiniteField.IntegralAffineLocalZero
+public import Motivic.Cohomology.A1.LocalVanishing.Coefficient
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarMarkedOpen
+import all Motivic.Transfers.Presheaf.FiniteScalarLocalZero
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.OriginalOpen
+import all Motivic.Cohomology.A1.LocalVanishing.FiniteField.ScalarPresentationLocalZero
+import all Motivic.Cohomology.A1.LocalVanishing.FiniteField.AffineLocalVanishing
+import all Motivic.Cohomology.A1.LocalVanishing.FiniteField.IntegralAffineLocalZero
 import Mathlib.Tactic.Linter
 import Mathlib.Tactic.Linter.TextBased
 
@@ -24,6 +24,7 @@ The second consumer specializes this actual theorem to the upper D contract.
 -/
 
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 universe u w
 namespace MotivicTest.FiniteIntegralAffineLocalZero
@@ -52,12 +53,12 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarMarkedOpen,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarLocalZero,
-    `Motivic.Cohomology.A1.PresentationOriginalOpenVanishing,
-    `Motivic.Cohomology.A1.FiniteScalarPresentationLocalZero,
-    `Motivic.Cohomology.A1.FiniteAffineLocalVanishing,
-    `Motivic.Cohomology.A1.FiniteIntegralAffineLocalZero]
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarMarkedOpen,
+    `Motivic.Transfers.Presheaf.FiniteScalarLocalZero,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.OriginalOpen,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.ScalarPresentationLocalZero,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.AffineLocalVanishing,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.IntegralAffineLocalZero]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -84,12 +85,12 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarMarkedOpen,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarLocalZero,
-    `Motivic.Cohomology.A1.PresentationOriginalOpenVanishing,
-    `Motivic.Cohomology.A1.FiniteScalarPresentationLocalZero,
-    `Motivic.Cohomology.A1.FiniteAffineLocalVanishing,
-    `Motivic.Cohomology.A1.FiniteIntegralAffineLocalZero,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarMarkedOpen,
+    `Motivic.Transfers.Presheaf.FiniteScalarLocalZero,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.OriginalOpen,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.ScalarPresentationLocalZero,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.AffineLocalVanishing,
+    `Motivic.Cohomology.A1.LocalVanishing.FiniteField.IntegralAffineLocalZero,
     `MotivicTest.FiniteIntegralAffineLocalZero]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

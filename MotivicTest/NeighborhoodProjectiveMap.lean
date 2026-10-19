@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodProjectiveMap
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.ProjectiveMap
 /-! Native projective presentation and same-target-twist consumer. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

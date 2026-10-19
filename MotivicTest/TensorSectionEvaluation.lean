@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.TensorSectionEvaluation
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.TensorSectionEvaluation
 /-! # Original pulled products depend only on the native tensor section -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true

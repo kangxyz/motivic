@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.ArbitraryPointGermLocality
+public import Motivic.Transfers.Sheaf.Germs.ArbitraryPointLocality
 public import Lean.Util.CollectAxioms
 
 /-! # Signed germ locality at genuinely nonclosed source points -/
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u v
@@ -48,7 +49,7 @@ example (A : FiniteCorrespondenceGenerator X.hom Y.hom) (x : X.left)
   intro z hz
   exact False.elim (hempty z hz)
 
-open Lean Motivic.PresheafWithTransfers in
+open Lean  _root_.Motivic.PresheafWithTransfers in
 run_cmd do
   for name in #[``generator_transfer_germ_eq_zero_at_point,
       ``transfer_germ_eq_zero_at_point, ``transfer_germ_eq_at_point_of_eq_on_support] do

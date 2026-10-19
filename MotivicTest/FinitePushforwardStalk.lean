@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardStalk
-public import Motivic.Algebra.Homology.TorComparison.AmbientLength
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Stalk
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.AmbientLength
 
 /-!
 # Actual finite-fiber stalk scalar consumers
@@ -31,7 +31,7 @@ universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardStalk
 
-open FiniteFiber
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteFiber _root_.PrimeSpectrum.FiniteFiber
 
 variable (A B : CommRingCat.{u}) [Algebra A B] [Module.Finite A B]
   (p : PrimeSpectrum A) (q : MaximalSpectrum (localAlgebra A B p))
@@ -77,7 +77,7 @@ theorem actualSourceStalkLength
     Module.length (Localization.AtPrime q.asIdeal)
         ((ModuleCat.restrictScalars.{u} (sourceSchemeStalkIso A B p q).hom.hom).obj M) =
       Module.length ((Spec B).presheaf.stalk (sourcePoint A B p q).1) M :=
-  TorComparison.length_restrictScalars_of_surjective _
+  _root_.ModuleCat.length_restrictScalars_of_surjective _
     (sourceSchemeStalkIso A B p q).commRingCatIsoToRingEquiv.surjective M
 
 end Motivic.MotivicTest.FinitePushforwardStalk

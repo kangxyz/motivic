@@ -5,11 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorNormRetraction
+public import Motivic.Cohomology.Diagonal.MilnorNormRetraction
 public import Lean.Util.CollectAxioms
 
 /-! Retraction of the original all-weight Milnor symbol into genuine motivic cohomology. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.DiagonalMilnorBoundaryDescent
 universe w u

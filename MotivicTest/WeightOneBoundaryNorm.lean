@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneBoundaryNorm
+public import Motivic.Cohomology.WeightOne.BoundaryNorm
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,7 +18,10 @@ proved finite/free/flat, and the fibers retain their whole scheme structure.
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Opposite
-open Motivic Motivic.WeightOneBoundaryNorm Motivic.PresheafWithTransfers
+open Motivic
+open Motivic.WeightOneBoundaryNorm
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 open scoped Polynomial
 
 universe u
@@ -33,7 +36,7 @@ def actual_degree_zero : Cor.simplexProduct (WeightOnePointNorm.point k) 0 ≅
 
 /-- The selected actual first barycentric coordinate is the polynomial parameter. -/
 theorem simplex_coordinate :
-    oneCoordinateEquiv k (AlgebraicSimplex.coordinate k 1 0) = Polynomial.X :=
+    oneCoordinateEquiv k (coordinate k 1 0) = Polynomial.X :=
   oneCoordinateEquiv_coordinate_zero k
 
 /-- Face zero is the zero fiber for this choice of parameter. -/
@@ -88,7 +91,7 @@ theorem actual_degree_zero_quotient
 
 /-- Every signed cycle has the same two actual endpoint norms. -/
 theorem all_signed_endpoint_norms
-    (α : Cor.mk (AlgebraicSimplex.smoothSiteObj k 1) ⟶ WeightOnePointNorm.target k) :
+    (α : Cor.mk (smoothSiteObj k 1) ⟶ WeightOnePointNorm.target k) :
     WeightOnePointNorm.cycleNorm k ((Cor.graphFunctor k).map (evaluationPoint k 0) ≫ α) =
       WeightOnePointNorm.cycleNorm k ((Cor.graphFunctor k).map (evaluationPoint k 1) ≫ α) :=
   cycleNorm_endpoint_eq α 0 1

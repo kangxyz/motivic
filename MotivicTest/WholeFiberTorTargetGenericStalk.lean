@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorTargetGenericStalk
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorTargetGenericStalk
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original smooth-site generic target stalk consumers
@@ -31,6 +32,9 @@ open scoped TensorProduct
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorTargetGenericStalk
+open _root_.AlgebraicGeometry.Scheme
+open _root_.AlgebraicGeometry.Scheme.Modules
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -69,7 +73,7 @@ def actualOriginalPushforwardSpecialization (n : ℕ) :
     (ModuleCat.extendScalars
       ((F.leftIntermediateImageProduct G H).presheaf.stalkSpecializes q.2).hom).obj
         (F.firstStagePushforwardCoefficient (S := Spec (.of K)) G H V p n) ≅
-      (ModuleStalk.functor q.1.1).obj
+      (Stalk.functor q.1.1).obj
         ((Scheme.Modules.pushforward (F.leftIntermediateImageMap G H)).obj
           (F.firstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n)) :=
   F.firstStagePushforwardGenericSpecializationIso (S := Spec (.of K)) G H V p q n
@@ -85,7 +89,7 @@ def actualOriginalPushforwardGenericIso (n : ℕ) :
       (ModuleCat.restrictScalars
         (genericStalkLocalizationIso (F.leftIntermediateImageProduct G H)
           (V.2.fromSpec p) q).inv.hom).obj
-        ((ModuleStalk.functor q.1.1).obj
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.leftIntermediateImageMap G H)).obj
             (F.firstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) :=
   F.firstStagePushforwardTargetGenericIso (S := Spec (.of K)) G H V p q n
@@ -98,7 +102,7 @@ theorem actualOriginalPushforwardGenericLength (n : ℕ) :
         (Localization.AtPrime r.1 ⊗[(F.leftIntermediateImageProduct G H).presheaf.stalk
           (V.2.fromSpec p)] (F.firstStagePushforwardCoefficient (S := Spec (.of K)) G H V p n)) =
       Module.length ((F.leftIntermediateImageProduct G H).presheaf.stalk q.1.1)
-        ((ModuleStalk.functor q.1.1).obj
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.leftIntermediateImageMap G H)).obj
             (F.firstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) :=
   F.firstStagePushforwardTargetGeneric_length (S := Spec (.of K)) G H V p q n
@@ -106,7 +110,7 @@ theorem actualOriginalPushforwardGenericLength (n : ℕ) :
 /-- The generic length is finite before conversion to an integer. -/
 theorem actualOriginalPushforwardGenericFinite (n : ℕ) :
     Module.length ((F.leftIntermediateImageProduct G H).presheaf.stalk q.1.1)
-        ((ModuleStalk.functor q.1.1).obj
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.leftIntermediateImageMap G H)).obj
             (F.firstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n))) ≠ ⊤ :=
   F.firstStagePushforwardGenericStalk_length_ne_top (S := Spec (.of K)) G H V p q n
@@ -115,8 +119,8 @@ theorem actualOriginalPushforwardGenericFinite (n : ℕ) :
 theorem actualOriginalPushforwardGenericWeight (n : ℕ) :
     F.firstStagePushforwardGenericLength (S := Spec (.of K)) G H V p n
         ((F.firstStageTargetGenericEquiv G H V p).symm q) =
-      LengthEuler.integerLength
-        ((ModuleStalk.functor q.1.1).obj
+      _root_.HomologicalComplex.ModuleLengthEuler.integerLength
+        ((Stalk.functor q.1.1).obj
           ((Scheme.Modules.pushforward (F.leftIntermediateImageMap G H)).obj
             (F.firstStageWholeAmbientCoefficient (S := Spec (.of K)) G H V n)))
         (actualOriginalPushforwardGenericFinite K X Y Z W F G H V p q n) :=

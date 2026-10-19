@@ -13,7 +13,7 @@ therefore exclude bad polynomial tuples at every field-valued chart point,
 not merely at the initially selected point.
 -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 variable (k R A : Type u) [CommRing k] [CommRing R] [CommRing A]

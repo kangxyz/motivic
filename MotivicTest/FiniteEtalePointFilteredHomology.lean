@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtalePointFilteredHomology
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.FilteredHomology
 public import Lean.Util.CollectAxioms
 
 /-! The resolution-level comparison at a literal residue-field point, not a fake smooth object. -/
@@ -13,7 +13,8 @@ public import Lean.Util.CollectAxioms
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.FiniteEtalePointFilteredHomology
-open Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {S T : Scheme.{u}} (b : T ⟶ S) (x : S)
   {F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}} (I : InjectiveResolution F)
 
@@ -32,14 +33,14 @@ def actual_residue_filteredHomology (n : ℕ) :
 open Lean in
 run_cmd do
   for name in #[``actual_residue_filteredHomology,
-      ``Motivic.FiniteEtaleSite.sheaf_enoughInjectives,
-      ``Motivic.FiniteEtaleSite.sheaf_isGrothendieckAbelian,
-      ``Motivic.FiniteEtaleSite.derivedDirectImagePointFilteredHomologyIso_naturality,
-      ``Motivic.FiniteEtaleSite.directImageResolutionNeighborhoodHomologyIso,
-      ``Motivic.FiniteEtaleSite.derivedNeighborhoodSectionsIso,
-      ``Motivic.FiniteEtaleSite.directImageResolutionNeighborhoodStep_X₂_obj,
-      ``Motivic.FiniteEtaleSite.directImagePointInclusion_naturality,
-      ``Motivic.FiniteEtaleSite.directImagePointColimitIso] do
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.sheaf_enoughInjectives,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.sheaf_isGrothendieckAbelian,
+      ``derivedDirectImagePointFilteredHomologyIso_naturality,
+      ``directImageResolutionNeighborhoodHomologyIso,
+      ``derivedNeighborhoodSectionsIso,
+      ``directImageResolutionNeighborhoodStep_X₂_obj,
+      ``directImagePointInclusion_naturality,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.directImagePointColimitIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

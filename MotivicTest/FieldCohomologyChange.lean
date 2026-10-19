@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.FieldCohomologyChange
+public import Motivic.Cohomology.SuslinVoevodsky.FieldCohomologyChange
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -19,6 +19,7 @@ coefficient levels are allowed, including characteristic-dividing levels.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe w u

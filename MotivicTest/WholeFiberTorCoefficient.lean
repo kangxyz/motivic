@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorCoefficient
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.WholeFiberTorCoefficient
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
 
 /-!
 # Whole original image-product inverse-image coefficient
@@ -19,11 +20,12 @@ image, retaining every source branch and the original six-factor Tor charts.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open CategoryTheory AlgebraicGeometry Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
 namespace Motivic.MotivicTest.WholeFiberTorCoefficient
+open _root_.AlgebraicGeometry.Scheme.Modules.QuasiCoherent.Affine
 
 variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S}
   {h : Z ⟶ S} {i : W ⟶ S} [S.IsSeparated]
@@ -31,14 +33,16 @@ variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
   (H : FiniteCorrespondenceGenerator h i)
 
-local instance : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
-  correspondenceSixfoldAmbient_isSeparated f g h i
+local instance : (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h
+    i).IsSeparated :=
+  _root_.AlgebraicGeometry.Scheme.correspondenceSixfoldAmbient_isSeparated f g h i
 
 /-- The actual coefficient on the entire finite preimage of the original image-product affine. -/
 def actualWholeCoefficient (U : (F.leftIntermediateImageProduct G H).affineOpens) (n : ℕ) :
     ((F.leftIntermediateImageMap G H) ⁻¹ᵁ U).toScheme.Modules :=
   wholeFiberTorCoefficient (F.tripleSupportProductInclusion G H)
-    (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediateSupportInclusion G H)
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+        (F.leftIntermediateSupportInclusion G H)
     (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H)
     (F.leftIntermediateImageMap G H) U n
 
@@ -55,7 +59,8 @@ theorem actualWholeCoefficient_all_branches
     {x : F.leftIntermediateSupportProduct G H}
     (hx : x ∈ (F.leftIntermediateImageMap G H) ⁻¹ᵁ U) :
     ∃ r : wholeFiberTorAmbientCover (F.tripleSupportProductInclusion G H)
-        (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediateSupportInclusion G H)
+        (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+            (F.leftIntermediateSupportInclusion G H)
         (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H)
         (F.leftIntermediateImageMap G H) U,
       x ∈ (F.leftIntermediateAmbientInclusion G H) ⁻¹ᵁ r.val :=
@@ -67,13 +72,14 @@ def actualWholeSectionModule
     ModuleCat.{u} Γ(F.leftIntermediateSupportProduct G H,
       (F.leftIntermediateImageMap G H) ⁻¹ᵁ U) :=
   wholeFiberTorSectionModule (F.tripleSupportProductInclusion G H)
-    (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediateSupportInclusion G H)
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
+        (F.leftIntermediateSupportInclusion G H)
     (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H)
     (F.leftIntermediateImageMap G H) U n
 
 /-- The actual affine tilde equivalence reconstructs the original whole-preimage sheaf. -/
 def actualWholeTildeIso (U : (F.leftIntermediateImageProduct G H).affineOpens) (n : ℕ) :
-    (AffineOpenTilde.chartTilde (wholeFiberTorAffineOpen (F.leftIntermediateImageMap G H) U)).obj
+    (OpenTilde.chartTilde (wholeFiberTorAffineOpen (F.leftIntermediateImageMap G H) U)).obj
       (actualWholeSectionModule F G H U n) ≅ actualWholeCoefficient F G H U n :=
   wholeFiberTorTildeIso _ _ _ _ _ _ _ _
 

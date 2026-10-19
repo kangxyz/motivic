@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleFixedSupportTorComparison
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.FixedSupportTorComparison
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Actual smooth-site fixed-support sums and canonical triple coefficients
@@ -20,11 +21,12 @@ identifications are constructed from the original smooth-site geometry.
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry RingTheory.Sequence
-open Motivic.LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
 namespace Motivic.MotivicTest.TripleFixedSupportTorComparison
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable (k : Type u) [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -52,10 +54,10 @@ theorem actualOriginalFixedSupportSums (w : genericPoints (F.tripleIncidence G H
             (F.tripleIncidenceFourfoldInclusion G H w.val)).hom = Ideal.ofList (t' ++ s'),
         letI := F.tripleTwoList_support_isArtinian (S := Spec (.of k)) G H w t' s' hker
         let M := F.tripleIncidenceSupportStalkModule G H w.val
-        Koszul.twoListFixedSupportSum M s' t' =
+        _root_.ChainComplex.Koszul.twoListFixedSupportSum M s' t' =
             F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w ∧
-          letI := Koszul.twoList_swappedArtinian M s' t'
-          Koszul.twoListFixedSupportSum M t' s' =
+          letI := _root_.ChainComplex.Koszul.twoList_swappedArtinian M s' t'
+          _root_.ChainComplex.Koszul.twoListFixedSupportSum M t' s' =
             F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w :=
   F.exists_common_fixedSupport_sums (S := Spec (.of k)) G H w
 
@@ -132,11 +134,11 @@ theorem actualGeometricFixedSupportCoefficient
     (∑ᶠ y : {y : genericPoints (F.leftIntermediateSupportProduct G H) //
       y.1 ⤳ F.tripleIncidenceToLeftSupportProduct G H w.val},
       let p := (F.tripleFirstStageSupportGenericEquiv G H w.val t ht).symm y
-      Koszul.twoListGenericEuler M t p *
-        chainEuler (Koszul.coefficientComplex
+      _root_.ChainComplex.Koszul.twoListGenericEuler M t p *
+        chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
           (ModuleCat.of (F.tripleIncidenceAmbientStalk G H w.val)
             ((F.tripleIncidenceAmbientStalk G H w.val) ⧸ p.1)) s)
-          (Koszul.fixedSupport_prime_finiteHomology s
+          (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology s
             (Ideal.ofList t ⊔ Module.annihilator
               (F.tripleIncidenceAmbientStalk G H w.val) M) p.1 p.2.le)) =
       F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w :=

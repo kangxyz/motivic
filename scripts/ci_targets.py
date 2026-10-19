@@ -2,6 +2,8 @@
 """Select changed local modules and their affected public consumers for CI."""
 # Authors: kangxyz
 import argparse
+import base64
+import gzip
 import os
 from pathlib import Path
 import subprocess
@@ -44,6 +46,8 @@ def validation_scope(changed: list[str], *, setup: bool = False,
         'scripts/test_build_client.py': 'test_build_client.py',
         'scripts/cache.py': 'test_repository.py',
         'scripts/check_repository.py': 'test_repository.py',
+        'scripts/generate_imports.py': 'test_generate_imports.py',
+        'scripts/test_generate_imports.py': 'test_generate_imports.py',
         'scripts/test_repository.py': 'test_repository.py',
     }
     for path in changed:
@@ -53,8 +57,10 @@ def validation_scope(changed: list[str], *, setup: bool = False,
             fixtures.add('test_*.py')
         elif path in owners:
             fixtures.add(owners[path])
-            if path == 'scripts/check_repository.py':
+            if path in {'scripts/check_repository.py', 'scripts/generate_imports.py'}:
                 structural = True
+            if path == 'scripts/check_repository.py':
+                fixtures.add('test_generate_imports.py')
         elif path.startswith('scripts/') and path.endswith(('.py', '.sh')):
             structural = True
             fixtures.add('test_*.py')
@@ -105,6 +111,12 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
     return sorted(defaults | selected | (affected & public))
 
 
+def encode_targets(targets: list[str]) -> str:
+    """Encode an ordered newline-delimited target file for GitHub job output."""
+    payload = ('\n'.join(targets) + ('\n' if targets else '')).encode('utf-8')
+    return base64.b64encode(gzip.compress(payload, mtime=0)).decode('ascii')
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
@@ -131,6 +143,7 @@ def main() -> int:
             with args.github_output.open('a') as output:
                 output.write('lean=' + str(bool(targets)).lower() + '\n')
                 output.write('targets=' + ' '.join(targets) + '\n')
+                output.write('targets_gzip_base64=' + encode_targets(targets) + '\n')
                 output.write('client=' + str(client).lower() + '\n')
                 output.write('structural=' + str(structural).lower() + '\n')
                 output.write('tool_tests=' + ' '.join(tests) + '\n')

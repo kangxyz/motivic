@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodNormalizedBoundary
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Graph.NormalizedBoundary
 import Lean.Util.CollectAxioms
 /-! # Direct consumer of the actual neighborhood section boundary equation -/
 public noncomputable section

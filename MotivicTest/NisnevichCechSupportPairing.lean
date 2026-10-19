@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichCechSupportPairing
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Cech.SupportPairing
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -22,6 +22,10 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (closedFundamentalCycle_of_isIntegral fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle closedFundamentalCycle
+  isNoetherian_of_finiteType)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.FiniteCorrespondenceGenerator
 

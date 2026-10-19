@@ -17,7 +17,7 @@ public import Motivic.RingTheory.LocalLength.PrincipalEulerFiltration
 This temporary downstream adapter preserves the existing Motivic names while
 reusing the native Aglib declarations. It adds no mathematical implementation.
 The current Aglib revision is recorded in `lake-manifest.json`.
-The earlier R5Lab extraction provenance remains in `doc/provenance/early-source-migrations.md`;
+The earlier R5Lab extraction provenance remains in `docs/provenance/early-source-migrations.md`;
 the imported Aglib source carries its own Apache-2.0 notices and exact provenance.
 -/
 

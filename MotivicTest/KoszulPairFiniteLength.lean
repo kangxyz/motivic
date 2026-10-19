@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.KoszulPairFiniteLength
+public import Motivic.Aglib.RingTheory.LocalLength.KoszulPairFiniteLength
 
 /-!
 # Finite-length consumers without regularity hypotheses

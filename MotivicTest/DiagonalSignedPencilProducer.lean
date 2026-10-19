@@ -1,6 +1,6 @@
-import Motivic.AlgebraicGeometry.Correspondences.DiagonalSignedPencilProducer
+import Motivic.AlgebraicGeometry.Correspondences.Moving.Pencils.DiagonalSigned
 
 /-! Direct check of the genuine geometric data producer for both endpoints. -/
 
 set_option linter.hashCommand false
-#print axioms Motivic.DiagonalSignedPencilProducer.Data.endpoints
+#print axioms _root_.AlgebraicGeometry.Scheme.SmoothSite.GraphDivisorPencil.Data.endpoints

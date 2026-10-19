@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.StrictInvariancePerfectField
+public import Motivic.Cohomology.A1.StrictInvariance.PerfectField
 
-import all Motivic.Cohomology.A1.StrictInvariancePerfectField
+import all Motivic.Cohomology.A1.StrictInvariance.PerfectField
 import Mathlib.Tactic.Linter
 import Mathlib.Tactic.Linter.TextBased
 
@@ -18,6 +18,7 @@ Neither consumer supplies a cardinality assumption or geometric theorem family.
 
 public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u
@@ -33,7 +34,7 @@ theorem original_projection_isIso
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
     (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     IsIso (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   SheafWithTransfers.isStrictA1Invariant_of_perfect F hF n X
@@ -43,7 +44,7 @@ theorem original_projection_bijective
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
     (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     Function.Bijective (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   (ConcreteCategory.isIso_iff_bijective _).mp (original_projection_isIso F hF n X)
@@ -51,7 +52,7 @@ theorem original_projection_bijective
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.StrictInvariancePerfectField]
+  let sourceModules := #[`Motivic.Cohomology.A1.StrictInvariance.PerfectField]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -81,7 +82,7 @@ run_cmd do
   let options : Lean.Linter.LinterOptions := {
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
-  let modules := #[`Motivic.Cohomology.A1.StrictInvariancePerfectField,
+  let modules := #[`Motivic.Cohomology.A1.StrictInvariance.PerfectField,
     `MotivicTest.PerfectFieldStrictA1Invariance]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

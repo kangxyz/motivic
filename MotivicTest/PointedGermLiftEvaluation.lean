@@ -5,12 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.PointedGermLiftEvaluation
+public import Motivic.Transfers.Sheaf.Germs.Pointed.Lifts.Evaluation
 public import Lean.Util.CollectAxioms
 
 /-! Existence of actual generator evaluation witnesses for original arbitrary-point germs. -/
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.PointedGermLiftEvaluation
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

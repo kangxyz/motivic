@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteFlatCurveSpecialization
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Endpoints.FiniteFlatCurveSpecialization
 
 /-!
 # Consumers of actual finite-flat curve specialization
@@ -16,7 +16,7 @@ The field is arbitrary, with no perfection or algebraic-closure condition.
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open AlgebraicGeometry.FiniteFlatCurve
 open scoped BigOperators Polynomial
 
@@ -29,53 +29,62 @@ variable {k : Type u} [Field k] {P : Scheme.{u}}
 
 /-- Every original generic length weights its entire actual endpoint fiber. -/
 theorem arbitraryFiniteFlatCurve (a : k) :
-    let := IntegralCycle.genericPointFintype P
-    fundamentalCycle (fiber f a) =
-      ∑ z : genericPoints P, (genericMultiplicity z : ℤ) •
-        IntegralCycle.finitePushforward
-          (fiberMap f a (IntegralClosedSubscheme.pointClosure z.1).val.subschemeι)
-          (fundamentalCycle
-            (fiber ((IntegralClosedSubscheme.pointClosure z.1).val.subschemeι ≫ f) a)) :=
+    let := _root_.AlgebraicGeometry.Scheme.IntegralCycle.genericPointFintype P
+    _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f a) =
+      ∑ z : genericPoints P, (_root_.AlgebraicGeometry.Scheme.genericMultiplicity z : ℤ) •
+        _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward
+          (fiberMap f a (_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+              z.1).val.subschemeι)
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle
+            (fiber ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+                z.1).val.subschemeι ≫ f) a)) :=
   finiteFlatCurve_fundamentalCycle_specialization f a
 
 /-- The literal zero endpoint uses the same theorem and original component weights. -/
 theorem zeroEndpoint :
-    let := IntegralCycle.genericPointFintype P
-    fundamentalCycle (fiber f (0 : k)) =
-      ∑ z : genericPoints P, (genericMultiplicity z : ℤ) •
-        IntegralCycle.finitePushforward
-          (fiberMap f 0 (IntegralClosedSubscheme.pointClosure z.1).val.subschemeι)
-          (fundamentalCycle
-            (fiber ((IntegralClosedSubscheme.pointClosure z.1).val.subschemeι ≫ f) 0)) :=
+    let := _root_.AlgebraicGeometry.Scheme.IntegralCycle.genericPointFintype P
+    _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f (0 : k)) =
+      ∑ z : genericPoints P, (_root_.AlgebraicGeometry.Scheme.genericMultiplicity z : ℤ) •
+        _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward
+          (fiberMap f 0 (_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+              z.1).val.subschemeι)
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle
+            (fiber ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+                z.1).val.subschemeι ≫ f) 0)) :=
   arbitraryFiniteFlatCurve f 0
 
 /-- The literal one endpoint retains all branches, including nonreduced branches. -/
 theorem oneEndpoint :
-    let := IntegralCycle.genericPointFintype P
-    fundamentalCycle (fiber f (1 : k)) =
-      ∑ z : genericPoints P, (genericMultiplicity z : ℤ) •
-        IntegralCycle.finitePushforward
-          (fiberMap f 1 (IntegralClosedSubscheme.pointClosure z.1).val.subschemeι)
-          (fundamentalCycle
-            (fiber ((IntegralClosedSubscheme.pointClosure z.1).val.subschemeι ≫ f) 1)) :=
+    let := _root_.AlgebraicGeometry.Scheme.IntegralCycle.genericPointFintype P
+    _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f (1 : k)) =
+      ∑ z : genericPoints P, (_root_.AlgebraicGeometry.Scheme.genericMultiplicity z : ℤ) •
+        _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward
+          (fiberMap f 1 (_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+              z.1).val.subschemeι)
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle
+            (fiber ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+                z.1).val.subschemeι ≫ f) 1)) :=
   arbitraryFiniteFlatCurve f 1
 
 /-- Actual finite pushforward and arbitrary signed multiples preserve the full equality. -/
 theorem signedFinitePushforward (a : k) {Q : Scheme.{u}}
     (g : fiber f a ⟶ Q) [IsFinite g] (n : ℤ) :
-    let := IntegralCycle.genericPointFintype P
-    IntegralCycle.finitePushforward g (n • fundamentalCycle (fiber f a)) =
-      ∑ z : genericPoints P, (n * (genericMultiplicity z : ℤ)) •
-        IntegralCycle.finitePushforward
-          (fiberMap f a (IntegralClosedSubscheme.pointClosure z.1).val.subschemeι ≫ g)
-          (fundamentalCycle
-            (fiber ((IntegralClosedSubscheme.pointClosure z.1).val.subschemeι ≫ f) a)) := by
+    let := _root_.AlgebraicGeometry.Scheme.IntegralCycle.genericPointFintype P
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward g (n •
+        _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f a)) =
+      ∑ z : genericPoints P, (n * (_root_.AlgebraicGeometry.Scheme.genericMultiplicity z : ℤ)) •
+        _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward
+          (fiberMap f a (_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+              z.1).val.subschemeι ≫ g)
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle
+            (fiber ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+                z.1).val.subschemeι ≫ f) a)) := by
   classical
-  let := IntegralCycle.genericPointFintype P
+  let := _root_.AlgebraicGeometry.Scheme.IntegralCycle.genericPointFintype P
   rw [arbitraryFiniteFlatCurve f a, Finset.smul_sum, map_sum]
   apply Finset.sum_congr rfl
   intro z _
-  rw [smul_smul, map_zsmul, IntegralCycle.finitePushforward_comp,
+  rw [smul_smul, map_zsmul, _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward_comp,
     AddMonoidHom.comp_apply]
 
 open Lean in

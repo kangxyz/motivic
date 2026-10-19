@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.ExteriorModuleTotal
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.ExteriorModuleTotal
 
 /-! Real consumers of the full exterior-algebra module and projectivity API. -/
 
@@ -14,8 +14,8 @@ public import Motivic.Algebra.Homology.TorComparison.ExteriorModuleTotal
 noncomputable section
 
 open CategoryTheory TensorProduct
-open Motivic.TorComparison
-open scoped Motivic.TorComparison.ExteriorModule
+open _root_.ModuleCat.TorComparison
+open scoped ModuleCat.TorComparison.ExteriorModule
 
 universe u
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ArtinianEtaleSections
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Sections.ArtinianEtaleSections
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -17,7 +17,7 @@ component of a nonreduced nonlocal base, and include the empty zero-ring base.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic.ArtinianEtale
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Scheme.Hom.ArtinianEtale
 
 universe u
 
@@ -75,9 +75,9 @@ theorem section_of_residueField_isomorphisms {X Y : Scheme.{u}} [IsLocallyArtini
     ← Category.assoc, ← Spec.map_comp, IsIso.hom_inv_id, Spec.map_id, Category.id_comp]
 
 set_option linter.hashCommand false in
-#print axioms Motivic.ArtinianEtale.exists_section_of_etale_of_isLocallyArtinian
+#print axioms exists_section_of_etale_of_isLocallyArtinian
 set_option linter.hashCommand false in
-#print axioms Motivic.ArtinianEtale.exists_section_of_etale_of_artinian
+#print axioms exists_section_of_etale_of_artinian
 set_option linter.hashCommand false in
 #print axioms Motivic.MotivicTest.ArtinianSchemeSections.nonreduced_twoComponent_section
 set_option linter.hashCommand false in

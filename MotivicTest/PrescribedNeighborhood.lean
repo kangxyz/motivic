@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.PrescribedNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.Neighborhood.General
 
 /-! # Prescribed trivializations on whole scheme-theoretic boundaries -/
 

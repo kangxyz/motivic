@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichPersistentFiniteSubfamily
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.PersistentFiniteSubfamily
 public import Lean.Util.CollectAxioms
 
 /-! Actual open-puncture specialization of persistent residue-splitting reflection. -/
@@ -24,13 +24,13 @@ theorem actual_open_puncture_finite_cover
     ∃ (W : X.Opens), x ∈ W ∧ ∃ s : Finset ι,
       ∀ z : U.toScheme, U.ι z ∈ W → ∃ i ∈ s, ∃ y : Y i,
         f i y = z ∧ IsIso ((f i).residueFieldMap y) := by
-  let : IsNoetherian U.toScheme := Motivic.isNoetherian_of_finiteType U.ι
-  exact Motivic.Nisnevich.exists_open_finset_persistent_residueFieldLifting U.ι x f hf
+  let : IsNoetherian U.toScheme := Scheme.isNoetherian_of_finiteType U.ι
+  exact Nisnevich.exists_open_finset_persistent_residueFieldLifting U.ι x f hf
 
 open Lean in
 run_cmd do
   for name in #[``actual_open_puncture_finite_cover,
-      ``Motivic.Nisnevich.exists_open_finset_persistent_residueFieldLifting] do
+      ``_root_.AlgebraicGeometry.Nisnevich.exists_open_finset_persistent_residueFieldLifting] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

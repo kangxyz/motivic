@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulExteriorGenericMultiplicity
-public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddleSupports
+public import Motivic.Aglib.Algebra.Homology.Koszul.ExteriorGenericMultiplicity
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.AffineMiddleSupports
 public import MotivicTest.FlatGenericDualNumbers
 
 /-!
@@ -23,8 +23,8 @@ noncomputable section
 
 universe u
 
-open CategoryTheory Motivic.Koszul
-open scoped TensorProduct Motivic.MiddleDiagonal
+open CategoryTheory _root_.ChainComplex.Koszul
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 namespace MotivicTest.KoszulExteriorGenericMultiplicity
 
@@ -34,11 +34,13 @@ variable (k A B C D : Type u) [Field k] [CommRing A] [CommRing B] [CommRing C] [
   [Algebra k A] [Algebra k B] [Algebra k C] [Algebra k D]
   (I : Ideal (A ⊗[k] B)) (J : Ideal (B ⊗[k] C)) (K : Ideal (C ⊗[k] D))
 
-local notation "P₀" => Motivic.MiddleDiagonal.ambientRing k A B C
+local notation "P₀" => _root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C
 local notation "T₀" => ((A ⊗[k] B) ⧸ I) ⊗[k] ((B ⊗[k] C) ⧸ J)
 local notation "E₀" => (C ⊗[k] D) ⧸ K
 local notation "S₀" => P₀ ⊗[k] E₀
-local notation "σ₀" => Motivic.AffineMiddle.supportRingMap k A B C I J
+local notation "σ₀" =>
+  _root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap
+    k A B C I J
 local notation "q₀" => Ideal.Quotient.mkₐ k K
 local notation "λ₀" => (Algebra.TensorProduct.includeLeft : P₀ →ₐ[k] S₀)
 local notation "ρ₀" => (exteriorAmbientMap (P := P₀) q₀)
@@ -58,15 +60,16 @@ theorem actualPairAnnihilation (t : List P₀) (n : ℕ) :
       Module.annihilator P₀ (coordinateKoszulHomology (σ₀).toRingHom t n) :=
   coordinateKoszulSupport_annihilates (σ₀).toRingHom t n
 
-variable [IsNoetherianRing (Motivic.MiddleDiagonal.ambientRing k A B C)]
+variable [IsNoetherianRing (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C)]
 
 /-- Genuine finite generation follows from the actual support quotient surjection. -/
 theorem actualPairFinite (t : List P₀) (n : ℕ) :
     Module.Finite P₀ (coordinateKoszulHomology (σ₀).toRingHom t n) :=
   coordinateKoszulHomology_finite (σ₀).toRingHom
-    (Motivic.AffineMiddle.supportRingMap_surjective k A B C I J) t n
+    (_root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap_surjective k A B C I J)
+        t n
 
-variable (Q : Ideal (Motivic.MiddleDiagonal.ambientRing k A B C ⊗[k]
+variable (Q : Ideal (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C ⊗[k]
   ((C ⊗[k] D) ⧸ K))) [Q.IsPrime]
 
 /-- Every actual exterior homology degree has the full generic fiber multiplier. -/
@@ -79,7 +82,7 @@ theorem actualExteriorGenericLength (t : List P₀)
         Module.length (Localization.AtPrime (R := S₀) Q)
           (primeLocalClosedFiber (R := P₀) (S := S₀) (λ₀).toRingHom Q) :=
   exteriorGeneric_homology_length σ₀
-    (Motivic.AffineMiddle.supportRingMap_surjective k A B C I J)
+    (_root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap_surjective k A B C I J)
     q₀ Ideal.Quotient.mk_surjective Q t hQ n
 
 /-- Repeated and zero equations are not replaced by a degree-zero coefficient. -/
@@ -104,7 +107,7 @@ theorem actualGenericLengthsFinite [IsNoetherianRing S₀] (t : List P₀)
       Module.length (Localization.AtPrime (R := S₀) Q)
           (primeLocalClosedFiber (R := P₀) (S := S₀) (λ₀).toRingHom Q) ≠ ⊤ :=
   exteriorGeneric_lengths_ne_top σ₀
-    (Motivic.AffineMiddle.supportRingMap_surjective k A B C I J)
+    (_root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap_surjective k A B C I J)
     q₀ Ideal.Quotient.mk_surjective Q t hQ n
 
 end ActualSupports

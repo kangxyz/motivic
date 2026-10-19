@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.OpenGraphFinite
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.OpenGraphFinite
 /-! Exact whole graph-image transport to finiteness of the original map. -/
 set_option linter.hashCommand false
 public noncomputable section

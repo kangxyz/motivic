@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichQuasiFinite
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.QuasiFinite
 public import Mathlib.Data.ZMod.Basic
 
 /-!

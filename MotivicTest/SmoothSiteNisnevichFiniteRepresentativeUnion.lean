@@ -5,13 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichFiniteRepresentativeUnion
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.FiniteRepresentativeUnion
 public import Lean.Util.CollectAxioms
 
 /-! The appended representatives retain their actual maps, centers and original germs. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
-open SmoothSite.NisnevichNeighborhood
+open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood
 universe u v
 namespace MotivicTest.SmoothSiteNisnevichFiniteRepresentativeUnion
 

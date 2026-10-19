@@ -10,7 +10,7 @@ This is the two-point interpolation input for the whole-fiber incidence argument
 not a claim that nonzero Jacobians at finitely many points imply good fibers.
 -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u v
 namespace MvPolynomial
 section Linear

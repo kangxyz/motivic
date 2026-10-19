@@ -1,6 +1,6 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CommonRetainedGraphIdeal
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CommonRetainedSourceChange
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.RetainedGraphIdeal
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.RetainedSourceChange
 /-! # The literal retained graph and original ideal comparison -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

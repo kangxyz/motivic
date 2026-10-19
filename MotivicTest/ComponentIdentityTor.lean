@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ComponentIdentityTor
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Identity.Tor
 
 /-!
 # Consumers of genuine component diagonal Tor comparisons
@@ -21,6 +21,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ComponentIdentityTor
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable (k : Type u) [Field k] {X Y : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -63,7 +64,8 @@ theorem left_component_full_pushforward
       ((componentIdentityGenerator (X := X.left) X.hom C hC).incidenceTorCorrespondence k A) =
       IntegralCycle.finitePushforward
         ((componentIdentityGenerator (X := X.left) X.hom C hC).incidenceMap A)
-        (fundamentalCycle ((componentIdentityGenerator (X := X.left) X.hom C hC).incidence A)) := by
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle ((componentIdentityGenerator (X := X.left)
+            X.hom C hC).incidence A)) := by
   rw [A.incidenceTorCorrespondence_componentIdentity_left k]
   exact FiniteCorrespondenceGenerator.toIntegralCycle_incidenceFundamentalCorrespondence k
     (componentIdentityGenerator (X := X.left) X.hom C hC) A

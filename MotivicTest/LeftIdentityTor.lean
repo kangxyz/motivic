@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.LeftIdentityTor
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Identity.Left.Tor
 
 /-!
 # Consumers of the genuine left-identity Tor law
@@ -18,6 +18,11 @@ identity is one generator. The smooth target can be disconnected.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (genericMultiplicity_eq_one
+  genericMultiplicity_mapGenericPoint)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Intersection (length_tor_zero_eq_stalk)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleInclusion)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open RingTheory.Sequence Motivic Motivic.FiniteCorrespondenceGenerator
 
@@ -49,7 +54,7 @@ theorem identity_tor_zero_length (w : (identityGenerator X.hom).incidence A) :
         ((identityGenerator X.hom).incidenceTor A w 0) =
       Module.length (((identityGenerator X.hom).incidence A).presheaf.stalk w)
         (((identityGenerator X.hom).incidence A).presheaf.stalk w) :=
-  Intersection.length_tor_zero_eq_stalk
+  length_tor_zero_eq_stalk
     (correspondenceTripleInclusion X.hom X.hom Y.hom)
     ((identityGenerator X.hom).supportProductInclusion A)
     ((identityGenerator X.hom).incidenceInclusion A)

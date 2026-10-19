@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm
-public import Motivic.Aglib.RingTheory.DVRNormCartierLength
-import all Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm
-import all Motivic.Aglib.RingTheory.DVRNormCartierLength
+public import Motivic.Aglib.RingTheory.Norm.MarkedBranch
+public import Motivic.Aglib.RingTheory.Multiplicity.Cartier.DVRNormLength
+import all Motivic.Aglib.RingTheory.Norm.MarkedBranch
+import all Motivic.Aglib.RingTheory.Multiplicity.Cartier.DVRNormLength
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -69,8 +69,8 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm,
-    `Motivic.Aglib.RingTheory.DVRNormCartierLength]
+    `Motivic.Aglib.RingTheory.Norm.MarkedBranch,
+    `Motivic.Aglib.RingTheory.Multiplicity.Cartier.DVRNormLength]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -97,8 +97,8 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.RingTheory.FiniteAlgebraMarkedNorm,
-    `Motivic.Aglib.RingTheory.DVRNormCartierLength,
+    `Motivic.Aglib.RingTheory.Norm.MarkedBranch,
+    `Motivic.Aglib.RingTheory.Multiplicity.Cartier.DVRNormLength,
     `MotivicTest.CoveringNormLengths]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

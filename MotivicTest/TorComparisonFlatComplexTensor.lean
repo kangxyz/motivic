@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.FlatComplexTensorQuasiIso
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.FlatComplexTensorQuasiIso
 
 /-! Consumers of the actual flat tensor augmentation and double-resolution Tor computation. -/
 
@@ -23,14 +23,14 @@ variable {R : Type u} [CommRing R]
 theorem preserveQuasiIso {A B : ChainComplex (ModuleCat.{u} R) ℕ} (f : A ⟶ B)
     (G : ChainComplex (ModuleCat.{u} R) ℕ) [QuasiIso f] [∀ q, Module.Flat R (G.X q)] :
     QuasiIso (mapBifunctorMap f (𝟙 G) (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ)) :=
-  TorComparison.flatComplexTensor_quasiIso f G
+  _root_.ModuleCat.TorComparison.flatComplexTensor_quasiIso f G
 
 /-- The literal first augmentation of two arbitrary resolutions is a quasi-isomorphism. -/
 theorem augmentResolution {M N : ModuleCat.{u} R}
     (P : ProjectiveResolution M) (Q : ProjectiveResolution N) :
     QuasiIso (mapBifunctorMap P.π (𝟙 Q.complex)
       (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ)) :=
-  TorComparison.tensorProjectiveResolutions_augmentation_quasiIso P Q
+  _root_.ModuleCat.TorComparison.tensorProjectiveResolutions_augmentation_quasiIso P Q
 
 /-- Actual Tor is computed from the actual signed total of the two resolutions. -/
 noncomputable def actualDoubleResolutionTor {M N : ModuleCat.{u} R}
@@ -38,7 +38,7 @@ noncomputable def actualDoubleResolutionTor {M N : ModuleCat.{u} R}
     (mapBifunctor P.complex Q.complex
         (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ)).homology n ≅
       (((Tor (ModuleCat R) n).obj M).obj N) :=
-  TorComparison.tensorProjectiveResolutionsTorIso P Q n
+  _root_.ModuleCat.TorComparison.tensorProjectiveResolutionsTorIso P Q n
 
 /-- The constructed comparison retains the actual augmentation homology map. -/
 theorem actualAugmentationMap {M N : ModuleCat.{u} R}
@@ -46,7 +46,7 @@ theorem actualAugmentationMap {M N : ModuleCat.{u} R}
     (actualDoubleResolutionTor P Q n).hom =
       homologyMap (mapBifunctorMap P.π (𝟙 Q.complex)
         (curriedTensor (ModuleCat R)) (ComplexShape.down ℕ)) n ≫
-          (TorComparison.flatComplexTensorSingleTorIso M Q n).hom :=
-  TorComparison.tensorProjectiveResolutionsTorIso_hom P Q n
+          (_root_.ModuleCat.TorComparison.flatComplexTensorSingleTorIso M Q n).hom :=
+  _root_.ModuleCat.TorComparison.tensorProjectiveResolutionsTorIso_hom P Q n
 
 end Motivic.MotivicTest.TorComparisonFlatComplexTensor

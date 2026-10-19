@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteSimplexBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Simplex.BaseChange
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 
@@ -14,7 +14,7 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.AlgebraicSimplex Motivic.SmoothSite
+open _root_.AlgebraicSimplex _root_.AlgebraicGeometry.Scheme.SmoothSite
 open scoped Simplicial
 
 universe u
@@ -71,12 +71,17 @@ example {K L : Type u} [Field K] [Field L] (c : K →+* L) :
 
 open Lean in
 run_cmd do
-  for name in #[``mapCoefficients_isPushout, ``mapCoefficients_isPullback,
-      ``smoothSiteBaseChangeIso, ``smoothSiteBaseChangeIso_inv_fst,
-      ``smoothSiteBaseChangeIso_inv_snd, ``smoothSiteBaseChangeIso_hom_coefficientMap,
-      ``smoothSiteBaseChangeIso_hom_structureMap, ``smoothSiteBaseChangeIso_coordinate,
-      ``cosimplicialSmoothSiteBaseChangeIso, ``smoothSiteBaseChangeIso_naturality,
-      ``cosimplicialFieldBaseChangeIso] do
+  for name in #[``_root_.AlgebraicSimplex.mapCoefficients_isPushout,
+      ``_root_.AlgebraicSimplex.mapCoefficients_isPullback,
+      ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso,
+          ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso_inv_fst,
+      ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso_inv_snd,
+          ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso_hom_coefficientMap,
+      ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso_hom_structureMap,
+          ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso_coordinate,
+      ``_root_.AlgebraicSimplex.cosimplicialSmoothSiteBaseChangeIso,
+          ``_root_.AlgebraicSimplex.smoothSiteBaseChangeIso_naturality,
+      ``_root_.AlgebraicSimplex.cosimplicialFieldBaseChangeIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

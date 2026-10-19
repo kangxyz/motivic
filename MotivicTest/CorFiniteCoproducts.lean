@@ -5,12 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FiniteCoproducts
+public import Motivic.AlgebraicGeometry.Correspondences.Coproducts.Finite
 
 /-! # Consumers of gluing on the actual finite total scheme -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

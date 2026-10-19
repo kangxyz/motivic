@@ -15,24 +15,26 @@ namespace MotivicTest.SheafCohomologyAffineLineHigherVanishing
 public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.SheafCohomology
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.CategoryTheory.Sheaf.LargeCohomology
+open _root_.Motivic.SheafCohomology
 universe w u
 
 /-- Literal ordinary Ext endpoint, with no transfer or invariance premise. -/
 theorem ordinary_affine_line_higher_zero {k : Type u} [Field k]
-    [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
-    (F : Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})
+    [HasExt.{w} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+    (F : Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})
     (n : ℕ) (e : H.{w, u + 1, u, u + 1}
-      (SmoothSite.nisnevichTopology (Spec (.of k))) F (n + 2) (SmoothSite.affineLine (.of k))) :
+      (nisnevichTopology (Spec (.of k))) F (n + 2) (affineLine (.of k))) :
     e = 0 := affineLine_H_add_two_eq_zero F n e
 
 /-- The original rank-zero endpoint includes degree one using the proved pencil theorem. -/
 theorem hi_affine_line_positive_zero {k : Type u} [Field k]
-    [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+    [HasExt.{w} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
     (F : SheafWithTransfers.{u + 1} k)
     (hF : PresheafWithTransfers.IsA1Invariant F.obj) (n : ℕ)
-    (e : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
-      ((SheafWithTransfers.toSheaf k).obj F) (n + 1) (SmoothSite.affineLine (.of k))) :
+    (e : H.{w, u + 1, u, u + 1} (nisnevichTopology (Spec (.of k)))
+      ((SheafWithTransfers.toSheaf k).obj F) (n + 1) (affineLine (.of k))) :
     e = 0 := affineLine_H_succ_eq_zero F hF n e
 
 open Lean in
@@ -43,7 +45,7 @@ run_cmd do
       ``exists_all_generic_open_restriction_eq_zero,
       ``ordinary_eq_zero_of_overlap_refinement,
       ``exists_nisnevich_overlap_boundary_lift,
-      ``SmoothSite.exists_all_generic_open_section_lift,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_all_generic_open_section_lift,
       ``Scheme.exists_open_shrinking_of_openImmersion] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

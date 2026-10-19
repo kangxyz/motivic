@@ -4,11 +4,11 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticZeroRow
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Charts.ZeroRow
 /-! Padding and erasing the auxiliary zero row leaves every original coordinate unchanged. -/
 set_option linter.hashCommand false
 public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence.InfinityChart
 variable (k R : Type u) [Field k] [CommRing R] [Algebra k R]

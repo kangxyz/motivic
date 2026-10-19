@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.FixedPsiFiniteFlatSectionPair
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.FixedOpen.Sections.FiniteFlatPair
 /-! # Strict consumer of whole relative psi finite flat factors -/
 open CategoryTheory AlgebraicGeometry
 open Scheme.Modules

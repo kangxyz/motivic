@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodLocalBoundaryCoordinate
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Graph.LocalBoundaryCoordinate
 import Lean.Util.CollectAxioms
 /-! # Direct concrete original-coordinate consumer -/
 public noncomputable section

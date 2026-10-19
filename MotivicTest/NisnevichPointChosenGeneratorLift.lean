@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichPointChosenGeneratorLift
-public import Motivic.Transfers.FixedLiftGermIndependence
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Points.ChosenGeneratorLift
+public import Motivic.Transfers.Sheaf.Germs.FixedLiftIndependence
 public import Lean.Util.CollectAxioms
 
 /-! # Chosen branch values at arbitrary and specializing target centers -/
@@ -15,6 +15,7 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
 
 universe u v

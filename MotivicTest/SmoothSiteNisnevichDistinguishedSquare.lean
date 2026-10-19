@@ -5,20 +5,23 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichDistinguishedSquare
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.DistinguishedSquare
 public import Mathlib.Algebra.Category.Grp.Basic
 public import Lean.Util.CollectAxioms
 
 /-! # Actual smooth Nisnevich distinguished-square gluing -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
 namespace MotivicTest.SmoothSiteNisnevichDistinguishedSquare
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable {S : Scheme.{u}} (sq : Square (SmoothSite S)) (hpb : sq.IsPullback)
   [IsOpenImmersion sq.f₂₄.left] [Etale sq.f₃₄.left]
@@ -39,7 +42,7 @@ open Lean in
 run_cmd do
   for name in #[``ofTwoArrows_mem_nisnevichTopology_of_field_lifting,
       ``ofTwoArrows_mem_nisnevichTopology_of_iso_complement,
-      ``isPullback_op_map_of_iso_complement] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isPullback_op_map_of_iso_complement] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

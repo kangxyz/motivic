@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightWholeFiberTorExteriorDecomposition
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightWholeFiberTorExteriorDecomposition
 
 /-!
 # Actual right source-cycle decomposition consumers over an arbitrary field
@@ -30,8 +30,11 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme fundamentalCycle
+  isNoetherian_of_finiteType mapGenericPoint)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.WholeFiberTorExteriorDecomposition
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.ComponentDecomposition
 open scoped BigOperators
 
 universe u
@@ -114,7 +117,8 @@ theorem actualClosedFiberLength
       (F.rightExteriorClosedFiber G H ((F.rightFirstStageExteriorSymmetry G H).hom w)) =
     Module.length ((pullback (G.incidenceSource H ≫ Y.hom)
         (F.targetProjection ≫ Y.hom) : Scheme.{u}).presheaf.stalk w)
-      (Koszul.coefficientClosedFiber ((pullback.fst (G.incidenceSource H ≫ Y.hom)
+      (_root_.ChainComplex.Koszul.coefficientClosedFiber ((pullback.fst (G.incidenceSource H ≫
+          Y.hom)
         (F.targetProjection ≫ Y.hom)).stalkMap w).hom) :=
   F.rightExteriorClosedFiberSymmetry_length G H w
 

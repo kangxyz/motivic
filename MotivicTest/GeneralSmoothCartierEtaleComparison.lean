@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.SmoothCartierEtaleComparison
+import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.EtaleComparison.SmoothEtaleComparison
 import Lean.Util.CollectAxioms
 
 /-! # Original-scheme consumer and axiom audit for smooth Cartier comparison -/

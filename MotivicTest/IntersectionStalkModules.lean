@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.StalkModules
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.StalkModules
 
 /-!
 # Consumers of the actual closed-intersection stalk modules
@@ -23,6 +23,7 @@ open RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.IntersectionStalkModules
+open _root_.AlgebraicGeometry.Scheme
 
 variable {D T P : Scheme.{u}} (i : D ⟶ P) (d : D) (j : T ⟶ P) (t : T) (hp : i d = j t)
 
@@ -51,7 +52,8 @@ noncomputable def actualTorComparison (n : ℕ) :
     ((Tor (ModuleCat (Intersection.ambientStalk i d)) n).obj
       (Intersection.coefficientStalkModule i d j t hp)).obj
         (Intersection.sourceStalkModule i d) ≅
-      (Koszul.coefficientComplex (Intersection.coefficientStalkModule i d j t hp) s).homology n :=
+      (_root_.ChainComplex.Koszul.coefficientComplex (Intersection.coefficientStalkModule i d j t
+          hp) s).homology n :=
   Intersection.torIsoHomology i d j t hp s hker hs n
 
 include hker hs in

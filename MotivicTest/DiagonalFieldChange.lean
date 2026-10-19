@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalFieldChange
+public import Motivic.Cohomology.Diagonal.FieldChange
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ naturality test uses the proved characteristic-zero construction.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalMilnorSymbol Motivic.DiagonalFieldChange
 

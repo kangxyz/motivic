@@ -2,7 +2,7 @@ module
 import Motivic.Aglib.RingTheory.Etale.FiniteAmbientCurveProjection
 
 /-! # Original ambient algebra and whole closed quotient share one finite coordinate system -/
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 
 example (k R : Type) [Field k] [Infinite k] [CommRing R] [Algebra k R]
     [Algebra.Smooth k R] (I : Ideal R) (d : ℕ)

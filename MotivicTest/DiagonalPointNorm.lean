@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalPointNorm
+public import Motivic.Cohomology.Diagonal.PointNorm
 public import Lean.Util.CollectAxioms
 
 /-! Consumers of literal all-weight finite-point Milnor evaluation. -/

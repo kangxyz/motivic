@@ -2,14 +2,18 @@
 # Authors: kangxyz
 from pathlib import Path
 from contextlib import redirect_stdout
+import base64
+import gzip
 import io
+import os
 import subprocess
 import sys
 import tempfile
+import textwrap
 import unittest
 from unittest.mock import patch
 
-from ci_targets import main, select_client, select_targets, validation_scope
+from ci_targets import encode_targets, main, select_client, select_targets, validation_scope
 
 
 class TargetSelectionTests(unittest.TestCase):
@@ -89,7 +93,7 @@ public import
         self.assertFalse(select_client(self.root, ['examples/downstream/README.md'], []))
 
     def test_docs_only_selects_no_lean(self):
-        self.assertEqual(select_targets(self.root, ['README.md', 'doc/INTERFACES.md']), [])
+        self.assertEqual(select_targets(self.root, ['README.md', 'docs/INTERFACES.md']), [])
 
     def test_changed_public_dependency_adds_only_reachable_public_consumers(self):
         targets = select_targets(self.root, ['Motivic/Public/Core.lean'])
@@ -117,7 +121,7 @@ public import
 
 class ValidationScopeTests(unittest.TestCase):
     def test_docs_only_skips_structural_and_tool_checks(self):
-        self.assertEqual(validation_scope(['README.md', 'doc/DEVELOPMENT.md',
+        self.assertEqual(validation_scope(['README.md', 'docs/DEVELOPMENT.md',
                                            'scripts/README.md', '.github/README.md']), (False, []))
 
     def test_lean_and_pin_changes_check_structure_without_tool_fixture_replay(self):
@@ -131,14 +135,17 @@ class ValidationScopeTests(unittest.TestCase):
             'test_ci_targets.py': ('ci_targets.py', 'test_ci_targets.py'),
             'test_build.py': ('build.py', 'test_build.py'),
             'test_build_client.py': ('build_client.py', 'test_build_client.py'),
-            'test_repository.py': ('cache.py', 'check_repository.py', 'test_repository.py'),
+            'test_repository.py': ('cache.py', 'test_repository.py'),
+            'test_generate_imports.py': ('generate_imports.py', 'test_generate_imports.py'),
         }
         for fixture, tools in groups.items():
             for tool in tools:
                 with self.subTest(tool=tool):
                     structural, selected = validation_scope(['scripts/' + tool])
                     self.assertEqual(selected, [fixture])
-                    self.assertEqual(structural, tool == 'check_repository.py')
+                    self.assertEqual(structural, tool == 'generate_imports.py')
+        self.assertEqual(validation_scope(['scripts/check_repository.py']),
+                         (True, ['test_generate_imports.py', 'test_repository.py']))
 
     def test_shared_parser_setup_and_unknown_tools_select_safe_full_scope(self):
         self.assertEqual(validation_scope([], setup=True), (True, ['test_*.py']))
@@ -163,6 +170,9 @@ class ValidationScopeTests(unittest.TestCase):
                                      '--github-output', str(output)], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, result.stderr)
             values = dict(line.split('=', 1) for line in output.read_text().splitlines())
+            encoded = values.pop('targets_gzip_base64')
+            self.assertEqual(gzip.decompress(base64.b64decode(encoded)).decode().splitlines(),
+                             ['Motivic', 'MotivicTest'])
             self.assertEqual(values, dict(lean='true', targets='Motivic MotivicTest',
                                           client='false', structural='true', tool_tests='test_*.py'))
 
@@ -178,8 +188,52 @@ class ValidationScopeTests(unittest.TestCase):
                     return_value=b'README.md\0.github/README.md\0'), redirect_stdout(io.StringIO()):
                 self.assertEqual(main(), 0)
             values = dict(line.split('=', 1) for line in output.read_text().splitlines())
+            self.assertEqual(gzip.decompress(base64.b64decode(
+                values.pop('targets_gzip_base64'))), b'')
             self.assertEqual(values, dict(lean='false', targets='',
                                           client='false', structural='false', tool_tests=''))
+
+
+class TargetTransportTests(unittest.TestCase):
+    def test_large_ordered_selection_survives_job_output_and_workflow_file_transport(self):
+        targets = [f'Motivic.AlgebraicGeometry.Correspondences.SelectedFamily.Module{i:05d}'
+                   for i in range(3015)]
+        self.assertGreater(len(' '.join(targets).encode('utf-8')), 128 * 1024)
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        expression = '${{ needs.source.outputs.targets_gzip_base64 }}'
+        self.assertIn('targets_gzip_base64: ${{ steps.scope.outputs.targets_gzip_base64 }}', workflow)
+        self.assertNotIn('SELECTED_TARGETS:', workflow)
+        self.assertEqual(workflow.count(
+            'mapfile -t targets < "$RUNNER_TEMP/selected-targets.txt"'), 3)
+        step = workflow.split('      - name: Materialize selected targets\n', 1)[1]
+        run = step.split('        run: |\n', 1)[1].split('      - name:', 1)[0]
+        materialize = textwrap.dedent(run)
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            output = root / 'outputs'
+            argv = ['ci_targets.py', '--root', str(root), '--event', 'push',
+                    '--base', '0' * 40, '--github-output', str(output)]
+            with patch.object(sys, 'argv', argv), patch('ci_targets.select_targets',
+                    return_value=targets), redirect_stdout(io.StringIO()):
+                self.assertEqual(main(), 0)
+            values = dict(line.split('=', 1) for line in output.read_text().splitlines())
+            encoded = values['targets_gzip_base64']
+            self.assertLess(len(encoded), 128 * 1024)
+            self.assertEqual(encoded, encode_targets(targets))
+            # Decode independently using the standard library, preserving order and count.
+            self.assertEqual(gzip.decompress(base64.b64decode(encoded, validate=True))
+                             .decode('utf-8').splitlines(), targets)
+            result = subprocess.run(['bash', '-e', '-c', materialize.replace(expression, encoded)],
+                                    env={**os.environ, 'RUNNER_TEMP': temporary},
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual((root / 'selected-targets.txt').read_text().splitlines(), targets)
+
+    def test_encoding_is_deterministic(self):
+        with patch('gzip.time.time', return_value=1):
+            first = encode_targets(['Motivic', 'MotivicTest'])
+        with patch('gzip.time.time', return_value=999999):
+            self.assertEqual(encode_targets(['Motivic', 'MotivicTest']), first)
 
 
 if __name__ == '__main__':

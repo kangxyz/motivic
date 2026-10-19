@@ -1,15 +1,16 @@
 module
 
-import Motivic.Aglib.AlgebraicGeometry.AffineLineReducedComplement
+import Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineReducedComplement
 
 /-! Direct consumers of the actual full reduced affine-line complement. -/
 
 set_option linter.hashCommand false
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry
 open AlgebraicGeometry.Scheme.PolynomialLaurent
-open Motivic Motivic.AffineLineReducedComplement
+open  _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 
 universe u
 
@@ -36,8 +37,8 @@ example : (openInclusion U).left = U.ι := rfl
 
 example : (openObject U).hom = U.ι ≫ polynomialProjection (.of k) := rfl
 
-#print axioms Motivic.AffineLineReducedComplement.exists_nonzero_basicOpen
-#print axioms Motivic.AffineLineReducedComplement.range_inclusion
-#print axioms Motivic.AffineLineReducedComplement.finite_quotient_of_basicOpen
-#print axioms Motivic.AffineLineReducedComplement.finite_projection
-#print axioms Motivic.AffineLineReducedComplement.openObject
+#print axioms exists_nonzero_basicOpen
+#print axioms range_inclusion
+#print axioms finite_quotient_of_basicOpen
+#print axioms finite_projection
+#print axioms openObject

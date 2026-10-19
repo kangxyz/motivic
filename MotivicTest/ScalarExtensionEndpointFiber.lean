@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ScalarExtensionEndpointFiber
+public import Motivic.Aglib.AlgebraicGeometry.BaseChange.PolynomialFiber
 
 /-!
 # Consumers of the whole scalar-restricted endpoint fiber
@@ -16,7 +16,7 @@ There is no separability, source smoothness, or endpoint reducedness assumption.
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open AlgebraicGeometry.FiniteFlatCurve
 open AlgebraicGeometry.ScalarExtensionEndpointFiber
 open scoped Polynomial
@@ -45,10 +45,11 @@ theorem originalSourceMap (a : k) {T : Scheme.{u}} (g : C ⟶ T) :
 /-- Signed endpoint cycles keep their actual original map into the target. -/
 theorem signedEndpointCycle [IsNoetherian C]
     {T : Scheme.{u}} (g : C ⟶ T) [IsFinite g] (a : k) (n : ℤ) :
-    IntegralCycle.finitePushforward (fiberInclusion (f ≫ coefficientMap c) a ≫ g)
-        (n • fundamentalCycle (fiber (f ≫ coefficientMap c) a)) =
-      IntegralCycle.finitePushforward (fiberInclusion f (c a) ≫ g)
-        (n • fundamentalCycle (fiber f (c a))) := by
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberInclusion (f ≫
+        coefficientMap c) a ≫ g)
+        (n • _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (f ≫ coefficientMap c) a)) =
+      _root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (fiberInclusion f (c a) ≫ g)
+        (n • _root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber f (c a))) := by
   simp only [map_zsmul, finitePushforward_fiberInclusion]
 
 open Lean in

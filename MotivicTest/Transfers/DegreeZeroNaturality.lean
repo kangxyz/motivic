@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.DegreeZeroNaturality
+public import Motivic.Transfers.Cohomology.DegreeZero.Naturality
 public import Lean.Util.CollectAxioms
 
 /-! # Actual coefficient naturality of signed degree-zero transfers -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

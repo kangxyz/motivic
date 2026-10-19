@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoMilnorNormComparison
+public import Motivic.Cohomology.WeightTwo.MilnorNormComparison
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ mixed-symbol generation nor transfer compatibility is an input hypothesis.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
 open MilnorK.K2 MilnorK.K3.PolynomialResidue
 open MilnorK.K3.PolynomialNorm Motivic.WeightTwoMilnorSymbol

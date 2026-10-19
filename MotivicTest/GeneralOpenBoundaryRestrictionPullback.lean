@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.OpenBoundaryRestrictionPullback
+import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.OpenRestrictionPullback
 import Lean.Util.CollectAxioms
 
 /-! # Direct consumer of the original prescribed boundary value on an open -/

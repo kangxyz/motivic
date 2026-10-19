@@ -5,8 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorStalk
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.WholeFiberTorStalk
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original whole-fiber first-stage Tor stalk consumers
@@ -20,11 +22,16 @@ attached to original supported Tor, with genuine original structure-ring maps.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open _root_.AlgebraicGeometry.Scheme (SmoothSite correspondenceSixfoldAmbient_isSeparated
+  isLocallyNoetherian_correspondenceSixfoldAmbient)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceFirstDiagonalInclusion
+  correspondenceSixfoldAmbient)
+open CategoryTheory AlgebraicGeometry Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
 namespace MotivicTest.WholeFiberTorStalk
+open _root_.AlgebraicGeometry.Scheme.Modules
 
 variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S}
   {h : Z ⟶ S} {i : W ⟶ S} [S.IsSeparated]
@@ -74,7 +81,7 @@ theorem actualWholeStalk_finite [IsLocallyNoetherian S]
     (U : (F.leftIntermediateImageProduct G H).affineOpens)
     (x : ((F.leftIntermediateImageMap G H) ⁻¹ᵁ U).toScheme) (n : ℕ) :
     Module.Finite (((F.leftIntermediateImageMap G H) ⁻¹ᵁ U).toScheme.presheaf.stalk x)
-      ((ModuleStalk.functor x).obj
+      ((Stalk.functor x).obj
         (wholeFiberTorCoefficient (F.tripleSupportProductInclusion G H)
           (correspondenceFirstDiagonalInclusion f g h i) (F.leftIntermediateSupportInclusion G H)
           (F.leftIntermediateToTripleSupport G H) (F.leftIntermediate_ambient_isPullback G H)
@@ -97,7 +104,7 @@ theorem actualSmoothWholeStalk_finite (K : Type u) [Field K]
     (U : (F.leftIntermediateImageProduct G H).affineOpens)
     (x : ((F.leftIntermediateImageMap G H) ⁻¹ᵁ U).toScheme) (n : ℕ) :
     Module.Finite (((F.leftIntermediateImageMap G H) ⁻¹ᵁ U).toScheme.presheaf.stalk x)
-      ((ModuleStalk.functor x).obj
+      ((Stalk.functor x).obj
         (wholeFiberTorCoefficient (F.tripleSupportProductInclusion G H)
           (correspondenceFirstDiagonalInclusion X.hom Y.hom Z.hom W.hom)
           (F.leftIntermediateSupportInclusion G H) (F.leftIntermediateToTripleSupport G H)

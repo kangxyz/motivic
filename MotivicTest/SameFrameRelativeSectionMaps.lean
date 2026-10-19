@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.SameFrameRelativeSectionMaps
+import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.SectionLifting.SameFrameRelativeSectionMaps
 /-! # Actual relative Serre lifts from the same original frames -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry

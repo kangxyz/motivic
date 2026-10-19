@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PresheafBoundaryScalarDescent
-public import Motivic.Cohomology.A1.RelativeCurveLocalLifting
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarRestrictionDifference
-import all Motivic.Cohomology.A1.PresheafBoundaryScalarDescent
+public import Motivic.Cohomology.A1.Boundary.Presheaf.ScalarDescent
+public import Motivic.Cohomology.A1.LocalVanishing.RelativeCurve.LocalLifting
+import all Motivic.Transfers.Presheaf.FiniteScalarRestrictionDifference
+import all Motivic.Cohomology.A1.Boundary.Presheaf.ScalarDescent
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -26,8 +26,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.PresheafWithTransfers
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 
@@ -64,8 +65,8 @@ theorem originalRestrictionDifference (P : PresheafWithTransfers.{u + 1} k)
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarRestrictionDifference,
-    `Motivic.Cohomology.A1.PresheafBoundaryScalarDescent]
+  let sourceModules := #[`Motivic.Transfers.Presheaf.FiniteScalarRestrictionDifference,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.ScalarDescent]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -95,8 +96,8 @@ run_cmd do
   let options : Lean.Linter.LinterOptions := {
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
-  let modules := #[`Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarRestrictionDifference,
-    `Motivic.Cohomology.A1.PresheafBoundaryScalarDescent, `MotivicTest.BoundaryScalarDescent]
+  let modules := #[`Motivic.Transfers.Presheaf.FiniteScalarRestrictionDifference,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.ScalarDescent, `MotivicTest.BoundaryScalarDescent]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules
   let filenameErrors ← modulesOSForbidden options modules

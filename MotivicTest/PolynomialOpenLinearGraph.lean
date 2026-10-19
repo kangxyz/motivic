@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.AlgebraicGeometry.Correspondences.PolynomialOpenLinearGraph
+public import Motivic.AlgebraicGeometry.Correspondences.Moving.Polynomial.Open.LinearGraph
 public import Lean
 /-! # Actual linear quotient graphs, including the nonunit zero coordinate -/
 public noncomputable section

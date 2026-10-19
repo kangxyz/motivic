@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.IntegralExteriorBranchTransport
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.BaseChange.BranchTransport
 public import MotivicTest.IntegralExteriorResidueTensor
 
 /-!
@@ -31,6 +31,18 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.BranchTransport (actualFiberResidueMap
+  actualFiberStalkMap exteriorCoordinates originalResidue residueTensorToLocalEquiv
+  residueTensorToLocalEquiv_sourceNumerator tensorBranchResidueEquiv
+  tensorBranchResidueEquiv_scalarSquare tensorBranchResidueMap tensorBranchStalkEquiv
+  tensorBranchStalkEquiv_originalResidueSquare tensorBranchStalkEquiv_scalarSquare
+  tensorBranchStalkEquiv_sourceNumerator tensorFiberEquiv tensorGenericFiberEquiv)
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.ResidueTensor (originalResidueAlgebra
+  originalResidueToStalk originalSourceNumerator)
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteCartesianAffineAlgebra (baseChangedSourceRing
+  baseChangedTargetRing sourceRing sourceSectionMap)
+open _root_.PrimeSpectrum.FiniteFiber (localAlgebra)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open scoped TensorProduct
 open MotivicTest.IntegralGenericFiniteImage
@@ -53,9 +65,9 @@ variable {U : (imageSupport F G z).val.subscheme.Opens} [Nonempty U] (hU : IsAff
   (hVU : V ≤ targetProjection F G H z ⁻¹ᵁ U)
   (v : genericPoints (imageExterior F G H z)) (hv : v.1 ∈ V)
 
-local notation "C" => Motivic.FiniteCartesianAffineAlgebra.baseChangedTargetRing
+local notation "C" => baseChangedTargetRing
   (Y' := imageExterior F G H z) (V := V)
-local notation "D" => Motivic.FiniteCartesianAffineAlgebra.baseChangedSourceRing
+local notation "D" => baseChangedSourceRing
   (f' := pairExteriorMap F G H z) (V := V)
 local notation "R" => (TopCat.Presheaf.stalk
   (PresheafedSpace.presheaf (SheafedSpace.toPresheafedSpace
@@ -64,7 +76,7 @@ local notation "R" => (TopCat.Presheaf.stalk
 local notation "L" => Scheme.residueField (Scheme.Hom.image (F.incidenceMap G))
   (Scheme.Hom.toImage (F.incidenceMap G) (Subtype.val z))
 local notation "M" => Scheme.residueField (F.incidence G) (Subtype.val z)
-local notation "B" => Motivic.FiniteCartesianAffineAlgebra.sourceRing
+local notation "B" => sourceRing
   (f := pairMap F G z) (U := U)
 local notation "p" => hV.primeIdealOf (Subtype.mk (Subtype.val v) hv : V)
 
@@ -81,7 +93,7 @@ local instance originalSourceResidueAlgebra : Algebra L M :=
   ((F.incidenceMap G).toImage.residueFieldMap z.1).hom.toAlgebra
 
 local notation "T" => R ⊗[L] M
-local notation "S" => FiniteFiber.localAlgebra C D p
+local notation "S" => localAlgebra C D p
 
 /-- The actual constructed whole residue tensor is the existing whole local
 algebra for the actual pair exterior finite map. -/
@@ -89,7 +101,7 @@ def actualTensorToLocalEquiv :
     let := exteriorResidueAlgebra F G H z hU v
     T ≃+* S := by
   let := exteriorResidueAlgebra F G H z hU v
-  exact Motivic.IntegralExteriorBranchTransport.residueTensorToLocalEquiv
+  exact residueTensorToLocalEquiv
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v)
 
@@ -99,7 +111,7 @@ def actualAllBranchesEquiv :
     let := exteriorResidueAlgebra F G H z hU v
     MaximalSpectrum T ≃ {w : pairExterior F G H z // pairExteriorMap F G H z w = v.1} := by
   let := exteriorResidueAlgebra F G H z hU v
-  exact Motivic.IntegralExteriorBranchTransport.tensorFiberEquiv
+  exact tensorFiberEquiv
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v)
 
@@ -110,7 +122,7 @@ def actualAllGenericBranchesEquiv :
     MaximalSpectrum T ≃
       {w : genericPoints (pairExterior F G H z) // pairExteriorMap F G H z w.1 = v.1} := by
   let := exteriorResidueAlgebra F G H z hU v
-  exact Motivic.IntegralExteriorBranchTransport.tensorGenericFiberEquiv
+  exact tensorGenericFiberEquiv
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) v.2
 
@@ -143,7 +155,7 @@ def actualBranchStalkEquiv :
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q
-  exact Motivic.IntegralExteriorBranchTransport.tensorBranchStalkEquiv
+  exact tensorBranchStalkEquiv
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) q
 
@@ -164,13 +176,13 @@ theorem actualBranchStalkScalarSquare :
     ∀ (q : MaximalSpectrum T),
     (actualBranchStalkEquiv F G H z hU hV hVU v hv q).toRingHom.comp
         (actualBranchBaseMap F G H z hU v q) =
-      (Motivic.IntegralExteriorBranchTransport.actualFiberStalkMap
+      (actualFiberStalkMap
         (pairExteriorMap F G H z) (⟨v.1, hv⟩ : V)
         (actualAllBranchesEquiv F G H z hU hV hVU v hv q)).hom := by
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q
-  exact Motivic.IntegralExteriorBranchTransport.tensorBranchStalkEquiv_scalarSquare
+  exact tensorBranchStalkEquiv_scalarSquare
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) q
 
@@ -182,7 +194,7 @@ def actualBranchResidueMap :
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q
-  exact Motivic.IntegralExteriorBranchTransport.tensorBranchResidueMap
+  exact tensorBranchResidueMap
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) q
 
@@ -197,7 +209,7 @@ def actualBranchResidueEquiv :
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q
-  exact Motivic.IntegralExteriorBranchTransport.tensorBranchResidueEquiv
+  exact tensorBranchResidueEquiv
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) q
 
@@ -208,13 +220,13 @@ theorem actualBranchResidueScalarSquare :
     ∀ (q : MaximalSpectrum T),
     (actualBranchResidueEquiv F G H z hU hV hVU v hv q).toRingHom.comp
         (actualBranchResidueMap F G H z hU hV hVU v hv q) =
-      (Motivic.IntegralExteriorBranchTransport.actualFiberResidueMap
+      (actualFiberResidueMap
         (pairExteriorMap F G H z) (⟨v.1, hv⟩ : V)
         (actualAllBranchesEquiv F G H z hU hV hVU v hv q)).hom := by
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q
-  have h := Motivic.IntegralExteriorBranchTransport.tensorBranchResidueEquiv_scalarSquare
+  have h := tensorBranchResidueEquiv_scalarSquare
     (X := F.incidence G) (Y := (F.incidenceMap G).image) (U := U)
     (X' := pairExterior F G H z) (Y' := imageExterior F G H z)
     (i := pullback.fst ((pairSupport F G z).val.subschemeι ≫ pairStructure F G)
@@ -233,19 +245,19 @@ theorem actualOriginalResidueScalarSquare :
     ∀ (q : MaximalSpectrum T),
     (actualBranchStalkEquiv F G H z hU hV hVU v hv q).toRingHom.comp
         ((actualBranchBaseMap F G H z hU v q).comp
-          (Motivic.IntegralExteriorResidueTensor.originalResidueToStalk
+          (originalResidueToStalk
             (F.incidenceMap G).toImage z.1 hU (targetProjection F G H z) v.1
             (targetProjection_generic F G H z v))) =
-      (Motivic.IntegralExteriorBranchTransport.actualFiberStalkMap
+      (actualFiberStalkMap
         (pairExteriorMap F G H z) (⟨v.1, hv⟩ : V)
         (actualAllBranchesEquiv F G H z hU hV hVU v hv q)).hom.comp
-          (Motivic.IntegralExteriorResidueTensor.originalResidueToStalk
+          (originalResidueToStalk
             (F.incidenceMap G).toImage z.1 hU (targetProjection F G H z) v.1
             (targetProjection_generic F G H z v)) := by
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q
-  exact Motivic.IntegralExteriorBranchTransport.tensorBranchStalkEquiv_originalResidueSquare
+  exact tensorBranchStalkEquiv_originalResidueSquare
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) q
 
@@ -254,14 +266,14 @@ map before branch localization; no right-hand field action is substituted. -/
 theorem actualSourceNumeratorSquare (b : B) :
     let := exteriorResidueAlgebra F G H z hU v
     actualTensorToLocalEquiv F G H z hU hV hVU v hv
-        (1 ⊗ₜ[L] Motivic.IntegralExteriorResidueTensor.originalSourceNumerator
+        (1 ⊗ₜ[L] originalSourceNumerator
           (F.incidenceMap G).toImage z.1 hU b) =
       (1 : Localization.AtPrime
         (PrimeSpectrum.asIdeal (hV.primeIdealOf (⟨Subtype.val v, hv⟩ : V)))) ⊗ₜ[C]
-        Motivic.FiniteCartesianAffineAlgebra.sourceSectionMap
+        sourceSectionMap
           (pairExteriorMap_isPullback F G H z) hVU b := by
   let := exteriorResidueAlgebra F G H z hU v
-  have h := Motivic.IntegralExteriorBranchTransport.residueTensorToLocalEquiv_sourceNumerator
+  have h := residueTensorToLocalEquiv_sourceNumerator
     (X := F.incidence G) (Y := (F.incidenceMap G).image) (U := U)
     (X' := pairExterior F G H z) (Y' := imageExterior F G H z)
     (i := pullback.fst ((pairSupport F G z).val.subschemeι ≫ pairStructure F G)
@@ -271,9 +283,9 @@ theorem actualSourceNumeratorSquare (b : B) :
     hV hVU (⟨v.1, hv⟩ : V) (targetProjection_generic F G H z v) b
   dsimp (config := { instances := true }) only
     [actualTensorToLocalEquiv, exteriorResidueAlgebra, exteriorCoordinateAlgebra,
-      Motivic.IntegralExteriorBranchTransport.exteriorCoordinates,
-      originalSourceResidueAlgebra, Motivic.IntegralExteriorBranchTransport.originalResidue,
-      Motivic.IntegralExteriorResidueTensor.originalResidueAlgebra] at h ⊢
+      exteriorCoordinates,
+      originalSourceResidueAlgebra, originalResidue,
+      originalResidueAlgebra] at h ⊢
   set_option backward.isDefEq.respectTransparency true in
     set_option backward.isDefEq.respectTransparency.types true in
       with_reducible exact h
@@ -285,7 +297,7 @@ theorem actualBranchSourceNumerator :
     ∀ (q : MaximalSpectrum T) (b : B),
     actualBranchStalkEquiv F G H z hU hV hVU v hv q
         (algebraMap T (Localization.AtPrime q.asIdeal)
-          (1 ⊗ₜ[L] Motivic.IntegralExteriorResidueTensor.originalSourceNumerator
+          (1 ⊗ₜ[L] originalSourceNumerator
             (F.incidenceMap G).toImage z.1 hU b)) =
       (pairExterior F G H z).presheaf.germ (pairExteriorMap F G H z ⁻¹ᵁ V)
         (actualAllBranchesEquiv F G H z hU hV hVU v hv q).1
@@ -294,12 +306,12 @@ theorem actualBranchSourceNumerator :
             (actualAllBranchesEquiv F G H z hU hV hVU v hv q).1 ∈ V
           rw [(actualAllBranchesEquiv F G H z hU hV hVU v hv q).2]
           exact hv)
-        (Motivic.FiniteCartesianAffineAlgebra.sourceSectionMap
+        (sourceSectionMap
           (pairExteriorMap_isPullback F G H z) hVU b) := by
   let := exteriorResidueAlgebra F G H z hU v
   dsimp only
   intro q b
-  have h := Motivic.IntegralExteriorBranchTransport.tensorBranchStalkEquiv_sourceNumerator
+  have h := tensorBranchStalkEquiv_sourceNumerator
     (X := F.incidence G) (Y := (F.incidenceMap G).image) (U := U)
     (X' := pairExterior F G H z) (Y' := imageExterior F G H z)
     (i := pullback.fst ((pairSupport F G z).val.subschemeι ≫ pairStructure F G)
@@ -309,8 +321,8 @@ theorem actualBranchSourceNumerator :
     hV hVU (⟨v.1, hv⟩ : V) (targetProjection_generic F G H z v) q b
   dsimp (config := { instances := true }) only
     [actualBranchStalkEquiv, actualAllBranchesEquiv, id, exteriorResidueAlgebra,
-      originalSourceResidueAlgebra, Motivic.IntegralExteriorBranchTransport.originalResidue,
-      Motivic.IntegralExteriorResidueTensor.originalResidueAlgebra] at h ⊢
+      originalSourceResidueAlgebra, originalResidue,
+      originalResidueAlgebra] at h ⊢
   set_option backward.isDefEq.respectTransparency true in
     set_option backward.isDefEq.respectTransparency.types true in
       with_reducible exact h

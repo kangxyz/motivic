@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.AffinePushforwardTilde
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Affine.Tilde
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
 public import Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex
 
@@ -29,7 +29,7 @@ universe u
 
 namespace Motivic.MotivicTest.AffinePushforwardTilde
 
-open AffinePushforward
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.Affine
 
 variable (A : Type u) [CommRing A] (I : Ideal A)
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteIdeal
+public import Aglib.Algebra.Homology.Koszul.Ideal
 
 /-!
 # Consumers of genuine arbitrary-finite Koszul complexes
@@ -20,7 +20,7 @@ proved one-element resolution; no arbitrary-list resolution is assumed.
 universe u
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
-open Motivic.Koszul
+open _root_.ChainComplex.Koszul
 
 variable {R : Type u} [CommRing R]
 variable (a b c : R) (s t : List R)

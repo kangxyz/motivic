@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichPointGeneratorLift
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Points.GeneratorLift
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,8 +18,9 @@ lifts are required only over the chosen finite source fiber.
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.SmoothSite
+open Motivic _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u v
 
@@ -72,8 +73,9 @@ example (c : ℤ) : ∃ (N : NisnevichNeighborhood X x) (n : ℕ) (label : Fin n
 end Correspondence
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
-  for name in #[``Motivic.SmoothSite.NisnevichNeighborhood.exists_family_lift_of_isFinite,
+  for name in #[``exists_family_lift_of_isFinite,
       ``Motivic.FiniteCorrespondenceGenerator.exists_pointed_graph_family_factorization] do
     let dependencies ← collectAxioms name
     for dependency in dependencies do

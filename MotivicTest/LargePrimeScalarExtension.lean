@@ -5,16 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.FiniteCoprimeTensorField
-public import Motivic.Aglib.RingTheory.FiniteExtensionPrimeDegrees
-public import Motivic.Aglib.AlgebraicGeometry.FiniteEtaleIntegralOfSingletonFiber
-public import Motivic.Aglib.AlgebraicGeometry.CoprimeScalarExtensionIntegral
-public import Motivic.Aglib.AlgebraicGeometry.LargePrimeScalarExtension
-import all Motivic.Aglib.RingTheory.FiniteCoprimeTensorField
-import all Motivic.Aglib.RingTheory.FiniteExtensionPrimeDegrees
-import all Motivic.Aglib.AlgebraicGeometry.FiniteEtaleIntegralOfSingletonFiber
-import all Motivic.Aglib.AlgebraicGeometry.CoprimeScalarExtensionIntegral
-import all Motivic.Aglib.AlgebraicGeometry.LargePrimeScalarExtension
+public import Motivic.Aglib.FieldTheory.FiniteExtension.CoprimeTensorField
+public import Motivic.Aglib.FieldTheory.FiniteExtension.PrimeDegrees
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteEtaleIntegralOfSingletonFiber
+public import Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.CoprimeIntegral
+public import Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.LargePrime
+import all Motivic.Aglib.FieldTheory.FiniteExtension.CoprimeTensorField
+import all Motivic.Aglib.FieldTheory.FiniteExtension.PrimeDegrees
+import all Motivic.Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteEtaleIntegralOfSingletonFiber
+import all Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.CoprimeIntegral
+import all Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.LargePrime
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -61,11 +61,11 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.RingTheory.FiniteCoprimeTensorField,
-    `Motivic.Aglib.RingTheory.FiniteExtensionPrimeDegrees,
-    `Motivic.Aglib.AlgebraicGeometry.FiniteEtaleIntegralOfSingletonFiber,
-    `Motivic.Aglib.AlgebraicGeometry.CoprimeScalarExtensionIntegral,
-    `Motivic.Aglib.AlgebraicGeometry.LargePrimeScalarExtension]
+    `Motivic.Aglib.FieldTheory.FiniteExtension.CoprimeTensorField,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.PrimeDegrees,
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteEtaleIntegralOfSingletonFiber,
+    `Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.CoprimeIntegral,
+    `Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.LargePrime]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -92,11 +92,11 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.RingTheory.FiniteCoprimeTensorField,
-    `Motivic.Aglib.RingTheory.FiniteExtensionPrimeDegrees,
-    `Motivic.Aglib.AlgebraicGeometry.FiniteEtaleIntegralOfSingletonFiber,
-    `Motivic.Aglib.AlgebraicGeometry.CoprimeScalarExtensionIntegral,
-    `Motivic.Aglib.AlgebraicGeometry.LargePrimeScalarExtension,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.CoprimeTensorField,
+    `Motivic.Aglib.FieldTheory.FiniteExtension.PrimeDegrees,
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.FiniteEtale.FiniteEtaleIntegralOfSingletonFiber,
+    `Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.CoprimeIntegral,
+    `Motivic.Aglib.RingTheory.TensorProduct.ScalarExtension.LargePrime,
     `MotivicTest.LargePrimeScalarExtension]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

@@ -1,6 +1,6 @@
 module
-import Motivic.Aglib.RingTheory.ZeroNeighborhoodPencil
-import Motivic.Aglib.RingTheory.ZeroNeighborhoodGlobalNumerator
+import Motivic.Aglib.RingTheory.Polynomial.ZeroNeighborhood.Pencil
+import Motivic.Aglib.RingTheory.Polynomial.ZeroNeighborhood.GlobalNumerator
 /-! Direct consumers of actual interpolation, whole finite-free families, and descent. -/
 set_option linter.hashCommand false
 open Polynomial Polynomial.ZeroNeighborhoodInterpolation

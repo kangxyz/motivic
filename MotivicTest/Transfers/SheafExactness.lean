@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.UnderlyingExactness
+public import Motivic.Transfers.Sheaf.UnderlyingExactness
 public import Lean.Util.CollectAxioms
 
 /-!

@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteProducts
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Products
 
 /-! # Consumers of the actual relative smooth-site product -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 universe u
 

@@ -16,7 +16,23 @@ Flatness is retained: an absolute Cartier divisor in a relative curve can be
 vertical, so ambient smoothness and properness alone do not prove finiteness.
 
 The correspondence consumer is
-`Motivic.AlgebraicGeometry.Correspondences.RelativeCartierDivisor`. It retains
+`Motivic.AlgebraicGeometry.Correspondences.Endpoints.Cartier.Divisor`. It retains
 boundary avoidance and the whole original divisor scheme. Standard-triple
 existence, line-bundle splitting, relative Picard comparison, and A¹-homotopies
 are separate unproved consumers, not hypotheses disguised as conclusions here.
+
+## Original graph and boundary frames
+
+| Exact import | Interface and retained boundary |
+| --- | --- |
+| `Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.MarkedProductFrame` | The same full coordinate-boundary ideal frame on the literal nested product; source and marked scheme are not shrunk. |
+| `Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.DualBoundaryNaturality` | Specified ideal-frame duals commute with actual pullback composition and open restriction. |
+| `Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.ParameterGraphPullback` | The actual parameter graph square and flat ideal comparison, preserving the original ideal inclusion. |
+| `Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.ParameterGraphChartFrame` | Transport of the same target frame on the actual inverse chart, with equality of functional coordinates. |
+
+The marked frame retains the whole Cartesian boundary square, flat coordinate
+map and original open compactification; the source need not be affine and the
+marked ring need not be reduced. Dual comparisons use the full evaluation
+pairing and original inverse-frame restriction equation; they do not cancel a
+possibly vanishing graph section or replace a chosen frame. Concrete boundary
+norms and simultaneous standard-triple data remain separate consumers.

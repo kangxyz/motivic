@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.FiniteCoefficientsExact
+import Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Exact
 
 /-!
 # Exact coefficient sequence regression tests
@@ -17,7 +17,7 @@ or Bockstein-injectivity assumptions.
 -/
 
 open CategoryTheory CategoryTheory.Limits HomologicalComplex CochainComplex
-open Motivic Motivic.finiteCoefficients
+open _root_.CochainComplex.finiteCoefficients
 
 set_option backward.isDefEq.respectTransparency false
 noncomputable section

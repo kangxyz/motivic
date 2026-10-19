@@ -9,7 +9,12 @@ public import Lean
 
 /-! # One original projection and every prime of its selected fiber -/
 public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial AlgebraicGeometry QuadraticIncidence
+open Module
+open TensorProduct
+open KaehlerDifferential
+open _root_.MvPolynomial
+open AlgebraicGeometry
+open QuadraticIncidence
 universe u
 namespace MotivicTest.WholeFiberSmoothProjection
 

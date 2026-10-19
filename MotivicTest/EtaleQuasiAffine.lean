@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleQuasiAffine
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.QuasiAffine
 
 /-! # Original affine-line étale source consumer -/
 

@@ -9,7 +9,7 @@ import Motivic.Aglib.RingTheory.Bertini.ClosedPointMovingCoefficients
 import Lean.Util.CollectAxioms
 
 /-! # One original parameter tuple avoids all charts at a genuine closed point -/
-open QuadraticIncidence QuadraticIncidence.MovingPointChart MvPolynomial
+open QuadraticIncidence QuadraticIncidence.MovingPointChart _root_.MvPolynomial
 
 example (k R : Type) [Field k] [Infinite k] [CommRing R] [IsDomain R]
     [Algebra k R] [Algebra.Smooth k R] (x : PrimeSpectrum R) [x.asIdeal.IsMaximal]

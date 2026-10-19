@@ -5,16 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteTorusDivisor
+public import Motivic.Cohomology.WeightOne.Geometry.TorusDivisor
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of the global ordinary norm from original torus correspondences -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.SmoothSiteAffineCoordinates Motivic.SmoothSiteTorusDivisor
-open Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates Motivic.SmoothSiteTorusDivisor
+open  _root_.Motivic.PresheafWithTransfers
 
 universe u
 
@@ -27,9 +29,17 @@ def actual_global_norm : (toPresheaf k).obj (torusRepresentable k 1) ⟶
 
 open Lean in
 run_cmd do
-  for name in #[``scalarMap, ``sectionsAlgebra, ``sectionsMap, ``sectionsSmooth,
-      ``sectionsNoetherian, ``isoSpec_inv_base, ``affineIso, ``affineIso_hom_left,
-      ``affineIso_inv_left, ``affineIso_naturality, ``affineCycleCoordinates,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.scalarMap,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.sectionsAlgebra,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.sectionsMap,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.sectionsSmooth,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.sectionsNoetherian,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.isoSpec_inv_base,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.affineIso,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.affineIso_hom_left,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.affineIso_inv_left,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates.affineIso_naturality,
+          ``affineCycleCoordinates,
       ``affineCycleCoordinates_natural, ``affineNorm, ``affineNorm_natural,
       ``affinePowerOneNorm, ``affinePowerOneNorm_natural, ``largeAffineNorm,
       ``integralAffineNorm, ``norm, ``norm_app, ``actual_global_norm] do

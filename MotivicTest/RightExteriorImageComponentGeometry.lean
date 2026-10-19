@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RightExteriorImageComponentGeometry
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageRemainingLiftCases
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.RightImage.ComponentGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.RemainingLiftCases
 
 /-!
 # Consumers of the original right image support and remaining Y square
@@ -31,9 +31,14 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (stalkQuotientKerEquiv)
+open _root_.AlgebraicGeometry.Scheme.Intersection (coefficientStalkMap)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceMiddlePair
+  correspondenceTripleInclusion correspondenceTripleMiddle)
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.RightExteriorImageComponentGeometry
-open IntegralClosedSubscheme
+open _root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme
 
 universe u
 
@@ -213,7 +218,7 @@ theorem actualRemaining_scalarSquare :
     let C := imageSupport G H z
     let P := G.smoothIncidenceComponentGenerator (X := Y) (Y := Z) (Z := W) k H z
     let e := actualRemainingToExterior F G H z w
-    let a := Intersection.coefficientStalkMap
+    let a := coefficientStalkMap
       (correspondenceTripleInclusion X.hom Y.hom W.hom) (F.incidenceInclusion P w)
       (F.supportProductInclusion P) ((actualExteriorIso F G H z).hom e)
       (remainingExterior_ambientPoint F G H C P (actualImageKernel G H z) w)
@@ -237,7 +242,7 @@ theorem actualRemaining_listQuotient :
     let P := G.smoothIncidenceComponentGenerator (X := Y) (Y := Z) (Z := W) k H z
     let e := actualRemainingToExterior F G H z w
     let r := remainingExteriorAmbientList F G H C P (actualImageKernel G H z) w s
-    let a := Intersection.coefficientStalkMap
+    let a := coefficientStalkMap
       (correspondenceTripleInclusion X.hom Y.hom W.hom) (F.incidenceInclusion P w)
       (F.supportProductInclusion P) ((actualExteriorIso F G H z).hom e)
       (remainingExterior_ambientPoint F G H C P (actualImageKernel G H z) w)

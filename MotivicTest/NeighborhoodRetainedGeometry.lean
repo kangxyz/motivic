@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodRetainedGeometry
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Retained.Geometry
 /-! The original punctured target is affine and the full boundary covers its complement. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

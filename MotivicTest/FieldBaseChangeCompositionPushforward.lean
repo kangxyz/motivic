@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeCompositionPushforward
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.CompositionPushforward
 
 /-!
 # Actual whole-incidence field-change pushforward consumers
@@ -16,11 +16,13 @@ every branch length survives in an equality of complete actual integral cycles.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
 
 namespace MotivicTest.FieldBaseChangeCompositionPushforward
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y Z : SmoothSite.overField k} (A : FiniteCorrespondenceGenerator X.hom Y.hom)

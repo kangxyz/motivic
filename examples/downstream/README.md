@@ -18,3 +18,5 @@ build with private client outputs and receipts. It rejects foreign package links
 and shared build-output links. CI selects this check for client changes and
 changes reaching its public import. For distribution, replace the relative
 requirement with this repository's URL and an exact reviewed commit.
+
+Return to the [documentation routes](../../docs/README.md) for public imports and validation scope.

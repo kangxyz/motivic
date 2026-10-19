@@ -5,18 +5,21 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalResiduePointEvaluation
+public import Motivic.Cohomology.Diagonal.ResiduePointEvaluation
 public import Lean.Util.CollectAxioms
 
 /-! Actual residue fields and full nonreduced finite cycles, in every weight. -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.DiagonalPointNorm Motivic.DiagonalResiduePointEvaluation
 open scoped BigOperators
 
 universe u
 namespace MotivicTest.DiagonalResiduePointEvaluation
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 variable {k : Type u} [Field k] [CharZero k] {T : Scheme.{u}} [IsNoetherian T]
   {q : ℕ}
 

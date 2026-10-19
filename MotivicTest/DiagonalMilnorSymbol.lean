@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorSymbol
+public import Motivic.Cohomology.Diagonal.MilnorSymbol
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ old maps. No converse or arbitrary boundary norm is imported as an assumption.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalMilnorSymbol
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.BoundaryOneRationalFunctor
+public import Motivic.Aglib.RingTheory.Polynomial.BoundaryOneRationalFunctions.Functor
 public import Lean.Util.CollectAxioms
 
 /-! # Direct consumers of the literal boundary-one rational homotopy -/

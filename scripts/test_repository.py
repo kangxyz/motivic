@@ -25,11 +25,80 @@ class RepositoryBoundaryTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
 
-    def test_candidate_can_depend_on_core_but_actual_cycle_fails(self):
-        self.write('Motivic/Aglib/Bridge.lean', 'import Motivic.Core\n')
+    def test_production_components_accept_canonical_names_but_reject_lowercase_child(self):
+        self.write('Motivic/Cohomology/A1/H1/ZMod/Basic.lean',
+                   'module\npublic import Mathlib.lowercase\nnamespace lowercase\nend lowercase\n')
+        self.write('MotivicTest/lowercase.lean', 'module\n')
         self.assertEqual(check_sources(self.root)[0], [])
-        self.write('Motivic/Core.lean', 'import Motivic.Aglib.Bridge\n')
+        self.write('Motivic/Sites/Smooth/Units/s.lean', 'module\n')
         errors, _ = check_sources(self.root)
+        self.assertEqual(len(errors), 1, errors)
+        self.assertIn('Motivic.Sites.Smooth.Units.s', errors[0])
+        self.assertIn('production module components must use PascalCase', errors[0])
+
+    def test_root_namespace_commands_reject_nested_literal_root_names(self):
+        for path in ('Motivic/Aglib/AlgebraicGeometry/FiniteFiber.lean',
+                     'MotivicTest/FiniteFiber.lean',
+                     'examples/downstream/MotivicClient.lean'):
+            for command in ('namespace _root_.PrimeSpectrum.FiniteFiber', 'namespace _root_'):
+                with self.subTest(path=path, command=command):
+                    self.write(path, 'module\nnamespace AlgebraicGeometry.Scheme\n'
+                               + command + '\nend\nend AlgebraicGeometry.Scheme\n')
+                    errors, _ = check_sources(self.root)
+                    self.assertEqual(len(errors), 1, errors)
+                    self.assertIn(f'{path}:3: namespace _root_ does not escape', errors[0])
+                    self.assertIn('close and reopen namespaces instead', errors[0])
+            (self.root / path).unlink()
+
+    def test_root_namespace_comments_strings_and_distinct_identifiers_are_ignored(self):
+        self.write('Motivic/Core.lean', '''module
+/- namespace _root_.PrimeSpectrum /- namespace _root_ -/ -/
+-- namespace _root_
+def text := "namespace _root_.PrimeSpectrum.FiniteFiber"
+namespace _root_namespace
+end _root_namespace
+namespace AlgebraicGeometry.Scheme
+end AlgebraicGeometry.Scheme
+namespace PrimeSpectrum.FiniteFiber
+end PrimeSpectrum.FiniteFiber
+''')
+        self.assertEqual(check_sources(self.root)[0], [])
+
+    def test_subject_can_depend_on_core_but_actual_cycle_fails(self):
+        self.write('Motivic/RingTheory/Bridge.lean', 'import Motivic.Core\n')
+        self.assertEqual(check_sources(self.root)[0], [])
+        self.write('Motivic/Core.lean', 'import Motivic.RingTheory.Bridge\n')
+        errors, _ = check_sources(self.root)
+        self.assertTrue(any('Import cycle:' in error for error in errors), errors)
+
+    def test_candidate_and_external_dependencies_allow_host_consumers(self):
+        self.write('Motivic/Aglib/RingTheory/Basic.lean',
+                   'public import Mathlib.Algebra.Group.Basic\npublic import Aglib.FieldTheory.Basic\n'
+                   'public import Std\nnamespace Motivic.HostNamespace\nend Motivic.HostNamespace\n')
+        self.write('Motivic/Aglib/RingTheory/Bridge.lean',
+                   'public import Motivic.Aglib.RingTheory.Basic\n')
+        self.write('Motivic/Core.lean', 'public import Motivic.Aglib.RingTheory.Bridge\n')
+        self.assertEqual(check_sources(self.root)[0], [])
+
+    def test_candidate_cannot_import_host_leaf_or_package_root(self):
+        for host in ('Motivic.Core', 'Motivic'):
+            with self.subTest(host=host):
+                self.write('Motivic/Aglib/RingTheory/Bridge.lean', f'public import {host}\n')
+                errors, _ = check_sources(self.root)
+                self.assertEqual(len(errors), 1, errors)
+                self.assertIn(f'candidate imports host module {host}', errors[0])
+
+    def test_candidate_intermediate_host_edge_is_rejected_at_its_owner(self):
+        self.write('Motivic/Aglib/RingTheory/Entry.lean',
+                   'public import Motivic.Aglib.RingTheory.Bridge\n')
+        self.write('Motivic/Aglib/RingTheory/Bridge.lean', 'public import Motivic.Core\n')
+        errors, _ = check_sources(self.root)
+        self.assertEqual(len(errors), 1, errors)
+        self.assertIn('Motivic.Aglib.RingTheory.Bridge: candidate imports host module Motivic.Core',
+                      errors[0])
+        self.write('Motivic/Core.lean', 'public import Motivic.Aglib.RingTheory.Entry\n')
+        errors, _ = check_sources(self.root)
+        self.assertTrue(any('candidate imports host module' in error for error in errors), errors)
         self.assertTrue(any('Import cycle:' in error for error in errors), errors)
 
     def test_indirect_test_leak_is_detected_at_its_production_edge(self):

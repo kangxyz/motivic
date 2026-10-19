@@ -1,6 +1,6 @@
 module
 
-import Motivic.Cohomology.A1.FieldZeroSectionPurity
+import Motivic.Cohomology.A1.Purity.FieldZeroSection.Basic
 
 /-! Direct consumers of the field zero-section model and its signed boundary. -/
 set_option linter.hashCommand false
@@ -9,6 +9,7 @@ open CategoryTheory AlgebraicGeometry
 universe w u
 
 namespace Motivic.MotivicTest
+open _root_.AlgebraicGeometry.Scheme
 
 variable {k : Type u} [Field k]
   [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]

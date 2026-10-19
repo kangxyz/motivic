@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualRetainedProductPullback
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Normalized.Retained.ProductPullback
 /-! # Direct compact-product restriction consumer -/
 noncomputable section
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

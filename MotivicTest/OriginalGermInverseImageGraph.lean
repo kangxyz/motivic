@@ -5,10 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermInverseImageGraph
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Germs.InverseImageGraph
 public import Lean.Util.CollectAxioms
 
 /-! Original point-fiber pullback is the actual inverse-image field restriction. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
@@ -16,7 +18,8 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 universe u
 namespace MotivicTest.OriginalGermInverseImageGraph
-open Motivic Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open  _root_.AlgebraicGeometry.Scheme.SmoothSite
 open RelativeNisnevichNeighborhood NisnevichNeighborhood
 variable {B : Scheme.{u}} [IsAffine B] {V U X : SmoothSite B}
   (F : Sheaf (nisnevichTopology B) AddCommGrpCat.{u + 1})
@@ -34,8 +37,9 @@ theorem actual_original_pullback :
         (Spec.map (g.left.residueFieldMap v) ≫ q)
         (originalSourceFactorization f g v b q h)).hom =
     (originalGermInverseImageOfFactorization F f (g.left v) b q h).hom ≫
-      ((FiniteEtaleSite.inverseImage b).obj
-        ((FiniteEtaleSite.restrict X AddCommGrpCat).obj F)).obj.map
+      ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.inverseImage b).obj
+        ((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.restrict X AddCommGrpCat).obj
+            F)).obj.map
           (originalResidueFieldObjectMap g v q).op :=
   originalGermInverseImageOfFactorization_pullback F f g v b q h
 
@@ -43,7 +47,9 @@ open Lean in
 run_cmd do
   for name in #[``actual_original_pullback,
       ``originalGermInverseImageOfFactorization_pullback,
-      ``originalSmallMark_lift_naturality, ``originalSmallPullbackRefinement_underlying] do
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.originalSmallMark_lift_naturality,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.originalSmallPullbackRefinement_underlying]
+          do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

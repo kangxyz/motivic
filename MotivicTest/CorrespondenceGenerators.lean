@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.Generators
+public import Motivic.AlgebraicGeometry.Correspondences.Generators.Basic
 
 /-!
 # Consumers of geometric correspondence generators
@@ -38,7 +38,8 @@ example : Function.Surjective (graphGenerator φ g).projection :=
   (graphGenerator φ g).projection_surjective
 
 /-- After identifying the graph with its source, its target map is the original map. -/
-example : (correspondenceGraph φ g).toImage ≫ (graphGenerator φ g).inclusion ≫
+example : (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph φ g).toImage ≫ (graphGenerator
+  φ g).inclusion ≫
     pullback.snd (φ ≫ g) g = φ := by
   simp [graphGenerator, FiniteCorrespondenceGenerator.inclusion, correspondenceGraphIdeal]
 

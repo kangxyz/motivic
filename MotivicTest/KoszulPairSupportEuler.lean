@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulPairSupportEuler
+public import Motivic.Aglib.Algebra.Homology.Koszul.Pair.SupportEuler
 
 /-!
 # Support-sensitive Euler consumers for actual submodule quotient sequences

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.FixedFieldBoundarySectionPair
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.FixedFieldSectionPair
 
 /-! Exact global module-map lifts on the unchanged affine source. -/
 @[expose] public noncomputable section

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneFundamentalNorm
+public import Motivic.Cohomology.WeightOne.FundamentalNorm
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,8 +18,14 @@ No reducedness, separability, or integral-whole-fiber assumption is present.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle genericMultiplicity)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.WeightOnePointNorm Motivic.WeightOneFundamentalNorm
+open Motivic
+open Motivic.WeightOnePointNorm
+open _root_.AlgebraicGeometry.Scheme.FiniteAlgebra
+open _root_.Motivic.WeightOneFundamentalNorm
 
 universe u
 
@@ -92,11 +98,11 @@ run_cmd do
       `Motivic.WeightOneFundamentalNorm.fieldCoordinateEquiv,
       `Motivic.WeightOneFundamentalNorm.fieldCoordinateEquiv_coordinate,
       `Motivic.WeightOneFundamentalNorm.generatorNorm_fieldGenerator,
-      `Motivic.WeightOneFundamentalNorm.quotientMap_genericPoint,
-      `Motivic.WeightOneFundamentalNorm.quotientSupport_point,
-      `Motivic.WeightOneFundamentalNorm.finiteAlgebra_mem_genericPoints,
-      `Motivic.WeightOneFundamentalNorm.affine_genericMultiplicity,
-      `Motivic.WeightOneFundamentalNorm.fundamentalCycle_affine_eq_sum,
+      `AlgebraicGeometry.Scheme.FiniteAlgebra.quotientMap_genericPoint,
+      `AlgebraicGeometry.Scheme.FiniteAlgebra.quotientSupport_point,
+      `AlgebraicGeometry.Scheme.FiniteAlgebra.finiteAlgebra_mem_genericPoints,
+      `AlgebraicGeometry.Scheme.FiniteAlgebra.affine_genericMultiplicity,
+      `AlgebraicGeometry.Scheme.FiniteAlgebra.fundamentalCycle_affine_eq_sum,
       `Motivic.WeightOneFundamentalNorm.branchGenerator_support,
       `Motivic.WeightOneFundamentalNorm.affineCoordinateUnit_quotient,
       `Motivic.WeightOneFundamentalNorm.affineFundamentalCorrespondence,

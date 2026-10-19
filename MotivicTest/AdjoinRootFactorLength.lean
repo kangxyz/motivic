@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.AdjoinRootFactorLength
+public import Motivic.Aglib.RingTheory.AdjoinRoot.FactorLength
 public import Lean.Util.CollectAxioms
 
 /-!

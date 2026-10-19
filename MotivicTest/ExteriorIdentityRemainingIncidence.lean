@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityRemainingIncidence
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.RemainingIncidence
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Consumers of the actual exterior coefficient and remaining incidence squares -/
 
@@ -17,6 +17,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ExteriorIdentityRemainingIncidence
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -26,7 +27,7 @@ variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
 example :
     IsPullback (A.exteriorCoefficientQuotientInclusion B T)
       (A.exteriorParameterDiagonalInclusion T B)
-      (exteriorAmbientParameterInclusion X Y Z T)
+      (_root_.AlgebraicGeometry.Scheme.Products.exteriorAmbientParameterInclusion X Y Z T)
       ((A.exteriorIdentityGenerator T).supportProductInclusion
         (B.exteriorIdentityGenerator T)) :=
   A.exteriorCoefficientQuotientInclusion_isPullback B T
@@ -35,7 +36,7 @@ example :
     IsPullback
       ((A.exteriorIdentityGenerator T).incidenceInclusion (B.exteriorIdentityGenerator T))
       (A.exteriorIncidenceToCoefficientQuotient B T)
-      (exteriorAmbientRemainingInclusion X Y Z T)
+      (_root_.AlgebraicGeometry.Scheme.Products.exteriorAmbientRemainingInclusion X Y Z T)
       (A.exteriorCoefficientQuotientInclusion B T) :=
   A.exteriorRemainingIncidence_isPullback B T
 
@@ -48,7 +49,7 @@ example :
 omit [GeometricallyIntegral T.hom] in
 example (n : ℕ) :
     IsClosedImmersion
-      (A.exteriorIncidenceToCoefficientQuotient B (AlgebraicSimplex.smoothSiteObj k n)) :=
+      (A.exteriorIncidenceToCoefficientQuotient B (_root_.AlgebraicSimplex.smoothSiteObj k n)) :=
   inferInstance
 
 end MotivicTest.ExteriorIdentityRemainingIncidence

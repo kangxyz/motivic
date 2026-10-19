@@ -5,13 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleFieldPointNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Field.Point.Neighborhood
 public import Lean.Util.CollectAxioms
 
 /-! Actual field-valued neighborhood colimit computes the genuine inverse image. -/
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
-open FiniteEtaleSite
+open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 universe u
 namespace MotivicTest.FiniteEtaleFieldPointNeighborhood
 variable {S T : Scheme.{u}} (b : S ⟶ T) (K : Type u) [Field K]
@@ -21,7 +21,7 @@ variable {S T : Scheme.{u}} (b : S ⟶ T) (K : Type u) [Field K]
 def actual_neighborhood_inverse_image
     (G : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :
     colimit ((Functor.Elements.π
-      (MorphismProperty.Over.forget etaleSeparatedFiniteType ⊤ T ⋙
+      (MorphismProperty.Over.forget _root_.AlgebraicGeometry.Scheme.etaleSeparatedFiniteType ⊤ T ⋙
         coyoneda.obj (op (Over.mk (q ≫ b))))).op ⋙ G.obj) ≅
       ((inverseImage b).obj G).obj.obj (op (fieldObject K q)) :=
   fieldNeighborhoodInverseImageIso b K q G

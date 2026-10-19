@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.PolynomialDiagonalKoszulPair
-public import Motivic.RingTheory.MvPolynomial.DiagonalFlat
+public import Motivic.Aglib.RingTheory.MvPolynomial.Diagonal.Koszul.Pair
+public import Motivic.Aglib.RingTheory.MvPolynomial.DiagonalFlat
 
 /-!
 # Polynomial diagonal consumers
@@ -20,14 +20,14 @@ regularity of a coefficient support is an input.
 
 universe u
 
-open CategoryTheory RingTheory.Sequence MvPolynomial
-open Motivic.PolynomialDiagonal Module.KoszulPair
+open CategoryTheory RingTheory.Sequence _root_.MvPolynomial
+open _root_.MvPolynomial.Diagonal Module.KoszulPair
 
 variable (R : Type u) [CommRing R]
 
 example {σ : Type*} (l : List σ) (hl : l.Nodup) :
     IsWeaklyRegular (MvPolynomial σ R) (l.map (X : σ → MvPolynomial σ R)) :=
-  Motivic.MvPolynomial.isWeaklyRegular_X l hl
+  isWeaklyRegular_X l hl
 
 example {σ : Type*} (l : List σ) (hl : l.Nodup) :
     IsWeaklyRegular (Ambient R σ) (l.map (difference R σ)) :=

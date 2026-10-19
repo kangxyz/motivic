@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardEuler
-public import Motivic.Algebra.Homology.KoszulHyperhomologyPlacement
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Euler
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyPlacement
 
 /-!
 # Original-complex finite pushforward consumers
@@ -30,7 +30,9 @@ universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardEuler
 
-open FiniteFiber LengthEuler
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteFiber
+open _root_.PrimeSpectrum.FiniteFiber
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
 
@@ -56,21 +58,23 @@ omit [IsNoetherianRing (Localization.AtPrime p.asIdeal)] [Module.Finite A B] in
 homology, even when the original coefficient complex is entirely unrestricted. -/
 theorem contractibleWholeFinite (K : ChainComplex (ModuleCat.{u} B) ℕ) :
     FiniteHomology (wholeCoefficientComplex A B p
-      (tensorObj (Koszul.singleComplex B 1) K)) := by
-  apply Koszul.finiteHomology_of_identity_homotopy
+      (tensorObj (_root_.ChainComplex.Koszul.singleComplex B 1) K)) := by
+  apply _root_.ChainComplex.Koszul.finiteHomology_of_identity_homotopy
   let F := ModuleCat.extendScalars (algebraMap B (localAlgebra A B p))
   exact (Homotopy.ofEq ((F.mapHomologicalComplex _).map_id _).symm).trans
-    ((F.mapHomotopy (Koszul.singleUnitTensorHomotopy K)).trans
+    ((F.mapHomotopy (_root_.ChainComplex.Koszul.singleUnitTensorHomotopy K)).trans
       (Homotopy.ofEq ((F.mapHomologicalComplex _).map_zero _ _)))
 
 /-- The actual sheaf-stalk fiber formula consumes the constructed contraction,
 without any externally assumed local or global length bounds on the original K. -/
 theorem unrestrictedContractibleProjection (K : ChainComplex (ModuleCat.{u} B) ℕ) :
-    chainEuler (actualPushforwardStalkComplex A B p (tensorObj (Koszul.singleComplex B 1) K))
+    chainEuler (actualPushforwardStalkComplex A B p (tensorObj
+        (_root_.ChainComplex.Koszul.singleComplex B 1) K))
         (actualPushforwardStalk_finiteHomology A B p _ (contractibleWholeFinite A p B K)) =
       ∑ᶠ x : {x : PrimeSpectrum B // x.comap (algebraMap A B) = p},
         ((Spec.map (CommRingCat.ofHom (algebraMap A B))).residueDegree x.1 : ℤ) *
-          chainEuler (actualSourceStalkComplex B x.1 (tensorObj (Koszul.singleComplex B 1) K))
+          chainEuler (actualSourceStalkComplex B x.1 (tensorObj
+              (_root_.ChainComplex.Koszul.singleComplex B 1) K))
             (actualFiberStalk_finiteHomology A B p _ (contractibleWholeFinite A p B K) x) :=
   actualFinitePushforwardChainEuler A B p _ (contractibleWholeFinite A p B K)
 

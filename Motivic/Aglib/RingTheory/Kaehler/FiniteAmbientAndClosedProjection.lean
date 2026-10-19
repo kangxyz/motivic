@@ -10,7 +10,7 @@ Thus ambient finiteness and closed-boundary finiteness use the same functions.
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open Module TensorProduct KaehlerDifferential MvPolynomial ParameterizedNoetherNormalization
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial ParameterizedNoetherNormalization
 universe u v w
 namespace KaehlerDifferential
 

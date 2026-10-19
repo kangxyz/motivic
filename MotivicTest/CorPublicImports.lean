@@ -17,6 +17,7 @@ graph functor, additive presheaves and the all-degree singular transfer functor.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe v u

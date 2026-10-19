@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FiniteAffineChart
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.AffineChart
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
 
 /-!
 # Whole finite-chart consumers for the actual intermediate-image map
@@ -29,7 +29,7 @@ universe u
 
 namespace Motivic.MotivicTest.FiniteAffineChart
 
-open Motivic.FiniteAffineChart
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteAffineChart
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}

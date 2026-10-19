@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.AffineEndpointResidueScalar
+public import Motivic.Cohomology.WeightTwo.Endpoints.ResidueScalar
 public import Lean.Util.CollectAxioms
 
 /-! Original branch fields and actual fiber fields have identical scalar norm actions. -/

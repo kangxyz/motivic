@@ -5,17 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteSeparableExtension
-import all Motivic.AlgebraicGeometry.SmoothSiteForgetBase
-import all Motivic.AlgebraicGeometry.SmoothSiteForgetBaseA1
-import all Motivic.AlgebraicGeometry.Correspondences.ForgetBaseSupport
-import all Motivic.AlgebraicGeometry.Correspondences.ForgetBaseIncidence
-import all Motivic.AlgebraicGeometry.Correspondences.ForgetBaseIncidenceTor
-import all Motivic.AlgebraicGeometry.Correspondences.ForgetBaseCycle
-import all Motivic.AlgebraicGeometry.Correspondences.ForgetBaseComposition
-import all Motivic.AlgebraicGeometry.Correspondences.ForgetBaseGraph
-import all Motivic.AlgebraicGeometry.Correspondences.FiniteSeparableForgetBase
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteSeparableExtension
+public import Motivic.Transfers.Presheaf.FiniteSeparableExtension
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.ForgetBase
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ForgetBaseA1
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Support
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Incidence
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.IncidenceTor
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Cycle
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Composition
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Graph
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.FiniteSeparableForget
+import all Motivic.Transfers.Presheaf.FiniteSeparableExtension
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -35,8 +35,9 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
-open Motivic.PresheafWithTransfers
+open _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe v u
 
@@ -91,16 +92,16 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteForgetBase,
-    `Motivic.AlgebraicGeometry.SmoothSiteForgetBaseA1,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseSupport,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseIncidence,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseIncidenceTor,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseCycle,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseComposition,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseGraph,
-    `Motivic.AlgebraicGeometry.Correspondences.FiniteSeparableForgetBase,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteSeparableExtension]
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.ForgetBase,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ForgetBaseA1,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Support,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Incidence,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.IncidenceTor,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Cycle,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Composition,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Graph,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.FiniteSeparableForget,
+    `Motivic.Transfers.Presheaf.FiniteSeparableExtension]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -131,16 +132,16 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteForgetBase,
-    `Motivic.AlgebraicGeometry.SmoothSiteForgetBaseA1,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseSupport,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseIncidence,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseIncidenceTor,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseCycle,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseComposition,
-    `Motivic.AlgebraicGeometry.Correspondences.ForgetBaseGraph,
-    `Motivic.AlgebraicGeometry.Correspondences.FiniteSeparableForgetBase,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteSeparableExtension,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.ForgetBase,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ForgetBaseA1,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Support,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Incidence,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.IncidenceTor,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Cycle,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Composition,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.Forget.Graph,
+    `Motivic.AlgebraicGeometry.Correspondences.BaseChange.FiniteSeparableForget,
+    `Motivic.Transfers.Presheaf.FiniteSeparableExtension,
     `MotivicTest.FiniteSeparableCoefficients]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

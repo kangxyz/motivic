@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.HypercohomologyEvaluationNaturality
-public import Motivic.Cohomology.HypercohomologyFieldEvaluation
-public import Motivic.Cohomology.Motivic.Indexing
+public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.EvaluationNaturality
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Hypercohomology.FieldEvaluation
+public import Motivic.Aglib.Algebra.Homology.SingularComplex.Indexing
 
 /-! # The unbounded field-evaluation theorem preserves actual coefficient maps -/
 
@@ -15,10 +15,10 @@ public import Motivic.Cohomology.Motivic.Indexing
 
 universe w u
 
-open CategoryTheory AlgebraicGeometry Motivic.Hypercohomology
+open CategoryTheory AlgebraicGeometry _root_.CategoryTheory.Sheaf.Hypercohomology
 
 variable (J : GrothendieckTopology Scheme.{u})
-  (hJ : J ≤ Motivic.Nisnevich.fieldLiftingTopology) (K : Type u) [Field K]
+  (hJ : J ≤ Nisnevich.fieldLiftingTopology) (K : Type u) [Field K]
   [HasDerivedCategory.{w} (Sheaf J AddCommGrpCat.{u + 1})]
 
 example {M N : CochainComplex (Sheaf J AddCommGrpCat.{u + 1}) ℤ}
@@ -26,7 +26,7 @@ example {M N : CochainComplex (Sheaf J AddCommGrpCat.{u + 1}) ℤ}
     fieldEvaluationComparison J hJ K N p
         (map.{w, u + 1, u, u + 1} J f p (Spec (.of K)) x) =
       HomologicalComplex.homologyMap
-        (((Motivic.Nisnevich.fieldEvaluation J K).mapHomologicalComplex (.up ℤ)).map f) p
+        (((Nisnevich.fieldEvaluation J K).mapHomologicalComplex (.up ℤ)).map f) p
         (fieldEvaluationComparison J hJ K M p x) := by
   let := projective_freeAbelianSheaf_spec J hJ K
   exact evaluationComparison_naturality J (Spec (.of K)) f p x
@@ -39,8 +39,8 @@ variable {C : Type u} [Category.{u} C] (J : GrothendieckTopology C)
 
 example (Δ : CosimplicialObject C) (P : Cᵒᵖ ⥤ Sheaf J AddCommGrpCat.{u})
     (q : ℕ) (p : ℤ) (X : C) [Projective (freeAbelianSheaf J X)] :
-    H J (Motivic.SingularComplex.cochainObj Δ P q) p X ≃+
-      (evaluationComplex J X (Motivic.SingularComplex.cochainObj Δ P q)).homology p :=
-  evaluationComparison J X (Motivic.SingularComplex.cochainObj Δ P q) p
+    H J (SingularComplex.cochainObj Δ P q) p X ≃+
+      (evaluationComplex J X (SingularComplex.cochainObj Δ P q)).homology p :=
+  evaluationComparison J X (SingularComplex.cochainObj Δ P q) p
 
 end PlacedSingular

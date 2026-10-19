@@ -7,7 +7,7 @@ module
 
 public import Motivic.Aglib.RingTheory.Bertini.QuadraticScalarBoundaryAvoidance
 public import Motivic.Aglib.RingTheory.Bertini.QuadraticClosedInfinityAvoidance
-public import Motivic.Aglib.RingTheory.MinimalPrimeGoingDown
+public import Motivic.Aglib.RingTheory.Spectrum.Prime.GoingDown
 
 /-! # Closed infinity avoidance on all actual scalar minimal components -/
 
@@ -17,7 +17,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
-open MvPolynomial
+open _root_.MvPolynomial
 
 namespace QuadraticIncidence.InfinityChart
 

@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.NisnevichComparison
+public import Motivic.Transfers.Presheaf.NisnevichComparison
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of actual Nisnevich descent with transfers -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Opposite
 
 universe u v

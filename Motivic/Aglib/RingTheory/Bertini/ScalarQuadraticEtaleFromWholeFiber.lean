@@ -6,13 +6,13 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleCriterion
-public import Motivic.Aglib.RingTheory.ResiduePolynomialFiberEvaluation
+public import Motivic.Aglib.RingTheory.Polynomial.Residue.FiberEvaluation
 
 /-! # Entire original determinant fibers produce actual scalar étale neighborhoods -/
 
 @[expose] public noncomputable section
 
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 open scoped TensorProduct
 
 namespace QuadraticIncidence

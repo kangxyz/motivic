@@ -20,8 +20,9 @@ not named motivic cohomology and does not bypass the missing transfer torus.
 
 @[expose] public section
 
+open _root_.CochainComplex (finiteCoefficients)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.AlgebraicSimplex Motivic.SingularComplex
+open Motivic _root_.AlgebraicSimplex _root_.CategoryTheory.SingularComplex
 
 universe u w
 
@@ -40,12 +41,12 @@ noncomputable def finite (n : ℕ) : CochainComplex AddCommGrpCat.{w} ℤ :=
 
 /-- The full level-one complex has zero cohomology in every integer degree. -/
 theorem level_one_zero (i : ℤ) : IsZero ((finite R P 1).homology i) :=
-  finiteCoefficients.isZero_homology_one (integral R P) i
+  _root_.CochainComplex.finiteCoefficients.isZero_homology_one (integral R P) i
 
 /-- The actual composite-level Bockstein has the required degree-one to degree-two type. -/
 noncomputable def compositeBockstein :
     (finite R P 6).homology 1 ⟶ (integral R P).homology 2 :=
-  finiteCoefficients.bocksteinHomology (integral R P) 6 1
+  _root_.CochainComplex.finiteCoefficients.bocksteinHomology (integral R P) 6 1
 
 /-- Every differential in the combined construction squares to zero. -/
 theorem finite_d_squared (n : ℕ) (i j k : ℤ) :

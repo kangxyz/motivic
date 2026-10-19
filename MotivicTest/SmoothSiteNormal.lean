@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteNormal
-public import Motivic.AlgebraicGeometry.SmoothSiteBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Normal
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange
 
 /-!
 # Consumers of actual smooth normal stalks and integral components
@@ -19,7 +19,8 @@ rings, and the final consumer permits arbitrary changes of ground field.
 
 @[expose] public section
 
-open CategoryTheory AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory AlgebraicGeometry
 
 universe u
 
@@ -31,7 +32,7 @@ variable (k L : Type u) [Field k] [Field L]
 theorem smooth_stalk_normal {X : Scheme.{u}} (f : X ⟶ Spec (.of k))
     [Smooth f] (x : X) :
     IsDomain (X.presheaf.stalk x) ∧ IsIntegrallyClosed (X.presheaf.stalk x) :=
-  normalDomain_stalk_of_smooth_field k f x
+  Scheme.normalDomain_stalk_of_smooth_field k f x
 
 /-- Normality of the actual stalks is available on arbitrary smooth objects. -/
 theorem object_stalk_normal (X : SmoothSite (Spec (.of k))) (x : X.left) :

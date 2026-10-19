@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantEtaleCurve
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Constant.EtaleCurve
 
 /-! Actual compactification, smooth retained curve, and original Cartier graph. -/
 @[expose] public noncomputable section

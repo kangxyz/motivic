@@ -1,6 +1,6 @@
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.RelativeAffineLineEtaleCompactification
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.Basic
 
 /-! # Relative étale compactification regression tests
 

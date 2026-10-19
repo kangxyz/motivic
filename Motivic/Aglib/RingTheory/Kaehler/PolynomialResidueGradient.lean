@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Kaehler.PolynomialGeneratorGradient
 
 /-! # The actual residue gradient of unchanged original polynomial functions -/
 @[expose] public noncomputable section
-open Module TensorProduct MvPolynomial
+open Module TensorProduct _root_.MvPolynomial
 universe u
 namespace KaehlerDifferential
 variable (k R K : Type u) [CommRing k] [CommRing R] [CommRing K]

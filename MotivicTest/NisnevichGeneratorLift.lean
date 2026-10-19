@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichGeneratorLift
-public import Motivic.AlgebraicGeometry.Correspondences.GraphFunctor
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.GeneratorLift
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Functor
 
 /-!
 # A literal finite-support lift gives an actual correspondence factorization
@@ -17,6 +17,7 @@ are carried by the supplied map of the actual support pullback.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

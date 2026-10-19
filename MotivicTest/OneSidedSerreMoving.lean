@@ -4,8 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.AlgebraicGeometry.Correspondences.OneSidedSerreMoving
-public import Motivic.Cohomology.A1.OneSidedMovingAction
+public import Motivic.AlgebraicGeometry.Correspondences.Moving.OneSided.SerreMoving
+public import Motivic.Cohomology.A1.Moving.OneSided
 /-! Direct arbitrary HI PST consumer of the constructed one-sided Serre homotopy. -/
 set_option linter.hashCommand false
 public noncomputable section
@@ -16,6 +16,7 @@ open CategoryTheory AlgebraicGeometry
 open ProjectiveSpace Scheme.Modules Scheme.Modules.Invertible Scheme.Moving
 universe u v
 namespace Motivic.OneSidedMovingEndpoints
+open _root_.AlgebraicGeometry.Scheme
 example
     (k : Type u) [Field k] (R : Type u) [CommRing R] [IsNoetherianRing R]
     (bS : Spec (.of R) ⟶ Spec (.of k)) [Smooth bS]

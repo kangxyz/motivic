@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulSingleTensorQuotient
+public import Aglib.Algebra.Homology.Koszul.Single.Tensor.Quotient
 
 /-!
 # Consumers of the one-element tensor quotient comparison
@@ -19,7 +19,7 @@ quotient comparison. The regularity assumption concerns its terms alone.
 universe u
 
 open CategoryTheory
-open Motivic.Koszul
+open _root_.ChainComplex.Koszul
 
 variable {R : Type u} [CommRing R] (a : R) (K : ChainComplex (ModuleCat.{u} R) ℕ)
 

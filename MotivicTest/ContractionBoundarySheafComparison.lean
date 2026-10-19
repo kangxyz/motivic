@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.ContractionBoundarySheafComparison
-public import Motivic.Cohomology.A1.ContractionBoundaryMono
-import all Motivic.Cohomology.A1.PresheafBoundarySheafComparison
-import all Motivic.Cohomology.A1.ContractionBoundarySheafComparison
+public import Motivic.Cohomology.A1.Boundary.Contraction.SheafComparison
+public import Motivic.Cohomology.A1.Boundary.Contraction.Mono
+import all Motivic.Cohomology.A1.Boundary.Presheaf.SheafComparison
+import all Motivic.Cohomology.A1.Boundary.Contraction.SheafComparison
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
 
@@ -23,6 +23,7 @@ open CategoryTheory AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ContractionBoundarySheafComparison
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] (X : SmoothSite (Spec (.of k)))
   (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
@@ -58,8 +59,8 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.PresheafBoundarySheafComparison,
-    `Motivic.Cohomology.A1.ContractionBoundarySheafComparison]
+  let sourceModules := #[`Motivic.Cohomology.A1.Boundary.Presheaf.SheafComparison,
+    `Motivic.Cohomology.A1.Boundary.Contraction.SheafComparison]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

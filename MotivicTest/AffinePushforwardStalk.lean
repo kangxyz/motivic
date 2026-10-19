@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.AffinePushforwardStalk
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Affine.Stalk
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
 public import Mathlib.Algebra.Homology.ShortComplex.HomologicalComplex
 
@@ -29,8 +29,9 @@ open scoped TensorProduct
 universe u
 
 namespace Motivic.MotivicTest.AffinePushforwardStalk
+open _root_.AlgebraicGeometry.Scheme.Modules
 
-open AffinePushforward
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.Affine
 
 variable (A : CommRingCat.{u}) (I : Ideal A) (p : PrimeSpectrum A)
 
@@ -42,7 +43,7 @@ local instance quotientTilde_additive :
 def quotientComplexIso (K : ChainComplex (ModuleCat.{u} (A ⧸ I)) ℕ) :
     (((tilde.functor (CommRingCat.of (A ⧸ I)) ⋙
       Scheme.Modules.pushforward (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I)))) ⋙
-        ModuleStalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K ≅
+        Stalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K ≅
       ((ModuleCat.restrictScalars (Ideal.Quotient.mk I) ⋙
         stalkTensorFunctor A p).mapHomologicalComplex _).obj K :=
   (pushforwardStalkComplexIso A p (CommRingCat.ofHom (Ideal.Quotient.mk I)) _).app K
@@ -51,7 +52,7 @@ def quotientComplexIso (K : ChainComplex (ModuleCat.{u} (A ⧸ I)) ℕ) :
 def quotientHomologyIso (K : ChainComplex (ModuleCat.{u} (A ⧸ I)) ℕ) (n : ℕ) :
     ((((tilde.functor (CommRingCat.of (A ⧸ I)) ⋙
       Scheme.Modules.pushforward (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I)))) ⋙
-        ModuleStalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K).homology n ≅
+        Stalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K).homology n ≅
       (((ModuleCat.restrictScalars (Ideal.Quotient.mk I) ⋙
         stalkTensorFunctor A p).mapHomologicalComplex _).obj K).homology n :=
   (HomologicalComplex.homologyFunctor _ _ n).mapIso (quotientComplexIso A I p K)
@@ -59,7 +60,7 @@ def quotientHomologyIso (K : ChainComplex (ModuleCat.{u} (A ⧸ I)) ℕ) (n : �
 /-- The comparison transports arbitrary higher differentials as O-stalk-linear maps. -/
 theorem quotient_differential_square (K : ChainComplex (ModuleCat.{u} (A ⧸ I)) ℕ)
     (i j : ℕ) :
-    ModuleStalk.map p ((Scheme.Modules.pushforward
+    Stalk.map p ((Scheme.Modules.pushforward
       (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I)))).map (tilde.map (K.d i j))) ≫
         (pushforwardStalkIso A p (CommRingCat.ofHom (Ideal.Quotient.mk I))).hom.app (K.X j) =
       (pushforwardStalkIso A p (CommRingCat.ofHom (Ideal.Quotient.mk I))).hom.app (K.X i) ≫

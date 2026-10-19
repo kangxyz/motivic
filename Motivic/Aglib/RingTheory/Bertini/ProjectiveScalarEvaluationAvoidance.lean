@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.ProjectiveEvaluationAvoidance
 
 /-! # Scalar-valued parameters exclude actual projective incidence zeros -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace ProjectiveEvaluationIncidence
 variable (k A K : Type u) [Field k] [CommRing A] [Field K]

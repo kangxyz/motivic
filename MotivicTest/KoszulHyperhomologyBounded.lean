@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulHyperhomologyBounded
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyBounded
 
 /-!
 # Consumers of bounded Koszul hyperhomology
@@ -19,7 +19,10 @@ finite coefficients but no finite-length assumption on intermediate homology.
 
 universe u
 
-open CategoryTheory HomologicalComplex Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory
+open HomologicalComplex
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulHyperhomologyBounded
 

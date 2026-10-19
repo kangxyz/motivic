@@ -4,7 +4,7 @@ public import Mathlib.LinearAlgebra.StdBasis
 
 /-! # The universal quadratic coefficients have the proved incidence rank -/
 @[expose] public noncomputable section
-open MvPolynomial Module TensorProduct KaehlerDifferential LinearMap
+open _root_.MvPolynomial Module TensorProduct KaehlerDifferential LinearMap
 universe u v w z
 namespace QuadraticIncidence
 

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulHyperhomologyFirstLayer
-public import Motivic.Algebra.Homology.KoszulCoefficientEulerAdditivity
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyFirstLayer
+public import Motivic.Aglib.Algebra.Homology.Koszul.Coefficient.EulerAdditivity
 
 /-!
 # Actual first-layer coefficient homology comparisons
@@ -20,7 +20,10 @@ supplies finite length only after applying the subsequent Koszul complex.
 
 universe u
 
-open CategoryTheory HomologicalComplex Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory
+open HomologicalComplex
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulHyperhomologyFirstLayer
 

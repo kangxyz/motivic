@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualCommonBoundaryCoordinate
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Normalized.Common.BoundaryCoordinate
 /-! # Literal full common-boundary coordinate consumer and foundation audit -/
 @[expose] public noncomputable section
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

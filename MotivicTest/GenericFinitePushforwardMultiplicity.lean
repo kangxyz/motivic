@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.GenericFinitePushforwardMultiplicity
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.GenericMultiplicity
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -25,7 +25,10 @@ universe u
 
 namespace Motivic.MotivicTest.GenericFinitePushforwardMultiplicity
 
-open FiniteFiber FiniteDomainGenericFiber Motivic.GenericFinitePushforwardMultiplicity
+open _root_.AlgebraicGeometry.Scheme.Hom.FiniteFiber
+open _root_.PrimeSpectrum.FiniteFiber
+open _root_.AlgebraicGeometry.Scheme.GenericFiber.FiniteDomain
+open _root_.AlgebraicGeometry.Scheme.Hom.GenericMultiplicity
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
 
@@ -43,8 +46,8 @@ theorem whole_generic_length_finite (hAB : Function.Injective (algebraMap A B)) 
 including target primes where the whole algebra has multiple branches. -/
 theorem generic_degree_at_every_target_prime [IsNoetherianRing A]
     (p : PrimeSpectrum A) (hAB : Function.Injective (algebraMap A B)) :
-    Koszul.domainGenericLength
-        (Koszul.finiteFamilyRestriction (Localization.AtPrime p.asIdeal)
+    _root_.ChainComplex.Koszul.domainGenericLength
+        (_root_.ChainComplex.Koszul.finiteFamilyRestriction (Localization.AtPrime p.asIdeal)
           (localAlgebra A B p) (ModuleCat.of (localAlgebra A B p) (localAlgebra A B p))) =
       ((Spec.map (CommRingCat.ofHom (algebraMap A B) : A ⟶ B)).residueDegree
         (zeroPrime B) : ℤ) :=
@@ -62,8 +65,8 @@ theorem original_generic_scalar_square (hAB : Function.Injective (algebraMap A B
 omit B [IsDomain B] [Algebra A B] [Module.Finite A B] in
 /-- The actual identity coefficient is one at every target prime. -/
 theorem identity_generic_length [IsNoetherianRing A] (p : PrimeSpectrum A) :
-    Koszul.domainGenericLength
-        (Koszul.finiteFamilyRestriction (Localization.AtPrime p.asIdeal)
+    _root_.ChainComplex.Koszul.domainGenericLength
+        (_root_.ChainComplex.Koszul.finiteFamilyRestriction (Localization.AtPrime p.asIdeal)
           (localAlgebra A A p) (ModuleCat.of (localAlgebra A A p) (localAlgebra A A p))) =
       1 := by
   rw [localAlgebra_genericLength A A p (Function.injective_id),
@@ -71,8 +74,10 @@ theorem identity_generic_length [IsNoetherianRing A] (p : PrimeSpectrum A) :
 
 open Lean in
 run_cmd do
-  for name in #[``wholeGeneric_length, ``finrank_eq_residueDegree,
-      ``localAlgebra_genericLength, ``scheme_genericLength,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.Hom.GenericMultiplicity.wholeGeneric_length,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.GenericMultiplicity.finrank_eq_residueDegree,
+      ``_root_.AlgebraicGeometry.Scheme.Hom.GenericMultiplicity.localAlgebra_genericLength,
+          ``_root_.AlgebraicGeometry.Scheme.Hom.GenericMultiplicity.scheme_genericLength,
       ``whole_generic_length_finite, ``generic_degree_at_every_target_prime,
       ``original_generic_scalar_square, ``identity_generic_length] do
     for dependency in ← collectAxioms name do

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.EtaleResidueFieldMap
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Fibers.ResidueFieldMap
 
 /-! # Direct tests for the actual residue-field morphism of an étale map -/
 

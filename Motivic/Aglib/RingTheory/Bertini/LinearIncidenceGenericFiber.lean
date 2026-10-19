@@ -9,7 +9,7 @@ public import Motivic.Aglib.RingTheory.AlgebraicIndependent.FractionImageTrdeg
 
 /-! # Generic-component bounds for the actual linear evaluation incidence -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u v
 namespace LinearIncidence
 

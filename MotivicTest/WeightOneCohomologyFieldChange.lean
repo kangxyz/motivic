@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneCohomologyFieldChange
+public import Motivic.Cohomology.WeightOne.CohomologyFieldChange
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -19,6 +19,7 @@ characteristic-dividing levels are included without an invertibility premise.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.WeightOneHomologyNorm Motivic.WeightOneEquivalence
 open Motivic.WeightOneFiniteCoefficients Motivic.WeightOneCohomologyFieldChange

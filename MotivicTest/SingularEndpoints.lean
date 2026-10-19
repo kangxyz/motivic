@@ -5,16 +5,21 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.SingularEndpoints
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.ReducedTorus
-public import Motivic.Algebra.Homology.SingularSetwisePaths
+public import Motivic.Transfers.Presheaf.SingularEndpoints
+public import Motivic.Transfers.Presheaf.ReducedTorus
+public import Motivic.Aglib.Algebra.Homology.SingularComplex.SetwisePaths
 public import Lean.Util.CollectAxioms
 
 /-! # Direct all-degree consumers of the actual algebraic-simplex prism -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 
 universe u v
 
@@ -42,14 +47,15 @@ def arbitraryCoefficientHomotopy (P : PresheafWithTransfers.{v} k)
 
 open Lean in
 run_cmd do
-  for name in #[``SingularComplex.Prism.cut, ``SingularComplex.Prism.simplicialHomotopy,
-      ``SingularComplex.Prism.endpointHomotopy,
-      ``SingularComplex.Prism.boundary_of_cycle_path,
-      ``SingularComplex.homologyMap_eq_zero_of_cycle_boundaries,
-      ``SingularComplex.isZero_homology_of_normalized_cycle_paths,
-      ``SingularComplex.normalized_cycle_faces,
-      ``SingularComplex.isZero_homology_of_setwise_paths,
-      ``SingularComplex.Prism.endpoint_homologyMap_eq,
+  for name in #[``_root_.CategoryTheory.SingularComplex.Prism.cut,
+      ``_root_.CategoryTheory.SingularComplex.Prism.simplicialHomotopy,
+      ``_root_.CategoryTheory.SingularComplex.Prism.endpointHomotopy,
+      ``_root_.CategoryTheory.SingularComplex.Prism.boundary_of_cycle_path,
+      ``_root_.CategoryTheory.SingularComplex.homologyMap_eq_zero_of_cycle_boundaries,
+      ``_root_.CategoryTheory.SingularComplex.isZero_homology_of_normalized_cycle_paths,
+      ``_root_.CategoryTheory.SingularComplex.normalized_cycle_faces,
+      ``_root_.CategoryTheory.SingularComplex.isZero_homology_of_setwise_paths,
+      ``_root_.CategoryTheory.SingularComplex.Prism.endpoint_homologyMap_eq,
       ``singularPrismEndpointHomotopy, ``singularPrismEndpoint_homologyMap_eq,
       ``actualWeightOneHomotopy, ``actualWeightOne_all_degrees,
       ``arbitraryCoefficientHomotopy] do

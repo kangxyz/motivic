@@ -5,13 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.PointedGermEvaluationAdditivity
-public import Motivic.Transfers.PointedGermLiftSections
+public import Motivic.Transfers.Sheaf.Germs.Pointed.Evaluation.Additivity
+public import Motivic.Transfers.Sheaf.Germs.Pointed.Lifts.Sections
 public import Lean.Util.CollectAxioms
 
 /-! Choice-independent additive generator evaluation on the original Nisnevich point fibers. -/
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.PointedGermLiftIndependence
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

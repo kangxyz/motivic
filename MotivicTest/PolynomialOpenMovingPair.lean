@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.RingTheory.PolynomialOpenMovingPair
+public import Motivic.Aglib.RingTheory.Polynomial.Interpolation.OpenMovingPair
 public import Lean.Util.CollectAxioms
 /-! Actual polynomial moving data, with no smaller-open invertibility hypothesis. -/
 @[expose] public noncomputable section

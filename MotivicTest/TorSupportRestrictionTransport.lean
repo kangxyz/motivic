@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.TorSupportRestrictionTransport
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.TorSupportRestrictionTransport
 public import MotivicTest.TorSupportRestrictionCoherence
 
 /-!
@@ -23,7 +23,10 @@ open CategoryTheory
 namespace Motivic.MotivicTest.TorSupportRestrictionTransport
 
 open TorComparisonFlatBaseChangeComposition
-open Motivic.TorComparison
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
 
 /-- Two actual higher-Tor restrictions agree with the existing direct supported transition. -/
 theorem higherTorDirectComposition :

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.QuotientScalarExtension
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.QuotientScalarExtension
 public import MotivicTest.TorQuotientFiniteness
 public import Mathlib.RingTheory.Localization.BaseChange
 
@@ -15,7 +15,11 @@ public import Mathlib.RingTheory.Localization.BaseChange
 
 noncomputable section
 
-open CategoryTheory Motivic.TorComparison
+open CategoryTheory
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
 
 namespace Motivic.MotivicTest.TorQuotientScalarExtension
 

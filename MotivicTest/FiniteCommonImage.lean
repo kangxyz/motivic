@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteCommonImage
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.CommonImage
 public import Mathlib.Data.ZMod.Basic
 
 /-!

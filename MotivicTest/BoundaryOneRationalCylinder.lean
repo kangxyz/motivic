@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.BoundaryOneRationalCylinder
+public import Motivic.Aglib.RingTheory.Polynomial.BoundaryOneRationalFunctions.Cylinder
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of actual affine boundary-one rational-function acyclicity -/
@@ -20,7 +20,7 @@ namespace MotivicTest.BoundaryOneRationalCylinder
 
 /-- A direct consumer at every degree, including degree zero and the zero ring. -/
 theorem actual_affine_all_degree_acyclicity (R : Type u) [CommRing R] (n : ℕ) :
-    IsZero ((Motivic.SingularComplex.obj (algebraicSimplex R) ringPresheaf).homology n) :=
+    IsZero ((SingularComplex.obj (algebraicSimplex R) ringPresheaf).homology n) :=
   isZero_homology_algebraicSimplex R n
 
 open Lean in

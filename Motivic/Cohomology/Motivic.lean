@@ -5,10 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.Complex
-public import Motivic.Cohomology.Motivic.Hypercohomology
-public import Motivic.Cohomology.Motivic.FiniteCoefficients
-public import Motivic.Cohomology.Motivic.FiniteHypercohomology
+
+
+
+
+public import Motivic.Cohomology.SuslinVoevodsky
+public import Motivic.Cohomology.Coefficients.Finite
 
 /-!
 # Motivic complexes and cohomology

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.KoszulPairEulerAdditivity
+import Motivic.Aglib.Algebra.Homology.Koszul.Pair.EulerAdditivity
 
 /-!
 # Consumers of the local Koszul and genuine Tor Euler comparison
@@ -14,7 +14,7 @@ These checks retain higher homology and only require regularity on the ring
 for the Tor comparison, not regularity on the coefficient module.
 -/
 
-open CategoryTheory Motivic.LengthEuler Module.KoszulPair
+open CategoryTheory _root_.HomologicalComplex.ModuleLengthEuler Module.KoszulPair
 
 universe u v
 

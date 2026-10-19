@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.DegreeZeroTransfers
+public import Motivic.Transfers.Cohomology.DegreeZero.Basic
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ actual graph restriction. No positive-degree transfer assumption is supplied.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian AlgebraicGeometry Opposite Motivic
 
 universe u
@@ -45,7 +46,7 @@ theorem signed_transfer (F : SheafWithTransfers.{u + 1} k)
 theorem actual_graph_restriction (F : SheafWithTransfers.{u + 1} k)
     {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y) :
     SheafWithTransfers.degreeZeroTransfer F ((Cor.graphFunctor k).map f) =
-      (SheafCohomology.presheaf.{u + 2, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 2, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
         ((SheafWithTransfers.toSheaf k).obj F) 0).map f.op :=
   SheafWithTransfers.degreeZeroTransfer_graph F f
@@ -53,23 +54,23 @@ theorem actual_graph_restriction (F : SheafWithTransfers.{u + 1} k)
 /-- The degree-zero comparison intertwines actual restriction with ordinary section restriction. -/
 theorem actual_section_restriction (F : SheafWithTransfers.{u + 1} k)
     {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y)
-    (x : SheafCohomology.H.{u + 2, u + 1}
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) 0 Y) :
     SheafWithTransfers.degreeZeroSectionsEquiv F (Cor.mk X)
-        ((SheafCohomology.presheaf.{u + 2, u + 1}
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 2, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 0).map f.op x) =
       PresheafWithTransfers.transfer F.obj ((Cor.graphFunctor k).map f)
         (SheafWithTransfers.degreeZeroSectionsEquiv F (Cor.mk Y) x) :=
-  SheafCohomology.zeroSections_restriction.{u + 2, u + 1} _ _ f x
+  _root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections_restriction.{u + 2, u + 1} _ _ f x
 
 open Lean in
 run_cmd do
-  for name in #[``Motivic.Hypercohomology.sectionsAddEquiv_naturality_left,
-      ``Motivic.SheafCohomology.zeroSections,
-      ``Motivic.SheafCohomology.zeroSections_restriction,
-      ``Motivic.SheafCohomology.zeroSections_naturality,
+  for name in #[``_root_.CategoryTheory.Sheaf.Hypercohomology.sectionsAddEquiv_naturality_left,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections_restriction,
+      ``_root_.CategoryTheory.Sheaf.LargeCohomology.zeroSections_naturality,
       ``Motivic.SheafWithTransfers.degreeZeroPresheafWithTransfers,
       ``Motivic.SheafWithTransfers.degreeZeroUnderlyingIso,
       ``signed_transfer, ``actual_graph_restriction, ``actual_section_restriction] do

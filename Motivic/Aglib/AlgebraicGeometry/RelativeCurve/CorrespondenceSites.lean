@@ -1,12 +1,12 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.CommonRetainedSourceChange
-public import Motivic.AlgebraicGeometry.SmoothSite
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Common.RetainedSourceChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Basic
 /-! # Original smooth source and target objects for relative correcting correspondences -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 variable (k : Type u) [Field k] {S X Y A B C V : Scheme.{u}}

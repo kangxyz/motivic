@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.SectionDualFunctional
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.DualFunctional
 
 /-! # Direct tests for original section dualization and boundary avoidance -/
 noncomputable section

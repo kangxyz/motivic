@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.FixedPsiSerreSectionPair
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.FixedOpen.Sections.SerrePair
 
 /-! # Strict consumers of the relative fixed-source psi construction -/
 open AlgebraicGeometry CategoryTheory

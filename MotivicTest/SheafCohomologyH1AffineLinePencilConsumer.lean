@@ -1,4 +1,4 @@
-import Motivic.Cohomology.SheafCohomologyH1AffineLinePencilConsumer
+import Motivic.Cohomology.Sheaf.H1.AffineLinePencilConsumer
 
 /-! Direct check of H¹ vanishing from genuine section data rather than assumed endpoints. -/
 

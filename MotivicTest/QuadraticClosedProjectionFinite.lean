@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticClosedProjectionFinite
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.ClosedProjectionFinite
 /-! The original closed scheme and the zero-row edge case retain their exact coordinate maps. -/
 set_option linter.hashCommand false
 public noncomputable section

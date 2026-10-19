@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedPencil
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalizedDivisorPairs
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.Normalized
 /-! # Serre constructs the one-sided moving sections and their whole zero family
 
 This intermediate producer retains the genuine compact curve and prescribed full

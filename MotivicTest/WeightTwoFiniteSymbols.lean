@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoFiniteSymbols
+public import Motivic.Cohomology.WeightTwo.FiniteSymbols
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ level-one vanishing. The axiom audit rejects nonstandard assumptions.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic Motivic.WeightTwoFiniteSymbols
 open scoped TensorProduct
 

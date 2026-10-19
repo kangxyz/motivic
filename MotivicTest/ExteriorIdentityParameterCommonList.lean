@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityParameterCommonList
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.ParameterCommonList
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Consumers of the identical actual parameter-kernel lists -/
 
@@ -17,6 +17,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.S
 universe u
 
 namespace MotivicTest.ExteriorIdentityParameterCommonList
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -26,7 +27,8 @@ variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
 example (z : A.exteriorParameterDiagonal T B) :
     ∃ t : List (A.exteriorParameterAmbientStalk B T z),
       IsRegular (A.exteriorParameterAmbientStalk B T z) t ∧
-      RingHom.ker ((exteriorAmbientParameterInclusion X Y Z T).stalkMap
+      RingHom.ker ((_root_.AlgebraicGeometry.Scheme.Products.exteriorAmbientParameterInclusion X Y Z
+          T).stalkMap
         (A.exteriorCoefficientQuotientInclusion B T z)).hom = Ideal.ofList t ∧
       IsRegular (((A.exteriorIdentityGenerator T).supportProduct
         (B.exteriorIdentityGenerator T)).presheaf.stalk

@@ -5,17 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.FirstObstructionLiftHI
-public import Motivic.AlgebraicGeometry.SmoothSiteInjectives
+public import Motivic.Cohomology.A1.LocalVanishing.Obstruction.LiftHI
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Injectives
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
 /-! # Original HI and lower-degree HI supply the actual first-obstruction lift -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.FirstObstructionLiftHI
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType _root_.Motivic.FiniteEtaleSite
 variable {k : Type u} [Field k] (X : SmoothSite (Spec (.of k)))
   (F : SheafWithTransfers.{u + 1} k)
 local instance : HasExt.{u + 1}
@@ -33,9 +36,9 @@ theorem actual_original_lift
     (hF : F.obj.IsA1Invariant) (N : ℕ) (hN : 0 < N)
     (hLow : ∀ q : ℕ, 0 < q → q < N →
       (SheafCohomology.withTransfers k F q).IsA1Invariant)
-    (V : FiniteEtaleSite X.left) [IsNoetherian V.left]
+    (V : EtaleSeparatedFiniteType X.left) [IsNoetherian V.left]
     {Z : Scheme.{u}} (g : V.left ⟶ Z) (z : Z)
-    (α : SheafCohomology.H.{u + 1, u + 1, u, u + 1}
+    (α : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 1, u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) ((SheafWithTransfers.toSheaf k).obj F) N
         ((toSmoothSite (SmoothSite.a1Cylinder (.of k) X)).obj
           ((baseChange (SmoothSite.a1Projection (.of k) X).left).obj V)))
@@ -47,11 +50,13 @@ theorem actual_original_lift
         (originalFirstObstruction (SmoothSite.a1Projection (.of k) X)
           ((SheafWithTransfers.toSheaf k).obj F) N V α) = 0) :
     ∃ O : Z.Opens, z ∈ O ∧ ∃ β,
-      (SheafCohomology.presheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf
+        (SmoothSite.nisnevichTopology (Spec (.of k)))
         ((SheafWithTransfers.toSheaf k).obj F) N).map
           ((restrictionProjection (SmoothSite.a1Projection (.of k) X)).app
             (testOpenObject V (g ⁻¹ᵁ O))).op β =
-      (SheafCohomology.presheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf
+        (SmoothSite.nisnevichTopology (Spec (.of k)))
         ((SheafWithTransfers.toSheaf k).obj F) N).map
           ((toSmoothSite (SmoothSite.a1Cylinder (.of k) X)).map
             ((baseChange (SmoothSite.a1Projection (.of k) X).left).map
@@ -61,8 +66,8 @@ theorem actual_original_lift
 open Lean in
 run_cmd do
   for name in #[``actual_original_lift,
-      ``Motivic.FiniteEtaleSite.originalFirstObstruction_eq_zero_iff,
-      ``Motivic.FiniteEtaleSite.originalFirstObstruction_naturality] do
+      ``originalFirstObstruction_eq_zero_iff,
+      ``originalFirstObstruction_naturality] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

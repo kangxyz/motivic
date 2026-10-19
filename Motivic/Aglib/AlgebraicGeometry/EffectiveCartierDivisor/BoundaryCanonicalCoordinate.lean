@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.InfinityBoundaryIdeal
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.CanonicalEvaluation
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.CanonicalEvaluation
 public import Aglib.AlgebraicGeometry.Modules.Tensor.ToUnit
 
 /-! # Literal canonical divisor-section coordinates on the prescribed boundary -/

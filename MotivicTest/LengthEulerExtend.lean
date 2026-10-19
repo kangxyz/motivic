@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.LengthEulerExtendChain
-public import Motivic.Algebra.Homology.KoszulCoefficientEulerAdditivity
+public import Motivic.Aglib.Algebra.Homology.LengthEuler.ExtendChain
+public import Motivic.Aglib.Algebra.Homology.Koszul.Coefficient.EulerAdditivity
 
 /-!
 # Actual coefficient-Koszul consumers of homological placement
@@ -20,7 +20,7 @@ quotient provides this evidence. Repeated and zero equations are allowed.
 
 universe u
 
-open Motivic.LengthEuler Motivic.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler _root_.ChainComplex.Koszul
 
 namespace MotivicTest.LengthEulerExtend
 

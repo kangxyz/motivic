@@ -34,6 +34,6 @@ theorem extRightDerivedAddEquiv_symm_hom
     (CochainComplex.HomComplex.homologyAddEquiv _ _ (n : ℤ)
       ((I.homComplexHomologyRightDerivedIso X n).inv.hom y)) ≫ _
   simp [extRightDerivedAddEquiv, Iso.homCongrAddEquiv, Iso.homCongr,
-    ← Abelian.Ext.homAddEquiv_apply] ; rfl
+    ← Abelian.Ext.homAddEquiv_apply]; rfl
 
 end CategoryTheory.InjectiveResolution

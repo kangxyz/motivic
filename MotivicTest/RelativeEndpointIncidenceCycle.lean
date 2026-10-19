@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeEndpointIncidenceCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Relative.IncidenceCycle
 public import MotivicTest.RelativeEndpointIncidenceTor
 
 /-!
@@ -23,18 +23,22 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle fundamentalCycle genericMultiplicity)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 
 namespace MotivicTest.RelativeEndpointIncidenceCycle
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
 
 variable (a : ℚ) (E : Set twoLines.left) (hE : E ∈ irreducibleComponents twoLines.left)
   (G : FiniteCorrespondenceGenerator (relativeLineHom twoLines.hom)
-    (FiniteFlatCurveFamily.line ℚ).hom)
+    (AffineLineField.line ℚ).hom)
 
 local instance : IsNoetherian ((endpointComponentGenerator twoLines a E hE).incidence G) :=
   FiniteCorrespondenceGenerator.isNoetherian_smoothIncidence ℚ
-    (X := twoLines) (Y := relativeLineSite twoLines) (Z := FiniteFlatCurveFamily.line ℚ)
+    (X := twoLines) (Y := relativeLineSite twoLines) (Z := AffineLineField.line ℚ)
     (endpointComponentGenerator twoLines a E hE) G
 
 /-- The actual Euler coefficient retains the full original generic incidence length. -/
@@ -43,16 +47,16 @@ theorem actual_component_coefficient
     (endpointComponentGenerator twoLines a E hE).incidenceTorCoefficient (S := Spec (.of ℚ)) G x =
       (genericMultiplicity x : ℤ) :=
   component_incidenceTorCoefficient_eq_genericMultiplicity
-    twoLines (FiniteFlatCurveFamily.line ℚ) a E hE G x
+    twoLines (AffineLineField.line ℚ) a E hE G x
 
 /-- The correspondence itself retains the whole fundamental incidence, not only
 an equality between auxiliary numerical weights. -/
 theorem actual_component_correspondence :
     (endpointComponentGenerator twoLines a E hE).incidenceTorCorrespondence ℚ
-        (X := twoLines) (Y := relativeLineSite twoLines) (Z := FiniteFlatCurveFamily.line ℚ) G =
+        (X := twoLines) (Y := relativeLineSite twoLines) (Z := AffineLineField.line ℚ) G =
       (endpointComponentGenerator twoLines a E hE).incidenceFundamentalCorrespondence ℚ
-        (X := twoLines) (Y := relativeLineSite twoLines) (Z := FiniteFlatCurveFamily.line ℚ) G :=
-  component_incidenceTorCorrespondence_eq_fundamental twoLines (FiniteFlatCurveFamily.line ℚ)
+        (X := twoLines) (Y := relativeLineSite twoLines) (Z := AffineLineField.line ℚ) G :=
+  component_incidenceTorCorrespondence_eq_fundamental twoLines (AffineLineField.line ℚ)
     a E hE G
 
 /-- The faithful cycle consumer includes the actual finite-image map and full
@@ -60,10 +64,10 @@ fundamental cycle, so multiplicities and component collisions remain visible. -/
 theorem actual_component_pushforward :
     FiniteCorrespondence.toIntegralCycle
       ((endpointComponentGenerator twoLines a E hE).incidenceTorCorrespondence ℚ
-        (X := twoLines) (Y := relativeLineSite twoLines) (Z := FiniteFlatCurveFamily.line ℚ) G) =
+        (X := twoLines) (Y := relativeLineSite twoLines) (Z := AffineLineField.line ℚ) G) =
       IntegralCycle.finitePushforward ((endpointComponentGenerator twoLines a E hE).incidenceMap G)
         (fundamentalCycle ((endpointComponentGenerator twoLines a E hE).incidence G)) :=
-  component_toIntegralCycle_incidenceTorCorrespondence twoLines (FiniteFlatCurveFamily.line ℚ)
+  component_toIntegralCycle_incidenceTorCorrespondence twoLines (AffineLineField.line ℚ)
     a E hE G
 
 example : ¬ PreconnectedSpace twoLines.left :=

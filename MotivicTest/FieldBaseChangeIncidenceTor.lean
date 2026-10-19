@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeIncidenceTor
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.IncidenceTor
 
 /-!
 # Consumers of the actual field-change component Tor attachment
@@ -21,6 +21,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open RingTheory.Sequence
 
@@ -69,7 +70,8 @@ variable (w : genericPoints (A.fieldBaseChangeIncidence φ B))
 include hker in
 /-- The finite-homology proof comes from the actual whole-incidence Artinian cut. -/
 theorem actualPairFiniteHomology :
-    LengthEuler.FiniteHomology (A.fieldBaseChangePairQuotientKoszul φ B a b w.1 s) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteHomology
+        (A.fieldBaseChangePairQuotientKoszul φ B a b w.1 s) :=
   A.fieldBaseChangePairQuotientKoszul_finiteHomology φ B a b w s hker
 
 /-- At an actual generic lift, the exact fixed-list Euler is the full signed Tor coefficient. -/

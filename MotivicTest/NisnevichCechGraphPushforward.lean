@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichCechGraphPushforward
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Cech.GraphPushforward
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -17,6 +17,7 @@ literal postcomposed support map. The graph arrow need not be finite or étale.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.FiniteCorrespondenceGenerator
 

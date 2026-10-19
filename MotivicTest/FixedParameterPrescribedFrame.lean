@@ -5,12 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FixedParameterBoundaryNeighborhood
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OriginalAffinePrescribedNeighborhood
-public import Motivic.AlgebraicGeometry.SmoothSite
-import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FixedParameterBoundaryNeighborhood
-import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.AffinePrescribedNeighborhood
-import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OriginalAffinePrescribedNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.FixedParameterBoundaryNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.OriginalAffineNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Basic
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.FixedParameterBoundaryNeighborhood
+import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.Neighborhood.Affine
+import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.OriginalAffineNeighborhood
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -22,13 +22,15 @@ The original smooth-site base supplies separatedness, not an extra affineness
 hypothesis. The given parameter remains unchanged throughout the construction.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Scheme.Modules Scheme.Modules.Invertible
 
 universe u
@@ -58,9 +60,10 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FixedParameterBoundaryNeighborhood,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.AffinePrescribedNeighborhood,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OriginalAffinePrescribedNeighborhood]
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.FixedParameterBoundaryNeighborhood,
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.Neighborhood.Affine,
+    (`Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed).str
+      "OriginalAffineNeighborhood"]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -87,9 +90,10 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.FixedParameterBoundaryNeighborhood,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.AffinePrescribedNeighborhood,
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OriginalAffinePrescribedNeighborhood,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.FixedParameterBoundaryNeighborhood,
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.Neighborhood.Affine,
+    (`Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed).str
+      "OriginalAffineNeighborhood",
     `MotivicTest.FixedParameterPrescribedFrame]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

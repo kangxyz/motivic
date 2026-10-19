@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.LiteralQuotientTorCoherence
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.LiteralQuotientTorCoherence
 public import MotivicTest.TorComparisonFlatBaseChangeComposition
 
 /-!
@@ -22,7 +22,10 @@ open CategoryTheory
 namespace Motivic.MotivicTest.LiteralQuotientTorCoherence
 
 open TorComparisonFlatBaseChangeComposition
-open Motivic.TorComparison
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
 
 /-- The nonradical higher-Tor example obeys the literal-quotient composition equation. -/
 theorem higherTorComposition :

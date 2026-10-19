@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.BoundarySectionLifting
+import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.SectionLifting
 
 /-! Consumer checks for genuine full closed-boundary lifting after projective twist. -/
 

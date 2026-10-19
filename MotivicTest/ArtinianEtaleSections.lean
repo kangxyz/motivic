@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.ArtinianEtaleSections
+public import Motivic.Aglib.RingTheory.Etale.ArtinianSections
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -19,7 +19,7 @@ empty maximal spectrum. Neither the algebra nor the base is assumed local.
 
 @[expose] public noncomputable section
 
-open Motivic.ArtinianEtale
+open _root_.Algebra.Etale.Artinian
 
 namespace Motivic.MotivicTest.ArtinianEtaleSections
 
@@ -91,9 +91,9 @@ theorem zeroRing_section {B : Type v} [CommRing B] [Algebra (ZMod 1) B]
   exact ⟨ψ⟩
 
 set_option linter.hashCommand false in
-#print axioms Motivic.ArtinianEtale.exists_lift_of_formallySmooth
+#print axioms exists_lift_of_formallySmooth
 set_option linter.hashCommand false in
-#print axioms Motivic.ArtinianEtale.exists_lift_of_etale
+#print axioms exists_lift_of_etale
 set_option linter.hashCommand false in
 #print axioms Motivic.MotivicTest.ArtinianEtaleSections.nonreduced_twoComponent_section
 set_option linter.hashCommand false in

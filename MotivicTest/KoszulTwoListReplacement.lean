@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulTwoListReplacement
+public import Motivic.Aglib.Algebra.Homology.Koszul.TwoListReplacement
 
 /-!
 # Consumers of actual two-list fixed-support replacement
@@ -20,7 +20,10 @@ module. Finite generation of the original coefficient module remains explicit.
 
 universe u
 
-open CategoryTheory HomologicalComplex Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory
+open HomologicalComplex
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
 open scoped TensorProduct
 
 namespace MotivicTest.KoszulTwoListReplacement

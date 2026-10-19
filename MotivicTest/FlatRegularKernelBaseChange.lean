@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.FlatBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.FlatBaseChange
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -26,6 +26,7 @@ open RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.FlatRegularKernelBaseChange
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 /-- An actual Cartesian square transports equations into its literal source-stalk kernel. -/
 theorem actualCartesianImages {W D Q P : Scheme.{u}}
@@ -44,7 +45,7 @@ theorem actualCartesianImages {W D Q P : Scheme.{u}}
 /-- Flat transport works over a nonreduced ring and still uses the actual ring maps. -/
 theorem nonreducedBase (rs : List (ZMod 4)) (hrs : IsWeaklyRegular (ZMod 4) rs) :
     IsWeaklyRegular (ZMod 4) (rs.map (RingHom.id (ZMod 4))) :=
-  RegularSequence.isWeaklyRegular_map_of_flat _ (RingHom.Flat.id _) hrs
+  isWeaklyRegular_map_of_flat _ (RingHom.Flat.id _) hrs
 
 /-- The literal image list generates the full actual Cartesian stalk kernel. -/
 theorem actualCartesianKernel {W D Q P : Scheme.{u}}

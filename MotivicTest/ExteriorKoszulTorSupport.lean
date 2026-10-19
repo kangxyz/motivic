@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ExteriorKoszulTorSupport
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.ExteriorKoszulTorSupport
 
 /-!
 # Actual pair and exterior support-Tor consumers
@@ -23,7 +23,7 @@ noncomputable section
 universe u
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry RingTheory.Sequence
-open Motivic Motivic.Intersection
+open Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 namespace MotivicTest.ExteriorKoszulTorSupport
 
@@ -40,7 +40,7 @@ module, along the quotient equivalence forced by the original stalk map. -/
 def actualPairSupportStalkAction [Flat f] [Smooth g] [Flat h] (w : F.incidence G) (n : ℕ) :
     let a := F.incidenceInclusion G
     let b := F.incidenceToSupportProduct G
-    let d := correspondenceTripleInclusion f g h
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h
     let j := F.supportProductInclusion G
     let hp := point_eq a b d j (F.incidence_ambient_isPullback G) w
     let I := RingHom.ker (d.stalkMap (a w)).hom ⊔
@@ -48,7 +48,7 @@ def actualPairSupportStalkAction [Flat f] [Smooth g] [Flat h] (w : F.incidence G
     let μ := F.incidenceAmbientStalkMap G w
     let hI : I = RingHom.ker μ :=
       (stalkMap_kernel_eq_sup a b d j (F.incidence_ambient_isPullback G) w).symm
-    TorComparison.torSupportModule (RingHom.ker (d.stalkMap (a w)).hom)
+    _root_.ModuleCat.TorComparison.torSupportModule (RingHom.ker (d.stalkMap (a w)).hom)
       (RingHom.ker (coefficientStalkMap d (a w) j (b w) hp).hom) n ≅
       (ModuleCat.restrictScalars
         ((Ideal.quotEquivOfEq hI).trans
@@ -56,7 +56,8 @@ def actualPairSupportStalkAction [Flat f] [Smooth g] [Flat h] (w : F.incidence G
             (F.incidenceAmbientStalkMap_surjective G w))).toRingHom).obj
         (F.incidenceTorOnIncidence G w n) :=
   torSupportActualStalkIso (F.incidenceInclusion G) (F.incidenceToSupportProduct G)
-    (correspondenceTripleInclusion f g h) (F.supportProductInclusion G)
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h)
+        (F.supportProductInclusion G)
     (F.incidence_ambient_isPullback G) w n
 
 /-- Actual Noetherian geometry and finite categorical Tor give finite generation
@@ -70,22 +71,23 @@ theorem actualPairFinite [IsLocallyNoetherian S]
   have : Module.Finite (F.incidenceAmbientStalk G w) (F.incidenceTripleStalkModule G w) :=
     sourceStalkModule_finite _ _
   have : Module.Finite (F.incidenceAmbientStalk G w) (F.incidenceTor G w n) :=
-    TorComparison.finite_actual_tor (F.incidenceSupportStalkModule G w)
+    _root_.ModuleCat.TorComparison.finite_actual_tor (F.incidenceSupportStalkModule G w)
       (F.incidenceTripleStalkModule G w) n
-  exact StalkDescent.descendedModule_finite _ _ _ _
+  exact _root_.ModuleCat.SurjectiveScalarDescent.descendedModule_finite _ _ _ _
 
 /-- The actual exterior first-stage stalk action comes from its original
 six-factor intersection, with no affine presentation supplied as a premise. -/
 def actualExteriorSupportStalkAction (w : F.leftIntermediateSupportProduct G H) (n : ℕ) :=
   torSupportActualStalkIso (F.leftIntermediateSupportInclusion G H)
-    (F.leftIntermediateToTripleSupport G H) (correspondenceFirstDiagonalInclusion f g h i)
+    (F.leftIntermediateToTripleSupport G H)
+        (_root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i)
     (F.tripleSupportProductInclusion G H) (F.leftIntermediate_ambient_isPullback G H) w n
 
 /-- The canonical quotient uses the full actual first-stage stalk-map kernel. -/
 theorem actualExteriorIdeal (w : F.leftIntermediateSupportProduct G H) :
     let a := F.leftIntermediateSupportInclusion G H
     let b := F.leftIntermediateToTripleSupport G H
-    let d := correspondenceFirstDiagonalInclusion f g h i
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i
     let j := F.tripleSupportProductInclusion G H
     let hp := point_eq a b d j (F.leftIntermediate_ambient_isPullback G H) w
     RingHom.ker (d.stalkMap (a w)).hom ⊔
@@ -101,7 +103,7 @@ theorem actualExteriorFiniteSupport [IsLocallyNoetherian S]
     [Flat f] [Smooth g] [Flat h] [Flat i] (w : F.leftIntermediateSupportProduct G H) :
     let a := F.leftIntermediateSupportInclusion G H
     let b := F.leftIntermediateToTripleSupport G H
-    let d := correspondenceFirstDiagonalInclusion f g h i
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i
     let j := F.tripleSupportProductInclusion G H
     let hp := point_eq a b d j (F.leftIntermediate_ambient_isPullback G H) w
     let R := ambientStalk d (a w)
@@ -112,14 +114,16 @@ theorem actualExteriorFiniteSupport [IsLocallyNoetherian S]
       ∃ hker : RingHom.ker (d.stalkMap (a w)).hom = Ideal.ofList s,
       ∀ n : ℕ,
         Module.Finite (R ⧸ I)
-          (TorComparison.quotientModule I ((Koszul.coefficientComplex M s).homology n)
+          (_root_.ModuleCat.TorComparison.quotientModule I
+              ((_root_.ChainComplex.Koszul.coefficientComplex M s).homology n)
             (stalkSupport_annihilates_homology d (a w) j (b w) hp s hker hs n)) ∧
         Nonempty
-          (TorComparison.torSupportModule (RingHom.ker (d.stalkMap (a w)).hom)
+          (_root_.ModuleCat.TorComparison.torSupportModule (RingHom.ker (d.stalkMap (a w)).hom)
             (RingHom.ker (coefficientStalkMap d (a w) j (b w) hp).hom) n ≅
-          TorComparison.quotientModule I ((Koszul.coefficientComplex M s).homology n)
+          _root_.ModuleCat.TorComparison.quotientModule I
+              ((_root_.ChainComplex.Koszul.coefficientComplex M s).homology n)
             (stalkSupport_annihilates_homology d (a w) j (b w) hp s hker hs n)) := by
-  have := isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
+  have := _root_.AlgebraicGeometry.Scheme.isLocallyNoetherian_correspondenceSixfoldAmbient f g h i
   dsimp only
   obtain ⟨s, hs, hker, he⟩ := F.exists_exteriorKoszulSupportLinear G H w
   exact ⟨s, hs, hker, fun n => ⟨finite_stalkSupport_homology _ _ _ _ _ s hker hs n, he n⟩⟩

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoSkewSymmetry
+public import Motivic.Cohomology.WeightTwo.SkewSymmetry
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -19,6 +19,7 @@ characteristic-dividing coefficient levels. They do not assert alternation.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.WeightTwoSymbols Motivic.WeightTwoFiniteSymbols
 open Motivic.WeightTwoSkewSymmetry

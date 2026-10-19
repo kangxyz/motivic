@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.CompositionPointControl
+import Motivic.AlgebraicGeometry.Correspondences.Composition.PointControl
 
 /-! Actual point provenance and nested designated centers for the original
 signed correspondence composition, with no integral-object hypotheses. -/
@@ -6,6 +6,7 @@ signed correspondence composition, with no integral-object hypotheses. -/
 set_option linter.hashCommand false
 
 open CategoryTheory AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 universe u
 

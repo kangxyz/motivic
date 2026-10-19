@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryScalarProduct
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.ScalarProduct
 /-! Direct consumer of the literal prescribed-coordinate product. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

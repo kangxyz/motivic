@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.AlgebraicGeometry.Sites.NisnevichFieldEvaluation
+import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.FieldEvaluation
 
 /-!
 # Consumers of field lifting and exact field evaluation
@@ -15,7 +15,7 @@ the additional étale condition defining the Nisnevich topology is imposed.
 -/
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic.Nisnevich
+open _root_.AlgebraicGeometry.Nisnevich
 
 universe u
 
@@ -40,7 +40,7 @@ example (K : Type u) [Field K]
     (S.map (fieldEvaluation fieldLiftingTopology K)).Exact :=
   exact_map_fieldEvaluation fieldLiftingTopology le_rfl K S hS
 
-#print axioms Motivic.Nisnevich.mem_fieldLiftingPrecoverage_iff_residueField
-#print axioms Motivic.Nisnevich.fieldLifting_covering_sieve_eq_top
-#print axioms Motivic.Nisnevich.surjective_app_of_epi_of_le
-#print axioms Motivic.Nisnevich.exact_map_fieldEvaluation
+#print axioms mem_fieldLiftingPrecoverage_iff_residueField
+#print axioms fieldLifting_covering_sieve_eq_top
+#print axioms surjective_app_of_epi_of_le
+#print axioms exact_map_fieldEvaluation

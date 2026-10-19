@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoMonicDeformationTransfer
+public import Motivic.Cohomology.WeightTwo.MonicDeformationTransfer
 public import Lean.Util.CollectAxioms
 
 /-!

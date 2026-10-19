@@ -1,4 +1,4 @@
-import Motivic.Aglib.AlgebraicGeometry.ProductSectionPullback
+import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.Product.Pullback
 
 /-! Direct checks of canonical tensor pullback for the original product sections. -/
 

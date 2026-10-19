@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorGeneric
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorGeneric
 
 /-!
 # Original arbitrary-field whole Tor generic consumers
@@ -24,6 +24,7 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -54,7 +55,8 @@ theorem actualDegreewiseWholeMultiplicity (n : ℕ) :
 
 /-- Finite length is established for the original coefficient in all degrees. -/
 theorem actualWholeFiniteLengthSupport :
-    LengthEuler.FiniteLengthSupport (F.firstStageWholeGenericStalk G H V w) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport
+        (F.firstStageWholeGenericStalk G H V w) :=
   F.firstStageWholeGeneric_finiteLengthSupport G H V w
 
 /-- The original closed fiber remains its literal quotient by the source

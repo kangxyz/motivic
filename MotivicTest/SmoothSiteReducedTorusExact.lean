@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteReducedTorusExact
+public import Motivic.Cohomology.WeightOne.Geometry.ReducedTorusExact
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of the actual reduced divisor short exact sequence -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic Opposite
 open Motivic.SmoothSiteTorusDivisor Motivic.SmoothSiteBoundaryOneDivisor
 open Motivic.SmoothSiteReducedTorusExact

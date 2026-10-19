@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.RestrictDual
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Dual.Restriction
 import Lean.Util.CollectAxioms
 /-! # Direct audit of restriction preserving actual dual evaluation -/
 public section

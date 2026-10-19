@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.PolynomialPencilPrecompIso
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Pencils.Polynomial.PrecompIso
 /-! # Whole finite-flat parameter families survive the original coefficient isomorphism -/
 @[expose] public noncomputable section
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

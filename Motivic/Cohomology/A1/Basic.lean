@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.Projection
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichSheavesWithTransfers
-public import Motivic.Cohomology.SheafCohomology
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Projection
+public import Motivic.Transfers.Sheaf.Basic
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 /-!
 # Homotopy invariance for actual projection maps
@@ -31,6 +31,7 @@ open CategoryTheory AlgebraicGeometry Opposite
 universe w v u v' u'
 
 namespace Motivic.A1
+open _root_.AlgebraicGeometry.Scheme
 
 variable (R : CommRingCat.{u})
 variable {A : Type u'} [Category.{v'} A]
@@ -104,6 +105,7 @@ theorem sectionPullback_eq (P : (SmoothSite (Spec R))ᵒᵖ ⥤ A)
 end Motivic.A1
 
 namespace Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme
 
 variable {k : Type u} [Field k]
 
@@ -139,6 +141,7 @@ theorem transfer_homotopy_endpoints (P : PresheafWithTransfers.{v} k)
 end Motivic.PresheafWithTransfers
 
 namespace Motivic.SheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme _root_.CategoryTheory.Sheaf
 
 variable {k : Type u} [Field k]
 variable [HasSheafify (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}]
@@ -148,12 +151,12 @@ variable [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
 /-- Strict HI tests every ordinary Nisnevich cohomology degree using actual projections. -/
 def IsStrictA1Invariant (F : SheafWithTransfers.{u + 1} k) : Prop :=
   ∀ n : ℕ, A1.IsInvariant (.of k)
-    (SheafCohomology.presheaf.{w, u + 1, u, u + 1} _ ((toSheaf k).obj F) n)
+    (LargeCohomology.presheaf.{w, u + 1, u, u + 1} _ ((toSheaf k).obj F) n)
 
 /-- Expanding strict invariance retains the ordinary cohomology projection map verbatim. -/
 theorem isStrictA1Invariant_iff (F : SheafWithTransfers.{u + 1} k) :
     IsStrictA1Invariant F ↔ ∀ (n : ℕ) (X : SmoothSite (Spec (.of k))),
-      IsIso ((SheafCohomology.presheaf.{w, u + 1, u, u + 1} _ ((toSheaf k).obj F) n).map
+      IsIso ((LargeCohomology.presheaf.{w, u + 1, u, u + 1} _ ((toSheaf k).obj F) n).map
         (SmoothSite.a1Projection (.of k) X).op) := Iff.rfl
 
 end Motivic.SheafWithTransfers

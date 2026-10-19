@@ -5,8 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.RelativeSheafCohomologyNaturality
-public import Motivic.Transfers.DegreeZeroCohomology
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Relative.Naturality
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.DegreeZero
+public import Motivic.Transfers.Sheaf.Basic
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.FreeSheafMonomorphisms
 
 /-!
 # Consumers of relative Ext naturality
@@ -18,6 +20,7 @@ sheaves with transfers and test the signed boundaries in every degree.
 -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Abelian Opposite
   AlgebraicGeometry Motivic
@@ -35,38 +38,41 @@ variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
 
 /-- The relative source morphism is the genuine cokernel map. -/
 theorem actual_cokernel_map :
-    SheafCohomology.relativeSourceMap J j j' a b h =
-      cokernel.map ((Hypercohomology.freeAbelianSheafFunctor J).map j)
-        ((Hypercohomology.freeAbelianSheafFunctor J).map j')
-        ((Hypercohomology.freeAbelianSheafFunctor J).map a)
-        ((Hypercohomology.freeAbelianSheafFunctor J).map b)
+    _root_.CategoryTheory.Sheaf.LargeCohomology.relativeSourceMap J j j' a b h =
+      cokernel.map ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor J).map j)
+        ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor J).map j')
+        ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor J).map a)
+        ((_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor J).map b)
         (by rw [← Functor.map_comp, ← Functor.map_comp, h]) := rfl
 
 variable [HasExt.{w} (Sheaf J AddCommGrpCat.{max v t})]
 
 /-- Source restriction is actual Ext precomposition in the independent Ext universe. -/
 theorem actual_restriction (F : Sheaf J AddCommGrpCat.{max v t}) (n : ℕ)
-    (x : SheafCohomology.relativeH J j' F n) :
-    SheafCohomology.relativeRestriction J j j' a b h F n x =
-      (Ext.mk₀ (SheafCohomology.relativeSourceMap J j j' a b h)).comp x (zero_add n) := rfl
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.relativeH J j' F n) :
+    _root_.CategoryTheory.Sheaf.LargeCohomology.relativeRestriction J j j' a b h F n x =
+      (Ext.mk₀ (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeSourceMap J j j' a b h)).comp x
+        (zero_add n) := rfl
 
 /-- The generic square comparison retains the standard signed boundary. -/
 theorem generic_signed_boundary_square [Mono j] [Mono j']
-    (F : Sheaf J AddCommGrpCat.{max v t}) (n : ℕ) (x : SheafCohomology.H J F n V) :
-    SheafCohomology.relativeRestriction J j j' a b h F (n + 1)
-        (SheafCohomology.relativeBoundary J j' F n x) =
-      SheafCohomology.relativeBoundary J j F n ((SheafCohomology.presheaf J F n).map a.op x) :=
-  SheafCohomology.relativeBoundary_restriction J j j' a b h F n x
+    (F : Sheaf J AddCommGrpCat.{max v t}) (n : ℕ) (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H
+      J F n V) :
+    _root_.CategoryTheory.Sheaf.LargeCohomology.relativeRestriction J j j' a b h F (n + 1)
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary J j' F n x) =
+      _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary J j F n
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf J F n).map a.op x) :=
+  _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_restriction J j j' a b h F n x
 
 /-- The generic coefficient comparison uses the original ordinary cohomology functor. -/
 theorem generic_signed_boundary_coefficients [Mono j]
     {F G : Sheaf J AddCommGrpCat.{max v t}} (η : F ⟶ G) (n : ℕ)
-    (x : SheafCohomology.H J F n U) :
-    SheafCohomology.relativeCoefficientMap J j η (n + 1)
-        (SheafCohomology.relativeBoundary J j F n x) =
-      SheafCohomology.relativeBoundary J j G n
-        (((SheafCohomology.presheafFunctor J n).map η).app (op U) x) :=
-  SheafCohomology.relativeBoundary_coefficient J j η n x
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H J F n U) :
+    _root_.CategoryTheory.Sheaf.LargeCohomology.relativeCoefficientMap J j η (n + 1)
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary J j F n x) =
+      _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary J j G n
+        (((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor J n).map η).app (op U) x) :=
+  _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_coefficient J j η n x
 
 end Generic
 
@@ -80,7 +86,7 @@ local instance : HasExt.{u + 2}
 
 local instance {U X : SmoothSite (Spec (.of k))} (j : U ⟶ X)
     [IsOpenImmersion j.left] : Mono j :=
-  Hypercohomology.smoothSite_mono_of_isOpenImmersion j
+  _root_.CategoryTheory.Sheaf.Hypercohomology.smoothSite_mono_of_isOpenImmersion j
 
 variable {U X V Y : SmoothSite (Spec (.of k))} (j : U ⟶ X) (j' : V ⟶ Y)
   [IsOpenImmersion j.left] [IsOpenImmersion j'.left]
@@ -88,42 +94,42 @@ variable {U X V Y : SmoothSite (Spec (.of k))} (j : U ⟶ X) (j' : V ⟶ Y)
 
 /-- Squares of actual smooth open immersions respect the signed relative boundary. -/
 theorem smooth_signed_boundary_square (F : SheafWithTransfers.{u + 1} k) (n : ℕ)
-    (x : SheafCohomology.H.{u + 2, u + 1, u, u + 1}
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) n V) :
-    SheafCohomology.relativeRestriction.{u + 2, u + 1, u, u + 1}
+    _root_.CategoryTheory.Sheaf.LargeCohomology.relativeRestriction.{u + 2, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) j j' a b h
         ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) (n + 1)
-        (SheafCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k))) j'
           ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) n x) =
-      SheafCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) j
         ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) n
-        ((SheafCohomology.presheaf.{u + 2, u + 1, u, u + 1}
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 2, u + 1, u, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) n).map a.op x) :=
-  SheafCohomology.relativeBoundary_restriction _ j j' a b h _ n x
+  _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_restriction _ j j' a b h _ n x
 
 /-- Actual transfer-sheaf coefficient morphisms respect the same signed boundary. -/
 theorem smooth_signed_boundary_coefficients
     {F G : SheafWithTransfers.{u + 1} k} (η : F ⟶ G) (n : ℕ)
-    (x : SheafCohomology.H.{u + 2, u + 1, u, u + 1}
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) n U) :
-    SheafCohomology.relativeCoefficientMap.{u + 2, u + 1, u, u + 1}
+    _root_.CategoryTheory.Sheaf.LargeCohomology.relativeCoefficientMap.{u + 2, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) j
         ((SheafWithTransfers.toSheaf.{u + 1, u} k).map η) (n + 1)
-        (SheafCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k))) j
           ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj F) n x) =
-      SheafCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
+      _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary.{u + 2, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k))) j
         ((SheafWithTransfers.toSheaf.{u + 1, u} k).obj G) n
-        (((SheafCohomology.presheafFunctor.{u + 2, u + 1, u, u + 1}
+        (((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor.{u + 2, u + 1, u, u + 1}
           (SmoothSite.nisnevichTopology (Spec (.of k))) n).map
           ((SheafWithTransfers.toSheaf.{u + 1, u} k).map η)).app (op U) x) :=
-  SheafCohomology.relativeBoundary_coefficient _ j _ n x
+  _root_.CategoryTheory.Sheaf.LargeCohomology.relativeBoundary_coefficient _ j _ n x
 
 end Smooth
 

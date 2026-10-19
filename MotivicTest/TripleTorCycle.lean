@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleTorCycle
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.TorCycle
 
 /-!
 # Actual canonical total-cycle consumers on the smooth site
@@ -20,11 +20,12 @@ comparison or finite-support hypotheses.
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
 namespace Motivic.MotivicTest.TripleTorCycle
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable (k : Type u) [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -46,7 +47,8 @@ theorem actualCanonicalCoefficient (w : genericPoints (F.tripleIncidence G H)) :
           correspondenceFirstDiagonalInclusion X.hom Y.hom Z.hom W.hom).stalkMap
             (F.tripleIncidenceFourfoldInclusion G H w.val)).hom = Ideal.ofList r),
       F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w =
-        chainEuler (Koszul.coefficientComplex (F.tripleIncidenceSupportStalkModule G H w.val) r)
+        chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
+            (F.tripleIncidenceSupportStalkModule G H w.val) r)
           (F.tripleIncidenceKoszul_finiteHomology (S := Spec (.of k)) G H w r hker) := by
   obtain ⟨r, hr, hker⟩ := exists_regular_kernel_correspondenceFourfoldDiagonal
     X.hom Y.hom Z.hom W.hom (F.tripleIncidenceFourfoldInclusion G H w.val)

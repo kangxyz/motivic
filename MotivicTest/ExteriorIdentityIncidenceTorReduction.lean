@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityIncidenceTorReduction
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.IncidenceTorReduction
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Consumers of the actual exterior-incidence Tor reduction -/
 
@@ -17,6 +17,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.S
 universe u
 
 namespace MotivicTest.ExteriorIdentityIncidenceTorReduction
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -36,7 +37,7 @@ example
       ((A.exteriorIdentityGenerator T).incidenceTor (B.exteriorIdentityGenerator T) w n) =
     Module.length ((A.exteriorParameterDiagonal T B).presheaf.stalk
         (A.exteriorIncidenceToCoefficientQuotient B T w))
-      ((Koszul.coefficientComplex
+      ((_root_.ChainComplex.Koszul.coefficientComplex
         (ModuleCat.of ((A.exteriorParameterDiagonal T B).presheaf.stalk
             (A.exteriorIncidenceToCoefficientQuotient B T w))
           ((A.exteriorParameterDiagonal T B).presheaf.stalk

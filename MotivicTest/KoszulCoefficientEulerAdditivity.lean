@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulCoefficientEulerAdditivity
+public import Motivic.Aglib.Algebra.Homology.Koszul.Coefficient.EulerAdditivity
 
 /-!
 # Consumers of arbitrary-list coefficient Euler additivity
@@ -20,7 +20,7 @@ assumed.
 
 universe u
 
-open CategoryTheory Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulCoefficientEulerAdditivity
 

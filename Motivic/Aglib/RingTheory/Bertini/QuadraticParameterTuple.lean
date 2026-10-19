@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticIncidenceRank
 
 /-! # The original quadratic polynomial tuple of a coefficient choice -/
 @[expose] public noncomputable section
-open Module MvPolynomial
+open Module _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 

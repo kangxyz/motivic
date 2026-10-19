@@ -5,12 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermTupleTransfers
+public import Motivic.Transfers.Sheaf.Germs.Tuples.Transfers
 public import Lean.Util.CollectAxioms
 
 /-! Actual signed composition, graph restriction and identity on original Nis germs. -/
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.OriginalGermTupleTransfers
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

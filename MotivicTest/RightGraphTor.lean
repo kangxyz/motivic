@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RightGraphTor
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Stalks.RightTor
 
 /-!
 # Consumers of genuine right-graph Tor multiplicities and the right unit
@@ -19,6 +19,9 @@ cycles are handled by the actual biadditive pairing.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle genericMultiplicity_eq_one
+  genericMultiplicity_mapGenericPoint)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite genericMultiplicity)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open RingTheory.Sequence Motivic
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.FiniteBaseNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.FiniteBaseNeighborhood
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Actual finite-neighborhood line-bundle consumers -/

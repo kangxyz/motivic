@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.GlobalBoundarySectionMaps
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.GlobalSectionMaps
 
 /-! Actual Serre-produced sheaf map with exact whole-boundary pullback value. -/
 @[expose] public noncomputable section

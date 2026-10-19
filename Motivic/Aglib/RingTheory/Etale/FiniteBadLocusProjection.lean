@@ -6,7 +6,7 @@ public import Motivic.Aglib.RingTheory.AlgebraicIndependent.QuotientTrdeg
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u v
 namespace Algebra
 

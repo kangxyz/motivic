@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSitePersistentSectionVanishing
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.PersistentSectionVanishing
 public import Lean.Util.CollectAxioms
 
 /-! Actual degree-zero section detection on an actual open puncture. -/
@@ -13,11 +13,11 @@ public import Lean.Util.CollectAxioms
 open CategoryTheory AlgebraicGeometry Opposite
 universe u
 namespace MotivicTest.SmoothSitePersistentSectionVanishing
-open Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 /-- No higher cohomological vanishing is assumed or concluded. -/
 theorem actual_open_puncture_section_vanishes
-    {S : Scheme.{u}} [IsAffine S] [IsNoetherian S] (X : Motivic.SmoothSite S)
+    {S : Scheme.{u}} [IsAffine S] [IsNoetherian S] (X : Scheme.SmoothSite S)
     (V : X.left.Opens) (x : X.left)
     (F : Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1})
     (s : F.obj.obj (op ((opensFunctor X).obj V)))

@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodOpenSectionPair
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Sections.OpenPair
 /-! The actual constructed numerator and denominator are units on the full boundary. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DisjointBoundary
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.DisjointBoundary.Basic
 
 /-! Specified full-boundary trivializations retain every component map. -/
 @[expose] public noncomputable section

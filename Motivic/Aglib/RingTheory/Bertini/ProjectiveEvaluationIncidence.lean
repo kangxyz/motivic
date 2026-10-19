@@ -10,7 +10,7 @@ public import Motivic.Aglib.RingTheory.Bertini.IncidenceNonDominance
 
 /-! # Actual linear-form evaluation incidence on a normalized projective chart -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace ProjectiveEvaluationIncidence
 variable (A : Type u) [CommRing A] {N : Type u} [Fintype N]

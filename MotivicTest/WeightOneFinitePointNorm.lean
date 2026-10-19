@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneFinitePointNorm
+public import Motivic.Cohomology.WeightOne.FinitePointNorm
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,8 +19,14 @@ or closed-immersion hypothesis on the original point is imposed.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic Motivic.WeightOnePointNorm Motivic.WeightOneFundamentalNorm
+open Motivic
+open Motivic.WeightOnePointNorm
+open _root_.AlgebraicGeometry.Scheme.FiniteAlgebra
+open _root_.Motivic.WeightOneFundamentalNorm
 open Motivic.WeightOneFinitePointNorm
 
 universe u

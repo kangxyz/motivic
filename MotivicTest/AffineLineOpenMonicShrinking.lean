@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.AffineLineOpenMonicShrinking
+public import Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineOpenMonicShrinking
 public import Lean
 
 /-! # The original open and the actual coefficient-localization map are retained -/

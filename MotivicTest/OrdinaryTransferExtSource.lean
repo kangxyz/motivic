@@ -5,11 +5,12 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Transfers.OrdinaryTransferExtSource
+import Motivic.Transfers.Cohomology.Ext.OrdinarySource
 import Lean
 
 /-! # Direct audit of the actual section source and its naturality -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic Motivic.SheafWithTransfers
 universe u
 namespace MotivicTest.OrdinaryTransferExtSource

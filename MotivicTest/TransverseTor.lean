@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.TransverseTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.TransverseTor
 
 /-!
 # Consumers of genuine transverse closed-intersection Tor
@@ -22,11 +22,12 @@ generic length, under precisely those transversality hypotheses.
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.Intersection RingTheory.Sequence
+open _root_.AlgebraicGeometry.Scheme.Intersection RingTheory.Sequence
 
 universe u
 
 namespace Motivic.MotivicTest.TransverseTor
+open _root_.AlgebraicGeometry.Scheme
 
 variable {W D T P : Scheme.{u}} (a : W ⟶ D) (b : W ⟶ T) (i : D ⟶ P) (j : T ⟶ P)
   [IsClosedImmersion i] [IsClosedImmersion j] (sq : IsPullback a b i j) (w : W)

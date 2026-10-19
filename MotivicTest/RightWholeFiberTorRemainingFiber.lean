@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.RightWholeFiberTorRemainingFiber
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.RightWholeFiberTorRemainingFiber
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Entire actual final-incidence fiber consumers over arbitrary fields
@@ -22,7 +23,15 @@ is substituted for the geometry.
 
 noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Motivic.Intersection
+open _root_.AlgebraicGeometry.Scheme (SmoothSite correspondenceSixfoldAmbient_isSeparated
+  isLocallyNoetherian_correspondenceSixfoldAmbient)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceSecondAmbientInclusion
+  correspondenceSixfoldAmbient)
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
@@ -75,8 +84,8 @@ theorem exists_actualAllFiberSupportedFiniteHomology
         (F.rightImageMiddlePair G H (F.rightImageIncidenceInclusion G H y)) = Ideal.ofList s ∧
       ∀ (x : {x : F.rightIntermediateSupportProduct G H //
         F.rightIntermediateImageMap G H x = F.rightImageIncidenceInclusion G H y}) (n : ℕ),
-        LengthEuler.FiniteHomology
-          (Koszul.coefficientComplex
+        _root_.HomologicalComplex.ModuleLengthEuler.FiniteHomology
+          (_root_.ChainComplex.Koszul.coefficientComplex
             (closedIntersectionSupportedStalkTor
               (correspondenceSecondAmbientInclusion X.hom Y.hom Z.hom W.hom)
               (F.tripleSupportProductInclusion G H) (F.rightIntermediateSupportInclusion G H)

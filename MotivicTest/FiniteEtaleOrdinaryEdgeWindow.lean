@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOrdinaryEdgeWindow
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.EdgeWindow
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
@@ -14,7 +14,8 @@ public import Lean.Util.CollectAxioms
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 namespace MotivicTest.FiniteEtaleOrdinaryEdgeWindow
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable {S T : Scheme.{u}} (b : T ⟶ S)
 local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
@@ -22,20 +23,20 @@ local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 
   hasExt_of_enoughInjectives _
 
 /-- The actual edge in degree one is always injective: its required window is empty. -/
-theorem actual_edge_one_injective (V : FiniteEtaleSite S)
+theorem actual_edge_one_injective (V : EtaleSeparatedFiniteType S)
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :
     Function.Injective (ordinaryEdgeMap b V F 1) :=
   ordinaryEdgeMap_injective_of_rightDerived_window b V F 1 (fun q hq hqN => by omega)
 
 /-- The upper-endpoint-inclusive vanishing window implies bijectivity of the original arrow. -/
-theorem actual_edge_bijective (V : FiniteEtaleSite S)
+theorem actual_edge_bijective (V : EtaleSeparatedFiniteType S)
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) (N : ℕ)
     (hR : ∀ q : ℕ, 0 < q → q ≤ N → IsZero (((directImage b).rightDerived q).obj F)) :
     Function.Bijective (ordinaryEdgeMap b V F N) :=
   ordinaryEdgeMap_bijective_of_rightDerived_window b V F N hR
 
 /-- The strictly smaller positive window gives injectivity of the original arrow. -/
-theorem actual_edge_injective (V : FiniteEtaleSite S)
+theorem actual_edge_injective (V : EtaleSeparatedFiniteType S)
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) (N : ℕ)
     (hR : ∀ q : ℕ, 0 < q → q < N → IsZero (((directImage b).rightDerived q).obj F)) :
     Function.Injective (ordinaryEdgeMap b V F N) :=

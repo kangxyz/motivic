@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import MotivicTest.FiniteOpenCoverGluing
-public import Motivic.AlgebraicGeometry.Modules.FiniteOpenCoverGluingRecoveryMap
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Gluing.FiniteOpenCover.RecoveryMap
 
 /-!
 # Covering recovery and distinct three-open consumers
@@ -26,7 +26,7 @@ universe u
 
 namespace Motivic.MotivicTest.FiniteOpenCoverGluing
 
-open Scheme.Modules Motivic.FiniteOpenModuleGluing
+open Scheme.Modules _root_.AlgebraicGeometry.Scheme.Modules.Gluing.FiniteOpenCover
 
 variable (R : CommRingCat.{0}) (r : R)
 

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedBoundary
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.PrescribedPairPullback
-public import Motivic.Aglib.AlgebraicGeometry.PolynomialPencilFiniteFlat
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.PrescribedPairPullback
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Pencils.Polynomial.FiniteFlat
 /-! # The actual one-sided moving family
 
 The full boundary controls the two moving divisors. Only its missing-boundary

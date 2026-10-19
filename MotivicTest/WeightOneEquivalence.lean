@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneEquivalence
+public import Motivic.Cohomology.WeightOne.Equivalence
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -19,6 +19,7 @@ full geometric interpolation and point-presentation dependency chains.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.WeightOneHomologyNorm Motivic.WeightOneEquivalence
 

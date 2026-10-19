@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticInfinityAvoidance
 
 /-! # A compactifying coordinate inside the unchanged quadratic parameter family -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 variable (k : Type u) [Field k] {N : Type u} (d : ℕ)

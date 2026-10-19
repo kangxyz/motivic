@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionMixed
+public import Motivic.Cohomology.WeightTwo.CorestrictionMixed
 public import Lean.Util.CollectAxioms
 
 /-!

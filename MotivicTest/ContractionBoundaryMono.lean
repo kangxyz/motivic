@@ -5,13 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.ContractionBoundaryMono
-import all Motivic.AlgebraicGeometry.SmoothSiteSectionDetection
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.ContractionComplement
-import all Motivic.Cohomology.A1.ContractionBoundaryMarkedExtension
-import all Motivic.Cohomology.A1.ContractionLocalCylinderExtension
-import all Motivic.Cohomology.A1.ContractionBoundaryLocalKernel
-import all Motivic.Cohomology.A1.ContractionBoundaryMono
+public import Motivic.Cohomology.A1.Boundary.Contraction.Mono
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.SectionDetection
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Complement
+import all Motivic.Cohomology.A1.Boundary.Contraction.MarkedExtension
+import all Motivic.Cohomology.A1.Contraction.LocalCylinderExtension
+import all Motivic.Cohomology.A1.Boundary.Contraction.LocalKernel
+import all Motivic.Cohomology.A1.Boundary.Contraction.Mono
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
 
@@ -22,6 +22,7 @@ public noncomputable section
 open CategoryTheory AlgebraicGeometry Motivic Opposite
 universe u
 namespace MotivicTest.ContractionBoundaryMono
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType SmoothSite)
 
 variable {k : Type u} [Field k] (X : SmoothSite (Spec (.of k)))
   (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
@@ -31,8 +32,9 @@ theorem original_canonical_mono : Mono (FiniteEtaleSite.contractionToBoundary X 
   FiniteEtaleSite.contractionToBoundary_mono X F hF
 
 /-- The kernel vanishes on the original small test object and contraction section. -/
-theorem original_section_eq_zero (V : FiniteEtaleSite X.left)
-    (c : (((FiniteEtaleSite.toSmoothSite X).op ⋙ (PresheafWithTransfers.toPresheaf k).obj
+theorem original_section_eq_zero (V : EtaleSeparatedFiniteType X.left)
+    (c : (((_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.toSmoothSite X).op ⋙
+        (PresheafWithTransfers.toPresheaf k).obj
       (PresheafWithTransfers.contraction F.obj)).obj (op V)))
     (hc : (FiniteEtaleSite.contractionToBoundary X F hF).hom.app (op V) c = 0) : c = 0 :=
   FiniteEtaleSite.contractionToBoundary_eq_zero X F hF V c hc
@@ -48,12 +50,12 @@ run_cmd do
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.AlgebraicGeometry.SmoothSiteSectionDetection,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.ContractionComplement,
-    `Motivic.Cohomology.A1.ContractionBoundaryMarkedExtension,
-    `Motivic.Cohomology.A1.ContractionLocalCylinderExtension,
-    `Motivic.Cohomology.A1.ContractionBoundaryLocalKernel,
-    `Motivic.Cohomology.A1.ContractionBoundaryMono]
+  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.SectionDetection,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Complement,
+    `Motivic.Cohomology.A1.Boundary.Contraction.MarkedExtension,
+    `Motivic.Cohomology.A1.Contraction.LocalCylinderExtension,
+    `Motivic.Cohomology.A1.Boundary.Contraction.LocalKernel,
+    `Motivic.Cohomology.A1.Boundary.Contraction.Mono]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>

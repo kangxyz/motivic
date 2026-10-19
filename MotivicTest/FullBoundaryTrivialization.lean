@@ -1,6 +1,6 @@
 module
 import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.FullBoundaryProduct
-import Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleDisjointBoundary
+import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.Boundary.DisjointBoundary
 
 /-! # Canonical infinity trivialization on the constructed compactification -/
 noncomputable section

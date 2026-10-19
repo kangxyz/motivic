@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightFirstStageWeightedRemainingCoefficient
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightFirstStageWeightedRemainingCoefficient
 
 /-!
 # Actual original-label weighted remaining coefficient consumers
@@ -31,8 +31,13 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite
+  isLocallyNoetherian_correspondenceSixfoldAmbient isNoetherian_of_finiteType)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceSixfoldAmbient)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.Sequence
-open Motivic.IntegralClosedSubscheme Motivic.RightExteriorImageComponentGeometry Motivic.LengthEuler
+open _root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme
+open Motivic.RightExteriorImageComponentGeometry
+open _root_.HomologicalComplex.ModuleLengthEuler
 open scoped BigOperators
 
 universe u
@@ -86,13 +91,14 @@ theorem actualWeightedExteriorQuotient :
       ∑ z : genericPoints (G.incidence H),
         (G.incidenceTorCoefficient (S := Spec (.of k)) H z *
           ((G.incidenceMap H).residueDegree z.1 : ℤ)) *
-          chainEuler (Koszul.coefficientComplex
+          chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
             (ModuleCat.of ((F.rightIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
               (((F.rightIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸
                 (F.rightImageComponentExteriorInclusion G H
                   (pointClosure ((G.incidenceMap H).toImage z.1))).ker.stalk (V.2.fromSpec p)))
             (F.rightTargetRemainingList G H (V.2.fromSpec p) s))
-            (Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥ bot_le) :=
+            (_root_.ChainComplex.Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _
+                _ ⊥ bot_le) :=
   F.rightFirstStagePushforwardRemainingOuter_eq_weightedExteriorQuotient G H V p s y hy hp hker
 
 include hy hp hker in

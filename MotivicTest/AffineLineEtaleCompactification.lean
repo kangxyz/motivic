@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.AffineLineEtaleCompactification
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.AffineLine.Basic
 
 /-! Original affine-line étale cover, actual compactification, finite full infinity. -/
 @[expose] public noncomputable section

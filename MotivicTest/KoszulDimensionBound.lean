@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.KoszulDimensionBound
+public import Motivic.Aglib.RingTheory.LocalLength.KoszulDimensionBound
 
 /-!
 # Consumers of the local finite-list dimension bound

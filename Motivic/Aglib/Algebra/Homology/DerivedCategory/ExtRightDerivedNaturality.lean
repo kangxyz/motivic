@@ -101,7 +101,7 @@ theorem homComplexHomologyRightDerivedIso_naturality_right
   rw [hs]
   simp only [Functor.map_comp, Category.assoc]
   rw [cancel_epi]
-  rw [← Functor.map_comp_assoc, mapExtendIso_naturality]
+  rw [← Functor.map_comp_assoc, mapExtendIso_hom_naturality]
   simp only [Functor.map_comp, Category.assoc]
   rw [cancel_epi, ← Category.assoc, ← Category.assoc, cancel_mono]
   exact extendHomologyIso_hom_naturality

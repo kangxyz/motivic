@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.FixedTargetNormalizedLifting
+public import Motivic.Cohomology.A1.LocalVanishing.FixedTarget.NormalizedLifting
 /-! Actual one-target consumer: no source compactification, frame, pencil or section premise. -/
 set_option linter.hashCommand false
 public noncomputable section

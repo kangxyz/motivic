@@ -15,7 +15,7 @@ assert an identification of cotangent modules after scalar extension.
 
 @[expose] public noncomputable section
 
-open Module MvPolynomial
+open Module _root_.MvPolynomial
 
 namespace QuadraticIncidence
 

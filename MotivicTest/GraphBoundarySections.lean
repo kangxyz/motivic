@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.GraphBoundarySections
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Sections.GraphSections
 
 /-! # Actual graph pairs: full-boundary values and original open h-relation -/
 

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyHenselianEvaluation
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichSheavesWithTransfers
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Cohomology.HenselianEvaluation
+public import Motivic.Transfers.Sheaf.Basic
 
 /-!
 # Actual smooth henselian objects and their ordinary Ext cohomology
@@ -19,6 +19,7 @@ cohomology of a transfer sheaf at the actual base object.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -44,9 +45,9 @@ theorem actual_cover_member_splits {P : Presieve (SmoothSite.mk p)}
 /-- Literal standard-Ext classes vanish for arbitrary coefficients and actual structure maps. -/
 theorem actual_henselian_ext_succ_eq_zero
     (F : Sheaf (SmoothSite.nisnevichTopology S) AddCommGrpCat.{u + 1}) (n : ℕ)
-    (x : Ext.{u + 2} (Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
+    (x : Ext.{u + 2} (_root_.CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology S) (SmoothSite.mk p)) F (n + 1)) : x = 0 :=
-  SheafCohomology.H_succ_eq_zero_of_henselian R p F n x
+  _root_.CategoryTheory.Sheaf.LargeCohomology.H_succ_eq_zero_of_henselian R p F n x
 
 end Henselian
 
@@ -60,19 +61,19 @@ local instance : HasExt.{u + 2}
 
 /-- The henselian theorem specializes to the field base and original transfer coefficients. -/
 theorem original_transfer_field_base_isZero (F : SheafWithTransfers.{u + 1} k) (n : ℕ) :
-    IsZero (SheafCohomology.H.{u + 2, u + 1, u, u + 1}
+    IsZero (_root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf.{u + 1} k).obj F) (n + 1)
       (SmoothSite.base (Spec (.of k)))) :=
-  SheafCohomology.isZero_H_succ_of_henselian k (𝟙 _) _ n
+  _root_.CategoryTheory.Sheaf.LargeCohomology.isZero_H_succ_of_henselian k (𝟙 _) _ n
 
 /-- The separately proved field endpoint computes the same original ordinary cohomology group. -/
 theorem field_endpoint_isZero
     (F : Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}) (n : ℕ) :
-    IsZero (SheafCohomology.H.{u + 2, u + 1, u, u + 1}
+    IsZero (_root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1}
       (SmoothSite.nisnevichTopology (Spec (.of k))) F (n + 1)
       (SmoothSite.base (Spec (.of k)))) :=
-  SheafCohomology.isZero_H_succ_base k F n
+  _root_.CategoryTheory.Sheaf.LargeCohomology.isZero_H_succ_base k F n
 
 end Field
 

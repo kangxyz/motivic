@@ -14,7 +14,9 @@ namespaces. Module imports and the `Tests`/`MotivicTests` test namespaces were
 renamed mechanically. Native object extensions remain under their original
 mathematical namespaces. Original Linux test hashes therefore describe the
 imported bytes, not the renamed current test files; see
-[provenance](../doc/provenance/README.md).
+[provenance](../docs/provenance/README.md).
 
 Tests and independent clients never define prerequisites for production.
 A positive fixture or axiom audit cannot discharge a mathematical premise.
+
+Return to the [documentation routes](../docs/README.md) for public imports and validation scope.

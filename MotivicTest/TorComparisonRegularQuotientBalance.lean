@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.RegularQuotientBalance
-public import Motivic.AlgebraicGeometry.Intersection.StalkModules
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.RegularQuotientBalance
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.StalkModules
 
 /-! Consumers of the genuine regular-quotient balancing theorem and its two augmentations. -/
 
@@ -15,11 +15,12 @@ public import Motivic.AlgebraicGeometry.Intersection.StalkModules
 noncomputable section
 
 open CategoryTheory CategoryTheory.MonoidalCategory
-open Motivic.Koszul Motivic.TorComparison
+open _root_.ChainComplex.Koszul _root_.ModuleCat.TorComparison
 
 universe u
 
 namespace Motivic.MotivicTest.TorComparisonRegularQuotientBalance
+open _root_.AlgebraicGeometry.Scheme
 
 variable {R : Type u} [CommRing R]
 

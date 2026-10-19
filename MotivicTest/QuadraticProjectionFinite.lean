@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticProjectionFinite
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.ProjectionFinite
 /-! Finiteness of the unchanged original tuple, not a second choice of coordinates. -/
 set_option linter.hashCommand false
 public noncomputable section

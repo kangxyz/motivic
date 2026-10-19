@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleFixedSupportWholeTorAttachment
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.FixedSupportWholeTorAttachment
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
 
 /-!
 # Original smooth-site generic sheaf weights on the exact local support index
@@ -25,12 +26,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 open scoped TensorProduct
 
 universe u
 
 namespace Motivic.MotivicTest.TripleFixedSupportWholeTorAttachment
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable (k : Type u) [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -55,7 +57,8 @@ theorem actualConstructedWholeGenericWeights
       RingTheory.Sequence.IsRegular (F.tripleIncidenceAmbientStalk G H w) t ∧
         ∀ y : {y : genericPoints (F.leftIntermediateSupportProduct G H) //
           y.1 ⤳ F.tripleIncidenceToLeftSupportProduct G H w},
-          Koszul.twoListGenericEuler (F.tripleIncidenceSupportStalkModule G H w) t
+          _root_.ChainComplex.Koszul.twoListGenericEuler (F.tripleIncidenceSupportStalkModule G H w)
+              t
               ((F.tripleFirstStageSupportGenericEquiv G H w t ht).symm y) =
             F.firstStageWholeTorGenericCoefficient G H V
               (F.tripleFirstStageWholeGeneric G H V w hV y) :=
@@ -74,7 +77,7 @@ theorem actualOriginalPairWeightedSummand
     (y : {y : genericPoints (F.leftIntermediateSupportProduct G H) //
       y.1 ⤳ F.tripleIncidenceToLeftSupportProduct G H w}) :
     let z := F.tripleFirstStageWholeGeneric G H V w hV y
-    Koszul.twoListGenericEuler (F.tripleIncidenceSupportStalkModule G H w) t
+    _root_.ChainComplex.Koszul.twoListGenericEuler (F.tripleIncidenceSupportStalkModule G H w) t
         ((F.tripleFirstStageSupportGenericEquiv G H w t ht).symm y) =
       F.incidenceTorCoefficient (S := Spec (.of k)) G (F.firstStageWholeGenericPair G H V z) *
         F.firstStageWholeGenericFiberMultiplicity G H V z :=
@@ -102,10 +105,10 @@ theorem actualWholeGenericWeightedTripleCoefficient
       let p := (F.tripleFirstStageSupportGenericEquiv G H w.1 t ht).symm y
       F.firstStageWholeTorGenericCoefficient G H V
           (F.tripleFirstStageWholeGeneric G H V w.1 hV y) *
-        chainEuler (Koszul.coefficientComplex
+        chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
           (ModuleCat.of (F.tripleIncidenceAmbientStalk G H w.1)
             ((F.tripleIncidenceAmbientStalk G H w.1) ⧸ p.1)) s)
-          (Koszul.fixedSupport_prime_finiteHomology s
+          (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology s
             (Ideal.ofList t ⊔ Module.annihilator (F.tripleIncidenceAmbientStalk G H w.1) M)
             p.1 p.2.le)) = F.tripleIncidenceTorCoefficient (S := Spec (.of k)) G H w :=
   F.triple_originalWholeTor_fixedSupport_sum_eq_coefficient G H V w hV t s ht hrt hr hker

@@ -5,11 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalMilnorEquivalenceNaturality
+public import Motivic.Cohomology.Diagonal.MilnorEquivalenceNaturality
 public import Lean.Util.CollectAxioms
 
 /-! Direct original derived transfer and field-map consumers in all weights. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open DiagonalMilnorBoundaryDescent DiagonalMilnorEquivalenceNaturality
 universe w u

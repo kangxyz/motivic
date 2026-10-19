@@ -1,10 +1,11 @@
 module
-import Motivic.Cohomology.A1.SectionQuotientNisnevichExcision
+import Motivic.Cohomology.A1.Boundary.NisnevichSectionExcision
 /-! # Actual neighborhood relations reflect without homotopy invariance -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe v u
 namespace Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.SmoothSite
 variable {S : Scheme.{u}} (sq : Square (SmoothSite S))
   (F : Sheaf (nisnevichTopology S) AddCommGrpCat.{v})
   (hpb : sq.IsPullback) [IsOpenImmersion sq.f₂₄.left] [Etale sq.f₃₄.left]

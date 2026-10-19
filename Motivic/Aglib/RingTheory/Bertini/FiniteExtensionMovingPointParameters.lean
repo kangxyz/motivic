@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.RingTheory.Bertini.MovingPointParameterAvoidance
-public import Motivic.Aglib.RingTheory.FiniteExtensionPolynomialAvoidance
+public import Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial
 
 /-!
 # Finite-extension parameters for the original moving-point bad charts
@@ -18,7 +18,7 @@ the selected-point derivative or the complete original étale presentation.
 
 @[expose] public noncomputable section
 
-open MvPolynomial
+open _root_.MvPolynomial
 
 universe u
 

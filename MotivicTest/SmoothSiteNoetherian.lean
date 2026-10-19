@@ -5,8 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
-public import Motivic.AlgebraicGeometry.SmoothSiteBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange
 
 /-!
 # Noetherian consumers for smooth schemes and finite correspondences
@@ -19,6 +20,7 @@ arbitrary rather than finite over the original field.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

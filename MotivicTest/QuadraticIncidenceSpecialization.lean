@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Bertini.QuadraticIncidenceSpecialization
 import Lean.Util.CollectAxioms
 
 /-! # The actual specialized incidence homomorphism retains every original variable -/
-open Module TensorProduct MvPolynomial QuadraticIncidence
+open Module TensorProduct _root_.MvPolynomial QuadraticIncidence
 
 noncomputable section
 variable (k R A K E : Type) [CommRing k] [CommRing R] [CommRing A]

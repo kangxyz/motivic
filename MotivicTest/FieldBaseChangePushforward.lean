@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangePushforward
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.Pushforward
 
 /-!
 # Arbitrary-field incidence-component pushforward consumers
@@ -18,12 +18,16 @@ extension. The equality is of full cycles and retains the old residue degree.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle genericMultiplicity)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.FieldBaseChangePushforward
 
 universe u
 
 namespace MotivicTest.FieldBaseChangePushforward
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme IntegralCycle SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y Z : SmoothSite.overField k}
@@ -66,10 +70,10 @@ theorem originalDegreeWholeCycle :
 
 /-- Every branch above each target generic occurs, including branch collisions. -/
 theorem allBranchDegreeLength (y : genericPoints (target φ A B x)) :
-    IntegralExteriorDegreeLength.actualGenericFiberDegreeLengthSum
+    DegreeLength.actualGenericFiberDegreeLengthSum
       (FieldBaseChangePushforward.map φ A B x) y.1 =
         ((A.incidenceMap B).residueDegree x.1 : ℤ) * (genericMultiplicity y : ℤ) :=
-  IntegralExteriorDegreeLength.actualGenericFiberDegreeLengthSum_eq
+  DegreeLength.actualGenericFiberDegreeLengthSum_eq
     (A.incidenceMap B) x.1 (FieldBaseChangePushforward.isPullback φ A B x) y
     (target_generic_projection φ A B x y)
 

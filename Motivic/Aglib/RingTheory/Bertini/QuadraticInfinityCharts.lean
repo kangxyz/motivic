@@ -15,7 +15,7 @@ These rings use the unchanged original quadratic monomials. Killing the actual
 infinity coordinate lowers transcendence degree, even for nonreduced quotients.
 -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence.InfinityChart
 variable (k R : Type u) [Field k] [CommRing R] [IsDomain R] [Algebra k R]

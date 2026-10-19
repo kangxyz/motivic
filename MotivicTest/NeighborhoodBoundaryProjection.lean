@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodBoundaryProjection
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Boundary.Projection
 /-! Whole original boundary projection, including the literal original zero. -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry RelativeProjectiveLine

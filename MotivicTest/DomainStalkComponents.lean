@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Scheme.DomainStalkComponents
+public import Motivic.Aglib.AlgebraicGeometry.Scheme.DomainStalkComponents
 public import Mathlib.RingTheory.Artinian.Ring
 
 /-!
@@ -28,8 +28,8 @@ namespace MotivicTest.DomainStalkComponents
 theorem actual_open_integral_component (X : Scheme.{u}) [IsNoetherian X]
     (hX : ∀ x : X, IsDomain (X.presheaf.stalk x))
     (Z : Set X) (hZ : Z ∈ irreducibleComponents X) :
-    IsIntegral (Motivic.domainStalkComponentOpen hX Z hZ).toScheme :=
-  Motivic.isIntegral_domainStalkComponentOpen hX Z hZ
+    IsIntegral (Scheme.domainStalkComponentOpen hX Z hZ).toScheme :=
+  Scheme.isIntegral_domainStalkComponentOpen hX Z hZ
 
 /-- An empty scheme has no irreducible components to index; no component is fabricated. -/
 theorem empty_components (X : Scheme.{u}) [IsEmpty X] :
@@ -56,14 +56,14 @@ theorem product_field_components (k : Type u) [Field k]
     (hZ : Z ∈ irreducibleComponents (PrimeSpectrum (k × k)))
     (hW : W ∈ irreducibleComponents (PrimeSpectrum (k × k)))
     {x : PrimeSpectrum (k × k)} (hxZ : x ∈ Z) (hxW : x ∈ W) : Z = W :=
-  Motivic.irreducibleComponents_eq_of_mem_of_domain_localizations
+  _root_.PrimeSpectrum.irreducibleComponents_eq_of_mem_of_domain_localizations
     (product_field_localizations k) hZ hW hxZ hxW
 
 /-- The decomposition is a finite cover by integral open subschemes. -/
 theorem finite_integral_cover (X : Scheme.{u}) [IsNoetherian X]
     (hX : ∀ x : X, IsDomain (X.presheaf.stalk x)) :
-    Finite (Motivic.domainStalkComponentOpenCover X hX).I₀ ∧
-      ∀ i, IsIntegral ((Motivic.domainStalkComponentOpenCover X hX).X i) :=
+    Finite (Scheme.domainStalkComponentOpenCover X hX).I₀ ∧
+      ∀ i, IsIntegral ((Scheme.domainStalkComponentOpenCover X hX).X i) :=
   ⟨inferInstance, fun _ ↦ inferInstance⟩
 
 /-- The actual spectrum of a disconnected field product has domain stalks. -/
@@ -76,12 +76,12 @@ theorem product_field_stalks (k : Type u) [Field k] (x : PrimeSpectrum (k × k))
 are integral; the original scheme is never assumed integral. -/
 theorem product_field_open_components (k : Type u) [Field k]
     (Z : Set (Spec (.of (k × k)))) (hZ : Z ∈ irreducibleComponents (Spec (.of (k × k)))) :
-    IsIntegral (Motivic.domainStalkComponentOpen (product_field_stalks k) Z hZ).toScheme :=
-  Motivic.isIntegral_domainStalkComponentOpen (product_field_stalks k) Z hZ
+    IsIntegral (Scheme.domainStalkComponentOpen (product_field_stalks k) Z hZ).toScheme :=
+  Scheme.isIntegral_domainStalkComponentOpen (product_field_stalks k) Z hZ
 
 /-- In the empty case the actual component-cover index type is empty. -/
 theorem empty_cover_index (X : Scheme.{u}) [IsNoetherian X] [IsEmpty X] :
-    IsEmpty (Motivic.domainStalkComponentOpenCover X (empty_domain_stalks X)).I₀ := by
+    IsEmpty (Scheme.domainStalkComponentOpenCover X (empty_domain_stalks X)).I₀ := by
   refine ⟨fun Z ↦ ?_⟩
   obtain ⟨x, _⟩ := Z.2.1.1
   exact isEmptyElim x

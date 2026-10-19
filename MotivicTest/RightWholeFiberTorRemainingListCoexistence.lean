@@ -25,6 +25,7 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberTorRemainingListCoexistence
+open _root_.AlgebraicGeometry.Scheme
 
 variable (K : Type u) [Field K] (X Y Z W : SmoothSite (Spec (.of K)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)

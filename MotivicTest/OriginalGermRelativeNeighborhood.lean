@@ -5,13 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermRelativeNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Germs.RelativeNeighborhood
 public import Lean.Util.CollectAxioms
 
 /-! Direct original-fiber comparison without a residue-field-isomorphism assumption. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
-open SmoothSite SmoothSite.RelativeNisnevichNeighborhood
+open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.RelativeNisnevichNeighborhood
 universe u
 namespace MotivicTest.OriginalGermRelativeNeighborhood
 variable {S : Scheme.{u}} [IsAffine S] {U X : SmoothSite S}

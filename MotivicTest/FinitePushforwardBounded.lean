@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.FinitePushforwardBounded
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Bounded
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
 
 /-!
 # Genuine whole-fiber boundedness consumers
@@ -30,8 +30,9 @@ open scoped TensorProduct
 universe u
 
 namespace Motivic.MotivicTest.FinitePushforwardBounded
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward
 
-open FiniteSchemeEuler
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.FiniteEuler
 
 section Correspondence
 
@@ -92,10 +93,10 @@ instance truncatedTildeFamily_quasicoherent (n : ℕ) :
 /-- The actual tilde stalk of a zero module vanishes through the original tensor comparison. -/
 theorem zeroTildeSourceStalk (M : ModuleCat.{u} B) [Subsingleton M] (x : Spec B) :
     Subsingleton (originalSourceStalkModule ((tilde.functor B).obj M) x) := by
-  have hz : Subsingleton ((AffinePushforward.stalkTensorFunctor B x).obj M) := by
+  have hz : Subsingleton ((Affine.stalkTensorFunctor B x).obj M) := by
     change Subsingleton ((Spec B).presheaf.stalk x ⊗[B] M)
     infer_instance
-  exact ((AffinePushforward.tildeStalkIso B x).app M).toLinearEquiv.toEquiv.subsingleton_congr.mp hz
+  exact ((Affine.tildeStalkIso B x).app M).toLinearEquiv.toEquiv.subsingleton_congr.mp hz
 
 /-- The original source-stalk bound is proved from the actual family definition. -/
 theorem truncatedTildeSourceBound (x : Spec B) (n : ℕ) (hn : d ≤ n) :

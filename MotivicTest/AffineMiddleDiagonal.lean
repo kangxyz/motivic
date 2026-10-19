@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.AffineMiddleScalars
-public import Motivic.AlgebraicGeometry.Intersection.ClosedSpecTor
-public import Motivic.Algebra.Homology.TorComparison.MixedBase
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.AffineMiddleScalars
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedSpecTor
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.MixedBase
 
 /-! # Consumers of actual affine middle-diagonal coordinates and closed stalk localization -/
 
@@ -16,11 +16,14 @@ public import Motivic.Algebra.Homology.TorComparison.MixedBase
 noncomputable section
 
 open CategoryTheory AlgebraicGeometry
-open scoped TensorProduct Motivic.MiddleDiagonal
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 universe u
 
 namespace Motivic.MotivicTest.AffineMiddleDiagonal
+open _root_.Algebra.TensorProduct
+open _root_.AlgebraicGeometry.Scheme
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable (k A B C : Type u) [CommRing k] [CommRing A] [CommRing B] [CommRing C]
   [Algebra k A] [Algebra k B] [Algebra k C]
@@ -38,14 +41,14 @@ theorem middle_formula (a : A) (b b' : B) (c : C) :
 
 /-- The mixed-base comparison uses exactly the affine left scalar map. -/
 theorem mixed_left :
-    TorComparison.MixedBase.leftMap k (A ⊗[k] B) (B ⊗[k] C)
+    _root_.ModuleCat.TorComparison.MixedBase.leftMap k (A ⊗[k] B) (B ⊗[k] C)
       (MiddleDiagonal.tripleRing k A B C) (MiddleDiagonal.quotientMap k A B C).toRingHom =
       (MiddleDiagonal.leftMap k A B C).toRingHom :=
   congrArg AlgHom.toRingHom (MiddleDiagonal.quotientMap_comp_left k A B C)
 
 /-- The mixed-base comparison uses exactly the affine right scalar map. -/
 theorem mixed_right :
-    TorComparison.MixedBase.rightMap k (A ⊗[k] B) (B ⊗[k] C)
+    _root_.ModuleCat.TorComparison.MixedBase.rightMap k (A ⊗[k] B) (B ⊗[k] C)
       (MiddleDiagonal.tripleRing k A B C) (MiddleDiagonal.quotientMap k A B C).toRingHom =
       (MiddleDiagonal.rightMap k A B C).toRingHom :=
   congrArg AlgHom.toRingHom (MiddleDiagonal.quotientMap_comp_right k A B C)
@@ -53,19 +56,19 @@ theorem mixed_right :
 /-- The actual scheme inclusion is the spectrum of the coordinate quotient. -/
 theorem actual_inclusion :
     Spec.map (CommRingCat.ofHom (MiddleDiagonal.quotientMap k A B C).toRingHom) ≫
-      (AffineMiddle.ambientIso k A B C).hom =
-    (AffineMiddle.tripleIso k A B C).hom ≫
-      correspondenceTripleInclusion (AffineMiddle.structureMap k A)
-        (AffineMiddle.structureMap k B) (AffineMiddle.structureMap k C) :=
-  AffineMiddle.quotientMap_square k A B C
+      (MiddleDiagonal.ambientIso k A B C).hom =
+    (MiddleDiagonal.tripleIso k A B C).hom ≫
+      correspondenceTripleInclusion (MiddleDiagonal.structureMap k A)
+        (MiddleDiagonal.structureMap k B) (MiddleDiagonal.structureMap k C) :=
+  MiddleDiagonal.quotientMap_square k A B C
 
 /-- Flatness of the remaining right outer factor gives the actual left scalar flatness. -/
 theorem left_flat [Module.Flat k C] : (MiddleDiagonal.leftMap k A B C).toRingHom.Flat :=
-  AffineMiddle.leftMap_flat k A B C
+  MiddleDiagonal.leftMap_flat k A B C
 
 /-- Flatness of the remaining left outer factor gives the actual right scalar flatness. -/
 theorem right_flat [Module.Flat k A] : (MiddleDiagonal.rightMap k A B C).toRingHom.Flat :=
-  AffineMiddle.rightMap_flat k A B C
+  MiddleDiagonal.rightMap_flat k A B C
 
 /-- The closed affine source module really is its ambient-prime localization. -/
 def localizedTriple (p : PrimeSpectrum (MiddleDiagonal.tripleRing k A B C)) :

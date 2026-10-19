@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoMonicDeformationFactors
+public import Motivic.Cohomology.WeightTwo.MonicDeformationFactors
 public import Lean.Util.CollectAxioms
 
 /-!

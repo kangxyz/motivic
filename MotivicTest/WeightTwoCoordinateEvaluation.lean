@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCoordinateEvaluation
+public import Motivic.Cohomology.WeightTwo.CoordinateEvaluation
 public import MotivicTest.PolynomialFiberNorm
 public import Lean.Util.CollectAxioms
 

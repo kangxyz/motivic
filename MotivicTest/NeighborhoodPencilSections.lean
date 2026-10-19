@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodPencilSections
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Sections.Pencils
 /-! Actual section data are constructed near the original base point, without section inputs. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

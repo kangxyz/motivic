@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticGlobalChartCoordinates
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Charts.GlobalChartCoordinates
 /-! Direct original-closure and whole-chart coordinate consumers. -/
 set_option linter.hashCommand false
 public noncomputable section

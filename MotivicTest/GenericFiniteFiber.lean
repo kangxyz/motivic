@@ -5,14 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GenericFiniteFiber
-public import Motivic.AlgebraicGeometry.Correspondences.IncidenceTor
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.QuasiFinite.GenericFiber
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Incidence.Tor
 
 /-! # Actual incidence consumers of generic-fiber reflection and Artinianness -/
 
 @[expose] public section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.LengthEuler
+open _root_.AlgebraicGeometry.Scheme.Hom (genericFiberEquiv genericFiberEquiv_apply_val
+  isArtinianRing_stalk_of_image_generic mem_genericPoints_of_image_generic)
+open CategoryTheory AlgebraicGeometry Motivic _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 

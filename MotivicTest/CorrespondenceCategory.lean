@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.Category
+public import Motivic.AlgebraicGeometry.Correspondences.Basic
 
 /-!
 # Actual correspondence-category consumers
@@ -26,6 +26,7 @@ open CategoryTheory AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.CorrespondenceCategory
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z W : Cor k}
 

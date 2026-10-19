@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.SupportModulesMiddle
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.SupportModulesMiddle
 
 /-! # Consumers of literal support-coordinate module actions and their ambient Tor -/
 
@@ -14,13 +14,13 @@ public import Motivic.Algebra.Homology.TorComparison.SupportModulesMiddle
 noncomputable section
 
 open CategoryTheory
-open scoped TensorProduct Motivic.MiddleDiagonal
+open scoped TensorProduct Algebra.TensorProduct.MiddleDiagonal
 
 universe u
 
 namespace Motivic.MotivicTest.TorComparisonSupportModules
 
-open Motivic.TorComparison.SupportModules
+open _root_.ModuleCat.TorComparison.SupportModules
 
 section General
 
@@ -29,9 +29,9 @@ variable (k U V : Type u) [CommRing k] [CommRing U] [CommRing V]
 
 /-- The actual exterior quotient module is linear over both ambient factors. -/
 def actualExteriorModule :
-    Motivic.TorComparison.ExteriorModule.obj k U V
+    _root_.ModuleCat.TorComparison.ExteriorModule.obj k U V
       (ModuleCat.of U (U ⧸ I)) (ModuleCat.of V (V ⧸ J)) ≅
-      Motivic.Intersection.specCoordinateModule
+      _root_.AlgebraicGeometry.Scheme.Intersection.specCoordinateModule
         (R := U ⊗[k] V) (A := (U ⧸ I) ⊗[k] (V ⧸ J))
         (quotientTensorMap k U V I J).toRingHom :=
   exteriorQuotientIso k U V I J
@@ -44,7 +44,7 @@ theorem quotient_coordinates (a : U) (b : V) :
 
 /-- Every ambient scalar acts via the specified tensor quotient map. -/
 theorem ambient_scalar (p : U ⊗[k] V)
-    (x : Motivic.TorComparison.ExteriorModule.obj k U V
+    (x : _root_.ModuleCat.TorComparison.ExteriorModule.obj k U V
       (ModuleCat.of U (U ⧸ I)) (ModuleCat.of V (V ⧸ J))) :
     (actualExteriorModule k U V I J).hom (p • x) =
       quotientTensorMap k U V I J p *
@@ -61,14 +61,16 @@ variable {R S : Type u} [CommRing R] [CommRing S]
 def arbitraryExtension (f : R →+* S) (I : Ideal R) :
     letI : Algebra R S := f.toAlgebra
     (ModuleCat.extendScalars f).obj (ModuleCat.of R (R ⧸ I)) ≅
-      Motivic.Intersection.specCoordinateModule (R := S) (A := S ⊗[R] (R ⧸ I))
+      _root_.AlgebraicGeometry.Scheme.Intersection.specCoordinateModule (R := S) (A := S ⊗[R] (R ⧸
+          I))
         Algebra.TensorProduct.includeLeftRingHom :=
   extendQuotientIso f I
 
 /-- An existing algebra structure is preserved by the quotient-pullback comparison. -/
 def prescribedExtension [Algebra R S] (I : Ideal R) :
     (ModuleCat.extendScalars (algebraMap R S)).obj (ModuleCat.of R (R ⧸ I)) ≅
-      Motivic.Intersection.specCoordinateModule (R := S) (A := S ⊗[R] (R ⧸ I))
+      _root_.AlgebraicGeometry.Scheme.Intersection.specCoordinateModule (R := S) (A := S ⊗[R] (R ⧸
+          I))
         Algebra.TensorProduct.includeLeftRingHom :=
   extendQuotientAlgebraIso R S I
 
@@ -83,17 +85,19 @@ variable (k A B C : Type u) [Field k] [CommRing A] [CommRing B] [CommRing C]
 /-- The complete support-coordinate comparison uses the actual ambient quotient
 and arbitrary support ideals, with no flatness hypotheses on either support. -/
 def actualMiddleSupportTor (n : ℕ) :
-    ((Tor (ModuleCat (Motivic.MiddleDiagonal.ambientRing k A B C)) n).obj
-      (Motivic.Intersection.specCoordinateModule
-        (R := Motivic.MiddleDiagonal.ambientRing k A B C)
+    ((Tor (ModuleCat (_root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C)) n).obj
+      (_root_.AlgebraicGeometry.Scheme.Intersection.specCoordinateModule
+        (R := _root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C)
         (A := ((A ⊗[k] B) ⧸ I) ⊗[k] ((B ⊗[k] C) ⧸ J))
-        (Motivic.AffineMiddle.supportRingMap k A B C I J).toRingHom)).obj
-      (Motivic.Intersection.specCoordinateModule
-        (R := Motivic.MiddleDiagonal.ambientRing k A B C)
-        (A := Motivic.MiddleDiagonal.tripleRing k A B C)
-        (Motivic.MiddleDiagonal.quotientMap k A B C).toRingHom) ≅
-      (ModuleCat.restrictScalars (Motivic.MiddleDiagonal.quotientMap k A B C).toRingHom).obj
-        (((Tor (ModuleCat (Motivic.MiddleDiagonal.tripleRing k A B C)) n).obj
+        (_root_.AlgebraicGeometry.Scheme.Products.MiddleDiagonal.supportRingMap k A B C I
+            J).toRingHom)).obj
+      (_root_.AlgebraicGeometry.Scheme.Intersection.specCoordinateModule
+        (R := _root_.Algebra.TensorProduct.MiddleDiagonal.ambientRing k A B C)
+        (A := _root_.Algebra.TensorProduct.MiddleDiagonal.tripleRing k A B C)
+        (_root_.Algebra.TensorProduct.MiddleDiagonal.quotientMap k A B C).toRingHom) ≅
+      (ModuleCat.restrictScalars (_root_.Algebra.TensorProduct.MiddleDiagonal.quotientMap k A B
+          C).toRingHom).obj
+        (((Tor (ModuleCat (_root_.Algebra.TensorProduct.MiddleDiagonal.tripleRing k A B C)) n).obj
           (leftPulledModule k A B C I)).obj (rightPulledModule k A B C J)) :=
   middleSupportTorIso k A B C I J n
 

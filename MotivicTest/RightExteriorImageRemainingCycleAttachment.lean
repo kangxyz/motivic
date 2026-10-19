@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightExteriorImageRemainingCycleAttachment
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightExteriorImageRemainingCycleAttachment
 
 /-!
 # Actual smooth-component right remaining cycle attachment
@@ -27,9 +27,12 @@ of F over Y is assumed.
 
 noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite
+  isNoetherian_of_finiteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.Sequence
 open Motivic.RightExteriorImageComponentGeometry
-open Motivic.RightExteriorImageRemainingCycleAttachment Motivic.LengthEuler
+open Motivic.RightExteriorImageRemainingCycleAttachment _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
@@ -87,12 +90,13 @@ theorem actualRemainingQuotientEuler_eq_finitePushforward_coefficient
     (hsreg : IsRegular ((pullback Y.hom Y.hom).presheaf.stalk (F.rightImageMiddlePair G H x)) s)
     (hker : (pullback.diagonal Y.hom).ker.stalk (F.rightImageMiddlePair G H x) = Ideal.ofList s) :
     letI := F.rightTargetRemainingList_support_isArtinian G H x y.1 y.2 hp s hker
-    chainEuler (Koszul.coefficientComplex
+    chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
       (ModuleCat.of ((F.rightIntermediateImageProduct G H).presheaf.stalk x)
         (((F.rightIntermediateImageProduct G H).presheaf.stalk x) ⧸
           (F.rightImageComponentExteriorInclusion G H (imageComponent G H z)).ker.stalk x))
       (F.rightTargetRemainingList G H x s))
-      (Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥ bot_le) =
+      (_root_.ChainComplex.Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥
+          bot_le) =
       IntegralCycle.toPoints
         (IntegralCycle.finitePushforward (componentRemainingMap F G H z)
           (IntegralCycle.ofGenericCoefficients
@@ -137,7 +141,7 @@ theorem actualOutsideExterior_chainEuler_and_pushforward_zero
       fun hw => hout ((remainingToImage_exists_generic_iff F G H (imageComponent G H z)
         (G.smoothIncidenceComponentGenerator (X := Y) (Y := Z) (Z := W) k H z)
         (actualImageKernel G H z) y).mp hw)
-    chainEuler (Koszul.coefficientComplex
+    chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
       (ModuleCat.of ((F.rightIntermediateImageProduct G H).presheaf.stalk
         (F.rightImageIncidenceInclusion G H y.1))
         (((F.rightIntermediateImageProduct G H).presheaf.stalk

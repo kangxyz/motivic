@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.HypercohomologySheafComparison
-public import Motivic.Cohomology.HypercohomologyFieldEvaluation
+public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Hypercohomology.FieldEvaluation
 
 /-!
 # Consumers of unbounded ordinary-sheaf hypercohomology
@@ -20,7 +20,7 @@ comparison. The target complex is arbitrary; no bounded-below instance is used.
 
 universe w v u
 
-open CategoryTheory Opposite Motivic.Hypercohomology
+open CategoryTheory Opposite _root_.CategoryTheory.Sheaf.Hypercohomology
 
 section LargeSite
 
@@ -89,14 +89,14 @@ section Field
 open AlgebraicGeometry
 
 variable (J : GrothendieckTopology Scheme.{u})
-  (hJ : J ≤ Motivic.Nisnevich.fieldLiftingTopology) (K : Type u) [Field K]
+  (hJ : J ≤ Nisnevich.fieldLiftingTopology) (K : Type u) [Field K]
 
 include hJ
 
 attribute [local instance] HasDerivedCategory.standard in
 example (M : CochainComplex (Sheaf J AddCommGrpCat.{u + 1}) ℤ) (p : ℤ) :
     H.{_, u + 1, u, u + 1} J M p (Spec (.of K)) ≃+
-      (((Motivic.Nisnevich.fieldEvaluation J K).mapHomologicalComplex (.up ℤ)).obj M).homology
+      (((Nisnevich.fieldEvaluation J K).mapHomologicalComplex (.up ℤ)).obj M).homology
         p :=
   fieldEvaluationComparison J hJ K M p
 

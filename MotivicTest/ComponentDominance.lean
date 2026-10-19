@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ComponentDominance
+public import Motivic.AlgebraicGeometry.Correspondences.Support.ComponentDominance
 
 /-!
 # Consumers of geometric finite-base-change dominance
@@ -24,6 +24,7 @@ open Motivic
 universe u
 
 namespace MotivicTest.ComponentDominance
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
 
 /-- The geometric endpoint accepts arbitrary locally finite-type test schemes. -/
 theorem actual_pullback_generalizing
@@ -32,14 +33,14 @@ theorem actual_pullback_generalizing
     [IsIntegral B] [IsIntegral Y]
     (hY : ∀ y : Y, IsIntegrallyClosed (Y.presheaf.stalk y)) :
     GeneralizingMap (pullback.fst g f) :=
-  generalizingMap_pullbackFst_normal_base g f hY
+  _root_.AlgebraicGeometry.Scheme.Hom.generalizingMap_pullbackFst_normal_base g f hY
 
 /-- The arbitrary finite-type test algebra has no reducedness or domain assumption. -/
 theorem arbitrary_affine_test (k A : Type u) [Field k] [CommRing A]
     [Algebra k A] [Algebra.FiniteType k A] :
     GeneralizingMap (pullback.fst (Spec.map (CommRingCat.ofHom (algebraMap k A)))
       (Spec.map (CommRingCat.ofHom (algebraMap k k)))) := by
-  apply generalizingMap_pullbackFst_spec k A k
+  apply _root_.AlgebraicGeometry.Scheme.Hom.generalizingMap_pullbackFst_spec k A k
   intro p
   exact ⟨p, by ext; simp⟩
 

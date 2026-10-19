@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.WholeFiberTorExteriorPushforward
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.WholeFiberTorExteriorPushforward
 public import MotivicTest.IntegralExteriorCyclePushforward
 
 /-!
@@ -32,6 +32,8 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite IntegralCycle FiniteSupportCycle fundamentalCycle
+  isNoetherian_of_finiteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open MotivicTest.IntegralGenericFiniteImage
 open MotivicTest.IntegralExteriorCyclePushforward

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.FiniteGeneration
-public import Motivic.Algebra.Homology.KoszulFiniteTor
-public import Motivic.Algebra.Homology.KoszulScalarRestriction
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.FiniteGeneration
+public import Motivic.Aglib.Algebra.Homology.Koszul.FiniteTor
+public import Motivic.Aglib.Algebra.Homology.Koszul.ScalarRestriction.Basic
 public import Mathlib.RingTheory.KrullDimension.PID
 
 /-! # Actual finite quotient-supported Tor, including nonzero higher Tor -/
@@ -16,7 +16,13 @@ public import Mathlib.RingTheory.KrullDimension.PID
 
 noncomputable section
 
-open CategoryTheory HomologicalComplex Motivic.TorComparison Motivic.Koszul
+open CategoryTheory
+open HomologicalComplex
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
+open _root_.ChainComplex.Koszul
 
 namespace Motivic.MotivicTest.TorQuotientFiniteness
 

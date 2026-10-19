@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeComposition
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.Composition
 
 /-!
 # Arbitrary-field actual signed composition consumers
@@ -17,6 +17,7 @@ functor are checked against a rejecting standard-foundations axiom allowlist.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open scoped BigOperators
 

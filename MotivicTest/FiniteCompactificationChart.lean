@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteCompactificationChart
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.FiniteChart.CompactificationChart
 /-! # One target presentation gives the actual full finite source boundary -/
 set_option linter.hashCommand false
 public section

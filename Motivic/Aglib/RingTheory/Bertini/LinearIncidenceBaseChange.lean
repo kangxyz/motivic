@@ -8,7 +8,7 @@ public import Motivic.Aglib.RingTheory.Bertini.LinearIncidenceAlgebra
 
 /-! # Actual coefficient-field specialization of linear incidence equations -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u v
 namespace LinearIncidence
 variable (A K E : Type u) [CommRing A] [CommRing K] [CommRing E]

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoFieldChange
+public import Motivic.Cohomology.WeightTwo.FieldChange
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -20,6 +20,7 @@ and the characteristic. The axiom audit rejects nonstandard assumptions.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.WeightTwoSymbols Motivic.WeightTwoFiniteSymbols Motivic.WeightTwoFieldChange
 open scoped TensorProduct

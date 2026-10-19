@@ -5,11 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.FiniteRepresentativeFamilyAssembly
+public import Motivic.Transfers.Sheaf.Germs.FiniteRepresentatives.FamilyAssembly
 public import Lean.Util.CollectAxioms
 
 /-! The actual finite packed correspondence retains graph images, points and transfer values. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
 universe u v
 namespace MotivicTest.FiniteRepresentativeFamilyAssembly

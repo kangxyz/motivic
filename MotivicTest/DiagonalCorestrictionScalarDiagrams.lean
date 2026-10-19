@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalCorestrictionDegree
-public import Motivic.Cohomology.Motivic.DiagonalPolynomialPointBaseChange
+public import Motivic.Cohomology.Diagonal.CorestrictionDegree
+public import Motivic.Cohomology.Diagonal.PolynomialPointBaseChange
 public import Lean.Util.CollectAxioms
 
 /-! Original all-weight scalar diagrams retain full branch cycles and degree. -/
@@ -14,10 +14,15 @@ public import Lean.Util.CollectAxioms
 set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory AlgebraicGeometry Motivic PresheafWithTransfers
+open CategoryTheory
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 open DiagonalCorestriction DiagonalCorestrictionBaseChange DiagonalCycleSymbols
 universe u
 namespace MotivicTest.DiagonalCorestrictionScalarDiagrams
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
 variable {k L : Type u} [Field k] [Field L] [Algebra k L]
 
 /-- Degree multiplication acts on the original raw class, not on a replacement group. -/
@@ -40,7 +45,8 @@ theorem actual_whole_polynomial_cycle (n : ℕ)
         (pointPushforward (k := k) n ((Cor.graphFunctor (AdjoinRoot p.val)).map
           (rationalTuple _ n a)))) =
       IntegralCycle.finitePushforward (polynomialChangedPoint (L := L) p a)
-        (fundamentalCycle (Spec (.of (AdjoinRoot (p.val.map (algebraMap k L)))))) :=
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (Spec (.of (AdjoinRoot (p.val.map
+            (algebraMap k L)))))) :=
   toIntegralCycle_baseChange_polynomialPoint p a
 
 open Lean in

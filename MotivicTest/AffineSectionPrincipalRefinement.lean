@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.AffineSectionPrincipalRefinement
+import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.AffineSectionPrincipalRefinement
 import Mathlib.Algebra.Polynomial.Eval.Defs
 /-! # The actual zero-section étale-neighborhood consumer -/
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

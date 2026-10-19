@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GraphIdealMovedCycle
-import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OpenRangeFrame
-import all Motivic.AlgebraicGeometry.Cycles.GraphIdealMovedCycle
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.GraphIdealMoved
+import all Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.OpenRangeFrame
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.GraphIdealMoved
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -26,7 +26,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 
 universe u
@@ -62,22 +62,27 @@ theorem original_graph_prescribed_moved_support
     (hboundary : (Set.range v)ᶜ ⊆ Set.range
       (coprod.desc (infinityProductMap q j d) (infinityProductMap q j z))) :
     ∃ E : PrescribedAffineFrameExtension A b (relativeCompactificationGraphLine q j)
-        (GraphIdealMovedCycle.affineBoundaryFrame q j d z hd eZ A b hb),
+        (_root_.AlgebraicGeometry.Scheme.Cycles.GraphDivisorPencil.affineBoundaryFrame q j d z hd eZ
+            A b hb),
       (∀ x ∈ E.affineOpen.val,
-        idealFrameMovedCycle (compactificationGraph q j) E.affineOpen E.overFrame
+        _root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle (compactificationGraph q j)
+            E.affineOpen E.overFrame
           1 isUnit_one x = 0) ∧
-      (∀ x, idealFrameMovedCycle (compactificationGraph q j) E.affineOpen E.overFrame
+      (∀ x, _root_.AlgebraicGeometry.Scheme.idealFrameMovedCycle (compactificationGraph q j)
+          E.affineOpen E.overFrame
           1 isUnit_one x ≠ 0 →
-        IsFinite ((IntegralClosedSubscheme.pointClosure x).val.subschemeι ≫
+        IsFinite ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure
+            x).val.subschemeι ≫
           pullback.fst (j ≫ q) q)) :=
-  GraphIdealMovedCycle.exists_original_graph_moved_sum q j d z hd eZ A b hb v hboundary
+  _root_.AlgebraicGeometry.Scheme.Cycles.GraphDivisorPencil.exists_original_graph_moved_sum q j d z
+      hd eZ A b hb v hboundary
 
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OpenRangeFrame,
-    `Motivic.AlgebraicGeometry.Cycles.GraphIdealMovedCycle]
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.OpenRangeFrame,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.GraphIdealMoved]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -104,8 +109,8 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.OpenRangeFrame,
-    `Motivic.AlgebraicGeometry.Cycles.GraphIdealMovedCycle,
+    `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.OpenRangeFrame,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.GraphIdealMoved,
     `MotivicTest.GraphIdealMovedCycle]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

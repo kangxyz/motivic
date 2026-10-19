@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryBaseWholeTarget
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.WholeTarget
 /-! # The original target, not the smaller parameter open, survives base change -/
 set_option linter.hashCommand false
 public section

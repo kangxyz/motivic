@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.EtaleFieldCoproduct
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Fibers.FieldCoproduct
 
 /-! # Direct tests for the canonical finite étale field decomposition -/
 

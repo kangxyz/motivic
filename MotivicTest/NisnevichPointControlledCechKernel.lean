@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichPointControlledCechKernel
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Points.ControlledCechKernel
 public import Lean.Util.CollectAxioms
 
 /-! # Actual designated-point control on both sides of a local Čech relation -/
@@ -14,6 +14,7 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -69,8 +70,9 @@ example (k : Type u) [Field k] {X Y V : SmoothSite (Spec (.of k))}
     f (B.targetProjection z)) (pullback.condition (f := q.left) (g := q.left))
 
 open Lean Motivic in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
-  for name in #[``SmoothSite.NisnevichNeighborhood.exists_lift_of_isFinite_with_point_property,
+  for name in #[``exists_lift_of_isFinite_with_point_property,
       ``FiniteCorrespondence.exists_pointed_cech_boundary_with_point_property] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

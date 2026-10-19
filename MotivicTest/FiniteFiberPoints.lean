@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.Localization.FiniteFiberPoints
-public import Motivic.Algebra.Homology.LengthEulerFiniteAlgebra
+public import Motivic.Aglib.RingTheory.Localization.FiniteFiberPoints
+public import Motivic.Aglib.Algebra.Homology.LengthEuler.FiniteAlgebra
 
 /-!
 # Source-point consumers of the finite-algebra Euler formula
@@ -26,7 +26,7 @@ universe u
 
 namespace Motivic.MotivicTest.FiniteFiberPoints
 
-open FiniteFiber LengthEuler
+open _root_.PrimeSpectrum.FiniteFiber _root_.HomologicalComplex.ModuleLengthEuler
 
 variable (A B : Type u) [CommRing A] [CommRing B] [Algebra A B]
   [Module.Finite A B] (p : PrimeSpectrum A) [IsNoetherianRing (Localization.AtPrime p.asIdeal)]

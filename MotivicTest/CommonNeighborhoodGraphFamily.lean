@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodGraphFamily
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.GraphFamily
 /-! # The whole finite-flat family in the original graph-times-pole coefficient -/
 set_option linter.hashCommand false
 set_option backward.defeqAttrib.useBackward true

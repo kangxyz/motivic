@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.SimultaneousNativeFrames
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.SimultaneousNativeFrames
 /-! # Constructed native frames on one actual affine base neighborhood -/
 set_option linter.hashCommand false
 public section

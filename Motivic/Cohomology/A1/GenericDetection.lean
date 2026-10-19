@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.DenseOpenAffineDetection
+public import Motivic.Cohomology.A1.LocalVanishing.DenseOpen.AffineDetection
 
 /-!
 # Affine local zero detection from a nonempty open

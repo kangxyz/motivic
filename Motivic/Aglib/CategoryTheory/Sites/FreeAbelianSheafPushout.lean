@@ -1,6 +1,6 @@
 module
 
-public import Motivic.Cohomology.Hypercohomology
+public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.Square
 public import Mathlib.CategoryTheory.Limits.Types.Pullbacks
 
@@ -12,7 +12,7 @@ open CategoryTheory CategoryTheory.Limits Opposite
 
 universe t v u
 
-namespace Motivic.Hypercohomology
+namespace CategoryTheory.Sheaf.Hypercohomology
 
 variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
   [HasSheafify J AddCommGrpCat.{max v t}]
@@ -64,4 +64,4 @@ theorem freeAbelianSheaf_isPushout (sq : Square C)
         ((congrArg (fun y ↦ F.obj.map sq.f₃₄.op y)
           ((sectionsEquiv J sq.X₄ F).apply_symm_apply x)).trans h₂)
 
-end Motivic.Hypercohomology
+end CategoryTheory.Sheaf.Hypercohomology

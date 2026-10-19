@@ -4,12 +4,13 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.WholeAffineLineH1BaseZero
+public import Motivic.Cohomology.A1.LocalVanishing.H1.WholeBaseZero
 public import Lean
 /-! # Actual whole-line H¹ base restriction and transitive trust audit -/
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme.SmoothSite (nisnevichTopology)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic ProjectiveSpace
-open Scheme.Hom Opposite Motivic.SheafCohomology
+open Scheme.Hom Opposite _root_.CategoryTheory.Sheaf.LargeCohomology _root_.Motivic.SheafCohomology
 open Scheme.RelativeAffineLineEtaleCompactification
 universe w u
 namespace MotivicTest.WholeAffineLineH1BaseZero
@@ -32,25 +33,25 @@ variable (k : Type u) [Field k] (R : Type u) [CommRing R] [IsDomain R]
 
 
 variable [IsClosedImmersion (boundaryCoordinateMap R B z)]
-  [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+  [HasExt.{w} (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
   [EnoughInjectives
-    (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+    (Sheaf (nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 include hs H hcomp in
 /-- The original H¹ class becomes zero on the entire line over a smaller base.
 Only the base open is shrunk; the positive-cohomology presheaf is never glued. -/
 theorem actual_whole_line_base_zero
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
-    (x : Motivic.SheafCohomology.H.{w, u + 1, u, u + 1}
-      (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{w, u + 1, u, u + 1}
+      (nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) 1
       (originalAmbientSite k R t (boundaryLineProjection R)))
-    (hA : (Motivic.SheafCohomology.presheaf.{w, u + 1, u, u + 1}
-      (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (hA : (presheaf.{w, u + 1, u, u + 1}
+      (nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) 1).map
         (originalOpenArrow k R t (boundaryLineProjection R) a).op x = 0)
-    (hY : (Motivic.SheafCohomology.presheaf.{w, u + 1, u, u + 1}
-      (SmoothSite.nisnevichTopology (Spec (.of k)))
+    (hY : (presheaf.{w, u + 1, u, u + 1}
+      (nisnevichTopology (Spec (.of k)))
       ((SheafWithTransfers.toSheaf k).obj F) 1).map
         (originalEtaleArrow k R t (boundaryLineProjection R) p).op x = 0) :
     ∃ (V : (Spec (.of R)).Opens) (hV : IsAffineOpen V),
@@ -58,8 +59,8 @@ theorem actual_whole_line_base_zero
       genericPoint (Spec (.of R)) ∈ V ∧
       ∃ hW : IsAffineOpen (boundaryBaseSourceOpen (boundaryLineProjection R) ⊤ V),
         let : IsAffine (boundaryBaseSourceOpen (boundaryLineProjection R) ⊤ V).toScheme := hW
-        (Motivic.SheafCohomology.presheaf.{w, u + 1, u, u + 1}
-      (SmoothSite.nisnevichTopology (Spec (.of k)))
+        (presheaf.{w, u + 1, u, u + 1}
+      (nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 1).map
           (boundaryBaseAmbientRestriction k R t (boundaryLineProjection R) ⊤ V).op x = 0 :=
   exists_original_h_one_base_restriction_eq_zero k R t p a B z s hs H hcomp F hF x hA hY

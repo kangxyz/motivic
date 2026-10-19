@@ -10,7 +10,7 @@ chart. The parameter variables are the fixed quadratic monomials, and the
 cotangent module is that of the original affine algebra, without a new chart.
 -/
 @[expose] public noncomputable section
-open MvPolynomial Module TensorProduct KaehlerDifferential
+open _root_.MvPolynomial Module TensorProduct KaehlerDifferential
 universe u v w z
 namespace QuadraticIncidence
 

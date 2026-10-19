@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorFunctor
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Simplex.Functor
 
 /-! # The actual additive simplex endofunctor on arbitrary signed correspondences -/
 

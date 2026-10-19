@@ -1,10 +1,11 @@
-import Motivic.AlgebraicGeometry.Correspondences.FlatGraphPointControl
+import Motivic.AlgebraicGeometry.Correspondences.Graph.Flat.PointControl
 
 /-! Actual support points, disconnected sources, signed coefficients, and
 designated target centers under pointed étale refinement. -/
 
 set_option linter.hashCommand false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

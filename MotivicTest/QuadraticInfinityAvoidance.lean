@@ -9,7 +9,7 @@ public import Lean
 
 /-! # Actual all-chart, all-field infinity avoidance in the unchanged parameter family -/
 public noncomputable section
-open MvPolynomial QuadraticIncidence InfinityChart
+open _root_.MvPolynomial QuadraticIncidence InfinityChart
 universe u
 
 example (k R : Type u) [Field k] [Infinite k] [CommRing R] [IsDomain R] [Algebra k R]

@@ -5,18 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleOriginalEdgeWindow
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Original.EdgeWindow
 public import Motivic.Cohomology.A1.Basic
-public import Motivic.AlgebraicGeometry.SmoothSiteInjectives
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Injectives
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughInjectives
 public import Lean.Util.CollectAxioms
 
 /-! Direct consumer of the original affine-line projection, with a transitive axiom audit. -/
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe u
 namespace MotivicTest.FiniteEtaleOriginalEdgeWindow
-open Motivic Motivic.FiniteEtaleSite
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open Motivic _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 variable (R : CommRingCat.{u}) (X : SmoothSite (Spec R))
 local instance : HasExt.{u + 1}
     (Sheaf (SmoothSite.nisnevichTopology (Spec R)) AddCommGrpCat.{u + 1}) :=
@@ -36,7 +38,7 @@ theorem actual_a1_projection_bijective
       IsZero (((directImage (SmoothSite.a1Projection R X).left).rightDerived q).obj
         ((restrict (SmoothSite.a1Cylinder R X) AddCommGrpCat.{u + 1}).obj F))) :
     Function.Bijective (A1.projectionPullback R
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec R)) F N) X) :=
   originalRestriction_bijective_of_rightDerived_window (SmoothSite.a1Projection R X) F N hR
 
@@ -45,7 +47,7 @@ theorem actual_a1_projection_one_injective
     (F : Sheaf (SmoothSite.nisnevichTopology (Spec R)) AddCommGrpCat.{u + 1})
     [IsIso (restrictionToDirectImage F (SmoothSite.a1Projection R X))] :
     Function.Injective (A1.projectionPullback R
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec R)) F 1) X) :=
   originalRestriction_injective_of_rightDerived_window (SmoothSite.a1Projection R X) F 1
     (fun q hq hqN => by omega)
@@ -53,8 +55,8 @@ theorem actual_a1_projection_one_injective
 open Lean in
 run_cmd do
   for name in #[``actual_a1_projection_bijective, ``actual_a1_projection_one_injective,
-      ``Motivic.FiniteEtaleSite.originalRestriction_bijective_of_rightDerived_window,
-      ``Motivic.FiniteEtaleSite.originalRestriction_injective_of_rightDerived_window] do
+      ``originalRestriction_bijective_of_rightDerived_window,
+      ``originalRestriction_injective_of_rightDerived_window] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

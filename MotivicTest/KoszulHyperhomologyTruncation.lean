@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulHyperhomologyTruncation
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyTruncation
 
 /-!
 # Consumers of genuine Koszul-tensored truncation sequences
@@ -19,7 +19,7 @@ The equations may include both repetition and zero.
 
 universe u
 
-open CategoryTheory Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory _root_.ChainComplex.Koszul _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulHyperhomologyTruncation
 

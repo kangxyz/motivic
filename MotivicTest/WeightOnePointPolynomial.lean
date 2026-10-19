@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOnePointPolynomial
+public import Motivic.Cohomology.WeightOne.PointPolynomial
 public import Lean.Util.CollectAxioms
 
 /-!

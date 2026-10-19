@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.AdjoinRootBranchDimension
+public import Motivic.Aglib.RingTheory.AdjoinRoot.BranchDimension
 public import Mathlib.Algebra.Field.ZMod
 public import Mathlib.Algebra.Polynomial.SpecificDegree
 public import Mathlib.Tactic.FinCases

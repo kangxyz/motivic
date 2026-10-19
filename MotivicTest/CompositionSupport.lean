@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.CompositionSupportEmbedding
-public import Motivic.AlgebraicGeometry.Correspondences.CompositionSupportGraphs
-public import Motivic.AlgebraicGeometry.Cycles.IntegralCycle
-public import Motivic.AlgebraicGeometry.Cycles.FiniteResidueDegree
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Support.Embedding
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Support.Graphs
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.IntegralCycle
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.ResidueDegree
 
 /-!
 # Consumers of geometric composition support
@@ -23,6 +23,7 @@ chosen or identified with the scheme-fiber length.
 @[expose] public section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (FiniteSupportCycle IntegralClosedSubscheme IntegralCycle)
 
 universe u
 
@@ -37,7 +38,9 @@ example [IsSeparated h] : IsFinite (A.incidenceMap B) := inferInstance
 
 example : IsClosedImmersion (A.incidenceInclusion B) := inferInstance
 
-example : A.incidenceInclusion B ≫ correspondenceTripleProjection f g h = A.incidenceMap B :=
+example : A.incidenceInclusion B ≫
+    _root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleProjection f g h = A.incidenceMap B
+    :=
   A.incidenceInclusion_projection B
 
 example : (A.incidenceInclusion B).ker =
@@ -74,7 +77,7 @@ example [IsSeparated h] (V : IntegralClosedSubscheme (A.incidence B)) :
 example [IsSeparated h] (V : IntegralClosedSubscheme (A.incidence B)) :
     0 < V.imageDegree (A.incidenceMap B) := by
   rw [V.imageDegree_eq]
-  exact residueDegree_pos _ _
+  exact _root_.AlgebraicGeometry.Scheme.Hom.residueDegree_pos _ _
 
 example [IsSeparated h] (V : IntegralClosedSubscheme (A.incidence B)) (n : ℤ) :
     IntegralCycle.finitePushforward (A.incidenceMap B) (Finsupp.single V n) =

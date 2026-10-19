@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Sites.NisnevichHenselian
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Henselian
 
 /-!
 # Consumers of henselian Nisnevich-local objects
@@ -14,7 +14,7 @@ These consumers use arbitrary étale covering members, indexed covering families
 and nonreduced local Artinian bases. They use the actual generated topology.
 -/
 
-open CategoryTheory AlgebraicGeometry Motivic.Nisnevich
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Nisnevich
 
 universe u
 
@@ -40,10 +40,10 @@ example {K : Type u} [Field K] (S : Sieve (Spec (.of K))) :
   mem_topology_iff_of_artinian K S
 
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.exists_section_of_mem_precoverage_of_henselian
+#print axioms exists_section_of_mem_precoverage_of_henselian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.exists_section_of_mem_precoverage_of_artinian
+#print axioms exists_section_of_mem_precoverage_of_artinian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.mem_topology_iff_of_henselian
+#print axioms mem_topology_iff_of_henselian
 set_option linter.hashCommand false in
-#print axioms Motivic.Nisnevich.mem_topology_iff_of_artinian
+#print axioms mem_topology_iff_of_artinian

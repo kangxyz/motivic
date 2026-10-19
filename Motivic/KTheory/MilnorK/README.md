@@ -1,23 +1,27 @@
-# Milnor interfaces and motivic applications
+# Public Milnor bridges
 
-General Milnor K-theory is maintained in the independent
-[Aglib repository](https://github.com/kangxyz/aglib), under
-`Aglib.KTheory.MilnorK`. The canonical group is `MilnorK.K F n`; its lower-degree
-tensor presentations live under `MilnorK.K2` and `MilnorK.K3` and are compared
-by `twoEquiv` and `threeEquiv`. No separate top-level MilnorK2/MilnorK3 theory
-is introduced.
+`Motivic.KTheory.MilnorK` reexports `Aglib.KTheory.MilnorK`;
+`Motivic.KTheory.MilnorK.Norms` reexports its optional characteristic-zero norm
+tower. These are the two retained public compatibility imports.
 
-The old `Motivic.KTheory.MilnorK*` paths are import adapters to Aglib.
-New code should import focused Aglib leaves. The core facade is
-`Aglib.KTheory.MilnorK`; characteristic-zero finite-extension norm transitivity
-is available through `Aglib.KTheory.MilnorK.Norms`. All original characteristic,
-valuation, normalization, universe and scalar-tower hypotheses are retained.
+For general symbol work use focused upstream imports:
 
-`AffineEndpointGeometry` and `NormalizedAffineEndpointNorm` remain here because
-they compare against Motivic's original geometric endpoint and cycle objects.
-The diagonal and weight-two cohomology comparisons remain in the motivic
-cohomology family. Production Aglib code has no dependency on Motivic.
+```lean
+import Aglib.KTheory.MilnorK.Basic
+```
 
-Source history remains in [provenance](../../../doc/provenance/README.md).
-The copied K₂ source exceptions retain their original notices in Aglib;
-the local compatibility leaves contain no copied mathematical implementation.
+The canonical group remains `MilnorK.K F n`, with native `MilnorK` declarations.
+The tensor presentations `MilnorK.K2.Group F` and `MilnorK.K3.Group F` have
+explicit symbol-preserving comparisons; they are not replacement all-degree
+theories. Retain valuation/uniformizer conditions for residues and
+characteristic-zero, algebra, finite-dimensional and scalar-tower conditions
+for general finite-extension norms.
+
+Use [Aglib's family guide](https://github.com/kangxyz/aglib/blob/main/Aglib/KTheory/MilnorK/README.md)
+for current general imports, with the revision fixed by this package's manifest.
+Diagonal and weight-two applications live under
+[cohomology](../../Cohomology/README.md), with actual endpoint maps and stated
+normalization hypotheses. General curve/frame prerequisites have their
+[candidate owner](../../Aglib/AlgebraicGeometry/RelativeCurve/README.md).
+[Provenance](../../../docs/provenance/README.md) preserves source identity;
+old implementation/test paths are historical rather than present imports.

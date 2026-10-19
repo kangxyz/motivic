@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.OpenSupportNeighborhoods
+public import Motivic.AlgebraicGeometry.Correspondences.Support.OpenNeighborhoods
 
 /-! # Actual affine-neighborhood Tor consumers with restricted closed supports -/
 
@@ -18,8 +18,10 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.OpenSupportNeighborhoods
+open _root_.AlgebraicGeometry.Scheme.Products
 
-open Motivic.OpenProductNeighborhoods Intersection
+open _root_.AlgebraicGeometry.Scheme.Products.OpenNeighborhoods
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable {S X Y Z : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
@@ -51,7 +53,7 @@ theorem actualAffineSupportNeighborhood :
 
 /-- Genuine finite degree support passes to the constructed local support product. -/
 theorem actualAffineFiniteSupport
-    (hfin : LengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
+    (hfin : _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (F.incidenceTor G w)) :
     ∃ A B C : CommRingCat.{u},
     ∃ uX : Spec A ⟶ X, ∃ uY : Spec B ⟶ Y, ∃ uZ : Spec C ⟶ Z,
       IsOpenImmersion uX ∧ IsOpenImmersion uY ∧ IsOpenImmersion uZ ∧
@@ -59,7 +61,8 @@ theorem actualAffineFiniteSupport
       ∃ t : F.openSupportProduct G uX uY uZ,
       ∃ hp : correspondenceTripleInclusion (uX ≫ f) (uY ≫ g) (uZ ≫ h) q =
         F.openSupportProductInclusion G uX uY uZ t,
-        LengthEuler.FiniteLengthSupport (F.openIncidenceStalkTor G uX uY uZ q t hp) := by
+        _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (F.openIncidenceStalkTor G
+            uX uY uZ q t hp) := by
   obtain ⟨A, B, C, uX, uY, uZ, hx, hy, hz, q, t, hp, hlen⟩ :=
     actualAffineSupportNeighborhood F G w
   refine ⟨A, B, C, uX, uY, uZ, hx, hy, hz, q, t, hp, ⟨?_, ?_⟩⟩

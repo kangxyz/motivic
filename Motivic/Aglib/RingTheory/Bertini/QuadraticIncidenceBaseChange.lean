@@ -10,7 +10,7 @@ use tensor cancellation. Both retain the original affine generators and the orig
 module of differentials. No flatness or field hypothesis is needed.
 -/
 @[expose] public noncomputable section
-open MvPolynomial Module TensorProduct KaehlerDifferential
+open _root_.MvPolynomial Module TensorProduct KaehlerDifferential
 universe u v w x z
 namespace QuadraticIncidence
 

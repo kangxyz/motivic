@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteResolution
+public import Aglib.Algebra.Homology.Koszul.Resolution
 
 /-!
 # Consumers of the genuine finite regular-sequence resolution
@@ -20,7 +20,7 @@ quotient. Regularity is the mathematical hypothesis; no resolution is supplied.
 universe u
 
 open CategoryTheory
-open Motivic.Koszul
+open _root_.ChainComplex.Koszul
 
 variable {R : Type u} [CommRing R] (M : ModuleCat R) (s : List R) (a : R)
 

@@ -4,13 +4,13 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.FiniteMinimalComponentQuotient
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.MinimalComponentQuotient
 public import Mathlib.RingTheory.Polynomial.Basic
 public import Lean
 
 /-! # Literal polynomial map on an unchanged nonreduced quotient and axiom audit -/
 public noncomputable section
-open AlgebraicGeometry MvPolynomial
+open AlgebraicGeometry _root_.MvPolynomial
 universe u
 
 example (k R : Type u) [Field k] [CommRing R] [Algebra k R]

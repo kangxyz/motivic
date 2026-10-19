@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.BoundaryGraphBaseIso
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.BoundaryGraphBaseIso
 /-! # Canonical base presentation preserves the original graph ideal and functional -/
 set_option linter.hashCommand false
 public noncomputable section

@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.MixedPrescribedPencilBoundary
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.MixedPrescribedPencilBoundary
 /-! Actual prescribed values imply the original mixed-source pencil functional equation. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

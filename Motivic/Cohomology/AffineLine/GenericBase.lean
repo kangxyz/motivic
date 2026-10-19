@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.RelativeGenericBasePositiveZero
+public import Motivic.Cohomology.A1.LocalVanishing.GenericBase.PositiveZero
 
 /-!
 # Original relative affine-line classes over a generic base open

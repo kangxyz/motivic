@@ -5,17 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SignedPrincipalFaceCoefficient
-public import Motivic.AlgebraicGeometry.Correspondences.FinitePointCycleEndpoints
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.SignedPrincipalFaceCoefficient
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Equality
 
 import all Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.FaceDifference
-import all Motivic.AlgebraicGeometry.Correspondences.FinitePointCycleEndpoints
-import all Motivic.Aglib.RingTheory.PrincipalKoszulEuler
-import all Motivic.Aglib.AlgebraicGeometry.PrincipalFaceCoefficient
+import all Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Equality
+import all Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.Koszul
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalFaceCoefficient
 import all Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.Surjective
-import all Motivic.Aglib.AlgebraicGeometry.PrincipalDivisorFaceCoefficient
-import all Motivic.Aglib.AlgebraicGeometry.PrincipalDivisorFaceSupport
-import all Motivic.Aglib.AlgebraicGeometry.SignedPrincipalFaceCoefficient
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalDivisorFaceCoefficient
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalDivisorFaceSupport
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.SignedPrincipalFaceCoefficient
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -37,8 +37,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (FiniteSupportCycle IntegralClosedSubscheme IntegralCycle
+  SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open AlgebraicGeometry.FiniteFlatCurve Motivic.RelativeEndpointDiagram
+open AlgebraicGeometry.FiniteFlatCurve
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
 open scoped BigOperators Polynomial
 
 universe u
@@ -114,13 +118,13 @@ run_cmd do
   let env ← getEnv
   let sourceModules := #[
     `Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.FaceDifference,
-    `Motivic.AlgebraicGeometry.Correspondences.FinitePointCycleEndpoints,
-    `Motivic.Aglib.RingTheory.PrincipalKoszulEuler,
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalFaceCoefficient,
+    `Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Equality,
+    `Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.Koszul,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalFaceCoefficient,
     `Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.Surjective,
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalDivisorFaceCoefficient,
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalDivisorFaceSupport,
-    `Motivic.Aglib.AlgebraicGeometry.SignedPrincipalFaceCoefficient]
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalDivisorFaceCoefficient,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalDivisorFaceSupport,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.SignedPrincipalFaceCoefficient]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -148,13 +152,13 @@ run_cmd do
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
     `Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.FaceDifference,
-    `Motivic.AlgebraicGeometry.Correspondences.FinitePointCycleEndpoints,
-    `Motivic.Aglib.RingTheory.PrincipalKoszulEuler,
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalFaceCoefficient,
+    `Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Equality,
+    `Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.Koszul,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalFaceCoefficient,
     `Motivic.Aglib.RingTheory.Multiplicity.PrincipalEuler.Surjective,
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalDivisorFaceCoefficient,
-    `Motivic.Aglib.AlgebraicGeometry.PrincipalDivisorFaceSupport,
-    `Motivic.Aglib.AlgebraicGeometry.SignedPrincipalFaceCoefficient,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalDivisorFaceCoefficient,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.PrincipalDivisorFaceSupport,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.PrincipalDivisor.Faces.SignedPrincipalFaceCoefficient,
     `MotivicTest.PrincipalFaceConsumers]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

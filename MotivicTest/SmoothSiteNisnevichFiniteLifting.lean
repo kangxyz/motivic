@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteNisnevichFiniteLifting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.FiniteLifting
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 
@@ -19,7 +19,8 @@ They include empty fibers, nonreduced schemes, and disconnected finite support.
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 
 universe u
 
@@ -114,8 +115,8 @@ theorem empty_pointed_refinement {S : Scheme.{u}} [IsAffine S]
 
 open Lean in
 run_cmd do
-  for name in #[``SmoothSite.exists_nisnevich_lift_of_isFinite,
-      ``SmoothSite.exists_common_nisnevich_refinement,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_nisnevich_lift_of_isFinite,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.exists_common_nisnevich_refinement,
       ``field_lift, ``empty_fiber_gives_empty_support,
       ``finite_pointed_refinement, ``empty_pointed_refinement] do
     for dependency in ← collectAxioms name do

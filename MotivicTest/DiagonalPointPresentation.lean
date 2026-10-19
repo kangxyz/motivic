@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalPointPresentation
+public import Motivic.Cohomology.Diagonal.PointPresentation
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -16,6 +16,7 @@ retraction is used, and characteristic zero is not assumed.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open DiagonalCycleSymbols DiagonalPointNorm DiagonalPointPresentation DiagonalCorestriction
 

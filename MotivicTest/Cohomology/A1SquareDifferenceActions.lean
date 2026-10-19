@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyH1SquareDescent
-public import Motivic.Cohomology.A1.SquareDifferenceActions
+public import Motivic.Cohomology.Sheaf.H1.SquareDescent
+public import Motivic.Cohomology.A1.Boundary.SquareDifferenceActions
 public import Mathlib.Algebra.Category.Grp.AB
 public import Mathlib.CategoryTheory.Abelian.GrothendieckAxioms.Sheaf
 public import Mathlib.CategoryTheory.Abelian.GrothendieckCategory.EnoughInjectives
@@ -21,6 +21,7 @@ splitting and the displayed geometric square gluing conditions.
 -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 open CategoryTheory CategoryTheory.Abelian CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
 
@@ -85,7 +86,7 @@ theorem actual_endpoint_split_kills_class
     (h₀ : (Cor.graphFunctor k).map (SmoothSite.a1Section (.of k) sq.X₁ 0) ≫ α = 𝟙 _)
     (h₁ : (Cor.graphFunctor k).map (SmoothSite.a1Section (.of k) sq.X₁ 1) ≫ α =
       (Cor.graphFunctor k).map sq.f₁₃ ≫ lam - (Cor.graphFunctor k).map sq.f₁₂ ≫ ψ)
-    (x : SheafCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 sq.X₄)
+    (x : _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 2, u + 1, u, u + 1} J F₀ 1 sq.X₄)
     (s : (cokernel (Injective.ι F₀)).obj.obj (op sq.X₄))
     (hs : SheafCohomology.injectiveSectionBoundary.{u + 2, u + 1, u, u + 1}
       J F₀ sq.X₄ s = x)

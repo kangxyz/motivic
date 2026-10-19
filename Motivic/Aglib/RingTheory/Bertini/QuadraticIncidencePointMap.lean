@@ -3,7 +3,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticIncidencePoints
 
 /-! # Genuine bad polynomial points induce maps from the full incidence ring -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence
 variable (k R A K : Type u) [CommRing k] [CommRing R] [CommRing A] [Field K]

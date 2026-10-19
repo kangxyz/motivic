@@ -4,12 +4,12 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.RelativePolynomialMovingAction
+public import Motivic.Cohomology.A1.Moving.PolynomialRelative
 public import Lean
 /-! # Relative moving acts in the original k-correspondence category -/
 public noncomputable section
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
-open Motivic.RelativePolynomialOpenSpans
+open _root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite
 universe v u
 namespace MotivicTest.RelativePolynomialMovingAction
 
@@ -30,8 +30,11 @@ theorem actual_relative_moving (k R A : Type u) [Field k] [CommRing R] [CommRing
 
 open Lean in
 run_cmd do
-  for name in #[``actual_relative_moving, ``exists_moving_action,
-      ``graph_familyCycle, ``cycle_mul, ``cycle_linear_graph] do
+  for name in #[``actual_relative_moving,
+      ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite.exists_moving_action,
+      ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite.graph_familyCycle,
+          ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite.cycle_mul,
+          ``_root_.AlgebraicGeometry.PolynomialOpenQuotient.SmoothSite.cycle_linear_graph] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

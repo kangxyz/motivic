@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.CurveOpenShrinking
-public import Motivic.Aglib.AlgebraicGeometry.OpenFiberShrinking
-public import Motivic.Aglib.AlgebraicGeometry.EtaleCurveDimension
-public import Motivic.Aglib.AlgebraicGeometry.AffineLineReducedComplement
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Open.CurveOpenShrinking
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.OpenImmersion.Fibers.OpenFiberShrinking
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Dimension.EtaleCurveDimension
+public import Motivic.Aglib.AlgebraicGeometry.AffineLine.Open.AffineLineReducedComplement
 
 /-! Direct actual affine-line Nisnevich-neighborhood shrinking consumer. -/
 
@@ -19,6 +19,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry TopologicalSpace
 universe u
 
 namespace Motivic.MotivicTest
+open _root_.AlgebraicGeometry.Scheme
 
 /-- A genuine étale neighborhood of the full reduced affine-line complement
 can be shrunk to precisely any generic-containing open of its overlap, without

@@ -3,7 +3,7 @@ Copyright (c) 2026 Motivic Cohomology contributors.
 Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
-import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualNormalizedFixedOpenPair
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.Normalized.FixedOpenPair
 
 /-! # Direct normalized fixed-open pair consumer and axiom audit -/
 noncomputable section

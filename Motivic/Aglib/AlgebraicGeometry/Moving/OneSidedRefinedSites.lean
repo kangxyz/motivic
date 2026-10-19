@@ -5,13 +5,13 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedBaseRefinement
-public import Motivic.AlgebraicGeometry.SmoothSite
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
 /-! # Original smooth-site maps on the actual one-sided base refinement -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory AlgebraicGeometry Motivic
+open CategoryTheory AlgebraicGeometry
 open Scheme.Hom
 universe u
 namespace AlgebraicGeometry.Scheme.Moving

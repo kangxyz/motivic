@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.SheafCohomologyCartierDirectImage
-public import Motivic.Cohomology.A1.PresheafBoundaryEtaleExcision
+public import Motivic.Cohomology.Cartier.DirectImage
+public import Motivic.Cohomology.A1.Boundary.Presheaf.EtaleExcision
 
 /-!
 # Original Cartier boundaries and positive open direct images

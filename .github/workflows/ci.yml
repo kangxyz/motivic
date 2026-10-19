@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-24.04
     outputs:
       lean: ${{ steps.scope.outputs.lean }}
-      targets: ${{ steps.scope.outputs.targets }}
+      targets_gzip_base64: ${{ steps.scope.outputs.targets_gzip_base64 }}
       client: ${{ steps.scope.outputs.client }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -67,7 +67,6 @@ jobs:
       MOTIVIC_LEAN_MEMORY_MB: 12800
       MOTIVIC_RSS_LIMIT_MB: 13824
       MOTIVIC_TOOLING_ROOT: ${{ github.workspace }}/.cache-tooling
-      SELECTED_TARGETS: ${{ needs.source.outputs.targets }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: Check out independently pinned shared tooling
@@ -80,6 +79,17 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.13'
+      - name: Materialize selected targets
+        run: |
+          python3 - <<'PY'
+          import base64
+          import gzip
+          import os
+          from pathlib import Path
+          encoded = "${{ needs.source.outputs.targets_gzip_base64 }}"
+          path = Path(os.environ['RUNNER_TEMP']) / 'selected-targets.txt'
+          path.write_bytes(gzip.decompress(base64.b64decode(encoded, validate=True)))
+          PY
       - name: Install the pinned Lean toolchain
         env:
           ELAN_HOME: ${{ runner.temp }}/elan
@@ -100,7 +110,7 @@ jobs:
       - name: Fetch focused matching Mathlib artifacts
         id: proof-cache
         run: |
-          read -r -a targets <<< "$SELECTED_TARGETS"
+          mapfile -t targets < "$RUNNER_TEMP/selected-targets.txt"
           python3 scripts/cache.py --guarded --resolve-deps "${targets[@]}"
       - name: Restore shared native and public Aglib artifacts
         id: native
@@ -119,13 +129,13 @@ jobs:
       - name: Build changed targets and affected public consumers with current native traces
         id: build
         run: |
-          read -r -a targets <<< "$SELECTED_TARGETS"
+          mapfile -t targets < "$RUNNER_TEMP/selected-targets.txt"
           python3 scripts/build.py --receipt-dir .lake/verification/ci \
             --outputs "$RUNNER_TEMP/native-outputs.jsonl" "${targets[@]}"
       - name: Export current core and selected-target native mappings
         if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         run: |
-          read -r -a targets <<< "$SELECTED_TARGETS"
+          mapfile -t targets < "$RUNNER_TEMP/selected-targets.txt"
           export_targets=(Motivic MotivicTest)
           for target in "${targets[@]}"; do
             case "$target" in

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.SmoothKoszul
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.SmoothKoszul
 
 /-!
 # Consumers of actual smooth diagonal stalk resolutions
@@ -24,6 +24,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.SmoothDiagonalKoszul
+open _root_.AlgebraicGeometry.Scheme
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) [Smooth f] (x : X)
 
@@ -38,7 +39,7 @@ theorem actualSourceStalk :
 def arbitraryCoefficient (M : ModuleCat (Diagonal.ambientStalk f x)) (n : ℕ) :
     ((Tor (ModuleCat (Diagonal.ambientStalk f x)) n).obj M).obj
         (Diagonal.sourceStalkModule f x) ≅
-      (Koszul.coefficientComplex M (Diagonal.equations f x)).homology n :=
+      (_root_.ChainComplex.Koszul.coefficientComplex M (Diagonal.equations f x)).homology n :=
   Diagonal.torIsoHomology f x M n
 
 /-- The finite bound is the proved local coordinate-list length, for arbitrary coefficients. -/

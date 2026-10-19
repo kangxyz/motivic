@@ -1,7 +1,7 @@
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteWeightOneExact
-public import Motivic.Cohomology.Motivic.Hypercohomology
+public import Motivic.Cohomology.WeightOne.Geometry.WeightOneExact
+public import Motivic.Cohomology.SuslinVoevodsky.Hypercohomology
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of the original ordinary Nisnevich weight-one divisor sequence -/
@@ -14,8 +14,8 @@ example (k : Type u) [Field k] : (SmoothSiteWeightOneExact.shortComplex k).Short
 
 open Lean in
 run_cmd do
-  for name in #[``SmoothSite.integralAffineRawKernelIso,
-      ``SmoothSite.integralAffineSheafifyMapIsKernel,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.integralAffineRawKernelIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.integralAffineSheafifyMapIsKernel,
       ``SmoothSiteWeightOneExact.divisorIsKernel,
       ``SmoothSiteWeightOneExact.norm_epi,
       ``SmoothSiteWeightOneExact.shortExact] do

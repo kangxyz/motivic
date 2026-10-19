@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.ContractionSheaf
+public import Motivic.Transfers.Presheaf.ContractionSheaf
 
 /-!
 # Consumers of actual HI Nisnevich contraction
@@ -18,6 +18,7 @@ is supplied.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
 
 universe v u

@@ -5,10 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteReduced
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
-public import Motivic.AlgebraicGeometry.SmoothSiteBaseChange
-public import Motivic.AlgebraicGeometry.Correspondences.ComponentGraphs
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Reduced
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Components.Basic
 
 /-!
 # Reduced smooth objects and their actual component graph cycles
@@ -22,6 +23,7 @@ The final consumer allows an arbitrary ground-field extension.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u
@@ -33,7 +35,7 @@ variable (K L : Type u) [Field K] [Field L]
 /-- Smoothness over any field supplies actual scheme reducedness. -/
 theorem smooth_source_reduced {X : Scheme.{u}} (f : X ⟶ Spec (.of K)) [Smooth f] :
     IsReduced X :=
-  isReduced_of_smooth_over_field K f
+  _root_.AlgebraicGeometry.Scheme.isReduced_of_smooth_over_field (F := K) f
 
 /-- Every smooth-site object over a field is reduced without extra hypotheses. -/
 theorem object_reduced (X : SmoothSite (Spec (.of K))) : IsReduced X.left := inferInstance

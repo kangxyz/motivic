@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoSteinbergTorsion
+public import Motivic.Cohomology.WeightTwo.SteinbergTorsion
 public import Lean.Util.CollectAxioms
 
 /-!

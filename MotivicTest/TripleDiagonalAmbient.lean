@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleDiagonalAmbient
-public import Motivic.AlgebraicGeometry.Correspondences.TripleGenericDominance
-public import Motivic.AlgebraicGeometry.Intersection.GenericTor
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.GenericDominance
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.GenericTor
 
 /-!
 # Actual successive-intersection stalk consumers
@@ -27,8 +27,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.TripleDiagonalAmbient
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
-open Intersection
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}
@@ -64,11 +65,12 @@ theorem actualFirstStageHomologySupport [IsSeparated g]
     let M := coefficientStalkModule d (a w) j (b w) hp
     ∀ (t : List (ambientStalk d (a w))), RingHom.ker (d.stalkMap (a w)).hom = Ideal.ofList t →
       ∀ n : ℕ, RingHom.ker ((a ≫ d).stalkMap w).hom ≤
-        Module.annihilator (ambientStalk d (a w)) ((Koszul.coefficientComplex M t).homology n) := by
+        Module.annihilator (ambientStalk d (a w)) ((_root_.ChainComplex.Koszul.coefficientComplex M
+            t).homology n) := by
   dsimp only
   intro t ht n
   rw [actualFirstStageKernel F G H w, ht]
-  exact Koszul.support_le_annihilator_coefficient_homology _ t n
+  exact _root_.ChainComplex.Koszul.support_le_annihilator_coefficient_homology _ t n
 
 section Smooth
 

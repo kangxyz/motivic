@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeCartierEndpoints
-public import Motivic.Aglib.AlgebraicGeometry.FiniteTwoUnitPolynomialFamily
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Cartier.Endpoints
+public import Motivic.Aglib.AlgebraicGeometry.Spec.PolynomialQuotient.TwoUnitFamily
 
 /-!
 # Whole-fibre endpoint tests
@@ -22,19 +22,21 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic Polynomial
 open AlgebraicGeometry.FiniteTwoUnitPolynomialFamily
 
 universe u
 
 namespace MotivicTest.FiniteFlatSpanEndpoints
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable {k : Type u} [Field k]
 
 /-- The parameter and root have their actual common constant-field map. -/
 theorem rootSpanBase (F : k[X][X]) :
-    projection F ≫ (FiniteFlatCurveFamily.line k).hom =
-      rootMap F ≫ (FiniteFlatCurveFamily.line k).hom := by
+    projection F ≫ (AffineLineField.line k).hom =
+      rootMap F ≫ (AffineLineField.line k).hom := by
   change projection F ≫ Spec.map (CommRingCat.ofHom (C : k →+* k[X])) =
     rootMap F ≫ Spec.map (CommRingCat.ofHom (C : k →+* k[X]))
   rw [rootMap_structure, projection, ← Spec.map_comp]
@@ -50,16 +52,16 @@ theorem rootSpanClosed (F : k[X][X]) (hF : F.Monic) :
 theorem monicWholeEndpoint (F : k[X][X]) (hF : F.Monic) (a : k) :
     letI : IsFinite (projection F) := projection_finite hF
     letI : Flat (projection F) := projection_flat hF
-    (Cor.graphFunctor k).map (FiniteFlatCurveFamily.evaluationPoint k a) ≫
-        Cor.ofFiniteFlatSpan (X := FiniteFlatCurveFamily.line k)
-          (Y := FiniteFlatCurveFamily.line k) (projection F) (rootMap F) (rootSpanBase F) =
-      Cor.finiteFlatSpanEndpoint (Y := FiniteFlatCurveFamily.line k)
+    (Cor.graphFunctor k).map (AffineLineField.evaluationPoint k a) ≫
+        Cor.ofFiniteFlatSpan (X := AffineLineField.line k)
+          (Y := AffineLineField.line k) (projection F) (rootMap F) (rootSpanBase F) =
+      Cor.finiteFlatSpanEndpoint (Y := AffineLineField.line k)
         (projection F) (rootMap F) (rootSpanBase F) a := by
   have : IsFinite (projection F) := projection_finite hF
   have : Flat (projection F) := projection_flat hF
   have : IsClosedImmersion (pullback.lift (projection F) (rootMap F) (rootSpanBase F)) :=
     rootSpanClosed F hF
-  exact Cor.graph_evaluation_ofFiniteFlatSpan (Y := FiniteFlatCurveFamily.line k)
+  exact Cor.graph_evaluation_ofFiniteFlatSpan (Y := AffineLineField.line k)
     (projection F) (rootMap F) (rootSpanBase F) a
 
 /-- Two constant double sections, with their original quotient scheme. -/
@@ -137,11 +139,11 @@ theorem twoDoubleSections_not_preconnected :
 theorem twoDoubleSections_zero :
     letI : IsFinite (projection twoDoubleSections) := projection_finite twoDoubleSections_monic
     letI : Flat (projection twoDoubleSections) := projection_flat twoDoubleSections_monic
-    (Cor.graphFunctor ℚ).map (FiniteFlatCurveFamily.evaluationPoint ℚ 0) ≫
-        Cor.ofFiniteFlatSpan (X := FiniteFlatCurveFamily.line ℚ)
-          (Y := FiniteFlatCurveFamily.line ℚ) (projection twoDoubleSections)
+    (Cor.graphFunctor ℚ).map (AffineLineField.evaluationPoint ℚ 0) ≫
+        Cor.ofFiniteFlatSpan (X := AffineLineField.line ℚ)
+          (Y := AffineLineField.line ℚ) (projection twoDoubleSections)
           (rootMap twoDoubleSections) (rootSpanBase twoDoubleSections) =
-      Cor.finiteFlatSpanEndpoint (Y := FiniteFlatCurveFamily.line ℚ)
+      Cor.finiteFlatSpanEndpoint (Y := AffineLineField.line ℚ)
         (projection twoDoubleSections) (rootMap twoDoubleSections)
         (rootSpanBase twoDoubleSections) 0 :=
   monicWholeEndpoint twoDoubleSections twoDoubleSections_monic 0
@@ -150,11 +152,11 @@ theorem twoDoubleSections_zero :
 theorem twoDoubleSections_one :
     letI : IsFinite (projection twoDoubleSections) := projection_finite twoDoubleSections_monic
     letI : Flat (projection twoDoubleSections) := projection_flat twoDoubleSections_monic
-    (Cor.graphFunctor ℚ).map (FiniteFlatCurveFamily.evaluationPoint ℚ 1) ≫
-        Cor.ofFiniteFlatSpan (X := FiniteFlatCurveFamily.line ℚ)
-          (Y := FiniteFlatCurveFamily.line ℚ) (projection twoDoubleSections)
+    (Cor.graphFunctor ℚ).map (AffineLineField.evaluationPoint ℚ 1) ≫
+        Cor.ofFiniteFlatSpan (X := AffineLineField.line ℚ)
+          (Y := AffineLineField.line ℚ) (projection twoDoubleSections)
           (rootMap twoDoubleSections) (rootSpanBase twoDoubleSections) =
-      Cor.finiteFlatSpanEndpoint (Y := FiniteFlatCurveFamily.line ℚ)
+      Cor.finiteFlatSpanEndpoint (Y := AffineLineField.line ℚ)
         (projection twoDoubleSections) (rootMap twoDoubleSections)
         (rootSpanBase twoDoubleSections) 1 :=
   monicWholeEndpoint twoDoubleSections twoDoubleSections_monic 1
@@ -169,17 +171,17 @@ variable {Y : SmoothSite (Spec (.of k))} {C D U : Scheme.{u}}
   (hI : IsLocallyRankOne C (idealModule i)) [Flat (i ≫ p)] [IsProper (i ≫ p)]
   (j : U ⟶ C) [IsOpenImmersion j] (hAvoid : Set.range i ⊆ Set.range j)
   (g : U ⟶ Y.left) [IsClosedImmersion g]
-  (hbase : j ≫ p ≫ (FiniteFlatCurveFamily.line k).hom = g ≫ Y.hom)
+  (hbase : j ≫ p ≫ (AffineLineField.line k).hom = g ≫ Y.hom)
 
 /-- A retained closed target supplies the embedding in the actual Cartier
 endpoint theorem, with properness and divisor flatness still explicit. -/
 theorem retainedTargetCartierEndpoint (a : k) :
-    (Cor.graphFunctor k).map (FiniteFlatCurveFamily.evaluationPoint k a) ≫
-        RelativeCartierDivisor.correspondence (X := FiniteFlatCurveFamily.line k)
+    (Cor.graphFunctor k).map (AffineLineField.evaluationPoint k a) ≫
+        RelativeCartierDivisor.correspondence (X := AffineLineField.line k)
           (Y := Y) p i hI j hAvoid g hbase =
       RelativeCartierDivisor.endpointCorrespondence p i hI j hAvoid g hbase a := by
   have : IsClosedImmersion (RelativeCartierDivisor.productMap
-      (X := FiniteFlatCurveFamily.line k) (Y := Y) p i j hAvoid g hbase) :=
+      (X := AffineLineField.line k) (Y := Y) p i j hAvoid g hbase) :=
     RelativeCartierDivisor.productMap_closed_of_target_closed p i j hAvoid g hbase
   exact RelativeCartierDivisor.graph_evaluation_correspondence p i hI j hAvoid g hbase a
 

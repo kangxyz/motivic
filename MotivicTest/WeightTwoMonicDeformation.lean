@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoMonicDeformation
+public import Motivic.Cohomology.WeightTwo.MonicDeformation
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,8 @@ literal singular faces and the equality in the original weight-two homology.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Polynomial Motivic
 open Polynomial.TwoUnitPolynomialFamily Polynomial.TwoUnitMonicDeformation
 open AlgebraicGeometry.FiniteTwoUnitPolynomialFamily

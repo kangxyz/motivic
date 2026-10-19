@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.TorSupportBaseChangeCoordinates
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.TorSupportBaseChangeCoordinates
 public import MotivicTest.TorSupportBaseChange
 
 /-! # Coordinates of actual nonzero higher-Tor support restriction -/
@@ -14,7 +14,11 @@ public import MotivicTest.TorSupportBaseChange
 
 noncomputable section
 
-open CategoryTheory Motivic.TorComparison
+open CategoryTheory
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
 open scoped TensorProduct ChangeOfRings
 
 namespace Motivic.MotivicTest.TorSupportBaseChangeCoordinates

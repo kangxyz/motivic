@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCubicBoundary
+public import Motivic.Cohomology.WeightTwo.CubicBoundary
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -19,6 +19,8 @@ and `a³+1=0` are included. No Steinberg or Milnor comparison is asserted.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Polynomial Motivic
 open Polynomial.TwoUnitPolynomialFamily Motivic.WeightTwoCubicBoundary
 

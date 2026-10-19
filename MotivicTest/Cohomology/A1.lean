@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.A1.Basic
-public import Motivic.Cohomology.SheafCohomologyNaturality
+public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Naturality
 
 /-!
 # Consumers of the actual affine-line invariance interface
@@ -18,6 +18,7 @@ no perfectness, infinitude or characteristic restriction on their field.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Opposite Motivic
 
 universe w v u
@@ -60,21 +61,21 @@ variable [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k)))
 
 example (F : SheafWithTransfers.{u + 1} k) (hF : F.IsStrictA1Invariant)
     (n : ℕ) (X : SmoothSite (Spec (.of k))) :
-    IsIso ((SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+    IsIso ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n).map
       (SmoothSite.a1Projection (.of k) X).op) := hF n X
 
 example (F : SheafWithTransfers.{u + 1} k) (n : ℕ)
     {X Y : SmoothSite (Spec (.of k))} (f : X ⟶ Y) :
-    (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+    (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n).map f.op ≫
       A1.projectionPullback (.of k)
-        (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n) X =
     A1.projectionPullback (.of k)
-        (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n) Y ≫
-      (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n).map
         (SmoothSite.a1Map (.of k) f).op :=
   A1.projectionPullback_naturality (.of k) _ f
@@ -82,14 +83,14 @@ example (F : SheafWithTransfers.{u + 1} k) (n : ℕ)
 example {F G : SheafWithTransfers.{u + 1} k} (η : F ⟶ G) (n : ℕ)
     (X : SmoothSite (Spec (.of k))) :
     A1.projectionPullback (.of k)
-        (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n) X ≫
-      ((SheafCohomology.presheafFunctor.{w, u + 1, u, u + 1} _ n).map
+      ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor.{w, u + 1, u, u + 1} _ n).map
         ((SheafWithTransfers.toSheaf k).map η)).app (op (SmoothSite.a1Cylinder (.of k) X)) =
-    ((SheafCohomology.presheafFunctor.{w, u + 1, u, u + 1} _ n).map
+    ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheafFunctor.{w, u + 1, u, u + 1} _ n).map
         ((SheafWithTransfers.toSheaf k).map η)).app (op X) ≫
       A1.projectionPullback (.of k)
-        (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj G) n) X :=
   A1.projectionPullback_coefficient_naturality (.of k) _ X
 
@@ -102,11 +103,12 @@ variable {C : Type u} [Category.{v} C] (J : GrothendieckTopology C)
   [HasExt.{w} (Sheaf J AddCommGrpCat.{v})]
 
 example (F : Sheaf J AddCommGrpCat.{v}) (n : ℕ) {X Y : C} (f : X ⟶ Y) :
-    (SheafCohomology.presheaf J F n).map f.op ≫
-        ((SheafCohomology.ordinaryComparison J n).hom.app F).app (op X) =
-      ((SheafCohomology.ordinaryComparison J n).hom.app F).app (op Y) ≫
+    (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf J F n).map f.op ≫
+        ((_root_.CategoryTheory.Sheaf.LargeCohomology.ordinaryComparison J n).hom.app F).app (op X)
+          =
+      ((_root_.CategoryTheory.Sheaf.LargeCohomology.ordinaryComparison J n).hom.app F).app (op Y) ≫
         (F.cohomologyPresheaf n).map f.op :=
-  ((SheafCohomology.ordinaryComparison J n).hom.app F).naturality f.op
+  ((_root_.CategoryTheory.Sheaf.LargeCohomology.ordinaryComparison J n).hom.app F).naturality f.op
 
 end OrdinaryComparison
 
@@ -120,21 +122,21 @@ variable [HasDerivedCategory.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of
 
 example (F : SheafWithTransfers.{u + 1} k) (n : ℕ)
     (X : SmoothSite (Spec (.of k)))
-    (x : Hypercohomology.H _
+    (x : _root_.CategoryTheory.Sheaf.Hypercohomology.H _
       ((CochainComplex.singleFunctor _ 0).obj ((SheafWithTransfers.toSheaf k).obj F))
       (n : ℤ) X) :
-    SheafCohomology.singleComparison.{w, w, u + 1, u, u + 1}
+    _root_.CategoryTheory.Sheaf.LargeCohomology.singleComparison.{w, w, u + 1, u, u + 1}
         _ ((SheafWithTransfers.toSheaf k).obj F) n
         (SmoothSite.a1Cylinder (.of k) X)
-        (Hypercohomology.restriction _
+        (_root_.CategoryTheory.Sheaf.Hypercohomology.restriction _
           ((CochainComplex.singleFunctor _ 0).obj ((SheafWithTransfers.toSheaf k).obj F))
           (n : ℤ) (SmoothSite.a1Projection (.of k) X) x) =
       A1.projectionPullback (.of k)
-        (SheafCohomology.presheaf.{w, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{w, u + 1, u, u + 1}
       _ ((SheafWithTransfers.toSheaf k).obj F) n) X
-        (SheafCohomology.singleComparison.{w, w, u + 1, u, u + 1}
+        (_root_.CategoryTheory.Sheaf.LargeCohomology.singleComparison.{w, w, u + 1, u, u + 1}
         _ ((SheafWithTransfers.toSheaf k).obj F) n X x) :=
-  SheafCohomology.singleComparison_restriction.{w, w, u + 1, u, u + 1}
+  _root_.CategoryTheory.Sheaf.LargeCohomology.singleComparison_restriction.{w, w, u + 1, u, u + 1}
     _ _ n (SmoothSite.a1Projection (.of k) X) x
 
 end DerivedProjection

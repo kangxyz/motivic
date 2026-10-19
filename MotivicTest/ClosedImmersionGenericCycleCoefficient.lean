@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.ClosedImmersionGenericCycleCoefficient
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.ClosedImmersionGenericCycleCoefficient
 
 /-!
 # Consumers of actual closed-support generic coefficients
@@ -21,7 +21,7 @@ generic to lie outside it. No generic-preservation hypothesis is imposed.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic
+open CategoryTheory AlgebraicGeometry
 open scoped TensorProduct
 
 universe u
@@ -32,10 +32,12 @@ variable {E T : Scheme.{u}}
 
 /-- The scalar square uses the actual specialization and canonical localization map. -/
 theorem actualGenericScalarSquare (x : T) (q : {q : genericPoints T // q.1 ⤳ x}) :
-    T.presheaf.stalkSpecializes q.2 ≫ (genericStalkLocalizationIso T x q).hom =
+    T.presheaf.stalkSpecializes q.2 ≫ (_root_.AlgebraicGeometry.Scheme.genericStalkLocalizationIso T
+        x q).hom =
       CommRingCat.ofHom (algebraMap (T.presheaf.stalk x)
-        (Localization.AtPrime (genericStalkLocalizationPrime T x q).asIdeal)) :=
-  stalkSpecializes_genericStalkLocalizationIso T x q
+        (Localization.AtPrime (_root_.AlgebraicGeometry.Scheme.genericStalkLocalizationPrime T x
+            q).asIdeal)) :=
+  _root_.AlgebraicGeometry.Scheme.stalkSpecializes_genericStalkLocalizationIso T x q
 
 /-- The closed ideal specializes literally; neither radical nor reduced support intervenes. -/
 theorem actualClosedStalkIdeal (j : E ⟶ T)
@@ -47,33 +49,39 @@ theorem actualClosedStalkIdeal (j : E ⟶ T)
 theorem outsideClosedImage (j : E ⟶ T) [IsClosedImmersion j]
     (x : T) (hx : x ∉ Set.range j) :
     j.ker.stalk x = ⊤ ∧ Subsingleton ((T.presheaf.stalk x) ⧸ j.ker.stalk x) :=
-  ⟨closedImmersion_ker_stalk_eq_top j hx,
-    Ideal.Quotient.subsingleton_iff.mpr (closedImmersion_ker_stalk_eq_top j hx)⟩
+  ⟨_root_.AlgebraicGeometry.Scheme.Hom.closedImmersion_ker_stalk_eq_top j hx,
+    Ideal.Quotient.subsingleton_iff.mpr
+        (_root_.AlgebraicGeometry.Scheme.Hom.closedImmersion_ker_stalk_eq_top j hx)⟩
 
 /-- Generic length is finite before conversion, including the possibly zero localization. -/
 theorem actualFiniteGenericLength (j : E ⟶ T)
     [IsLocallyNoetherian T] (x : T) (q : {q : genericPoints T // q.1 ⤳ x}) :
-    Module.length (Localization.AtPrime (genericStalkLocalizationPrime T x q).asIdeal)
-        (Localization.AtPrime (genericStalkLocalizationPrime T x q).asIdeal ⊗[T.presheaf.stalk x]
+    Module.length (Localization.AtPrime
+        (_root_.AlgebraicGeometry.Scheme.genericStalkLocalizationPrime T x q).asIdeal)
+        (Localization.AtPrime (_root_.AlgebraicGeometry.Scheme.genericStalkLocalizationPrime T x
+            q).asIdeal ⊗[T.presheaf.stalk x]
           ((T.presheaf.stalk x) ⧸ j.ker.stalk x)) ≠ ⊤ :=
-  genericStalkQuotient_length_ne_top j.ker x q
+  _root_.AlgebraicGeometry.Scheme.Hom.genericStalkQuotient_length_ne_top j.ker x q
 
 /-- The actual affine-point quotient supplies precisely the restricted-cycle coefficient. -/
 theorem actualAffineRestrictedCoefficient
     (j : E ⟶ T) [IsClosedImmersion j] [IsNoetherian E] [IsLocallyNoetherian T]
     (V : T.affineOpens) [IsNoetherian (j ⁻¹ᵁ V.1).toScheme]
     (p : PrimeSpectrum Γ(T, V)) (q : {q : genericPoints T // q.1 ⤳ V.2.fromSpec p}) :
-    Koszul.fixedSupportGenericLength
+    _root_.ChainComplex.Koszul.fixedSupportGenericLength
         (ModuleCat.of (T.presheaf.stalk (V.2.fromSpec p))
           ((T.presheaf.stalk (V.2.fromSpec p)) ⧸ j.ker.stalk (V.2.fromSpec p)))
-        ⊥ bot_le ⟨(genericStalkLocalizationPrime T (V.2.fromSpec p) q).asIdeal,
-          genericStalkLocalizationPrime_mem_minimalPrimes T (V.2.fromSpec p) q⟩ =
-      IntegralCycle.toPoints
-        (IntegralCycle.finitePushforward (j ∣_ V.1)
-          (fundamentalCycle (j ⁻¹ᵁ V.1).toScheme))
+        ⊥ bot_le ⟨(_root_.AlgebraicGeometry.Scheme.genericStalkLocalizationPrime T (V.2.fromSpec p)
+            q).asIdeal,
+          _root_.AlgebraicGeometry.Scheme.genericStalkLocalizationPrime_mem_minimalPrimes T
+              (V.2.fromSpec p) q⟩ =
+      _root_.AlgebraicGeometry.Scheme.IntegralCycle.toPoints
+        (_root_.AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward (j ∣_ V.1)
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (j ⁻¹ᵁ V.1).toScheme))
         ⟨q.1.1, q.2.mem_open V.1.isOpen
           (V.2.range_fromSpec.subset (Set.mem_range_self p))⟩ :=
-  fixedSupportGenericLength_closedImmersion_openRestriction j V.1 (V.2.fromSpec p)
+  _root_.AlgebraicGeometry.Scheme.Hom.fixedSupportGenericLength_closedImmersion_openRestriction j
+      V.1 (V.2.fromSpec p)
     (V.2.range_fromSpec.subset (Set.mem_range_self p)) q
 
 end MotivicTest.ClosedImmersionGenericCycleCoefficient

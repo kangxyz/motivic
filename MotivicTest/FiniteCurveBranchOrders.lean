@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.FiniteCurveBranchOrders
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.FiniteCurve.BranchOrders
 
 /-!
 # Actual scalar and whole-branch consumers
@@ -18,19 +18,20 @@ orders rather than passing to reduced fibers.
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic
-open AlgebraicGeometry.FiniteFlatCurve Motivic.FiniteCurveNormalization
+open CategoryTheory AlgebraicGeometry
+open AlgebraicGeometry.FiniteFlatCurve _root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve
 open scoped Polynomial BigOperators
 
 universe u
 
 namespace MotivicTest.FiniteCurveBranchOrders
+open _root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve
 
 variable {k : Type u} [Field k] [CharZero k]
   (B : Type u) [CommRing B] [IsDomain B]
   [Algebra k[X] B] [Module.Finite k[X] B] [FaithfulSMul k[X] B]
 
-omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] in
+omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] [IsDomain B] in
 /-- The normalization does not reparameterize the original affine line. -/
 theorem literalParameter (a : k) (x : Spec (.of (ring B))) :
     scalar (normalizationMap B ≫ baseMap (k := k) B) a x =
@@ -38,7 +39,7 @@ theorem literalParameter (a : k) (x : Spec (.of (ring B))) :
         (algebraMap k[X] (ring B) (Polynomial.X - Polynomial.C a)) := by
   rw [normalizationMap_baseMap, scalar_specMap]
 
-omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] in
+omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] [IsDomain B] in
 /-- The zero endpoint uses the actual original parameter. -/
 theorem zeroParameter (x : Spec (.of (ring B))) :
     scalar (normalizationMap B ≫ baseMap (k := k) B) 0 x =
@@ -46,7 +47,7 @@ theorem zeroParameter (x : Spec (.of (ring B))) :
   simp only [literalParameter, Polynomial.C_0, sub_zero]
   rfl
 
-omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] in
+omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] [IsDomain B] in
 /-- The one endpoint keeps its subtraction by the original constant one. -/
 theorem oneParameter (x : Spec (.of (ring B))) :
     scalar (normalizationMap B ≫ baseMap (k := k) B) 1 x =
@@ -79,14 +80,16 @@ theorem repeatedEndpointLength (n : ℕ) :
 
 /-- The coefficient has the whole actual branch index and original residue map. -/
 theorem allBranchCoefficient :
-    letI : IsNoetherian (Spec (.of B)) := isNoetherian_of_finiteType (baseMap (k := k) B)
-    IntegralCycle.toPoints (fundamentalCycle (fiber (baseMap (k := k) B) a)) y =
+    letI : IsNoetherian (Spec (.of B)) := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType
+        (baseMap (k := k) B)
+    _root_.AlgebraicGeometry.Scheme.IntegralCycle.toPoints
+        (_root_.AlgebraicGeometry.Scheme.fundamentalCycle (fiber (baseMap (k := k) B) a)) y =
       ∑ᶠ z : {z : Spec (.of (ring B)) //
         normalizationMap B z = fiberInclusion (baseMap (k := k) B) a y},
         ((normalizationMap B).residueDegree z.1 : ℤ) * (branchOrder B a y z).toNat :=
   fiber_fundamentalCoefficient_eq_sum_branchOrders B a y
 
-omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] in
+omit [CharZero k] [Module.Finite k[X] B] [FaithfulSMul k[X] B] [IsDomain B] in
 /-- The normalized endpoint residue weight is the literal normalization weight. -/
 theorem actualResidueMap (z : fiber (normalizationMap B ≫ baseMap (k := k) B) a) :
     (fiberMap (baseMap (k := k) B) a (normalizationMap B)).residueDegree z =
@@ -97,10 +100,14 @@ theorem actualResidueMap (z : fiber (normalizationMap B ≫ baseMap (k := k) B) 
 open Lean in
 run_cmd do
   for name in #[``scalar_specMap, ``scalar_specMap_ne_zero, ``endpoint_prime_ne_bot,
-      ``endpoint_stalk_isDiscreteValuationRing, ``ring_faithfulSMul_base,
+      ``endpoint_stalk_isDiscreteValuationRing,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.ring_faithfulSMul_base,
       ``branch_scalar_mem_maximalIdeal, ``branch_stalk_isDiscreteValuationRing,
-      ``normalization_scalar_ne_zero, ``branchOrder, ``branchOrder_ne_top,
-      ``branch_cartierLength_eq_order, ``normalizedPointBranch,
+      ``normalization_scalar_ne_zero,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.branchOrder,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.branchOrder_ne_top,
+      ``branch_cartierLength_eq_order,
+          ``_root_.AlgebraicGeometry.Scheme.Normalization.FiniteCurve.normalizedPointBranch,
       ``normalization_fiber_fundamentalCoefficient_eq_order,
       ``fiber_fundamentalCoefficient_eq_sum_branchOrders, ``cartierLength_eq_sum_branchOrders,
       ``literalParameter, ``zeroParameter, ``oneParameter, ``actualBranchDVR,

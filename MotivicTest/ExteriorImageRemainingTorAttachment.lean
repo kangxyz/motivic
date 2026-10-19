@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.ExteriorImageRemainingTorAttachment
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.ExteriorImageRemainingTorAttachment
 public import MotivicTest.IntegralGenericFiniteImage
 
 /-!
@@ -27,9 +27,11 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic RingTheory.Sequence
 open MotivicTest.IntegralGenericFiniteImage Motivic.ExteriorImageComponentGeometry
-open Motivic.LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 universe u
 
@@ -78,12 +80,13 @@ theorem actualClosedExteriorRemainingEuler_eq_incidenceTorCoefficient
     (hker : (pullback.diagonal Z.hom).ker.stalk
       (F.leftImageMiddlePair G H (V.2.fromSpec p)) = Ideal.ofList s) :
     letI := F.leftTargetRemainingList_support_isArtinian G H (V.2.fromSpec p) y hy hp s hker
-    chainEuler (Koszul.coefficientComplex
+    chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
       (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
         (((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸
           (imageExteriorInclusion F G H z).ker.stalk (V.2.fromSpec p)))
       (F.leftTargetRemainingList G H (V.2.fromSpec p) s))
-      (Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥ bot_le) =
+      (_root_.ChainComplex.Koszul.finiteHomology_of_artinian_quotient_of_le_annihilator _ _ ⊥
+          bot_le) =
       P.incidenceTorCoefficient H w :=
   ExteriorImageRemainingTorAttachment.remainingQuotientEuler_eq_incidenceTorCoefficient_fixedPoint
     F G H (imageSupport F G z) P hC w (V.2.fromSpec p) y hy hp hwy s hsreg hker
@@ -108,12 +111,12 @@ theorem actualRemainingTorCoefficient_replacement
             (fundamentalCycle (imageExteriorInclusion F G H z ⁻¹ᵁ V.1).toScheme))
           ⟨q.1.1, q.2.mem_open V.1.isOpen
             (V.2.range_fromSpec.subset (Set.mem_range_self p))⟩ *
-          chainEuler (Koszul.coefficientComplex
+          chainEuler (_root_.ChainComplex.Koszul.coefficientComplex
             (ModuleCat.of ((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p))
               (((F.leftIntermediateImageProduct G H).presheaf.stalk (V.2.fromSpec p)) ⧸
                 ((F.firstStageTargetGenericEquiv G H V p).symm q).1))
             (F.leftTargetRemainingList G H (V.2.fromSpec p) s))
-            (Koszul.fixedSupport_prime_finiteHomology
+            (_root_.ChainComplex.Koszul.fixedSupport_prime_finiteHomology
               (F.leftTargetRemainingList G H (V.2.fromSpec p) s) ⊥
               ((F.firstStageTargetGenericEquiv G H V p).symm q).1
               ((F.firstStageTargetGenericEquiv G H V p).symm q).2.le) := by

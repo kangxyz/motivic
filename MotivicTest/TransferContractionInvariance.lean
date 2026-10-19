@@ -5,14 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.ContractionInvariance
+public import Motivic.Transfers.Presheaf.ContractionInvariance
 
 /-! Ordinary HI for actual contraction, over arbitrary fields and coefficient universes. -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Opposite
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe v u
 

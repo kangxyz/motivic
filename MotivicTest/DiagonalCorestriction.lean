@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalCorestriction
+public import Motivic.Cohomology.Diagonal.Corestriction
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -23,6 +23,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Motivic Motivic.DiagonalTopDegree Motivic.DiagonalCycleSymbols
 open Motivic.DiagonalCorestriction
@@ -30,6 +32,7 @@ open Motivic.DiagonalCorestriction
 universe w u
 
 namespace MotivicTest.DiagonalCorestriction
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable {k E : Type u} [Field k] [Field E] [Algebra k E] [Module.Finite k E]
 

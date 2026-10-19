@@ -1,7 +1,7 @@
 module
 
-import Motivic.Cohomology.Motivic.OrdinaryShiftComparison
-import Motivic.Algebra.Homology.AcyclicKernelQuasiIso
+import Motivic.Cohomology.SuslinVoevodsky.OrdinaryShiftComparison
+import Motivic.Aglib.Algebra.Homology.QuasiIso.AcyclicKernel
 
 import Lean.Util.CollectAxioms
 
@@ -15,9 +15,9 @@ universe u
 
 example (k : Type u) [Field k] (q : ℕ) :
     Motivic.motivicSheafComplex k q ≅
-      ((Motivic.SingularComplex.sheafObj
-        (Motivic.SmoothSite.nisnevichTopology (Spec (.of k)))
-        (Motivic.AlgebraicSimplex.cosimplicialSmoothSite k)
+      ((SingularComplex.sheafObj
+        (Scheme.SmoothSite.nisnevichTopology (Spec (.of k)))
+        (_root_.AlgebraicSimplex.cosimplicialSmoothSite k)
         ((Motivic.PresheafWithTransfers.toPresheaf k).obj
           (Motivic.PresheafWithTransfers.reducedTorus k q))).extend
             (ComplexShape.embeddingUpIntLE 0))⟦-(q : ℤ)⟧ :=
@@ -27,8 +27,8 @@ example (k : Type u) [Field k] (q : ℕ) :
 open Lean in
 run_cmd do
   for name in #[
-      ``Motivic.quasiIso_of_shortExact_isZero_homology,
-      ``Motivic.MapExtension.iso,
+      ``_root_.HomologicalComplex.quasiIso_of_shortExact_isZero_homology,
+      ``_root_.HomologicalComplex.MapExtension.iso,
       ``Motivic.motivicSheafComplexOrdinaryShiftIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

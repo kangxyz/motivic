@@ -5,11 +5,11 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GraphIdealMovedCycle
-public import Motivic.AlgebraicGeometry.Correspondences.IdealFrameMoved
-import all Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedDominance
-import all Motivic.AlgebraicGeometry.Correspondences.FinitePointCycle
-import all Motivic.AlgebraicGeometry.Correspondences.IdealFrameMoved
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.GraphIdealMoved
+public import Motivic.AlgebraicGeometry.Correspondences.Moving.IdealFrame
+import all Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedDominance
+import all Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Cycle
+import all Motivic.AlgebraicGeometry.Correspondences.Moving.IdealFrame
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -28,6 +28,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite idealFrameMovedCycle
+  IntegralClosedSubscheme)
+open _root_.AlgebraicGeometry.Scheme.Cycles.GraphDivisorPencil (affineBoundaryFrame
+  exists_original_graph_moved_sum)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 
@@ -69,7 +73,7 @@ theorem exists_original_graph_correspondence
     (g : V ⟶ Y.left)
     (hbase : v ≫ pullback.fst (j ≫ q) q ≫ T.hom = g ≫ Y.hom) :
     ∃ E : PrescribedAffineFrameExtension A b (relativeCompactificationGraphLine q j)
-        (GraphIdealMovedCycle.affineBoundaryFrame q j d z hd eZ A b hb),
+        (affineBoundaryFrame q j d z hd eZ A b hb),
       ∃ hW : (Set.range v)ᶜ ⊆ (E.affineOpen.val : Set ↥(pullback (j ≫ q) q : Scheme.{u})),
       ∃ α : Cor.mk T ⟶ Cor.mk Y,
         ∀ H : FiniteCorrespondenceGenerator T.hom Y.hom,
@@ -86,7 +90,7 @@ theorem exists_original_graph_correspondence
                     1 isUnit_one (pullback.fst (j ≫ q) q) v hW g hbase x).residueDegree
                       (genericPoint (IntegralClosedSubscheme.pointClosure x.val).val.subscheme) : ℤ)
               else 0 := by
-  obtain ⟨E, _, _⟩ := GraphIdealMovedCycle.exists_original_graph_moved_sum
+  obtain ⟨E, _, _⟩ := exists_original_graph_moved_sum
     q j d z hd eZ A b hb v hboundary
   have hW : (Set.range v)ᶜ ⊆ (E.affineOpen.val : Set ↥(pullback (j ≫ q) q : Scheme.{u})) := by
     rw [← hb] at hboundary
@@ -102,9 +106,9 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedDominance,
-    `Motivic.AlgebraicGeometry.Correspondences.FinitePointCycle,
-    `Motivic.AlgebraicGeometry.Correspondences.IdealFrameMoved]
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedDominance,
+    `Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Cycle,
+    `Motivic.AlgebraicGeometry.Correspondences.Moving.IdealFrame]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -131,9 +135,9 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.AlgebraicGeometry.Cycles.IdealFrameMovedDominance,
-    `Motivic.AlgebraicGeometry.Correspondences.FinitePointCycle,
-    `Motivic.AlgebraicGeometry.Correspondences.IdealFrameMoved,
+    `Motivic.Aglib.AlgebraicGeometry.Cycles.Divisors.Frame.MovedDominance,
+    `Motivic.AlgebraicGeometry.Correspondences.Endpoints.FinitePoint.Cycle,
+    `Motivic.AlgebraicGeometry.Correspondences.Moving.IdealFrame,
     `MotivicTest.GraphMovedCorrespondence]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

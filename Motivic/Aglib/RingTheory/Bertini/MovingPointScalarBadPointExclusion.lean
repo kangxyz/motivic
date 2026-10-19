@@ -13,7 +13,7 @@ constructs its actual normalized chart point and contradicts the unchanged
 parameter equation. No selected-point-only rank argument is used.
 -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 universe u
 namespace QuadraticIncidence.MovingPointChart
 variable (k R B K : Type u) [Field k] [CommRing R] [CommRing B] [Field K]

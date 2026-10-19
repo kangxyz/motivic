@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.FiniteEnvelopeGoodOpen
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.FiniteChart.EnvelopeGoodOpen
 /-! # The original finite locus is computed before any curve projection -/
 set_option linter.hashCommand false
 public section

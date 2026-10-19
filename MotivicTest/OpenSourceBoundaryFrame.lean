@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OpenSourceBoundaryFrame
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.RelativeCurve.OpenSourceBoundaryFrame
 /-! # The frame uses the original open restriction and literal canonical inclusion -/
 set_option linter.hashCommand false
 public noncomputable section

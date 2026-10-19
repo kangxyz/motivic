@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermTupleEnvelope
+public import Motivic.Transfers.Sheaf.Germs.Tuples.Envelope
 public import Lean.Util.CollectAxioms
 
 /-! The actual all-point Nisnevich transfer envelope and its injective splitting. -/

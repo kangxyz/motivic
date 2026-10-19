@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.OpenCoverGluingTransition
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Gluing.TwoOpenCover.Transition
 public import Mathlib.AlgebraicGeometry.Modules.Tilde
 
 /-!
@@ -27,7 +27,7 @@ universe u
 
 namespace Motivic.MotivicTest.OpenCoverGluing
 
-open Scheme.Modules Motivic.OpenModuleGluing
+open Scheme.Modules _root_.AlgebraicGeometry.Scheme.Modules.Gluing.TwoOpenCover
 
 /-- Negation is an actual structure-sheaf-linear automorphism. -/
 def negationIso {X : Scheme.{u}} (M : X.Modules) : M ≅ M where

@@ -7,6 +7,28 @@ Authors: kangxyz
 import Motivic
 import MotivicTest
 import Lean.Util.CollectAxioms
+import Aglib.CategoryTheory.Adjunction.Mates
+import Aglib.Algebra.Homology.Embedding.MapExtend
+import Aglib.AlgebraicGeometry.Cohomology.Proper.StructureSheaf.Localization
+import Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced
+import Aglib.Algebra.Homology.Koszul.Coefficient.Finite
+import Aglib.Algebra.Homology.Koszul.Coefficient
+import Aglib.Algebra.Homology.Koszul.Coefficient.Quotient
+import Aglib.Algebra.Homology.Koszul.Coefficient.Regular
+import Aglib.Algebra.Homology.Koszul.Basic
+import Aglib.Algebra.Homology.Koszul.Augmentation
+import Aglib.Algebra.Homology.Koszul.Differential
+import Aglib.Algebra.Homology.Koszul.Ideal
+import Aglib.Algebra.Homology.Koszul.Resolution
+import Aglib.Algebra.Homology.Koszul.ScalarQuotientFunctor
+import Aglib.Algebra.Homology.Koszul.Single
+import Aglib.Algebra.Homology.Koszul.Single.Quotient
+import Aglib.Algebra.Homology.Koszul.Single.Tensor.Coordinates
+import Aglib.Algebra.Homology.Koszul.Single.Tensor.Differential
+import Aglib.Algebra.Homology.Koszul.Single.Tensor.Elements
+import Aglib.Algebra.Homology.Koszul.Single.Tensor.Functor
+import Aglib.Algebra.Homology.Koszul.Single.Tensor.Quotient
+import Aglib.Algebra.Homology.ShortComplex.ModuleQuasiIso
 /-! Adapted from the public Quillen 0.5.0 audit at commit
 4444574cd12bdaab888bd65c79ffba79ce0640ce.
 
@@ -22,6 +44,11 @@ run_cmd do
   if env.header.isModule then
     throwError "Exhaustive axiom audit requires legacy (.private) transitive imports"
   let migratedHelpers := #[
+    `Aglib.AlgebraicGeometry.Cohomology.Proper.StructureSheaf.Localization,
+    `Aglib.AlgebraicGeometry.Morphisms.Smooth.Reduced,
+    `Aglib.Algebra.Homology.Koszul.Coefficient.Finite,
+    `Aglib.Algebra.Homology.Embedding.MapExtend,
+    `Aglib.CategoryTheory.Adjunction.Mates,
     `Aglib.AlgebraicGeometry.DedekindPointStalk,
     `Aglib.FieldTheory.AdjoinRootMinpolyDegree,
     `Aglib.FieldTheory.AdjoinRootNormalScalarBranch,
@@ -114,7 +141,24 @@ run_cmd do
     `Aglib.RingTheory.PolynomialResidueBaseChange,
     `Aglib.RingTheory.PowerSeriesConstantClosure,
     `Aglib.RingTheory.PrimeFiltration.Basic,
-    `Aglib.RingTheory.PrimeFiltration.Multiplicity]
+    `Aglib.RingTheory.PrimeFiltration.Multiplicity,
+    `Aglib.Algebra.Homology.Koszul.Coefficient,
+    `Aglib.Algebra.Homology.Koszul.Coefficient.Quotient,
+    `Aglib.Algebra.Homology.Koszul.Coefficient.Regular,
+    `Aglib.Algebra.Homology.Koszul.Basic,
+    `Aglib.Algebra.Homology.Koszul.Augmentation,
+    `Aglib.Algebra.Homology.Koszul.Differential,
+    `Aglib.Algebra.Homology.Koszul.Ideal,
+    `Aglib.Algebra.Homology.Koszul.Resolution,
+    `Aglib.Algebra.Homology.Koszul.ScalarQuotientFunctor,
+    `Aglib.Algebra.Homology.Koszul.Single,
+    `Aglib.Algebra.Homology.Koszul.Single.Quotient,
+    `Aglib.Algebra.Homology.Koszul.Single.Tensor.Coordinates,
+    `Aglib.Algebra.Homology.Koszul.Single.Tensor.Differential,
+    `Aglib.Algebra.Homology.Koszul.Single.Tensor.Elements,
+    `Aglib.Algebra.Homology.Koszul.Single.Tensor.Functor,
+    `Aglib.Algebra.Homology.Koszul.Single.Tensor.Quotient,
+    `Aglib.Algebra.Homology.ShortComplex.ModuleQuasiIso]
   let projectModuleName (moduleName : Name) : Bool :=
     (`Motivic).isPrefixOf moduleName || (`MotivicTest).isPrefixOf moduleName ||
       (`Aglib.KTheory.MilnorK).isPrefixOf moduleName || migratedHelpers.contains moduleName

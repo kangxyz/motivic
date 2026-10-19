@@ -9,7 +9,7 @@ original polynomial values and weighted differentials do. No relation on a
 separately chosen matrix is imposed.
 -/
 @[expose] public noncomputable section
-open Module TensorProduct KaehlerDifferential MvPolynomial LinearMap
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial LinearMap
 universe u
 namespace QuadraticIncidence
 variable (k R K : Type u) [CommRing k] [CommRing R] [Field K]

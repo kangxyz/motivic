@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ComponentGraphs
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Components.Basic
 
 /-!
 # Consumers of componentwise graph correspondences

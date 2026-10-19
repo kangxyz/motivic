@@ -6,7 +6,7 @@ public import Mathlib.Algebra.MvPolynomial.Equiv
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
-open MvPolynomial
+open _root_.MvPolynomial
 universe u v
 namespace RingHom
 

@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.DiagonalZeroCycle
+import Motivic.AlgebraicGeometry.Correspondences.Composition.DiagonalZeroCycle
 
 /-! Direct checks of canonical diagonal zeros with their original span maps. -/
 

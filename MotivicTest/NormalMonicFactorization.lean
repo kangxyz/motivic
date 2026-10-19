@@ -1,6 +1,6 @@
 module
 
-public import Motivic.Aglib.RingTheory.NormalMonicFactorization
+public import Motivic.Aglib.RingTheory.Polynomial.Normal.MonicFactorization
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of normal-domain monic prime factorization -/

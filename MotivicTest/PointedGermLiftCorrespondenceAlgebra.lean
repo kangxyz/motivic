@@ -5,12 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.PointedGermLiftCorrespondenceAlgebra
+public import Motivic.Transfers.Sheaf.Germs.Pointed.Lifts.CorrespondenceAlgebra
 public import Lean.Util.CollectAxioms
 
 /-! Actual witness algebra in signed correspondences, with a fixed original germ tuple. -/
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.PointedGermLiftCorrespondenceAlgebra
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

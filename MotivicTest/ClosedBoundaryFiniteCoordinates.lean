@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ClosedBoundaryFiniteCoordinates
+import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Coordinates.ClosedBoundaryFiniteCoordinates
 /-! # Direct finite projection on the full original closed quotient -/
 open CategoryTheory AlgebraicGeometry
 

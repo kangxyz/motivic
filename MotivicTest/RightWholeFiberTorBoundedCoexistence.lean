@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleCombinedRegularity
-public import Motivic.AlgebraicGeometry.Cycles.RightWholeFiberTorBounded
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.Triple.CombinedRegularity
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightWholeFiberTorBounded
 
 /-!
 # Distinct original right-ambient and first-quotient regular kernels coexist
@@ -26,6 +26,7 @@ open CategoryTheory AlgebraicGeometry RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberTorBoundedCoexistence
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable {S X Y Z W : Scheme.{u}}
   (f : X ⟶ S) (g : Y ⟶ S) (h : Z ⟶ S) (i : W ⟶ S)

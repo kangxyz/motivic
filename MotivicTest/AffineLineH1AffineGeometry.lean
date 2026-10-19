@@ -1,11 +1,12 @@
 module
-public import Motivic.Cohomology.AffineLineH1AffineGeometry
+public import Motivic.Cohomology.A1.LocalVanishing.H1.AffineGeometry
 /-! # The actual H1 datum supplies the full affine geometry without extra hypotheses -/
 @[expose] public noncomputable section
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe w u
 namespace Motivic.SheafCohomology.AffineLineH1LiftData
-open AffineLineReducedComplement
+open _root_.AlgebraicGeometry.Scheme _root_.CategoryTheory.Sheaf.LargeCohomology
+open _root_.AlgebraicGeometry.Scheme.AffineLineReducedComplement
 variable {k : Type u} [Field k]
   [HasExt.{w} (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
   [EnoughInjectives

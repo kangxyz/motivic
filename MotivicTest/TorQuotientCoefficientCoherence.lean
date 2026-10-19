@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.TorComparison.QuotientCoefficientCoherence
+public import Motivic.Aglib.Algebra.Category.ModuleCat.Tor.QuotientCoefficientCoherence
 public import MotivicTest.TorQuotientFiniteness
 
 /-! # Actual quotient-coefficient coherence for nonradical and higher-Tor inputs -/
@@ -14,7 +14,11 @@ public import MotivicTest.TorQuotientFiniteness
 
 noncomputable section
 
-open CategoryTheory Motivic.TorComparison
+open CategoryTheory
+open _root_.ComplexShape
+open _root_.HomologicalComplex
+open _root_.HomologicalComplex₂
+open _root_.ModuleCat.TorComparison
 
 namespace Motivic.MotivicTest.TorQuotientCoefficientCoherence
 

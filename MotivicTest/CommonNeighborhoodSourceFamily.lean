@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodSourceFamily
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.SourceFamily
 /-! # The actual source-factor polynomial family and constant pole are finite flat -/
 set_option linter.hashCommand false
 set_option backward.defeqAttrib.useBackward true

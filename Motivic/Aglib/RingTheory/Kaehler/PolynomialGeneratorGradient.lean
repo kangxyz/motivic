@@ -9,7 +9,7 @@ public import Mathlib.Algebra.MvPolynomial.PDeriv
 
 /-! # The generator gradient is the differential of the original polynomial function -/
 @[expose] public noncomputable section
-open Module TensorProduct MvPolynomial
+open Module TensorProduct _root_.MvPolynomial
 universe u
 namespace KaehlerDifferential
 variable (k R : Type u) [CommRing k] [CommRing R] [Algebra k R]

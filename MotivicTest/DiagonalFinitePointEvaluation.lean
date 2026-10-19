@@ -5,13 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalFinitePointEvaluation
+public import Motivic.Cohomology.Diagonal.FinitePointEvaluation
 public import Lean.Util.CollectAxioms
 
 /-! Consumers of whole finite-point evaluation and actual identity-axis relations. -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.DiagonalCycleSymbols Motivic.DiagonalPointNorm
 open Motivic.DiagonalFinitePointEvaluation MilnorK

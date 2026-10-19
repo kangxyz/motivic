@@ -5,12 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichLocalGeneratorLift
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.LocalGeneratorLift
 
 /-! # An actual pointed local lift of a finite-correspondence generator -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

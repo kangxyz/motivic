@@ -5,20 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeOriginalEtalePresentation
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.LargePrimeOriginalEtalePresentation
 import all Motivic.Aglib.RingTheory.Bertini.SelectedMinorFieldExtension
 import all Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberParameterIndependence
 import all Motivic.Aglib.RingTheory.Bertini.ScalarMovingCoefficientMap
 import all Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberDifferentialIndependence
-import all Motivic.Aglib.RingTheory.FiniteScalarExtensionTrdeg
+import all Motivic.Aglib.RingTheory.TranscendenceDegree.FiniteScalarExtension
 import all Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberSmoothProjection
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenQuadraticCompactification
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeQuadraticCompactification
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenRetainedPresentation
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenOriginalEtalePresentation
-import all Motivic.Aglib.AlgebraicGeometry.AffineEtaleScalarClosedSquare
-import all Motivic.AlgebraicGeometry.SmoothSiteAffineScalarCoordinates
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeOriginalEtalePresentation
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.ChosenCompactification
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.LargePrimeCompactification
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.ChosenRetainedPresentation
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.ChosenOriginalEtalePresentation
+import all Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.AffineScalarClosedSquare
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.ScalarCoordinates
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.LargePrimeOriginalEtalePresentation
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -33,7 +33,7 @@ produced, not assumed. This is not boundary Epi or finite-field strict invarianc
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Module MvPolynomial
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Module _root_.MvPolynomial
 open AlgebraicGeometry.Scheme.RelativeCurve QuadraticIncidence.InfinityChart
 open scoped TensorProduct
 
@@ -91,15 +91,19 @@ run_cmd do
     `Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberParameterIndependence,
     `Motivic.Aglib.RingTheory.Bertini.ScalarMovingCoefficientMap,
     `Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberDifferentialIndependence,
-    `Motivic.Aglib.RingTheory.FiniteScalarExtensionTrdeg,
+    `Motivic.Aglib.RingTheory.TranscendenceDegree.FiniteScalarExtension,
     `Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberSmoothProjection,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenQuadraticCompactification,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeQuadraticCompactification,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenRetainedPresentation,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenOriginalEtalePresentation,
-    `Motivic.Aglib.AlgebraicGeometry.AffineEtaleScalarClosedSquare,
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineScalarCoordinates,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeOriginalEtalePresentation]
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.ChosenCompactification,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "LargePrimeCompactification",
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "ChosenRetainedPresentation",
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "ChosenOriginalEtalePresentation",
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.AffineScalarClosedSquare,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.ScalarCoordinates,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "LargePrimeOriginalEtalePresentation"]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -130,15 +134,19 @@ run_cmd do
     `Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberParameterIndependence,
     `Motivic.Aglib.RingTheory.Bertini.ScalarMovingCoefficientMap,
     `Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberDifferentialIndependence,
-    `Motivic.Aglib.RingTheory.FiniteScalarExtensionTrdeg,
+    `Motivic.Aglib.RingTheory.TranscendenceDegree.FiniteScalarExtension,
     `Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberSmoothProjection,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenQuadraticCompactification,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeQuadraticCompactification,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenRetainedPresentation,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.ChosenOriginalEtalePresentation,
-    `Motivic.Aglib.AlgebraicGeometry.AffineEtaleScalarClosedSquare,
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineScalarCoordinates,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimeOriginalEtalePresentation,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.ChosenCompactification,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "LargePrimeCompactification",
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "ChosenRetainedPresentation",
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "ChosenOriginalEtalePresentation",
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.Etale.Neighborhood.AffineScalarClosedSquare,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.ScalarCoordinates,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "LargePrimeOriginalEtalePresentation",
     `MotivicTest.LargePrimeOriginalEtalePresentation]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

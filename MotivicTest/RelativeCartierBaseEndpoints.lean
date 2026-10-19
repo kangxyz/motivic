@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeCartierBaseEndpoints
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Cartier.BaseEndpoints
 public import MotivicTest.RelativeFiniteFlatSpanEndpoints
 
 /-!
@@ -23,9 +23,11 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules.Invertible Scheme.Hom
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 
 namespace MotivicTest.RelativeCartierBaseEndpoints
 

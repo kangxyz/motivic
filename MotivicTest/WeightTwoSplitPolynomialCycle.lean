@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoSplitPolynomialCycle
+public import Motivic.Cohomology.WeightTwo.SplitPolynomialCycle
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -23,6 +23,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
 open Polynomial.TwoUnitPolynomialFamily
 open Motivic.WeightTwoCubicBoundary Motivic.WeightTwoSymbols

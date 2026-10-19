@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.CurveEndpointActions
+public import Motivic.Cohomology.A1.Moving.CurveEndpointActions
 
 /-!
 # Direct consumers of whole Cartier endpoint actions
@@ -17,6 +17,7 @@ universe. The signed difference acts by zero without a reduced-fiber replacement
 -/
 
 @[expose] public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 open CategoryTheory AlgebraicGeometry Motivic
 open Scheme.Modules.Invertible Scheme.Hom
@@ -25,6 +26,7 @@ open scoped Polynomial
 universe u
 
 namespace MotivicTest.Cohomology.CurveEndpointActions
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable {k : Type u} [Field k]
 
@@ -32,7 +34,7 @@ variable {k : Type u} [Field k]
 theorem literal_parameter_evaluation (a : k) :
     SmoothSite.a1Section (.of k) (SmoothSite.base (Spec (.of k))) a ≫
       SmoothSite.productSnd (SmoothSite.base (Spec (.of k))) (SmoothSite.affineLine (.of k)) =
-        FiniteFlatCurveFamily.evaluationPoint k a :=
+        AffineLineField.evaluationPoint k a :=
   SmoothSite.a1Section_baseCylinderCurveLineIso_hom k a
 
 variable {C U D : Scheme.{u}}
@@ -41,7 +43,7 @@ variable {C U D : Scheme.{u}}
   {Y : SmoothSite (Spec (.of k))} (i : D ⟶ C) [IsClosedImmersion i]
   (hI : IsLocallyRankOne C (idealModule i)) [Flat (i ≫ p)] [IsProper (i ≫ p)]
   (hAvoid : Set.range i ⊆ Set.range j) (g : U ⟶ Y.left)
-  (hbase : j ≫ p ≫ (FiniteFlatCurveFamily.line k).hom = g ≫ Y.hom)
+  (hbase : j ≫ p ≫ (AffineLineField.line k).hom = g ≫ Y.hom)
 
 /-- The signed difference of the whole original endpoint spans acts by zero on HI sections. -/
 theorem actual_endpoint_difference_transfer (F : SheafWithTransfers.{u + 1} k)

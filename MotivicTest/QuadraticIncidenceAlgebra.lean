@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Bertini.QuadraticIncidenceAlgebra
 import Lean.Util.CollectAxioms
 
 /-! # The literal universal incidence quotient uses the original cotangent module -/
-open Module TensorProduct MvPolynomial
+open Module TensorProduct _root_.MvPolynomial
 
 example (k R A : Type) [CommRing k] [CommRing R] [CommRing A]
     [Algebra k R] [Algebra R A] [Algebra.Smooth k R]

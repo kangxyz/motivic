@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.GraphIntersectionDiagram
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.IntersectionDiagram
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -24,6 +24,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.GraphIntersectionDiagram
+open _root_.AlgebraicGeometry.Scheme.Products
 
 variable {S X Y Z : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S}
   (A : FiniteCorrespondenceGenerator f g)
@@ -36,7 +37,8 @@ def rightIdentitySupportIso [IsIntegral Y] [IsSeparated g] :
 /-- The literal identity-incidence embedding is the graph under the actual two isomorphisms. -/
 theorem rightIdentityEmbedding [IsIntegral Y] [IsSeparated g] :
     A.incidenceToSupportProduct (identityGenerator g) ≫ (rightIdentitySupportIso A).hom =
-      (A.rightIdentityIncidenceIso).hom ≫ correspondenceGraph A.targetProjection g :=
+      (A.rightIdentityIncidenceIso).hom ≫ _root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph
+        A.targetProjection g :=
   A.incidenceToSupportProduct_graph (identityGenerator g)
 
 /-- The same support-product comparison works for any actual graph on the right. -/
@@ -55,9 +57,10 @@ theorem rightGraphMiddlePair (ψ : Y ⟶ Z) (w : ψ ≫ h = g)
 /-- The generic graph square does not require a reduced base. -/
 theorem nonreducedGraphDiagram :
     let S := Spec (CommRingCat.of (ZMod 4))
-    correspondenceGraph (𝟙 S) (𝟙 S) ≫ graphMiddlePair (𝟙 S) (𝟙 S) =
+    _root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph (𝟙 S) (𝟙 S) ≫ graphMiddlePair (𝟙 S)
+      (𝟙 S) =
       (𝟙 S) ≫ pullback.diagonal (𝟙 S) := by
   intro S
-  exact correspondenceGraph_middlePair (𝟙 S) (𝟙 S)
+  exact _root_.AlgebraicGeometry.Scheme.Products.correspondenceGraph_middlePair (𝟙 S) (𝟙 S)
 
 end Motivic.MotivicTest.GraphIntersectionDiagram

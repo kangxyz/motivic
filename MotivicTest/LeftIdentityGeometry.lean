@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.LeftGraphStalk
-public import Motivic.AlgebraicGeometry.Correspondences.LeftIdentityFundamental
-public import Motivic.AlgebraicGeometry.Graph.LeftPair
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Stalks.Left
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Identity.Left.Fundamental
+public import Motivic.Aglib.AlgebraicGeometry.Graph.LeftPair
 
 /-!
 # Independent consumers of actual left identity geometry and scalar transport
@@ -19,6 +19,13 @@ smooth graph regularity theorem and of any derived unit assertion.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleInclusion leftGraphMiddlePair)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Diagonal (baseChangeStalkMap)
+open _root_.AlgebraicGeometry.Scheme.Intersection (coefficientStalkMap point_eq)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleMiddle
+  correspondenceTriple_isPullback)
+open _root_.AlgebraicGeometry.Scheme.StalkTransport (pointedMap)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 open Motivic
 
@@ -33,7 +40,8 @@ variable {S X Y Z : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S}
 def identityCoefficientStalk [IsIntegral X] [IsSeparated f]
     (w : (identityGenerator f).incidence A) :
     (pullback (A.projection ≫ f) f).presheaf.stalk
-        (correspondenceGraph A.projection f ((identityGenerator f).incidenceSnd A w)) ≅
+        (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph A.projection f
+          ((identityGenerator f).incidenceSnd A w)) ≅
       ((identityGenerator f).supportProduct A).presheaf.stalk
         ((identityGenerator f).incidenceToSupportProduct A w) :=
   (identityGenerator f).incidenceLeftGraphStalkIso A w
@@ -44,15 +52,16 @@ theorem actual_scalar_element
     (r : (pullback g g).presheaf.stalk
       (pullback.diagonal g
         (correspondenceTripleMiddle f g h (A.incidenceInclusion B w)))) :
-    Intersection.coefficientStalkMap
+    coefficientStalkMap
         (correspondenceTripleInclusion f g h) (A.incidenceInclusion B w)
         (A.supportProductInclusion B) (A.incidenceToSupportProduct B w)
-        (Intersection.point_eq _ _ _ _ (A.incidence_ambient_isPullback B) w)
-      (Diagonal.baseChangeStalkMap (correspondenceTriple_isPullback f g h)
+        (point_eq _ _ _ _ (A.incidence_ambient_isPullback B) w)
+      (baseChangeStalkMap (correspondenceTriple_isPullback f g h)
         (A.incidenceInclusion B w) r) =
     (A.incidenceLeftGraphStalkIso B w).hom
-      (StalkTransport.pointedMap (leftGraphMiddlePair B.projection g)
-        (correspondenceGraph B.projection g (A.incidenceSnd B w))
+      (pointedMap (leftGraphMiddlePair B.projection g)
+        (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph B.projection g (A.incidenceSnd B
+          w))
         (pullback.diagonal g
           (correspondenceTripleMiddle f g h (A.incidenceInclusion B w)))
         (A.incidenceLeftGraphMiddlePoint_eq B w) r) :=

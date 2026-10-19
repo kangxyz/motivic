@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichPointCommonRefinement
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.CommonRefinement
 public import Lean.Util.CollectAxioms
 
 /-! # Arbitrary-point literal common-neighborhood consumers -/
@@ -13,11 +13,11 @@ public import Lean.Util.CollectAxioms
 noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 universe u
 
-variable {S : Scheme.{u}} {X : Motivic.SmoothSite S} {x : X.left}
+variable {S : Scheme.{u}} {X : Scheme.SmoothSite S} {x : X.left}
   (N M : NisnevichNeighborhood X x)
 
 example (q : M ⟶ N) : Etale ((nisnevichNeighborhoodFunctor X x).map q).left :=
@@ -56,18 +56,19 @@ example : (nisnevichNeighborhoodFunctor X x).map (N.commonSnd M) =
   N.map_commonSnd M
 
 open Lean in
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood in
 run_cmd do
-  for name in #[``Motivic.SmoothSite.NisnevichNeighborhood.etale_map,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.isIso_residueFieldMap_map_center,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.map_center,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.common,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.commonFst,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.commonSnd,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.commonIso,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.common_point,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.common_center,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.map_commonFst,
-      ``Motivic.SmoothSite.NisnevichNeighborhood.map_commonSnd] do
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.etale_map,
+      ``isIso_residueFieldMap_map_center,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.map_center,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.common,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.commonFst,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.commonSnd,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.commonIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.common_point,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.common_center,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.map_commonFst,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.NisnevichNeighborhood.map_commonSnd] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightOneFiniteCoefficients
+public import Motivic.Cohomology.Coefficients.Finite.WeightOne
 public import Mathlib.Algebra.Field.ZMod
 public import Mathlib.Algebra.Order.Field.Rat
 public import Lean.Util.CollectAxioms
@@ -22,6 +22,7 @@ comparison dependencies, allowing only the standard Lean foundations.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 open Motivic.WeightOneHomologyNorm Motivic.WeightOneFiniteCoefficients
 

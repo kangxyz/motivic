@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FlatLeftGraphComposition
-public import Motivic.AlgebraicGeometry.SmoothSiteSimplex
+public import Motivic.AlgebraicGeometry.Correspondences.Graph.Flat.LeftComposition
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Simplex.Basic
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -21,6 +21,10 @@ reducedness or separability hypothesis is introduced.
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme.Products (correspondenceTripleInclusion)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open RingTheory.Sequence
 open scoped Simplicial
@@ -101,19 +105,19 @@ theorem base_field_endpoint
   exact B.toIntegralCycle_graphFunctor_comp k e
 
 local instance simplex_integral (n : ℕ) :
-    IsIntegral (AlgebraicSimplex.smoothSiteObj k n).left :=
-  inferInstanceAs (IsIntegral (Spec (.of (AlgebraicSimplex.CoordinateRing k n))))
+    IsIntegral (_root_.AlgebraicSimplex.smoothSiteObj k n).left :=
+  inferInstanceAs (IsIntegral (Spec (.of (_root_.AlgebraicSimplex.CoordinateRing k n))))
 
 /-- Both actual faces of the one-simplex compute whole fibers, including their lengths. -/
 theorem one_simplex_face
-    (B : FiniteCorrespondenceGenerator (AlgebraicSimplex.smoothSiteObj k 1).hom Z.hom)
+    (B : FiniteCorrespondenceGenerator (_root_.AlgebraicSimplex.smoothSiteObj k 1).hom Z.hom)
     [Flat B.projection] (i : Fin 2) :
-    let e : AlgebraicSimplex.smoothSiteObj k 0 ⟶ AlgebraicSimplex.smoothSiteObj k 1 :=
-      (AlgebraicSimplex.cosimplicialSmoothSite k).δ i
+    let e : _root_.AlgebraicSimplex.smoothSiteObj k 0 ⟶ _root_.AlgebraicSimplex.smoothSiteObj k 1 :=
+      (_root_.AlgebraicSimplex.cosimplicialSmoothSite k).δ i
     FiniteCorrespondence.toIntegralCycle
-      (f := (AlgebraicSimplex.smoothSiteObj k 0).hom) (g := Z.hom)
+      (f := (_root_.AlgebraicSimplex.smoothSiteObj k 0).hom) (g := Z.hom)
       ((Cor.graphFunctor k).map e ≫
-        (show Cor.mk (AlgebraicSimplex.smoothSiteObj k 1) ⟶ Cor.mk Z from B.cycle)) =
+        (show Cor.mk (_root_.AlgebraicSimplex.smoothSiteObj k 1) ⟶ Cor.mk Z from B.cycle)) =
       IntegralCycle.finitePushforward (B.graphPullbackMap e.left (MorphismProperty.Over.w e))
         (fundamentalCycle (pullback e.left B.projection)) := by
   dsimp only

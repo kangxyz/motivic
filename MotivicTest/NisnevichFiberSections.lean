@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.NisnevichFiberSections
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Lifting.FiberSections
 public import Lean.Util.CollectAxioms
 
 /-!

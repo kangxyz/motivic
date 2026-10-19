@@ -9,7 +9,7 @@ public import Motivic.Aglib.RingTheory.Bertini.QuadraticClosedInfinityAvoidance
 
 /-! # Simultaneous original quadratic parameters for the target presentation -/
 @[expose] public noncomputable section
-open MvPolynomial AlgebraicGeometry
+open _root_.MvPolynomial AlgebraicGeometry
 universe u
 namespace QuadraticIncidence
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.SpecTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.SpecTor
 public import Mathlib.Data.ZMod.Basic
 
 /-! # Consumers of actual affine-stalk Tor and scalar transport -/
@@ -14,7 +14,8 @@ public import Mathlib.Data.ZMod.Basic
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open _root_.ModuleCat.TorComparison (ringEquivRestrictTorIso ringModuleIso)
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
@@ -30,7 +31,7 @@ def productSwapTor (M N : ModuleCat.{u} (S × R)) (n : ℕ) :
         ((ModuleCat.restrictScalars (RingEquiv.prodComm : R × S ≃+* S × R).toRingHom).obj N) ≅
       (ModuleCat.restrictScalars (RingEquiv.prodComm : R × S ≃+* S × R).toRingHom).obj
         (((Tor (ModuleCat (S × R)) n).obj M).obj N) :=
-  TorComparison.ringEquivRestrictTorIso (RingEquiv.prodComm : R × S ≃+* S × R) M N n
+  ringEquivRestrictTorIso (RingEquiv.prodComm : R × S ≃+* S × R) M N n
 
 variable {R S}
 
@@ -39,7 +40,7 @@ def changeCoordinateRingModule {A : Type u} [CommRing A] (e : R ≃+* S) (f : R 
     (ModuleCat.restrictScalars f).obj (ModuleCat.of A A) ≅
       (ModuleCat.restrictScalars e.toRingHom).obj
         ((ModuleCat.restrictScalars (f.comp e.symm.toRingHom)).obj (ModuleCat.of A A)) :=
-  TorComparison.ringModuleIso e (RingEquiv.refl A) f (f.comp e.symm.toRingHom)
+  ringModuleIso e (RingEquiv.refl A) f (f.comp e.symm.toRingHom)
     (fun r ↦ by simp)
 
 /-- Self-intersection of an actual affine closed subscheme uses its complete

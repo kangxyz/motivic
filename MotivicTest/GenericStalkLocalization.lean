@@ -5,14 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GenericStalkLocalization
-public import Motivic.AlgebraicGeometry.Correspondences.IteratedIncidenceSupport
-public import Motivic.AlgebraicGeometry.Correspondences.TripleGenericDominance
+public import Motivic.Aglib.AlgebraicGeometry.Stalk.Generic.Localization
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.IncidenceSupport
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.GenericDominance
 
 /-! # Actual triple kernel-prime, global stalk and scalar-action consumers -/
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (isArtinianRing_stalk_of_mem_genericPoints)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite genericStalkLocalizationIso
+  genericStalkLocalizationPrime genericStalkLocalizationPrime_kernel_comap
+  stalkSpecializes_genericStalkLocalizationIso stalkKernelGenericEquiv)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

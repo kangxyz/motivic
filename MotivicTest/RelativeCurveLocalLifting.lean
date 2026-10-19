@@ -1,5 +1,5 @@
 module
-public import Motivic.Cohomology.A1.RelativeCurveLocalLifting
+public import Motivic.Cohomology.A1.LocalVanishing.RelativeCurve.LocalLifting
 /-! # Literal section lifting from the original relative Serre pencil -/
 set_option linter.hashCommand false
 public section

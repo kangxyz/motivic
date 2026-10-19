@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeIncidence
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.Incidence
 
 /-!
 # Consumers of the actual whole-incidence field-change bridge
@@ -22,12 +22,14 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open RingTheory.Sequence
 
 universe u
 
 namespace MotivicTest.FieldBaseChangeIncidence
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y Z : SmoothSite.overField k} (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -44,7 +46,7 @@ theorem actualWholeIncidenceSquare :
 theorem actualOriginalMiddleSquare :
     IsPullback
       (A.fieldBaseChangeIncidenceToOriginal φ B ≫ A.incidenceInclusion B ≫
-        correspondenceTripleMiddle X.hom Y.hom Z.hom)
+        _root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleMiddle X.hom Y.hom Z.hom)
       (A.fieldBaseChangeIncidenceToSupportProduct φ B) (pullback.diagonal Y.hom)
       (A.fieldBaseChangeSupportProductToOriginal φ B ≫ A.originalCoefficientMiddlePair B) :=
   A.fieldBaseChangeIncidence_middle_isPullback φ B
@@ -75,7 +77,8 @@ theorem actualArtinianCut :
 include hker in
 /-- Its regular coefficient homology has finite support and lengths from actual geometry. -/
 theorem actualFiniteHomology :
-    LengthEuler.FiniteHomology (A.fieldBaseChangeMiddleKoszul φ B w.1 s) :=
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteHomology (A.fieldBaseChangeMiddleKoszul φ
+        B w.1 s) :=
   A.fieldBaseChangeMiddleKoszul_finiteHomology φ B w s hker
 
 /-- The signed coefficient retains the old higher Tor and the whole closed-fiber length. -/

@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualCommonSectionProducer
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Normalized.Common.SectionProducer
 /-! Consume the actual four-section existence theorem with no section or pencil hypotheses. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

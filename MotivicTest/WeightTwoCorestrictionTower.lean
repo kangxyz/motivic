@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionTower
+public import Motivic.Cohomology.WeightTwo.CorestrictionTower
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,6 +18,7 @@ hypothesis, replacement cohomology group or separability assumption is supplied.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open WeightTwoCorestriction WeightOnePointNorm WeightOneBoundaryNorm
 

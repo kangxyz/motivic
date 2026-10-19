@@ -5,13 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.OriginalGermSmallRelativeNeighborhood
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Germs.SmallRelativeNeighborhood
 public import Lean.Util.CollectAxioms
 
 /-! Original germs computed in actual finite-type small-site neighborhoods. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
-open SmoothSite SmoothSite.RelativeNisnevichNeighborhood
+open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.SmoothSite.RelativeNisnevichNeighborhood
 universe u
 namespace MotivicTest.OriginalGermSmallRelativeNeighborhood
 variable {S : Scheme.{u}} [IsAffine S] {U X : SmoothSite S}

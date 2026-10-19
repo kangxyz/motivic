@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.FreeSheafMonomorphisms
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.FreeSheafMonomorphisms
 
 /-!
 # Consumers of monomorphisms of free abelian sheaves
@@ -15,11 +15,13 @@ The geometric consumer retains the `u + 1` coefficient universe of the smooth
 Nisnevich sheaf-cohomology construction.
 -/
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+
 @[expose] public noncomputable section
 
 universe t v u
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Hypercohomology
+open CategoryTheory AlgebraicGeometry  _root_.CategoryTheory.Sheaf.Hypercohomology
 
 section Site
 

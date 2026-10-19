@@ -5,12 +5,14 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleGenericDominance
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.GenericDominance
 
 /-! # Actual scheme-image stalk and collision-fiber consumers -/
 
 @[expose] public section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite isArtinianRing_stalk_of_mem_genericPoints)
+open _root_.AlgebraicGeometry.Scheme.Hom (mem_genericPoints_of_image_generic)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u

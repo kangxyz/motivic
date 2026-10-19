@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.SheafificationSingular
-public import Motivic.Algebra.Homology.FiniteCoefficientsCohomology
-public import Motivic.AlgebraicGeometry.AlgebraicSimplexScheme
+public import Motivic.Aglib.Algebra.Homology.Sheafification.Singular
+public import Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Cohomology
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.AlgebraicSimplexScheme
 public import Mathlib.Algebra.Category.Grp.Abelian
 public import Mathlib.AlgebraicGeometry.Pullbacks
 
@@ -23,7 +23,7 @@ without hypotheses, and its all-degree homology comparison is constructed.
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
-open Motivic.SingularComplex Motivic.AlgebraicSimplex
+open _root_.CategoryTheory.SingularComplex _root_.AlgebraicSimplex
 
 universe v u w
 
@@ -45,25 +45,25 @@ example : IsZero ((sheafCochainObj J Δ P 2).X 3) :=
   isZero_sheafCochainObj_X J Δ P 2 3 (by decide)
 
 example (q r : ℕ) :
-    (sheafCochainObj J Δ P q).homology (Motivic.Indexing.singularDegree q r) ≅
+    (sheafCochainObj J Δ P q).homology (Indexing.singularDegree q r) ≅
       (presheafToSheaf J AddCommGrpCat.{w}).obj ((presheafObj Δ P).homology r) :=
   sheafCochainHomologyIso J Δ P q r
 
 example {Q : Cᵒᵖ ⥤ AddCommGrpCat.{w}} (α : P ⟶ Q) (q : ℕ) :
     (presheafCochainFunctor Δ q).map α ≫ (sheafCochainUnit J Δ q).app Q =
       (sheafCochainUnit J Δ q).app P ≫
-        (Motivic.Sheafification.underlyingFunctor J (ComplexShape.up ℤ)).map
+        (Sheafification.underlyingFunctor J (ComplexShape.up ℤ)).map
           (sheafCochainMap J Δ α q) :=
   (sheafCochainUnit J Δ q).naturality α
 
 example (i : ℤ) :
-    IsZero ((Motivic.finiteCoefficients (sheafCochainObj J Δ P 2) 1).homology i) :=
-  Motivic.finiteCoefficients.isZero_homology_one (sheafCochainObj J Δ P 2) i
+    IsZero ((_root_.CochainComplex.finiteCoefficients (sheafCochainObj J Δ P 2) 1).homology i) :=
+  _root_.CochainComplex.finiteCoefficients.isZero_homology_one (sheafCochainObj J Δ P 2) i
 
 example :
-    (Motivic.finiteCoefficients (sheafCochainObj J Δ P 2) 6).homology 1 ⟶
+    (_root_.CochainComplex.finiteCoefficients (sheafCochainObj J Δ P 2) 6).homology 1 ⟶
       (sheafCochainObj J Δ P 2).homology 2 :=
-  Motivic.finiteCoefficients.bocksteinHomology (sheafCochainObj J Δ P 2) 6 1
+  _root_.CochainComplex.finiteCoefficients.bocksteinHomology (sheafCochainObj J Δ P 2) 6 1
 
 /-- Functorial identities simplify without duplicate specialized simp lemmas. -/
 example (q : ℕ) : sheafCochainMap J Δ (𝟙 P) q = 𝟙 (sheafCochainObj J Δ P q) := by
@@ -100,8 +100,8 @@ example (i j k : ℤ) :
 end RelativeSimplex
 
 set_option linter.hashCommand false in
-#print axioms Motivic.SingularComplex.sheafCochainObj
+#print axioms sheafCochainObj
 set_option linter.hashCommand false in
-#print axioms Motivic.SingularComplex.sheafCochainObj_d
+#print axioms sheafCochainObj_d
 set_option linter.hashCommand false in
-#print axioms Motivic.SingularComplex.sheafCochainHomologyIso
+#print axioms sheafCochainHomologyIso

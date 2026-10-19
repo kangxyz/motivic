@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodFiniteFlatPencilProducer
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Pencil.FiniteFlatFamily
 /-! Genuine finite-flat polynomial families are constructed from original neighborhood geometry. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

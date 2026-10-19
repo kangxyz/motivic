@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.CoordinateUnitOnOpen
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.CoproductUnitAutomorphism
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.DisjointBoundary.UnitAutomorphism
 
 /-! # The actual prescribed unit for the fixed-source psi pencil -/
 @[expose] public noncomputable section

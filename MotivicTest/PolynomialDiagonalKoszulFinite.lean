@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.PolynomialDiagonalKoszulFinite
+public import Motivic.Aglib.RingTheory.MvPolynomial.Diagonal.Koszul.Finite
 
 /-!
 # Consumers of finite polynomial-diagonal resolutions and Tor
@@ -19,7 +19,7 @@ the actual Tor comparison are arbitrary as well; their regularity is not assumed
 universe u
 
 open CategoryTheory CategoryTheory.Limits
-open Motivic.Koszul Motivic.PolynomialDiagonal
+open _root_.ChainComplex.Koszul _root_.MvPolynomial.Diagonal
 
 variable (R : Type u) [CommRing R] (n : ℕ)
 

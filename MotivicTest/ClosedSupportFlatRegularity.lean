@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ClosedSupportFlatRegularity
+public import Motivic.Aglib.AlgebraicGeometry.IdealSheaf.Stalk.FlatPolynomialRegularity
 
 /-!
 # Consumers of literal closed-support fiber regularity

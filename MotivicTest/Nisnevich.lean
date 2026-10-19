@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.AlgebraicGeometry.Sites.NisnevichEvaluation
+import Motivic.Aglib.AlgebraicGeometry.Sites.Nisnevich.Evaluation
 
 /-!
 # Consumers of the Nisnevich site and exact field evaluation
@@ -16,7 +16,7 @@ for the étale topology.
 -/
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic.Nisnevich
+open _root_.AlgebraicGeometry.Nisnevich
 
 universe u
 
@@ -41,13 +41,13 @@ example (X : Scheme.{u}) (ι : Type u) (Y : ι → Scheme.{u}) (f : ∀ i, Y i �
 
 example (K : Type u) [Field K]
     {F G : Sheaf topology AddCommGrpCat.{u + 1}} (φ : F ⟶ G) [Epi φ] :
-    Epi ((Motivic.Nisnevich.evaluation K).map φ) := inferInstance
+    Epi ((evaluation K).map φ) := inferInstance
 
 example (K : Type u) [Field K]
     (S : ShortComplex (Sheaf topology AddCommGrpCat.{u + 1})) (hS : S.Exact) :
-    (S.map (Motivic.Nisnevich.evaluation K)).Exact := exact_map_evaluation K S hS
+    (S.map (evaluation K)).Exact := exact_map_evaluation K S hS
 
-#print axioms Motivic.Nisnevich.mem_fieldLiftingPrecoverage_iff_residueField
-#print axioms Motivic.Nisnevich.mem_topology_iff
-#print axioms Motivic.Nisnevich.surjective_app_of_epi
-#print axioms Motivic.Nisnevich.exact_map_evaluation
+#print axioms mem_fieldLiftingPrecoverage_iff_residueField
+#print axioms mem_topology_iff
+#print axioms surjective_app_of_epi
+#print axioms exact_map_evaluation

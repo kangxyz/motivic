@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.SmoothTorSupport
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.SmoothTorSupport
 
 /-!
 # Actual diagonal Tor support and module-length consumers
@@ -22,6 +22,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.SmoothDiagonalTorSupport
+open _root_.AlgebraicGeometry.Scheme
 
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) [Smooth f] (x : X)
   (M : ModuleCat (Diagonal.ambientStalk f x))
@@ -52,7 +53,7 @@ theorem artinianSupport [IsNoetherianRing (Diagonal.ambientStalk f x)]
     [IsArtinianRing ((Diagonal.ambientStalk f x) ⧸
       (RingHom.ker ((pullback.diagonal f).stalkMap x).hom ⊔
         Module.annihilator (Diagonal.ambientStalk f x) M))] :
-    LengthEuler.FiniteLengthSupport (fun n =>
+    _root_.HomologicalComplex.ModuleLengthEuler.FiniteLengthSupport (fun n =>
       ((Tor (ModuleCat (Diagonal.ambientStalk f x)) n).obj M).obj
         (Diagonal.sourceStalkModule f x)) :=
   Diagonal.finiteLengthSupport_tor_of_artinian_support f x M

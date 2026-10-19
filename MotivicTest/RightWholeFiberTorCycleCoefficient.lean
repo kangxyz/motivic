@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightWholeFiberTorCycleCoefficient
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightWholeFiberTorCycleCoefficient
 
 /-!
 # Actual right whole-fiber pushforward-cycle consumers
@@ -29,6 +29,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberTorCycleCoefficient
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
 variable (k : Type u) [Field k] (X Y Z W : SmoothSite (Spec (.of k)))
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)

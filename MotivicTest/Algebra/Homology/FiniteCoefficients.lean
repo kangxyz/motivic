@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.FiniteCoefficientsModule
-import Motivic.Algebra.Homology.FiniteCoefficientsCohomology
+import Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Module
+import Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Cohomology
 
 /-! # Coefficient regression tests
 
@@ -15,7 +15,7 @@ Bockstein coordinate, arbitrary chain-map naturality, and level-one vanishing.
 -/
 
 open CategoryTheory CategoryTheory.Limits HomologicalComplex CochainComplex
-open Motivic Motivic.finiteCoefficients
+open _root_.CochainComplex.finiteCoefficients
 
 set_option backward.isDefEq.respectTransparency false
 noncomputable section

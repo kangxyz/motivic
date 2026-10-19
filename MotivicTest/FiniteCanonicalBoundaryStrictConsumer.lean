@@ -5,26 +5,26 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.StrictInvarianceFiniteField
+public import Motivic.Cohomology.A1.StrictInvariance.FiniteField
 
-import all Motivic.AlgebraicGeometry.SmoothSiteAffineWeilRefinement
-import all Motivic.Cohomology.A1.OriginalPresentationAffineCombinedCorrection
-import all Motivic.AlgebraicGeometry.AffineCorrectionBaseRestriction
-import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalPresentationAmbientIso
-import all Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialCoordinates
-import all Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimePolynomialZeroOriginalEtalePresentation
-import all Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialPuncture
-import all Motivic.AlgebraicGeometry.ScalarPolynomialOriginalPresentation
-import all Motivic.AlgebraicGeometry.ScalarPolynomialZeroFiber
-import all Motivic.AlgebraicGeometry.LargePrimeNativePolynomialPresentation
-import all Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialOverlap
-import all Motivic.AlgebraicGeometry.SmoothSiteScalarEtalePullback
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarAffineCorrectionRestriction
-import all Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarOpenFactor
-import all Motivic.Cohomology.A1.PresheafBoundaryOriginalOpenRefinement
-import all Motivic.Cohomology.A1.PresheafBoundaryFinitePolynomialImage
-import all Motivic.Cohomology.A1.FinitePresheafContractionBoundaryEpi
-import all Motivic.Cohomology.A1.StrictInvarianceFiniteField
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.WeilRefinement
+import all Motivic.Cohomology.A1.LocalVanishing.Presentation.AffineCombinedCorrection
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.MarkedBaseRestriction
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.AmbientIso
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialCoordinates
+import all Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic.LargePrimePolynomialZeroOriginalEtalePresentation
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ScalarPolynomialPuncture
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomial
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialZeroFiber
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.LargePrimePolynomial
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialOverlap
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ScalarEtalePullback
+import all Motivic.Transfers.Presheaf.FiniteScalarAffineCorrectionRestriction
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarOpenFactor
+import all Motivic.Cohomology.A1.Boundary.Presheaf.OriginalOpenRefinement
+import all Motivic.Cohomology.A1.Boundary.Presheaf.FinitePolynomialImage
+import all Motivic.Cohomology.A1.Boundary.Presheaf.FiniteFieldEpi
+import all Motivic.Cohomology.A1.StrictInvariance.FiniteField
 import Mathlib.Tactic.Linter
 import Mathlib.Tactic.Linter.TextBased
 
@@ -37,6 +37,7 @@ geometric theorem family.
 
 public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u
@@ -58,7 +59,7 @@ theorem original_projection_isIso
     (F : SheafWithTransfers.{u + 1} k) (hF : F.obj.IsA1Invariant)
     (n : ℕ) (X : SmoothSite (Spec (.of k))) :
     IsIso (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) n) X) :=
   SheafWithTransfers.isStrictA1Invariant_of_finite F hF n X
@@ -67,24 +68,25 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineWeilRefinement,
-    `Motivic.Cohomology.A1.OriginalPresentationAffineCombinedCorrection,
-    `Motivic.AlgebraicGeometry.AffineCorrectionBaseRestriction,
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalPresentationAmbientIso,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialCoordinates,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimePolynomialZeroOriginalEtalePresentation,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialPuncture,
-    `Motivic.AlgebraicGeometry.ScalarPolynomialOriginalPresentation,
-    `Motivic.AlgebraicGeometry.ScalarPolynomialZeroFiber,
-    `Motivic.AlgebraicGeometry.LargePrimeNativePolynomialPresentation,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialOverlap,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarEtalePullback,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarAffineCorrectionRestriction,
-    `Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarOpenFactor,
-    `Motivic.Cohomology.A1.PresheafBoundaryOriginalOpenRefinement,
-    `Motivic.Cohomology.A1.PresheafBoundaryFinitePolynomialImage,
-    `Motivic.Cohomology.A1.FinitePresheafContractionBoundaryEpi,
-    `Motivic.Cohomology.A1.StrictInvarianceFiniteField]
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.WeilRefinement,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.AffineCombinedCorrection,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.MarkedBaseRestriction,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.AmbientIso,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialCoordinates,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "LargePrimePolynomialZeroOriginalEtalePresentation",
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ScalarPolynomialPuncture,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomial,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialZeroFiber,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.LargePrimePolynomial,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialOverlap,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ScalarEtalePullback,
+    `Motivic.Transfers.Presheaf.FiniteScalarAffineCorrectionRestriction,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarOpenFactor,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.OriginalOpenRefinement,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.FinitePolynomialImage,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.FiniteFieldEpi,
+    `Motivic.Cohomology.A1.StrictInvariance.FiniteField]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -115,24 +117,25 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineWeilRefinement,
-    `Motivic.Cohomology.A1.OriginalPresentationAffineCombinedCorrection,
-    `Motivic.AlgebraicGeometry.AffineCorrectionBaseRestriction,
-    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.OriginalPresentationAmbientIso,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialCoordinates,
-    `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.LargePrimePolynomialZeroOriginalEtalePresentation,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialPuncture,
-    `Motivic.AlgebraicGeometry.ScalarPolynomialOriginalPresentation,
-    `Motivic.AlgebraicGeometry.ScalarPolynomialZeroFiber,
-    `Motivic.AlgebraicGeometry.LargePrimeNativePolynomialPresentation,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarPolynomialOverlap,
-    `Motivic.AlgebraicGeometry.SmoothSiteScalarEtalePullback,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarAffineCorrectionRestriction,
-    `Motivic.AlgebraicGeometry.SmoothSiteFiniteScalarOpenFactor,
-    `Motivic.Cohomology.A1.PresheafBoundaryOriginalOpenRefinement,
-    `Motivic.Cohomology.A1.PresheafBoundaryFinitePolynomialImage,
-    `Motivic.Cohomology.A1.FinitePresheafContractionBoundaryEpi,
-    `Motivic.Cohomology.A1.StrictInvarianceFiniteField,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.WeilRefinement,
+    `Motivic.Cohomology.A1.LocalVanishing.Presentation.AffineCombinedCorrection,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.MarkedBaseRestriction,
+    `Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.AmbientIso,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialCoordinates,
+    (`Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Presentation.Quadratic).str
+      "LargePrimePolynomialZeroOriginalEtalePresentation",
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ScalarPolynomialPuncture,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomial,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialZeroFiber,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.LargePrimePolynomial,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Presentations.ScalarPolynomialOverlap,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.ScalarEtalePullback,
+    `Motivic.Transfers.Presheaf.FiniteScalarAffineCorrectionRestriction,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.BaseChange.FiniteScalarOpenFactor,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.OriginalOpenRefinement,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.FinitePolynomialImage,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.FiniteFieldEpi,
+    `Motivic.Cohomology.A1.StrictInvariance.FiniteField,
     `MotivicTest.FiniteCanonicalBoundaryStrictConsumer]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

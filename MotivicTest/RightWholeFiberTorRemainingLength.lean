@@ -5,9 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.RightWholeFiberTorRemainingLength
-public import Motivic.AlgebraicGeometry.SmoothSiteNoetherian
-public import Motivic.Algebra.Homology.KoszulHyperhomologyPlacement
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Cycles.RightWholeFiberTorRemainingLength
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Noetherian
+public import Motivic.AlgebraicGeometry.Correspondences.Noetherian
+public import Motivic.Aglib.Algebra.Homology.Koszul.HyperhomologyPlacement
 
 /-!
 # Actual whole-coefficient finite-length descent consumers
@@ -31,8 +32,9 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.RightWholeFiberTorRemainingLength
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
-open LengthEuler
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}
@@ -51,8 +53,8 @@ theorem actualUnitSource_finiteHomology
     FiniteHomology (F.rightFirstStageSourceRemainingKoszul G H V p [1] x n) := by
   simp only [FiniteCorrespondenceGenerator.rightFirstStageSourceRemainingKoszul,
     FiniteCorrespondenceGenerator.rightFiberMiddleList, List.map_cons, List.map_nil, map_one]
-  exact Koszul.finiteHomology_of_identity_homotopy _
-    (Koszul.singleUnitTensorHomotopy
+  exact _root_.ChainComplex.Koszul.finiteHomology_of_identity_homotopy _
+    (_root_.ChainComplex.Koszul.singleUnitTensorHomotopy
       ((ChainComplex.single₀ (ModuleCat _)).obj (F.rightFirstStageSupportedStalkTor G H x.1 n)))
 
 /-- Actual whole remaining homology is finite by descent from the constructed source

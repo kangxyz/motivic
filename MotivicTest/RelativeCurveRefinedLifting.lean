@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Cohomology.A1.RelativeCurveRefinedLifting
+public import Motivic.Cohomology.A1.LocalVanishing.RelativeCurve.RefinedLifting
 /-! Direct original-presheaf consumer: the retained target is not the smaller parameter open. -/
 set_option linter.hashCommand false
 public noncomputable section

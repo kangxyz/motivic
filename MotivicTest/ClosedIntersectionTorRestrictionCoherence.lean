@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Intersection.ClosedIntersectionTorRestrictionCoherence
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.ClosedIntersectionTorRestrictionCoherence
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalAmbient
 
 /-!
 # Coherent actual pair and six-factor Tor chart refinements
@@ -19,7 +20,7 @@ section maps, and the genuine scalar unitors and associators.
 
 noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.Intersection
+open CategoryTheory AlgebraicGeometry Motivic _root_.AlgebraicGeometry.Scheme.Intersection
 
 universe u
 
@@ -30,8 +31,10 @@ variable {S X Y Z W : Scheme.{u}} {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i :
   (H : FiniteCorrespondenceGenerator h i) [IsSeparated g]
 
 /-- The original pair chart identity is the actual scalar-extension unitor. -/
-theorem actualPairIdentity (U : (correspondenceIntersectionAmbient f g h).affineOpens) (n : ℕ) :
-    let d := correspondenceTripleInclusion f g h
+theorem actualPairIdentity (U :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceIntersectionAmbient f g h).affineOpens)
+    (n : ℕ) :
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h
     let j := F.supportProductInclusion G
     let a := F.incidenceInclusion G
     let b := F.incidenceToSupportProduct G
@@ -44,9 +47,10 @@ theorem actualPairIdentity (U : (correspondenceIntersectionAmbient f g h).affine
   closedIntersectionAffineTorRestrictionIso_hom_refl _ _ _ _ _ U n
 
 /-- The original pair chart transitions obey actual two-step scalar composition. -/
-theorem actualPairComposition {U V L : (correspondenceIntersectionAmbient f g h).affineOpens}
+theorem actualPairComposition {U V L :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceIntersectionAmbient f g h).affineOpens}
     (hUV : U ≤ V) (hVL : V ≤ L) (n : ℕ) :
-    let d := correspondenceTripleInclusion f g h
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceTripleInclusion f g h
     let j := F.supportProductInclusion G
     let a := F.incidenceInclusion G
     let b := F.incidenceToSupportProduct G
@@ -63,8 +67,10 @@ theorem actualPairComposition {U V L : (correspondenceIntersectionAmbient f g h)
   closedIntersectionAffineTorRestrictionIso_hom_comp _ _ _ _ _ hUV hVL n
 
 /-- The original exterior chart identity is the actual scalar-extension unitor. -/
-theorem actualExteriorIdentity (U : (correspondenceSixfoldAmbient f g h i).affineOpens) (n : ℕ) :
-    let d := correspondenceFirstDiagonalInclusion f g h i
+theorem actualExteriorIdentity (U :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i).affineOpens) (n
+    : ℕ) :
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i
     let j := F.tripleSupportProductInclusion G H
     let a := F.leftIntermediateSupportInclusion G H
     let b := F.leftIntermediateToTripleSupport G H
@@ -77,9 +83,10 @@ theorem actualExteriorIdentity (U : (correspondenceSixfoldAmbient f g h i).affin
   closedIntersectionAffineTorRestrictionIso_hom_refl _ _ _ _ _ U n
 
 /-- The original exterior chart transitions obey actual two-step scalar composition. -/
-theorem actualExteriorComposition {U V L : (correspondenceSixfoldAmbient f g h i).affineOpens}
+theorem actualExteriorComposition {U V L :
+    (_root_.AlgebraicGeometry.Scheme.Products.correspondenceSixfoldAmbient f g h i).affineOpens}
     (hUV : U ≤ V) (hVL : V ≤ L) (n : ℕ) :
-    let d := correspondenceFirstDiagonalInclusion f g h i
+    let d := _root_.AlgebraicGeometry.Scheme.Products.correspondenceFirstDiagonalInclusion f g h i
     let j := F.tripleSupportProductInclusion G H
     let a := F.leftIntermediateSupportInclusion G H
     let b := F.leftIntermediateToTripleSupport G H

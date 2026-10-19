@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.FlatSpanBaseChange
+import Motivic.AlgebraicGeometry.Correspondences.BaseChange.FlatSpan
 
 /-! Direct checks of whole finite-flat span source base change. -/
 

@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.TensorSectionPullback
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.TensorSectionPullback
 /-! Literal unit-normalized sections retain native tensor and composition comparisons. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

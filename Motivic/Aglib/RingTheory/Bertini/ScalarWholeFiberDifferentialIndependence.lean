@@ -14,7 +14,7 @@ public import Motivic.Aglib.RingTheory.Kaehler.ScalarResidueGradient
 
 @[expose] public noncomputable section
 
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 open scoped TensorProduct
 
 namespace QuadraticIncidence

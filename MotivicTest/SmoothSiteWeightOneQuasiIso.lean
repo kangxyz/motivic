@@ -1,6 +1,6 @@
 module
 
-import Motivic.AlgebraicGeometry.SmoothSiteWeightOneQuasiIso
+import Motivic.Cohomology.WeightOne.Geometry.WeightOneQuasiIso
 import Lean.Util.CollectAxioms
 
 /-! # The actual reduced norm quasi-isomorphism and its foundations -/

@@ -4,8 +4,8 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdealProduct
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.TensorSectionPullback
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.Product
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.TensorSectionPullback
 /-! # One-sided moving: only the missing boundary constrains the homotopy
 
 The numerator and denominator will avoid the larger bad boundary. The pencil itself

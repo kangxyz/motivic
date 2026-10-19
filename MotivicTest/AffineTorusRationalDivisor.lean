@@ -5,14 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.AffineTorusRationalDivisor
+public import Motivic.AlgebraicGeometry.Correspondences.Torus.Affine.RationalDivisor
 public import Lean.Util.CollectAxioms
 
 /-! # Direct audit of actual product divisors and the original correspondence map -/
 
 @[expose] public noncomputable section
 
-open Motivic.AffineTorusPolynomialPresentation Polynomial.BoundaryOneRationalFunctions
+open _root_.AlgebraicGeometry.PolynomialOpenQuotient.Laurent
+open _root_.AlgebraicGeometry.Scheme.PolynomialLaurent
+open _root_.Motivic.AffineTorusPolynomialPresentation
+open Polynomial.BoundaryOneRationalFunctions
 open Polynomial
 
 universe u

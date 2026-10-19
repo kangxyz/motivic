@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.NisnevichCechIncidencePairing
+public import Motivic.AlgebraicGeometry.Correspondences.Nisnevich.Cech.IncidencePairing
 public import Lean.Util.CollectAxioms
 
 /-! # Original signed generic and incidence-Tor support-point witnesses -/
@@ -14,6 +14,8 @@ noncomputable section
 
 set_option backward.isDefEq.respectTransparency false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Motivic.FiniteCorrespondenceGenerator
 

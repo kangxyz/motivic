@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.FiniteBoundaryTwists
+public import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.Boundary.Twists.Finite
 
 /-! # One finite-base shrink supplies all positive-twist generating sections -/
 

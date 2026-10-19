@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteTorusBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Torus.BaseChange
 public import Mathlib.Data.ZMod.Basic
 public import Lean.Util.CollectAxioms
 
@@ -13,7 +13,10 @@ public import Lean.Util.CollectAxioms
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic.SmoothSite
+open CategoryTheory
+open CategoryTheory.Limits
+open AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 open AlgebraicGeometry.Scheme.PolynomialLaurent CommRingCat.PolynomialLaurent
 
 universe u
@@ -76,15 +79,23 @@ example {K L : Type u} [Field K] [Field L] (c : K →+* L) (q : ℕ) :
 
 open Lean in
 run_cmd do
-  for name in #[``torus_isPullback, ``torusBaseChangeIso,
-      ``torusBaseChangeIso_inv_fst, ``torusBaseChangeIso_inv_snd,
-      ``torusBaseChangeIso_hom_coefficientMap, ``torusBaseChangeIso_hom_projection,
-      ``laurentEvalOne_coefficient, ``laurentOneSection_coefficient,
-      ``torusBaseChangeIso_globalUnit, ``torusBaseChangeIso_one,
-      ``torusPowerBaseChangeIso, ``torusPowerBaseChangeIso_coordinate,
-      ``torusPowerBaseChangeIso_toBase, ``torusPowerBaseChangeIso_insertOne,
-      ``torusPowerBaseChangeIso_deleteCoordinate, ``torusFieldBaseChangeIso,
-      ``torusPowerFieldBaseChangeIso] do
+  for name in #[``_root_.AlgebraicGeometry.Scheme.SmoothSite.torus_isPullback,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_inv_fst,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_inv_snd,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_hom_coefficientMap,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_hom_projection,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.laurentEvalOne_coefficient,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.laurentOneSection_coefficient,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_globalUnit,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusBaseChangeIso_one,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso_coordinate,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso_toBase,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso_insertOne,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerBaseChangeIso_deleteCoordinate,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusFieldBaseChangeIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.torusPowerFieldBaseChangeIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

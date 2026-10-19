@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Modules.AffinePushforwardFiniteAlgebra
-public import Motivic.Algebra.Homology.LengthEulerFiniteAlgebra
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Affine.FiniteAlgebra
+public import Motivic.Aglib.Algebra.Homology.LengthEuler.FiniteAlgebra
 public import Mathlib.RingTheory.Ideal.Quotient.Defs
 
 /-!
@@ -30,8 +30,10 @@ open CategoryTheory AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.AffinePushforwardFiniteAlgebra
+open _root_.AlgebraicGeometry.Scheme.Modules
 
-open AffinePushforward LengthEuler
+open _root_.AlgebraicGeometry.Scheme.Modules.Pushforward.Affine
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
 
@@ -46,7 +48,7 @@ is compared to restriction of its whole local coefficient complex. -/
 def quotientComplexIso (K : ChainComplex (ModuleCat.{u} (A ⧸ I)) ℕ) :
     (((tilde.functor (CommRingCat.of (A ⧸ I)) ⋙
       Scheme.Modules.pushforward (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I)))) ⋙
-        ModuleStalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K ≅
+        Stalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K ≅
       ((ModuleCat.extendScalars
           (algebraMap (A ⧸ I) (wholeStalkAlgebra A (.of (A ⧸ I)) p)) ⋙
         ModuleCat.restrictScalars
@@ -69,7 +71,7 @@ theorem quotient_differential_square (K : ChainComplex (ModuleCat.{u} (A ⧸ I))
               (wholeStalkAlgebra A (.of (A ⧸ I)) p))).mapHomologicalComplex _).obj K).d i j =
       ((((tilde.functor (CommRingCat.of (A ⧸ I)) ⋙
         Scheme.Modules.pushforward (Spec.map (CommRingCat.ofHom (Ideal.Quotient.mk I)))) ⋙
-          ModuleStalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K).d i j ≫
+          Stalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K).d i j ≫
         ((quotientComplexIso A I p K).hom.f j) :=
   (quotientComplexIso A I p K).hom.comm i j
 
@@ -86,7 +88,7 @@ theorem actualPushforwardEuler (K : ChainComplex (ModuleCat.{u} B) ℕ) (sign : 
       (algebraMap B (wholeStalkAlgebra A B p))).mapHomologicalComplex _).obj K)) :
     let C := (((tilde.functor B ⋙ Scheme.Modules.pushforward
       (Spec.map (CommRingCat.ofHom (algebraMap A B)))) ⋙
-        ModuleStalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K
+        Stalk.functor (X := Spec A) p).mapHomologicalComplex _).obj K
     ∃ hC : FiniteHomology C, homologyEuler C sign hC =
       finiteAlgebraFiberEuler ((Spec A).presheaf.stalk p) (wholeStalkAlgebra A B p)
         (((ModuleCat.extendScalars

@@ -13,7 +13,7 @@ import all Motivic.Aglib.RingTheory.Kaehler.ScalarClosedPointCotangentCoordinate
 import all Motivic.Aglib.RingTheory.Kaehler.ScalarLinearCombinationDifferentialCoordinates
 import all Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticDifferentialMatrix
 import all Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleCriterion
-import all Motivic.Aglib.RingTheory.ResiduePolynomialFiberEvaluation
+import all Motivic.Aglib.RingTheory.Polynomial.Residue.FiberEvaluation
 import all Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleFromWholeFiber
 import all Motivic.Aglib.RingTheory.Bertini.LargePrimeQuadraticEtaleInfinity
 public import Lean.Util.CollectAxioms
@@ -24,7 +24,7 @@ public import Mathlib.Tactic.Linter.TextBased
 
 @[expose] public noncomputable section
 
-open Module TensorProduct KaehlerDifferential MvPolynomial QuadraticIncidence
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial QuadraticIncidence
 open scoped TensorProduct
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
@@ -89,7 +89,7 @@ run_cmd do
     `Motivic.Aglib.RingTheory.Kaehler.ScalarLinearCombinationDifferentialCoordinates,
     `Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticDifferentialMatrix,
     `Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleCriterion,
-    `Motivic.Aglib.RingTheory.ResiduePolynomialFiberEvaluation,
+    `Motivic.Aglib.RingTheory.Polynomial.Residue.FiberEvaluation,
     `Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleFromWholeFiber,
     `Motivic.Aglib.RingTheory.Bertini.LargePrimeQuadraticEtaleInfinity]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
@@ -125,7 +125,7 @@ run_cmd do
     `Motivic.Aglib.RingTheory.Kaehler.ScalarLinearCombinationDifferentialCoordinates,
     `Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticDifferentialMatrix,
     `Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleCriterion,
-    `Motivic.Aglib.RingTheory.ResiduePolynomialFiberEvaluation,
+    `Motivic.Aglib.RingTheory.Polynomial.Residue.FiberEvaluation,
     `Motivic.Aglib.RingTheory.Bertini.ScalarQuadraticEtaleFromWholeFiber,
     `Motivic.Aglib.RingTheory.Bertini.LargePrimeQuadraticEtaleInfinity,
     `MotivicTest.LargePrimeQuadraticEtaleInfinity]

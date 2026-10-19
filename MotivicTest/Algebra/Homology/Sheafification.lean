@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.Sheafification
+import Motivic.Aglib.Algebra.Homology.Sheafification.Basic
 import Mathlib.Algebra.Category.Grp.Abelian
 
 /-!
@@ -29,35 +29,35 @@ variable (J : GrothendieckTopology C) [HasSheafify J AddCommGrpCat.{w}]
 variable (K L : HomologicalComplex (Cᵒᵖ ⥤ AddCommGrpCat.{w}) c)
 
 example (i : ι) :
-    ((Motivic.Sheafification.unit J c).app K).f i = toSheafify J (K.X i) := rfl
+    ((Sheafification.unit J c).app K).f i = toSheafify J (K.X i) := rfl
 
 example (i : ι) :
-    (Motivic.Sheafification.obj J K).homology i ≅
+    (Sheafification.obj J K).homology i ≅
       (presheafToSheaf J AddCommGrpCat).obj (K.homology i) :=
-  Motivic.Sheafification.homologyIso J K i
+  Sheafification.homologyIso J K i
 
 example (f : K ⟶ L) (i : ι) :
-    HomologicalComplex.homologyMap (Motivic.Sheafification.map J f) i ≫
-        (Motivic.Sheafification.homologyIso J L i).hom =
-      (Motivic.Sheafification.homologyIso J K i).hom ≫
+    HomologicalComplex.homologyMap (Sheafification.map J f) i ≫
+        (Sheafification.homologyIso J L i).hom =
+      (Sheafification.homologyIso J K i).hom ≫
         (presheafToSheaf J AddCommGrpCat).map (HomologicalComplex.homologyMap f i) :=
-  Motivic.Sheafification.homologyIso_hom_naturality J f i
+  Sheafification.homologyIso_hom_naturality J f i
 
-example (f : K ⟶ L) [QuasiIso f] : QuasiIso (Motivic.Sheafification.map J f) := inferInstance
+example (f : K ⟶ L) [QuasiIso f] : QuasiIso (Sheafification.map J f) := inferInstance
 
 example (F : HomologicalComplex (Sheaf J AddCommGrpCat.{w}) c) :
-    (Motivic.Sheafification.obj J K ⟶ F) ≃
-      (K ⟶ (Motivic.Sheafification.underlyingFunctor J c).obj F) :=
-  (Motivic.Sheafification.adjunction J c).homEquiv K F
+    (Sheafification.obj J K ⟶ F) ≃
+      (K ⟶ (Sheafification.underlyingFunctor J c).obj F) :=
+  (Sheafification.adjunction J c).homEquiv K F
 
-example : (Motivic.Sheafification.obj (⊥ : GrothendieckTopology C) K).X =
+example : (Sheafification.obj (⊥ : GrothendieckTopology C) K).X =
     fun i => (presheafToSheaf (⊥ : GrothendieckTopology C) AddCommGrpCat).obj (K.X i) := rfl
 
 set_option linter.hashCommand false in
-#print axioms Motivic.Sheafification.adjunction
+#print axioms Sheafification.adjunction
 set_option linter.hashCommand false in
-#print axioms Motivic.Sheafification.homologyIso
+#print axioms Sheafification.homologyIso
 set_option linter.hashCommand false in
-#print axioms Motivic.Sheafification.homologyFunctorIso
+#print axioms Sheafification.homologyFunctorIso
 set_option linter.hashCommand false in
-#print axioms Motivic.Sheafification.map_quasiIso
+#print axioms Sheafification.map_quasiIso

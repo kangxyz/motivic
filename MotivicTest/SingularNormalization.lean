@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.Algebra.Homology.SingularComplexNormalization
+import Motivic.Aglib.Algebra.Homology.SingularComplex.Normalization
 import Mathlib.Algebra.Category.Grp.Abelian
 
 /-!
@@ -18,7 +18,7 @@ homology in arbitrary degree and that it commutes with presheaf morphisms.
 noncomputable section
 
 open CategoryTheory
-open Motivic.SingularComplex
+open _root_.CategoryTheory.SingularComplex
 
 universe v u w
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.FlatGenericMultiplicity
+public import Motivic.Aglib.RingTheory.LocalLength.FlatGenericMultiplicity
 public import Mathlib.RingTheory.Polynomial.Basic
 public import Mathlib.Algebra.Polynomial.Div
 public import Mathlib.RingTheory.Ideal.Quotient.Noetherian

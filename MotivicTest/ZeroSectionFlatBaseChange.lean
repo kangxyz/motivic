@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.ZeroSectionFlatBaseChange
+import Motivic.AlgebraicGeometry.Correspondences.BaseChange.ZeroSectionFlat
 
 /-! Direct checks of actual pulled-back line-bundle section cycles. -/
 

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteProjectionTensor
+public import Motivic.Aglib.Algebra.Homology.Koszul.FiniteProjection.Tensor
 public import Mathlib.Data.ZMod.Basic
 public import Mathlib.RingTheory.Flat.TorsionFree
 
@@ -24,7 +24,7 @@ noncomputable section
 
 universe u
 
-open CategoryTheory Motivic.Koszul
+open CategoryTheory _root_.ChainComplex.Koszul
 
 namespace MotivicTest.KoszulFiniteProjectionTensor
 

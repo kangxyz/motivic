@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeEndpointIncidenceTor
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Relative.IncidenceTor
 public import MotivicTest.RelativeEndpointComponentTor
 
 /-!
@@ -23,41 +23,46 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Graph (cutPoint)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open AlgebraicGeometry.FiniteFlatCurve
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 
 namespace MotivicTest.RelativeEndpointIncidenceTor
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
 
 /-- The actual relative source used below is genuinely disconnected. -/
 theorem twoLines_not_preconnected : ¬ PreconnectedSpace twoLines.left := by
   intro h
   let := h
-  let L := SmoothSite.coproductInl (FiniteFlatCurveFamily.line ℚ) (FiniteFlatCurveFamily.line ℚ)
-  let R := SmoothSite.coproductInr (FiniteFlatCurveFamily.line ℚ) (FiniteFlatCurveFamily.line ℚ)
+  let L := SmoothSite.coproductInl (AffineLineField.line ℚ) (AffineLineField.line ℚ)
+  let R := SmoothSite.coproductInr (AffineLineField.line ℚ) (AffineLineField.line ℚ)
   obtain ⟨x⟩ := (inferInstance : Nonempty (Spec (.of (Polynomial ℚ))))
   have hc : IsClopen (Set.range L.left) :=
     ⟨L.left.isClosedEmbedding.isClosed_range, L.left.opensRange.isOpen⟩
   have hu := hc.eq_univ ⟨L.left x, x, rfl⟩
   have hl : R.left x ∈ Set.range L.left := hu.symm ▸ Set.mem_univ _
-  exact (isCompl_range_inl_inr (FiniteFlatCurveFamily.line ℚ).left
-    (FiniteFlatCurveFamily.line ℚ).left).disjoint.notMem_of_mem_left hl ⟨x, rfl⟩
+  exact (isCompl_range_inl_inr (AffineLineField.line ℚ).left
+    (AffineLineField.line ℚ).left).disjoint.notMem_of_mem_left hl ⟨x, rfl⟩
 
 variable (a : ℚ) (E : Set twoLines.left) (hE : E ∈ irreducibleComponents twoLines.left)
   (G : FiniteCorrespondenceGenerator (relativeLineHom twoLines.hom)
-    (FiniteFlatCurveFamily.line ℚ).hom)
+    (AffineLineField.line ℚ).hom)
 
 /-- All positive original four-factor incidence Tor groups vanish on this
 genuinely disconnected relative source, with no right-support flatness premise. -/
 theorem actual_fourFactor_positive
     (w : (endpointComponentGenerator twoLines a E hE).incidence G) (n : ℕ) :
     IsZero ((endpointComponentGenerator twoLines a E hE).incidenceTor G w (n + 1)) :=
-  component_incidenceTor_isZero_succ twoLines (FiniteFlatCurveFamily.line ℚ) a E hE G w n
+  component_incidenceTor_isZero_succ twoLines (AffineLineField.line ℚ) a E hE G w n
 
 /-- The literal support point before imposing the original endpoint equation. -/
 abbrev supportPoint (w : (endpointComponentGenerator twoLines a E hE).incidence G) :=
-  Graph.cutPoint (ambientParameter twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) a G.inclusion
-    (componentEndpointPoint twoLines (FiniteFlatCurveFamily.line ℚ) a E hE G w)
+  cutPoint (ambientParameter twoLines.hom (AffineLineField.line ℚ).hom) a G.inclusion
+    (componentEndpointPoint twoLines (AffineLineField.line ℚ) a E hE G w)
 
 /-- The degree-zero coefficient keeps the exact original principal quotient. -/
 theorem actual_fourFactor_zero
@@ -67,16 +72,16 @@ theorem actual_fourFactor_zero
       Module.length (G.scheme.presheaf.stalk (supportPoint a E hE G w))
         ((G.scheme.presheaf.stalk (supportPoint a E hE G w)) ⧸
           Ideal.ofList [scalar
-            (G.inclusion ≫ ambientParameter twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) a
+            (G.inclusion ≫ ambientParameter twoLines.hom (AffineLineField.line ℚ).hom) a
             (supportPoint a E hE G w)]) :=
-  component_incidenceTor_zero_length twoLines (FiniteFlatCurveFamily.line ℚ) a E hE G w
+  component_incidenceTor_zero_length twoLines (AffineLineField.line ℚ) a E hE G w
 
 /-- The parameter scalar supplier itself is exercised at every original support stalk. -/
 theorem original_scalar_regular (c : G.scheme) :
     IsSMulRegular (G.scheme.presheaf.stalk c)
       (scalar (G.inclusion ≫
-        ambientParameter twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom) a c) :=
-  rightSupport_endpointScalar_regular twoLines (FiniteFlatCurveFamily.line ℚ) a G c
+        ambientParameter twoLines.hom (AffineLineField.line ℚ).hom) a c) :=
+  rightSupport_endpointScalar_regular twoLines (AffineLineField.line ℚ) a G c
 
 open Lean in
 run_cmd do

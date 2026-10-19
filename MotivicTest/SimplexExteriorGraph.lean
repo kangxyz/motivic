@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGraph
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Simplex.Graph
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,6 +19,9 @@ pushforward of the whole fundamental cycle.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 
 universe u
@@ -31,14 +34,14 @@ variable {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
 theorem actual_simplex_graph (n : ℕ) (φ : X ⟶ Y) :
     Cor.simplexExterior n ((Cor.graphFunctor k).map φ) =
       (Cor.graphFunctor k).map
-        (SmoothSite.productMap φ (𝟙 (AlgebraicSimplex.smoothSiteObj k n))) :=
+        (SmoothSite.productMap φ (𝟙 (_root_.AlgebraicSimplex.smoothSiteObj k n))) :=
   Cor.simplexExterior_graph n φ
 
 /-- Arbitrary signed graph multiplicities are retained. -/
 theorem actual_signed_graph (n : ℕ) (φ : X ⟶ Y) (a : ℤ) :
     Cor.simplexExterior n (a • (Cor.graphFunctor k).map φ) =
       a • (Cor.graphFunctor k).map
-        (SmoothSite.productMap φ (𝟙 (AlgebraicSimplex.smoothSiteObj k n))) := by
+        (SmoothSite.productMap φ (𝟙 (_root_.AlgebraicSimplex.smoothSiteObj k n))) := by
   rw [map_zsmul, Cor.simplexExterior_graph]
   rfl
 

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleDiagonalRegularity
-public import Motivic.AlgebraicGeometry.Correspondences.IntermediateDiagonalLists
-public import Motivic.AlgebraicGeometry.Intersection.GenericTor
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.Triple.DiagonalRegularity
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.Diagonal.IntermediateLists
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.GenericTor
 
 /-!
 # Actual first-stage Tor from genuine regular middle equations
@@ -27,8 +27,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.TripleDiagonalRegularity
+open _root_.AlgebraicGeometry.Scheme.Products
 
-open Intersection
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable {S X Y Z W : Scheme.{u}}
   {f : X ⟶ S} {g : Y ⟶ S} {h : Z ⟶ S} {i : W ⟶ S}
@@ -50,7 +51,7 @@ theorem actualFirstStageTor [Flat f] [Smooth g] [IsSeparated g] [Flat h] [Flat i
       RingHom.ker (d.stalkMap (a w)).hom = Ideal.ofList t ∧
       ∀ n : ℕ, Nonempty
         ((((Tor (ModuleCat (ambientStalk d (a w))) n).obj M).obj (sourceStalkModule d (a w))) ≅
-          (Koszul.coefficientComplex M t).homology n) := by
+          (_root_.ChainComplex.Koszul.coefficientComplex M t).homology n) := by
   dsimp only
   obtain ⟨t, ht, hker⟩ := exists_regular_kernel_correspondenceFirstDiagonal f g h i
     (F.leftIntermediateSupportInclusion G H w)

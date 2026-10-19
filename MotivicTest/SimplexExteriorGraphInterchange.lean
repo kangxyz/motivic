@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGraphInterchange
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Simplex.GraphInterchange
 
 /-!
 # Consumers of actual mixed graph interchange
@@ -17,6 +17,7 @@ negative multiplicities. No categorical product in `Cor` is asserted.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open RingTheory.Sequence
 open scoped Simplicial
@@ -29,7 +30,7 @@ variable {k : Type u} [Field k]
 
 /-- Arbitrary original simplex maps intertwine all actual signed correspondences. -/
 theorem actual_simplex_map {X Y : Cor k} {n m : ℕ}
-    (u : AlgebraicSimplex.smoothSiteObj k n ⟶ AlgebraicSimplex.smoothSiteObj k m)
+    (u : _root_.AlgebraicSimplex.smoothSiteObj k n ⟶ _root_.AlgebraicSimplex.smoothSiteObj k m)
     (α : X ⟶ Y) :
     Cor.simplexExterior n α ≫
       (Cor.graphFunctor k).map (SmoothSite.productMap (𝟙 Y.toSmoothSite) u) =
@@ -42,15 +43,15 @@ theorem actual_cosimplicial_map {X Y : Cor k} {p q : SimplexCategory}
     (f : p ⟶ q) (α : X ⟶ Y) :
     Cor.simplexExterior p.len α ≫
       (Cor.graphFunctor k).map (SmoothSite.productMap (𝟙 Y.toSmoothSite)
-        ((AlgebraicSimplex.cosimplicialSmoothSite k).map f)) =
+        ((_root_.AlgebraicSimplex.cosimplicialSmoothSite k).map f)) =
       (Cor.graphFunctor k).map (SmoothSite.productMap (𝟙 X.toSmoothSite)
-        ((AlgebraicSimplex.cosimplicialSmoothSite k).map f)) ≫
+        ((_root_.AlgebraicSimplex.cosimplicialSmoothSite k).map f)) ≫
         Cor.simplexExterior q.len α :=
   Cor.simplexExterior_graph_interchange _ α
 
 /-- Negative coefficients and subtraction retain the same geometric interchange law. -/
 theorem actual_signed_combination {X Y : Cor k} {n m : ℕ}
-    (u : AlgebraicSimplex.smoothSiteObj k n ⟶ AlgebraicSimplex.smoothSiteObj k m)
+    (u : _root_.AlgebraicSimplex.smoothSiteObj k n ⟶ _root_.AlgebraicSimplex.smoothSiteObj k m)
     (α β : X ⟶ Y) :
     Cor.simplexExterior n (α - 3 • β) ≫
       (Cor.graphFunctor k).map (SmoothSite.productMap (𝟙 Y.toSmoothSite) u) =

@@ -5,13 +5,15 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.SmoothSiteNisnevichRepresentativeCechGerms
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.RepresentativeCechGerms
 public import Lean.Util.CollectAxioms
 
 /-! Original arbitrary-point colimit equality gives the literal Čech germ equality. -/
+
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 @[expose] public noncomputable section
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic
-open SmoothSite
+open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 universe u v
 namespace MotivicTest.SmoothSiteNisnevichRepresentativeCechGerms
 variable {S : Scheme.{u}} [IsAffine S] {X : SmoothSite S} {x : X.left}

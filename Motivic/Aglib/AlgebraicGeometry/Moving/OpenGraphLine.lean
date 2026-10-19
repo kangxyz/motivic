@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.DiagonalBoundary
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTwistedIdealMixedBoundary
-public import Motivic.Aglib.AlgebraicGeometry.ProductSectionNaturality
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Semilocal
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.MixedBoundary
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.Product.Naturality
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Semilocal
 /-! # The original diagonal ideal in the one-sided moving domain -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true

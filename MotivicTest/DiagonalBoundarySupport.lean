@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 
-import Motivic.Cohomology.Motivic.DiagonalBoundarySupport
+import Motivic.Cohomology.Diagonal.BoundarySupport
 import Lean.Util.CollectAxioms
 
 /-! Actual arbitrary-weight integral support and normalized endpoint evaluations. -/

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoPolynomialTransfer
+public import Motivic.Cohomology.WeightTwo.PolynomialTransfer
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -20,7 +20,10 @@ separability assumption is introduced by these consumers.
 
 open CategoryTheory AlgebraicGeometry Polynomial Motivic
 open Polynomial.TwoUnitPolynomialFamily
-open WeightOneFundamentalNorm WeightTwoCubicBoundary WeightTwoCorestriction
+open _root_.AlgebraicGeometry.Scheme.FiniteAlgebra
+open _root_.Motivic.WeightOneFundamentalNorm
+open WeightTwoCubicBoundary
+open WeightTwoCorestriction
 open WeightTwoPolynomialTransfer
 open scoped BigOperators
 

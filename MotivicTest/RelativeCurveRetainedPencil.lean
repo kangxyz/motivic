@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.RetainedPencilCompactIso
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Retained.CompactIso
 /-! # Literal compact-pencil endpoint transport on the original retained graph domain -/
 set_option linter.hashCommand false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry

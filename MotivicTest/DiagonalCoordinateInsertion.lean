@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.DiagonalCoordinateInsertion
+public import Motivic.Cohomology.Diagonal.CoordinateInsertion
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -17,7 +17,11 @@ test allows every pair of distinct positions and retains the full rational tuple
 
 @[expose] public noncomputable section
 
-open CategoryTheory AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open CategoryTheory
+open AlgebraicGeometry
+open Motivic
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
 open Motivic.DiagonalTopDegree Motivic.DiagonalCycleSymbols Motivic.DiagonalCoordinateInsertion
 
 universe u
@@ -42,7 +46,8 @@ theorem actual_steinberg [CharZero k] (q : ℕ) (a : Fin q → kˣ)
 
 open Lean in
 run_cmd do
-  for name in #[``coefficientMap_boundary, ``quotientMap, ``rawMap, ``rawMap_singularClass,
+  for name in #[``coefficientMap_boundary, ``_root_.Motivic.DiagonalCoordinateInsertion.quotientMap,
+      ``rawMap, ``rawMap_singularClass,
       ``factor_axis, ``varyingPair, ``rationalPair_varyingPair, ``varyingPair_axis,
       ``pairInsertion, ``pairInsertion_quotient, ``rawMap_pairSymbol, ``graphSymbol_steinberg,
       ``actual_insertion_boundary, ``actual_steinberg] do

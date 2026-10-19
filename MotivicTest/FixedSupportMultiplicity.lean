@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.LocalLength.FixedSupportMultiplicity
-public import Motivic.RingTheory.LocalLength.StrictPrimeDimension
+public import Motivic.Aglib.RingTheory.LocalLength.FixedSupportMultiplicity
+public import Motivic.Aglib.RingTheory.LocalLength.StrictPrimeDimension
 
 /-!
 # Consumers of fixed-support multiplicities and strict prime dimension

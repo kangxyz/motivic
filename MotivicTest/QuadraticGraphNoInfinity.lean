@@ -4,12 +4,12 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 module
-public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.QuadraticGraphNoInfinity
+public import Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.Quadratic.Infinity.GraphNoInfinity
 public import Lean
 
 /-! # The original graph and its whole scheme-theoretic boundary -/
 public noncomputable section
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry MvPolynomial
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry _root_.MvPolynomial
 open QuadraticIncidence QuadraticIncidence.InfinityChart
 universe u
 namespace MotivicTest.QuadraticGraphNoInfinity

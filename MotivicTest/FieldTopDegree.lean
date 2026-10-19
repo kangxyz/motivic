@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.FieldTopDegree
+public import Motivic.Cohomology.SuslinVoevodsky.FieldTopDegree
 public import Mathlib.Algebra.Field.ZMod
 public import Lean.Util.CollectAxioms
 
@@ -21,6 +21,7 @@ checks every declaration in the implementation and these consumers.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic Motivic.FieldTopDegree
 
 universe w u

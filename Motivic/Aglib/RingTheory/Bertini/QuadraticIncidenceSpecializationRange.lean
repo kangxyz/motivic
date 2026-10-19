@@ -8,7 +8,7 @@ Together with preservation of the literal parameter coordinates, this implies
 that every original incidence element lies in the specialized image.
 -/
 @[expose] public noncomputable section
-open MvPolynomial Module TensorProduct KaehlerDifferential
+open _root_.MvPolynomial Module TensorProduct KaehlerDifferential
 universe u v
 namespace QuadraticIncidence
 variable (k R A K E : Type u) [CommRing k] [CommRing R] [CommRing A]

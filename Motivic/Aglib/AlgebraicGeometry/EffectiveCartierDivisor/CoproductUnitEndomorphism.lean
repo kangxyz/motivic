@@ -8,8 +8,8 @@ module
 public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.CoordinateUnitOnOpen
 public import Aglib.AlgebraicGeometry.Modules.Restriction.Unit
 public import Aglib.AlgebraicGeometry.Modules.InternalHom.Gluing
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.CoproductRestriction
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.SectionDualFunctional
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.DisjointBoundary.Restriction
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Sections.DualFunctional
 
 /-! # Detecting exact unit endomorphisms on coproduct components
 

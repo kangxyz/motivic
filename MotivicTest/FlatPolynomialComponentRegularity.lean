@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.GraphPolynomialBlock
-public import Motivic.AlgebraicGeometry.SmoothSiteCoproducts
+public import Motivic.Aglib.AlgebraicGeometry.Graph.PolynomialBlock
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Coproducts
 public import MotivicTest.FiniteFlatSpanEndpoints
 
 /-!
@@ -25,6 +25,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Graph (exists_polynomialBlock polynomialParameter
+  polynomialScalar_graph)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open AlgebraicGeometry.FiniteTwoUnitPolynomialFamily
 open MotivicTest.FiniteFlatSpanEndpoints
@@ -32,17 +35,18 @@ open MotivicTest.FiniteFlatSpanEndpoints
 universe u
 
 namespace MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable {k : Type u} [Field k]
 
 /-- The actual relative product, with an arbitrary smooth relative base. -/
 abbrev relativeBase (X : SmoothSite (Spec (.of k))) :=
-  pullback X.hom (FiniteFlatCurveFamily.line k).hom
+  pullback X.hom (AffineLineField.line k).hom
 
 /-- The parameter is the actual second projection, not a chosen affine chart. -/
 abbrev parameter (X : SmoothSite (Spec (.of k))) :
     relativeBase X ⟶ Spec (.of (Polynomial k)) :=
-  pullback.snd X.hom (FiniteFlatCurveFamily.line k).hom
+  pullback.snd X.hom (AffineLineField.line k).hom
 
 /-- Whole-family flatness suffices, even with a disconnected smooth base. -/
 theorem relative_component_regular (X : SmoothSite (Spec (.of k)))
@@ -55,7 +59,7 @@ theorem relative_component_regular (X : SmoothSite (Spec (.of k)))
 
 /-- This base consists of two positive-dimensional components. -/
 abbrev twoLines : SmoothSite (Spec (.of ℚ)) :=
-  SmoothSite.coproduct (FiniteFlatCurveFamily.line ℚ) (FiniteFlatCurveFamily.line ℚ)
+  SmoothSite.coproduct (AffineLineField.line ℚ) (AffineLineField.line ℚ)
 
 /-- Extend the original monic nonreduced family to the genuine relative base. -/
 abbrev relativeDoubleFamily : Scheme :=
@@ -100,31 +104,34 @@ example : ¬ PreconnectedSpace (familyScheme twoDoubleSections) :=
 
 /-- The actual root-graph ambient local ring. -/
 abbrev rootGraphStalk (x : familyScheme twoDoubleSections) : CommRingCat :=
-  (pullback (rootMap twoDoubleSections ≫ (FiniteFlatCurveFamily.line ℚ).hom)
-    (FiniteFlatCurveFamily.line ℚ).hom).presheaf.stalk
-      (correspondenceGraph (rootMap twoDoubleSections) (FiniteFlatCurveFamily.line ℚ).hom x)
+  (pullback (rootMap twoDoubleSections ≫ (AffineLineField.line ℚ).hom)
+    (AffineLineField.line ℚ).hom).presheaf.stalk
+      (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph (rootMap twoDoubleSections)
+        (AffineLineField.line ℚ).hom x)
 
 /-- Direct all-degree graph-block consumer on the original nonreduced quotient.
 The root morphism is not assumed flat. -/
 theorem twoDouble_graph_block (a : ℚ) (x : familyScheme twoDoubleSections) :
     ∃ t : List (rootGraphStalk x),
       RingTheory.Sequence.IsRegular (rootGraphStalk x) t ∧
-      RingHom.ker ((correspondenceGraph (rootMap twoDoubleSections)
-        (FiniteFlatCurveFamily.line ℚ).hom).stalkMap x).hom = Ideal.ofList t ∧
+      RingHom.ker ((_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph (rootMap
+        twoDoubleSections)
+        (AffineLineField.line ℚ).hom).stalkMap x).hom = Ideal.ofList t ∧
       ∀ n : ℕ,
         Module.length (rootGraphStalk x)
-          ((Koszul.coefficientComplex (ModuleCat.of (rootGraphStalk x) (rootGraphStalk x))
-            (t ++ [FiniteFlatCurve.scalar (Graph.polynomialParameter
-              (rootMap twoDoubleSections) (FiniteFlatCurveFamily.line ℚ).hom
+          ((_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of (rootGraphStalk x)
+              (rootGraphStalk x))
+            (t ++ [FiniteFlatCurve.scalar (polynomialParameter
+              (rootMap twoDoubleSections) (AffineLineField.line ℚ).hom
               (projection twoDoubleSections)) a
-              (correspondenceGraph (rootMap twoDoubleSections)
-                (FiniteFlatCurveFamily.line ℚ).hom x)])).homology n) =
+              (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph (rootMap twoDoubleSections)
+                (AffineLineField.line ℚ).hom x)])).homology n) =
           Module.length ((familyScheme twoDoubleSections).presheaf.stalk x)
-            ((Koszul.coefficientComplex
+            ((_root_.ChainComplex.Koszul.coefficientComplex
               (ModuleCat.of ((familyScheme twoDoubleSections).presheaf.stalk x)
                 ((familyScheme twoDoubleSections).presheaf.stalk x))
               [FiniteFlatCurve.scalar (projection twoDoubleSections) a x]).homology n) :=
-  Graph.exists_polynomialBlock (rootMap twoDoubleSections) (FiniteFlatCurveFamily.line ℚ).hom
+  exists_polynomialBlock (rootMap twoDoubleSections) (AffineLineField.line ℚ).hom
     (projection twoDoubleSections) a x
 
 /-- On each original component the actual scalar left by graph elimination is regular. -/
@@ -133,26 +140,27 @@ theorem twoDouble_component_graph_scalar
     (x : (IntegralClosedSubscheme.pointClosure z.val).val.subscheme) :
     let j := (IntegralClosedSubscheme.pointClosure z.val).val.subschemeι
     IsSMulRegular ((IntegralClosedSubscheme.pointClosure z.val).val.subscheme.presheaf.stalk x)
-      ((correspondenceGraph (j ≫ rootMap twoDoubleSections)
-          (FiniteFlatCurveFamily.line ℚ).hom).stalkMap x
-        (FiniteFlatCurve.scalar (Graph.polynomialParameter (j ≫ rootMap twoDoubleSections)
-            (FiniteFlatCurveFamily.line ℚ).hom (j ≫ projection twoDoubleSections)) a
-          (correspondenceGraph (j ≫ rootMap twoDoubleSections)
-            (FiniteFlatCurveFamily.line ℚ).hom x))) := by
+      ((_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph (j ≫ rootMap twoDoubleSections)
+          (AffineLineField.line ℚ).hom).stalkMap x
+        (FiniteFlatCurve.scalar (polynomialParameter (j ≫ rootMap twoDoubleSections)
+            (AffineLineField.line ℚ).hom (j ≫ projection twoDoubleSections)) a
+          (_root_.AlgebraicGeometry.Scheme.Graph.correspondenceGraph (j ≫ rootMap twoDoubleSections)
+            (AffineLineField.line ℚ).hom x))) := by
   dsimp only
-  rw [Graph.polynomialScalar_graph]
+  rw [polynomialScalar_graph]
   have : Flat (projection twoDoubleSections) := projection_flat twoDoubleSections_monic
   exact flat_polynomial_component_scalar_regular (projection twoDoubleSections) z a x
 
 open Lean in
 run_cmd do
-  for name in #[``isDominant_pointClosure_of_generalizing,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.Hom.isDominant_pointClosure_of_generalizing,
       ``dominant_integral_affineScalar_isSMulRegular,
       ``flat_polynomial_component_scalar_regular,
       ``flat_polynomial_component_quotient_scalar_regular,
       ``relative_component_regular, ``relativeDouble_component_regular,
-      ``twoDouble_component_regular, ``Graph.polynomialScalar_graph,
-      ``Graph.polynomialBlock_length, ``Graph.exists_polynomialBlock,
+      ``twoDouble_component_regular, ``_root_.AlgebraicGeometry.Scheme.Graph.polynomialScalar_graph,
+      ``_root_.AlgebraicGeometry.Scheme.Graph.polynomialBlock_length,
+          ``_root_.AlgebraicGeometry.Scheme.Graph.exists_polynomialBlock,
       ``twoDouble_graph_block, ``twoDouble_component_graph_scalar] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

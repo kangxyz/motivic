@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.UniformRelativeSectionMaps
+import Motivic.Aglib.AlgebraicGeometry.Cohomology.Projective.SectionLifting.UniformRelativeSectionMaps
 /-! # One actual base shrink constructs all native relative boundary section pairs -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry

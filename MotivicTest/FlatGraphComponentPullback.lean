@@ -1,4 +1,4 @@
-import Motivic.AlgebraicGeometry.Correspondences.FlatGraphComponentPullback
+import Motivic.AlgebraicGeometry.Correspondences.Graph.Flat.ComponentPullback
 
 /-! Direct checks of disconnected flat-source graph pullback. -/
 

@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GenericFinitePushforward
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorImageGeneric
-public import Motivic.AlgebraicGeometry.Intersection.WholeFiberTorGeneric
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.GenericFinitePushforward
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Image.Generic
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Intersection.WholeFiberTorGeneric
 
 /-!
 # Actual exterior collision regrouping consumers
@@ -27,6 +27,8 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralClosedSubscheme IntegralCycle SmoothSite
+  isNoetherian_of_finiteType)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open scoped BigOperators
 

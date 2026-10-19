@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ConstantBoundarySourceChange
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Constant.BoundarySourceChange
 /-! Both whole boundary components commute with the original ambient source change. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

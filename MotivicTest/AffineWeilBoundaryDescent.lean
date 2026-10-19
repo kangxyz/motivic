@@ -5,20 +5,20 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.PresheafBoundaryAffineWeilDescent
-import all Motivic.Aglib.AlgebraicGeometry.AffineScalarPullback
-import all Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionScalar
-import all Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionWitness
-import all Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionActualPair
-import all Motivic.Aglib.AlgebraicGeometry.AffineScalarChart
-import all Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionNativePair
-import all Motivic.AlgebraicGeometry.Sites.FiniteEtaleAffineWeilRefinement
-import all Motivic.AlgebraicGeometry.SmoothSiteAffineWeilRefinement
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.RestrictionDifferenceRefinement
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarRefinementDifference
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarEtaleCorrection
-import all Motivic.Cohomology.A1.PresheafBoundaryFiniteSeparableDescent
-import all Motivic.Cohomology.A1.PresheafBoundaryAffineWeilDescent
+public import Motivic.Cohomology.A1.Boundary.Presheaf.AffineWeilDescent
+import all Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.ScalarPullback
+import all Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Scalar
+import all Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.Witness
+import all Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.ActualPair
+import all Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.ScalarChart
+import all Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.NativePair
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.AffineWeilRefinement
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.WeilRefinement
+import all Motivic.Transfers.Presheaf.RestrictionDifferenceRefinement
+import all Motivic.Transfers.Presheaf.FiniteScalarRefinementDifference
+import all Motivic.Transfers.Presheaf.FiniteScalarEtaleCorrection
+import all Motivic.Cohomology.A1.Boundary.Presheaf.FiniteSeparableDescent
+import all Motivic.Cohomology.A1.Boundary.Presheaf.AffineWeilDescent
 public import Lean.Util.CollectAxioms
 public import Batteries.Tactic.Lint
 public import Mathlib.Tactic.Linter.TextBased
@@ -36,13 +36,18 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
-open Motivic.PresheafWithTransfers Motivic.FiniteEtaleSite
-open Motivic.FiniteEtaleSite.OriginalPresheaf
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
+open _root_.Motivic.FiniteEtaleSite
+open OriginalPresheaf
 
 universe u
 
 namespace MotivicTest.AffineWeilBoundaryDescent
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType SmoothSite)
 
 variable {k L₁ L₂ A T : Type u} [Field k] [Field L₁] [Field L₂]
 variable [Algebra k L₁] [Algebra k L₂]
@@ -50,8 +55,8 @@ variable [Module.Finite k L₁] [Module.Finite k L₂]
 variable [Algebra.IsSeparable k L₁] [Algebra.IsSeparable k L₂]
 variable [CommRing A] [CommRing T] [Algebra k A] [Algebra A T]
 variable (X : SmoothSite (Spec (.of k))) (P : PresheafWithTransfers.{u + 1} k)
-variable (V : FiniteEtaleSite X.left)
-variable {W : FiniteEtaleSite (SmoothSite.a1Cylinder (.of k) X).left}
+variable (V : EtaleSeparatedFiniteType X.left)
+variable {W : EtaleSeparatedFiniteType (SmoothSite.a1Cylinder (.of k) X).left}
 variable (W₀ : SmoothSite (Spec (.of k)))
 
 
@@ -154,19 +159,19 @@ open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
   let sourceModules := #[
-    `Motivic.Aglib.AlgebraicGeometry.AffineScalarPullback,
-    `Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionScalar,
-    `Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionWitness,
-    `Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionActualPair,
-    `Motivic.Aglib.AlgebraicGeometry.AffineScalarChart,
-    `Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionNativePair,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleAffineWeilRefinement,
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineWeilRefinement,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.RestrictionDifferenceRefinement,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarRefinementDifference,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarEtaleCorrection,
-    `Motivic.Cohomology.A1.PresheafBoundaryFiniteSeparableDescent,
-    `Motivic.Cohomology.A1.PresheafBoundaryAffineWeilDescent]
+    `Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.ScalarPullback,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Scalar,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.Witness,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.ActualPair,
+    `Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.ScalarChart,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.NativePair,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.AffineWeilRefinement,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.WeilRefinement,
+    `Motivic.Transfers.Presheaf.RestrictionDifferenceRefinement,
+    `Motivic.Transfers.Presheaf.FiniteScalarRefinementDifference,
+    `Motivic.Transfers.Presheaf.FiniteScalarEtaleCorrection,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.FiniteSeparableDescent,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.AffineWeilDescent]
   for source in sourceModules do
     unless env.header.moduleNames.contains source do
       throwError "Missing exact production origin {source}."
@@ -200,19 +205,19 @@ run_cmd do
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
   let modules := #[
-    `Motivic.Aglib.AlgebraicGeometry.AffineScalarPullback,
-    `Motivic.Aglib.AlgebraicGeometry.AffineFiniteFreeWeilRestrictionScalar,
-    `Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionWitness,
-    `Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionActualPair,
-    `Motivic.Aglib.AlgebraicGeometry.AffineScalarChart,
-    `Motivic.Aglib.AlgebraicGeometry.AffineWeilRestrictionNativePair,
-    `Motivic.AlgebraicGeometry.Sites.FiniteEtaleAffineWeilRefinement,
-    `Motivic.AlgebraicGeometry.SmoothSiteAffineWeilRefinement,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.RestrictionDifferenceRefinement,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarRefinementDifference,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarEtaleCorrection,
-    `Motivic.Cohomology.A1.PresheafBoundaryFiniteSeparableDescent,
-    `Motivic.Cohomology.A1.PresheafBoundaryAffineWeilDescent,
+    `Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.ScalarPullback,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.FiniteFree.Scalar,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.Witness,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.ActualPair,
+    `Motivic.Aglib.AlgebraicGeometry.BaseChange.Affine.ScalarChart,
+    `Motivic.Aglib.AlgebraicGeometry.WeilRestriction.Affine.NativePair,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.AffineWeilRefinement,
+    `Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Affine.WeilRefinement,
+    `Motivic.Transfers.Presheaf.RestrictionDifferenceRefinement,
+    `Motivic.Transfers.Presheaf.FiniteScalarRefinementDifference,
+    `Motivic.Transfers.Presheaf.FiniteScalarEtaleCorrection,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.FiniteSeparableDescent,
+    `Motivic.Cohomology.A1.Boundary.Presheaf.AffineWeilDescent,
     `MotivicTest.AffineWeilBoundaryDescent]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules

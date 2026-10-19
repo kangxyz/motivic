@@ -5,12 +5,13 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarDescent
-public import Motivic.Aglib.AlgebraicGeometry.FiniteMarkedOpenDescent
-import all Motivic.AlgebraicGeometry.Correspondences.FiniteScalarTrace
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarTrace
-import all Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarDescent
-import all Motivic.Aglib.AlgebraicGeometry.FiniteMarkedOpenDescent
+public import Motivic.Transfers.Presheaf.FiniteScalarDescent
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Open.FiniteMarkedOpenDescent
+import all Motivic.AlgebraicGeometry.Correspondences.BaseChange.ScalarTrace
+import all Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.ScalarExtension.Finite.Basic
+import all Motivic.Transfers.Presheaf.FiniteScalarTrace
+import all Motivic.Transfers.Presheaf.FiniteScalarDescent
+import all Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Open.FiniteMarkedOpenDescent
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -30,8 +31,9 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.PresheafWithTransfers
+open  _root_.Motivic.PresheafWithTransfers
 
 universe v u
 
@@ -97,10 +99,11 @@ theorem originalLocalZero (P : PresheafWithTransfers.{v} k)
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.AlgebraicGeometry.Correspondences.FiniteScalarTrace,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarTrace,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarDescent,
-    `Motivic.Aglib.AlgebraicGeometry.FiniteMarkedOpenDescent]
+  let sourceModules := #[`Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.ScalarExtension.Finite.Basic,
+      `Motivic.AlgebraicGeometry.Correspondences.BaseChange.ScalarTrace,
+    `Motivic.Transfers.Presheaf.FiniteScalarTrace,
+    `Motivic.Transfers.Presheaf.FiniteScalarDescent,
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Open.FiniteMarkedOpenDescent]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -130,10 +133,12 @@ run_cmd do
   let options : Lean.Linter.LinterOptions := {
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
-  let modules := #[`Motivic.AlgebraicGeometry.Correspondences.FiniteScalarTrace,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarTrace,
-    `Motivic.AlgebraicGeometry.PresheavesWithTransfers.FiniteScalarDescent,
-    `Motivic.Aglib.AlgebraicGeometry.FiniteMarkedOpenDescent, `MotivicTest.FiniteScalarDescent]
+  let modules := #[`Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.ScalarExtension.Finite.Basic,
+      `Motivic.AlgebraicGeometry.Correspondences.BaseChange.ScalarTrace,
+    `Motivic.Transfers.Presheaf.FiniteScalarTrace,
+    `Motivic.Transfers.Presheaf.FiniteScalarDescent,
+    `Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Open.FiniteMarkedOpenDescent,
+        `MotivicTest.FiniteScalarDescent]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules
   let filenameErrors ← modulesOSForbidden options modules

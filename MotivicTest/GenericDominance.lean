@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.GenericDominance
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Generalizing.GenericPoints
 public import Motivic.Aglib.RingTheory.Ideal.GoingDown.MinimalPrimes
 public import Mathlib.Algebra.DualNumber
 public meta import Lean.Util.CollectAxioms
@@ -20,7 +20,7 @@ disconnected source rather than assuming every source scheme irreducible.
 
 @[expose] public section
 
-open CategoryTheory AlgebraicGeometry Motivic
+open CategoryTheory AlgebraicGeometry
 
 universe u v
 
@@ -61,12 +61,13 @@ theorem finite_flat_component_surjective (R S : Type u) [CommRing R] [IsDomain R
     [CommRing S] [Algebra R S] [Module.Finite R S] [Module.Flat R S]
     (x : genericPoints (Spec (.of S))) :
     Function.Surjective
-      ((IntegralClosedSubscheme.pointClosure x.val).val.subschemeι ≫
+      ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure x.val).val.subschemeι ≫
         Spec.map (CommRingCat.ofHom (algebraMap R S))) := by
   have : IsFinite (Spec.map (CommRingCat.ofHom (algebraMap R S))) := by
     rw [IsFinite.SpecMap_iff]
     exact RingHom.finite_algebraMap.mpr inferInstance
-  apply surjective_pointClosure_of_finite_generalizing _ _ x.val x.property
+  apply _root_.AlgebraicGeometry.Scheme.Hom.surjective_pointClosure_of_finite_generalizing _ _ x.val
+      x.property
   change GeneralizingMap (PrimeSpectrum.comap (algebraMap R S))
   exact Algebra.HasGoingDown.iff_generalizingMap_primeSpectrumComap.mp inferInstance
 
@@ -74,7 +75,7 @@ theorem finite_flat_component_surjective (R S : Type u) [CommRing R] [IsDomain R
 theorem product_component_surjective (R : Type u) [CommRing R] [IsDomain R]
     (x : genericPoints (Spec (.of (R × R)))) :
     Function.Surjective
-      ((IntegralClosedSubscheme.pointClosure x.val).val.subschemeι ≫
+      ((_root_.AlgebraicGeometry.Scheme.IntegralClosedSubscheme.pointClosure x.val).val.subschemeι ≫
         Spec.map (CommRingCat.ofHom (algebraMap R (R × R)))) :=
   finite_flat_component_surjective R (R × R) x
 

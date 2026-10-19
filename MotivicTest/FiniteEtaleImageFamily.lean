@@ -5,12 +5,12 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleImageFamily
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.ImageFamily
 public import Lean.Util.CollectAxioms
 
 /-! The family adjunction uses the original ordinary sheaf functors. -/
 @[expose] public noncomputable section
-open CategoryTheory AlgebraicGeometry Motivic.FiniteEtaleSite
+open CategoryTheory AlgebraicGeometry _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 universe u
 namespace MotivicTest.FiniteEtaleImageFamily
 variable {I : Type u} {X : Scheme.{u}} (S : I → Scheme.{u}) (b : ∀ i, S i ⟶ X)
@@ -21,7 +21,9 @@ def actual_family_adjunction : familyInverseImage S b ⊣ productDirectImage S b
 
 open Lean in
 run_cmd do
-  for name in #[``actual_family_adjunction, ``familyImageHomEquiv, ``familyImageAdjunction] do
+  for name in #[``actual_family_adjunction,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.familyImageHomEquiv,
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.familyImageAdjunction] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

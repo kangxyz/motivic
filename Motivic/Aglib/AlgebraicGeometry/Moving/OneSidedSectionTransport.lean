@@ -7,7 +7,7 @@ module
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OneSidedSerreSections
 public import Motivic.Aglib.AlgebraicGeometry.Moving.OpenGraphLine
 public import Motivic.Aglib.AlgebraicGeometry.Moving.ZeroSupportOpen
-public import Motivic.Aglib.AlgebraicGeometry.PolynomialPencilPrecompIso
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Pencils.Polynomial.PrecompIso
 /-! # The actual Serre family in the retained graph domain -/
 @[expose] public noncomputable section
 set_option backward.defeqAttrib.useBackward true

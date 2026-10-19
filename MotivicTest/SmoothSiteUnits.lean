@@ -5,16 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.SmoothSiteUnits
-public import Motivic.AlgebraicGeometry.SmoothSiteUnitComplex
-public import Motivic.AlgebraicGeometry.SmoothSiteIntegralAffineSheafIso
-public import Motivic.Cohomology.Motivic.Hypercohomology
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Units.Basic
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Units.UnitComplex
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Sheaves.IntegralAffineSheafIso
+public import Motivic.Cohomology.SuslinVoevodsky.Hypercohomology
 public import Lean.Util.CollectAxioms
 
 /-! # Actual ordinary Gm in the motivic coefficient category -/
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u
@@ -30,30 +31,34 @@ def genuineGm :
 
 open Lean in
 run_cmd do
-  for name in #[``Nisnevich.subcanonical, ``globalFunctionsRepresentable,
-      ``globalFunctions_isSheaf, ``SmoothSite.unitsPresheaf_isSheaf,
-      ``SmoothSite.unitsSheafSections, ``SmoothSite.largeUnitsPresheaf_isSheaf,
-      ``genuineGm, ``AlgebraicSimplex.constant_units_bijective,
-      ``AlgebraicSimplex.constantUnitsEquiv_pullback,
-      ``AlgebraicSimplex.constantUnitSimplicialIso,
-      ``AlgebraicSimplex.unitChainHomotopyEquiv,
-      ``AlgebraicSimplex.unitChainHomotopyEquiv_quasiIso,
-      ``AlgebraicSimplex.schemeUnitChainHomotopyEquiv,
-      ``AlgebraicSimplex.affineRelativeUnitChainHomotopyEquiv,
-      ``AlgebraicSimplex.isIso_units_structureMap,
-      ``AlgebraicSimplex.isIso_units_affineRelativeProjection,
-      ``AlgebraicSimplex.isIso_units_affineSchemeProjection,
-      ``SmoothSite.isIso_of_affine_app,
-      ``SmoothSite.integralAffineCover,
-      ``SmoothSite.isIntegral_integralAffineCover_obj,
-      ``SmoothSite.isIso_of_integral_affine_app,
-      ``SmoothSite.integralAffineInclusion_isCoverDense,
-      ``SmoothSite.extendIntegralAffineHom,
-      ``SmoothSite.isIso_unitsSimplexPullback,
-      ``SmoothSite.simplexUnitsMap, ``SmoothSite.unitSimplicialSheaf,
-      ``SmoothSite.constantUnitSimplicialSheafIso,
-      ``SmoothSite.unitSingularSheafHomotopyEquiv,
-      ``SmoothSite.unitSingularSheafHomotopyEquiv_quasiIso] do
+  for name in #[``_root_.AlgebraicGeometry.Nisnevich.subcanonical,
+      ``_root_.AlgebraicGeometry.Scheme.globalFunctionsRepresentable,
+      ``_root_.AlgebraicGeometry.Scheme.globalFunctions_isSheaf,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitsPresheaf_isSheaf,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitsSheafSections,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.largeUnitsPresheaf_isSheaf,
+      ``genuineGm, ``_root_.AlgebraicSimplex.constant_units_bijective,
+      ``_root_.AlgebraicSimplex.constantUnitsEquiv_pullback,
+      ``_root_.AlgebraicSimplex.constantUnitSimplicialIso,
+      ``_root_.AlgebraicSimplex.unitChainHomotopyEquiv,
+      ``_root_.AlgebraicSimplex.unitChainHomotopyEquiv_quasiIso,
+      ``_root_.AlgebraicSimplex.schemeUnitChainHomotopyEquiv,
+      ``_root_.AlgebraicSimplex.affineRelativeUnitChainHomotopyEquiv,
+      ``_root_.AlgebraicSimplex.isIso_units_structureMap,
+      ``_root_.AlgebraicSimplex.isIso_units_affineRelativeProjection,
+      ``_root_.AlgebraicSimplex.isIso_units_affineSchemeProjection,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isIso_of_affine_app,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.integralAffineCover,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isIntegral_integralAffineCover_obj,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isIso_of_integral_affine_app,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.integralAffineInclusion_isCoverDense,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.extendIntegralAffineHom,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.isIso_unitsSimplexPullback,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.simplexUnitsMap,
+          ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitSimplicialSheaf,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.constantUnitSimplicialSheafIso,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitSingularSheafHomotopyEquiv,
+      ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitSingularSheafHomotopyEquiv_quasiIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

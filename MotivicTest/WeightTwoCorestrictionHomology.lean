@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionHomology
+public import Motivic.Cohomology.WeightTwo.CorestrictionHomology
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,7 +18,11 @@ homology group. No boundary preservation hypothesis or replacement group is used
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite Motivic
-open WeightTwoCorestriction PresheafWithTransfers WeightOnePointNorm WeightOneBoundaryNorm
+open WeightTwoCorestriction
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
+open WeightOnePointNorm
+open WeightOneBoundaryNorm
 
 universe u
 

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FiniteFlat
-public import Motivic.AlgebraicGeometry.Correspondences.FiniteFlatCurveFamily
+public import Motivic.AlgebraicGeometry.Correspondences.Spans.FiniteFlat.Basic
+public import Motivic.AlgebraicGeometry.Correspondences.Spans.FiniteFlat.CurveFamily
 
 /-!
 # Consumers of full finite-flat correspondence assembly
@@ -23,6 +23,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.FiniteFlatCorrespondence
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 variable {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
   {D : Scheme.{u}} (f : D ⟶ X.left) [IsFinite f] [Flat f]
@@ -35,13 +37,14 @@ theorem wholeSpanCycle :
       (Cor.ofFiniteFlatSpan f g h) =
       letI : IsFinite (pullback.lift f g h) :=
         Motivic.FiniteFlatCorrespondence.isFinite_productMap f _ (pullback.lift_fst _ _ _)
-      letI : IsNoetherian D := isNoetherian_of_finiteType f
-      IntegralCycle.finitePushforward (pullback.lift f g h) (fundamentalCycle D) :=
+      letI : IsNoetherian D := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType f
+      IntegralCycle.finitePushforward (pullback.lift f g h)
+          (_root_.AlgebraicGeometry.Scheme.fundamentalCycle D) :=
   Cor.toIntegralCycle_ofFiniteFlatSpan f g h
 
 /-- The zero case uses an actually empty support, with the same original maps. -/
 theorem emptySpan [IsEmpty D] : Cor.ofFiniteFlatSpan f g h = 0 := by
-  have : IsNoetherian D := isNoetherian_of_finiteType f
+  have : IsNoetherian D := _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType f
   have : IsFinite (pullback.lift f g h) :=
     Motivic.FiniteFlatCorrespondence.isFinite_productMap f _ (pullback.lift_fst _ _ _)
   exact Motivic.FiniteFlatCorrespondence.fundamentalCorrespondence_eq_zero_of_isEmpty f _ _
@@ -52,12 +55,12 @@ theorem agreesWithIrreducibleClosedAdapter [IrreducibleSpace X.left] [IsNoetheri
     (j : D ⟶ pullback X.hom Y.hom) [IsClosedImmersion j]
     (hj : j ≫ pullback.fst X.hom Y.hom = f)
     (hdom : ∀ z : genericPoints D,
-      Function.Surjective ((FiniteFlatCurveFamily.componentSupport z).val.subschemeι ≫ f)) :
+      Function.Surjective ((AffineLineField.componentSupport z).val.subschemeι ≫ f)) :
     Motivic.FiniteFlatCorrespondence.fundamentalCorrespondence f j hj =
-      FiniteFlatCurveFamily.genericFundamentalCorrespondence f j hj hdom := by
+      _root_.Motivic.FiniteFlatCurveFamily.genericFundamentalCorrespondence f j hj hdom := by
   apply FiniteCorrespondence.toIntegralCycle_injective
   rw [Motivic.FiniteFlatCorrespondence.toIntegralCycle_fundamentalCorrespondence,
-    FiniteFlatCurveFamily.toIntegralCycle_genericFundamentalCorrespondence]
+    _root_.Motivic.FiniteFlatCurveFamily.toIntegralCycle_genericFundamentalCorrespondence]
 
 open Lean in
 run_cmd do

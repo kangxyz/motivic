@@ -8,6 +8,7 @@ import re
 import sys
 import tomllib
 
+from generate_imports import check_generated
 from library_sources import client_sources, lean_imports, source_modules, strip_comments_and_strings
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -21,6 +22,8 @@ EXTERNAL_ROOTS = {'Mathlib', 'Aglib', 'Lean', 'Init', 'Std', 'Batteries',
                   'Aesop', 'Qq', 'ProofWidgets', 'ImportGraph', 'Plausible',
                   'LeanSearchClient', 'Cli'}
 OBSOLETE_ROOTS = {'Tests', 'R5Lab', 'R5LabTest', 'Quillen', 'QuillenTest'}
+PRODUCTION_COMPONENT = re.compile(r'[A-Z][A-Za-z0-9_]*')
+ROOT_NAMESPACE = re.compile(r'^[ \t]*namespace\s+_root_(?=\.|\s|$)', re.M)
 FORBIDDEN = re.compile(r'(?<![\w\'])\b(sorry|admit|axiom|unsafe|native_decide)\b(?![\w\'])')
 
 
@@ -102,9 +105,19 @@ def check_sources(root: Path) -> tuple[list[str], int]:
         for match in FORBIDDEN.finditer(clean):
             line = clean.count('\n', 0, match.start()) + 1
             errors.append(f'{path.relative_to(root)}:{line}: forbidden token {match[0]}')
+        for match in ROOT_NAMESPACE.finditer(clean):
+            line = clean.count('\n', 0, match.start()) + 1
+            errors.append(f'{path.relative_to(root)}:{line}: namespace _root_ does not escape '
+                          'enclosing namespaces; close and reopen namespaces instead')
         imports = set(lean_imports(source))
         graph[name] = imports & sources.keys()
         production = name == 'Motivic' or name.startswith('Motivic.')
+        candidate = name == 'Motivic.Aglib' or name.startswith('Motivic.Aglib.')
+        if production:
+            invalid = [part for part in name.split('.') if not PRODUCTION_COMPONENT.fullmatch(part)]
+            if invalid:
+                errors.append(f'{name}: production module components must use PascalCase '
+                              '([A-Z][A-Za-z0-9_]*): ' + ', '.join(invalid))
         for imported in sorted(imports):
             prefix = imported.split('.')[0]
             if prefix in client_roots:
@@ -116,6 +129,10 @@ def check_sources(root: Path) -> tuple[list[str], int]:
                     errors.append(f'{name}: missing local import {imported}')
                 if production and prefix == 'MotivicTest':
                     errors.append(f'{name}: production imports test {imported}')
+                if candidate and prefix == 'Motivic' and not (
+                        imported == 'Motivic.Aglib' or imported.startswith('Motivic.Aglib.')):
+                    errors.append(f'{name}: candidate imports host module {imported}; '
+                                  'local dependencies must stay within Motivic.Aglib')
             elif prefix not in EXTERNAL_ROOTS:
                 errors.append(f'{name}: unknown external import root {imported}')
     errors.extend(import_cycles(graph))
@@ -126,6 +143,10 @@ def check_sources(root: Path) -> tuple[list[str], int]:
         for match in FORBIDDEN.finditer(clean):
             line = clean.count('\n', 0, match.start()) + 1
             errors.append(f'{path.relative_to(root)}:{line}: forbidden token {match[0]}')
+        for match in ROOT_NAMESPACE.finditer(clean):
+            line = clean.count('\n', 0, match.start()) + 1
+            errors.append(f'{path.relative_to(root)}:{line}: namespace _root_ does not escape '
+                          'enclosing namespaces; close and reopen namespaces instead')
         imports = set(lean_imports(source))
         client_graph['client:' + name] = {'client:' + item for item in imports & clients.keys()}
         for imported in sorted(imports):
@@ -146,7 +167,7 @@ def check_sources(root: Path) -> tuple[list[str], int]:
 
 def check_repository(root: Path) -> tuple[list[str], int]:
     errors, count = check_sources(root)
-    return check_configuration(root) + errors, count
+    return check_configuration(root) + errors + check_generated(root), count
 
 
 def main() -> int:
@@ -163,7 +184,7 @@ def main() -> int:
         return 1
     client_count = len(client_sources(args.root.resolve()))
     print(f'Checked {count} Lean sources ({count - client_count} project, {client_count} downstream): '
-          'local imports, DAG, isolation, source tokens and pins.')
+          'local imports, DAG, generated facades, isolation, source tokens and pins.')
     print('External import paths require dependency resolution and Lean compilation; source checks do not prove them.')
     return 0
 

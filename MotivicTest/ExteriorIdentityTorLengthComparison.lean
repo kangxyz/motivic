@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.ExteriorIdentityTorLengthComparison
-public import Motivic.AlgebraicGeometry.Correspondences.SimplexExteriorGeometry
+public import Motivic.AlgebraicGeometry.Correspondences.Exterior.Identity.TorLengthComparison
+public import Motivic.Aglib.AlgebraicGeometry.Simplex.ExteriorGeometry
 
 /-! # Actual exterior Tor degrees and generic coefficients retain the whole local fiber -/
 
@@ -17,6 +17,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 universe u
 
 namespace MotivicTest.ExteriorIdentityTorLengthComparison
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 
 variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (A : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -33,7 +34,7 @@ example
       Module.length
         (((A.exteriorIdentityGenerator T).incidence
           (B.exteriorIdentityGenerator T)).presheaf.stalk w)
-        (Koszul.coefficientClosedFiber
+        (_root_.ChainComplex.Koszul.coefficientClosedFiber
           ((A.exteriorIncidenceOriginalCoordinate B T).stalkMap w).hom) :=
   A.exteriorIncidenceTor_length B T w n
 

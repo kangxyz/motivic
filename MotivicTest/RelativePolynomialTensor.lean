@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.RingTheory.TensorProduct.PolynomialRelations
+public import Motivic.Aglib.RingTheory.TensorProduct.PolynomialRelations
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -20,7 +20,7 @@ one, and two variables are also checked over the nonreduced ring `ZMod 4`.
 noncomputable section
 
 open scoped TensorProduct
-open Motivic.RelativePolynomialTensor
+open _root_.Algebra.TensorProduct.RelativePolynomial
 
 namespace Motivic.MotivicTest.RelativePolynomialTensor
 

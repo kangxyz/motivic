@@ -6,13 +6,13 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.RingTheory.Bertini.ScalarWholeFiberDifferentialIndependence
-public import Motivic.Aglib.RingTheory.FiniteScalarExtensionTrdeg
+public import Motivic.Aglib.RingTheory.TranscendenceDegree.FiniteScalarExtension
 
 /-! # Actual scalar quadratic projection is smooth along its whole selected fiber -/
 
 @[expose] public noncomputable section
 
-open Module TensorProduct KaehlerDifferential MvPolynomial AlgebraicGeometry
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial AlgebraicGeometry
 open scoped TensorProduct
 
 namespace QuadraticIncidence

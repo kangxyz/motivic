@@ -9,7 +9,7 @@ Their quotient supplies the relations used by the transcendence-degree bound;
 no relation or dimension assumption is supplied for that quotient.
 -/
 @[expose] public noncomputable section
-open MvPolynomial
+open _root_.MvPolynomial
 universe u v w
 namespace LinearIncidence
 variable {R : Type u} [CommRing R] {N : Type v} [Fintype N] {Q : Type w}

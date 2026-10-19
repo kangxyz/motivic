@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Bertini.QuadraticJetParameters
 import Lean.Util.CollectAxioms
 
 /-! # Direct quadratic jet consumers and foundation audit -/
-open MvPolynomial
+open _root_.MvPolynomial
 
 example (K : Type) [Field K] {σ : Type} [Finite σ]
     (a b : σ → K) (hab : a ≠ b) (c : K) (v : σ → K) :

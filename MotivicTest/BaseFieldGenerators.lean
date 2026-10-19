@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.BaseFieldGenerators
+public import Motivic.AlgebraicGeometry.Correspondences.Generators.BaseField
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -19,6 +19,7 @@ of the postcomposing correspondence.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 
 universe u

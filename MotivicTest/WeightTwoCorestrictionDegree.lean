@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoCorestrictionDegree
+public import Motivic.Cohomology.WeightTwo.CorestrictionDegree
 public import Lean.Util.CollectAxioms
 
 /-!
@@ -18,8 +18,12 @@ No separability or supplied homology-descent assumption is used.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open WeightTwoCorestriction PresheafWithTransfers WeightOnePointNorm
+open WeightTwoCorestriction
+open _root_.AlgebraicSimplex
+open _root_.Motivic.PresheafWithTransfers
+open WeightOnePointNorm
 open scoped Simplicial
 
 universe w u
@@ -80,7 +84,7 @@ end Derived
 
 open Lean in
 run_cmd do
-  for name in #[``finitePushforward_scalar_fundamentalCycle,
+  for name in #[``_root_.AlgebraicGeometry.Scheme.finitePushforward_scalar_fundamentalCycle,
       ``finitePushforward_fieldBaseChangeCycle, ``finitePushforward_fieldBaseChange,
       ``graphTransportIso_ambientMap, ``cyclePushforward_fieldBaseChange,
       ``pointPushforward_baseTorusCycleFieldChange,

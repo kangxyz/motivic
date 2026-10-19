@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.NormalLaurentPolynomialPresentation
+public import Motivic.Aglib.RingTheory.Polynomial.Normal.LaurentPresentation
 public import Lean.Util.CollectAxioms
 
 /-! # Direct tests of the normal-base Laurent quotient presentation -/

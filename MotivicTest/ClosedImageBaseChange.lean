@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.ClosedImageBaseChange
-public import Motivic.Aglib.AlgebraicGeometry.Cycles.FinitePushforwardInjective
+public import Motivic.Aglib.AlgebraicGeometry.Morphisms.ClosedImmersion.BaseChange.ClosedImageBaseChange
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Pushforward.Finite.Injective
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -35,11 +35,11 @@ example : inclusion x y u g hg j ≫ pullback.fst u y =
 example [IsClosedImmersion j] : IsClosedImmersion (inclusion x y u g hg j) :=
   inferInstance
 
-example [IsClosedImmersion j] (a b : Motivic.IntegralCycle
+example [IsClosedImmersion j] (a b : Scheme.IntegralCycle
     (pullback (j ≫ pullback.fst x y) g))
-    (h : Motivic.IntegralCycle.finitePushforward (inclusion x y u g hg j) a =
-      Motivic.IntegralCycle.finitePushforward (inclusion x y u g hg j) b) : a = b :=
-  Motivic.IntegralCycle.finitePushforward_injective_of_isClosedImmersion _ h
+    (h : Scheme.IntegralCycle.finitePushforward (inclusion x y u g hg j) a =
+      Scheme.IntegralCycle.finitePushforward (inclusion x y u g hg j) b) : a = b :=
+  Scheme.IntegralCycle.finitePushforward_injective_of_isClosedImmersion _ h
 
 example {X Y U C : Scheme.{0}} (x : X ⟶ Spec (.of (ZMod 4)))
     (y : Y ⟶ Spec (.of (ZMod 4))) (g : U ⟶ X)

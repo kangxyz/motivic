@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodRetainedProductPullback
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.Retained.ProductPullback
 /-! # Direct consumer of the original retained coefficient product comparison -/
 open CategoryTheory AlgebraicGeometry
 open Scheme.Modules Scheme.Modules.Invertible

@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulPairTor
-public import Motivic.Algebra.Homology.KoszulPairIdeal
+public import Motivic.Aglib.Algebra.Homology.Koszul.Pair.Tor
+public import Motivic.Aglib.Algebra.Homology.Koszul.Pair.Ideal
 
 /-!
 # Consumers of the actual Koszul resolution and Tor comparison

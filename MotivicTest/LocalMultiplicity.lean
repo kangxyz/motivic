@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-import Motivic.RingTheory.LocalLength.KoszulPairMultiplicity
+import Motivic.Aglib.RingTheory.LocalLength.KoszulPairMultiplicity
 
 /-!
 # Local multiplicity consumers

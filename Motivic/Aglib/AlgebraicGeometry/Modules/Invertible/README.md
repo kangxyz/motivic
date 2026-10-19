@@ -1,6 +1,6 @@
 # Semilocal and finite-fibre line-bundle trivializations
 
-`Semilocal.lean` uses the existing actual module-sheaf definition
+`Frames/Semilocal.lean` uses the existing actual module-sheaf definition
 `Scheme.Modules.Invertible.IsLocallyRankOne` and Mathlib's algebraic
 Picard/semilocal basis theorems. Its results are:
 
@@ -16,7 +16,7 @@ Picard/semilocal basis theorems. Its results are:
   global sections are finite projective, and their maximal residue tensors
   have dimension one, so Mathlib's existing semilocal basis theorem applies.
 
-`FiniteFiber.lean` transports these isomorphisms through the canonical affine
+`Frames/FiniteFiber.lean` transports these isomorphisms through the canonical affine
 comparison. `finiteAffineLineBundle_trivial` applies to an affine scheme with
 finitely many topological points. `finiteFiberLineBundle_trivial` therefore
 trivializes any line bundle on the entire actual scheme-theoretic fibre of a
@@ -29,9 +29,8 @@ Mathlib. The affine and field-fibre comparisons come from pinned Aglib.
 The source statement and its comment about Mathlib's finite-flat strengthening
 were reviewed on 2026-10-16.
 
-These theorems do not spread a fibre trivialization to an open neighborhood,
-trivialize a line bundle on an arbitrary proper curve fibre, construct a
-standard-triple splitting, or supply an A¹-homotopy. Finite-set localization
+These theorems do not spread a fibre trivialization to an open neighborhood
+or trivialize a line bundle on an arbitrary proper curve fibre. Finite-set localization
 and descent to an open neighborhood, followed by closed-image base shrinking,
 remain separate steps. In the relative-curve application, the finite scheme is
 the boundary/support scheme; it is not the compactified positive-dimensional
@@ -40,24 +39,44 @@ is not trivial.
 
 ## Actual dual twisted ideals and evaluation
 
-`DualTwistedIdeal.lean` constructs the literal isomorphism
+`DualTensor/Basic.lean` constructs the literal isomorphism
 `I ⊗ dual(T) ≅ dual(T ⊗ dual(I))`, and its three-factor version, from
-native evaluation, associativity, and symmetry. `TensorLineBundleSections.lean`
-retains the original maps on pure tensors. `DualUnitFrame.lean` and
-`RankOneReciprocity.lean` supply the actual local dual frame evaluation and
+native evaluation, associativity, and symmetry. `Sections/TensorLineBundleSections.lean`
+retains the original maps on pure tensors. `Frames/DualUnit.lean` and
+`Sections/RankOneReciprocity.lean` supply the actual local dual frame evaluation and
 `d(x) • y = d(y) • x` on arbitrary open sections, without global triviality.
-`DualTwistedIdealPairing.lean` computes the same global isomorphism in those
-frames; `DualTwistedIdealPairingLaw.lean` proves its global pairing law by
-sheaf separatedness. `DualTwistedIdealEvaluation.lean` specializes the pairing
+`DualTensor/Pairing.lean` computes the same global isomorphism in those
+frames; `DualTensor/PairingLaw.lean` proves its global pairing law by
+sheaf separatedness. `DualTensor/Evaluation.lean` specializes the pairing
 to the original canonical divisor section, not a replacement section.
-`DualTwistedIdealProduct.lean` combines these into unconditional original
+`DualTensor/Product.lean` combines these into unconditional original
 section and three-factor product identities. Thus subsequent boundary
 restriction retains the actual global line isomorphism and its evaluation.
 
 ## Boundary-framed data
 
-[BoundaryFramed](BoundaryFramed.lean) and [BoundaryFramedTensor](BoundaryFramedTensor.lean)
+[BoundaryFramed](BoundaryFramed/Basic.lean) and [BoundaryFramedTensor](BoundaryFramed/Tensor.lean)
 retain actual line bundles, boundary trivializations and their tensor maps.
-The [divisor-pair consumer](../../RelativeCurve/BoundaryFramedDivisorPairs.lean)
+The [divisor-pair consumer](../../RelativeCurve/Sections/DivisorPairs/BoundaryFramed.lean)
 uses this concrete framing. General relative-Picard comparison, H0 and norm
 constructions remain outside this interface.
+
+## Prescribed frames and whole zero support
+
+| Exact import | Interface and retained boundary |
+| --- | --- |
+| `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.FiniteFreePrincipal` | A produced frame on the literal finite-free principal base change around the chosen target point. |
+| `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.SupportRegularity` | Global monicity from monicity on an open containing the entire original zero support. |
+| `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.ZeroLocus.UnitOpen` | The actual unit domain of the original functional and factorization of maps on which its pullback is invertible. |
+| `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.FunctionalCoordinate` | Exact ideal-functional coordinates in the same prescribed affine frame extension. |
+| `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.RationalUnitGluing` | Gluing original representatives of one rational germ on their unchanged union, with actual boundary values. |
+
+The finite-source frame interface does not impose source-domain or reducedness
+hypotheses. The zero-support regularity bridge uses the original chart
+coefficient's unit opens; finite flatness of a zero scheme alone is not a
+regularity proof. Prescribed coordinates keep the ideal-functional direction,
+not a substituted dual-line coordinate.
+
+Rational-unit gluing retains the caller's original local unit/germ equations,
+boundary equations and coverage. The boundary source may be nonreduced; its
+value-one equation is equality of actual sections, not residue values.

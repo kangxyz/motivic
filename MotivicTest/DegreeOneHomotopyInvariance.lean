@@ -5,9 +5,9 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.A1.DegreeOne
-import all Motivic.Cohomology.A1.StrictA1DegreeInduction
-import all Motivic.Cohomology.A1.DegreeOne
+public import Motivic.Cohomology.A1.StrictInvariance.DegreeOne
+import all Motivic.Cohomology.A1.StrictInvariance.DegreeInduction
+import all Motivic.Cohomology.A1.StrictInvariance.DegreeOne
 import Mathlib.Tactic.Linter.TextBased
 import Lean.Util.CollectAxioms
 import Batteries.Tactic.Lint
@@ -21,6 +21,7 @@ on the independent higher-degree Cartier puncture-monomorphism family.
 -/
 
 public noncomputable section
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory AlgebraicGeometry Motivic
 universe u
 namespace MotivicTest.DegreeOneHomotopyInvariance
@@ -34,7 +35,7 @@ puncture monomorphism or positive-degree invariance premise. -/
 theorem original_H1_projection_isIso (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) (X : SmoothSite (Spec (.of k))) :
     IsIso (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 1) X) :=
   SheafWithTransfers.degreeOne_isInvariant F hF X
@@ -43,7 +44,7 @@ theorem original_H1_projection_isIso (F : SheafWithTransfers.{u + 1} k)
 theorem original_H1_projection_bijective (F : SheafWithTransfers.{u + 1} k)
     (hF : F.obj.IsA1Invariant) (X : SmoothSite (Spec (.of k))) :
     Function.Bijective (A1.projectionPullback (.of k)
-      (SheafCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
         (SmoothSite.nisnevichTopology (Spec (.of k)))
           ((SheafWithTransfers.toSheaf k).obj F) 1) X) :=
   (ConcreteCategory.isIso_iff_bijective _).mp (original_H1_projection_isIso k F hF X)
@@ -51,8 +52,8 @@ theorem original_H1_projection_bijective (F : SheafWithTransfers.{u + 1} k)
 open Lean Batteries.Tactic.Lint in
 run_cmd do
   let env ← getEnv
-  let sourceModules := #[`Motivic.Cohomology.A1.StrictA1DegreeInduction,
-    `Motivic.Cohomology.A1.DegreeOne]
+  let sourceModules := #[`Motivic.Cohomology.A1.StrictInvariance.DegreeInduction,
+    `Motivic.Cohomology.A1.StrictInvariance.DegreeOne]
   let modules := env.header.moduleNames.map (sourceModules.contains ·)
   let declarations := env.constants.map₁.fold
     (init := ← Lean.Elab.Command.liftCoreM getDeclsInCurrModule) fun declarations name _ =>
@@ -82,8 +83,8 @@ run_cmd do
   let options : Lean.Linter.LinterOptions := {
     toOptions := ← getOptions
     linterSets := (Lean.Linter.linterSetsExt.getState (← getEnv)).merged }
-  let modules := #[`Motivic.Cohomology.A1.StrictA1DegreeInduction,
-    `Motivic.Cohomology.A1.DegreeOne, `MotivicTest.DegreeOneHomotopyInvariance]
+  let modules := #[`Motivic.Cohomology.A1.StrictInvariance.DegreeInduction,
+    `Motivic.Cohomology.A1.StrictInvariance.DegreeOne, `MotivicTest.DegreeOneHomotopyInvariance]
   let errors ← lintModules options #[] modules .humanReadable false
   let casingErrors ← modulesNotUpperCamelCase options modules
   let filenameErrors ← modulesOSForbidden options modules

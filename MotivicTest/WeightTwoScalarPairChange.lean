@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Cohomology.Motivic.WeightTwoScalarPairChange
+public import Motivic.Cohomology.WeightTwo.ScalarPairChange
 public import Lean.Util.CollectAxioms
 
 /-!

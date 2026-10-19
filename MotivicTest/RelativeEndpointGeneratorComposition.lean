@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.RelativeEndpointGeneratorComposition
+public import Motivic.AlgebraicGeometry.Correspondences.Endpoints.Relative.GeneratorComposition
 public import MotivicTest.RelativeFiniteFlatSpecialization
 
 /-!
@@ -23,37 +23,40 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle fundamentalCycle)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.RelativeEndpointDiagram MotivicTest.FlatPolynomialComponentRegularity
+open _root_.AlgebraicGeometry.Scheme.Products.RelativeEndpointDiagram
+open MotivicTest.FlatPolynomialComponentRegularity
 
 namespace MotivicTest.RelativeEndpointGeneratorComposition
+open _root_.AlgebraicGeometry.Scheme.SmoothSite
 
 local instance : IsNoetherian ((𝟭 Scheme).obj twoLines.left) :=
   inferInstanceAs (IsNoetherian twoLines.left)
 
 variable (G : FiniteCorrespondenceGenerator
-  (relativeLineHom twoLines.hom) (FiniteFlatCurveFamily.line ℚ).hom)
+  (relativeLineHom twoLines.hom) (AffineLineField.line ℚ).hom)
 
 /-- A genuine arbitrary integral support chooses exactly one of the source components. -/
 theorem actual_unique_component :
     ∃! C : Set twoLines.left, C ∈ irreducibleComponents twoLines.left ∧
       Set.range (G.projection ≫ pullback.fst twoLines.hom
-        (FiniteFlatCurveFamily.line ℚ).hom) ⊆ C :=
+        (AffineLineField.line ℚ).hom) ⊆ C :=
   G.existsUnique_sourceComponent_of_integral (X := twoLines)
-    (Y := relativeLineSite twoLines) (Z := FiniteFlatCurveFamily.line ℚ)
-    (pullback.fst twoLines.hom (FiniteFlatCurveFamily.line ℚ).hom)
+    (Y := relativeLineSite twoLines) (Z := AffineLineField.line ℚ)
+    (pullback.fst twoLines.hom (AffineLineField.line ℚ).hom)
 
 /-- The actual categorical graph restriction retains the whole original support fiber. -/
 theorem actual_generator_endpoint (a : ℚ) :
     FiniteCorrespondence.toIntegralCycle (f := twoLines.hom)
-      (g := (FiniteFlatCurveFamily.line ℚ).hom)
+      (g := (AffineLineField.line ℚ).hom)
       ((Cor.graphFunctor ℚ).map (endpointMorphism twoLines a) ≫
-        (show Cor.mk (relativeLineSite twoLines) ⟶ Cor.mk (FiniteFlatCurveFamily.line ℚ)
+        (show Cor.mk (relativeLineSite twoLines) ⟶ Cor.mk (AffineLineField.line ℚ)
           from G.cycle)) =
       IntegralCycle.finitePushforward
         (G.graphPullbackMap (endpoint twoLines.hom a) (endpoint_base twoLines.hom a))
         (fundamentalCycle (G.graphPullback (endpoint twoLines.hom a))) :=
-  toIntegralCycle_graph_endpoint_generator twoLines (FiniteFlatCurveFamily.line ℚ) a G
+  toIntegralCycle_graph_endpoint_generator twoLines (AffineLineField.line ℚ) a G
 
 example : ¬ AlgebraicGeometry.IsReduced relativeDoubleFamily :=
   MotivicTest.RelativeFiniteFlatSpecialization.relativeDoubleFamily_not_reduced

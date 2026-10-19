@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.Algebra.Homology.KoszulTorRegularBlockReduction
+public import Motivic.Aglib.Algebra.Homology.Koszul.RegularBlock.TorReduction
 
 /-!
 # Consumers of actual Tor regular-block reduction
@@ -18,7 +18,7 @@ regularity assumption on the remaining coefficient equations is supplied.
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.MonoidalCategory Motivic
+open CategoryTheory CategoryTheory.MonoidalCategory
 
 universe u
 
@@ -43,8 +43,10 @@ example :
           ((ModuleCat.restrictScalars σ).obj (ModuleCat.of C C))).obj
             ((ModuleCat.restrictScalars (g.comp f)).obj (ModuleCat.of Q Q))) =
       Module.length D
-        ((Koszul.coefficientComplex (ModuleCat.of D D) ((s.map σ).map c)).homology n) :=
-  Koszul.regularLeadingBlockTor_length f g hf hg σ c hσ hc t s ht hft hs hgs hct hCt n
+        ((_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of D D) ((s.map σ).map
+            c)).homology n) :=
+  _root_.ChainComplex.Koszul.regularLeadingBlockTor_length f g hf hg σ c hσ hc t s ht hft hs hgs
+      hct hCt n
 
 example (hzero : (s.map σ).map c = [0]) :
     Module.length R
@@ -52,8 +54,9 @@ example (hzero : (s.map σ).map c = [0]) :
           ((ModuleCat.restrictScalars σ).obj (ModuleCat.of C C))).obj
             ((ModuleCat.restrictScalars (g.comp f)).obj (ModuleCat.of Q Q))) =
       Module.length D
-        ((Koszul.coefficientComplex (ModuleCat.of D D) [0]).homology n) := by
+        ((_root_.ChainComplex.Koszul.coefficientComplex (ModuleCat.of D D) [0]).homology n) := by
   rw [← hzero]
-  exact Koszul.regularLeadingBlockTor_length f g hf hg σ c hσ hc t s ht hft hs hgs hct hCt n
+  exact _root_.ChainComplex.Koszul.regularLeadingBlockTor_length f g hf hg σ c hσ hc t s ht hft
+      hs hgs hct hCt n
 
 end MotivicTest.KoszulTorRegularBlockReduction

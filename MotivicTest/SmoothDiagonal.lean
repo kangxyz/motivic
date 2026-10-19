@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Diagonal.Smooth
+public import Motivic.Aglib.AlgebraicGeometry.Diagonal.Smooth
 public import Mathlib.Data.ZMod.Basic
 
 /-!
@@ -24,6 +24,7 @@ open RingTheory.Sequence
 universe u
 
 namespace Motivic.MotivicTest.SmoothDiagonal
+open _root_.AlgebraicGeometry.Scheme
 
 /-- The literal diagonal stalk kernel of an arbitrary smooth scheme morphism is regular. -/
 theorem arbitraryBase {X Y : Scheme.{u}} (f : X ⟶ Y) [Smooth f] (x : X) :

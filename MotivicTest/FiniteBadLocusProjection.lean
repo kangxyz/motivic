@@ -3,7 +3,7 @@ import Motivic.Aglib.RingTheory.Etale.FiniteBadLocusProjection
 import Lean.Util.CollectAxioms
 
 /-! # Actual same-coordinate finite/smooth bad-locus supplier and foundation audit -/
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 
 example (k R : Type) [Field k] [Infinite k] [CommRing R] [IsDomain R]
     [Algebra k R] [Algebra.Smooth k R] (I : Ideal R) (hI : I ≠ ⊥) (d : ℕ)

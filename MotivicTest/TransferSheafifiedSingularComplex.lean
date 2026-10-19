@@ -5,15 +5,16 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.SheafifiedSingularComplex
+public import Motivic.Transfers.SingularComplex.Sheafification
 public import Lean.Util.CollectAxioms
 
 /-! # Actual degreewise transfer sheafification and the exact `q-r` dictionary -/
 
 @[expose] public noncomputable section
 
+open _root_.CategoryTheory.SingularComplex.Indexing (singularDegree)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 
 universe u
 
@@ -86,11 +87,11 @@ theorem weightOne_odd_sign (P : PresheafWithTransfers.{u + 1} k) :
     (singularSheafCochainShiftIso k P 1).hom.f 0 =
       (-1 : ℤ) • ((singularSheafCochainXIso k P 1 1).hom ≫
         (singularSheafShiftedCochainXIso k P 1 1).inv) := by
-  simpa [Indexing.singularDegree] using
+  simpa [singularDegree] using
     singularSheafCochainShiftIso_hom_f k P 1 1
 
 example (P : PresheafWithTransfers.{u + 1} k) (r : ℕ) :
-    (singularSheafCochainShiftIso k P 2).hom.f (Indexing.singularDegree 2 r) =
+    (singularSheafCochainShiftIso k P 2).hom.f (singularDegree 2 r) =
       (singularSheafCochainXIso k P 2 r).hom ≫
         (singularSheafShiftedCochainXIso k P 2 r).inv :=
   singularSheafCochainShiftIso_two_hom_f k P r

@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.FieldBaseChangeIncidenceCycle
+public import Motivic.AlgebraicGeometry.Correspondences.BaseChange.Field.IncidenceCycle
 
 /-!
 # Whole incidence-cycle field-change checks
@@ -16,13 +16,16 @@ effectiveness, integrality of the new supports, nor separability is required.
 
 @[expose] public noncomputable section
 
+open _root_.AlgebraicGeometry.Scheme (fundamentalCycle)
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
-open Motivic.WholeFiberTorExteriorDecomposition
+open _root_.AlgebraicGeometry.Scheme.Cycles.BaseChange.ComponentDecomposition
 open scoped BigOperators
 
 universe u
 
 namespace MotivicTest.FieldBaseChangeIncidenceCycle
+open _root_.AlgebraicGeometry.Scheme (IntegralCycle SmoothSite)
 
 variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y Z : SmoothSite.overField k} (A : FiniteCorrespondenceGenerator X.hom Y.hom)

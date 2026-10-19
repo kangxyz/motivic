@@ -1,6 +1,6 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalizedDivisorPairs
-import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.NormalizedScalarDivisorPairs
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.Normalized
+import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Sections.DivisorPairs.NormalizedScalar
 /-! # Normalized lambda and psi producers retain actual whole finite-flat zeros -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry

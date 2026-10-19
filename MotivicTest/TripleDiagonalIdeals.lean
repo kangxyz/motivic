@@ -5,10 +5,10 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Correspondences.TripleDiagonalIdeals
-public import Motivic.AlgebraicGeometry.Correspondences.TripleGenericDominance
-public import Motivic.AlgebraicGeometry.Intersection.GenericTor
-public import Motivic.Algebra.Homology.KoszulTwoListOrderComparison
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.DiagonalIdeals
+public import Motivic.AlgebraicGeometry.Correspondences.Composition.Associativity.GenericDominance
+public import Motivic.Aglib.AlgebraicGeometry.Intersection.GenericTor
+public import Motivic.Aglib.Algebra.Homology.Koszul.TwoListOrderComparison
 
 /-!
 # Actual triple-incidence two-list consumers
@@ -31,8 +31,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 universe u
 
 namespace Motivic.MotivicTest.TripleDiagonalIdeals
+open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Products
 
-open Intersection
+open _root_.AlgebraicGeometry.Scheme.Intersection
 
 variable (k : Type u) [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (F : FiniteCorrespondenceGenerator X.hom Y.hom)
@@ -123,9 +124,11 @@ theorem actualTwoListOrder (w : genericPoints (F.tripleIncidence G H)) :
       (∀ a ∈ s, a ∈ IsLocalRing.maximalIdeal (actualAmbient k F G H w.1)) ∧
       (∀ a ∈ t, a ∈ IsLocalRing.maximalIdeal (actualAmbient k F G H w.1)) ∧
       (letI := hArt
-       letI := Koszul.twoList_swappedArtinian (actualCoefficient k F G H w.1) s t
-       Koszul.twoListFixedSupportSum (actualCoefficient k F G H w.1) s t =
-         Koszul.twoListFixedSupportSum (actualCoefficient k F G H w.1) t s) := by
+       letI := _root_.ChainComplex.Koszul.twoList_swappedArtinian (actualCoefficient k F G H w.1) s
+           t
+       _root_.ChainComplex.Koszul.twoListFixedSupportSum (actualCoefficient k F G H w.1) s t =
+         _root_.ChainComplex.Koszul.twoListFixedSupportSum (actualCoefficient k F G H w.1) t s) :=
+             by
   let p := F.tripleIncidenceSixfoldInclusion G H w.1
   obtain ⟨t₀, s₀, -, -, ht, hs⟩ := exists_common_middle_diagonalLists
     X.hom Y.hom Z.hom W.hom (F.tripleIncidenceFourfoldInclusion G H w.1)
@@ -157,7 +160,7 @@ theorem actualTwoListOrder (w : genericPoints (F.tripleIncidence G H)) :
     rw [hk]
     exact Ideal.mem_sup_right (Ideal.mem_sup_left (Ideal.subset_span ha))
   refine ⟨s, t, hArt, hsmax, htmax, ?_⟩
-  exact @Koszul.twoListFixedSupportSum_order (actualAmbient k F G H w.1)
+  exact @_root_.ChainComplex.Koszul.twoListFixedSupportSum_order (actualAmbient k F G H w.1)
     _ _ _ (actualCoefficient k F G H w.1) _ s t hArt hsmax htmax
 
 end Motivic.MotivicTest.TripleDiagonalIdeals

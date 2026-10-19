@@ -1,5 +1,5 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.Normalization.EtaleDisjointBoundary
+import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.Boundary.DisjointBoundary
 
 /-! # Direct tests for the constructed scheme-theoretic boundary -/
 noncomputable section

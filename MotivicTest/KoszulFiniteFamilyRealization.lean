@@ -5,8 +5,8 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Algebra.Homology.KoszulFiniteFamilyRealization
-public import Motivic.Algebra.Homology.LengthEulerSingle
+public import Motivic.Aglib.Algebra.Homology.Koszul.FiniteFamilyRealization
+public import Motivic.Aglib.Algebra.Homology.LengthEuler.Single
 public import Mathlib.LinearAlgebra.Dimension.Constructions
 
 /-!
@@ -24,7 +24,10 @@ noncomputable section
 
 universe u
 
-open CategoryTheory CategoryTheory.Limits Motivic.Koszul Motivic.LengthEuler
+open CategoryTheory
+open CategoryTheory.Limits
+open _root_.ChainComplex.Koszul
+open _root_.HomologicalComplex.ModuleLengthEuler
 
 namespace MotivicTest.KoszulFiniteFamilyRealization
 

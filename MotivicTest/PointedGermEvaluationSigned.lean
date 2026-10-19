@@ -5,12 +5,17 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Transfers.PointedGermEvaluationSigned
+public import Motivic.Transfers.Sheaf.Germs.Pointed.Evaluation.Signed
 public import Lean.Util.CollectAxioms
 
 /-! Direct regression for signed original-germ evaluation and section compatibility. -/
 @[expose] public noncomputable section
-open CategoryTheory Opposite AlgebraicGeometry Motivic Motivic.PresheafWithTransfers
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open CategoryTheory
+open Opposite
+open AlgebraicGeometry
+open Motivic
+open _root_.Motivic.PresheafWithTransfers
 universe u
 namespace MotivicTest.PointedGermEvaluationSigned
 variable (k : Type u) [Field k] (P : PresheafWithTransfers.{u + 1} k)

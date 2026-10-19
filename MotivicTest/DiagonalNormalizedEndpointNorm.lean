@@ -4,7 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: kangxyz
 -/
 
-import Motivic.Cohomology.Motivic.DiagonalNormalizedEndpointNorm
+import Motivic.Cohomology.Diagonal.NormalizedEndpointNorm
 import Lean.Util.CollectAxioms
 
 /-! Unconditional original endpoint cycle equality in all Milnor degrees. -/

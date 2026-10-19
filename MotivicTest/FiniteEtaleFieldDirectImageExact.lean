@@ -1,23 +1,29 @@
 module
 
-public import Motivic.AlgebraicGeometry.Sites.FiniteEtaleFieldDirectImageExact
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Field.DirectImageExact
 
 /-! # Exactness of the actual small-site direct image from a field -/
 
 @[expose] public noncomputable section
 
-open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry Motivic Motivic.FiniteEtaleSite
+open CategoryTheory
+open CategoryTheory.Limits
+open Opposite
+open AlgebraicGeometry
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 
 universe u
 
 namespace MotivicTest.FiniteEtaleFieldDirectImageExact
+open _root_.AlgebraicGeometry.Scheme (EtaleSeparatedFiniteType)
+open _root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType
 
 variable {K : Type u} [Field K] {X : Scheme.{u}} (b : Spec (.of K) ⟶ X)
 
 /-- Sectionwise surjectivity refers to the literal direct-image map. -/
 theorem actual_sections_surjective
     {F G : Sheaf (nisnevichTopology (Spec (.of K))) AddCommGrpCat.{u + 1}}
-    (a : F ⟶ G) [Epi a] (V : FiniteEtaleSite X) :
+    (a : F ⟶ G) [Epi a] (V : EtaleSeparatedFiniteType X) :
     Function.Surjective (((directImage b).map a).hom.app (op V)) :=
   fieldDirectImage_map_app_surjective b a V
 
@@ -33,7 +39,7 @@ open Lean in
 run_cmd do
   for name in #[``actual_sections_surjective, ``actual_presheaf_epi,
       ``fieldDirectImage_preservesEpimorphisms, ``fieldDirectImage_preservesHomology,
-      ``fieldDirectImage_shortExact] do
+      ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldDirectImage_shortExact] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.EffectiveCartierDivisor.CoordinateUnitOnOpen
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.CoproductUnitAutomorphism
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.DisjointBoundary.UnitAutomorphism
 
 /-! # The literal coordinate unit on an actual open affine-line source
 

@@ -1,6 +1,6 @@
 module
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.CommonNeighborhoodProductUnit
-import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.NeighborhoodLocalGraphFunctional
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Refinement.ProductUnit
+import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Graph.LocalGraphFunctional
 /-! The original compact numerator product is a unit on the whole common boundary. -/
 set_option linter.hashCommand false
 open CategoryTheory AlgebraicGeometry RelativeProjectiveLine

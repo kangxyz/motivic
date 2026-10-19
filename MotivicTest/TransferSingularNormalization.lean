@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.PresheavesWithTransfers.SingularNormalization
+public import Motivic.Transfers.Presheaf.SingularNormalization
 public import Lean.Util.CollectAxioms
 
 /-! # Consumers of actual transfer-compatible Moore normalization -/
@@ -13,7 +13,7 @@ public import Lean.Util.CollectAxioms
 @[expose] public noncomputable section
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite AlgebraicTopology
-open Motivic Motivic.PresheafWithTransfers
+open Motivic _root_.AlgebraicSimplex _root_.Motivic.PresheafWithTransfers
 open scoped Simplicial
 
 universe v u

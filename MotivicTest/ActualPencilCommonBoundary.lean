@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.ActualPencilCommonBoundary
+public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Normalized.CommonBoundary
 /-! Both original source products use the same full nilpotent-sensitive boundary. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

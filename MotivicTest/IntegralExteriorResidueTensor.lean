@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.AlgebraicGeometry.Cycles.IntegralExteriorResidueTensor
+public import Motivic.Aglib.AlgebraicGeometry.Cycles.BaseChange.ResidueTensor
 public import MotivicTest.IntegralGenericCoordinateFiber
 
 /-!
@@ -36,6 +36,10 @@ set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
+open _root_.AlgebraicGeometry.Scheme (SmoothSite)
+open _root_.AlgebraicGeometry.Scheme.Cycles
+open _root_.AlgebraicGeometry.Scheme.Hom
+open _root_.PrimeSpectrum
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open scoped TensorProduct
 open MotivicTest.IntegralGenericFiniteImage
@@ -87,13 +91,13 @@ through the actual projection and accepted original coordinate/residue maps. -/
 abbrev exteriorResidueAlgebra :
     Algebra ((F.incidenceMap G).image.residueField ((F.incidenceMap G).toImage z.1))
       ((imageExterior F G H z).presheaf.stalk v.1) :=
-  (Motivic.IntegralExteriorResidueTensor.originalResidueToStalk
+  (BaseChange.ResidueTensor.originalResidueToStalk
     (F.incidenceMap G).toImage z.1 hU (targetProjection F G H z) v.1
       (targetProjection_generic F G H z v)).toAlgebra
 
-local notation "C" => Motivic.FiniteCartesianAffineAlgebra.baseChangedTargetRing
+local notation "C" => FiniteCartesianAffineAlgebra.baseChangedTargetRing
   (Y' := imageExterior F G H z) (V := V)
-local notation "D" => Motivic.FiniteCartesianAffineAlgebra.baseChangedSourceRing
+local notation "D" => FiniteCartesianAffineAlgebra.baseChangedSourceRing
   (f' := pairExteriorMap F G H z) (V := V)
 local notation "R" => (TopCat.Presheaf.stalk
   (PresheafedSpace.presheaf (SheafedSpace.toPresheafedSpace
@@ -102,69 +106,69 @@ local notation "R" => (TopCat.Presheaf.stalk
 local notation "L" => Scheme.residueField (Scheme.Hom.image (F.incidenceMap G))
   (Scheme.Hom.toImage (F.incidenceMap G) (Subtype.val z))
 local notation "M" => Scheme.residueField (F.incidence G) (Subtype.val z)
-local notation "B" => Motivic.FiniteCartesianAffineAlgebra.sourceRing
+local notation "B" => FiniteCartesianAffineAlgebra.sourceRing
   (f := pairMap F G z) (U := U)
 
 /-- The actual entire finite exterior algebra is the tensor of the original
 residue extension with the unreduced original exterior target stalk. -/
 def actualExteriorResidueTensorEquiv :
-    let := Motivic.FiniteCartesianAffineAlgebra.baseChangedAlgebra
+    let := FiniteCartesianAffineAlgebra.baseChangedAlgebra
       (f' := pairExteriorMap F G H z) (V := V)
-    let := Motivic.FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
+    let := FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
     let := exteriorResidueAlgebra F G H z hU v
     let := ((F.incidenceMap G).toImage.residueFieldMap z.1).hom.toAlgebra
     R ⊗[C] D ≃ₐ[R] R ⊗[L] M :=
-  Motivic.IntegralExteriorResidueTensor.wholeStalkResidueEquiv
+  BaseChange.ResidueTensor.wholeStalkResidueEquiv
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v)
 
 /-- The whole-algebra comparison preserves the whole R-action, including every
 nilpotent in the exterior target generic stalk. -/
 theorem actualExteriorResidueTensor_scalarSquare :
-    let := Motivic.FiniteCartesianAffineAlgebra.baseChangedAlgebra
+    let := FiniteCartesianAffineAlgebra.baseChangedAlgebra
       (f' := pairExteriorMap F G H z) (V := V)
-    let := Motivic.FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
+    let := FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
     let := exteriorResidueAlgebra F G H z hU v
     let := ((F.incidenceMap G).toImage.residueFieldMap z.1).hom.toAlgebra
     (actualExteriorResidueTensorEquiv F G H z hU hV hVU v hv).toRingHom.comp
         (algebraMap R (R ⊗[C] D)) = algebraMap R (R ⊗[L] M) :=
-  Motivic.IntegralExteriorResidueTensor.wholeStalkResidueEquiv_scalarSquare
+  BaseChange.ResidueTensor.wholeStalkResidueEquiv_scalarSquare
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v)
 
 /-- The numerator square contains the actual source exterior projection on
 sections and the accepted original source chart/residue map. -/
 theorem actualExteriorResidueTensor_source (r : R) (b : B) :
-    let := Motivic.FiniteCartesianAffineAlgebra.baseChangedAlgebra
+    let := FiniteCartesianAffineAlgebra.baseChangedAlgebra
       (f' := pairExteriorMap F G H z) (V := V)
-    let := Motivic.FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
+    let := FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
     let := exteriorResidueAlgebra F G H z hU v
     let := ((F.incidenceMap G).toImage.residueFieldMap z.1).hom.toAlgebra
     actualExteriorResidueTensorEquiv F G H z hU hV hVU v hv
-        (r ⊗ₜ[C] Motivic.FiniteCartesianAffineAlgebra.sourceSectionMap
+        (r ⊗ₜ[C] FiniteCartesianAffineAlgebra.sourceSectionMap
           (pairExteriorMap_isPullback F G H z) hVU b) =
-      r ⊗ₜ[L] Motivic.IntegralExteriorResidueTensor.originalSourceNumerator
+      r ⊗ₜ[L] BaseChange.ResidueTensor.originalSourceNumerator
         (F.incidenceMap G).toImage z.1 hU b :=
-  Motivic.IntegralExteriorResidueTensor.wholeStalkResidueEquiv_source
+  BaseChange.ResidueTensor.wholeStalkResidueEquiv_source
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v) r b
 
 /-- The original source-numerator map commutes as an equality of ring maps
 into the entire exterior algebra and the original residue tensor. -/
 theorem actualExteriorResidueTensor_numeratorSquare :
-    let := Motivic.FiniteCartesianAffineAlgebra.baseChangedAlgebra
+    let := FiniteCartesianAffineAlgebra.baseChangedAlgebra
       (f' := pairExteriorMap F G H z) (V := V)
-    let := Motivic.FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
+    let := FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
     let := exteriorResidueAlgebra F G H z hU v
     let := ((F.incidenceMap G).toImage.residueFieldMap z.1).hom.toAlgebra
     (actualExteriorResidueTensorEquiv F G H z hU hV hVU v hv).toRingHom.comp
         ((Algebra.TensorProduct.includeRight.toRingHom : D →+* R ⊗[C] D).comp
-          (Motivic.FiniteCartesianAffineAlgebra.sourceSectionMap
+          (FiniteCartesianAffineAlgebra.sourceSectionMap
             (pairExteriorMap_isPullback F G H z) hVU).hom) =
       (Algebra.TensorProduct.includeRight.toRingHom : M →+* R ⊗[L] M).comp
-        (Motivic.IntegralExteriorResidueTensor.originalSourceNumerator
+        (BaseChange.ResidueTensor.originalSourceNumerator
           (F.incidenceMap G).toImage z.1 hU).hom :=
-  Motivic.IntegralExteriorResidueTensor.wholeStalkResidueEquiv_numeratorSquare
+  BaseChange.ResidueTensor.wholeStalkResidueEquiv_numeratorSquare
     (F.incidenceMap G).toImage z.1 hU (pairExteriorMap_isPullback F G H z)
     hV hVU ⟨v.1, hv⟩ (targetProjection_generic F G H z v)
 
@@ -172,11 +176,11 @@ include hV in
 /-- Finiteness holds for the entire actual stalk algebra, not one residue field
 or a selected maximal localization. -/
 theorem actualExteriorWhole_finite :
-    let := Motivic.FiniteCartesianAffineAlgebra.baseChangedAlgebra
+    let := FiniteCartesianAffineAlgebra.baseChangedAlgebra
       (f' := pairExteriorMap F G H z) (V := V)
-    let := Motivic.FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
+    let := FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
     Module.Finite R (R ⊗[C] D) :=
-  Motivic.FiniteCartesianAffineAlgebra.wholeStalk_finite
+  FiniteCartesianAffineAlgebra.wholeStalk_finite
     (pairExteriorMap_isPullback F G H z) hV ⟨v.1, hv⟩
 
 /-- Both support exteriors retain their original ambient inclusions and the
@@ -189,11 +193,11 @@ literal original whole intermediate-image map in the same square. -/
 /-- This whole stalk algebra also has the literal target-localization model
 used by the all-maximal-points API. No indexing theorem is presumed here. -/
 def actualExteriorStalkToLocalEquiv :
-    let := Motivic.FiniteCartesianAffineAlgebra.baseChangedAlgebra
+    let := FiniteCartesianAffineAlgebra.baseChangedAlgebra
       (f' := pairExteriorMap F G H z) (V := V)
-    let := Motivic.FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
+    let := FiniteCartesianAffineAlgebra.targetStalkAlgebra (⟨v.1, hv⟩ : V)
     R ⊗[C] D ≃ₐ[C] FiniteFiber.localAlgebra C D (hV.primeIdealOf ⟨v.1, hv⟩) :=
-  Motivic.FiniteCartesianAffineAlgebra.wholeStalkToLocalEquiv
+  FiniteCartesianAffineAlgebra.wholeStalkToLocalEquiv
     (f' := pairExteriorMap F G H z) hV ⟨v.1, hv⟩
 
 end MotivicTest.IntegralExteriorResidueTensor

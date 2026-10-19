@@ -1,5 +1,5 @@
 module
-public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.BoundaryTensorSections
+public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.TensorSections
 /-! The full-boundary coordinate produces the literal two-factor section equation. -/
 @[expose] public noncomputable section
 set_option linter.hashCommand false

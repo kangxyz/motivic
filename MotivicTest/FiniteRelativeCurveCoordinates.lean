@@ -2,7 +2,7 @@ module
 import Motivic.Aglib.RingTheory.Etale.FiniteRelativeCurveCoordinates
 
 /-! # Direct consumer: the same finite closed projection supplies the curve charts -/
-open Module TensorProduct KaehlerDifferential MvPolynomial
+open Module TensorProduct KaehlerDifferential _root_.MvPolynomial
 
 example (k R : Type) [Field k] [Infinite k] [CommRing R] [Algebra k R]
     [Algebra.Smooth k R] (I : Ideal R) (d : ℕ)
