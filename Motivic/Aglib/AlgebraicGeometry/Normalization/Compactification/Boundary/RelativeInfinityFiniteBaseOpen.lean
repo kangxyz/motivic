@@ -27,7 +27,7 @@ attribute [local instance] specializationOrder
 /-- A finite map into the actual relative projective line avoiding its generic point
 has finite fiber over the generic point of the coefficient base. -/
 theorem finite_generic_base_fiber_of_finite_projectiveLine
-    (R : Type u) [CommRing R] [IsDomain R] [IsIntegrallyClosed R] [IsNoetherianRing R]
+    (R : Type u) [CommRing R] [IsDomain R] [IsNoetherianRing R]
     {D : Scheme.{u}} (q : D ⟶ ProjectiveSpace R (ULift.{u} (Fin 2))) [IsFinite q]
     (hq : ∀ a : D, q a ≠ genericPoint (ProjectiveSpace R (ULift.{u} (Fin 2)))) :
     ((q ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) ⁻¹'

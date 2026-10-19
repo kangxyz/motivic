@@ -148,7 +148,7 @@ def familyMap {X : Scheme.{u}} (L : LineBundle X)
 def endpoint (X : Scheme.{u}) (c : Γ(X, ⊤)) : X ⟶ parameterSpace X :=
   AffineSpace.homOfVector (𝟙 X) (fun _ ↦ c)
 
-@[reassoc (attr := simp)] theorem endpoint_projection (X : Scheme.{u}) (c : Γ(X, ⊤)) :
+@[reassoc] theorem endpoint_projection (X : Scheme.{u}) (c : Γ(X, ⊤)) :
     endpoint X c ≫ (parameterSpace X ↘ X) = 𝟙 X :=
   AffineSpace.homOfVector_over _ _
 

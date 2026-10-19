@@ -80,7 +80,7 @@ Incremental validation covers all applicable categories, not compilation alone:
 | Category | Incremental coverage |
 |---|---|
 | Compilation | Changed modules, genuinely missing required dependencies, and needed affected consumers |
-| Lint | Compiler-integrated lint plus applicable declaration and text/style checks for changed modules or files |
+| Lint | Compiler-integrated lint, declaration checks for affected defining origins, and text/style checks for selected source files |
 | Tests and clients | Affected `MotivicTest` regression/property modules and meaningful public/downstream client tests; affected tooling tests when tools change |
 | Source and structure | Affected import/enrollment, layout, pin, option, heartbeat and other source-policy checks |
 | Trust boundary | Axiom/input checks whose premises or coverage changed, reusing compatible unchanged evidence |
@@ -106,10 +106,15 @@ untracked edits are included. Alternatively pass explicit `--manual-targets`
 modules. Missing push bases use a trusted fetched default-branch merge-base or a true
 initial root diff; unresolvable bases fail actionably. Pin changes and manual
 dispatch have no full fallback.
-Pin changes require explicit affected scope and matching caches. Tool/docs-only
-changes run static checks and affected tooling fixtures without a Lean job.
+Pin changes require explicit affected scope and matching caches. An Aglib upgrade
+can commit the reviewed configuration hashes and local seeds in
+`.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
+the checked format used by automatic CI. Tool/docs-only changes run static checks
+and affected tooling fixtures without a Lean job.
 The final route compiles and declaration/style-lints providers before expensive
-affected consumers, tests and clients. Test-only edits retain their direct
+affected consumers, tests and clients. It also declaration-lints the remaining
+affected origins after their builds; text/style selection has its own narrower
+file scope. Test-only edits retain their direct
 production prerequisite checks. Linter runtime setup selects only its actual tooling prerequisites, with
 separate guarded receipts; missing remaining prerequisites fail closed.
 See [tool commands](../scripts/README.md) for plan transport and scoped export.

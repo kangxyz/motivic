@@ -510,3 +510,27 @@ retain all their displayed premises. Expanded E3 action wrappers and the actual
 common-witness master transport are deferred. Arbitrary HI-presheaf
 sheafification and strict A1 remain open; the existing perfect-field theorem for
 already-HI transfer sheaves is unchanged.
+
+## Aglib dependency upgrade, 20 October 2026
+
+Aglib is pinned to `52e09db47998f139064acf48a2d3a64494d0dd9a`.
+Lean and Mathlib are unchanged. Lint repairs complete five docstrings, remove
+redundant simp registrations and drop an unused `IsIntegrallyClosed` premise
+from the finite-generic-fiber helper. A function-level rational-coordinate
+identity factors the existing pointwise proof and preserves tuple simplification.
+The [reviewed dependency scope](../.github/dependency-scope.json) binds the exact
+before/after configuration snapshots and selects 1,263 affected modules:
+942 production modules and 321 tests. Its 76 direct production providers are
+checked before consumers; text/style checks cover the 80 direct local seeds.
+Declaration lint still covers every affected defining origin.
+
+Compatible retained fixtures and focused new tests give 78 passes and one
+optional skip. The cache setup now includes the style driver's exact direct
+Batteries prerequisites, including `Batteries.Data.String.Basic`; two new
+fixtures cover acquisition and read-only selection. A further fixture checks
+that cache export preserves explicit module selection for the root facades.
+
+Structural checks, provider compilation and declaration lint, selected text/style
+checks and the two changed-declaration axiom checks passed. The remaining
+affected-consumer checks and independent client check are pending at this
+upgrade's initial push.

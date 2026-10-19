@@ -4,11 +4,14 @@
 import argparse
 import base64
 import gzip
+import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
+import tomllib
 
 from library_sources import lean_imports, module_name, source_modules
 
@@ -16,6 +19,64 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULTS = ('Motivic', 'MotivicTest')
 CONFIG_INPUTS = {'lakefile.toml', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain'}
 CLIENT = 'examples/downstream/'
+DEPENDENCY_SCOPE = '.github/dependency-scope.json'
+
+
+def dependency_scope(root: Path, base: str) -> tuple[list[str], str]:
+    """Validate the reviewed Aglib transition against both configuration snapshots."""
+    def reject(message):
+        raise ValueError(f'{DEPENDENCY_SCOPE}: {message}; review the exact pin transition and local targets')
+
+    def keys(value, expected):
+        return isinstance(value, dict) and set(value) == set(expected)
+
+    try:
+        raw = (root / DEPENDENCY_SCOPE).read_bytes()
+        record = json.loads(raw)
+    except (OSError, ValueError) as error:
+        reject(f'missing or malformed reviewed dependency scope ({error})')
+    if not keys(record, {'version', 'dependency', 'before', 'after', 'targets'}) or type(record['version']) is not int or record['version'] != 1:
+        reject('expected the exact version 1 schema')
+    dependency = record['dependency']
+    if not keys(dependency, {'name', 'before', 'after'}) or dependency['name'] != 'Aglib':
+        reject('expected an Aglib revision pair')
+    if any(not isinstance(dependency[side], str) or not re.fullmatch(r'[0-9a-f]{40}', dependency[side])
+           for side in ('before', 'after')) or dependency['before'] == dependency['after']:
+        reject('expected distinct exact Aglib revisions')
+    for side in ('before', 'after'):
+        expected = record[side]
+        if not keys(expected, CONFIG_INPUTS) or any(
+                value is not None and (not isinstance(value, str) or not re.fullmatch(r'[0-9a-f]{64}', value))
+                for value in expected.values()):
+            reject(f'{side} must contain every configuration path with a SHA256 or null')
+        snapshot = {}
+        for path in sorted(CONFIG_INPUTS):
+            if side == 'before':
+                exists = subprocess.run(['git', 'cat-file', '-e', f'{base}:{path}'], cwd=root,
+                                        capture_output=True)
+                content = (subprocess.check_output(['git', 'show', f'{base}:{path}'], cwd=root)
+                           if exists.returncode == 0 else None)
+            else:
+                content = (root / path).read_bytes() if (root / path).exists() else None
+            actual = hashlib.sha256(content).hexdigest() if content is not None else None
+            if expected[path] != actual:
+                reject(f'stale or unexpected {side} configuration: {path}')
+            snapshot[path] = content
+        try:
+            config = tomllib.loads(snapshot['lakefile.toml'].decode())
+            manifest = json.loads(snapshot['lake-manifest.json'])
+            configured = [item['rev'] for item in config['require'] if item.get('name') == 'Aglib']
+            resolved = [item['rev'] for item in manifest['packages'] if item.get('name') == 'Aglib']
+        except (AttributeError, KeyError, TypeError, ValueError, UnicodeError) as error:
+            reject(f'unreadable {side} Aglib pin ({error})')
+        if configured != [dependency[side]] or resolved != [dependency[side]]:
+            reject(f'{side} Aglib revision disagrees with lakefile/manifest')
+    targets = record['targets']
+    if not isinstance(targets, list) or not targets or any(not isinstance(name, str) for name in targets):
+        reject('targets must be a nonempty list of existing local modules')
+    if len(set(targets)) != len(targets) or set(targets) - source_modules(root).keys():
+        reject('targets must be unique existing local modules')
+    return targets, hashlib.sha256(raw).hexdigest()
 
 
 def client_input(path: str) -> bool:
@@ -39,7 +100,8 @@ def validation_scope(changed: list[str], *, setup: bool = False,
     owners = {
         'ci_targets': 'test_ci_targets.py', 'validate': 'test_validate.py',
         'lint_style': 'test_validate.py', 'lint_declarations': 'test_validate.py',
-        'build': 'test_build.py', 'build_client': 'test_build_client.py',
+        'build': 'test_build.py', 'build_modules': 'test_build.py',
+        'build_client': 'test_build_client.py',
         'cache': 'test_repository.py', 'check_repository': 'test_repository.py',
         'generate_imports': 'test_generate_imports.py',
         'repository': 'test_repository.py',
@@ -53,7 +115,7 @@ def validation_scope(changed: list[str], *, setup: bool = False,
             fixtures.add(owners.get(stem, 'test_*.py'))
             if stem == 'check_repository':
                 fixtures.add('test_generate_imports.py')
-            if stem in {'ci_targets', 'build', 'build_client', 'cache'}:
+            if stem in {'ci_targets', 'build', 'build_modules', 'build_client', 'cache'}:
                 fixtures.add('test_validate.py')
     return True, ['test_*.py'] if 'test_*.py' in fixtures else sorted(fixtures)
 
@@ -102,7 +164,8 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
 
 
 def make_plan(root: Path, changed: list[str], *, full: bool = False,
-              manual: list[str] | None = None, initial: bool = False) -> dict:
+              manual: list[str] | None = None, initial: bool = False,
+              dependency_upgrade: bool = False) -> dict:
     targets = select_targets(root, changed, full=full, manual=manual, initial=initial)
     client = select_client(root, changed, targets)
     sources, imports = graph(root)
@@ -114,8 +177,10 @@ def make_plan(root: Path, changed: list[str], *, full: bool = False,
             seeds.update(name for name in lean_imports(source.read_text()) if name in sources)
     providers = {name for name in seeds if name in sources
                  and name.split('.')[0] == 'Motivic'}
-    # A test-only edit still checks its real production prerequisites before the test.
-    pending = [name for name in seeds if name in sources and name.split('.')[0] == 'MotivicTest']
+    # Unchanged dependency-affected tests do not make unrelated imports changed providers.
+    prerequisite_seeds = changed_modules if dependency_upgrade else seeds
+    pending = [name for name in prerequisite_seeds
+               if name in sources and name.split('.')[0] == 'MotivicTest']
     seen = set(pending)
     while pending:
         for name in imports.get(pending.pop(), []):
@@ -201,7 +266,13 @@ def from_arguments(args) -> dict:
         actual = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root).strip()
         if expected != actual:
             raise ValueError('--head must identify the checked-out source; check out that revision first')
-    plan = make_plan(root, changed, full=args.full, manual=manual, initial=base == '--root')
+    scope_digest = None
+    if not args.full and manual is None and base != '--root' and CONFIG_INPUTS.intersection(changed):
+        manual, scope_digest = dependency_scope(root, base)
+    plan = make_plan(root, changed, full=args.full, manual=manual, initial=base == '--root',
+                     dependency_upgrade=scope_digest is not None)
+    if scope_digest is not None:
+        plan['dependency_scope_sha256'] = scope_digest
     plan['basis'] = dict(event=args.event, base=args.base, head=args.head, default_branch=args.default_branch,
                          full=args.full, manual_targets=args.manual_targets)
     return plan

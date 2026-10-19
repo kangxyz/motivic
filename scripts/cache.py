@@ -48,7 +48,7 @@ def main() -> int:
     parser.add_argument('--list', action='store_true', help='print cache roots without running Lake')
     parser.add_argument('--resolve-deps', action='store_true', help='resolve the existing pinned manifest first')
     parser.add_argument('--lint-runtime', action='store_true',
-                        help='also fetch exact Mathlib imports of the pinned text-style driver')
+                        help='also fetch exact Mathlib/Batteries imports of the pinned text-style driver')
     parser.add_argument('--guarded', action='store_true', help='use the reviewed Aglib resource guard')
     parser.add_argument('targets', nargs='+')
     args = parser.parse_args()
@@ -65,8 +65,9 @@ def main() -> int:
         modules = cache_roots(root, args.targets)
         if args.lint_runtime:
             driver = root / '.lake/packages/mathlib/scripts/lint-style.lean'
+            # Lean/Lake are installed; Cli and ImportGraph use the isolated runtime overlay.
             modules = sorted(set(modules) | {name for name in lean_imports(driver.read_text())
-                                             if name.startswith('Mathlib.')})
+                                             if name.startswith(('Mathlib.', 'Batteries.'))})
         if args.list:
             print('\n'.join(modules))
         else:

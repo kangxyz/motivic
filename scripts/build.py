@@ -33,12 +33,14 @@ def command(root: Path, targets: list[str], receipt_dir: Path,
             raise ValueError(f'Missing resource guard {guard}')
         return [sys.executable, str(guard.resolve()), '--capped-toolchain',
                 '--receipt', str(receipt_dir / 'export.json'), '--',
-                'lake', '--rehash', '--no-build', 'build', *targets, '-o', str(outputs)]
-    argv = [sys.executable, str(helper.resolve()), '--root', str(root), '--rehash',
+                'lake', '--rehash', '--no-build', 'build',
+                *('+' + target for target in targets), '-o', str(outputs)]
+    adapter = Path(__file__).with_name('build_modules.py')
+    argv = [sys.executable, str(adapter), str(helper.resolve()), '--root', str(root), '--rehash',
             '--receipt-dir', str(receipt_dir)]
     if outputs is not None:
         argv.extend(['--outputs', str(outputs)])
-    return [*argv, *targets]
+    return [*argv, *('+' + target for target in targets)]
 
 
 def main() -> int:

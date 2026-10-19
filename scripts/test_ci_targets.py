@@ -3,6 +3,7 @@
 from pathlib import Path
 import base64
 import gzip
+import hashlib
 import json
 import os
 import subprocess
@@ -10,7 +11,7 @@ import sys
 import tempfile
 import unittest
 
-from ci_targets import comparison_base, changed_paths, encode_targets, make_plan, select_client, select_targets, validation_scope
+from ci_targets import CONFIG_INPUTS, comparison_base, changed_paths, encode_targets, make_plan, select_client, select_targets, validation_scope
 
 
 class Fixture(unittest.TestCase):
@@ -85,6 +86,12 @@ class TargetSelectionTests(Fixture):
         self.assertFalse(plan['client'])
         self.assertNotIn('Motivic.Optional.Computation', plan['targets'])
 
+    def test_explicit_manual_test_target_retains_its_production_prerequisites(self):
+        plan = make_plan(self.root, [], manual=['MotivicTest.PublicAPI'])
+        self.assertEqual(plan['providers'], ['Motivic.Public'])
+        self.assertIn('Motivic.Public', plan['targets'])
+        self.assertIn('Motivic.Public', plan['lint'])
+
     def test_client_input_checks_its_real_imports_and_no_optional_leaf(self):
         plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
         self.assertTrue(plan['client'])
@@ -94,14 +101,15 @@ class TargetSelectionTests(Fixture):
         self.assertFalse(select_client(self.root, ['examples/downstream/README.md'], []))
 
     def test_tools_select_their_affected_fixtures(self):
-        self.assertEqual(validation_scope(['scripts/build.py']),
-                         (True, ['test_build.py', 'test_validate.py']))
+        for path in ('scripts/build.py', 'scripts/build_modules.py'):
+            self.assertEqual(validation_scope([path]),
+                             (True, ['test_build.py', 'test_validate.py']))
         self.assertEqual(validation_scope(['scripts/ci_targets.py']),
                          (True, ['test_ci_targets.py', 'test_validate.py']))
         self.assertEqual(validation_scope(['scripts/new_tool.py']), (True, ['test_*.py']))
 
 
-class GitScopeTests(Fixture):
+class GitFixture(Fixture):
     def git(self, *args):
         return subprocess.check_output(['git', *args], cwd=self.root).decode().strip()
 
@@ -118,6 +126,8 @@ class GitScopeTests(Fixture):
         return subprocess.run([sys.executable, str(Path(__file__).with_name('ci_targets.py')),
                                '--root', str(self.root), *args], capture_output=True, text=True)
 
+
+class GitScopeTests(GitFixture):
     def test_true_initial_commit_uses_root_diff_not_curated_or_full_defaults(self):
         self.write('lake-manifest.json', '{}\n')
         self.assertEqual(comparison_base(self.root, '0' * 40, 'HEAD'), '--root')
@@ -190,6 +200,163 @@ class GitScopeTests(Fixture):
         result = self.cli('--base', self.base, '--head', self.base)
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('checked-out', result.stderr)
+
+
+class DependencyScopeTests(GitFixture):
+    def setUp(self):
+        super().setUp()
+        self.old, self.new = '1' * 40, '2' * 40
+        self.configure(self.old)
+        self.git('add', '.')
+        self.git('commit', '-qm', 'old pin')
+        self.base = self.git('rev-parse', 'HEAD')
+        before = self.hashes()
+        self.configure(self.new)
+        self.record = dict(version=1, dependency=dict(name='Aglib', before=self.old, after=self.new),
+                           before=before, after=self.hashes(), targets=['Motivic.Public.Core'])
+        self.save_record()
+
+    def configure(self, revision):
+        self.write('lakefile.toml', f'[[require]]\nname = "Aglib"\nrev = "{revision}"\n')
+        self.write('lake-manifest.json', json.dumps(dict(packages=[dict(name='Aglib', rev=revision)])))
+        self.write('lean-toolchain', 'leanprover/lean4:v4.34.1\n')
+
+    def hashes(self):
+        return {name: hashlib.sha256((self.root / name).read_bytes()).hexdigest()
+                if (self.root / name).exists() else None for name in CONFIG_INPUTS}
+
+    def save_record(self):
+        self.write('.github/dependency-scope.json', json.dumps(self.record))
+
+    def test_accepted_transition_selects_reviewed_provider_consumers_tests_and_client(self):
+        plan_path = self.root / 'plan.json'
+        result = self.cli('--base', self.base, '--plan', str(plan_path))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        plan = json.loads(plan_path.read_text())
+        self.assertEqual(plan['targets'], ['Motivic', 'Motivic.Public', 'Motivic.Public.Core',
+                                           'MotivicTest', 'MotivicTest.PublicAPI'])
+        self.assertEqual(plan['providers'], ['Motivic.Public.Core'])
+        self.assertTrue(plan['client'])
+        self.assertFalse(plan['full'])
+        self.assertEqual(plan['dependency_scope_sha256'], hashlib.sha256(
+            (self.root / '.github/dependency-scope.json').read_bytes()).hexdigest())
+
+    def test_unchanged_metadata_test_seed_does_not_select_unrelated_providers_or_client(self):
+        self.record['targets'] = ['MotivicTest.PublicAPI']
+        self.save_record()
+        plan_path = self.root / 'plan.json'
+        result = self.cli('--base', self.base, '--plan', str(plan_path))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        plan = json.loads(plan_path.read_text())
+        self.assertEqual(plan['targets'], ['MotivicTest', 'MotivicTest.PublicAPI'])
+        self.assertEqual(plan['lint'], ['MotivicTest.PublicAPI'])
+        self.assertEqual(plan['providers'], [])
+        self.assertFalse(plan['client'])
+
+    def test_real_test_edit_during_upgrade_retains_its_production_prerequisites(self):
+        self.record['targets'] = ['MotivicTest.PublicAPI']
+        self.save_record()
+        self.write('MotivicTest/PublicAPI.lean', 'import Motivic.Public\n-- Actual test edit\n')
+        plan_path = self.root / 'plan.json'
+        result = self.cli('--base', self.base, '--plan', str(plan_path))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        plan = json.loads(plan_path.read_text())
+        self.assertEqual(plan['providers'], ['Motivic.Public'])
+        self.assertEqual(plan['targets'], ['Motivic.Public', 'MotivicTest', 'MotivicTest.PublicAPI'])
+        self.assertEqual(plan['lint'], ['Motivic.Public', 'MotivicTest.PublicAPI'])
+
+    def test_missing_malformed_and_wrong_schema_records_fail_closed(self):
+        path = self.root / '.github/dependency-scope.json'
+        for content in (None, '{', '{}', json.dumps(dict(self.record, version=True)),
+                        json.dumps(dict(self.record, unexpected=True))):
+            with self.subTest(content=content):
+                if content is None:
+                    path.unlink()
+                else:
+                    path.write_text(content)
+                result = self.cli('--base', self.base)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertEqual(result.stdout, '')
+                self.assertIn('dependency-scope.json', result.stderr)
+
+    def test_stale_before_after_and_incomplete_configuration_bindings_fail(self):
+        for side in ('before', 'after'):
+            for mutation in ('stale', 'missing'):
+                with self.subTest(side=side, mutation=mutation):
+                    original = self.record[side].copy()
+                    if mutation == 'stale':
+                        self.record[side]['lakefile.toml'] = '0' * 64
+                    else:
+                        del self.record[side]['lakefile.lean']
+                    self.save_record()
+                    result = self.cli('--base', self.base)
+                    self.assertNotEqual(result.returncode, 0)
+                    self.assertEqual(result.stdout, '')
+                    self.record[side] = original
+
+    def test_unexpected_configuration_change_fails(self):
+        self.write('lean-toolchain', 'unexpected compiler\n')
+        result = self.cli('--base', self.base)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('after configuration: lean-toolchain', result.stderr)
+
+    def test_declared_revisions_must_match_both_lakefile_and_manifest(self):
+        for side in ('before', 'after'):
+            with self.subTest(side=side):
+                original = self.record['dependency'][side]
+                self.record['dependency'][side] = '3' * 40
+                self.save_record()
+                result = self.cli('--base', self.base)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn('revision disagrees', result.stderr)
+                self.record['dependency'][side] = original
+        self.write('lake-manifest.json', json.dumps(dict(packages=[dict(name='Aglib', rev=self.old)])))
+        self.record['after'] = self.hashes()
+        self.save_record()
+        result = self.cli('--base', self.base)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('revision disagrees', result.stderr)
+
+    def test_invalid_empty_duplicate_and_nonlocal_targets_fail(self):
+        for targets in ([], ['Mathlib'], ['Motivic.Missing'], ['Motivic.Public.Core'] * 2, [1]):
+            with self.subTest(targets=targets):
+                self.record['targets'] = targets
+                self.save_record()
+                result = self.cli('--base', self.base)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertEqual(result.stdout, '')
+
+    def test_following_docs_push_ignores_retained_even_malformed_record(self):
+        self.git('add', '.')
+        self.git('commit', '-qm', 'upgrade')
+        base = self.git('rev-parse', 'HEAD')
+        self.write('docs/update.md', 'documentation\n')
+        self.write('.github/dependency-scope.json', 'malformed retained record')
+        result = self.cli('--base', base)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), '')
+
+    def test_explicit_manual_and_full_routes_do_not_require_metadata(self):
+        (self.root / '.github/dependency-scope.json').unlink()
+        for extra in (['--manual-targets', 'Motivic.Optional.Computation'], ['--full']):
+            with self.subTest(extra=extra):
+                result = self.cli('--base', self.base, *extra)
+                self.assertEqual(result.returncode, 0, result.stderr)
+
+    def test_transported_plan_revalidates_record_bytes_before_any_native_work(self):
+        plan = self.root / 'plan.json'
+        result = self.cli('--base', self.base, '--plan', str(plan))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        validate = Path(__file__).with_name('validate.py')
+        argv = [sys.executable, str(validate), '--root', str(self.root), '--plan', str(plan), '--list']
+        accepted = subprocess.run(argv, capture_output=True, text=True)
+        self.assertEqual(accepted.returncode, 0, accepted.stderr)
+        path = self.root / '.github/dependency-scope.json'
+        path.write_text(path.read_text() + '\n')
+        rejected = subprocess.run(argv, capture_output=True, text=True)
+        self.assertNotEqual(rejected.returncode, 0)
+        self.assertIn('selection changed', rejected.stderr)
+        self.assertFalse((self.root / '.lake').exists())
 
 
 class TargetTransportTests(unittest.TestCase):

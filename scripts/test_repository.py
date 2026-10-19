@@ -1,11 +1,16 @@
 # Authors: kangxyz
 """Small boundary fixtures; no Lean compiler or dependency checkout required."""
 import json
+from contextlib import redirect_stdout
+import io
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
-from cache import cache_roots
+from cache import cache_roots, main as cache_main
 from check_repository import PINS, check_configuration, check_sources
 from library_sources import lean_imports
 
@@ -130,6 +135,40 @@ theorem bad : True := by sorry
         self.write('Motivic/Core.lean', 'import Mathlib\n')
         with self.assertRaisesRegex(ValueError, 'Whole Mathlib'):
             cache_roots(self.root, ['Motivic'])
+
+    def style_driver(self):
+        self.write('.lake/packages/mathlib/scripts/lint-style.lean',
+                   'import Lake.CLI.Main\nimport Lean.Elab.ParseImportsFast\n'
+                   'import Batteries.Data.String.Basic\nimport Mathlib.Tactic.Linter.TextBased\n'
+                   'import ImportGraph.Imports.FromSource\nimport Cli.Basic\n')
+
+    def test_lint_runtime_fetches_exact_cached_leaves_without_optional_support_roots(self):
+        self.style_driver()
+        argv = ['cache.py', '--root', str(self.root), '--lint-runtime', 'Motivic']
+        with patch.object(sys, 'argv', argv), patch('cache.subprocess.run',
+                return_value=subprocess.CompletedProcess([], 0)) as run:
+            self.assertEqual(cache_main(), 0)
+        run.assert_called_once()
+        self.assertEqual(run.call_args.args[0], ['lake', 'exe', 'cache', 'get',
+                         'Batteries.Data.String.Basic', 'Mathlib.Algebra.Group.Basic',
+                         'Mathlib.Tactic.Linter.TextBased'])
+        self.assertEqual(run.call_args.kwargs['cwd'], self.root.resolve())
+        self.assertTrue(run.call_args.kwargs['check'])
+
+    def test_lint_runtime_list_is_read_only_and_ordinary_cache_scope_is_unchanged(self):
+        self.style_driver()
+        for flag, expected in (([], ['Mathlib.Algebra.Group.Basic']),
+                               (['--lint-runtime'], ['Batteries.Data.String.Basic',
+                                'Mathlib.Algebra.Group.Basic', 'Mathlib.Tactic.Linter.TextBased'])):
+            with self.subTest(flag=flag):
+                output = io.StringIO()
+                argv = ['cache.py', '--root', str(self.root), '--list', *flag, 'Motivic']
+                with patch.object(sys, 'argv', argv), patch('cache.subprocess.run') as run, \
+                        redirect_stdout(output):
+                    self.assertEqual(cache_main(), 0)
+                run.assert_not_called()
+                self.assertEqual(output.getvalue().splitlines(), expected)
+        self.assertFalse((self.root / '.lake/build').exists())
 
     def test_pin_drift_is_detected_before_dependency_resolution(self):
         config = ('name = "Motivic"\ndefaultTargets = ["Motivic"]\n'

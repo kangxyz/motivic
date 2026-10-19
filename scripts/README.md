@@ -85,10 +85,16 @@ python3 scripts/cache.py --list Motivic.Cor
 
 `--guarded` applies the reviewed Aglib resource guard and writes a private cache
 receipt. CI uses this mode with its separate tooling checkout and memory limits.
+`--lint-runtime` also fetches the pinned style driver's exact direct Mathlib and
+Batteries prerequisites. Lean and Lake come from the toolchain; the optional
+Cli and ImportGraph support leaves retain their temporary isolated compilation.
 
 `build.py` requires explicit targets, always requests native `--rehash`
 validation, and invokes Aglib's `scripts/build_serial.py --root` with private
-verification receipts. Its default helper comes from the pinned dependency;
+verification receipts. `build_modules.py` checks that helper's reviewed source
+hash and preserves explicit Lake module selectors through its cache probe and
+build. It normalizes names only for source validation. The helper comes from the
+pinned dependency;
 `MOTIVIC_TOOLING_ROOT` selects a separately reviewed Aglib tooling checkout.
 The wrapper never deletes artifacts or accepts artifact presence as proof of
 cache validity. It retains the upstream driver's owned-process resource guard:
@@ -162,6 +168,41 @@ Changed dependency/toolchain configuration requires explicit target scope or
 `--full`; identify invalidated coverage and restore matching caches first.
 A full diagnostic selects all occupied local modules, including optional leaves.
 
+For an automatically checked reviewed Aglib pin upgrade, commit one current
+`.github/dependency-scope.json` record with this exact version 1 schema:
+
+```json
+{
+  "version": 1,
+  "dependency": {"name": "Aglib", "before": "OLD_40_HEX_REV", "after": "NEW_40_HEX_REV"},
+  "before": {
+    "lakefile.toml": "OLD_SHA256", "lakefile.lean": null,
+    "lake-manifest.json": "OLD_SHA256", "lean-toolchain": "OLD_SHA256"
+  },
+  "after": {
+    "lakefile.toml": "NEW_SHA256", "lakefile.lean": null,
+    "lake-manifest.json": "NEW_SHA256", "lean-toolchain": "NEW_SHA256"
+  },
+  "targets": ["Motivic.Selected.Provider"]
+}
+```
+
+Use lowercase full revision/hash strings; `null` means the file is absent.
+Both configuration maps must include every listed path. Targets are unique,
+existing local module seeds whose dependency impact has been reviewed. The
+selector verifies the old bytes at the resolved Git comparison base, the new
+checkout bytes, and both Aglib pins in the lakefile and manifest. Missing,
+malformed or mismatched records fail closed. Accepted seeds join changed Lean
+sources and use the ordinary reverse-consumer and client selection. Unchanged
+test seeds retain their compilation and lint coverage without adding unrelated
+production prerequisites; actually edited tests still select those prerequisites,
+as do ordinary explicit manual test targets. The transported plan binds the
+record's SHA256 and revalidates it before execution. This records reviewed
+scope, not successful compilation or a proof of scope completeness.
+The record is consulted only for a non-initial configuration change without
+explicit manual targets or `--full`. Later pushes without configuration changes
+ignore a retained record; replace it when reviewing the next pin transition.
+
 `validate.py` runs final acceptance only when requested. It uses existing
 cache/build/client wrappers: static checks and affected tooling fixtures, focused
 matching cache acquisition, provider compilation, provider declaration and style
@@ -202,8 +243,10 @@ evidence, as CI does; they do not establish that evidence themselves.
 An optional `validate.py --outputs FILE` exports mappings only after the selected
 checks succeed. `build.py --export-only --outputs FILE TARGET...` invokes guarded
 `lake --rehash --no-build build` for those exact verified targets, without the
-compiling build helper or any miss fallback. CI stages this same selection on
-main pushes; it adds no unconditional roots or client build for publication.
+compiling build helper or any miss fallback. Explicit Lake module selectors
+preserve this scope for the `Motivic` and `MotivicTest` facades as well.
+CI stages this same selection on main pushes; publication adds no unconditional
+roots or client build.
 Partial exports cover only the selected closure. The shared action stages
 mappings with actual source/compiler provenance and a separate write-permitted
 job publishes that same-run artifact. Pins remain unchanged, including the

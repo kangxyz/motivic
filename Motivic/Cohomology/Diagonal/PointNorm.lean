@@ -226,9 +226,15 @@ omit [CharZero k] in
   rw [hc, ← hone]
   exact WeightOnePointNorm.rationalCoordinate_rationalPoint (a i)
 
+omit [CharZero k] in
+/-- The full rational-coordinate tuple recovers the specified original units. -/
+@[simp] theorem rationalCoordinate_rationalTuple_eq (a : Fin q → kˣ) :
+    rationalCoordinate (rationalTuple k q a) = a :=
+  funext (rationalCoordinate_rationalTuple a)
+
 /-- The all-weight finite-point evaluator is a left inverse on every literal
 rational tuple graph, including the empty tuple in weight zero. -/
-@[simp] theorem cycleValue_rationalTuple (a : Fin q → kˣ) :
+theorem cycleValue_rationalTuple (a : Fin q → kˣ) :
     cycleValue k q ((Cor.graphFunctor k).map (rationalTuple k q a)) = symbol a := by
   rw [cycleValue_graph]
   exact congrArg symbol (funext (rationalCoordinate_rationalTuple a))

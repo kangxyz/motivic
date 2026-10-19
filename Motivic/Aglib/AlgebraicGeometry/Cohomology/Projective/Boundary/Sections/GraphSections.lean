@@ -227,10 +227,13 @@ namespace AlgebraicGeometry.Scheme.CoherentGraph
 /-- Concrete coherent graph extension with its original two coordinate maps. -/
 structure GraphExtension {U C : Scheme.{u}} (j : U ⟶ C) [IsOpenImmersion j]
     (h : Γ(U, ⊤)) where
+  /-- The chosen finite type sheaf on `C`. -/
   graph : FiniteTypeSheaves C
+  /-- Inclusion into the two coordinate copies of the unit sheaf. -/
   inclusion : graph.obj ⟶
     ((SheafOfModules.unit C.ringCatSheaf) ⊞ (SheafOfModules.unit C.ringCatSheaf))
   mono_inclusion : Mono inclusion
+  /-- Identification of the restriction to `U` with its unit sheaf. -/
   trivialization : graph.obj.restrict j ≅ SheafOfModules.unit U.ringCatSheaf
   numerator_eq : (Modules.restrictFunctor j).map (inclusion ≫ biprod.fst) =
     trivialization.hom ≫ unitMul U h ≫ (restrictUnitIso j).inv

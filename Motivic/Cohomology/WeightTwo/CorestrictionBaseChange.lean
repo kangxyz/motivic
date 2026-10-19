@@ -64,7 +64,7 @@ def pointAmbientProjection : pointAmbient L ⟶ pointAmbient k :=
       (Spec.map (CommRingCat.ofHom (algebraMap k L)))
 
 /-- The new base projection is exactly the other projection of the whole pullback. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem pointAmbientIso_inv_base :
     (pointAmbientIso (k := k) (L := L)).inv.left ≫
       pullback.snd (SmoothSite.product (SmoothSite.base (Spec (.of k))) (target k 2)).hom
@@ -78,7 +78,7 @@ theorem pointAmbientIso_inv_base :
   simpa only [Category.comp_id] using h
 
 /-- The old base projection is the literal coefficient-field map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem pointAmbientProjection_fst :
     pointAmbientProjection (k := k) (L := L) ≫
       pullback.fst (SmoothSite.base (Spec (.of k))).hom (target k 2).hom =
@@ -94,7 +94,7 @@ theorem pointAmbientProjection_fst :
     pointAmbientIso_inv_base]
 
 /-- The old torus coordinates are the literal Laurent coefficient projections. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem pointAmbientProjection_snd :
     pointAmbientProjection (k := k) (L := L) ≫
       pullback.snd (SmoothSite.base (Spec (.of k))).hom (target k 2).hom =
@@ -205,7 +205,7 @@ theorem changedPointMap_original :
   simp [changedPointSupportIso, pullback.congrHom_hom]
 
 /-- The changed point also retains the actual new scalar projection. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem changedPointMap_base :
     changedPointMap (k := k) (L := L) f ≫
       pullback.fst (SmoothSite.base (Spec (.of L))).hom (target L 2).hom =
@@ -284,7 +284,7 @@ theorem polynomialChangedPoint_original :
   erw [pullbackSymmetry_hom_comp_fst_assoc, scalarSchemeIso_hom_snd_assoc]
 
 /-- The new projection is the literal scalar structure of the whole mapped quotient. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem polynomialChangedPoint_base :
     polynomialChangedPoint (L := L) p a b ≫
       pullback.fst (SmoothSite.base (Spec (.of L))).hom (target L 2).hom =

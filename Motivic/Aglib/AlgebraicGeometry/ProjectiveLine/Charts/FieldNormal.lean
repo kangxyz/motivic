@@ -25,6 +25,7 @@ attribute [local instance] MvPolynomial.gradedAlgebra
 universe u
 variable (k : Type u) [Field k]
 
+/-- The complementary homogeneous coordinate is unique. -/
 local instance otherUnique (i : ULift.{u} (Fin 2)) :
     Unique {j : ULift.{u} (Fin 2) // j ≠ i} where
   default := ⟨⟨1 - i.down⟩, by rcases i with ⟨i⟩; fin_cases i <;> decide⟩
