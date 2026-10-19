@@ -1,5 +1,33 @@
 # Development
 
+## Normal task
+
+In a prepared checkout, keep a coherent proof and its compiler repair with one
+author. Compile the changed leaf or actual interface consumer:
+
+```sh
+python3 scripts/build.py Motivic.Transfers.Cohomology.Basic
+```
+
+At the task's final validation, run the selected provider/lint/consumer checks
+once, comparing with its starting revision (omit `--head` for working changes):
+
+```sh
+python3 scripts/validate.py --base BASE
+```
+
+After a late failure, use the failed category's direct command and retain
+compatible earlier results. For example, a repaired test can be compiled directly
+with `python3 scripts/build.py MotivicTest.OrdinaryCohomologyTransfers`; finish
+that changed source's applicable lint without restarting unchanged provider
+checks. The [script guide](../scripts/README.md) owns direct lint/client commands.
+Source/option changes still invalidate their actual dependent coverage.
+
+Use the environment/cache reference below only for a missing dependency or a
+changed setup. A prepared proof loop does not start by resolving dependencies,
+fetching caches, extracting inventories or updating documentation. Documentation
+and tooling work select their own affected checks under [verification](#verification-by-scope).
+
 ## Environment and dependencies
 
 Run commands from the repository root. `lean-toolchain`, `lakefile.toml` and
