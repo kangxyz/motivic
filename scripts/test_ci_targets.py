@@ -59,11 +59,45 @@ class TargetSelectionTests(Fixture):
         self.assertIn('Motivic.Public', targets)
         self.assertNotIn('Motivic.Public.Core', targets)
 
-    def test_docs_and_tool_changes_do_not_request_native_work(self):
+    def test_nonlean_paths_do_not_add_source_graph_targets(self):
         for path in ('README.md', 'docs/evidence.json', 'docs/history/Old.lean',
                      'scripts/build.py', '.github/workflows/ci.yml', 'unknown/config.json'):
             self.assertEqual(select_targets(self.root, [path]), [], path)
         self.assertEqual(validation_scope(['docs/evidence.json']), (True, []))
+
+    def test_runtime_tool_only_changes_select_exact_curated_module_smoke_and_client(self):
+        for path in ('scripts/build.py', 'scripts/build_modules.py', 'scripts/build_client.py',
+                     'scripts/cache.py', 'scripts/cache_bootstrap.py', 'scripts/resource_guard.py',
+                     'scripts/lint_style.py', 'scripts/lint_declarations.py', 'scripts/validate.py',
+                     'scripts/ci_targets.py', 'scripts/library_sources.py',
+                     '.github/workflows/ci.yml', '.github/actions/lake-cache/action.yml'):
+            with self.subTest(path=path):
+                plan = make_plan(self.root, [path])
+                self.assertEqual(plan['targets'], ['Motivic', 'MotivicTest'])
+                self.assertEqual(plan['providers'], ['Motivic'])
+                self.assertEqual(plan['lint'], ['Motivic', 'MotivicTest'])
+                self.assertTrue(plan['client'])
+                self.assertFalse(plan['full'])
+
+    def test_docs_and_pure_fixture_changes_remain_static_only(self):
+        for path in ('README.md', 'docs/evidence.json', 'scripts/README.md',
+                     'docs/DEVELOPMENT.md', 'scripts/test_build.py', 'unknown/config.json'):
+            with self.subTest(path=path):
+                plan = make_plan(self.root, [path])
+                self.assertEqual(plan['targets'], [])
+                self.assertEqual(plan['providers'], [])
+                self.assertEqual(plan['lint'], [])
+                self.assertFalse(plan['client'])
+
+    def test_runtime_tools_do_not_expand_existing_lean_or_manual_scope(self):
+        changed = ['Motivic/Optional/Computation.lean']
+        native_fields = ('targets', 'providers', 'lint', 'client', 'full')
+        for manual in (None, ['MotivicTest.PublicAPI']):
+            with self.subTest(manual=manual):
+                baseline = make_plan(self.root, changed, manual=manual)
+                combined = make_plan(self.root, [*changed, 'scripts/build.py'], manual=manual)
+                self.assertEqual({key: combined[key] for key in native_fields},
+                                 {key: baseline[key] for key in native_fields})
 
     def test_pin_change_requires_explicit_scope_without_root_fallback(self):
         with self.assertRaisesRegex(ValueError, 'explicit targets'):
@@ -266,6 +300,18 @@ class DependencyScopeTests(GitFixture):
         self.assertEqual(plan['providers'], ['Motivic.Public'])
         self.assertEqual(plan['targets'], ['Motivic.Public', 'MotivicTest', 'MotivicTest.PublicAPI'])
         self.assertEqual(plan['lint'], ['Motivic.Public', 'MotivicTest.PublicAPI'])
+
+    def test_pin_scope_with_runtime_tool_changes_keeps_exact_native_selection(self):
+        plan_path = self.root / 'plan.json'
+        result = self.cli('--base', self.base, '--plan', str(plan_path))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        baseline = json.loads(plan_path.read_text())
+        self.write('scripts/build.py', '# Runtime-tool edit\n')
+        result = self.cli('--base', self.base, '--plan', str(plan_path))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        combined = json.loads(plan_path.read_text())
+        for key in ('targets', 'providers', 'lint', 'client', 'full', 'dependency_scope_sha256'):
+            self.assertEqual(combined[key], baseline[key], key)
 
     def test_missing_malformed_and_wrong_schema_records_fail_closed(self):
         path = self.root / '.github/dependency-scope.json'

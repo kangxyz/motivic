@@ -22,6 +22,13 @@ CLIENT = 'examples/downstream/'
 DEPENDENCY_SCOPE = '.github/dependency-scope.json'
 
 
+def runtime_tool_input(path: str) -> bool:
+    """Execution scripts and CI actions need native smoke coverage beyond fixtures."""
+    return ((path.startswith('scripts/') and path.endswith(('.py', '.sh'))
+             and not Path(path).name.startswith('test_'))
+            or (path.startswith('.github/') and path.endswith(('.yml', '.yaml', '.py', '.sh'))))
+
+
 def dependency_scope(root: Path, base: str) -> tuple[list[str], str]:
     """Validate the reviewed Aglib transition against both configuration snapshots."""
     def reject(message):
@@ -195,6 +202,14 @@ def make_plan(root: Path, changed: list[str], *, full: bool = False,
     targets = sorted(set(targets) | providers)
     structural, tests = validation_scope(changed, setup=full, manual=manual is not None)
     lint = sorted((providers | (seeds & sources.keys())) & set(targets))
+    if not targets and not client and any(runtime_tool_input(path) for path in changed):
+        if any(name not in sources for name in DEFAULTS):
+            raise ValueError('Runtime-tool smoke requires the existing Motivic and MotivicTest facade modules')
+        # These are module smoke targets, not source edits or graph-expansion seeds.
+        targets = list(DEFAULTS)
+        providers = {'Motivic'}
+        lint = list(DEFAULTS)
+        client = True
     return dict(targets=targets, providers=sorted(providers), lint=lint,
                 client=client, structural=structural,
                 tool_tests=tests, full=full)

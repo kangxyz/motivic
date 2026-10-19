@@ -160,9 +160,15 @@ required by the client, or reached as a consumer.
 
 Documentation and evidence JSON changes run static source checks without Lean
 installation, dependency resolution, compilation, lint, cache restoration or
-publication. Tool/workflow changes select affected Python fixtures and static
-checks, without inventing a Lean target. Shared parser/workflow and unknown
-Python/shell tools select all current tooling fixtures. Build, cache, client
+publication. Execution-script and CI-workflow changes select affected Python
+fixtures and static checks. If no native scope is already selected, they also
+compile the exact curated `Motivic` and `MotivicTest` facade modules, run their
+declaration/style checks, and check the independent client. The module build
+adapter uses `+` selectors; this smoke check does not select whole libraries or
+expand unchanged test prerequisites. Existing Lean, pin-upgrade and manual
+native scopes keep their exact target, provider, style and client selection.
+Markdown and pure `test_*.py` fixture changes do not request this native smoke.
+Shared parser/workflow and unknown Python/shell tools select all current tooling fixtures. Build, cache, client
 and selector changes also select `test_validate.py`. Missing push bases use an available trusted default-branch merge-base, or the
 root diff of a true initial commit. CI supplies the repository default branch;
 local selection can use `--default-branch` or Git's origin/HEAD. An unresolvable

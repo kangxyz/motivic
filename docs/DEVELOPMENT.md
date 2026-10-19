@@ -109,8 +109,15 @@ dispatch have no full fallback.
 Pin changes require explicit affected scope and matching caches. An Aglib upgrade
 can commit the reviewed configuration hashes and local seeds in
 `.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
-the checked format used by automatic CI. Tool/docs-only changes run static checks
-and affected tooling fixtures without a Lean job.
+the checked format used by automatic CI. Documentation-only changes run static
+checks without a Lean job. Execution-script and CI-workflow changes run affected
+tooling fixtures and, when no native scope is already selected, compile and
+declaration/style-lint the exact curated `Motivic` and `MotivicTest` facade
+modules and check the independent client. This smoke uses module selectors,
+without whole-library expansion or unchanged test-prerequisite expansion.
+Existing Lean, pin-upgrade and manual native scopes remain exact; tool changes
+do not add extra roots to those selections. Pure Python fixture changes retain
+their affected fixture checks without native smoke.
 The final route compiles and declaration/style-lints providers before expensive
 affected consumers, tests and clients. It also declaration-lints the remaining
 affected origins after their builds; text/style selection has its own narrower
