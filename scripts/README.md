@@ -93,32 +93,31 @@ and checks the reviewed upstream helper bytes before loading them.
 Batteries prerequisites. Lean and Lake come from the toolchain; the optional
 Cli and ImportGraph support leaves retain their temporary isolated compilation.
 
-`build.py` requires explicit targets, always requests native `--rehash`
-validation, and invokes Aglib's `scripts/build_serial.py --root` with private
-verification receipts. `build_modules.py` checks that helper's reviewed source
-hash and preserves explicit Lake module selectors through its cache probe and
-build. It normalizes names only for source validation. The helper comes from the
-pinned dependency;
-`MOTIVIC_TOOLING_ROOT` selects a separately reviewed Aglib tooling checkout.
-The wrapper never deletes artifacts or accepts artifact presence as proof of
-cache validity. It retains the upstream driver's owned-process resource guard:
+`build.py` requires explicit targets and calls the shared `lean_ci.build` helper
+through `build_modules.py`. Bare semantic module names are validated as local
+sources; the common Lake boundary renders `+MODULE` for both cache probes and
+builds. The former byte-locked monkey patch is removed. Cache misses retain the
+shared helper's guarded selected-graph build and failure receipts.
+
+Set `MOTIVIC_TOOLING_ROOT` to an independently reviewed tooling checkout and
+`MOTIVIC_TOOLING_REVISION` to its exact reviewed 40-hex commit. The entry verifies
+that revision and the executing package sources before loading `ci/lean_ci`.
+Tooling identity is independent of the mathematical Aglib/Mathlib/Lean pins.
+An ambient sibling or mutable branch cannot supply this identity.
 
 ```sh
 python3 scripts/build.py Motivic.Cor
 python3 scripts/build.py --receipt-dir .lake/verification/my-change Motivic.Transfers
 ```
 
-Optional `--outputs FILE` forwards native Lake input-to-output mapping export to
-the same guarded incremental build. It preserves ordinary target selection and
-cached-build behavior; a relative output path is resolved from the package root.
-
-`MOTIVIC_BUILD_THREADS`, `MOTIVIC_LEAN_MEMORY_MB` and `MOTIVIC_RSS_LIMIT_MB`
-map to the upstream driver's corresponding `AGLIB_*` settings. Existing upstream
-settings remain available when no Motivic override is supplied. Keep shared
-Lean build outputs serialized; dependency build trees must belong to this
-checkout. The build command may compile the selected target's genuinely
-missing dependency closure, so obtain matching caches first and investigate
-unexpected broad work.
+Optional `--outputs FILE` forwards native Lake mappings to that same build.
+`--export-only` selects a guarded `lake --rehash --no-build build +MODULE`
+export with no cache-miss build fallback. Relative output paths resolve from
+the package root. `MOTIVIC_BUILD_THREADS`, `MOTIVIC_LEAN_MEMORY_MB` and
+`MOTIVIC_RSS_LIMIT_MB` retain precedence over the older `AGLIB_*` aliases.
+The explicit inherited remote wrapper/profile remains owned by its caller.
+Keep dependency build trees and outputs owned by this checkout; investigate
+unexpected dependency compilation and recover matching caches first.
 
 `test_repository.py` supplies boundary fixtures for actual cycles, cross-subject
 imports, candidate/host dependency boundaries, test/client leaks, comment/string masking,
@@ -145,7 +144,7 @@ list stdout and optionally writes JSON. CI transports the plan and ordered
 target file using deterministic gzip/base64 outputs. The validation adapter
 reselects a transported plan against its recorded comparison before using it.
 A changed plan fails before native commands; select the current affected scope.
-`--list` prints commands without executing tools, resolving dependencies,
+`--list` prints shared task declarations without executing native tools, resolving dependencies,
 compiling, touching caches or creating receipts.
 
 Every current changed local module and every existing reverse-reachable local
@@ -213,8 +212,10 @@ The record is consulted only for a non-initial configuration change without
 explicit manual targets or `--full`. Later pushes without configuration changes
 ignore a retained record; replace it when reviewing the next pin transition.
 
-`validate.py` runs final acceptance only when requested. It uses existing
-cache/build/client wrappers: static checks and affected tooling fixtures, focused
+`validate.py` runs final acceptance only when requested. The thin
+`shared_workflow.py` adapter declares scope and predicates through
+`lean_ci.recipe.native_recipe`; `Application.check` owns execution, resource
+guarding, receipt verification and compatible individual-check continuation: static checks and affected tooling fixtures, focused
 matching cache acquisition, provider compilation, provider declaration and style
 lint, affected consumer/test compilation, remaining affected declaration-origin
 lint, then the affected client. The latter includes unchanged consumer sources
@@ -241,32 +242,54 @@ compile only into the temporary overlay; dependency caches remain unchanged.
 `cache.py --lint-runtime` includes the driver's exact Mathlib imports.
 `lint_style.py --check-prerequisites --sysroot PATH` performs read-only runtime
 inspection without Lake or compilation.
-Both retain the reviewed resource guard. Declaration runtime preparation
+The shared runtime guards these check tasks. Declaration runtime preparation
 selects only `+Batteries.Tactic.Lint` after matching cache acquisition; its
 resource receipt is separate from provider/proof compilation. One isolated
 style runtime checks all selected files before consumers. Missing prerequisites
 fail closed; they cannot trigger a root build.
 This is compiler/linter/test coverage, not independent kernel replay or a proof
 of theorem premises. `--skip-static` and `--skip-cache` reuse matching same-run
-evidence, as CI does; they do not establish that evidence themselves.
+evidence retained by the caller; they do not establish that evidence themselves.
 
-An optional `validate.py --outputs FILE` exports mappings only after the selected
-checks succeed. `build.py --export-only --outputs FILE TARGET...` invokes guarded
-`lake --rehash --no-build build` for those exact verified targets, without the
-compiling build helper or any miss fallback. Explicit Lake module selectors
-preserve this scope for the `Motivic` and `MotivicTest` facades as well.
-CI stages this same selection on main pushes; publication adds no unconditional
-roots or client build.
-Partial exports cover only the selected closure. The shared action stages
-mappings with actual source/compiler provenance and a separate write-permitted
-job publishes that same-run artifact. Pins remain unchanged, including the
-separately reviewed native tooling revision. A configured workflow is not
-evidence of hosted success or full library validation.
+The shared final check enrolls local source candidates, absent configurations,
+policy and actual checker/runtime inputs before selection. It binds dirty
+worktree bytes and preserves strict committed-source CI as a separate envelope.
+Receipt state, optional `--progress` stores and `--outputs` exports must be
+outside the checkout; omitted state uses an external temporary directory.
+Keep the same external progress store when continuing compatible final checks.
+Unsupported reflective runtime metadata disables individual-check reuse.
+
+Native final checking requires a prepared ignored `.lake` directory. When the
+independent client is selected, prepare its ignored directories and inherited
+manifest first with `python3 scripts/shared_workflow.py prepare-client`.
+This preparation must precede the source snapshot: absent configuration names
+retain strict temporal guards. Final checking does not update mathematical pins.
+
+`validate.py --outputs FILE` releases mappings only after all selected checks
+and the affected client succeed. Provider and consumer mappings are collected
+from their original successful builds and validated/merged by the shared core;
+export adds no proof compilation or second export build. Partial mappings cover
+only their selected closure.
+
+The reviewed common tooling commit for this migration is
+`3a4d549981ced306d89d3ed55418c9e6a25f86c4`; select it as `MOTIVIC_TOOLING_REVISION`.
+
+This isolated migration candidate has not cut over the hosted workflow.
+The current workflow's tooling commit predates this API. Adoption requires the
+new common tooling commit, mathematical delivery and write handoff, and an
+owner-reviewed native baseline covering the unfinished upgrade. The adapter's
+`BASELINE_PROTOCOL` is intentionally unset and strict CI planning fails with
+an actionable missing-evidence message. The existing `EvidenceProtocol` owns
+reviewed workflow/entrypoint identities; an exact legacy run/attempt allowlist
+may restrict an admitted witness. No extra admission file is needed. A green
+two-facade smoke, a run excluding failed optional leaves, or a root/test-only
+bootstrap cannot close the unfinished upgrade. No `event.before` fallback
+advances that range. Local final checking requires no GitHub lookup.
 
 `test_ci_targets.py` covers affected graphs, docs/tools/pins, optional modules,
 renames/deletions, missing bases, explicit manual/full scope and compressed
-transport. `test_validate.py` covers ordering, failure propagation, docs-only
-static checks, unchanged-scope exclusion and command-only readiness.
+transport. `test_validate.py` covers shared recipe ordering and predicates, local enrollment,
+client workspace setup, source-only checks and fail-closed baseline selection.
 An opt-in native fixture uses `MOTIVIC_NATIVE_STYLE_ROOT` naming a prepared
 owned-output package with `Motivic.Smoke.StyleSelected` importing the trailing-
 whitespace-bad `Motivic.Smoke.StyleUnrelated`, and a directly bad
@@ -275,5 +298,7 @@ runtime available: the clean selected source must pass and the directly
 selected bad source must fail with its own trailing-whitespace diagnostic. The fixture is
 skipped during ordinary Python-only checks and never performs a library build.
 
-`test_build.py` exercises existing calls and optional mapping-export forwarding
-against a temporary stand-in helper without invoking Lean or touching caches.
+`test_build.py` exercises semantic-name forwarding, exact module selection,
+no-build export and explicit tooling admission without invoking Lean. Run these
+Python fixtures with the reviewed shared package on `PYTHONPATH` (its `ci/`
+directory); ordinary native style fixtures remain opt-in.

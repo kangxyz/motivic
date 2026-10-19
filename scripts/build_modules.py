@@ -1,39 +1,46 @@
 #!/usr/bin/env python3
 # Authors: kangxyz
-"""Keep the pinned guarded build driver on explicit Lake module selectors."""
-import hashlib
-import importlib.util
+"""Compatibility entry for one shared-core semantic module build or no-build export."""
+import argparse
 from pathlib import Path
 import sys
 
-DRIVER_SHA256 = 'd8a17817fb612923fc8edae53956715cf517286bf2e5c4fa9ef4e4613c8c98a3'
+from library_sources import ROOTS, module_path
+from shared_workflow import ROOT, shared_api
 
 
-def main(argv: list[str] | None = None) -> int:
-    argv = sys.argv[1:] if argv is None else argv
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--root', type=Path, default=ROOT)
+    parser.add_argument('--receipt-dir', type=Path, required=True)
+    parser.add_argument('--rehash', action='store_true')
+    parser.add_argument('--outputs', type=Path)
+    parser.add_argument('--export-only', action='store_true')
+    parser.add_argument('targets', nargs='+', help='bare semantic Motivic/MotivicTest module names')
+    args = parser.parse_args(argv)
     try:
-        if not argv:
-            raise ValueError('Expected the pinned build helper path and its arguments')
-        path = Path(argv[0]).resolve(strict=True)
-        source = path.read_bytes()
-        if hashlib.sha256(source).hexdigest() != DRIVER_SHA256:
-            raise ValueError('Guarded build helper differs from the reviewed source; review its target interface')
-        # A separate child loads the helper's own parser and resource guard modules.
-        sys.path.insert(0, str(path.parent))
-        spec = importlib.util.spec_from_file_location('_motivic_module_build', path)
-        helper = importlib.util.module_from_spec(spec)
-        # Execute exactly the checked bytes, rather than rereading a mutable helper.
-        exec(compile(source, str(path), 'exec'), helper.__dict__)
-        original = helper.source_order
-
-        def source_order(root, targets):
-            if not targets or any(not name.startswith('+') or name.startswith('++') for name in targets):
-                raise ValueError('Guarded module build requires explicit +MODULE selectors')
-            return original(root, [name[1:] for name in targets])
-
-        helper.source_order = source_order
-        sys.argv = [str(path), *argv[1:]]
-        return helper.main()
+        root = args.root.resolve()
+        for name in args.targets:
+            if name.split('.')[0] not in ROOTS or not (root / module_path(name)).is_file():
+                raise ValueError('Expected an existing local Motivic/MotivicTest target: ' + name)
+        shared_api()
+        from lean_ci import build, resources
+        from shared_workflow import resource_config, runtime_environment
+        config = resource_config()
+        environment = runtime_environment()
+        if not args.export_only:
+            return build.build(root, args.targets, args.receipt_dir, rehash=args.rehash,
+                               outputs=args.outputs, config=config, environment=environment, selection='module')
+        if args.outputs is None:
+            raise ValueError('--export-only requires --outputs')
+        args.receipt_dir.mkdir(parents=True, exist_ok=True)
+        args.outputs.parent.mkdir(parents=True, exist_ok=True)
+        command = ['lake', *(['--rehash'] if args.rehash else []), '--no-build', 'build',
+                   *build.native_targets(args.targets, 'module'), '-o', str(args.outputs.resolve())]
+        with build.capped_toolchain(root, build.build_threads(environment, config), environment=environment, config=config) as environment:
+            return resources.run(command, cwd=root, env=environment,
+                                 receipt=args.receipt_dir / 'export.json',
+                                 budget=resources.limits(environment, config=config), config=config)
     except (OSError, ValueError) as error:
         print(f'Focused module build failed: {error}', file=sys.stderr)
         return 1

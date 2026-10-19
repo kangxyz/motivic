@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Authors: kangxyz
-"""Build explicit local targets through Aglib's guarded incremental Lake driver."""
+"""Build explicit local targets through the independently pinned shared Lean core."""
 import argparse
 from datetime import datetime, timezone
 import os
@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def command(root: Path, targets: list[str], receipt_dir: Path,
-            tooling: Path | None = None, outputs: Path | None = None,
+            outputs: Path | None = None,
             export_only: bool = False) -> list[str]:
     for target in targets:
         if target.split('.')[0] not in {'Motivic', 'MotivicTest'} or not (
@@ -22,25 +22,16 @@ def command(root: Path, targets: list[str], receipt_dir: Path,
             raise ValueError(f'Expected an existing local Motivic/MotivicTest target: {target}')
     if not targets:
         raise ValueError('At least one explicit build target is required')
-    helper = (tooling or root / '.lake/packages/Aglib') / 'scripts/build_serial.py'
-    if not helper.is_file():
-        raise ValueError(f'Missing guarded build helper {helper}; resolve dependencies or set MOTIVIC_TOOLING_ROOT')
-    if export_only:
-        if outputs is None:
-            raise ValueError('--export-only requires --outputs')
-        guard = helper.parent / 'resource_guard.py'
-        if not guard.is_file():
-            raise ValueError(f'Missing resource guard {guard}')
-        return [sys.executable, str(guard.resolve()), '--capped-toolchain',
-                '--receipt', str(receipt_dir / 'export.json'), '--',
-                'lake', '--rehash', '--no-build', 'build',
-                *('+' + target for target in targets), '-o', str(outputs)]
+    if export_only and outputs is None:
+        raise ValueError('--export-only requires --outputs')
     adapter = Path(__file__).with_name('build_modules.py')
-    argv = [sys.executable, str(adapter), str(helper.resolve()), '--root', str(root), '--rehash',
+    argv = [sys.executable, str(adapter), '--root', str(root), '--rehash',
             '--receipt-dir', str(receipt_dir)]
     if outputs is not None:
         argv.extend(['--outputs', str(outputs)])
-    return [*argv, *('+' + target for target in targets)]
+    if export_only:
+        argv.append('--export-only')
+    return [*argv, *targets]
 
 
 def main() -> int:
@@ -64,9 +55,8 @@ def main() -> int:
     for name in ('BUILD_THREADS', 'LEAN_MEMORY_MB', 'RSS_LIMIT_MB'):
         if 'MOTIVIC_' + name in environment:
             environment['AGLIB_' + name] = environment['MOTIVIC_' + name]
-    tooling = environment.get('MOTIVIC_TOOLING_ROOT')
     try:
-        argv = command(root, args.targets, receipts, Path(tooling) if tooling else None, outputs, args.export_only)
+        argv = command(root, args.targets, receipts, outputs, args.export_only)
         if args.export_only:
             receipts.mkdir(parents=True, exist_ok=True)
             outputs.parent.mkdir(parents=True, exist_ok=True)

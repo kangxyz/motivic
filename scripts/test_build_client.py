@@ -10,7 +10,7 @@ import unittest
 
 from build_client import prepare
 from ci_targets import make_plan
-from validate import commands
+from shared_workflow import recipe
 
 
 class ClientBuildTests(unittest.TestCase):
@@ -111,13 +111,15 @@ sys.exit(int(os.environ.get('FIXTURE_EXIT','0')))
 
         (self.root / 'Motivic.lean').write_text('module\n')
         plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
-        selected = commands(self.root, plan, self.root / 'receipts',
-                            outputs=self.root / 'native-outputs.jsonl',
-                            skip_static=True, skip_cache=True)
-        client = next(i for i, argv in enumerate(selected)
-                      if Path(argv[1]).name == 'build_client.py')
-        export = next(i for i, argv in enumerate(selected) if '--export-only' in argv)
-        self.assertLess(client, export)
+        selected = recipe(self.root, plan, 'check', self.root / 'receipts',
+                          export=True, skip_static=True, skip_cache=True)
+        ids = [task['id'] for task in selected]
+        self.assertLess(ids.index('providers/declarations'), ids.index('client/build'))
+        self.assertEqual(ids[-1], 'client/build')
+        # Mappings come from the original builds. Application releases export
+        # only after the complete reconstructed recipe (including client) passes.
+        self.assertEqual([task['id'] for task in selected if task.get('mapping')], ['providers/build'])
+        self.assertFalse(any('--export-only' in task['command'] for task in selected))
         # Keep the existing GitHub cache path schema/version for both restore and save.
         self.assertEqual(workflow.count('          path: .lake/build\n'), 2)
         self.assertNotIn('path: examples/downstream/.lake/build', workflow)

@@ -16,8 +16,12 @@ once, comparing with its starting revision (omit `--head` for working changes):
 python3 scripts/validate.py --base BASE
 ```
 
-After a late failure, use the failed category's direct command and retain
-compatible earlier results. For example, a repaired test can be compiled directly
+Final checks use the independently pinned shared `lean_ci` recipe and executor.
+Set `MOTIVIC_TOOLING_ROOT` and its exact reviewed `MOTIVIC_TOOLING_REVISION`; the
+[script guide](../scripts/README.md) owns tooling admission and command details.
+Use an external `--progress` directory to retain compatible individual checks
+across final-check attempts. After a late failure, repair the failed category
+and retain compatible earlier results. For example, a repaired test can be compiled directly
 with `python3 scripts/build.py MotivicTest.OrdinaryCohomologyTransfers`; finish
 that changed source's applicable lint without restarting unchanged provider
 checks. The [script guide](../scripts/README.md) owns direct lint/client commands.
@@ -49,18 +53,20 @@ The two public `Motivic.KTheory.MilnorK` and `.Norms` entries are import bridges
 Aglib's focused build and cache route when changing the shared theory.
 
 
-The build wrapper uses Aglib's pinned serial/resource-capped driver with this
-repository as the root. Exact commands and CLI options are available with
-`--help`. Receipts and writable outputs stay under this checkout's `.lake/`.
+The build wrapper uses the independently pinned shared resource-capped build
+helper with bare module names and explicit Lake module selection. Exact commands and CLI options are available with
+`--help`. Direct-build receipts may stay under this checkout's `.lake/`; shared final-check
+state, progress and delivered mappings use external directories.
 Never symlink another checkout's mutable build tree into this one.
 
 Lake native artifact caching is enabled, including restoration of conventional
 build files. It preserves compatible work across checkouts; a current rehashed
 build decides reuse. The CI workflow uses separately pinned Aglib tooling to
 restore compatible public dependency artifacts without changing mathematical
-pins. Cache misses permit only ordinary selected-target builds. On a successful
-main-branch push, a guarded no-build export uses exactly the verified selection.
-A missing export artifact fails publication without compiling an extra closure. The canonical shared action stages native
+pins. Cache misses permit only ordinary selected-target builds. The hosted cutover remains pending a reviewed common tooling commit and native
+baseline covering the unfinished upgrade. In the shared candidate, mapping
+export reuses the original selected build outputs after all checks succeed.
+A missing export artifact fails delivery without compiling an extra closure. The canonical shared action stages native
 mappings; a separate release job publishes the exact same-run artifact with
 repository write permission. Build jobs and pull requests remain read-only.
 A configured producer is not a claim that its first remote release succeeded.
@@ -93,7 +99,7 @@ covers only the lint or tests it actually runs. After final-check repairs, rerun
 only failed or newly affected checks. Unchanged behavior needs no new tests;
 documentation-only changes use static source/link checks and changed examples.
 
-For the final phase, local validation and CI share the affected-scope selector:
+For the final phase, the shared adapter uses the existing affected-scope selector:
 
 ```sh
 python3 scripts/validate.py --base BASE --head HEAD --list
@@ -103,9 +109,12 @@ python3 scripts/validate.py --base BASE --head HEAD
 Use a comparison identifying the current checkout; staged, unstaged and
 untracked edits are included. Alternatively pass explicit `--manual-targets`
 (existing local modules); `--full` is an opt-in diagnostic over all occupied
-modules. Missing push bases use a trusted fetched default-branch merge-base or a true
-initial root diff; unresolvable bases fail actionably. Pin changes and manual
-dispatch have no full fallback.
+modules. Local missing bases use a trusted fetched default-branch merge-base or a true
+initial root diff; unresolvable bases fail actionably. Shared committed CI uses
+the existing reviewed evidence protocol and cannot fall back to `event.before`
+or silently advance an unfinished dependency-upgrade comparison. No admitted
+Motivic witness currently closes that comparison; CI cutover remains pending.
+Pin changes and manual dispatch have no full fallback.
 Pin changes require explicit affected scope and matching caches. An Aglib upgrade
 can commit the reviewed configuration hashes and local seeds in
 `.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
@@ -124,7 +133,12 @@ affected origins after their builds; text/style selection has its own narrower
 file scope. Test-only edits retain their direct
 production prerequisite checks. Linter runtime setup selects only its actual tooling prerequisites, with
 separate guarded receipts; missing remaining prerequisites fail closed.
-See [tool commands](../scripts/README.md) for plan transport and scoped export.
+Before native final checking, prepare ignored root `.lake` inputs and, for a
+selected client, run `python3 scripts/shared_workflow.py prepare-client`. This
+precedes the source snapshot and preserves strict absent-config observations.
+Batteries declaration checks still use separate environments per origin; no
+union-environment batch or equivalence is claimed. See
+[tool commands](../scripts/README.md) for source boundaries and scoped export.
 
 For a transfer-interface change, a relevant final test is:
 
