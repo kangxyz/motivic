@@ -1,15 +1,16 @@
 #!/usr/bin/env python3
-"""Select changed local modules and their affected public consumers for CI."""
+"""Select incremental validation from an explicit Git comparison or target list."""
 # Authors: kangxyz
 import argparse
 import base64
 import gzip
+import json
 import os
 from pathlib import Path
 import subprocess
 import sys
 
-from library_sources import is_import_surface, lean_imports, module_name, source_modules
+from library_sources import lean_imports, module_name, source_modules
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULTS = ('Motivic', 'MotivicTest')
@@ -31,122 +32,201 @@ def select_client(root: Path, changed: list[str], targets: list[str]) -> bool:
 
 def validation_scope(changed: list[str], *, setup: bool = False,
                      manual: bool = False) -> tuple[bool, list[str]]:
-    """Select structural checks and fixtures from the current tool ownership."""
+    """Static checks need no toolchain; fixtures follow current tool ownership."""
     if setup:
         return True, ['test_*.py']
-    structural = manual or any(path.endswith('.lean') or path in CONFIG_INPUTS or client_input(path)
-                               for path in changed)
     fixtures = set()
     owners = {
-        'scripts/ci_targets.py': 'test_ci_targets.py',
-        'scripts/test_ci_targets.py': 'test_ci_targets.py',
-        'scripts/build.py': 'test_build.py',
-        'scripts/test_build.py': 'test_build.py',
-        'scripts/build_client.py': 'test_build_client.py',
-        'scripts/test_build_client.py': 'test_build_client.py',
-        'scripts/cache.py': 'test_repository.py',
-        'scripts/check_repository.py': 'test_repository.py',
-        'scripts/generate_imports.py': 'test_generate_imports.py',
-        'scripts/test_generate_imports.py': 'test_generate_imports.py',
-        'scripts/test_repository.py': 'test_repository.py',
+        'ci_targets': 'test_ci_targets.py', 'validate': 'test_validate.py',
+        'lint_style': 'test_validate.py', 'lint_declarations': 'test_validate.py',
+        'build': 'test_build.py', 'build_client': 'test_build_client.py',
+        'cache': 'test_repository.py', 'check_repository': 'test_repository.py',
+        'generate_imports': 'test_generate_imports.py',
+        'repository': 'test_repository.py',
     }
     for path in changed:
         if path == 'scripts/library_sources.py' or (
                 path.startswith('.github/') and path.endswith(('.yml', '.yaml', '.py', '.sh'))):
-            structural = True
             fixtures.add('test_*.py')
-        elif path in owners:
-            fixtures.add(owners[path])
-            if path in {'scripts/check_repository.py', 'scripts/generate_imports.py'}:
-                structural = True
-            if path == 'scripts/check_repository.py':
-                fixtures.add('test_generate_imports.py')
         elif path.startswith('scripts/') and path.endswith(('.py', '.sh')):
-            structural = True
-            fixtures.add('test_*.py')
-    if 'test_*.py' in fixtures:
-        return structural, ['test_*.py']
-    return structural, sorted(fixtures)
+            stem = Path(path).stem.removeprefix('test_')
+            fixtures.add(owners.get(stem, 'test_*.py'))
+            if stem == 'check_repository':
+                fixtures.add('test_generate_imports.py')
+            if stem in {'ci_targets', 'build', 'build_client', 'cache'}:
+                fixtures.add('test_validate.py')
+    return True, ['test_*.py'] if 'test_*.py' in fixtures else sorted(fixtures)
+
+
+def graph(root: Path) -> tuple[dict, dict]:
+    sources = source_modules(root)
+    imports = {name: lean_imports(path.read_text()) for name, path in sources.items()}
+    return sources, imports
 
 
 def select_targets(root: Path, changed: list[str], *, full: bool = False,
-                   manual: list[str] | None = None) -> list[str]:
-    sources = source_modules(root)
-    if manual is not None or full:
-        targets = list(DEFAULTS) if manual is None else list(dict.fromkeys(manual))
-        if not targets:
+                   manual: list[str] | None = None, initial: bool = False) -> list[str]:
+    sources, imports = graph(root)
+    if full:
+        return sorted(sources)
+    if any(path in CONFIG_INPUTS for path in changed) and manual is None and not initial:
+        raise ValueError('Changed dependency/toolchain configuration requires explicit targets or --full; '
+                         'recover matching caches and identify the affected scope first')
+    selected = set(manual or [])
+    if manual is not None:
+        if not manual:
             raise ValueError('An explicit manual target list cannot be empty')
-        missing = [name for name in targets if name not in sources]
+        missing = selected - sources.keys()
         if missing:
-            raise ValueError('Expected existing local Motivic/MotivicTest targets: ' + ', '.join(missing))
-        return targets
-    needs_defaults = any(path in CONFIG_INPUTS or (
-            path.startswith('.github/') and path.endswith(('.yml', '.yaml', '.py', '.sh'))) or (
-            path.startswith('scripts/') and path.endswith(('.py', '.sh')))
-           for path in changed)
-    defaults = set(select_targets(root, [], full=True)) if needs_defaults else set()
+            raise ValueError('Expected existing local Motivic/MotivicTest targets: ' + ', '.join(sorted(missing)))
+    # Keep deleted/renamed names as graph seeds, but never send absent sources to Lake.
+    selected.update(module_name(path) for path in changed if path.endswith('.lean')
+                    and (path in {'Motivic.lean', 'MotivicTest.lean'}
+                         or path.startswith(('Motivic/', 'MotivicTest/'))))
+    required = set()
     if any(client_input(path) for path in changed):
-        defaults.add('Motivic')
-    selected = {module_name(path) for path in changed if path.endswith('.lean')
-                and module_name(path) in sources}
-    if not selected:
-        return sorted(defaults)
-    texts = {name: path.read_text() for name, path in sources.items()}
-    public = {name for name, path in sources.items()
-              if name in DEFAULTS or name.startswith('MotivicTest.')
-              or path.with_suffix('').is_dir()
-              or is_import_surface(texts[name])}
+        source = root / CLIENT / 'MotivicClient.lean'
+        if source.is_file():
+            required.update(name for name in lean_imports(source.read_text()) if name in sources)
     reverse = {}
-    for name, path in sources.items():
-        for imported in lean_imports(texts[name]):
-            if imported in sources:
-                reverse.setdefault(imported, set()).add(name)
+    for name, imported in imports.items():
+        for dependency in imported:
+            reverse.setdefault(dependency, set()).add(name)
     affected, pending = set(selected), list(selected)
     while pending:
-        name = pending.pop()
-        for consumer in reverse.get(name, set()):
+        for consumer in reverse.get(pending.pop(), set()):
             if consumer not in affected:
                 affected.add(consumer)
                 pending.append(consumer)
-    return sorted(defaults | selected | (affected & public))
+    return sorted((affected | required) & sources.keys())
+
+
+def make_plan(root: Path, changed: list[str], *, full: bool = False,
+              manual: list[str] | None = None, initial: bool = False) -> dict:
+    targets = select_targets(root, changed, full=full, manual=manual, initial=initial)
+    client = select_client(root, changed, targets)
+    sources, imports = graph(root)
+    changed_modules = {module_name(path) for path in changed if path.endswith('.lean')}
+    seeds = set(targets) if full else changed_modules | set(manual or [])
+    if any(client_input(path) for path in changed):
+        source = root / CLIENT / 'MotivicClient.lean'
+        if source.is_file():
+            seeds.update(name for name in lean_imports(source.read_text()) if name in sources)
+    providers = {name for name in seeds if name in sources
+                 and name.split('.')[0] == 'Motivic'}
+    # A test-only edit still checks its real production prerequisites before the test.
+    pending = [name for name in seeds if name in sources and name.split('.')[0] == 'MotivicTest']
+    seen = set(pending)
+    while pending:
+        for name in imports.get(pending.pop(), []):
+            if name in sources and name not in seen:
+                seen.add(name)
+                if name.split('.')[0] == 'Motivic':
+                    providers.add(name)
+                else:
+                    pending.append(name)
+    targets = sorted(set(targets) | providers)
+    structural, tests = validation_scope(changed, setup=full, manual=manual is not None)
+    lint = sorted((providers | (seeds & sources.keys())) & set(targets))
+    return dict(targets=targets, providers=sorted(providers), lint=lint,
+                client=client, structural=structural,
+                tool_tests=tests, full=full)
+
+
+def comparison_base(root: Path, base: str, head: str, default_branch: str = '') -> str:
+    """Resolve absent push history from available Git evidence, without broad fallback."""
+    if base and set(base) != {'0'}:
+        return base
+    parents = subprocess.check_output(['git', 'rev-list', '--parents', '-n', '1', head], cwd=root).split()
+    if len(parents) == 1:
+        # Shallow traversal can hide real parents; inspect the commit header itself.
+        header = subprocess.check_output(['git', 'cat-file', '-p', head], cwd=root).split(b'\n\n', 1)[0]
+        if not any(line.startswith(b'parent ') for line in header.splitlines()):
+            return '--root'
+        raise ValueError('Git history is shallow; fetch the missing history before selecting affected checks')
+    reference = 'refs/remotes/origin/' + default_branch if default_branch else ''
+    if not reference:
+        result = subprocess.run(['git', 'symbolic-ref', '-q', 'refs/remotes/origin/HEAD'],
+                                cwd=root, capture_output=True, text=True)
+        if result.returncode == 0:
+            reference = result.stdout.strip()
+    if reference:
+        result = subprocess.run(['git', 'merge-base', head, reference], cwd=root,
+                                capture_output=True, text=True)
+        if result.returncode == 0:
+            return result.stdout.strip()
+    raise ValueError('No trustworthy Git comparison base is available: fetch the default-branch history '
+                     'and set --default-branch, supply --base, select explicit targets, or opt in with --full')
+
+
+def changed_paths(root: Path, base: str, head: str) -> list[str]:
+    def names(argv):
+        return subprocess.check_output(['git', *argv], cwd=root).decode().rstrip('\0').split('\0')
+    # --no-renames retains both the removed name and the new name as graph seeds.
+    paths = (names(['diff-tree', '--root', '--no-commit-id', '--no-renames', '--name-only', '-r', '-z', head])
+             if base == '--root' else
+             names(['diff', '--no-renames', '--name-only', '-z', base, head, '--']))
+    paths += names(['diff', '--no-renames', '--name-only', '-z', 'HEAD', '--'])
+    paths += names(['ls-files', '--others', '--exclude-standard', '-z'])
+    return sorted(set(paths) - {''})
 
 
 def encode_targets(targets: list[str]) -> str:
-    """Encode an ordered newline-delimited target file for GitHub job output."""
     payload = ('\n'.join(targets) + ('\n' if targets else '')).encode('utf-8')
     return base64.b64encode(gzip.compress(payload, mtime=0)).decode('ascii')
 
 
-def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
+def arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument('--root', type=Path, default=ROOT)
     parser.add_argument('--event', default=os.environ.get('EVENT', 'push'))
     parser.add_argument('--base', default=os.environ.get('BASE', ''))
+    parser.add_argument('--default-branch', default=os.environ.get('DEFAULT_BRANCH', ''),
+                        help='trusted default branch for a missing push base; use its fetched origin ref')
+    parser.add_argument('--head', default=os.environ.get('HEAD_SHA', 'HEAD'))
+    parser.add_argument('--full', action='store_true', default=os.environ.get('FULL', '').lower() == 'true',
+                        help='explicitly select every existing local module')
     parser.add_argument('--manual-targets', default=os.environ.get('MANUAL_TARGETS', ''))
-    parser.add_argument('--github-output', type=Path)
-    args = parser.parse_args()
+
+
+def from_arguments(args) -> dict:
     root = args.root.resolve()
+    manual = args.manual_targets.split() if args.manual_targets.strip() else None
+    base = args.base
+    explicit = args.full or (manual is not None and (not base or set(base) == {'0'}))
+    if not explicit:
+        base = comparison_base(root, base, args.head, args.default_branch)
+    changed = [] if explicit else changed_paths(root, base, args.head)
+    if args.head != 'HEAD':
+        expected = subprocess.check_output(['git', 'rev-parse', args.head], cwd=root).strip()
+        actual = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root).strip()
+        if expected != actual:
+            raise ValueError('--head must identify the checked-out source; check out that revision first')
+    plan = make_plan(root, changed, full=args.full, manual=manual, initial=base == '--root')
+    plan['basis'] = dict(event=args.event, base=args.base, head=args.head, default_branch=args.default_branch,
+                         full=args.full, manual_targets=args.manual_targets)
+    return plan
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    arguments(parser)
+    parser.add_argument('--github-output', type=Path)
+    parser.add_argument('--plan', type=Path, help='write the exact local/CI validation plan as JSON')
+    args = parser.parse_args()
     try:
-        first_push = args.event != 'workflow_dispatch' and (not args.base or set(args.base) == {'0'})
-        manual = args.manual_targets.split() if args.event == 'workflow_dispatch' and args.manual_targets.strip() else None
-        full = first_push or args.event == 'workflow_dispatch'
-        changed = [] if full else subprocess.check_output(
-            ['git', 'diff', '--name-only', '-z', args.base, 'HEAD'], cwd=root).decode().rstrip('\0').split('\0')
-        targets = select_targets(root, changed, full=full, manual=manual)
-        setup = first_push or (args.event == 'workflow_dispatch'
-                               and (manual is None or tuple(manual) == DEFAULTS))
-        client = select_client(root, changed, targets)
-        structural, tests = validation_scope(changed, setup=setup,
-                                              manual=args.event == 'workflow_dispatch')
+        plan = from_arguments(args)
+        targets = plan['targets']
         print(' '.join(targets))
+        if args.plan:
+            args.plan.write_text(json.dumps(plan, indent=2) + '\n')
         if args.github_output:
             with args.github_output.open('a') as output:
-                output.write('lean=' + str(bool(targets)).lower() + '\n')
-                output.write('targets=' + ' '.join(targets) + '\n')
-                output.write('targets_gzip_base64=' + encode_targets(targets) + '\n')
-                output.write('client=' + str(client).lower() + '\n')
-                output.write('structural=' + str(structural).lower() + '\n')
-                output.write('tool_tests=' + ' '.join(tests) + '\n')
+                for name, value in dict(lean=str(bool(targets) or plan['client']).lower(),
+                        targets=' '.join(targets), targets_gzip_base64=encode_targets(targets),
+                        plan_gzip_base64=base64.b64encode(gzip.compress(json.dumps(plan).encode(), mtime=0)).decode(),
+                        client=str(plan['client']).lower(), structural=str(plan['structural']).lower(),
+                        tool_tests=' '.join(plan['tool_tests'])).items():
+                    output.write(name + '=' + value + '\n')
     except (OSError, UnicodeError, ValueError, subprocess.CalledProcessError) as error:
         print(f'CI target selection failed: {error}', file=sys.stderr)
         return 1

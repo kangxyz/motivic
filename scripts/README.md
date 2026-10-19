@@ -118,67 +118,109 @@ without same-named directories, affected public consumers,
 docs-only selection, first pushes and explicit manual targets.
 No test here claims mathematical or kernel acceptance.
 
-CI selects affected checks before running them. Lean/pin/import changes select
-the structural source check; documentation-only changes run no Lean or tool
-fixtures. Python fixture ownership is explicit: selector changes run selector
-fixtures, build-wrapper changes run build fixtures, cache/checker changes run
-repository fixtures, generator changes run facade fixtures, checker changes also
-run facade fixtures, and shared-parser changes run all current fixtures. First
-setup, default manual acceptance, changed workflow wiring and unknown new tools
-select the safe full source/tool scope. Explicit manual targets check structure
-without replaying unchanged tool fixtures. Compatible unchanged check evidence
-remains reusable; helper returns and internal commits or merges do not trigger
-reruns. Independent tool fixtures run at the final task/CI acceptance boundary.
+`ci_targets.py` selects the same affected scope for CI and local final
+validation. Supply a Git comparison, explicit targets, or explicitly opt into
+all existing modules with `--full`:
 
-`ci_targets.py` keeps its plain target-list stdout and output for compatibility.
-CI job transport uses deterministic gzip plus base64 instead: the Lean job
-materializes the ordered newline-delimited list in
-`$RUNNER_TEMP/selected-targets.txt`, and cache, build and native-export steps read
-that file into their target arrays. Large selections therefore avoid a single
-raw environment variable or command-line argument.
+```sh
+python3 scripts/ci_targets.py --base BASE --head HEAD --plan /tmp/motivic-plan.json
+python3 scripts/validate.py --base BASE --head HEAD --list
+python3 scripts/validate.py --base BASE --head HEAD
+python3 scripts/validate.py --manual-targets Motivic.Cor
+```
 
-`ci_targets.py` selects each
-existing changed local Lean module, including optional leaves outside curated
-roots. Reverse import reachability adds affected public directory facades,
-comment-aware import-only facades regardless of directory layout, and
-production/test roots and all reachable `MotivicTest` consumers, including
-modules with declarations and axiom audits. Unrelated roots and tests are omitted;
-subject names require no manual public-facade list.
-First pushes, dependency/toolchain pins, tooling/workflow changes and default
-manual dispatch select `Motivic MotivicTest`. Simultaneously changed Lean leaves
-and their affected consumers remain selected alongside those roots. An explicit
-manual selection must name existing local modules. Documentation-only changes avoid the Lean job.
-Client Lean/config changes select the `Motivic` public root and independent
-client acceptance; changes reaching the client's public import select it too.
-PR/manual runs keep unrelated optional leaves outside client acceptance;
-documentation-only changes do not select the Lean job.
-`python3 scripts/build_client.py` prepares the inherited locked manifest and
-runs the same guarded `--rehash` driver on `MotivicClient`. Its package-directory
-link points only to this checkout's canonical dependency cache; its writable
-outputs remain in `examples/downstream/.lake/build`. Existing foreign package
-links or shared build-output links are rejected without deleting user work.
-PR/manual runs check the client after the selected public build when it is
-affected. Every main-branch native-cache producer checks it after the already
-required guarded core export and before cache staging, even for optional-only
-changes. A failure blocks publication. The client reuses the same job's validated
-public outputs and matching dependency caches. CI restores matching
-Mathlib dependencies, public Aglib native artifacts and incremental outputs;
-it saves partial progress. Native cache transport tooling has its own reviewed
-pin, independent of the mathematical Aglib revision. The selected build also
-exports native mappings. Before publishing on a main-branch push, a separate
-guarded export selects `Motivic`, `MotivicTest` and the changed targets together,
-so an optional-leaf change retains reusable core coverage in its producer asset.
-The shared helper's rehashed no-build probe reuses matching outputs; a miss may
-compile only the genuinely missing required core/selected closure. This is a
-specific cache consumer, not a request to build every retained leaf or replay
-the whole library. After a successful export, the shared action stages those
-mappings with the actual source/compiler provenance and uploads a
-same-run artifact. Only the separate `publish-cache` job receives repository
-write permission; after the build job succeeds it releases that exact artifact
-as an immutable `cache-<producer SHA>` prerelease asset. Pull requests and manual
-dispatch do not publish. Upload and `gh`-based same-run download remain in the
-pinned shared implementation. A configured workflow is not evidence of a
-successful hosted build, upload or release.
+The checked-out revision must match `--head`. Local staged, unstaged and
+untracked files also enter the comparison. The selector keeps its plain target
+list stdout and optionally writes JSON. CI transports the plan and ordered
+target file using deterministic gzip/base64 outputs. The validation adapter
+reselects a transported plan against its recorded comparison before using it.
+A changed plan fails before native commands; select the current affected scope.
+`--list` prints commands without executing tools, resolving dependencies,
+compiling, touching caches or creating receipts.
+
+Every current changed local module and every existing reverse-reachable local
+consumer is selected, including implementations, public facades, tests with
+declarations and optional leaves outside curated roots. Deleted/renamed names
+remain graph seeds, but absent sources are never build targets. Unrelated roots
+and tests are excluded. Test-only changes retain their direct production
+prerequisites for provider checking. Client source/configuration selects its
+actual local imports and client acceptance; a changed public import selects
+the independent client too. A root is selected when it is actually changed,
+required by the client, or reached as a consumer.
+
+Documentation and evidence JSON changes run static source checks without Lean
+installation, dependency resolution, compilation, lint, cache restoration or
+publication. Tool/workflow changes select affected Python fixtures and static
+checks, without inventing a Lean target. Shared parser/workflow and unknown
+Python/shell tools select all current tooling fixtures. Build, cache, client
+and selector changes also select `test_validate.py`. Missing push bases use an available trusted default-branch merge-base, or the
+root diff of a true initial commit. CI supplies the repository default branch;
+local selection can use `--default-branch` or Git's origin/HEAD. An unresolvable
+base fails actionably. Manual dispatch, unknown paths and cache misses never
+imply full acceptance.
+Changed dependency/toolchain configuration requires explicit target scope or
+`--full`; identify invalidated coverage and restore matching caches first.
+A full diagnostic selects all occupied local modules, including optional leaves.
+
+`validate.py` runs final acceptance only when requested. It uses existing
+cache/build/client wrappers: static checks and affected tooling fixtures, focused
+matching cache acquisition, provider compilation, provider declaration and style
+lint, affected consumer/test compilation, remaining affected declaration-origin
+lint, then the affected client. The latter includes unchanged consumer sources
+whose imported environments changed, and reuses completed provider lint.
+Text/style checks retain their changed-source scope. A failure stops dependent phases. For declaration lint,
+`lint_declarations.py` adds a checksum-guarded exact defining-module filter to
+the pinned Batteries driver, with explicit origins and `--no-build`. Its native
+package-prefix enumeration alone includes imported origins. The adapter retains
+all enabled native linters (including slow checks), nolints and failure handling;
+providers and remaining affected consumers are disjoint origins. Import-only
+origins may have zero declarations; this pinned Batteries version accepts empty
+input, while their compilation and style checks remain selected. `--full` keeps
+the native diagnostic route. The reviewed Batteries driver revision is
+`f2effa3d803fda822b1f97b806c47cf2adfbcbc2`; source drift fails before native execution.
+`lint_style.py` reuses the published pinned Aglib runtime planner, cached namespace
+overlay and Lake environment. Its checksum-guarded temporary Mathlib driver
+adapter replaces only import expansion with the exact explicit selected source
+modules. All enabled text/style, module-name, options, nolints and package-wide
+checks remain intact; an unselected imported file is not a selected style source.
+The reviewed Mathlib driver revision is
+`d13f23b723b8a846827a245b89c10fc7d3f11612`; source drift fails before runtime
+preparation. The adapted driver and genuinely missing optional tool modules
+compile only into the temporary overlay; dependency caches remain unchanged.
+`cache.py --lint-runtime` includes the driver's exact Mathlib imports.
+`lint_style.py --check-prerequisites --sysroot PATH` performs read-only runtime
+inspection without Lake or compilation.
+Both retain the reviewed resource guard. Declaration runtime preparation
+selects only `+Batteries.Tactic.Lint` after matching cache acquisition; its
+resource receipt is separate from provider/proof compilation. One isolated
+style runtime checks all selected files before consumers. Missing prerequisites
+fail closed; they cannot trigger a root build.
+This is compiler/linter/test coverage, not independent kernel replay or a proof
+of theorem premises. `--skip-static` and `--skip-cache` reuse matching same-run
+evidence, as CI does; they do not establish that evidence themselves.
+
+An optional `validate.py --outputs FILE` exports mappings only after the selected
+checks succeed. `build.py --export-only --outputs FILE TARGET...` invokes guarded
+`lake --rehash --no-build build` for those exact verified targets, without the
+compiling build helper or any miss fallback. CI stages this same selection on
+main pushes; it adds no unconditional roots or client build for publication.
+Partial exports cover only the selected closure. The shared action stages
+mappings with actual source/compiler provenance and a separate write-permitted
+job publishes that same-run artifact. Pins remain unchanged, including the
+separately reviewed native tooling revision. A configured workflow is not
+evidence of hosted success or full library validation.
+
+`test_ci_targets.py` covers affected graphs, docs/tools/pins, optional modules,
+renames/deletions, missing bases, explicit manual/full scope and compressed
+transport. `test_validate.py` covers ordering, failure propagation, docs-only
+static checks, unchanged-scope exclusion and command-only readiness.
+An opt-in native fixture uses `MOTIVIC_NATIVE_STYLE_ROOT` naming a prepared
+owned-output package with `Motivic.Smoke.StyleSelected` importing the trailing-
+whitespace-bad `Motivic.Smoke.StyleUnrelated`, and a directly bad
+`Motivic.Smoke.StyleBad`. Run the `NativeStyleScopeTests` class with the reviewed
+runtime available: the clean selected source must pass and the directly
+selected bad source must fail with its own trailing-whitespace diagnostic. The fixture is
+skipped during ordinary Python-only checks and never performs a library build.
 
 `test_build.py` exercises existing calls and optional mapping-export forwarding
 against a temporary stand-in helper without invoking Lean or touching caches.

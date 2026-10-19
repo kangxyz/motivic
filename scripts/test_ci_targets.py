@@ -1,22 +1,19 @@
-"""CI coverage fixtures for source outside curated roots and affected consumers."""
+"""Finite selector/transport fixtures; no Lean, native caches or mathematical replay."""
 # Authors: kangxyz
 from pathlib import Path
-from contextlib import redirect_stdout
 import base64
 import gzip
-import io
+import json
 import os
 import subprocess
 import sys
 import tempfile
-import textwrap
 import unittest
-from unittest.mock import patch
 
-from ci_targets import encode_targets, main, select_client, select_targets, validation_scope
+from ci_targets import comparison_base, changed_paths, encode_targets, make_plan, select_client, select_targets, validation_scope
 
 
-class TargetSelectionTests(unittest.TestCase):
+class Fixture(unittest.TestCase):
     def setUp(self):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
@@ -27,213 +24,191 @@ class TargetSelectionTests(unittest.TestCase):
         self.write('Motivic/Optional/Computation.lean', 'import Mathlib.Algebra.Group.Basic\n')
         self.write('MotivicTest.lean', 'import MotivicTest.PublicAPI\n')
         self.write('MotivicTest/PublicAPI.lean', 'import Motivic.Public\n')
+        self.write('examples/downstream/MotivicClient.lean', 'import Motivic\n')
 
     def write(self, name, content):
         path = self.root / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
 
-    def test_optional_changed_leaf_is_built_without_unrelated_roots(self):
+
+class TargetSelectionTests(Fixture):
+    def test_optional_leaf_does_not_select_unrelated_roots(self):
         self.assertEqual(select_targets(self.root, ['Motivic/Optional/Computation.lean']),
                          ['Motivic.Optional.Computation'])
 
-    def test_optional_leaf_adds_import_only_facade_without_directory(self):
-        self.write('Motivic/NormEndpoint.lean', '''/- Header with /- nested comment -/ def text. -/
-module
+    def test_all_actual_consumers_include_implementations_and_tests(self):
+        self.write('Motivic/Consumer.lean', 'import Motivic.Optional.Computation\nexample : True := by trivial\n')
+        self.write('MotivicTest/Consumer.lean', 'import Motivic.Consumer\nexample : True := by trivial\n')
+        plan = make_plan(self.root, ['Motivic/Optional/Computation.lean'])
+        self.assertEqual(plan['targets'], ['Motivic.Consumer', 'Motivic.Optional.Computation', 'MotivicTest.Consumer'])
+        self.assertEqual(plan['providers'], ['Motivic.Optional.Computation'])
+        self.assertFalse(plan['client'])
 
-public import
-  Motivic.Optional.Computation
+    def test_changed_public_dependency_retains_required_roots_and_client(self):
+        plan = make_plan(self.root, ['Motivic/Public/Core.lean'])
+        self.assertEqual(plan['targets'], ['Motivic', 'Motivic.Public', 'Motivic.Public.Core',
+                                          'MotivicTest', 'MotivicTest.PublicAPI'])
+        self.assertEqual(plan['providers'], ['Motivic.Public.Core'])
+        self.assertTrue(plan['client'])
 
-/-! An optional public endpoint, outside the default core. -/
-@[expose] public section
-''')
-        self.assertFalse((self.root / 'Motivic/NormEndpoint').exists())
-        self.assertEqual(select_targets(self.root, ['Motivic/Optional/Computation.lean']),
-                         ['Motivic.NormEndpoint', 'Motivic.Optional.Computation'])
+    def test_deleted_provider_keeps_current_consumers_but_absent_name_is_not_built(self):
+        (self.root / 'Motivic/Public/Core.lean').unlink()
+        targets = select_targets(self.root, ['Motivic/Public/Core.lean'])
+        self.assertIn('Motivic.Public', targets)
+        self.assertNotIn('Motivic.Public.Core', targets)
 
-    def test_optional_endpoint_and_facade_select_terminal_test_without_default_expansion(self):
-        self.write('Motivic/Optional/AffineLineEndpoint.lean',
-                   'import Mathlib.Algebra.Group.Basic\nexample : True := by trivial\n')
-        self.write('Motivic/AffineLine.lean', 'import Motivic.Optional.AffineLineEndpoint\n')
-        self.write('MotivicTest/SheafCohomologyAffineLineHigherVanishing.lean',
-                   'import Motivic.AffineLine\nexample : True := by trivial\n#print axioms True.intro\n')
-        self.write('MotivicTest/Unrelated.lean',
-                   'import Motivic.Public\nexample : True := by trivial\n')
-        terminal = 'MotivicTest.SheafCohomologyAffineLineHigherVanishing'
-        for changed, expected in (
-                ('Motivic/Optional/AffineLineEndpoint.lean',
-                 ['Motivic.AffineLine', 'Motivic.Optional.AffineLineEndpoint', terminal]),
-                ('Motivic/AffineLine.lean', ['Motivic.AffineLine', terminal])):
-            with self.subTest(changed=changed):
-                self.assertEqual(select_targets(self.root, [changed]), expected)
+    def test_docs_and_tool_changes_do_not_request_native_work(self):
+        for path in ('README.md', 'docs/evidence.json', 'docs/history/Old.lean',
+                     'scripts/build.py', '.github/workflows/ci.yml', 'unknown/config.json'):
+            self.assertEqual(select_targets(self.root, [path]), [], path)
+        self.assertEqual(validation_scope(['docs/evidence.json']), (True, []))
 
-    def test_mixed_config_or_tool_change_retains_changed_optional_leaf(self):
-        for infrastructure in ('lake-manifest.json', 'scripts/build.py'):
-            with self.subTest(infrastructure=infrastructure):
-                self.assertEqual(select_targets(self.root, [infrastructure,
-                                  'Motivic/Optional/Computation.lean']),
-                                 ['Motivic', 'Motivic.Optional.Computation', 'MotivicTest'])
+    def test_pin_change_requires_explicit_scope_without_root_fallback(self):
+        with self.assertRaisesRegex(ValueError, 'explicit targets'):
+            select_targets(self.root, ['lake-manifest.json'])
+        self.assertEqual(select_targets(self.root, ['lake-manifest.json'],
+                         manual=['Motivic.Optional.Computation']), ['Motivic.Optional.Computation'])
 
-    def test_client_only_source_and_config_select_public_build_and_client(self):
-        for path in ('examples/downstream/MotivicClient.lean',
-                     'examples/downstream/lakefile.toml',
-                     'examples/downstream/lean-toolchain'):
-            with self.subTest(path=path):
-                targets = select_targets(self.root, [path])
-                self.assertEqual(targets, ['Motivic'])
-                self.assertTrue(select_client(self.root, [path], targets))
-                self.assertEqual(validation_scope([path]), (True, []))
+    def test_full_is_explicit_and_includes_optional_leaves(self):
+        targets = select_targets(self.root, [], full=True)
+        self.assertEqual(targets, sorted(targets))
+        self.assertIn('Motivic.Optional.Computation', targets)
+        with self.assertRaisesRegex(ValueError, 'existing local'):
+            select_targets(self.root, [], manual=['Mathlib'])
 
-    def test_public_changes_select_client_but_unrelated_optional_and_docs_do_not(self):
-        self.write('examples/downstream/MotivicClient.lean', 'module\npublic import Motivic\n')
-        self.assertTrue(select_client(self.root, ['Motivic/Public/Core.lean'],
-                                     select_targets(self.root, ['Motivic/Public/Core.lean'])))
-        self.assertFalse(select_client(self.root, ['Motivic/Optional/Computation.lean'],
-                                      select_targets(self.root, ['Motivic/Optional/Computation.lean'])))
+    def test_test_only_retains_direct_producers_before_tests_without_unrelated_client(self):
+        plan = make_plan(self.root, ['MotivicTest/PublicAPI.lean'])
+        self.assertEqual(plan['providers'], ['Motivic.Public'])
+        self.assertIn('Motivic.Public', plan['lint'])
+        self.assertIn('MotivicTest.PublicAPI', plan['targets'])
+        self.assertFalse(plan['client'])
+        self.assertNotIn('Motivic.Optional.Computation', plan['targets'])
+
+    def test_client_input_checks_its_real_imports_and_no_optional_leaf(self):
+        plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
+        self.assertTrue(plan['client'])
+        self.assertEqual(plan['providers'], ['Motivic'])
+        self.assertEqual(plan['targets'], ['Motivic'])
+        self.assertNotIn('Motivic.Optional.Computation', plan['targets'])
         self.assertFalse(select_client(self.root, ['examples/downstream/README.md'], []))
 
-    def test_docs_only_selects_no_lean(self):
-        self.assertEqual(select_targets(self.root, ['README.md', 'docs/INTERFACES.md']), [])
+    def test_tools_select_their_affected_fixtures(self):
+        self.assertEqual(validation_scope(['scripts/build.py']),
+                         (True, ['test_build.py', 'test_validate.py']))
+        self.assertEqual(validation_scope(['scripts/ci_targets.py']),
+                         (True, ['test_ci_targets.py', 'test_validate.py']))
+        self.assertEqual(validation_scope(['scripts/new_tool.py']), (True, ['test_*.py']))
 
-    def test_changed_public_dependency_adds_only_reachable_public_consumers(self):
-        targets = select_targets(self.root, ['Motivic/Public/Core.lean'])
-        self.assertEqual(targets, ['Motivic', 'Motivic.Public', 'Motivic.Public.Core', 'MotivicTest', 'MotivicTest.PublicAPI'])
-        self.assertNotIn('Motivic.Optional.Computation', targets)
 
-    def test_first_push_cli_selects_both_roots_without_git_history(self):
-        result = subprocess.run([sys.executable, str(Path(__file__).with_name('ci_targets.py')),
-                                 '--root', str(self.root), '--event', 'push',
-                                 '--base', '0' * 40], capture_output=True, text=True)
+class GitScopeTests(Fixture):
+    def git(self, *args):
+        return subprocess.check_output(['git', *args], cwd=self.root).decode().strip()
+
+    def setUp(self):
+        super().setUp()
+        self.git('init', '-q')
+        self.git('config', 'user.name', 'Fixture')
+        self.git('config', 'user.email', 'fixture@example.invalid')
+        self.git('add', '.')
+        self.git('commit', '-qm', 'fixture')
+        self.base = self.git('rev-parse', 'HEAD')
+
+    def cli(self, *args):
+        return subprocess.run([sys.executable, str(Path(__file__).with_name('ci_targets.py')),
+                               '--root', str(self.root), *args], capture_output=True, text=True)
+
+    def test_true_initial_commit_uses_root_diff_not_curated_or_full_defaults(self):
+        self.write('lake-manifest.json', '{}\n')
+        self.assertEqual(comparison_base(self.root, '0' * 40, 'HEAD'), '--root')
+        result = self.cli('--base', '0' * 40)
         self.assertEqual(result.returncode, 0, result.stderr)
-        self.assertEqual(result.stdout.strip(), 'Motivic MotivicTest')
+        self.assertIn('Motivic.Optional.Computation', result.stdout)
 
-    def test_pin_or_tool_change_selects_both_roots(self):
-        for changed in ('lake-manifest.json', 'scripts/build.py', '.github/workflows/ci.yml'):
-            self.assertEqual(select_targets(self.root, [changed]), ['Motivic', 'MotivicTest'])
+    def test_shallow_boundary_is_not_misidentified_as_true_initial_commit(self):
+        self.write('README.md', 'change\n')
+        self.git('add', '.')
+        self.git('commit', '-qm', 'second')
+        clone = self.root / 'shallow'
+        subprocess.run(['git', 'clone', '-q', '--depth', '1', self.root.as_uri(), str(clone)], check=True)
+        with self.assertRaisesRegex(ValueError, 'shallow'):
+            comparison_base(clone, '0' * 40, 'HEAD')
 
-    def test_manual_targets_are_existing_local_modules(self):
-        self.assertEqual(select_targets(self.root, [], full=True,
-                                        manual=['Motivic.Optional.Computation']),
-                         ['Motivic.Optional.Computation'])
-        with self.assertRaisesRegex(ValueError, 'existing local'):
-            select_targets(self.root, [], manual=['Mathlib.Algebra.Group.Basic'])
+    def test_unknown_explicit_base_fails_without_full_fallback(self):
+        result = self.cli('--base', 'missing-base')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertEqual(result.stdout, '')
 
+    def test_new_branch_derives_fetched_default_merge_base(self):
+        self.git('update-ref', 'refs/remotes/origin/main', self.base)
+        self.write('README.md', 'change\n')
+        self.git('add', '.')
+        self.git('commit', '-qm', 'docs')
+        self.assertEqual(comparison_base(self.root, '0' * 40, 'HEAD', 'main'), self.base)
+        result = self.cli('--base', '0' * 40, '--default-branch', 'main')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), '')
 
-class ValidationScopeTests(unittest.TestCase):
-    def test_docs_only_skips_structural_and_tool_checks(self):
-        self.assertEqual(validation_scope(['README.md', 'docs/DEVELOPMENT.md',
-                                           'scripts/README.md', '.github/README.md']), (False, []))
+    def test_unresolvable_missing_base_is_actionable_and_manual_targets_still_work(self):
+        self.write('README.md', 'change\n')
+        self.git('add', '.')
+        self.git('commit', '-qm', 'second')
+        result = self.cli('--event', 'workflow_dispatch', '--base', '')
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('trustworthy', result.stderr)
+        result = self.cli('--event', 'workflow_dispatch', '--base', '',
+                          '--manual-targets', 'Motivic.Optional.Computation')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(result.stdout.strip(), 'Motivic.Optional.Computation')
 
-    def test_lean_and_pin_changes_check_structure_without_tool_fixture_replay(self):
-        for path in ('Motivic/Optional/Computation.lean', 'MotivicTest/PublicAPI.lean',
-                     'lake-manifest.json', 'lean-toolchain'):
-            with self.subTest(path=path):
-                self.assertEqual(validation_scope([path]), (True, []))
+    def test_rename_tracks_old_and_new_names_and_deleted_consumers(self):
+        self.git('mv', 'Motivic/Public/Core.lean', 'Motivic/Public/Renamed.lean')
+        paths = changed_paths(self.root, self.base, 'HEAD')
+        self.assertIn('Motivic/Public/Core.lean', paths)
+        self.assertIn('Motivic/Public/Renamed.lean', paths)
+        targets = select_targets(self.root, paths)
+        self.assertIn('Motivic.Public', targets)
+        self.assertIn('Motivic.Public.Renamed', targets)
+        self.assertNotIn('Motivic.Public.Core', targets)
 
-    def test_current_tool_dependencies_select_only_their_owned_fixtures(self):
-        groups = {
-            'test_ci_targets.py': ('ci_targets.py', 'test_ci_targets.py'),
-            'test_build.py': ('build.py', 'test_build.py'),
-            'test_build_client.py': ('build_client.py', 'test_build_client.py'),
-            'test_repository.py': ('cache.py', 'test_repository.py'),
-            'test_generate_imports.py': ('generate_imports.py', 'test_generate_imports.py'),
-        }
-        for fixture, tools in groups.items():
-            for tool in tools:
-                with self.subTest(tool=tool):
-                    structural, selected = validation_scope(['scripts/' + tool])
-                    self.assertEqual(selected, [fixture])
-                    self.assertEqual(structural, tool == 'generate_imports.py')
-        self.assertEqual(validation_scope(['scripts/check_repository.py']),
-                         (True, ['test_generate_imports.py', 'test_repository.py']))
+    def test_docs_only_cli_emits_static_only_plan(self):
+        self.write('docs/evidence.json', '{}\n')
+        output = self.root / 'outputs'
+        result = self.cli('--base', self.base, '--github-output', str(output))
+        self.assertEqual(result.returncode, 0, result.stderr)
+        values = dict(line.split('=', 1) for line in output.read_text().splitlines())
+        plan = json.loads(gzip.decompress(base64.b64decode(values['plan_gzip_base64'])))
+        self.assertFalse(plan['targets'])
+        self.assertEqual(values['lean'], 'false')
+        self.assertEqual(values['structural'], 'true')
+        self.assertEqual(values['tool_tests'], '')
 
-    def test_shared_parser_setup_and_unknown_tools_select_safe_full_scope(self):
-        self.assertEqual(validation_scope([], setup=True), (True, ['test_*.py']))
-        for path in ('scripts/library_sources.py', 'scripts/new_tool.py',
-                     'scripts/test_new_tool.py', '.github/workflows/ci.yml'):
-            with self.subTest(path=path):
-                self.assertEqual(validation_scope([path]), (True, ['test_*.py']))
-        self.assertEqual(validation_scope(['scripts/library_sources.py', 'scripts/build.py']),
-                         (True, ['test_*.py']))
-
-    def test_explicit_manual_acceptance_checks_structure_without_unchanged_tool_tests(self):
-        self.assertEqual(validation_scope([], manual=True), (True, []))
-
-    def test_first_setup_cli_emits_all_scope_outputs_before_any_check(self):
-        with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            (root / 'Motivic.lean').write_text('module\n')
-            (root / 'MotivicTest.lean').write_text('module\n')
-            output = root / 'outputs'
-            result = subprocess.run([sys.executable, str(Path(__file__).with_name('ci_targets.py')),
-                                     '--root', str(root), '--event', 'push', '--base', '0' * 40,
-                                     '--github-output', str(output)], capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            values = dict(line.split('=', 1) for line in output.read_text().splitlines())
-            encoded = values.pop('targets_gzip_base64')
-            self.assertEqual(gzip.decompress(base64.b64decode(encoded)).decode().splitlines(),
-                             ['Motivic', 'MotivicTest'])
-            self.assertEqual(values, dict(lean='true', targets='Motivic MotivicTest',
-                                          client='false', structural='true', tool_tests='test_*.py'))
-
-    def test_docs_only_cli_keeps_outputs_valid_when_checks_are_skipped(self):
-        with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            (root / 'Motivic.lean').write_text('module\n')
-            (root / 'MotivicTest.lean').write_text('module\n')
-            output = root / 'outputs'
-            argv = ['ci_targets.py', '--root', str(root), '--event', 'push',
-                    '--base', '1' * 40, '--github-output', str(output)]
-            with patch.object(sys, 'argv', argv), patch('ci_targets.subprocess.check_output',
-                    return_value=b'README.md\0.github/README.md\0'), redirect_stdout(io.StringIO()):
-                self.assertEqual(main(), 0)
-            values = dict(line.split('=', 1) for line in output.read_text().splitlines())
-            self.assertEqual(gzip.decompress(base64.b64decode(
-                values.pop('targets_gzip_base64'))), b'')
-            self.assertEqual(values, dict(lean='false', targets='',
-                                          client='false', structural='false', tool_tests=''))
+    def test_head_must_match_checked_out_sources(self):
+        self.write('README.md', 'change\n')
+        self.git('add', '.')
+        self.git('commit', '-qm', 'second')
+        result = self.cli('--base', self.base, '--head', self.base)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn('checked-out', result.stderr)
 
 
 class TargetTransportTests(unittest.TestCase):
-    def test_large_ordered_selection_survives_job_output_and_workflow_file_transport(self):
-        targets = [f'Motivic.AlgebraicGeometry.Correspondences.SelectedFamily.Module{i:05d}'
-                   for i in range(3015)]
-        self.assertGreater(len(' '.join(targets).encode('utf-8')), 128 * 1024)
-        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        expression = '${{ needs.source.outputs.targets_gzip_base64 }}'
-        self.assertIn('targets_gzip_base64: ${{ steps.scope.outputs.targets_gzip_base64 }}', workflow)
-        self.assertNotIn('SELECTED_TARGETS:', workflow)
-        self.assertEqual(workflow.count(
-            'mapfile -t targets < "$RUNNER_TEMP/selected-targets.txt"'), 3)
-        step = workflow.split('      - name: Materialize selected targets\n', 1)[1]
-        run = step.split('        run: |\n', 1)[1].split('      - name:', 1)[0]
-        materialize = textwrap.dedent(run)
-        with tempfile.TemporaryDirectory() as temporary:
-            root = Path(temporary)
-            output = root / 'outputs'
-            argv = ['ci_targets.py', '--root', str(root), '--event', 'push',
-                    '--base', '0' * 40, '--github-output', str(output)]
-            with patch.object(sys, 'argv', argv), patch('ci_targets.select_targets',
-                    return_value=targets), redirect_stdout(io.StringIO()):
-                self.assertEqual(main(), 0)
-            values = dict(line.split('=', 1) for line in output.read_text().splitlines())
-            encoded = values['targets_gzip_base64']
-            self.assertLess(len(encoded), 128 * 1024)
-            self.assertEqual(encoded, encode_targets(targets))
-            # Decode independently using the standard library, preserving order and count.
-            self.assertEqual(gzip.decompress(base64.b64decode(encoded, validate=True))
-                             .decode('utf-8').splitlines(), targets)
-            result = subprocess.run(['bash', '-e', '-c', materialize.replace(expression, encoded)],
-                                    env={**os.environ, 'RUNNER_TEMP': temporary},
-                                    capture_output=True, text=True)
-            self.assertEqual(result.returncode, 0, result.stderr)
-            self.assertEqual((root / 'selected-targets.txt').read_text().splitlines(), targets)
+    def test_large_ordered_selection_roundtrips_deterministically(self):
+        targets = [f'Motivic.AlgebraicGeometry.Selected.Module{i:05d}' for i in range(3015)]
+        self.assertGreater(len(' '.join(targets).encode()), 128 * 1024)
+        encoded = encode_targets(targets)
+        self.assertLess(len(encoded), 128 * 1024)
+        self.assertEqual(gzip.decompress(base64.b64decode(encoded, validate=True)).decode().splitlines(), targets)
+        self.assertEqual(encoded, encode_targets(targets))
 
-    def test_encoding_is_deterministic(self):
-        with patch('gzip.time.time', return_value=1):
-            first = encode_targets(['Motivic', 'MotivicTest'])
-        with patch('gzip.time.time', return_value=999999):
-            self.assertEqual(encode_targets(['Motivic', 'MotivicTest']), first)
+    def test_workflow_gates_every_native_step_and_uses_exact_plan(self):
+        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
+        self.assertIn("if: needs.source.outputs.lean == 'true'", workflow)
+        self.assertIn('--plan "$RUNNER_TEMP/validation-plan.json"', workflow)
+        self.assertIn('plan_gzip_base64: ${{ steps.scope.outputs.plan_gzip_base64 }}', workflow)
+        self.assertNotIn('export_targets=', workflow)
+        self.assertNotIn('default: Motivic MotivicTest', workflow)
+        self.assertNotIn("needs.source.outputs.client == 'true' ||", workflow)
 
 
 if __name__ == '__main__':

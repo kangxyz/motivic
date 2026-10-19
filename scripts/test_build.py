@@ -36,6 +36,26 @@ class BuildForwardingTests(unittest.TestCase):
                 else:
                     self.assertNotIn('--outputs', forwarded)
 
+    def test_export_only_fails_closed_without_invoking_compiler_or_serial_build(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary).resolve()
+            (root / 'Motivic').mkdir()
+            (root / 'Motivic/Selected.lean').write_text('module\n')
+            helper = root / 'tooling/scripts/build_serial.py'
+            helper.parent.mkdir(parents=True)
+            helper.write_text('raise RuntimeError("export must not run the compiling helper")\n')
+            guard = helper.with_name('resource_guard.py')
+            guard.write_text('import json,sys\nprint(json.dumps(sys.argv[1:]))\nsys.exit(3)\n')
+            result = subprocess.run([sys.executable, str(Path(__file__).with_name('build.py')),
+                '--root', str(root), '--export-only', '--outputs', 'outputs.jsonl',
+                'Motivic.Selected'], env=dict(os.environ, MOTIVIC_TOOLING_ROOT=str(root / 'tooling')),
+                capture_output=True, text=True)
+            self.assertEqual(result.returncode, 3, result.stderr)
+            forwarded = json.loads(result.stdout)
+            native = forwarded[forwarded.index('--') + 1:]
+            self.assertEqual(native, ['lake', '--rehash', '--no-build', 'build',
+                                     'Motivic.Selected', '-o', str(root / 'outputs.jsonl')])
+
 
 if __name__ == '__main__':
     unittest.main()

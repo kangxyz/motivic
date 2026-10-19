@@ -30,8 +30,9 @@ Lake native artifact caching is enabled, including restoration of conventional
 build files. It preserves compatible work across checkouts; a current rehashed
 build decides reuse. The CI workflow uses separately pinned Aglib tooling to
 restore compatible public dependency artifacts without changing mathematical
-pins. Cache misses fall back to ordinary selected-target builds. On a successful main-branch push, a separate guarded export includes the core
-roots and selected changed targets. The canonical shared action stages native
+pins. Cache misses permit only ordinary selected-target builds. On a successful
+main-branch push, a guarded no-build export uses exactly the verified selection.
+A missing export artifact fails publication without compiling an extra closure. The canonical shared action stages native
 mappings; a separate release job publishes the exact same-run artifact with
 repository write permission. Build jobs and pull requests remain read-only.
 A configured producer is not a claim that its first remote release succeeded.
@@ -62,7 +63,28 @@ applicable categories with compatible retained evidence and focused new checks.
 A helper return, internal commit or merge does not start that phase. Compilation
 covers only the lint or tests it actually runs. After final-check repairs, rerun
 only failed or newly affected checks. Unchanged behavior needs no new tests;
-documentation-only changes use applicable source/link checks and changed examples.
+documentation-only changes use static source/link checks and changed examples.
+
+For the final phase, local validation and CI share the affected-scope selector:
+
+```sh
+python3 scripts/validate.py --base BASE --head HEAD --list
+python3 scripts/validate.py --base BASE --head HEAD
+```
+
+Use a comparison identifying the current checkout; staged, unstaged and
+untracked edits are included. Alternatively pass explicit `--manual-targets`
+(existing local modules); `--full` is an opt-in diagnostic over all occupied
+modules. Missing push bases use a trusted fetched default-branch merge-base or a true
+initial root diff; unresolvable bases fail actionably. Pin changes and manual
+dispatch have no full fallback.
+Pin changes require explicit affected scope and matching caches. Tool/docs-only
+changes run static checks and affected tooling fixtures without a Lean job.
+The final route compiles and declaration/style-lints providers before expensive
+affected consumers, tests and clients. Test-only edits retain their direct
+production prerequisite checks. Linter runtime setup selects only its actual tooling prerequisites, with
+separate guarded receipts; missing remaining prerequisites fail closed.
+See [tool commands](../scripts/README.md) for plan transport and scoped export.
 
 For a transfer-interface change, a relevant final test is:
 
@@ -94,9 +116,9 @@ it does not require reexecuting unchanged checks. Historical successful logs
 remain historical; file existence alone is not a stale-source build check.
 
 The normal package targets `Motivic` and `MotivicTest` select curated core and
-public consumers. They do not build all retained research leaves. CI declares
-its selected targets in `.github/workflows/ci.yml`; manual runs can select a
-specific target. A configured workflow is not evidence that it passed.
+public consumers. They do not build all retained research leaves. CI uses the affected import graph; required roots remain selected when actually
+changed or reached as consumers. Manual runs require a Git base, explicit
+targets, or the explicit full diagnostic. A configured workflow is not evidence that it passed.
 
 ## Public client
 
@@ -113,12 +135,10 @@ python3 scripts/build_client.py
 The client helper prepares an inherited manifest, shares this checkout's canonical
 package directory, and keeps its build outputs in the client's own `.lake/build`.
 It uses the same resource caps and rehashed native cache checks as the library
-build; it does not link another checkout's mutable outputs. PR/manual CI runs
-check it after the selected public build when client source/configuration or its
-public import is affected. Every main-branch native-cache producer also checks
-the client after its already-required guarded core export and before cache
-staging. This adds only the client module, reuses matching root/dependency
-outputs, and blocks publication on client failure. For a consumer changing to a
+build; it does not link another checkout's mutable outputs. CI and local final validation check it after provider checks and selected public
+builds when client source/configuration or its public import is affected.
+Publication reuses those checks and exact selected outputs; it adds no client
+or core-root replay. An affected client failure blocks publication. For a consumer changing to a
 Git dependency, pin a reviewed repository commit rather than a moving branch.
 
 ## Source and contribution conventions
