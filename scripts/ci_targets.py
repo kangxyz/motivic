@@ -102,7 +102,8 @@ def validation_scope(changed: list[str], *, setup: bool = False,
         'lint_style': 'test_validate.py', 'lint_declarations': 'test_validate.py',
         'build': 'test_build.py', 'build_modules': 'test_build.py',
         'build_client': 'test_build_client.py',
-        'cache': 'test_repository.py', 'check_repository': 'test_repository.py',
+        'cache': 'test_repository.py', 'cache_bootstrap': 'test_repository.py',
+        'check_repository': 'test_repository.py',
         'generate_imports': 'test_generate_imports.py',
         'repository': 'test_repository.py',
     }
@@ -115,7 +116,8 @@ def validation_scope(changed: list[str], *, setup: bool = False,
             fixtures.add(owners.get(stem, 'test_*.py'))
             if stem == 'check_repository':
                 fixtures.add('test_generate_imports.py')
-            if stem in {'ci_targets', 'build', 'build_modules', 'build_client', 'cache'}:
+            if stem in {'ci_targets', 'build', 'build_modules', 'build_client', 'cache',
+                        'cache_bootstrap'}:
                 fixtures.add('test_validate.py')
     return True, ['test_*.py'] if 'test_*.py' in fixtures else sorted(fixtures)
 

@@ -1,8 +1,10 @@
 # Authors: kangxyz
 """Small boundary fixtures; no Lean compiler or dependency checkout required."""
 import json
-from contextlib import redirect_stdout
+from contextlib import redirect_stderr, redirect_stdout
+import hashlib
 import io
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -11,6 +13,7 @@ import unittest
 from unittest.mock import patch
 
 from cache import cache_roots, main as cache_main
+import cache_bootstrap
 from check_repository import PINS, check_configuration, check_sources
 from library_sources import lean_imports
 
@@ -202,6 +205,93 @@ theorem bad : True := by sorry
         errors, _ = check_sources(self.root)
         self.assertTrue(any('missing project import' in error for error in errors))
         self.assertTrue(any('forbidden token sorry' in error for error in errors))
+
+
+class CacheBootstrapTests(unittest.TestCase):
+    setUp = RepositoryBoundaryTests.setUp
+    write = RepositoryBoundaryTests.write
+
+    def prepare(self):
+        self.write('.lake/packages/mathlib/Mathlib/Algebra/Group/Basic.lean', 'module\n')
+        self.write('.lake/packages/batteries/Batteries/Data/String/Basic.lean', 'module\n')
+        guard = '''import json
+def limits():
+    return dict(lean_memory_mb=4096,rss_limit_mb=8192,sample_seconds=0.1,
+                physical_memory_bytes=16384*1024*1024,lean_threads=1,max_active_lean=1)
+def run(command, *, cwd, receipt, budget, env):
+    print(json.dumps(dict(command=command,cwd=str(cwd),receipt=str(receipt),budget=budget,env=env)))
+    return 17
+'''
+        build = '''from contextlib import contextmanager
+@contextmanager
+def capped_toolchain(root, threads=1):
+    yield dict(root=str(root),threads=threads,finite_heap_mib=4096)
+'''
+        self.write('tooling/scripts/resource_guard.py', guard)
+        self.write('tooling/scripts/build_serial.py', build)
+        return guard, build
+
+    def test_focused_cold_bootstrap_retains_caps_receipt_and_exit_with_tool_fanout(self):
+        guard, build = self.prepare()
+        command = ['lake', 'exe', 'cache', 'get', 'Mathlib.Algebra.Group.Basic',
+                   'Batteries.Data.String.Basic']
+        receipt = self.root / 'receipt.json'
+        argv = ['--tooling', str(self.root / 'tooling'), '--receipt', str(receipt), '--', *command]
+        output = io.StringIO()
+        with patch.object(cache_bootstrap, 'GUARD_SHA256', {hashlib.sha256(guard.encode()).hexdigest()}), \
+                patch.object(cache_bootstrap, 'BUILD_SHA256', hashlib.sha256(build.encode()).hexdigest()), \
+                patch.object(Path, 'cwd', return_value=self.root), patch.object(sys, 'path', sys.path.copy()), \
+                patch.dict(sys.modules), redirect_stdout(output):
+            self.assertEqual(cache_bootstrap.main(argv), 17)
+        observed = json.loads(output.getvalue())
+        self.assertEqual(observed['command'], command)
+        self.assertEqual(observed['receipt'], str(receipt))
+        self.assertEqual(observed['budget'], dict(lean_memory_mb=4096, rss_limit_mb=8192,
+                         sample_seconds=0.1, physical_memory_bytes=16384*1024*1024,
+                         lean_threads=1, max_active_lean=None, native_build_threads=1))
+        self.assertEqual(observed['env']['threads'], 1)
+        self.assertEqual(observed['env']['finite_heap_mib'], 4096)
+
+    def test_bootstrap_rejects_unscoped_foreign_or_option_commands(self):
+        self.prepare()
+        prefix = ['lake', 'exe', 'cache', 'get']
+        for command in (prefix, [*prefix, 'Mathlib'], [*prefix, 'Batteries'],
+                        [*prefix, 'Aglib.Focused'], [*prefix, '--force'],
+                        [*prefix, 'Mathlib.Missing'], ['bash', '-c', 'lake exe cache get'],
+                        ['lake', 'build', 'Mathlib.Algebra.Group.Basic']):
+            with self.subTest(command=command), self.assertRaises(ValueError):
+                cache_bootstrap.validate_command(command, self.root)
+
+    def test_changed_vendor_sources_fail_before_execution(self):
+        guard, build = self.prepare()
+        argv = ['--tooling', str(self.root / 'tooling'), '--receipt', str(self.root / 'receipt.json'),
+                '--', 'lake', 'exe', 'cache', 'get', 'Mathlib.Algebra.Group.Basic']
+        for changed in ('guard', 'build'):
+            with self.subTest(changed=changed), \
+                    patch.object(cache_bootstrap, 'GUARD_SHA256',
+                                 {'0' * 64} if changed == 'guard' else {hashlib.sha256(guard.encode()).hexdigest()}), \
+                    patch.object(cache_bootstrap, 'BUILD_SHA256',
+                                 '0' * 64 if changed == 'build' else hashlib.sha256(build.encode()).hexdigest()), \
+                    patch.object(Path, 'cwd', return_value=self.root), \
+                    patch('cache_bootstrap.load') as load, redirect_stderr(io.StringIO()):
+                self.assertEqual(cache_bootstrap.main(argv), 125)
+                load.assert_not_called()
+
+    def test_guarded_cache_wrapper_dispatches_focused_bootstrap_and_budget_overrides(self):
+        self.prepare()
+        argv = ['cache.py', '--root', str(self.root), '--guarded', 'Motivic']
+        with patch.object(sys, 'argv', argv), patch.dict(os.environ,
+                MOTIVIC_TOOLING_ROOT=str(self.root / 'tooling'), MOTIVIC_LEAN_MEMORY_MB='4096',
+                MOTIVIC_RSS_LIMIT_MB='8192'), patch('cache.subprocess.run') as run:
+            self.assertEqual(cache_main(), 0)
+        run.assert_called_once()
+        command = run.call_args.args[0]
+        self.assertEqual(Path(command[1]).name, 'cache_bootstrap.py')
+        self.assertEqual(command[command.index('--tooling') + 1], str((self.root / 'tooling').resolve()))
+        self.assertEqual(command[command.index('--') + 1:],
+                         ['lake', 'exe', 'cache', 'get', 'Mathlib.Algebra.Group.Basic'])
+        self.assertEqual(run.call_args.kwargs['env']['AGLIB_LEAN_MEMORY_MB'], '4096')
+        self.assertEqual(run.call_args.kwargs['env']['AGLIB_RSS_LIMIT_MB'], '8192')
 
 
 if __name__ == '__main__':

@@ -85,6 +85,10 @@ python3 scripts/cache.py --list Motivic.Cor
 
 `--guarded` applies the reviewed Aglib resource guard and writes a private cache
 receipt. CI uses this mode with its separate tooling checkout and memory limits.
+`cache_bootstrap.py` permits the cache executable's cold-start compiler fanout
+with one-thread compiler caps and the same finite heap and group RSS limits.
+It accepts only focused cache acquisition for existing Mathlib/Batteries leaves
+and checks the reviewed upstream helper bytes before loading them.
 `--lint-runtime` also fetches the pinned style driver's exact direct Mathlib and
 Batteries prerequisites. Lean and Lake come from the toolchain; the optional
 Cli and ImportGraph support leaves retain their temporary isolated compilation.

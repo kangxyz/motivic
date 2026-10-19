@@ -83,7 +83,8 @@ def main() -> int:
                 for name in ('LEAN_MEMORY_MB', 'RSS_LIMIT_MB'):
                     if 'MOTIVIC_' + name in environment:
                         environment['AGLIB_' + name] = environment['MOTIVIC_' + name]
-                argv = [sys.executable, str(guard), '--capped-toolchain',
+                adapter = Path(__file__).with_name('cache_bootstrap.py')
+                argv = [sys.executable, str(adapter), '--tooling', str(tooling.resolve()),
                         '--receipt', str(receipt), '--', *argv]
             subprocess.run(argv, cwd=root, env=environment, check=True)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:

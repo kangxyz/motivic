@@ -106,6 +106,8 @@ class TargetSelectionTests(Fixture):
                              (True, ['test_build.py', 'test_validate.py']))
         self.assertEqual(validation_scope(['scripts/ci_targets.py']),
                          (True, ['test_ci_targets.py', 'test_validate.py']))
+        self.assertEqual(validation_scope(['scripts/cache_bootstrap.py']),
+                         (True, ['test_repository.py', 'test_validate.py']))
         self.assertEqual(validation_scope(['scripts/new_tool.py']), (True, ['test_*.py']))
 
 
