@@ -13,6 +13,7 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R]
   (V : (Spec (.of (Polynomial R))).Opens) (r : R)
 
+/-- The common neighborhood graph with target restricted to the retained curve. -/
 def commonNeighborhoodRetainedGraph : (commonNeighborhoodSource R V r).toScheme ⟶
     commonNeighborhoodRetainedCurve R V r :=
   pullback.lift (𝟙 _) (commonNeighborhoodRetainedTargetMap R V r) (by
@@ -47,6 +48,7 @@ instance : IsClosedImmersion (commonNeighborhoodRetainedGraph R V r) :=
 
 variable [IsAffine V.toScheme]
 
+/-- The pullback comparison from the common graph ideal to the retained graph ideal. -/
 def commonNeighborhoodRetainedGraphIdealIso :
     (Scheme.Modules.pullback (commonNeighborhoodRetainedInclusion R V r)).obj
       (Scheme.Hom.idealModule (commonNeighborhoodGraph R V r)) ≅

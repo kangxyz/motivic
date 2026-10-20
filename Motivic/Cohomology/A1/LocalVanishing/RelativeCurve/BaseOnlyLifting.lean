@@ -148,7 +148,7 @@ theorem exists_baseOnly_relativeCurve_lifting
   have : IsSeparated (boundaryBaseSourceProjection q ⊤ V) := by
     dsimp [boundaryBaseSourceProjection]
     infer_instance
-  let eGraph := boundaryGraphFrame_baseIso _ _ V.toScheme.isoSpec
+  let eGraph := boundaryGraphFrameBaseIso _ _ V.toScheme.isoSpec
     (boundaryBaseCanonicalFrame q z ⊤ V h eTop)
   let W := b ⁻¹ᵁ V
   let eW := restrictUnitIsoOfLE L.val

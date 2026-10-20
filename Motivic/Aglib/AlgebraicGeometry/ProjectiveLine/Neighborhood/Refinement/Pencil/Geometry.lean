@@ -74,9 +74,11 @@ lemma commonNeighborhoodBoundary_closed
   exact Set.disjoint_iff_forall_ne.mp (neighborhoodBoundary_disjoint_zero R V hV)
     ⟨_, rfl⟩ ⟨_, rfl⟩ (h1.symm.trans (h3.symm.trans h2.symm))
 
+/-- The common neighborhood curve restricted to the retained target open. -/
 abbrev commonNeighborhoodRetainedCurve := pullback (commonNeighborhoodProjection R V r)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
 
+/-- The inclusion of the retained common neighborhood curve into its ambient scheme. -/
 def commonNeighborhoodRetainedInclusion : commonNeighborhoodRetainedCurve R V r ⟶
     commonNeighborhoodAmbient R V r :=
   (IsPullback.of_hasPullback (commonNeighborhoodProjection R V r)

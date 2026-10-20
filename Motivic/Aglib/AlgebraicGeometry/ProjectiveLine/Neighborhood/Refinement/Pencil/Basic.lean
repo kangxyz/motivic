@@ -14,6 +14,7 @@ variable (R : Type u) [CommRing R]
   (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
   (r : R) (l m : ℕ) (e : neighborhoodFrame R V r l)
 
+/-- The tensor product of the pulled-back dual numerator twist and dual fixed Psi twist. -/
 def commonNeighborhoodPencilLine : LineBundle (commonNeighborhoodAmbient R V r) :=
   tensorLineBundle _
     (pullbackLineBundle (commonNeighborhoodToSectionAmbient R V r)
@@ -22,6 +23,7 @@ def commonNeighborhoodPencilLine : LineBundle (commonNeighborhoodAmbient R V r) 
     (pullbackLineBundle (commonNeighborhoodToPsiAmbient R V r)
       (dualLineBundle _ (fixedPsiTwistLine R r m)))
 
+/-- The pencil functional formed from the graph-twisted normalized denominator and `t`. -/
 def NeighborhoodSectionPair.pencilStart (d : NeighborhoodSectionPair R V hV r l e)
     (t : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
       (fixedPsiTwistLine R r m).val) :
@@ -34,6 +36,7 @@ def NeighborhoodSectionPair.pencilStart (d : NeighborhoodSectionPair R V hV r l 
     (twistedIdealSection _ (neighborhoodLocalIdeal R V r) (neighborhoodLocalTwist R V r l)
       (neighborhoodLocalGraphFunctional R V r) d.normalizedDenominator) t
 
+/-- The pencil functional formed from the normalized numerator and `n`. -/
 def NeighborhoodSectionPair.pencilEnd (d : NeighborhoodSectionPair R V hV r l e)
     (n : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
       (fixedPsiTwistLine R r m).val) :

@@ -11,12 +11,14 @@ universe u
 namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (V : (Spec (.of (Polynomial R))).Opens) (r : R)
 
+/-- The source-change map from the retained common curve to the retained neighborhood curve. -/
 def commonNeighborhoodRetainedToGraph : commonNeighborhoodRetainedCurve R V r ⟶
     neighborhoodRetainedCurve R V :=
   Scheme.constantSourceMapOfEq (commonNeighborhoodToV R V r) (neighborhoodProjection R V)
     ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R _)
     (commonNeighborhoodProjection R V r) (commonNeighborhoodProjection_graph R V r)
 
+/-- The source-change map from the retained common curve to the retained fixed Psi curve. -/
 def commonNeighborhoodRetainedToPsi : commonNeighborhoodRetainedCurve R V r ⟶
     fixedPsiRetainedCurve R r V :=
   Scheme.constantSourceMapOfEq (commonNeighborhoodToPsi R V r) (fixedPsiProjection R r)

@@ -61,7 +61,7 @@ theorem exists_boundarySectionData_of_full_target_frame
     (R := R) (ι := ι) (m := m) (eι := eι) (q := q) (f := f) (j := j)
     (p := p) (hq := hq) (a := a) (z := z) (s := s) (hs := hs) (H := H)
     (e := e) (ha := ha) (d := d) (hd := hd) v hc
-    (lambdaTwistFrames_of_fullTargetFrame R ι f j s d eFull)
-    (psiTwistFrames_of_fullTargetFrame R ι q f j p hq a z s hs d eFull)
+    (lambdaTwistFramesOfFullTargetFrame R ι f j s d eFull)
+    (psiTwistFramesOfFullTargetFrame R ι q f j p hq a z s hs d eFull)
 
 end AlgebraicGeometry.Scheme.RelativeCurvePencil

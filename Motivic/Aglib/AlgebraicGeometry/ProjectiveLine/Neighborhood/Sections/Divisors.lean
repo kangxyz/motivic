@@ -13,15 +13,20 @@ variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 variable (r : R)
 
+/-- The inverse image of the base principal open defined by `r` in the neighborhood. -/
 abbrev neighborhoodSourceOpen := neighborhoodProjection R V ⁻¹ᵁ PrimeSpectrum.basicOpen r
+/-- The inverse image of the source principal open in the graph ambient scheme. -/
 abbrev neighborhoodCompactOpen :=
   (pullback.fst (neighborhoodProjection R V) (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))) ⁻¹ᵁ
     neighborhoodSourceOpen R V r
+/-- The graph ambient projection restricted over the source principal open. -/
 abbrev neighborhoodRestrictedProjection :=
   (pullback.fst (neighborhoodProjection R V) (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))) ∣_
     neighborhoodSourceOpen R V r
+/-- The whole graph-boundary map restricted over the compact open. -/
 abbrev neighborhoodRestrictedBoundary :=
   neighborhoodGraphBoundaryMap R V hV ∣_ neighborhoodCompactOpen R V r
+/-- The retained-curve map restricted over the compact open. -/
 abbrev neighborhoodRestrictedRetained :=
   neighborhoodRetainedInclusion R V ∣_ neighborhoodCompactOpen R V r
 

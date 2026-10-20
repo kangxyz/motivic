@@ -40,7 +40,7 @@ nonzero principal base open. Only the actual generic fiber has curve dimension. 
 theorem exists_relativeLine_base_open_restriction_eq_zero_of_zero_square
     (F : Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})
     (n : ℕ) (g : R[X]) (hg : g.Monic)
-    {Y : SmoothSite (Spec (.of k))} [IsAffine Y.left]
+    {Y : SmoothSite (Spec (.of k))}
     (p : Y ⟶ lineSite (k := k) (R := R)) [Etale p.left]
     [IsIso (pullback.snd p.left (inclusion g))]
     (e : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))

@@ -9,11 +9,13 @@ universe u
 namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (V : (Spec (.of (Polynomial R))).Opens) (r : R)
 
+/-- The inclusion of the missing boundary part into the common neighborhood ambient scheme. -/
 def commonNeighborhoodMissingInclusion : commonNeighborhoodMissing R V r ⟶
     commonNeighborhoodAmbient R V r :=
   pullback.lift (pullback.fst _ _) (pullback.snd _ _ ≫ neighborhoodBoundaryInclusion R V)
     (by rw [Category.assoc]; exact pullback.condition)
 
+/-- The inclusion of the zero-section part into the common neighborhood ambient scheme. -/
 def commonNeighborhoodZeroInclusion : commonNeighborhoodZero R V r ⟶
     commonNeighborhoodAmbient R V r :=
   pullback.lift (pullback.fst _ _) (pullback.snd _ _ ≫ zeroSection R) (by
@@ -24,6 +26,7 @@ def commonNeighborhoodZeroInclusion : commonNeighborhoodZero R V r ⟶
         (g := Scheme.Hom.boundaryCoordinateMap R R (Polynomial.evalRingHom 0) ≫
           Scheme.Hom.boundaryLineProjection R)))
 
+/-- The map from the coproduct boundary to the common neighborhood ambient scheme. -/
 def commonNeighborhoodBoundaryMap : commonNeighborhoodBoundary R V r ⟶
     commonNeighborhoodAmbient R V r :=
   coprod.desc (commonNeighborhoodMissingInclusion R V r) (commonNeighborhoodZeroInclusion R V r)

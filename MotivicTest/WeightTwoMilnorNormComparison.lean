@@ -48,11 +48,13 @@ theorem actual_arbitrary_symbol (a b : (AdjoinRoot p.val)ˣ) :
       corestriction (k := k) (WeightTwoSymbols.graphSymbol (AdjoinRoot p.val) a b) :=
   raw_norm p (symbol a b)
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the base field in this test. -/
+local instance instHasDerivedCategoryMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the root field in this test. -/
+local instance instHasDerivedCategoryAdjoinRootMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of (AdjoinRoot p.val)))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 

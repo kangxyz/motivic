@@ -13,14 +13,19 @@ universe u
 namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens)
+/-- Include the affine neighborhood into the zero-coordinate chart of the projective line. -/
 abbrev neighborhoodInclusion := V.ι ≫ chart R ⟨0⟩
+/-- The structural map of the affine neighborhood to `Spec R`. -/
 abbrev neighborhoodProjection := neighborhoodInclusion R V ≫
   ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))
+/-- The projective line pulled back along the neighborhood projection. -/
 abbrev neighborhoodGraphAmbient := pullback (neighborhoodProjection R V)
   (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
+/-- The affine line pulled back along the neighborhood projection. -/
 abbrev neighborhoodAffineAmbient := pullback (neighborhoodProjection R V)
   (Spec.map (CommRingCat.ofHom (Polynomial.C : R →+* Polynomial R)))
 
+/-- The affine-chart map into the graph ambient projective line. -/
 def neighborhoodAffineInclusion :
     neighborhoodAffineAmbient R V ⟶ neighborhoodGraphAmbient R V :=
   (IsPullback.of_hasPullback (neighborhoodProjection R V)

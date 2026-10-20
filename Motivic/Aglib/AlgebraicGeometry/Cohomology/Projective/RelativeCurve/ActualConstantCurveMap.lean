@@ -15,6 +15,7 @@ variable {k R : Type u} [CommRing k] [CommRing R]
   (b : Spec (.of R) ⟶ Spec (.of k)) (ι : Type u)
   {C : Scheme.{u}} (q : C ⟶ ProjectiveSpace k ι)
 
+/-- The ring homomorphism corresponding to the affine structure map `b`. -/
 def coefficientMap : k →+* R := (Spec.preimage b).hom
 
 @[simp] theorem map_coefficientMap :

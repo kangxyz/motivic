@@ -25,12 +25,14 @@ variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)
   (U : X.Opens) (V : (Spec (.of R)).Opens)
   [IsAffine V.toScheme] [IsAffine (boundaryBaseSourceOpen q U V).toScheme]
 
+/-- The lambda-source smooth-site map for the pencil after restriction to the base open. -/
 abbrev boundaryBasePencilAlpha :=
   RelativeCurvePencil.relativeAlpha k (boundaryBaseFieldMap V t)
     (boundaryBaseProjectiveMap R ι f V ≫ toSpec Γ(V.toScheme, ⊤) ι)
     (boundaryBaseCoverInclusion q p (f ≫ toSpec R ι) j hj U V)
     (pullback.fst (boundaryBaseCoverMap q p U V) (boundaryBaseCoverMap q a U V))
 
+/-- The psi-source smooth-site map for the pencil after restriction to the base open. -/
 abbrev boundaryBasePencilBeta :=
   RelativeCurvePencil.relativeBeta k (boundaryBaseFieldMap V t)
     (boundaryBaseSpecProjection q U V)
@@ -43,6 +45,7 @@ abbrev boundaryBasePencilBeta :=
     (pullback.snd (boundaryBaseCoverMap q p U V) (boundaryBaseCoverMap q a U V))
     pullback.condition
 
+/-- The retained-target smooth-site map for the pencil after restriction to the base open. -/
 abbrev boundaryBasePencilGraph [IsAffine T] (v : T ⟶ C)
     [SmoothOfRelativeDimension 1 (v ≫ (f ≫ toSpec R ι))]
     (φ : pullback p a ⟶ T) (hφ : φ ≫ v = pullback.fst p a ≫ j) :=

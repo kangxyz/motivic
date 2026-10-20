@@ -15,6 +15,7 @@ variable (V : (Spec (.of (Polynomial R))).Opens)
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 variable (r : R)
 
+/-- The inverse image of the base principal open defined by `r` on the graph boundary. -/
 abbrev neighborhoodGraphBoundaryOpen :=
   (neighborhoodGraphBoundaryToOriginal R V hV ≫ fullBoundaryStructure R V) ⁻¹ᵁ
     PrimeSpectrum.basicOpen r

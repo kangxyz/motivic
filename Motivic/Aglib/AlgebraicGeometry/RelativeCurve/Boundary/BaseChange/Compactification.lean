@@ -13,8 +13,10 @@ variable {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
   (π : C ⟶ S) (j : Y ⟶ C) (hj : j ≫ π = p ≫ q)
   (U : X.Opens) (V : S.Opens)
 
+/-- The compactification pulled back to the base open `V`. -/
 abbrev boundaryBaseCompactification := pullback V.ι π
 
+/-- The map from the restricted cover to the compactification over `V` induced by `j`. -/
 def boundaryBaseCoverInclusion : (boundaryBaseCoverOpen q p U V).toScheme ⟶
     boundaryBaseCompactification π V :=
   pullback.lift (boundaryBaseCoverMap q p U V ≫ boundaryBaseSourceProjection q U V)

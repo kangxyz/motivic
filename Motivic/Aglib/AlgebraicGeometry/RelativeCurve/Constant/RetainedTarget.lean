@@ -18,7 +18,9 @@ variable (k : Type u) [Field k] {Y S : Scheme.{u}}
   (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
   (U : (Spec (.of (Polynomial k))).Opens) (q : S ⟶ Spec (.of k))
 
+/-- The structure map of the retained open through the compactification. -/
 abbrev retainedProjection := retainedInclusion k p U ≫ projection k p
+/-- The retained target pulled back along the base structure map `q`. -/
 abbrev constantRetainedTarget := pullback q (retainedProjection k p U)
 
 /-- This actual open has a global map to the original overlap, not merely to Y. -/

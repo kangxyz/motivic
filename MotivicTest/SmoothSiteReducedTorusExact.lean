@@ -24,14 +24,14 @@ namespace MotivicTest.SmoothSiteReducedTorusExact
 variable {k : Type u} [Field k]
 
 /-- The consumer uses exactly the original reduced sections and global units. -/
-def actual_local_sequence (X : SmoothSite (Spec (.of k)))
+def actualLocalSequence (X : SmoothSite (Spec (.of k)))
     [IsAffine X.left] [IsIntegral X.left] : ShortComplex AddCommGrpCat.{u + 1} :=
   ShortComplex.mk (largeAffineReducedDivisor k X) (reducedNorm.app (op X))
     (largeAffineReducedDivisor_reducedNorm X)
 
 /-- All three places of the actual local sequence are tested as a genuine short exact sequence. -/
 theorem actual_local_shortExact (X : SmoothSite (Spec (.of k)))
-    [IsAffine X.left] [IsIntegral X.left] : (actual_local_sequence X).ShortExact where
+    [IsAffine X.left] [IsIntegral X.left] : (actualLocalSequence X).ShortExact where
   exact := (ShortComplex.ab_exact_iff _).mpr fun z hz =>
     (reducedNorm_app_eq_zero_iff X z).mp hz
   mono_f := (AddCommGrpCat.mono_iff_injective _).mpr (largeAffineReducedDivisor_injective X)
@@ -47,7 +47,7 @@ run_cmd do
       ``toReduced_add_identityGraph, ``toReduced_eq_zero_iff,
       ``affinePowerOneNorm_affinePowerOneDivisor, ``largeAffineReducedDivisor_reducedNorm,
       ``largeAffineReducedDivisor_injective, ``reducedNorm_app_surjective,
-      ``reducedNorm_app_eq_zero_iff, ``actual_local_sequence, ``actual_local_shortExact] do
+      ``reducedNorm_app_eq_zero_iff, ``actualLocalSequence, ``actual_local_shortExact] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

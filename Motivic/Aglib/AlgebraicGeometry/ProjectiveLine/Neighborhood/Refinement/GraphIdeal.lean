@@ -17,6 +17,7 @@ instance : IsClosedImmersion (commonNeighborhoodGraph R V r) :=
   MorphismProperty.of_isPullback (commonNeighborhoodGraph_isPullback R V r) (by
     dsimp [Scheme.Hom.compactificationGraph]; infer_instance)
 
+/-- The pullback comparison between the neighborhood graph line and the common graph ideal. -/
 def commonNeighborhoodGraphIdealIso :
     (Scheme.Modules.pullback (commonNeighborhoodToGraphAmbient R V r)).obj
       (neighborhoodGraphLine R V).val ≅ Scheme.Hom.idealModule (commonNeighborhoodGraph R V r) := by

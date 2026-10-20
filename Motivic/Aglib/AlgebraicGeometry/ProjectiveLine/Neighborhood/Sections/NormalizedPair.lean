@@ -21,14 +21,19 @@ variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 variable (r : R) (n : ℕ)
 
+/-- The nonnegative twisting line bundle pulled back to the graph ambient scheme. -/
 def neighborhoodTwistLine : LineBundle (neighborhoodGraphAmbient R V) :=
   pullbackLineBundle (neighborhoodProjectiveIso R V).hom
     (ProjectiveSpace.twistingLineBundle Γ(V.toScheme, ⊤) (ULift.{u} (Fin 2)) (n : ℤ))
+/-- The twisting line bundle restricted to the section open. -/
 def neighborhoodLocalTwist : LineBundle (neighborhoodSectionOpen R V r).toScheme :=
   restrictLineBundle (neighborhoodSectionOpen R V r).ι (neighborhoodTwistLine R V n)
+/-- The graph ideal line bundle restricted to the section open. -/
 def neighborhoodLocalIdeal : LineBundle (neighborhoodSectionOpen R V r).toScheme :=
   restrictLineBundle (neighborhoodSectionOpen R V r).ι (neighborhoodGraphLine R V)
 
+/-- Identify the restricted numerator module with the local twist tensored with the dual graph
+ideal. -/
 def neighborhoodNumeratorNormalizeIso :
     (restrictFunctor (neighborhoodSectionOpen R V r).ι).obj
       (neighborhoodNumeratorModule R V n) ≅
@@ -39,6 +44,7 @@ def neighborhoodNumeratorNormalizeIso :
     tensorSheafIso _ (Iso.refl _)
       (restrictDualIso (neighborhoodSectionOpen R V r).ι (neighborhoodGraphLine R V))
 
+/-- Identify the restricted denominator module with the local twisting line bundle. -/
 def neighborhoodDenominatorNormalizeIso :
     (restrictFunctor (neighborhoodSectionOpen R V r).ι).obj
       (neighborhoodDenominatorModule R V n) ≅ (neighborhoodLocalTwist R V r n).val :=
@@ -51,8 +57,10 @@ def neighborhoodDenominatorNormalizeIso :
 variable {R V r n}
 variable {hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V}
 variable {e : neighborhoodFrame R V r n}
+/-- The numerator section map expressed in the local twist tensored with the dual graph ideal. -/
 def NeighborhoodSectionPair.normalizedNumerator (d : NeighborhoodSectionPair R V hV r n e) :=
   d.numeratorHom ≫ (neighborhoodNumeratorNormalizeIso R V r n).hom
+/-- The denominator section map expressed in the local twisting line bundle. -/
 def NeighborhoodSectionPair.normalizedDenominator (d : NeighborhoodSectionPair R V hV r n e) :=
   d.denominatorHom ≫ (neighborhoodDenominatorNormalizeIso R V r n).hom
 

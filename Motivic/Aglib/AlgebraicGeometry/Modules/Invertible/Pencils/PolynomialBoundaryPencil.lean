@@ -30,6 +30,7 @@ variable {R : Type u} [CommRing R] {X : Scheme.{u}} (b : X ⟶ Spec (.of R))
 abbrev parameterSpace :=
   Limits.pullback b (Spec.map (CommRingCat.ofHom (Polynomial.C : R →+* R[X])))
 
+/-- The first projection from the polynomial parameter line to the original scheme. -/
 abbrev projection : parameterSpace b ⟶ X := pullback.fst _ _
 
 /-- Its actual global polynomial coordinate. -/

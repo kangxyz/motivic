@@ -82,7 +82,7 @@ theorem coordinateSection_missing_idealInclusion_isIso
   rw [← Scheme.Hom.idealPullbackMap_inclusion i i' b a pullback.condition]
   infer_instance
 /-- The inverse original inclusion gives the prescribed ideal frame, not an arbitrary unit. -/
-def coordinateSection_missing_idealIso
+def coordinateSectionMissingIdealIso
     (hz : Set.range (Spec.map (CommRingCat.ofHom z)) ⊆ V) :
     SheafOfModules.unit (pullback
       (ProjectiveSpace.map (z.comp Polynomial.C) (ULift.{u} (Fin 2)))
@@ -94,10 +94,14 @@ def coordinateSection_missing_idealIso
     (Scheme.Hom.idealInclusion (coordinateSection A (z Polynomial.X)))
     (missingBoundaryMap V z))).symm
 
+/-- Deprecated compatibility name for `coordinateSectionMissingIdealIso`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias coordinateSection_missing_idealIso := coordinateSectionMissingIdealIso
+
 @[reassoc (attr := simp)]
 lemma coordinateSection_missing_idealIso_inclusion
     (hz : Set.range (Spec.map (CommRingCat.ofHom z)) ⊆ V) :
-    (coordinateSection_missing_idealIso V z hz).hom ≫
+    (coordinateSectionMissingIdealIso V z hz).hom ≫
       Scheme.Modules.Hom.pullbackToUnit
         (Scheme.Hom.idealInclusion (coordinateSection A (z Polynomial.X)))
         (missingBoundaryMap V z) = 𝟙 _ := by

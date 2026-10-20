@@ -28,6 +28,7 @@ variable (k S : Type u) [Field k] [CharZero k] [CommRing S] [IsDedekindDomain S]
 attribute [local instance] Classical.decEq DedekindResidue.polynomialPointResidueCharZero
 local instance baseFinite : IsFinite (baseMap (k := k) S) :=
   (IsFinite.SpecMap_iff _).mpr (RingHom.finite_algebraMap.mpr inferInstance)
+/-- A finite enumeration of the points of an endpoint fiber. -/
 local instance fiberFintype (a : k) : Fintype (fiber (baseMap S) a) := Fintype.ofFinite _
 
 /-- The actual full endpoint fundamental coefficients multiply the actual residue norms. -/

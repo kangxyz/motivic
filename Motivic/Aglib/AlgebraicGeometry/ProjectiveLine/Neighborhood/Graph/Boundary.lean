@@ -22,7 +22,7 @@ lemma neighborhoodZero_ι : neighborhoodZero R V hV ≫ V.ι =
     Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R))) :=
   IsOpenImmersion.lift_fac _ _ _
 
-@[reassoc (attr := simp)]
+@[reassoc]
 lemma neighborhoodZero_inclusion : neighborhoodZero R V hV ≫ neighborhoodInclusion R V =
     zeroSection R := by simp [neighborhoodInclusion, zeroSection]
 
@@ -39,20 +39,25 @@ lemma neighborhoodInclusion_disjoint :
   rintro x ⟨y, rfl⟩ hx
   exact hx ⟨y.val, y.property, rfl⟩
 
+/-- The ideal module of the original neighborhood graph. -/
 abbrev neighborhoodGraphIdeal := Scheme.Hom.idealModule
   (Scheme.Hom.compactificationGraph (ProjectiveSpace.toSpec R _) (neighborhoodInclusion R V))
 
+/-- The rank-one ideal bundle of the original neighborhood graph. -/
 def neighborhoodGraphLine : LineBundle (neighborhoodGraphAmbient R V) :=
   ⟨neighborhoodGraphIdeal R V, neighborhoodGraph_ideal_rankOne R V⟩
 
+/-- The dual line bundle of the original neighborhood graph ideal. -/
 abbrev neighborhoodGraphDivisor := dualLineBundle _ (neighborhoodGraphLine R V)
 
+/-- The coproduct of the missing-boundary and whole-zero boundary sources. -/
 abbrev neighborhoodGraphBoundarySource :=
   pullback (pullback.snd (neighborhoodProjection R V) (ProjectiveSpace.toSpec R _))
     (neighborhoodBoundaryInclusion R V) ⨿
   pullback (neighborhoodProjection R V) (neighborhoodZero R V hV ≫
     neighborhoodInclusion R V ≫ ProjectiveSpace.toSpec R _)
 
+/-- The full boundary map for the original neighborhood graph. -/
 abbrev neighborhoodGraphBoundaryMap := Scheme.Hom.fullBoundaryProductMap
   (ProjectiveSpace.toSpec R _) (neighborhoodInclusion R V)
   (neighborhoodBoundaryInclusion R V) (neighborhoodZero R V hV)
@@ -87,6 +92,7 @@ def neighborhoodGraphBoundaryIso :
     (neighborhoodZero R V hV) (neighborhoodZero_ι R V hV) (neighborhoodZero_isPullback R V hV)
     (neighborhoodBoundaryInclusion R V) (neighborhoodInclusion_disjoint R V)
     (neighborhoodAffineInclusion R V).opensRange (neighborhoodGraph_mem_affine R V))
+/-- The canonical graph-divisor trivialization on the missing boundary. -/
 def neighborhoodMissingDivisorIso :=
   Scheme.Hom.infinityBoundaryDivisorIso (ProjectiveSpace.toSpec R _)
     (neighborhoodInclusion R V) (neighborhoodBoundaryInclusion R V)
@@ -96,6 +102,7 @@ lemma neighborhoodProjection_eq : neighborhoodInclusion R V ≫ ProjectiveSpace.
     V.ι ≫ Scheme.Hom.boundaryLineProjection R := by
   simp [neighborhoodInclusion, Scheme.Hom.boundaryLineProjection, chart_toSpec]
 
+/-- The coordinate graph-divisor trivialization on the whole zero section. -/
 def neighborhoodZeroDivisorIso :=
   Scheme.Hom.compactificationBoundaryDivisorIso R R (Polynomial.evalRingHom 0)
     (ProjectiveSpace.toSpec R _) (neighborhoodInclusion R V) V.ι

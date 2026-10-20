@@ -48,7 +48,8 @@ theorem actual_raw_steinberg (a b : kˣ) (hab : (a : k) + (b : k) = 1) :
     rawMilnorSymbol k (symbol a b) = 0 := by
   rw [steinberg a b hab, map_zero]
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the base field in this test. -/
+local instance instHasDerivedCategoryMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 
@@ -118,7 +119,8 @@ theorem coefficient_six (a b : kˣ) :
 
 variable {k} {L : Type u} [Field L] [CharZero L] (φ : k →+* L)
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the extension field in this test. -/
+local instance instHasDerivedCategoryExtensionMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of L))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 

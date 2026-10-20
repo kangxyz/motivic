@@ -11,6 +11,7 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 
+/-- The neighborhood structural map expressed on the spectrum of its section ring. -/
 abbrev neighborhoodAffineBase : Spec Γ(V.toScheme, ⊤) ⟶ Spec (.of R) :=
   V.toScheme.isoSpec.inv ≫ neighborhoodProjection R V
 

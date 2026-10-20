@@ -20,9 +20,11 @@ variable {S X Y Z C D : Scheme.{u}} (q : X ⟶ S) [IsSeparated q]
     idealModule (boundaryGraphTarget q z))
   (d : D ⟶ C) (hd : Disjoint (Set.range j) (Set.range d))
 
+/-- Choose a frame on the full boundary with the prescribed infinity and graph restrictions. -/
 def relativeFullBoundaryFrame := Classical.choose
   (exists_relativeFullBoundaryDivisorFrame q qC j p hq z s h H e d hd)
 
+/-- Express the pulled canonical dual section in the chosen full-boundary frame. -/
 def relativeFullBoundaryCoordinate :=
   pullbackSectionMap (coprod.desc (infinityProductMap qC j d) (graphBoundaryRestriction qC j s))
     (canonicalDualHom _ (relativeCompactificationGraphLine qC j).val

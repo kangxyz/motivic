@@ -106,7 +106,7 @@ def imageGenerator : Generator k := by
     exact (irreducibleComponents_eq_singleton (X := Spec (.of k))) ▸ Set.mem_singleton _
 
 /-- The source-to-image map has the original structural scalar map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem imageGenerator_toImage_projection :
     j.toImage ≫ (imageGenerator j hj).projection =
       Spec.map (CommRingCat.ofHom (algebraMap k E)) := by

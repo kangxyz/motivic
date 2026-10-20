@@ -38,14 +38,17 @@ variable (k : Type u) [Field k] (R : Type u) [CommRing R] [IsNoetherianRing R]
   (U : X.Opens) (V : (Spec (.of R)).Opens)
   [IsAffine V.toScheme] [IsAffine (boundaryBaseSourceOpen q U V).toScheme]
 
+/-- The lambda-source smooth-site map for the normalized pencil over the chosen base open. -/
 abbrev fixedTargetPencilAlpha := boundaryBasePencilAlpha k R ι t q p a
   (fixedTargetSourceProjectiveMap R ι X C p j f) (inclusion C (p ≫ j))
   (fixedTargetSource_over R ι X C p j f q hq) U V
 
+/-- The psi-source smooth-site map for the normalized pencil over the chosen base open. -/
 abbrev fixedTargetPencilBeta := boundaryBasePencilBeta k R ι t q p a
   (fixedTargetSourceProjectiveMap R ι X C p j f) (inclusion C (p ≫ j))
   (fixedTargetSource_over R ι X C p j f q hq) U V
 
+/-- The retained-target smooth-site map for the normalized pencil over the chosen base open. -/
 abbrev fixedTargetPencilGraph :=
   let : SmoothOfRelativeDimension 1 ((pullback.fst p a ≫ inclusion C (p ≫ j)) ≫
       (fixedTargetSourceProjectiveMap R ι X C p j f ≫ toSpec R ι)) :=

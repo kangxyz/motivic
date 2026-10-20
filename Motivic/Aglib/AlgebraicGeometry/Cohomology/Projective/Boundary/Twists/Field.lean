@@ -45,7 +45,7 @@ def fieldBoundaryTwistIso (k : Type u) [Field k] (ι : Type u)
   positiveTwistUnitIso k ι g (fieldBoundaryTwistOneIso k ι g) n
 
 /-- Pull the same target-boundary units to any source product, without any source shrink. -/
-def fieldBoundaryTwistIso_baseChange (k : Type u) [Field k] (ι : Type u)
+def fieldBoundaryTwistBaseChangeIso (k : Type u) [Field k] (ι : Type u)
     {Z W : Scheme.{u}} (g : Z ⟶ ProjectiveSpace k ι) [IsFinite (g ≫ toSpec k ι)]
     (h : W ⟶ Z) (n : ℕ) :
     (Modules.pullback (h ≫ g)).obj (twistingSheaf k ι (n : ℤ)) ≅
@@ -53,24 +53,32 @@ def fieldBoundaryTwistIso_baseChange (k : Type u) [Field k] (ι : Type u)
   ((Modules.pullbackComp h g).app (twistingSheaf k ι (n : ℤ))).symm ≪≫
     (Modules.pullback h).mapIso (fieldBoundaryTwistIso k ι g n) ≪≫ pullbackUnitIso h
 
+/-- Deprecated compatibility name for `fieldBoundaryTwistBaseChangeIso`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias fieldBoundaryTwistIso_baseChange := fieldBoundaryTwistBaseChangeIso
+
 /-- The actual global generating section after arbitrary source base change. -/
-def fieldBoundaryTwistSection_baseChange (k : Type u) [Field k] (ι : Type u)
+def fieldBoundaryTwistBaseChangeSection (k : Type u) [Field k] (ι : Type u)
     {Z W : Scheme.{u}} (g : Z ⟶ ProjectiveSpace k ι) [IsFinite (g ≫ toSpec k ι)]
     (h : W ⟶ Z) (n : ℕ) :
     Γ((Modules.pullback (h ≫ g)).obj (twistingSheaf k ι (n : ℤ)), ⊤) :=
-  (fieldBoundaryTwistIso_baseChange k ι g h n).inv.app ⊤ (1 : Γ(W, ⊤))
+  (fieldBoundaryTwistBaseChangeIso k ι g h n).inv.app ⊤ (1 : Γ(W, ⊤))
+
+/-- Deprecated compatibility name for `fieldBoundaryTwistBaseChangeSection`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias fieldBoundaryTwistSection_baseChange := fieldBoundaryTwistBaseChangeSection
 
 /-- Its coefficient is exactly one on the entire source, with no neighborhood shrink. -/
 theorem fieldBoundaryTwistSection_baseChange_coefficient
     (k : Type u) [Field k] (ι : Type u)
     {Z W : Scheme.{u}} (g : Z ⟶ ProjectiveSpace k ι) [IsFinite (g ≫ toSpec k ι)]
     (h : W ⟶ Z) (n : ℕ) :
-    (fieldBoundaryTwistIso_baseChange k ι g h n).hom.app ⊤
-      (fieldBoundaryTwistSection_baseChange k ι g h n) = (1 : Γ(W, ⊤)) := by
-  simpa only [fieldBoundaryTwistSection_baseChange, Modules.Hom.comp_app,
+    (fieldBoundaryTwistBaseChangeIso k ι g h n).hom.app ⊤
+      (fieldBoundaryTwistBaseChangeSection k ι g h n) = (1 : Γ(W, ⊤)) := by
+  simpa only [fieldBoundaryTwistBaseChangeSection, Modules.Hom.comp_app,
     ConcreteCategory.comp_apply, Modules.Hom.id_app, ConcreteCategory.id_apply] using
       congrArg (fun f => f.app ⊤ (1 : Γ(W, ⊤)))
-        (fieldBoundaryTwistIso_baseChange k ι g h n).inv_hom_id
+        (fieldBoundaryTwistBaseChangeIso k ι g h n).inv_hom_id
 
 /-- The pulled section defines an isomorphism from the original structure sheaf. -/
 theorem fieldBoundaryTwistSection_baseChange_isIso
@@ -79,11 +87,11 @@ theorem fieldBoundaryTwistSection_baseChange_isIso
     (h : W ⟶ Z) (n : ℕ) :
     IsIso ((unitHomGlobalSectionsEquiv W
       ((Modules.pullback (h ≫ g)).obj (twistingSheaf k ι (n : ℤ)))).symm
-        (fieldBoundaryTwistSection_baseChange k ι g h n)) := by
+        (fieldBoundaryTwistBaseChangeSection k ι g h n)) := by
   have he : (unitHomGlobalSectionsEquiv W
       ((Modules.pullback (h ≫ g)).obj (twistingSheaf k ι (n : ℤ)))).symm
-        (fieldBoundaryTwistSection_baseChange k ι g h n) =
-      (fieldBoundaryTwistIso_baseChange k ι g h n).inv := by
+        (fieldBoundaryTwistBaseChangeSection k ι g h n) =
+      (fieldBoundaryTwistBaseChangeIso k ι g h n).inv := by
     apply (unitHomGlobalSectionsEquiv W _).injective
     rw [Equiv.apply_symm_apply]
     rfl

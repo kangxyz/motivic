@@ -21,6 +21,7 @@ namespace Motivic.PolynomialOpenSpans
 open _root_.AlgebraicGeometry.Scheme
 variable {k R : Type u} [Field k] [CommRing R] [Algebra k R] [Algebra.Smooth k R]
 
+/-- The spectrum of the smooth `k`-algebra `R` as a smooth-site object over `Spec k`. -/
 abbrev affineSite := SmoothSite.affineSite k R
 
 /-- The target is the original open subscheme, not a replacement localization model. -/

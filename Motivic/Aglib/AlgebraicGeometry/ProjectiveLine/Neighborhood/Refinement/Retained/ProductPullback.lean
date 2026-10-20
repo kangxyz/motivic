@@ -43,15 +43,18 @@ private theorem commonCoefficientComparison {W A D C : Scheme.{u}}
 variable (R : Type u) [CommRing R] (V : (Spec (.of (Polynomial R))).Opens)
   [IsAffine V.toScheme] (r : R)
 
+/-- The iterated pullback of a section-side line bundle to the retained common curve. -/
 abbrev commonNeighborhoodRetainedLambdaLine
     (L : LineBundle (neighborhoodSectionOpen R V r).toScheme) :=
   pullbackLineBundle (commonNeighborhoodRetainedToSection R V r)
     (pullbackLineBundle (neighborhoodRetainedInclusion R V ∣_ neighborhoodSectionOpen R V r) L)
 
+/-- The iterated pullback of a fixed Psi line bundle to the retained common curve. -/
 abbrev commonNeighborhoodRetainedPsiLine (M : LineBundle (fixedPsiAmbient R r)) :=
   pullbackLineBundle (commonNeighborhoodRetainedToPsi R V r)
     (pullbackLineBundle (fixedPsiRetainedInclusion R r V) M)
 
+/-- The iterated pullback of a section-side functional to the retained common curve. -/
 abbrev commonNeighborhoodRetainedLambdaFunctional
     {L : (neighborhoodSectionOpen R V r).toScheme.Modules}
     (a : L ⟶ SheafOfModules.unit (neighborhoodSectionOpen R V r).toScheme.ringCatSheaf) :=
@@ -60,12 +63,15 @@ abbrev commonNeighborhoodRetainedLambdaFunctional
       (neighborhoodRetainedInclusion R V ∣_ neighborhoodSectionOpen R V r))
     (commonNeighborhoodRetainedToSection R V r)
 
+/-- The iterated pullback of a fixed Psi functional to the retained common curve. -/
 abbrev commonNeighborhoodRetainedPsiFunctional {M : (fixedPsiAmbient R r).Modules}
     (b : M ⟶ SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf) :=
   Scheme.Modules.Hom.pullbackToUnit
     (Scheme.Modules.Hom.pullbackToUnit b (fixedPsiRetainedInclusion R r V))
     (commonNeighborhoodRetainedToPsi R V r)
 
+/-- The comparison between the iterated section-side pullback and restriction of the ambient
+pullback. -/
 def commonNeighborhoodRetainedLambdaPullbackIso
     (L : LineBundle (neighborhoodSectionOpen R V r).toScheme) :
     (commonNeighborhoodRetainedLambdaLine R V r L).val ≅
@@ -76,6 +82,7 @@ def commonNeighborhoodRetainedLambdaPullbackIso
     (commonNeighborhoodRetainedInclusion R V r) (commonNeighborhoodToSectionAmbient R V r)
     (commonNeighborhoodRetainedToSection_inclusion R V r) L.val
 
+/-- The comparison between the iterated Psi pullback and restriction of the ambient pullback. -/
 def commonNeighborhoodRetainedPsiPullbackIso (M : LineBundle (fixedPsiAmbient R r)) :
     (commonNeighborhoodRetainedPsiLine R V r M).val ≅
       (Scheme.Modules.pullback (commonNeighborhoodRetainedInclusion R V r)).obj

@@ -11,6 +11,7 @@ universe u
 namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (V : (Spec (.of (Polynomial R))).Opens) (r : R)
 
+/-- The target map from the common neighborhood source to the projective line. -/
 def commonNeighborhoodTargetMap : (commonNeighborhoodSource R V r).toScheme ⟶
     ProjectiveSpace R (ULift.{u} (Fin 2)) :=
   (commonNeighborhoodSource R V r).ι ≫ chart R ⟨0⟩
@@ -31,6 +32,7 @@ lemma commonNeighborhoodTargetMap_mem (x : (commonNeighborhoodSource R V r).toSc
   rw [fixedPsiSource_eq] at hx
   exact hx.1
 
+/-- The target map lifted to the retained open of the projective line. -/
 def commonNeighborhoodRetainedTargetMap : (commonNeighborhoodSource R V r).toScheme ⟶
     (neighborhoodRetainedOpen R V).toScheme :=
   IsOpenImmersion.lift (neighborhoodRetainedOpen R V).ι (commonNeighborhoodTargetMap R V r) (by
@@ -42,6 +44,7 @@ def commonNeighborhoodRetainedTargetMap : (commonNeighborhoodSource R V r).toSch
     commonNeighborhoodRetainedTargetMap R V r ≫ (neighborhoodRetainedOpen R V).ι =
       commonNeighborhoodTargetMap R V r := IsOpenImmersion.lift_fac _ _ _
 
+/-- The graph of the common neighborhood target map. -/
 def commonNeighborhoodGraph : (commonNeighborhoodSource R V r).toScheme ⟶
     commonNeighborhoodAmbient R V r :=
   pullback.lift (𝟙 _) (commonNeighborhoodTargetMap R V r) (by

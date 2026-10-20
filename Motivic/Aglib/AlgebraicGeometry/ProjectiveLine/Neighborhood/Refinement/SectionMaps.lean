@@ -39,6 +39,7 @@ lemma commonNeighborhoodToGraphAmbient_mem (x : commonNeighborhoodAmbient R V r)
     (pullback.fst (commonNeighborhoodProjection R V r)
       (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) x)
 
+/-- The common neighborhood ambient map lifted to the open supporting the sections. -/
 def commonNeighborhoodToSectionAmbient : commonNeighborhoodAmbient R V r ⟶
     ((neighborhoodProjectiveIso R V).hom ⁻¹ᵁ neighborhoodSerreOpen R V r).toScheme :=
   IsOpenImmersion.lift
@@ -55,6 +56,7 @@ def commonNeighborhoodToSectionAmbient : commonNeighborhoodAmbient R V r ⟶
 
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 
+/-- The common neighborhood boundary map lifted to the open supporting the boundary sections. -/
 def commonNeighborhoodBoundaryToSection : commonNeighborhoodBoundary R V r ⟶
     ((neighborhoodGraphBoundaryMap R V hV) ⁻¹ᵁ
       ((neighborhoodProjectiveIso R V).hom ⁻¹ᵁ neighborhoodSerreOpen R V r)).toScheme :=

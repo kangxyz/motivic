@@ -12,21 +12,28 @@ variable (k R : Type u) [Field k] [CommRing R]
   (b : Spec (.of R) ⟶ Spec (.of k)) [Smooth b]
   (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme] (r : R)
 
+/-- The retained curve restricted to the section open. -/
 abbrev neighborhoodLambdaCurve :=
   (neighborhoodRetainedInclusion R V ⁻¹ᵁ neighborhoodSectionOpen R V r).toScheme
+/-- The projection from the restricted retained curve to the section source. -/
 abbrev neighborhoodLambdaSourceMap :=
   (neighborhoodRetainedInclusion R V ∣_ neighborhoodSectionOpen R V r) ≫
     commonNeighborhoodSectionProjection R V r
+/-- The map from the restricted retained curve to the original retained open. -/
 abbrev neighborhoodLambdaTargetMap :=
   (neighborhoodRetainedInclusion R V ⁻¹ᵁ neighborhoodSectionOpen R V r).ι ≫
     pullback.snd (neighborhoodProjection R V)
       ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R _)
+/-- The first projection from the fixed retained curve to the punctured source. -/
 abbrev neighborhoodPsiSourceMap := pullback.fst (fixedPsiProjection R r)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R _)
+/-- The second projection from the fixed retained curve to the retained open. -/
 abbrev neighborhoodPsiTargetMap := pullback.snd (fixedPsiProjection R r)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R _)
+/-- The first projection from the common retained curve to the common source. -/
 abbrev neighborhoodCommonSourceMap := pullback.fst (commonNeighborhoodProjection R V r)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R _)
+/-- The second projection from the common retained curve to the retained open. -/
 abbrev neighborhoodCommonTargetMap := pullback.snd (commonNeighborhoodProjection R V r)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R _)
 

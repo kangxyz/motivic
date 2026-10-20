@@ -68,7 +68,7 @@ theorem rationalDivisor_identityPoint_graph :
   exact cycleRationalFunction_rationalDivisorHom (Additive.ofMul identityPointFraction)
 
 /-- The actual signed-unit invariant kills the original identity graph. -/
-@[simp] theorem signedValue_identityGraph :
+theorem signedValue_identityGraph :
     signedValueHom.toAdditive
       (cycleRationalFunction ((Cor.graphFunctor k).map (unitMorphism (k := k) (1 : Rˣ)))) = 0 := by
   rw [cycleRationalFunction_identityGraph]

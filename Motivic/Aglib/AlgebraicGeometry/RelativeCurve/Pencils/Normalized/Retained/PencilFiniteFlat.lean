@@ -20,6 +20,7 @@ variable (k : Type u) [Field k] {Y S A X : Scheme.{u}}
   (hφ : φ ≫ retainedInclusion k p U = α ≫ r ≫ inclusion k p) [Flat α]
   (T : LineBundle (diagonalAmbient k p r)) (N : LineBundle (fixedAmbient k p v))
 
+/-- Tensor the retained graph ideal line with the pulled dual diagonal and fixed coefficients. -/
 abbrev retainedGraphPencilBundle := tensorLineBundle _
   ⟨Hom.idealModule (commonRetainedGraph k p r α U φ hφ),
     commonRetainedGraph_locallyRankOne k p r α U φ hφ⟩

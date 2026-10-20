@@ -32,11 +32,15 @@ def pencilRefinementSiteMap : diagonalSourceSite k D.p.left r ⟶ D.Y :=
       Scheme.PolynomialLaurent.polynomialProjection] using congrArg (fun f => r ≫ f)
       (MorphismProperty.Over.w D.p).symm)
 
+/-- The smooth-site overlap of the square refined along the affine map `r`. -/
 abbrev pencilOverlap := (D.refinedSquare (D.pencilRefinementSiteMap R r)).X₁
+/-- The projection from the refined overlap to the affine refinement `Spec R`. -/
 abbrev pencilSourceAlpha : (D.pencilOverlap R r).left ⟶ Spec R :=
   (D.refinedSquare (D.pencilRefinementSiteMap R r)).f₁₃.left
+/-- The projection from the refined overlap to the affine presentation of `D.U`. -/
 abbrev pencilSourceBeta : (D.pencilOverlap R r).left ⟶ Spec Γ(D.U.toScheme, ⊤) :=
   (D.refinedSquare (D.pencilRefinementSiteMap R r)).f₁₂.left ≫ D.openSpecIso.hom
+/-- The map from the refined overlap to the original overlap in its scheme pullback presentation. -/
 abbrev pencilSourceGraphMap : (D.pencilOverlap R r).left ⟶ pullback D.U.ι D.p.left :=
   (D.overlapMap (D.pencilRefinementSiteMap R r)).left ≫ D.overlapSchemeIso.hom
 

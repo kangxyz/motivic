@@ -19,6 +19,7 @@ variable {S X C Z D : Scheme.{u}} (q : X ⟶ S) (π : C ⟶ S)
   (x : X ⟶ C) (hx : x ≫ π = q) (U : X.Opens) (W : S.Opens)
   (z : Z ⟶ X) (h : ∀ b : Z, (z ≫ q) b ∈ W → z b ∈ U) (d : D ⟶ C)
 
+/-- Pull the original whole-boundary frame to the actual one-sided refinement. -/
 def refinedFullBoundaryFrame (M : (boundaryBaseCompactification π W).Modules)
     (e : (Modules.pullback (boundaryBaseWholeMap π (coprod.desc d (z ≫ x)) W)).obj M ≅
       SheafOfModules.unit ((coprod.desc d (z ≫ x) ≫ π) ⁻¹ᵁ W).toScheme.ringCatSheaf) :
@@ -30,7 +31,7 @@ def refinedFullBoundaryFrame (M : (boundaryBaseCompactification π W).Modules)
   exact boundaryBaseSourceBoundaryFrame q (𝟙 X) z z (by simp) π x
     (by simpa using hx) d U W h M e
 
-theorem refinedParameter_disjoint [IsOpenImmersion x]
+theorem refinedParameter_disjoint
     (hd : Disjoint (Set.range x) (Set.range d)) :
     Disjoint (Set.range (refinedParameterInclusion q π x hx U W))
       (Set.range (boundaryBaseWholeMap π d W)) := by
@@ -61,6 +62,7 @@ variable (R : Type u) [CommRing R] (ι : Type u) {X C Z D : Scheme.{u}}
   (z : Z ⟶ X) (h : ∀ b : Z, (z ≫ (x ≫ f ≫ toSpec R ι)) b ∈ W → z b ∈ U)
   (d : D ⟶ C)
 
+/-- The original projective twist frame pulled to the full refined boundary. -/
 def refinedFullTwistFrame (n : ℕ)
     (e : (Modules.pullback
       (boundaryBaseWholeMap (f ≫ toSpec R ι) (coprod.desc d (z ≫ x)) W ≫

@@ -16,7 +16,7 @@ set_option linter.hashCommand false
 #print axioms AlgebraicGeometry.Scheme.Hom.neighborhoodBoundaryIdealIso
 #print axioms AlgebraicGeometry.Scheme.Hom.compactificationBoundaryIdealIso
 #print axioms AlgebraicGeometry.Scheme.Hom.compactificationBoundaryDivisorIso
-#print axioms AlgebraicGeometry.Scheme.Hom.compactificationBoundaryDivisorIso_of_smooth_near_graph
+#print axioms AlgebraicGeometry.Scheme.Hom.compactificationBoundaryDivisorIsoOfSmoothNearGraph
 
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry
 

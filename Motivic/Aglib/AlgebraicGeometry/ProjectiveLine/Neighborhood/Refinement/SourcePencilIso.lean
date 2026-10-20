@@ -13,11 +13,14 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R]
   (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme] (r : R) (l m : ℕ)
 
+/-- The tensor product of the retained source pullbacks of the two dual pole twists. -/
 def commonNeighborhoodSourcePoleLine : LineBundle (commonNeighborhoodRetainedCurve R V r) :=
   tensorLineBundle _
     (commonNeighborhoodRetainedLambdaLine R V r (dualLineBundle _ (neighborhoodLocalTwist R V r l)))
     (commonNeighborhoodRetainedPsiLine R V r (dualLineBundle _ (fixedPsiTwistLine R r m)))
 
+/-- The tensor product of the retained source pullbacks of the dual numerator and fixed Psi
+twists. -/
 def commonNeighborhoodSourceNumeratorLine : LineBundle (commonNeighborhoodRetainedCurve R V r) :=
   tensorLineBundle _
     (commonNeighborhoodRetainedLambdaLine R V r (dualLineBundle _
@@ -25,10 +28,12 @@ def commonNeighborhoodSourceNumeratorLine : LineBundle (commonNeighborhoodRetain
         (dualLineBundle _ (neighborhoodLocalIdeal R V r)))))
     (commonNeighborhoodRetainedPsiLine R V r (dualLineBundle _ (fixedPsiTwistLine R r m)))
 
+/-- The tensor product of the retained graph ideal line and the source pole line. -/
 def commonNeighborhoodSourceGraphLine : LineBundle (commonNeighborhoodRetainedCurve R V r) :=
   tensorLineBundle _ (commonNeighborhoodRetainedGraphLine R V r)
     (commonNeighborhoodSourcePoleLine R V r l m)
 
+/-- The comparison from the source graph line to the restricted common neighborhood pencil line. -/
 def commonNeighborhoodSourceCompactIso :
     (commonNeighborhoodSourceGraphLine R V r l m).val ≅
       (pullbackLineBundle (commonNeighborhoodRetainedInclusion R V r)
@@ -39,6 +44,7 @@ def commonNeighborhoodSourceCompactIso :
       (dualLineBundle _ (fixedPsiTwistLine R r m))) ≪≫
     commonNeighborhoodRetainedPencilIso R V r l m
 
+/-- The comparison from the source graph line to the source numerator line. -/
 def commonNeighborhoodSourcePencilIso :
     (commonNeighborhoodSourceGraphLine R V r l m).val ≅
       (commonNeighborhoodSourceNumeratorLine R V r l m).val :=

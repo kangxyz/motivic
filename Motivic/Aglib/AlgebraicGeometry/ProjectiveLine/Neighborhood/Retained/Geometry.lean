@@ -12,6 +12,7 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens)
 
+/-- The intersection of the projective neighborhood with the coordinate open indexed by one. -/
 abbrev neighborhoodRetainedOpen := projectiveNeighborhood R V ⊓
   ProjectiveSpace.coordinateOpen R (ULift.{u} (Fin 2)) ⟨1⟩
 
@@ -49,9 +50,11 @@ lemma neighborhoodRetained_projection_smooth : SmoothOfRelativeDimension 1
   have := coordinateOpen_smooth_one R ⟨0⟩
   exact inferInstanceAs (SmoothOfRelativeDimension (0 + 1) _)
 
+/-- The retained open pulled back along the neighborhood projection. -/
 abbrev neighborhoodRetainedCurve := pullback (neighborhoodProjection R V)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
 
+/-- The map from the retained curve into the graph ambient projective line. -/
 def neighborhoodRetainedInclusion : neighborhoodRetainedCurve R V ⟶
     neighborhoodGraphAmbient R V :=
   (IsPullback.of_hasPullback (neighborhoodProjection R V)

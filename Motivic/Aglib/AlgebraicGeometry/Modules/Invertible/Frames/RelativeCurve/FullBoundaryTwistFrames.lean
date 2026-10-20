@@ -15,8 +15,10 @@ variable {S X Y A Z C D : Scheme.{u}}
   (hq : j ≫ π = p ≫ q) (a : A ⟶ X)
   (z : Z ⟶ X) (s : Z ⟶ Y) (hs : s ≫ p = z) (d : D ⟶ C)
 
+/-- Map the disjoint union of the infinity and graph boundaries to the target curve. -/
 abbrev fullTargetBoundaryMap : D ⨿ Z ⟶ C := coprod.desc d (s ≫ j)
 
+/-- Map the two lambda-boundary components to the full target boundary by projection. -/
 def lambdaBoundaryToFullTarget :
     (pullback (pullback.snd (j ≫ π) π) d ⨿ pullback (j ≫ π) (s ≫ j ≫ π)) ⟶ D ⨿ Z :=
   coprod.desc (pullback.snd _ _ ≫ coprod.inl) (pullback.snd _ _ ≫ coprod.inr)
@@ -32,6 +34,7 @@ theorem lambdaBoundaryToFullTarget_map :
   · simp [lambdaBoundaryToFullTarget, fullTargetBoundaryMap, Hom.fullBoundaryProductMap,
       Hom.graphBoundaryRestriction]
 
+/-- Map the two psi-boundary components to the full target boundary by projection. -/
 def psiBoundaryToFullTarget :
     (pullback (pullback.snd (a ≫ q) π) d ⨿ pullback (a ≫ q) (z ≫ q)) ⟶ D ⨿ Z :=
   coprod.desc (pullback.snd _ _ ≫ coprod.inl) (pullback.snd _ _ ≫ coprod.inr)
@@ -49,7 +52,7 @@ theorem psiBoundaryToFullTarget_map :
 
 /-- The native coefficient of every affine-source Serre twist is pulled from the same
 original whole-target boundary frame; neither source is shrunk to choose a frame. -/
-def affineBoundaryTwistFrames_of_target
+def affineBoundaryTwistFramesOfTarget
     (R : Type u) [CommRing R] (ι : Type u)
     {T C W D : Scheme.{u}} [IsAffine T]
     (b : T ⟶ Spec (.of R)) (f : C ⟶ ProjectiveSpace R ι)
@@ -64,7 +67,7 @@ def affineBoundaryTwistFrames_of_target
       rw [Category.assoc, ConstantCurve.affineSourceToProjectiveSpace_map,
         ← Category.assoc, hv, Category.assoc]) n (e n)
 /-- Lambda uses the same original full-target frame. -/
-def lambdaTwistFrames_of_fullTargetFrame
+def lambdaTwistFramesOfFullTargetFrame
     (R : Type u) [CommRing R] (ι : Type u)
     {Y C D Z : Scheme.{u}} [IsAffine Y]
     (f : C ⟶ ProjectiveSpace R ι) (j : Y ⟶ C) (s : Z ⟶ Y) (d : D ⟶ C)
@@ -72,13 +75,13 @@ def lambdaTwistFrames_of_fullTargetFrame
       (twistingSheaf R ι (n : ℤ)) ≅ SheafOfModules.unit (D ⨿ Z).ringCatSheaf) :
     affineBoundaryTwistFrames R ι (j ≫ (f ≫ toSpec R ι)) f
       (Hom.fullBoundaryProductMap (f ≫ toSpec R ι) j d s) :=
-  affineBoundaryTwistFrames_of_target R ι (j ≫ (f ≫ toSpec R ι)) f
+  affineBoundaryTwistFramesOfTarget R ι (j ≫ (f ≫ toSpec R ι)) f
     (Hom.fullBoundaryProductMap (f ≫ toSpec R ι) j d s) (fullTargetBoundaryMap j s d)
     (lambdaBoundaryToFullTarget (f ≫ toSpec R ι) j s d)
     (lambdaBoundaryToFullTarget_map (f ≫ toSpec R ι) j s d).symm e
 
 /-- Psi uses that identical original frame on its unchanged affine source. -/
-def psiTwistFrames_of_fullTargetFrame
+def psiTwistFramesOfFullTargetFrame
     (R : Type u) [CommRing R] (ι : Type u)
     {X Y A C D Z : Scheme.{u}} [IsAffine A]
     (q : X ⟶ Spec (.of R)) (f : C ⟶ ProjectiveSpace R ι) (j : Y ⟶ C)
@@ -88,8 +91,21 @@ def psiTwistFrames_of_fullTargetFrame
       (twistingSheaf R ι (n : ℤ)) ≅ SheafOfModules.unit (D ⨿ Z).ringCatSheaf) :
     affineBoundaryTwistFrames R ι (a ≫ q) f
       (psiBoundaryInclusion q (f ≫ toSpec R ι) j p hq a z s hs d) :=
-  affineBoundaryTwistFrames_of_target R ι (a ≫ q) f
+  affineBoundaryTwistFramesOfTarget R ι (a ≫ q) f
     (psiBoundaryInclusion q (f ≫ toSpec R ι) j p hq a z s hs d) (fullTargetBoundaryMap j s d)
     (psiBoundaryToFullTarget q (f ≫ toSpec R ι) a z d)
     (psiBoundaryToFullTarget_map q (f ≫ toSpec R ι) j p hq a z s hs d).symm e
+
+/-- Deprecated compatibility name for `affineBoundaryTwistFramesOfTarget`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias affineBoundaryTwistFrames_of_target := affineBoundaryTwistFramesOfTarget
+
+/-- Deprecated compatibility name for `lambdaTwistFramesOfFullTargetFrame`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias lambdaTwistFrames_of_fullTargetFrame := lambdaTwistFramesOfFullTargetFrame
+
+/-- Deprecated compatibility name for `psiTwistFramesOfFullTargetFrame`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias psiTwistFrames_of_fullTargetFrame := psiTwistFramesOfFullTargetFrame
+
 end AlgebraicGeometry.Scheme.RelativeCurvePencil

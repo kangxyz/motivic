@@ -20,13 +20,13 @@ example (k : Type u) [Field k] (ι : Type u) {Z W : Scheme.{u}}
     (g : Z ⟶ ProjectiveSpace k ι) [IsFinite (g ≫ toSpec k ι)] (h : W ⟶ Z) (n : ℕ) :
     IsIso ((unitHomGlobalSectionsEquiv W
       ((Modules.pullback (h ≫ g)).obj (twistingSheaf k ι (n : ℤ)))).symm
-        (fieldBoundaryTwistSection_baseChange k ι g h n)) :=
+        (fieldBoundaryTwistBaseChangeSection k ι g h n)) :=
   fieldBoundaryTwistSection_baseChange_isIso k ι g h n
 
 open Lean in
 run_cmd do
   for name in #[``finiteFieldLineBundle_trivial, ``fieldBoundaryTwistOneIso,
-      ``fieldBoundaryTwistIso, ``fieldBoundaryTwistIso_baseChange,
+      ``fieldBoundaryTwistIso, ``fieldBoundaryTwistBaseChangeIso,
       ``fieldBoundaryTwistSection_baseChange_coefficient,
       ``fieldBoundaryTwistSection_baseChange_isIso] do
     for dependency in ← collectAxioms name do

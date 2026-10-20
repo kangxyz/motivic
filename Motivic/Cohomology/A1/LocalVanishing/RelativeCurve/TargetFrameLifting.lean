@@ -47,6 +47,6 @@ theorem exists_relativeCurve_lifting_of_full_target_frame
       (relativeAlpha k t (f ≫ toSpec R ι) j α) :=
   exists_relativeCurve_lifting_of_boundary_frames k R ι m eι t q f j p hq a α β h
     z s hs H e ha d hd v hc
-    (lambdaTwistFrames_of_fullTargetFrame R ι f j s d eFull)
-    (psiTwistFrames_of_fullTargetFrame R ι q f j p hq a z s hs d eFull) φ hφ P hP
+    (lambdaTwistFramesOfFullTargetFrame R ι f j s d eFull)
+    (psiTwistFramesOfFullTargetFrame R ι q f j p hq a z s hs d eFull) φ hφ P hP
 end AlgebraicGeometry.Scheme.RelativeCurvePencil

@@ -23,10 +23,12 @@ namespace MotivicTest.SmoothSiteReducedTorusNorm
 
 variable (k : Type u) [Field k]
 
-def actual_reduced_norm : (toPresheaf k).obj (reducedTorus k 1) ⟶
+/-- The original reduced torus norm with values in the presheaf of global units. -/
+def actualReducedNorm : (toPresheaf k).obj (reducedTorus k 1) ⟶
     SmoothSite.largeUnitsPresheaf (Spec (.of k)) := reducedNorm
 
-def actual_reduced_norm_chain_map :
+/-- The singular sheaf map induced by the original reduced torus norm. -/
+def actualReducedNormChainMap :
     sheafObj (SmoothSite.nisnevichTopology (Spec (.of k)))
         (cosimplicialSmoothSite k)
         ((toPresheaf k).obj (reducedTorus k 1)) ⟶
@@ -39,7 +41,7 @@ run_cmd do
   for name in #[``norm_relation_app, ``reducedNormApp, ``toReduced_reducedNormApp,
       ``reducedNorm, ``toReduced_reducedNorm, ``reducedNorm_affine_apply,
       ``reducedNormSheafMap, ``reducedNormSheafMap_f,
-      ``actual_reduced_norm, ``actual_reduced_norm_chain_map] do
+      ``actualReducedNorm, ``actualReducedNormChainMap] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

@@ -48,6 +48,6 @@ example
   exists_relativeCurve_lifting_of_full_target_frame k R ι m eι t q f j p hq a α β h
     z s hs H e ha d hd v hc eFull φ hφ P hP
 #print axioms exists_relativeCurve_lifting_of_full_target_frame
-#print axioms lambdaTwistFrames_of_fullTargetFrame
-#print axioms psiTwistFrames_of_fullTargetFrame
+#print axioms lambdaTwistFramesOfFullTargetFrame
+#print axioms psiTwistFramesOfFullTargetFrame
 end AlgebraicGeometry.Scheme.RelativeCurvePencil

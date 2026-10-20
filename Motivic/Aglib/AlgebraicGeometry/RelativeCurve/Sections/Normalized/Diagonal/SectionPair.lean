@@ -20,17 +20,23 @@ variable (k : Type u) [Field k] {Y S Z : Scheme.{u}}
   (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
   (r : S ⟶ Y) [IsOpenImmersion r] (s : Z ⟶ S)
 
+/-- The product of the diagonal source and the compactified curve over their base. -/
 abbrev diagonalAmbient := pullback ((r ≫ inclusion k p) ≫ projection k p) (projection k p)
+/-- The disjoint union of the pulled infinity boundary and the prescribed source product. -/
 abbrev diagonalBoundary :=
   pullback (pullback.snd ((r ≫ inclusion k p) ≫ projection k p) (projection k p))
       (infinityInclusion k p) ⨿
     pullback ((r ≫ inclusion k p) ≫ projection k p) (s ≫ (r ≫ inclusion k p) ≫ projection k p)
+/-- Map the infinity and prescribed source components into the diagonal ambient product. -/
 abbrev diagonalBoundaryMap : diagonalBoundary k p r s ⟶ diagonalAmbient k p r :=
   Hom.fullBoundaryProductMap (projection k p) (r ≫ inclusion k p) (infinityInclusion k p) s
+/-- The disjoint union of the compactification infinity boundary and the prescribed source. -/
 abbrev diagonalFieldBoundary := infinity k p ⨿ Z
+/-- Map the infinity boundary and prescribed source into the compactification. -/
 abbrev diagonalFieldBoundaryMap : diagonalFieldBoundary k p (Z := Z) ⟶ compactification k p :=
   coprod.desc (infinityInclusion k p) (s ≫ (r ≫ inclusion k p))
 
+/-- Project each diagonal boundary component to its original boundary component. -/
 def diagonalBoundaryToField : diagonalBoundary k p r s ⟶ diagonalFieldBoundary k p (Z := Z) :=
   coprod.map (pullback.snd _ _) (pullback.snd _ _)
 

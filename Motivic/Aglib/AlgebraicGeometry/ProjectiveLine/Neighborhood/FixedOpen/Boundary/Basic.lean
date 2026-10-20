@@ -42,14 +42,19 @@ lemma fixedPsiSource_disjoint_zero :
   rw [range_affine_zero, fixedPsiSource_eq]
   exact Set.disjoint_left.mpr (fun _ hx hn ↦ hn hx.1)
 
+/-- The structural projection from the fixed punctured source to `Spec R`. -/
 abbrev fixedPsiProjection := (fixedPsiSource R r).ι ≫ Scheme.Hom.boundaryLineProjection R
+/-- The projective line over the fixed punctured source, presented as a pullback. -/
 abbrev fixedPsiAmbient := pullback (fixedPsiProjection R r) (ProjectiveSpace.toSpec R
   (ULift.{u} (Fin 2)))
+/-- The pullback of the missing neighborhood boundary to the fixed punctured source. -/
 abbrev fixedPsiMissing := pullback (fixedPsiProjection R r)
   (neighborhoodBoundaryInclusion R V ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
+/-- The pullback of the original zero component to the fixed punctured source. -/
 abbrev fixedPsiZero := pullback (fixedPsiProjection R r)
   (Scheme.Hom.boundaryCoordinateMap R R (Polynomial.evalRingHom 0) ≫
     Scheme.Hom.boundaryLineProjection R)
+/-- The coproduct of the missing and zero boundary components over the fixed punctured source. -/
 abbrev fixedPsiBoundary := fixedPsiMissing R V r ⨿ fixedPsiZero R r
 
 /-- The actual entire-boundary automorphism supplied by the original coordinate. -/
@@ -86,6 +91,7 @@ def fixedPsiAmbientIso : fixedPsiAmbient R r ≅
     neighborhoodInclusion, Category.assoc, chart_toSpec,
     Scheme.Hom.boundaryLineProjection]) rfl
 
+/-- Identify the fixed ambient pullback with the projective line over the source section ring. -/
 def fixedPsiProjectiveIso : fixedPsiAmbient R r ≅
     ProjectiveSpace Γ((fixedPsiSource R r).toScheme, ⊤) (ULift.{u} (Fin 2)) :=
   fixedPsiAmbientIso R r ≪≫ neighborhoodProjectiveIso R (fixedPsiSource R r)

@@ -49,6 +49,7 @@ theorem fromSpecResidueField_appTop (x : T) :
 def residueScalar (p : T ⟶ Spec (.of k)) (x : T) : k →+* T.residueField x :=
   (T.Γevaluation x).hom.comp (WeightOneFundamentalNorm.schemeScalarMap p)
 
+/-- The algebra structure induced by the actual structural scalar map at the residue point. -/
 abbrev residueAlgebra (p : T ⟶ Spec (.of k)) (x : T) :
     Algebra k (T.residueField x) := (residueScalar p x).toAlgebra
 

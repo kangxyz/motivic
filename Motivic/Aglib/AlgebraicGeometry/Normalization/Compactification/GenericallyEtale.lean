@@ -27,6 +27,7 @@ variable (X Y : Scheme.{u}) [IsIntegral X] [IsIntegral Y] [IsLocallyNoetherian X
 def genericCover : Scheme.FiniteEtale (Spec X.functionField) :=
   Scheme.FiniteEtale.mk (Spec.map (CommRingCat.ofHom (Scheme.functionFieldMap f)))
 
+/-- The map from the original source function field to the original target. -/
 abbrev genericMap :=
   Spec.map (CommRingCat.ofHom (Scheme.functionFieldMap f)) ≫
     X.fromSpecStalk (genericPoint X)

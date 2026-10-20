@@ -33,7 +33,8 @@ theorem actual_signed_cycle (α : WeightOnePointNorm.point k ⟶ WeightTwoSymbol
       n • WeightTwoSymbols.cycleClass k α := by
   rw [rawMilnorSymbol_cyclePreimage, map_zsmul]
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the base field in this test. -/
+local instance instHasDerivedCategoryMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 

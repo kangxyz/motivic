@@ -25,7 +25,9 @@ namespace AlgebraicGeometry.Scheme.Hom
 
 variable (R B : Type u) [CommRing R] [CommRing B] (z : R[X] →+* B)
 
+/-- The projection from the affine line over `R` to `Spec R`. -/
 abbrev boundaryLineProjection := Spec.map (CommRingCat.ofHom (Polynomial.C : R →+* R[X]))
+/-- The affine scheme morphism induced by the boundary coordinate homomorphism `z`. -/
 abbrev boundaryCoordinateMap := Spec.map (CommRingCat.ofHom z)
 
 /-- Exact product identification for the original composed boundary structure map. -/
@@ -169,7 +171,7 @@ def compactificationBoundaryDivisorIso {C Y : Scheme.{u}}
 
 /-- The divisor-boundary trivialization using only the original smooth-open
 hypothesis near the graph, with no separate invertible-ideal premise. -/
-def compactificationBoundaryDivisorIso_of_smooth_near_graph {C Y : Scheme.{u}}
+def compactificationBoundaryDivisorIsoOfSmoothNearGraph {C Y : Scheme.{u}}
     (q : C ⟶ Spec (.of R)) [IsSeparated q] (j : Y ⟶ C) [IsOpenImmersion j]
     (p : Y ⟶ Spec (.of R[X])) [Flat p]
     (hq : j ≫ q = p ≫ boundaryLineProjection R)
@@ -180,5 +182,10 @@ def compactificationBoundaryDivisorIso_of_smooth_near_graph {C Y : Scheme.{u}}
     [SmoothOfRelativeDimension 1 (U.ι ≫ pullback.fst (j ≫ q) q)] :=
   compactificationBoundaryDivisorIso R B z q j p hq s h H
     (graph_idealModule_isLocallyRankOne j q U hU)
+
+/-- Deprecated compatibility name for `compactificationBoundaryDivisorIsoOfSmoothNearGraph`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias compactificationBoundaryDivisorIso_of_smooth_near_graph :=
+  compactificationBoundaryDivisorIsoOfSmoothNearGraph
 
 end AlgebraicGeometry.Scheme.Hom

@@ -11,6 +11,7 @@ universe u
 namespace AlgebraicGeometry.Scheme.Hom
 variable {S C Y : Scheme.{u}} (q : C ⟶ S) (j : Y ⟶ C)
 
+/-- The product map induced by `j` on the second factor over the base `S`. -/
 def retainedGraphProductMap : pullback (j ≫ q) (j ≫ q) ⟶ pullback (j ≫ q) q :=
   (IsPullback.of_hasPullback (j ≫ q) q).flip.lift
     (pullback.snd _ _ ≫ j) (pullback.fst _ _)

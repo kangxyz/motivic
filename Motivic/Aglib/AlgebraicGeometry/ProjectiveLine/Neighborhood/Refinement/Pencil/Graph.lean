@@ -21,6 +21,8 @@ lemma commonNeighborhoodGraph_rankOne :
     (pullbackLineBundle (commonNeighborhoodToSectionAmbient R V r)
       (neighborhoodLocalIdeal R V r)).property
 
+/-- The comparison identifying the graph ideal tensored with the dual twists with the pencil
+sheaf. -/
 def commonNeighborhoodGraphPencilIso :
     tensorSheaf _ (Scheme.Hom.idealModule (commonNeighborhoodGraph R V r))
       (tensorSheaf _

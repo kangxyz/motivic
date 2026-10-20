@@ -14,11 +14,15 @@ variable (k : Type u) [Field k] {Y A : Scheme.{u}}
   (B : Type u) [CommRing B] (z : Polynomial k →+* B)
   (s : Spec (.of B) ⟶ Y) (hs : s ≫ p = Hom.boundaryCoordinateMap k B z)
 
+/-- The product of the fixed source and the compactified curve over their base. -/
 abbrev fixedAmbient := pullback (a ≫ Hom.boundaryLineProjection k) (projection k p)
+/-- Pull back the infinity boundary to the fixed ambient product. -/
 abbrev fixedInfinity := pullback (pullback.snd (a ≫ Hom.boundaryLineProjection k)
   (projection k p)) (infinityInclusion k p)
+/-- The product of the fixed source and prescribed coordinate source over the curve base. -/
 abbrev fixedZero := pullback (a ≫ Hom.boundaryLineProjection k)
   (Hom.boundaryCoordinateMap k B z ≫ Hom.boundaryLineProjection k)
+/-- The disjoint union of the fixed infinity and prescribed coordinate components. -/
 abbrev fixedBoundary := fixedInfinity k p a ⨿ fixedZero k a B z
 
 /-- The original full Z component, with its unchanged coordinate base map. -/
@@ -55,12 +59,15 @@ theorem fixedZeroMap_isPullback :
   exact H'.of_bot' (IsPullback.of_hasPullback
     (a ≫ Hom.boundaryLineProjection k) (projection k p)).flip
 
+/-- Map the fixed infinity and prescribed coordinate components into the ambient product. -/
 abbrev fixedBoundaryMap : fixedBoundary k p a B z ⟶ fixedAmbient k p a :=
   coprod.desc (pullback.fst _ _) (fixedZeroMap k p a B z s hs)
 
+/-- Map the infinity boundary and prescribed coordinate source into the compactification. -/
 abbrev fixedFieldBoundaryMap : infinity k p ⨿ Spec (.of B) ⟶ compactification k p :=
   coprod.desc (infinityInclusion k p) (s ≫ inclusion k p)
 
+/-- Project each fixed boundary component to its original boundary component. -/
 def fixedBoundaryToField : fixedBoundary k p a B z ⟶ infinity k p ⨿ Spec (.of B) :=
   coprod.map (pullback.snd _ _) (pullback.snd _ _)
 

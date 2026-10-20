@@ -14,8 +14,8 @@ variable {S X Z : Scheme.{u}} [IsAffine S] (q : X ⟶ S) (z : Z ⟶ X)
 example : SheafOfModules.unit
     (pullback (q ≫ S.isoSpec.hom) (z ≫ q ≫ S.isoSpec.hom)).ringCatSheaf ≅
     idealModule (boundaryGraphTarget (q ≫ S.isoSpec.hom) z) :=
-  boundaryGraphFrame_baseIso q z S.isoSpec a
-#print axioms boundaryGraphFrame_baseIso
+  boundaryGraphFrameBaseIso q z S.isoSpec a
+#print axioms boundaryGraphFrameBaseIso
 #print axioms boundaryGraphFrame_baseIso_inclusion
 #print axioms boundaryGraphBaseIso_graph
 end AlgebraicGeometry.Scheme.Hom

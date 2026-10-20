@@ -21,6 +21,7 @@ private theorem tensor_right_smul {R : Type u} [CommRing R] {M N : Type u}
     (r : R) (m : M) (n : N) : m ⊗ₜ[R] (r • n) = r • (m ⊗ₜ[R] n) :=
   TensorProduct.tmul_smul r m n
 
+/-- Tensor two sections with unit domain using the inverse left-unit comparison. -/
 def tensorUnitSection {X : Scheme.{u}} {M N : X.Modules}
     (s : SheafOfModules.unit X.ringCatSheaf ⟶ M)
     (t : SheafOfModules.unit X.ringCatSheaf ⟶ N) :

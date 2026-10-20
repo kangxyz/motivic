@@ -108,6 +108,7 @@ abbrev chartGraphImage (j : Exponent σ) (c : Fin (d + 1) × Exponent σ → k) 
     (MvPolynomial (Fin (d + 1)) (chart k R g j)) (FractionRing R)
     inferInstance inferInstance (chartGraphEvaluation k R g d j c))).image
 
+/-- The coordinate homomorphism into global sections of the affine graph image chart. -/
 abbrev chartGraphImageRingMap (j : Exponent σ) (c : Fin (d + 1) × Exponent σ → k) :=
   @Scheme.affineImageCoordinateMap
     (MvPolynomial (Fin (d + 1)) (chart k R g j)) (FractionRing R)

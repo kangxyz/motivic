@@ -20,6 +20,7 @@ variable {S X Y Z C D : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
   (U : X.Opens) (V : S.Opens)
   (h : ∀ t : Z, (z ≫ q) t ∈ V → z t ∈ U)
 
+/-- The map from the coproduct of the restricted boundary pieces to the restricted full boundary. -/
 def boundaryBaseSourceBoundaryToFull :
     ((d ≫ π) ⁻¹ᵁ V).toScheme ⨿ (boundaryBaseClosedOpen q z V).toScheme ⟶
       ((coprod.desc d (s ≫ j) ≫ π) ⁻¹ᵁ V).toScheme :=

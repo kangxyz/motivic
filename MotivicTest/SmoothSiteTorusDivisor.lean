@@ -24,7 +24,8 @@ namespace MotivicTest.SmoothSiteTorusDivisor
 
 variable (k : Type u) [Field k]
 
-def actual_global_norm : (toPresheaf k).obj (torusRepresentable k 1) ⟶
+/-- The original torus norm with values in the presheaf of global units. -/
+def actualGlobalNorm : (toPresheaf k).obj (torusRepresentable k 1) ⟶
     SmoothSite.largeUnitsPresheaf (Spec (.of k)) := norm
 
 open Lean in
@@ -42,7 +43,7 @@ run_cmd do
           ``affineCycleCoordinates,
       ``affineCycleCoordinates_natural, ``affineNorm, ``affineNorm_natural,
       ``affinePowerOneNorm, ``affinePowerOneNorm_natural, ``largeAffineNorm,
-      ``integralAffineNorm, ``norm, ``norm_app, ``actual_global_norm] do
+      ``integralAffineNorm, ``norm, ``norm_app, ``actualGlobalNorm] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

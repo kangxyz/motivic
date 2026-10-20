@@ -38,11 +38,13 @@ theorem actual_raw (hp0 : p.val.coeff 0 ≠ 0) (b : kˣ) :
         (symbol (rootUnit p hp0) (Units.map (algebraMap k (AdjoinRoot p.val)).toMonoidHom b))) :=
   raw_root_constant p hp0 b
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the base field in this test. -/
+local instance instHasDerivedCategoryMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 
-local instance : HasDerivedCategory
+/-- Use the standard derived category of Nisnevich sheaves over the root field in this test. -/
+local instance instHasDerivedCategoryAdjoinRootMotivicTest : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of (AdjoinRoot p.val)))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 

@@ -13,11 +13,14 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (r : R)
   (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 
+/-- The nonnegative twisting line bundle pulled back to the fixed ambient scheme. -/
 def fixedPsiTwistLine (d : ℕ) : LineBundle (fixedPsiAmbient R r) :=
   pullbackLineBundle (fixedPsiProjectiveIso R r).hom
     (ProjectiveSpace.twistingLineBundle Γ((fixedPsiSource R r).toScheme, ⊤)
       (ULift.{u} (Fin 2)) (d : ℤ))
 
+/-- Require finite flat zero schemes before and after restriction to the retained curve, containment
+in that curve, and a monomorphic restricted functional. -/
 def FixedPsiLineSectionFiniteFlat (L : LineBundle (fixedPsiAmbient R r))
     (t : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶ L.val) : Prop :=
   let q := pullback.fst (fixedPsiProjection R r) (ProjectiveSpace.toSpec R _)

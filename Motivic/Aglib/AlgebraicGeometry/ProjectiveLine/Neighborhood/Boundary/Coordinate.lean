@@ -13,6 +13,7 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (V : (Spec (.of (Polynomial R))).Opens)
   (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 
+/-- The zero-boundary product map to the original affine boundary coordinate product. -/
 def neighborhoodBoundaryCoordinateMap :
     pullback (neighborhoodProjection R V) (neighborhoodZero R V hV ≫
       neighborhoodInclusion R V ≫ ProjectiveSpace.toSpec R _) ⟶
@@ -26,6 +27,7 @@ def neighborhoodBoundaryCoordinateMap :
     Scheme.Hom.boundaryProductMap (Scheme.Hom.boundaryLineProjection R) V.ι
       (Scheme.Hom.boundaryCoordinateMap R R (Polynomial.evalRingHom 0))
 
+/-- The canonical dual graph section expressed in the full graph-boundary trivialization. -/
 def neighborhoodBoundaryCoordinate :
     SheafOfModules.unit (neighborhoodGraphBoundarySource R V hV).ringCatSheaf ⟶
       SheafOfModules.unit (neighborhoodGraphBoundarySource R V hV).ringCatSheaf :=

@@ -13,7 +13,9 @@ variable {S X Y Z : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
   (U : X.Opens) (V : S.Opens)
   (h : ∀ t : Z, (z ≫ q) t ∈ V → z t ∈ U)
 
+/-- The inverse image in the cover of the source open over `V`. -/
 abbrev boundaryBaseCoverOpen : Y.Opens := p ⁻¹ᵁ boundaryBaseSourceOpen q U V
+/-- The restriction of the cover map to the source open over `V`. -/
 abbrev boundaryBaseCoverMap := p ∣_ boundaryBaseSourceOpen q U V
 
 /-- The lift is supplied by the actual source pullback, not a boundary section premise. -/

@@ -20,6 +20,7 @@ universe u
 namespace AlgebraicGeometry.Scheme
 variable {A B : Type u} [CommRing A] [CommRing B] (φ : A →+* B)
 
+/-- The homomorphism from global sections of the schematic image to the source ring. -/
 def affineImageSectionMap : Γ((Spec.map (CommRingCat.ofHom φ)).image, ⊤) →+* B :=
   (ΓSpecIso (.of B)).hom.hom.comp (Spec.map (CommRingCat.ofHom φ)).toImage.appTop.hom
 

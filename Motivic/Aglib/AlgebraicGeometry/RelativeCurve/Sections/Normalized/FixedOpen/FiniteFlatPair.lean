@@ -13,11 +13,14 @@ namespace AlgebraicGeometry.Scheme.AffineLineEtaleCompactification
 variable (k : Type u) [Field k] {Y A : Scheme.{u}}
   (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
 
+/-- Pull back the degree twist along the fixed-source projective map. -/
 def fixedTwistBundle {R : Type u} [CommRing R]
     (a : Spec (.of R) ⟶ Spec (.of (Polynomial k))) (d : ℕ) :=
   pullbackLineBundle (fixedProjectiveMap k p a)
     (ProjectiveSpace.twistingLineBundle R (ULift.{u} (Fin 2)) (d : ℤ))
 
+/-- Require the retained dual functional to be monic with zero scheme finite and flat over the
+fixed source. -/
 def FixedRetainedSectionFiniteFlat (a : A ⟶ Spec (.of (Polynomial k)))
     (U : (Spec (.of (Polynomial k))).Opens) (L : LineBundle (fixedAmbient k p a))
     (t : SheafOfModules.unit (fixedAmbient k p a).ringCatSheaf ⟶ L.val) : Prop :=

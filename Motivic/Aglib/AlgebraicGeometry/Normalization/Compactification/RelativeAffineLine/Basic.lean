@@ -55,13 +55,13 @@ instance : IsProper (projection R p) := by dsimp [projection]; infer_instance
 
 omit [IsSeparated p] in
 /-- Compactification does not change the original affine-line map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem inclusion_toProjectiveLine : inclusion R p ≫ toProjectiveLine R p =
     p ≫ RelativeProjectiveLine.chart R ⟨0⟩ := EtaleCompactification.inclusion_over ..
 
 omit [IsSeparated p] in
 /-- Exact coefficient-ring structural equation for the retained original source. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem inclusion_projection : inclusion R p ≫ projection R p =
     p ≫ Spec.map (CommRingCat.ofHom (Polynomial.C : R →+* Polynomial R)) := by
   rw [projection, ← Category.assoc, inclusion_toProjectiveLine,
@@ -90,7 +90,7 @@ abbrev liftedZero : Spec (.of R) ⟶ compactification R p := z ≫ inclusion R p
 include hz in
 omit [IsSeparated p] in
 /-- Its map to the literal projective line remains the original zero section. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem liftedZero_toProjectiveLine :
     liftedZero R p z ≫ toProjectiveLine R p =
       Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R))) ≫

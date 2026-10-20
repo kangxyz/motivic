@@ -44,6 +44,7 @@ section FiniteAlgebra
 
 variable {R : Type u} [CommRing R] [Algebra k R] [Module.Finite k R]
 
+/-- The field structure on the quotient by a maximal ideal. -/
 local instance quotientField (p : MaximalSpectrum R) : Field (R ⧸ p.asIdeal) :=
   Ideal.Quotient.field p.asIdeal
 

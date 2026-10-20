@@ -12,12 +12,18 @@ variable (R : Type u) [CommRing R]
 
 /-- Actual sections, not assumed correspondence endpoints or family properties. -/
 structure NeighborhoodPencilSections (r : R) where
+  /-- The nonnegative twisting degree of the lambda section pair. -/
   lambdaDegree : ℕ
+  /-- The nonnegative twisting degree of the psi section pair. -/
   psiDegree : ℕ
+  /-- The original full-boundary twist frame at the lambda degree. -/
   frame : neighborhoodFrame R V r lambdaDegree
+  /-- The neighborhood section pair at the lambda degree with the chosen boundary frame. -/
   lambda : NeighborhoodSectionPair R V hV r lambdaDegree frame
+  /-- The numerator section map of the fixed-source psi pair. -/
   psiNumerator : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
     (fixedPsiTwistLine R r psiDegree).val
+  /-- The denominator section map of the fixed-source psi pair. -/
   psiDenominator : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
     (fixedPsiTwistLine R r psiDegree).val
   psi_value : pullbackSectionMap (fixedPsiBoundaryMap R r V) psiNumerator =

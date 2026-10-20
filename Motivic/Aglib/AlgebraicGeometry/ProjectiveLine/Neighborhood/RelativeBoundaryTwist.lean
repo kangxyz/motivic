@@ -13,6 +13,7 @@ variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 variable (r : R)
 
+/-- The nonnegative Serre twist pulled back to the graph ambient scheme. -/
 abbrev neighborhoodSerreTwist (n : ℕ) :=
   (Scheme.Modules.pullback (neighborhoodProjectiveIso R V).hom).obj
     (ProjectiveSpace.twistingSheaf Γ(V.toScheme, ⊤) (ULift.{u} (Fin 2)) (n : ℤ))

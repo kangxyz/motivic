@@ -11,7 +11,9 @@ universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 variable {S B C V : Scheme.{u}} (b : B ⟶ S) (π : C ⟶ S) (v : V ⟶ C)
 
+/-- The product of the base source with the retained target over `S`. -/
 abbrev retainedProduct := pullback b (v ≫ π)
+/-- The product map induced by `v` from the retained product to the ambient product. -/
 def retainedProductInclusion : retainedProduct b π v ⟶ pullback b π :=
   (IsPullback.of_hasPullback b π).flip.lift
     (pullback.snd _ _ ≫ v) (pullback.fst _ _) (by rw [Category.assoc, pullback.condition])

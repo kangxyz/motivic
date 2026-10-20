@@ -20,6 +20,7 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme] (r : R)
 
+/-- The graph ideal inclusion restricted to the section open, with target the unit sheaf. -/
 def neighborhoodLocalGraphFunctional : (neighborhoodLocalIdeal R V r).val ⟶
     SheafOfModules.unit (neighborhoodSectionOpen R V r).toScheme.ringCatSheaf :=
   (restrictFunctor (neighborhoodSectionOpen R V r).ι).map

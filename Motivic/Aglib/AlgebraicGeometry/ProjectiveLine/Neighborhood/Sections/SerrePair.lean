@@ -13,6 +13,7 @@ variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 
+/-- The principal open in the section-ring projective line induced by the base element `r`. -/
 abbrev neighborhoodSerreOpen (r : R) :=
   (ProjectiveSpace.toSpec Γ(V.toScheme, ⊤) (ULift.{u} (Fin 2))) ⁻¹ᵁ
     PrimeSpectrum.basicOpen (Scheme.ConstantCurve.coefficientMap (neighborhoodAffineBase R V) r)
@@ -45,6 +46,8 @@ lemma neighborhoodSerreOpen_boundary (r : R) :
   simpa only [Scheme.Hom.comp_preimage, hb, neighborhoodSerreOpen,
     neighborhoodGraphBoundaryOpen] using h
 
+/-- The pulled-back Serre twist tensored with the pulled-back ambient unit sheaf on the graph
+boundary. -/
 abbrev neighborhoodBoundaryCoefficient (n : ℕ) :=
   (moduleTensorLeftFunctor (neighborhoodGraphBoundarySource R V hV)
     ((Scheme.Modules.pullback (neighborhoodGraphBoundaryMap R V hV)).obj
@@ -52,6 +55,8 @@ abbrev neighborhoodBoundaryCoefficient (n : ℕ) :=
     ((Scheme.Modules.pullback (neighborhoodGraphBoundaryMap R V hV)).obj
       (SheafOfModules.unit (neighborhoodGraphAmbient R V).ringCatSheaf))
 
+/-- Trivialize the boundary coefficient module over the principal open using the given original
+frame. -/
 def neighborhoodBoundaryCoefficientIso (r : R) (n : ℕ)
     (e : (Scheme.Modules.pullback ((fullBoundaryPrincipalOpen R V r).ι ≫
         fullNeighborhoodBoundaryMap R V)).obj
@@ -67,6 +72,7 @@ def neighborhoodBoundaryCoefficientIso (r : R) (n : ℕ)
         (neighborhoodGraphBoundarySource R V hV).sheaf).app _) ≪≫
     neighborhoodGraphRelativeBoundaryTwistIso R V hV r n e
 
+/-- The boundary coefficient section corresponding to one in the given boundary frame. -/
 def neighborhoodBoundaryUnitSection (r : R) (n : ℕ)
     (e : (Scheme.Modules.pullback ((fullBoundaryPrincipalOpen R V r).ι ≫
         fullNeighborhoodBoundaryMap R V)).obj

@@ -17,12 +17,14 @@ variable {S X Y A B C : Scheme.{u}}
   (α : B ⟶ Y) (β : B ⟶ A) (h : α ≫ p = β ≫ a)
   (T : LineBundle (pullback (j ≫ π) π)) (N : LineBundle (pullback (a ≫ q) π))
 
+/-- The tensor product of the two pulled-back dual line bundles for the common pencil. -/
 abbrev commonPencilBundle := tensorLineBundle (commonAmbient π j α)
   (pullbackLineBundle (commonToLambda π j α)
     (dualLineBundle _ (tensorLineBundle _ T
       (dualLineBundle _ (Hom.relativeCompactificationGraphLine π j)))))
   (pullbackLineBundle (commonToPsi q π j p hq a α β h) (dualLineBundle _ N))
 
+/-- The initial common-pencil functional formed from the twisted graph section and `dS`. -/
 def commonPencilStart
     (bS : SheafOfModules.unit (pullback (j ≫ π) π).ringCatSheaf ⟶ T.val)
     (dS : SheafOfModules.unit (pullback (a ≫ q) π).ringCatSheaf ⟶ N.val) :
@@ -33,6 +35,7 @@ def commonPencilStart
     (twistedIdealSection _ (Hom.relativeCompactificationGraphLine π j) T
       (Hom.idealInclusion (Hom.compactificationGraph π j)) bS) dS
 
+/-- The final common-pencil functional formed from `aS` and `nS`. -/
 def commonPencilEnd
     (aS : SheafOfModules.unit (pullback (j ≫ π) π).ringCatSheaf ⟶
       (tensorLineBundle _ T (dualLineBundle _ (Hom.relativeCompactificationGraphLine π j))).val)

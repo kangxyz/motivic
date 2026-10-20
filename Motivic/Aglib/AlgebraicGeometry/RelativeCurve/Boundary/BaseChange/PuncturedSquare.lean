@@ -16,9 +16,11 @@ namespace AlgebraicGeometry.Scheme.Hom
 variable {S X Y A C T : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X) (a : A ⟶ X)
   (U : X.Opens) (V : S.Opens)
 
+/-- The overlap of the two cover maps after source and base refinement. -/
 abbrev boundaryBaseOverlap :=
   pullback (boundaryBaseCoverMap q p U V) (boundaryBaseCoverMap q a U V)
 
+/-- The refined overlap map into the original cover overlap. -/
 def boundaryBaseOverlapMap : boundaryBaseOverlap q p a U V ⟶ pullback p a :=
   pullback.lift (pullback.fst _ _ ≫ (boundaryBaseCoverOpen q p U V).ι)
     (pullback.snd _ _ ≫ (boundaryBaseCoverOpen q a U V).ι) (by
@@ -47,7 +49,7 @@ def boundaryBaseOverlapTarget : boundaryBaseOverlap q p a U V ⟶ ((v ≫ π) �
       simp only [Category.assoc, boundaryBaseOverlapMap_fst_assoc, hj]
       simp only [boundaryBaseCoverMap, morphismRestrict_ι_assoc])
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem boundaryBaseOverlapTarget_ι :
     boundaryBaseOverlapTarget q p a U V π j hj v φ hφ ≫ ((v ≫ π) ⁻¹ᵁ V).ι =
       boundaryBaseOverlapMap q p a U V ≫ φ :=

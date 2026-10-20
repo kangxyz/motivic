@@ -45,15 +45,18 @@ variable {S X Y A B C V : Scheme.{u}}
   (hq : j ≫ π = p ≫ q) (a₀ : A ⟶ X)
   (α : B ⟶ Y) (β : B ⟶ A) (h : α ≫ p = β ≫ a₀) (v : V ⟶ C)
 
+/-- Pull back the lambda line bundle through the retained product and source maps. -/
 abbrev retainedLambdaLine
     (L : LineBundle (pullback (j ≫ π) π)) :=
   pullbackLineBundle (retainedToLambda π j α v)
     (pullbackLineBundle (retainedProductInclusion (j ≫ π) π v) L)
 
+/-- Pull back the psi line bundle through the retained product and source maps. -/
 abbrev retainedPsiLine (M : LineBundle (pullback (a₀ ≫ q) π)) :=
   pullbackLineBundle (retainedToPsi q π j p hq a₀ α β h v)
     (pullbackLineBundle (retainedProductInclusion (a₀ ≫ q) π v) M)
 
+/-- Pull back the lambda functional through the retained product and source maps. -/
 abbrev retainedLambdaFunctional
     {L : (pullback (j ≫ π) π).Modules}
     (f : L ⟶ SheafOfModules.unit (pullback (j ≫ π) π).ringCatSheaf) :=
@@ -62,12 +65,14 @@ abbrev retainedLambdaFunctional
       (retainedProductInclusion (j ≫ π) π v))
     (retainedToLambda π j α v)
 
+/-- Pull back the psi functional through the retained product and source maps. -/
 abbrev retainedPsiFunctional {M : (pullback (a₀ ≫ q) π).Modules}
     (b : M ⟶ SheafOfModules.unit (pullback (a₀ ≫ q) π).ringCatSheaf) :=
   Scheme.Modules.Hom.pullbackToUnit
     (Scheme.Modules.Hom.pullbackToUnit b (retainedProductInclusion (a₀ ≫ q) π v))
     (retainedToPsi q π j p hq a₀ α β h v)
 
+/-- Compare the two pullback routes for the lambda line bundle on the retained common product. -/
 def retainedLambdaPullbackIso
     (L : LineBundle (pullback (j ≫ π) π)) :
     (retainedLambdaLine π j α v L).val ≅
@@ -78,6 +83,7 @@ def retainedLambdaPullbackIso
     (retainedProductInclusion (commonProjection π j α) π v) (commonToLambda π j α)
     (retainedToLambda_inclusion π j α v) L.val
 
+/-- Compare the two pullback routes for the psi line bundle on the retained common product. -/
 def retainedPsiPullbackIso (M : LineBundle (pullback (a₀ ≫ q) π)) :
     (retainedPsiLine q π j p hq a₀ α β h v M).val ≅
       (Scheme.Modules.pullback (retainedProductInclusion (commonProjection π j α) π v)).obj

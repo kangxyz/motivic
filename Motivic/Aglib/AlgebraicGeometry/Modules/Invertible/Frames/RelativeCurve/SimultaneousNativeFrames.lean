@@ -67,7 +67,7 @@ theorem exists_simultaneous_native_boundary_frames
     dsimp [boundaryBaseSourceProjection]
     infer_instance
   refine ⟨U, hU, hx, V, hV, hxV, h, boundaryBaseSourceOpen_affine q U V hU hV,
-    ⟨boundaryGraphFrame_baseIso _ _ V.toScheme.isoSpec
+    ⟨boundaryGraphFrameBaseIso _ _ V.toScheme.isoSpec
       (boundaryBaseCanonicalFrame q z U V h a)⟩,
     ⟨fun n => boundaryBaseWholeTwistFrame R ι f d V n (e n)⟩⟩
 end AlgebraicGeometry.Scheme.Hom

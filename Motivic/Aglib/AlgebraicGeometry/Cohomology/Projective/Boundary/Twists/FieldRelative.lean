@@ -33,7 +33,7 @@ def fieldBoundaryRelativeTwistIso (k R : Type u) [Field k] [CommRing R]
   (Modules.pullback a).mapIso (twistingBaseChangeIso f ι (n : ℤ)).symm ≪≫
     (Modules.pullbackComp a (ProjectiveSpace.map f ι)).app (twistingSheaf k ι (n : ℤ)) ≪≫
     (Modules.pullbackCongr ha).app (twistingSheaf k ι (n : ℤ)) ≪≫
-    fieldBoundaryTwistIso_baseChange k ι g b n
+    fieldBoundaryTwistBaseChangeIso k ι g b n
 
 /-- The precise coefficient sheaf used by the original finite-map section producer is globally
 trivial on the full base-changed boundary, before choosing a Serre degree. -/

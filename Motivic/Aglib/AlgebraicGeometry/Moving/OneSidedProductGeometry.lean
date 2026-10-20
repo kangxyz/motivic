@@ -22,6 +22,7 @@ namespace AlgebraicGeometry.Scheme.Moving
 variable {S C Y X V Z D : Scheme.{u}} (π : C ⟶ S) (j : Y ⟶ C)
   (x : X ⟶ C) (v : V ⟶ X) (r : Y ⟶ X) (hr : r ≫ x = j)
 
+/-- The graph of the parameter map into the original target over the base. -/
 def parameterGraph : Y ⟶ retainedProduct (j ≫ π) π x :=
   pullback.lift (𝟙 Y) r (by simp only [Category.id_comp, ← Category.assoc, hr])
 

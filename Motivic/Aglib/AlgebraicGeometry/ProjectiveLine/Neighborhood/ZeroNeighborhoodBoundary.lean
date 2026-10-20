@@ -57,8 +57,10 @@ def neighborhoodBoundaryIdeal :
     ⟨(projectiveNeighborhood R V : Set _)ᶜ,
       (projectiveNeighborhood R V).isOpen.isClosed_compl⟩
 
+/-- The closed subscheme defined by the vanishing ideal of the missing projective neighborhood. -/
 def neighborhoodBoundary : Scheme.{u} := (neighborhoodBoundaryIdeal R V).subscheme
 
+/-- The closed subscheme inclusion of the missing neighborhood boundary into the projective line. -/
 def neighborhoodBoundaryInclusion :
     neighborhoodBoundary R V ⟶ ProjectiveSpace R (ULift.{u} (Fin 2)) :=
   (neighborhoodBoundaryIdeal R V).subschemeι

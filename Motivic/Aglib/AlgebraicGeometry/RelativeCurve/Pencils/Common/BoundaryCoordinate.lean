@@ -33,6 +33,8 @@ theorem exists_fixedProductBoundaryFrame :
     (Hom.unitEndomorphismPullback (Hom.boundaryProductMap q a z)
       (e.hom ≫ Hom.idealInclusion (Hom.boundaryGraphTarget q z))))
 
+/-- The chosen unit automorphism with identity infinity restriction and the specified zero-boundary
+scalar. -/
 def fixedProductBoundaryFrame := Classical.choose (exists_fixedProductBoundaryFrame q π a z e ha d)
 
 lemma fixedProductBoundaryFrame_inl :

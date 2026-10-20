@@ -16,6 +16,7 @@ variable (k : Type u) [Field k] {Y S A X : Scheme.{u}}
   (α : X ⟶ S) (β : X ⟶ A) (h : α ≫ r ≫ p = β ≫ v)
   (T : LineBundle (diagonalAmbient k p r)) (N : LineBundle (fixedAmbient k p v))
 
+/-- Tensor the pulled dual diagonal coefficient with the pulled dual fixed coefficient. -/
 abbrev commonPencilBundle : LineBundle (commonAmbient k p r α) :=
   tensorLineBundle _
     (pullbackLineBundle (commonToDiagonal k p r α)

@@ -26,7 +26,8 @@ namespace MotivicTest.AffineTorusDivisorEquivalence
 variable {k R : Type u} [Field k] [CommRing R] [Algebra k R]
   [IsDomain R] [Algebra.Smooth k R] [IsNoetherianRing R]
 
-def actual_divisor_equivalence : Additive (admissibleGroup R) ≃+
+/-- The rational divisor equivalence with the original finite correspondence group. -/
+def actualDivisorEquivalence : Additive (admissibleGroup R) ≃+
     FiniteCorrespondence (baseMap k R) (laurentProjection (.of k)) :=
   rationalDivisorEquiv
 
@@ -48,7 +49,7 @@ run_cmd do
       ``cycleRationalFunction_denominator_prime, ``cycleRationalFunction_denominator_prod,
       ``exists_prime_denominator_factors, ``cycleRationalFunction_denominator,
       ``cycleRationalFunction_rationalDivisorHom, ``rationalDivisorEquiv,
-      ``boundaryDivisor_injective, ``actual_divisor_equivalence,
+      ``boundaryDivisor_injective, ``actualDivisorEquivalence,
       ``actual_boundary_divisor_injective] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

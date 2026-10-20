@@ -21,6 +21,7 @@ variable (R : Type u) [CommRing R] {S X Y A B C V : Scheme.{u}}
   (v : V ⟶ C) [IsOpenImmersion v] (φ : B ⟶ V) (hφ : φ ≫ v = α ≫ j)
   (T : LineBundle (pullback (j ≫ π) π)) (N : LineBundle (pullback (a₀ ≫ q) π))
 
+/-- Tensor the retained graph ideal line with the pulled dual lambda and psi coefficients. -/
 abbrev retainedGraphPencilBundle := tensorLineBundle _
   ⟨Hom.idealModule (relativeRetainedGraph π j α v φ hφ),
     commonRetainedGraph_locallyRankOne π j α v φ hφ⟩

@@ -36,8 +36,11 @@ variable (k : Type u) [Field k] {Y S : Scheme.{u}}
   (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
   (q : S ⟶ Spec (.of k))
 
+/-- The structure map of the curve over `Spec k` induced by its map to the affine line. -/
 abbrev curveProjection := p ≫ Spec.map (CommRingCat.ofHom (Polynomial.C : k →+* Polynomial k))
+/-- The curve pulled back along the base structure map `q`. -/
 abbrev constantCurve := pullback q (curveProjection k p)
+/-- The compactification pulled back along the base structure map `q`. -/
 abbrev constantCompactification := pullback q (projection k p)
 
 /-- The original retained curve embeds into the actual proper constant compactification. -/

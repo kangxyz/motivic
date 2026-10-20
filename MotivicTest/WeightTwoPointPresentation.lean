@@ -38,7 +38,7 @@ theorem actual_joint_field_degree :
   polynomial_natDegree Z
 
 /-- The original joint field is the entire literal polynomial quotient. -/
-def actual_joint_field_equivalence : AdjoinRoot (polynomial Z).val ≃ₐ[k] coordinateRing Z :=
+def actualJointFieldEquivalence : AdjoinRoot (polynomial Z).val ≃ₐ[k] coordinateRing Z :=
   rootEquiv Z
 
 /-- The first coordinate survives as the original unit in the full support field. -/
@@ -132,7 +132,7 @@ run_cmd do
       ``polynomialSupportIso_coordinate, ``polynomialSupportIso_inclusion,
       ``generator_cycle_eq_pointPushforward, ``cycleClass_generator, ``exists_pointPushforward,
       ``cycle_eq_sum_pointPushforward, ``cycleClass_eq_sum_corestriction,
-      ``exists_sum_corestriction, ``actual_joint_field_degree, ``actual_joint_field_equivalence,
+      ``exists_sum_corestriction, ``actual_joint_field_degree, ``actualJointFieldEquivalence,
       ``actual_first_unit, ``actual_second_unit, ``actual_scalar_map, ``actual_closed_support,
       ``actual_generator, ``actual_signed_generator, ``actual_raw_generator,
       ``actual_raw_class, ``actual_derived_generator, ``actual_derived_class] do

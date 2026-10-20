@@ -30,8 +30,10 @@ structure OneSidedSections {R : Type u} [CommRing R]
     (I T : LineBundle C) (φ : I.val ⟶ SheafOfModules.unit C.ringCatSheaf)
     (E : (Modules.pullback z).obj (dualLineBundle C I).val ≅
       SheafOfModules.unit B.ringCatSheaf) where
+  /-- The numerator section of the moving divisor pair. -/
   numerator : SheafOfModules.unit C.ringCatSheaf ⟶
     (tensorLineBundle C T (dualLineBundle C I)).val
+  /-- The denominator section of the moving divisor pair. -/
   denominator : SheafOfModules.unit C.ringCatSheaf ⟶ T.val
   boundary_value : pullbackSectionMap z numerator ≫
     pullbackTensorMap z T.val (dualLineBundle C I).val =

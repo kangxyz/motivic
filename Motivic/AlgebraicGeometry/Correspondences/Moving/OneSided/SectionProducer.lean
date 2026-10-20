@@ -33,7 +33,7 @@ theorem exists_moving_endpoints_of_sections {k : Type u} [Field k]
     [SmoothOfRelativeDimension 1 (j ≫ q)]
     [Smooth ((j ≫ q) ≫ S.hom)] [IsSeparated ((j ≫ q) ≫ S.hom)]
     [QuasiCompact ((j ≫ q) ≫ S.hom)]
-    (w : G ⟶ D) [IsOpenImmersion w]
+    (w : G ⟶ D)
     (hcover : ∀ x : C, x ∈ Set.range j ∨ x ∈ Set.range z)
     (δ : S.left ⟶ C) [IsClosedImmersion δ] (γ : S.left ⟶ D)
     (hγ : γ ≫ j = δ) (hγq : γ ≫ (j ≫ q) = 𝟙 _)

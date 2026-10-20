@@ -10,6 +10,7 @@ open Scheme.Modules
 universe u
 namespace AlgebraicGeometry.Scheme.Modules.Invertible
 
+/-- Compose a section with the right-unit comparison to remove its unit tensor factor. -/
 def rightNormalizeSection {X : Scheme.{u}} (T : X.Modules)
     (b : SheafOfModules.unit X.ringCatSheaf ⟶ tensorSheaf X T
       (SheafOfModules.unit X.ringCatSheaf)) : SheafOfModules.unit X.ringCatSheaf ⟶ T :=

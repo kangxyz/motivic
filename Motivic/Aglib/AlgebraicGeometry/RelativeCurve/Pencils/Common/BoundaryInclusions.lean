@@ -14,11 +14,13 @@ variable {S X Y A B Z C D : Scheme.{u}}
   (α : B ⟶ Y) (β : B ⟶ A) (h : α ≫ p = β ≫ a)
   (z : Z ⟶ X) (s : Z ⟶ Y) (hs : s ≫ p = z) (d : D ⟶ C)
 
+/-- The map of the psi zero boundary into its ambient scheme induced by `s ≫ j`. -/
 def psiZeroInclusion : pullback (a ≫ q) (z ≫ q) ⟶ pullback (a ≫ q) π :=
   pullback.lift (pullback.fst _ _) (pullback.snd _ _ ≫ s ≫ j) (by
     rw [Category.assoc, Category.assoc, hq, ← Category.assoc s, hs]
     exact pullback.condition)
 
+/-- The coproduct map from the psi infinity and zero boundaries into the psi ambient scheme. -/
 abbrev psiBoundaryInclusion :
     (pullback (pullback.snd (a ≫ q) π) d ⨿ pullback (a ≫ q) (z ≫ q)) ⟶ pullback (a ≫ q) π :=
   coprod.desc (pullback.fst _ _) (psiZeroInclusion q π j p hq a z s hs)

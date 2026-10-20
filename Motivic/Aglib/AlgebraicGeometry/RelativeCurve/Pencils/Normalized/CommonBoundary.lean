@@ -16,12 +16,17 @@ variable (k : Type u) [Field k] {Y S A X : Scheme.{u}}
   (B : Type u) [CommRing B] (z : Polynomial k →+* B) (s : Spec (.of B) ⟶ S)
   (hs : s ≫ r ≫ p = Hom.boundaryCoordinateMap k B z)
 
+/-- The common source map to the base of the compactified curve. -/
 abbrev commonSourceProjection := α ≫ ((r ≫ inclusion k p) ≫ projection k p)
+/-- The product of the common source with the compactified curve over their base. -/
 abbrev commonAmbient := pullback (commonSourceProjection k p r α) (projection k p)
+/-- Pull back the infinity boundary to the common ambient product. -/
 abbrev commonInfinity := pullback
   (pullback.snd (commonSourceProjection k p r α) (projection k p)) (infinityInclusion k p)
+/-- The common source product with the prescribed closed source over the curve base. -/
 abbrev commonZero := pullback (commonSourceProjection k p r α)
   (s ≫ (r ≫ inclusion k p) ≫ projection k p)
+/-- The disjoint union of the common infinity and prescribed closed components. -/
 abbrev commonBoundary := commonInfinity k p r α ⨿ commonZero k p r α B s
 
 include h in
@@ -32,20 +37,24 @@ theorem commonSourceProjection_fixed :
   simpa only [Category.assoc] using
     congrArg (fun f => f ≫ Hom.boundaryLineProjection k) h
 
+/-- The map from the common ambient product induced by the diagonal source leg. -/
 abbrev commonToDiagonal : commonAmbient k p r α ⟶ diagonalAmbient k p r :=
   constantSourceMapOfEq α ((r ≫ inclusion k p) ≫ projection k p)
     (projection k p) (commonSourceProjection k p r α) rfl
 
+/-- The map from the common ambient product induced by the fixed source leg. -/
 abbrev commonToFixed : commonAmbient k p r α ⟶ fixedAmbient k p a :=
   constantSourceMapOfEq β (a ≫ Hom.boundaryLineProjection k) (projection k p)
     (commonSourceProjection k p r α) (commonSourceProjection_fixed k p r a α β h)
 
+/-- Map the prescribed closed component into the common ambient product. -/
 def commonZeroInclusion : commonZero k p r α B s ⟶ commonAmbient k p r α :=
   pullback.lift (pullback.fst _ _) (pullback.snd _ _ ≫ s ≫ r ≫ inclusion k p)
     (by simpa only [Category.assoc] using (pullback.condition
       (f := commonSourceProjection k p r α)
       (g := s ≫ (r ≫ inclusion k p) ≫ projection k p)))
 
+/-- Map both common boundary components into the common ambient product. -/
 abbrev commonBoundaryInclusion : commonBoundary k p r α B s ⟶ commonAmbient k p r α :=
   coprod.desc (pullback.fst _ _) (commonZeroInclusion k p r α B s)
 

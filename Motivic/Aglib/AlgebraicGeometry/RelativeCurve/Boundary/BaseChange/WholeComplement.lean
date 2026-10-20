@@ -15,6 +15,7 @@ namespace AlgebraicGeometry.Scheme.Hom
 variable {S X Y A Z : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X) (a : A ⟶ X)
   (z : Z ⟶ X) [IsClosedImmersion z] (V : S.Opens)
 
+/-- The boundary lift over `V` with the whole source chosen as the source open. -/
 abbrev boundaryBaseWholeLift := boundaryBaseLift q z ⊤ V (fun _ _ => trivial)
 
 instance boundaryBaseWholeLift_closed : IsClosedImmersion (boundaryBaseWholeLift q z V) :=

@@ -17,6 +17,8 @@ variable (R : Type u) [CommRing R]
   (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
   (r : R) (l m : ℕ) (e : neighborhoodFrame R V r l)
 
+/-- The product of the retained pullbacks of the normalized denominator functional and the
+functional of `t`. -/
 def NeighborhoodSectionPair.sourcePoleFunctional (d : NeighborhoodSectionPair R V hV r l e)
     (t : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
       (fixedPsiTwistLine R r m).val) :=
@@ -26,6 +28,8 @@ def NeighborhoodSectionPair.sourcePoleFunctional (d : NeighborhoodSectionPair R 
     (commonNeighborhoodRetainedPsiFunctional R V r
       (sectionDualFunctional _ (fixedPsiTwistLine R r m) t))
 
+/-- The product of the retained pullbacks of the normalized numerator functional and the
+functional of `n`. -/
 def NeighborhoodSectionPair.sourceNumeratorFunctional (d : NeighborhoodSectionPair R V hV r l e)
     (n : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
       (fixedPsiTwistLine R r m).val) :=

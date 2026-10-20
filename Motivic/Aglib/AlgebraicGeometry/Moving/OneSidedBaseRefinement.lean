@@ -21,6 +21,7 @@ namespace AlgebraicGeometry.Scheme.Moving
 variable {S X C Z D : Scheme.{u}} (q : X ⟶ S) (π : C ⟶ S)
   (x : X ⟶ C) (hx : x ≫ π = q) (U : X.Opens) (W : S.Opens)
 
+/-- The refined parameter maps into the base-restricted compactification. -/
 def refinedParameterInclusion : (boundaryBaseSourceOpen q U W).toScheme ⟶
     boundaryBaseCompactification π W :=
   pullback.lift (boundaryBaseSourceProjection q U W)
@@ -47,7 +48,7 @@ def refinedParameterToTarget : (boundaryBaseSourceOpen q U W).toScheme ⟶
     ((x ≫ π) ⁻¹ᵁ W).toScheme :=
   X.homOfLE (by rw [hx]; exact inf_le_right)
 
-@[reassoc (attr := simp)] theorem refinedParameterToTarget_ι :
+@[reassoc] theorem refinedParameterToTarget_ι :
     refinedParameterToTarget q π x hx U W ≫ ((x ≫ π) ⁻¹ᵁ W).ι =
       (boundaryBaseSourceOpen q U W).ι := by
   simp [refinedParameterToTarget]
@@ -63,7 +64,7 @@ theorem refinedParameterToTarget_inclusion :
 variable (z : Z ⟶ X) (h : ∀ b : Z, (z ≫ q) b ∈ W → z b ∈ U)
 
 /-- This equality retains the original closed scheme and its structural map. -/
-@[reassoc (attr := simp)] theorem refinedZero_inclusion_snd :
+@[simp, reassoc] theorem refinedZero_inclusion_snd :
     (boundaryBaseLift q z U W h ≫ refinedParameterInclusion q π x hx U W) ≫
       pullback.snd W.ι π = (boundaryBaseClosedOpen q z W).ι ≫ z ≫ x := by
   simp only [Category.assoc, refinedParameterInclusion_snd, boundaryBaseLift_ι_assoc]

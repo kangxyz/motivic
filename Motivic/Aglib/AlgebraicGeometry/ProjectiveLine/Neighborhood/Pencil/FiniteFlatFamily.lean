@@ -16,6 +16,7 @@ variable (R : Type u) [CommRing R]
   (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
   (r : R)
 
+/-- The polynomial family functional joining the restricted pencil start and end functionals. -/
 def NeighborhoodPencilSections.familyFunctional (d : NeighborhoodPencilSections R V hV r) :=
   let q := pullback.fst (commonNeighborhoodProjection R V r)
     (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
@@ -27,6 +28,7 @@ def NeighborhoodPencilSections.familyFunctional (d : NeighborhoodPencilSections 
     (Scheme.Modules.Hom.pullbackToUnit
       (d.lambda.pencilEnd R V hV r d.lambdaDegree d.psiDegree d.frame d.psiNumerator) j)
 
+/-- The projection from the zero scheme of the family functional to the parameter scheme. -/
 def NeighborhoodPencilSections.familyProjection (d : NeighborhoodPencilSections R V hV r) :=
   Scheme.Modules.Hom.zeroInclusion (d.familyFunctional R V hV r) ≫
     parameterMap (commonNeighborhoodProjection R V r)

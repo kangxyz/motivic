@@ -58,13 +58,13 @@ theorem retainedToFixed_isPullback :
       (pullback.fst _ _) β := constantSourceMapOfEq_isPullback _ _ _ _ _
 
 omit [IsSeparated p] [IsOpenImmersion r] in
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem retainedToDiagonal_target :
     retainedToDiagonal k p r α U ≫ pullback.snd _ _ = pullback.snd _ _ :=
   constantSourceMapOfEq_snd _ _ _ _ _
 
 omit [IsSeparated p] [IsOpenImmersion r] in
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem retainedToFixed_target :
     retainedToFixed k p r v α β h U ≫ pullback.snd _ _ = pullback.snd _ _ :=
   constantSourceMapOfEq_snd _ _ _ _ _
@@ -120,12 +120,14 @@ abbrev retainedFixedLine (L : LineBundle (fixedAmbient k p v)) :=
     (pullbackLineBundle (constantRetainedInclusion k p U
       (v ≫ Hom.boundaryLineProjection k)) L)
 
+/-- The original diagonal functional pulled back twice to the retained common curve. -/
 abbrev retainedDiagonalFunctional {L : (diagonalAmbient k p r).Modules}
     (a : L ⟶ SheafOfModules.unit (diagonalAmbient k p r).ringCatSheaf) :=
   Hom.pullbackToUnit (Hom.pullbackToUnit a
     (constantRetainedInclusion k p U ((r ≫ inclusion k p) ≫ projection k p)))
     (retainedToDiagonal k p r α U)
 
+/-- The original fixed-open functional pulled back twice to the retained common curve. -/
 abbrev retainedFixedFunctional {L : (fixedAmbient k p v).Modules}
     (a : L ⟶ SheafOfModules.unit (fixedAmbient k p v).ringCatSheaf) :=
   Hom.pullbackToUnit (Hom.pullbackToUnit a

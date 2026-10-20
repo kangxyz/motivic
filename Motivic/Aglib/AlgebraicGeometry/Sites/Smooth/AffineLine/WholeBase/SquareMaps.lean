@@ -26,26 +26,35 @@ variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)
   (U : X.Opens) (V : (Spec (.of R)).Opens)
   [IsAffine V.toScheme] [IsAffine (boundaryBaseSourceOpen q U V).toScheme]
 
+/-- The original ambient scheme as a smooth-site object over the ground field. -/
 abbrev originalAmbientSite : SmoothSite (Spec (.of k)) := SmoothSite.mk (q ≫ t)
+/-- The original étale source as a smooth-site object over the ground field. -/
 abbrev originalEtaleSite : SmoothSite (Spec (.of k)) := SmoothSite.mk (p ≫ q ≫ t)
+/-- The original open source as a smooth-site object over the ground field. -/
 abbrev originalOpenSite : SmoothSite (Spec (.of k)) := SmoothSite.mk (a ≫ q ≫ t)
+/-- The original étale-open overlap as a smooth-site object over the ground field. -/
 abbrev originalOverlapSite : SmoothSite (Spec (.of k)) :=
   SmoothSite.mk (pullback.fst p a ≫ p ≫ q ≫ t)
 
+/-- The original étale map as an arrow of smooth-site objects. -/
 def originalEtaleArrow : originalEtaleSite k R t q p ⟶ originalAmbientSite k R t q :=
   SmoothSite.homMk p rfl
 
+/-- The original open immersion as an arrow of smooth-site objects. -/
 def originalOpenArrow : originalOpenSite k R t q a ⟶ originalAmbientSite k R t q :=
   SmoothSite.homMk a rfl
 
+/-- The first overlap projection as an arrow to the original étale smooth-site object. -/
 def originalOverlapToEtale : originalOverlapSite k R t q p a ⟶ originalEtaleSite k R t q p :=
   SmoothSite.homMk (pullback.fst p a) rfl
 
+/-- The second overlap projection as an arrow to the original open smooth-site object. -/
 def originalOverlapToOpen : originalOverlapSite k R t q p a ⟶ originalOpenSite k R t q a :=
   SmoothSite.homMk (pullback.snd p a) (by
     change pullback.snd p a ≫ a ≫ q ≫ t = pullback.fst p a ≫ p ≫ q ≫ t
     rw [← Category.assoc, ← pullback.condition, Category.assoc])
 
+/-- The square of original étale and open maps with their overlap in the smooth site. -/
 abbrev originalBoundarySquare : Square (SmoothSite (Spec (.of k))) where
   f₁₂ := originalOverlapToOpen k R t q p a
   f₁₃ := originalOverlapToEtale k R t q p a
@@ -61,11 +70,13 @@ lemma boundaryBaseAmbientSite_hom :
   simp only [Category.assoc, Iso.hom_inv_id_assoc]
   rw [← Category.assoc, boundaryBaseSourceProjection_ι, Category.assoc]
 
+/-- The restriction arrow from the boundary-base ambient object to the original ambient object. -/
 def boundaryBaseAmbientRestriction : boundaryBaseAmbientSite k R t q U V ⟶
     originalAmbientSite k R t q :=
   SmoothSite.homMk (boundaryBaseSourceOpen q U V).ι
     (boundaryBaseAmbientSite_hom k R t q U V).symm
 
+/-- The restriction arrow from the boundary-base étale object to the original étale object. -/
 def boundaryBaseEtaleRestriction : boundaryBaseEtaleSite k R ι t q p f j hj U V ⟶
     originalEtaleSite k R t q p :=
   SmoothSite.homMk (boundaryBaseCoverOpen q p U V).ι (by
@@ -75,6 +86,7 @@ def boundaryBaseEtaleRestriction : boundaryBaseEtaleSite k R ι t q p f j hj U V
     rw [← Category.assoc, morphismRestrict_ι]
     rfl)
 
+/-- The restriction arrow from the boundary-base open object to the original open object. -/
 def boundaryBaseOpenRestriction : boundaryBaseOpenSite k R t q a U V ⟶
     originalOpenSite k R t q a :=
   SmoothSite.homMk (boundaryBaseCoverOpen q a U V).ι (by
@@ -84,6 +96,7 @@ def boundaryBaseOpenRestriction : boundaryBaseOpenSite k R t q a U V ⟶
     rw [← Category.assoc, morphismRestrict_ι]
     rfl)
 
+/-- The restriction arrow from the boundary-base overlap to the original overlap object. -/
 def boundaryBaseOverlapRestriction :
     (boundaryBasePencilSquare k R ι t q p a f j hj U V).X₁ ⟶
       originalOverlapSite k R t q p a :=

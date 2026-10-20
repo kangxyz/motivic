@@ -11,9 +11,11 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (r : R)
   (V : (Spec (.of (Polynomial R))).Opens)
 
+/-- The retained open curve pulled back to the fixed punctured source. -/
 abbrev fixedPsiRetainedCurve := pullback (fixedPsiProjection R r)
   ((neighborhoodRetainedOpen R V).ι ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
 
+/-- The map from the retained curve into the fixed ambient projective line. -/
 def fixedPsiRetainedInclusion : fixedPsiRetainedCurve R r V ⟶ fixedPsiAmbient R r :=
   fixedPsiProductBoundaryMap R r (neighborhoodRetainedOpen R V).ι
 

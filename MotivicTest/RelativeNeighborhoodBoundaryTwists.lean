@@ -37,7 +37,7 @@ variable (r : R) {A : Type u} [CommRing A]
       SheafOfModules.unit (fullBoundaryPrincipalOpen R V r).toScheme.ringCatSheaf)
 
 /-- The affine source and the whole original boundary product are unchanged. -/
-def native_relative_twist_unit (n : ℕ) :
+def nativeRelativeTwistUnit (n : ℕ) :
     (Modules.pullback (boundaryRelativeMap R V r b)).obj
       (twistingSheaf A (ULift.{u} (Fin 2)) (n : ℤ)) ≅
       SheafOfModules.unit

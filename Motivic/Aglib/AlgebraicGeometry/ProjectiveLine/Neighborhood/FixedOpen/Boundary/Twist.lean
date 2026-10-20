@@ -16,6 +16,8 @@ variable (R : Type u) [CommRing R] (r : R)
       pullback.snd (fixedPsiProjection R r) (ProjectiveSpace.toSpec R _) := by
   simp [fixedPsiAmbientIso, pullback.congrHom_hom, pullback.map]
 
+/-- Compare the twist from the source-ring projective presentation with the original twist
+pullback. -/
 def fixedPsiOriginalTwistIso (d : ℤ) :
     (Scheme.Modules.pullback (fixedPsiProjectiveIso R r).hom).obj
       (ProjectiveSpace.twistingSheaf Γ((fixedPsiSource R r).toScheme, ⊤)
@@ -52,6 +54,7 @@ lemma fixedPsiBoundaryToOriginal_mem (x : fixedPsiBoundary R V r) :
     exact inf_le_right
   exact hle hm
 
+/-- Factor the fixed boundary projection through the original boundary principal open. -/
 def fixedPsiBoundaryPrincipalMap : fixedPsiBoundary R V r ⟶
     (fullBoundaryPrincipalOpen R V r).toScheme :=
   IsOpenImmersion.lift (fullBoundaryPrincipalOpen R V r).ι
@@ -64,11 +67,13 @@ def fixedPsiBoundaryPrincipalMap : fixedPsiBoundary R V r ⟶
     fixedPsiBoundaryPrincipalMap R r V ≫ (fullBoundaryPrincipalOpen R V r).ι =
       fixedPsiBoundaryToOriginal R r V := IsOpenImmersion.lift_fac _ _ _
 
+/-- The nonnegative Serre twist pulled back to the fixed ambient scheme. -/
 abbrev fixedPsiSerreTwist (n : ℕ) :=
   (Scheme.Modules.pullback (fixedPsiProjectiveIso R r).hom).obj
     (ProjectiveSpace.twistingSheaf Γ((fixedPsiSource R r).toScheme, ⊤)
       (ULift.{u} (Fin 2)) (n : ℤ))
 
+/-- Pull back a given original boundary twist frame to a frame on the whole fixed boundary. -/
 def fixedPsiBoundaryTwistIso (n : ℕ)
     (e : (Scheme.Modules.pullback ((fullBoundaryPrincipalOpen R V r).ι ≫
         fullNeighborhoodBoundaryMap R V)).obj

@@ -27,11 +27,13 @@ variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)
   [IsAffine V.toScheme] [IsAffine (boundaryBaseSourceOpen q U V).toScheme]
   [SmoothOfRelativeDimension 1 ((pullback.fst p a ≫ j) ≫ (f ≫ toSpec R ι))]
 
+/-- The relative target smooth-site object for the original overlap retained over the base open. -/
 abbrev boundaryBaseOriginalOverlapTarget :=
   RelativeCurvePencil.relativeTargetSite k (boundaryBaseFieldMap V t)
     (boundaryBaseProjectiveMap R ι f V ≫ toSpec Γ(V.toScheme, ⊤) ι)
     (boundaryBaseRetainedTarget (f ≫ toSpec R ι) V (pullback.fst p a ≫ j))
 
+/-- The open restriction arrow from the retained original-overlap target to the original overlap. -/
 def boundaryBaseOriginalOverlapTargetRestriction :
     boundaryBaseOriginalOverlapTarget k R ι t p a f j V ⟶ originalOverlapSite k R t q p a :=
   SmoothSite.homMk (((pullback.fst p a ≫ j) ≫ (f ≫ toSpec R ι)) ⁻¹ᵁ V).ι (by

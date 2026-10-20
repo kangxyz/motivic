@@ -11,6 +11,8 @@ variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens)
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 
+/-- Project each component of the graph boundary to the corresponding original boundary component.
+-/
 def neighborhoodGraphBoundaryToOriginal : neighborhoodGraphBoundarySource R V hV ⟶
     neighborhoodBoundary R V ⨿ Spec (.of R) :=
   coprod.map (pullback.snd _ _) (pullback.snd _ _)

@@ -12,9 +12,12 @@ variable {S X Z : Scheme.{u}} (q : X ⟶ S) (z : Z ⟶ X)
   (U : X.Opens) (V : S.Opens)
   (h : ∀ t : Z, (z ≫ q) t ∈ V → z t ∈ U)
 
+/-- The intersection of `U` with the inverse image of the base open `V`. -/
 def boundaryBaseSourceOpen : X.Opens := U ⊓ q ⁻¹ᵁ V
+/-- The inverse image of the base open `V` in `Z`. -/
 abbrev boundaryBaseClosedOpen : Z.Opens := (z ≫ q) ⁻¹ᵁ V
 
+/-- The structure map from the source open over `V` to `V`. -/
 def boundaryBaseSourceProjection : (boundaryBaseSourceOpen q U V).toScheme ⟶ V.toScheme :=
   X.homOfLE (show boundaryBaseSourceOpen q U V ≤ q ⁻¹ᵁ V from inf_le_right) ≫ q ∣_ V
 

@@ -14,20 +14,25 @@ variable (R : Type u) [CommRing R]
 variable (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme]
 variable (hV : Set.range (Spec.map (CommRingCat.ofHom (Polynomial.evalRingHom (0 : R)))) ⊆ V)
 
+/-- A trivialization of the original twist on the full boundary principal open. -/
 abbrev neighborhoodFrame (r : R) (n : ℕ) :=
   (Scheme.Modules.pullback ((fullBoundaryPrincipalOpen R V r).ι ≫
     fullNeighborhoodBoundaryMap R V)).obj
       (ProjectiveSpace.twistingSheaf R (ULift.{u} (Fin 2)) (n : ℤ)) ≅
         SheafOfModules.unit (fullBoundaryPrincipalOpen R V r).toScheme.ringCatSheaf
+/-- The Serre principal open transported to the graph ambient scheme. -/
 abbrev neighborhoodSectionOpen (r : R) :=
   (neighborhoodProjectiveIso R V).hom ⁻¹ᵁ neighborhoodSerreOpen R V r
+/-- The Serre twist tensored with the graph divisor module. -/
 abbrev neighborhoodNumeratorModule (n : ℕ) :=
   (moduleTensorLeftFunctor (neighborhoodGraphAmbient R V) (neighborhoodSerreTwist R V n)).obj
     (neighborhoodGraphDivisor R V).val
+/-- The Serre twist tensored with the ambient unit sheaf. -/
 abbrev neighborhoodDenominatorModule (n : ℕ) :=
   (moduleTensorLeftFunctor (neighborhoodGraphAmbient R V) (neighborhoodSerreTwist R V n)).obj
     (SheafOfModules.unit (neighborhoodGraphAmbient R V).ringCatSheaf)
 
+/-- Tensor the inverse graph-boundary trivialization with the pulled-back Serre twist. -/
 def neighborhoodNumeratorBoundaryMap (n : ℕ) :=
   (moduleTensorLeftFunctor (neighborhoodGraphBoundarySource R V hV)
     ((Scheme.Modules.pullback (neighborhoodGraphBoundaryMap R V hV)).obj
@@ -43,7 +48,9 @@ attribute [local instance] neighborhoodGraphBoundary_closed
 
 /-- These are the actual constructed open sections and their original restriction equations. -/
 structure NeighborhoodSectionPair (r : R) (n : ℕ) (e : neighborhoodFrame R V r n) where
+  /-- The numerator section on the section open. -/
   numerator : Γ(neighborhoodNumeratorModule R V n, neighborhoodSectionOpen R V r)
+  /-- The denominator section on the section open. -/
   denominator : Γ(neighborhoodDenominatorModule R V n, neighborhoodSectionOpen R V r)
   numerator_value :
     (Scheme.CoherentGraph.boundaryRestriction (neighborhoodGraphBoundaryMap R V hV)
@@ -69,10 +76,12 @@ theorem exists_neighborhoodSectionPair [IsNoetherianRing R] :
 
 variable {R V hV} {r : R} {n : ℕ} {e : neighborhoodFrame R V r n}
 
+/-- The unit-domain morphism corresponding to the numerator section. -/
 def NeighborhoodSectionPair.numeratorHom (d : NeighborhoodSectionPair R V hV r n e) :=
   openSectionHom (neighborhoodGraphAmbient R V) (neighborhoodSectionOpen R V r)
     (neighborhoodNumeratorModule R V n) d.numerator
 
+/-- The unit-domain morphism corresponding to the denominator section. -/
 def NeighborhoodSectionPair.denominatorHom (d : NeighborhoodSectionPair R V hV r n e) :=
   openSectionHom (neighborhoodGraphAmbient R V) (neighborhoodSectionOpen R V r)
     (neighborhoodDenominatorModule R V n) d.denominator

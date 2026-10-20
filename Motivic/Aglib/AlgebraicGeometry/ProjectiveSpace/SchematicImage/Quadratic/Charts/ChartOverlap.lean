@@ -18,9 +18,12 @@ namespace QuadraticIncidence.InfinityChart
 variable (k R : Type u) [Field k] [CommRing R] [IsDomain R] [Algebra k R]
   {σ : Type u} (g : σ → R)
 
+/-- Evaluation of homogeneous-coordinate polynomials at the monomial functions in the fraction ring.
+-/
 def homogeneousEvaluation : MvPolynomial (Exponent σ) k →+* FractionRing R :=
   (aeval (fun e => algebraMap R (FractionRing R) (monomialFunction k R g e))).toRingHom
 
+/-- The evaluation homomorphism on the homogeneous localization away from `s`. -/
 def homogeneousAwayEvaluation (s : MvPolynomial (Exponent σ) k)
     (hs : homogeneousEvaluation k R g s ≠ 0) :
     Away (homogeneousSubmodule (Exponent σ) k) s →+* FractionRing R :=

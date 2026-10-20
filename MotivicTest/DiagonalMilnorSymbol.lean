@@ -46,12 +46,12 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- The forward map targets precisely the original derived cohomology. -/
-def actual_derived_symbol (n : ℕ) : MilnorK.K k n →+
+def actualDerivedSymbol (n : ℕ) : MilnorK.K k n →+
     motivicCohomology k n n (SmoothSite.base (Spec (.of k))) := motivicSymbol k n
 
 /-- The literal graph representative is fixed by the original comparison. -/
 theorem actual_derived_generator (n : ℕ) (a : Fin n → kˣ) :
-    actual_derived_symbol k n (MilnorK.symbol a) =
+    actualDerivedSymbol k n (MilnorK.symbol a) =
       (motivicRawBaseEvaluationComparison k n n).symm (graphSymbol k n a) :=
   motivicSymbol_symbol k n a
 
@@ -61,7 +61,7 @@ run_cmd do
       ``graphSymbol_one_weight, ``rawSymbol_one_comparison, ``graphSymbol_two_weight,
       ``rawSymbol_two_comparison, ``motivicSymbol, ``motivicSymbol_comparison,
       ``motivicSymbol_symbol, ``motivicSymbol_two_comparison, ``actual_raw_symbol,
-      ``actual_one_compatibility, ``actual_two_compatibility, ``actual_derived_symbol,
+      ``actual_one_compatibility, ``actual_two_compatibility, ``actualDerivedSymbol,
       ``actual_derived_generator] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

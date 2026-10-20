@@ -17,15 +17,21 @@ variable (k : Type u) [Field k] {S X Y A B C V : Scheme.{u}}
   (a : A ⟶ X) [Smooth a] (α : B ⟶ Y) [Smooth α]
   (v : V ⟶ C) [Smooth (v ≫ π)]
 
+/-- The lambda-source curve regarded as a smooth-site object over `Spec k`. -/
 abbrev lambdaSourceSite : SmoothSite (Spec (.of k)) := SmoothSite.mk ((j ≫ π) ≫ t)
+/-- The psi-source curve regarded as a smooth-site object over `Spec k`. -/
 abbrev psiSourceSite : SmoothSite (Spec (.of k)) := SmoothSite.mk ((a ≫ q) ≫ t)
+/-- The common source regarded as a smooth-site object over `Spec k`. -/
 abbrev relativeCommonSite : SmoothSite (Spec (.of k)) :=
   SmoothSite.mk (commonProjection π j α ≫ t)
+/-- The retained target regarded as a smooth-site object over `Spec k`. -/
 abbrev relativeTargetSite : SmoothSite (Spec (.of k)) := SmoothSite.mk ((v ≫ π) ≫ t)
 
+/-- The smooth-site morphism to the lambda source induced by `α`. -/
 def relativeAlpha : relativeCommonSite k t π j α ⟶ lambdaSourceSite k t π j :=
   SmoothSite.homMk α (by simp [commonProjection])
 
+/-- The smooth-site morphism to the psi source induced by `β` and the compatible source square. -/
 def relativeBeta (p : Y ⟶ X) (hq : j ≫ π = p ≫ q)
     (β : B ⟶ A) (h : α ≫ p = β ≫ a) :
     relativeCommonSite k t π j α ⟶ psiSourceSite k t q a :=
@@ -34,6 +40,7 @@ def relativeBeta (p : Y ⟶ X) (hq : j ≫ π = p ≫ q)
     rw [commonProjection_fixed q π j p hq a α β h]
     simp only [Category.assoc])
 
+/-- The smooth-site morphism to the retained target induced by `φ`. -/
 def relativeGraphMap (φ : B ⟶ V) (hφ : φ ≫ v = α ≫ j) :
     relativeCommonSite k t π j α ⟶ relativeTargetSite k t π v :=
   SmoothSite.homMk φ (by

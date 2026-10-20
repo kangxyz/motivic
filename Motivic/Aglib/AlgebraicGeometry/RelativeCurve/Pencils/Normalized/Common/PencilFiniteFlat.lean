@@ -17,7 +17,7 @@ Only the actual compact boundary equation is used; family properties are derived
 theorem commonPencil_finite_flat
     (k : Type u) [Field k] {Y S A X : Scheme.{u}} [IsAffine X]
     (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
-    (r : S ⟶ Y) [IsOpenImmersion r] (v : A ⟶ Spec (.of (Polynomial k)))
+    (r : S ⟶ Y) (v : A ⟶ Spec (.of (Polynomial k)))
     (α : X ⟶ S) (β : X ⟶ A) (h : α ≫ r ≫ p = β ≫ v)
     (T : LineBundle (diagonalAmbient k p r)) (N : LineBundle (fixedAmbient k p v))
     (B : Type u) [CommRing B] (z : Polynomial k →+* B) (s : Spec (.of B) ⟶ S)

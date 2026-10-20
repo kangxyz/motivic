@@ -10,6 +10,7 @@ universe u
 namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (r : R)
 
+/-- The map into the fixed ambient scheme induced by base change of `g`. -/
 def fixedPsiProductBoundaryMap {D : Scheme.{u}}
     (g : D ⟶ ProjectiveSpace R (ULift.{u} (Fin 2))) :
     pullback (fixedPsiProjection R r) (g ≫ ProjectiveSpace.toSpec R _) ⟶
@@ -29,9 +30,11 @@ lemma fixedPsiProductBoundaryMap_isPullback {D : Scheme.{u}}
 
 variable (V : (Spec (.of (Polynomial R))).Opens)
 
+/-- The inclusion of the pulled-back missing boundary into the fixed ambient scheme. -/
 def fixedPsiMissingMap : fixedPsiMissing R V r ⟶ fixedPsiAmbient R r :=
   fixedPsiProductBoundaryMap R r (neighborhoodBoundaryInclusion R V)
 
+/-- The map of the pulled-back zero component into the fixed ambient scheme. -/
 def fixedPsiZeroMap : fixedPsiZero R r ⟶ fixedPsiAmbient R r :=
   (IsPullback.of_hasPullback (fixedPsiProjection R r)
     (ProjectiveSpace.toSpec R _)).flip.lift (pullback.snd _ _ ≫ zeroSection R)
@@ -68,9 +71,11 @@ lemma fixedPsiZeroMap_isPullback :
   exact H.of_bot' (IsPullback.of_hasPullback (fixedPsiProjection R r)
     (ProjectiveSpace.toSpec R _)).flip
 
+/-- The map of the whole fixed boundary into the ambient scheme, defined on both components. -/
 def fixedPsiBoundaryMap : fixedPsiBoundary R V r ⟶ fixedPsiAmbient R r :=
   coprod.desc (fixedPsiMissingMap R r V) (fixedPsiZeroMap R r)
 
+/-- Project both fixed boundary components to their corresponding original components. -/
 def fixedPsiBoundaryToOriginal : fixedPsiBoundary R V r ⟶
     neighborhoodBoundary R V ⨿ Spec (.of R) :=
   coprod.map (pullback.snd _ _) (pullback.snd _ _)

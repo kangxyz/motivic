@@ -12,6 +12,7 @@ namespace AlgebraicGeometry.RelativeProjectiveLine
 variable (R : Type u) [CommRing R] (V : (Spec (.of (Polynomial R))).Opens)
   [IsAffine V.toScheme] (r : R)
 
+/-- The retained common curve mapped into the original section domain. -/
 def commonNeighborhoodRetainedToSection : commonNeighborhoodRetainedCurve R V r ⟶
     (neighborhoodRetainedInclusion R V ⁻¹ᵁ neighborhoodSectionOpen R V r).toScheme :=
   IsOpenImmersion.lift
@@ -98,7 +99,7 @@ abbrev commonNeighborhoodSectionProjection :=
     commonNeighborhoodToSectionAmbient_projection, ← Category.assoc,
     commonNeighborhoodRetainedInclusion_fst]
 
-@[reassoc (attr := simp)] lemma commonNeighborhoodRetainedToSection_target :
+@[reassoc] lemma commonNeighborhoodRetainedToSection_target :
     commonNeighborhoodRetainedToSection R V r ≫
       (neighborhoodRetainedInclusion R V ⁻¹ᵁ neighborhoodSectionOpen R V r).ι ≫
         pullback.snd (neighborhoodProjection R V)

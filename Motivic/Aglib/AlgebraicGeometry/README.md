@@ -51,6 +51,8 @@ flatness and dimension interfaces. Its [neighborhoods](ProjectiveLine/Neighborho
 [open-factor boundary sections](Morphisms/OpenImmersion/README.md) and
 [coproduct boundary sections](Scheme/Sections/README.md) retain the actual
 coefficient squares and scheme-level section equalities used there.
+The [finite-boundary twist guide](Cohomology/Projective/Boundary/Twists/README.md)
+records the chosen whole-boundary units and their base-change interfaces.
 General graph/Tor interfaces retain original stalk scalar actions; flat ambient
 maps do not imply flat support maps. Generic Tor and diagonal prerequisites are
 candidates before their correspondence specializations consume them.

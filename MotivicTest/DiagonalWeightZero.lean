@@ -64,11 +64,11 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- Every field, without characteristic restrictions, has the original `H^{0,0}=ℤ`. -/
-def actual_derived_equivalence :
+def actualDerivedEquivalence :
     motivicCohomology k 0 0 (SmoothSite.base (Spec (.of k))) ≃+ ℤ := motivicEquiv k
 
 /-- The original all-degree Milnor presentation computes the original derived group. -/
-def actual_milnor_equivalence : MilnorK.K k 0 ≃+
+def actualMilnorEquivalence : MilnorK.K k 0 ≃+
     motivicCohomology k 0 0 (SmoothSite.base (Spec (.of k))) := milnorEquiv k
 
 /-- The zeroth Milnor symbol has the canonical integer normalization. -/
@@ -102,8 +102,8 @@ run_cmd do
       ``motivicEquiv_symm_apply, ``milnorEquiv_symbol, ``motivicEquiv,
       ``motivicEquiv_class, ``milnorEquiv, ``graphSymbol_zero, ``motivicSymbol_zero,
       ``actual_graph_degree_one, ``actual_negative_graph_degree, ``actual_boundary_zero,
-      ``actual_raw_class_zero_iff, ``actual_quotient_degree, ``actual_derived_equivalence,
-      ``actual_milnor_equivalence, ``actual_empty_symbol_degree, ``actual_empty_symbol_graph,
+      ``actual_raw_class_zero_iff, ``actual_quotient_degree, ``actualDerivedEquivalence,
+      ``actualMilnorEquivalence, ``actual_empty_symbol_degree, ``actual_empty_symbol_graph,
       ``actual_derived_negative_generator, ``actual_forward_symbol_zero] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

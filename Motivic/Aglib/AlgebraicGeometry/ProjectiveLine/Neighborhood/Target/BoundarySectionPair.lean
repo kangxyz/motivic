@@ -119,7 +119,7 @@ theorem exists_target_boundary_section_pair
     retainedProduct_smooth (j₁ ≫ π₁) π₁ v
   exact Scheme.CoherentGraph.exists_affineSource_normalized_divisor_pair
     R (ULift.{u} (Fin 2)) 1 Equiv.ulift (j₁ ≫ π₁) (𝟙 P₁) zA
-    (lambdaTwistFrames_of_fullTargetFrame R (ULift.{u} (Fin 2)) (𝟙 P₁) j₁ z d eFull)
+    (lambdaTwistFramesOfFullTargetFrame R (ULift.{u} (Fin 2)) (𝟙 P₁) j₁ z d eFull)
     iA (lambdaBoundary_retained_cover π₁ j₁ z d v hc)
     (dualLineBundle _ (Scheme.Hom.relativeCompactificationGraphLine π₁ j₁))
     (targetFullBoundaryFrame R z e d hd)

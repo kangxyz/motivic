@@ -48,7 +48,7 @@ theorem boundaryGraphBaseIso_isPullback :
 variable [IsSeparated q] [SmoothOfRelativeDimension 1 q]
 
 /-- The given frame is transported through the original ideal pullback map. -/
-def boundaryGraphFrame_baseIso
+def boundaryGraphFrameBaseIso
     (a : SheafOfModules.unit (pullback q (z ≫ q)).ringCatSheaf ≅
       idealModule (boundaryGraphTarget q z)) :
     SheafOfModules.unit (pullback (q ≫ e.hom) (z ≫ q ≫ e.hom)).ringCatSheaf ≅
@@ -71,14 +71,19 @@ def boundaryGraphFrame_baseIso
 theorem boundaryGraphFrame_baseIso_inclusion
     (a : SheafOfModules.unit (pullback q (z ≫ q)).ringCatSheaf ≅
       idealModule (boundaryGraphTarget q z)) :
-    (boundaryGraphFrame_baseIso q z e a).hom ≫
+    (boundaryGraphFrameBaseIso q z e a).hom ≫
       idealInclusion (boundaryGraphTarget (q ≫ e.hom) z) =
     (pullbackUnitIso (boundaryGraphBaseIso q z e).hom).inv ≫
       (Modules.pullback (boundaryGraphBaseIso q z e).hom).map a.hom ≫
       Modules.Hom.pullbackToUnit (idealInclusion (boundaryGraphTarget q z))
         (boundaryGraphBaseIso q z e).hom := by
-  simp only [boundaryGraphFrame_baseIso, Iso.trans_hom, Iso.symm_hom,
+  simp only [boundaryGraphFrameBaseIso, Iso.trans_hom, Iso.symm_hom,
     Functor.mapIso_hom, asIso_hom, Category.assoc]
   rw [idealPullbackMap_inclusion]
   rfl
+
+/-- Deprecated compatibility name for `boundaryGraphFrameBaseIso`. -/
+@[deprecated (since := "2026-10-20"), nolint defsWithUnderscore]
+alias boundaryGraphFrame_baseIso := boundaryGraphFrameBaseIso
+
 end AlgebraicGeometry.Scheme.Hom

@@ -37,6 +37,7 @@ variable (a : ℚ) (E : Set twoLines.left) (hE : E ∈ irreducibleComponents two
   (G : FiniteCorrespondenceGenerator (relativeLineHom twoLines.hom)
     (AffineLineField.line ℚ).hom)
 
+/-- The endpoint graph generator for the chosen irreducible component of the two-line source. -/
 abbrev leftGraph := endpointComponentGenerator twoLines a E hE
 
 /-- The canonical map from the original incidence to its left pulled ideal support. -/

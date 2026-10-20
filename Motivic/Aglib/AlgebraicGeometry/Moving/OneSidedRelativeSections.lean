@@ -92,7 +92,7 @@ theorem exists_oneSidedRelativeSections
     simpa only [z, Hom.fullBoundaryProductMap, coprod.inl_desc] using
       product_missing_cover π j x d hX
   obtain ⟨T, hT⟩ := exists_oneSidedAffineSections R K ι n eι q bY f z coprod.inl
-    (lambdaTwistFrames_of_fullTargetFrame R ι f j s d eFull)
+    (lambdaTwistFramesOfFullTargetFrame R ι f j s d eFull)
     (retainedProductInclusion q π x)
     (retainedProductInclusion q (x ≫ π) v ≫ retainedProductInclusion q π x)
     hc (product_good_cover π j x v s d hV) I

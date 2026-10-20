@@ -24,6 +24,7 @@ private lemma pulled_section_unit {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ 
     infer_instance
   infer_instance
 
+/-- The tensor product of the pulled-back dual local twist and dual fixed Psi twist. -/
 def commonNeighborhoodPoleLine : LineBundle (commonNeighborhoodAmbient R V r) :=
   tensorLineBundle _
     (pullbackLineBundle (commonNeighborhoodToSectionAmbient R V r)
@@ -31,6 +32,7 @@ def commonNeighborhoodPoleLine : LineBundle (commonNeighborhoodAmbient R V r) :=
     (pullbackLineBundle (commonNeighborhoodToPsiAmbient R V r)
       (dualLineBundle _ (fixedPsiTwistLine R r m)))
 
+/-- The pole functional formed from the normalized denominator and `t`. -/
 def NeighborhoodSectionPair.poleFunctional (d : NeighborhoodSectionPair R V hV r l e)
     (t : SheafOfModules.unit (fixedPsiAmbient R r).ringCatSheaf ⟶
       (fixedPsiTwistLine R r m).val) :

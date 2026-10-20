@@ -11,6 +11,8 @@ variable (R : Type u) [CommRing R] (ι : Type u)
   {Y C : Scheme.{u}} [IsAffine Y]
   (b : Y ⟶ Spec (.of R)) (f : C ⟶ ProjectiveSpace R ι)
 
+/-- The coefficient map induced by the affine source structural map and its spectrum presentation.
+-/
 abbrev affineSourceCoefficientMap : R →+* Γ(Y, ⊤) := coefficientMap (Y.isoSpec.inv ≫ b)
 
 lemma affineSourceProjectiveSquare :

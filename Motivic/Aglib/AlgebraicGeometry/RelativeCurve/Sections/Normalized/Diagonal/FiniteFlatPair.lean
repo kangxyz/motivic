@@ -15,6 +15,7 @@ open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme.AffineLineEtaleCompactification
 
+/-- The unit sheaf regarded as a line bundle via the trivial line bundle comparison. -/
 def actualUnitBundle (X : Scheme.{u}) : LineBundle X :=
   ⟨SheafOfModules.unit X.ringCatSheaf,
     isLocallyRankOne_of_iso X
@@ -25,6 +26,7 @@ def actualUnitBundle (X : Scheme.{u}) : LineBundle X :=
 variable (k : Type u) [Field k] {Y S : Scheme.{u}}
   (p : Y ⟶ Spec (.of (Polynomial k))) [Etale p] [QuasiCompact p] [IsSeparated p]
 
+/-- Pull back the degree twist along the diagonal projective map. -/
 def diagonalTwistBundle {R : Type u} [CommRing R] (r : Spec (.of R) ⟶ Y) (d : ℕ) :=
   pullbackLineBundle (diagonalProjectiveMap k p r)
     (ProjectiveSpace.twistingLineBundle R (ULift.{u} (Fin 2)) (d : ℤ))

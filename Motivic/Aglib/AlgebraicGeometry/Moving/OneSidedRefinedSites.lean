@@ -20,18 +20,23 @@ variable {k : Type u} [Field k] {B : Scheme.{u}} [IsAffine B]
   (q : X.left ⟶ B) (U : X.left.Opens) (W : B.Opens) [IsAffine W.toScheme]
   [IsAffine (boundaryBaseSourceOpen q U W).toScheme]
 
+/-- The smooth-site object of the parameter open restricted to the base open. -/
 abbrev refinedSourceSite : SmoothSite (Spec (.of k)) :=
   SmoothSite.mk ((boundaryBaseSourceOpen q U W).ι ≫ X.hom)
 
+/-- The smooth-site object of the original target restricted to the base open. -/
 abbrev refinedTargetSite : SmoothSite (Spec (.of k)) :=
   SmoothSite.mk ((q ⁻¹ᵁ W).ι ≫ X.hom)
 
+/-- The inclusion of the refined parameter into its original smooth-site object. -/
 def refinedSourceToOriginal : refinedSourceSite X q U W ⟶ X :=
   SmoothSite.homMk (boundaryBaseSourceOpen q U W).ι rfl
 
+/-- The inclusion of the base-restricted target into the original target. -/
 def refinedTargetToOriginal : refinedTargetSite X q W ⟶ X :=
   SmoothSite.homMk (q ⁻¹ᵁ W).ι rfl
 
+/-- The refined parameter inclusion into the base-restricted target. -/
 def refinedSourceToTarget : refinedSourceSite X q U W ⟶ refinedTargetSite X q W :=
   SmoothSite.homMk (X.left.homOfLE (show boundaryBaseSourceOpen q U W ≤ q ⁻¹ᵁ W
     from inf_le_right)) (by simp)
@@ -46,12 +51,15 @@ omit [IsAffine B] [IsAffine W.toScheme] in
 variable {A : SmoothSite (Spec (.of k))} [IsAffine A.left]
   (a : A ⟶ X) [IsOpenImmersion a.left]
 
+/-- The smooth-site object of the good open restricted to the base open. -/
 abbrev refinedGoodSite : SmoothSite (Spec (.of k)) :=
   SmoothSite.mk (((a.left ≫ q) ⁻¹ᵁ W).ι ≫ A.hom)
 
+/-- The inclusion of the base-restricted good open into the original good open. -/
 def refinedGoodToOriginal : refinedGoodSite X q W a ⟶ A :=
   SmoothSite.homMk ((a.left ≫ q) ⁻¹ᵁ W).ι rfl
 
+/-- The good-open map restricted to the base-restricted target. -/
 def refinedGoodToTarget : refinedGoodSite X q W a ⟶ refinedTargetSite X q W :=
   SmoothSite.homMk (a.left ∣_ (q ⁻¹ᵁ W)) (by
     change (a.left ∣_ (q ⁻¹ᵁ W)) ≫ (q ⁻¹ᵁ W).ι ≫ X.hom =

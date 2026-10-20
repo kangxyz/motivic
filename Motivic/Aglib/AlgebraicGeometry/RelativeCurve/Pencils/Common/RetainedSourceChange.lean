@@ -14,9 +14,11 @@ variable {S X Y A B C V : Scheme.{u}}
   (hq : j ≫ π = p ≫ q) (a : A ⟶ X)
   (α : B ⟶ Y) (β : B ⟶ A) (h : α ≫ p = β ≫ a) (v : V ⟶ C)
 
+/-- The lambda source change on the retained target product. -/
 abbrev retainedToLambda : retainedProduct (commonProjection π j α) π v ⟶
     retainedProduct (j ≫ π) π v :=
   constantSourceMapOfEq α (j ≫ π) (v ≫ π) (commonProjection π j α) rfl
+/-- The psi source change on the retained target product. -/
 abbrev retainedToPsi : retainedProduct (commonProjection π j α) π v ⟶
     retainedProduct (a ≫ q) π v :=
   constantSourceMapOfEq β (a ≫ q) (v ≫ π) (commonProjection π j α)
@@ -31,10 +33,10 @@ lemma retainedToPsi_isPullback :
       (pullback.fst (a ≫ q) (v ≫ π)) β :=
   constantSourceMapOfEq_isPullback β _ _ _ (commonProjection_fixed q π j p hq a α β h)
 
-@[reassoc (attr := simp)] lemma retainedToLambda_target :
+@[reassoc] lemma retainedToLambda_target :
     retainedToLambda π j α v ≫ pullback.snd _ _ = pullback.snd _ _ := by
   simp [retainedToLambda]
-@[reassoc (attr := simp)] lemma retainedToPsi_target :
+@[reassoc] lemma retainedToPsi_target :
     retainedToPsi q π j p hq a α β h v ≫ pullback.snd _ _ = pullback.snd _ _ := by
   simp [retainedToPsi]
 

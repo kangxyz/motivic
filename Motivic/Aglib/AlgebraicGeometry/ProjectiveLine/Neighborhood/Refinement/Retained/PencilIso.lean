@@ -15,23 +15,28 @@ variable (R : Type u) [CommRing R]
   (V : (Spec (.of (Polynomial R))).Opens) [IsAffine V.toScheme] (r : R)
   (l m : ℕ)
 
+/-- The line bundle given by the ideal of the common neighborhood graph. -/
 def commonNeighborhoodGraphLine : LineBundle (commonNeighborhoodAmbient R V r) :=
   ⟨Scheme.Hom.idealModule (commonNeighborhoodGraph R V r), commonNeighborhoodGraph_rankOne R V r⟩
 
+/-- The line bundle given by the ideal of the retained common neighborhood graph. -/
 def commonNeighborhoodRetainedGraphLine : LineBundle (commonNeighborhoodRetainedCurve R V r) :=
   ⟨Scheme.Hom.idealModule (commonNeighborhoodRetainedGraph R V r),
     isLocallyRankOne_of_iso _ (commonNeighborhoodRetainedGraphIdealIso R V r)
       (pullbackLineBundle (commonNeighborhoodRetainedInclusion R V r)
         (commonNeighborhoodGraphLine R V r)).property⟩
 
+/-- The restriction of the common neighborhood pole line to the retained curve. -/
 def commonNeighborhoodRetainedPoleLine : LineBundle (commonNeighborhoodRetainedCurve R V r) :=
   pullbackLineBundle (commonNeighborhoodRetainedInclusion R V r)
     (commonNeighborhoodPoleLine R V r l m)
 
+/-- The tensor product of the retained graph ideal line and the retained pole line. -/
 def commonNeighborhoodGraphDomainLine : LineBundle (commonNeighborhoodRetainedCurve R V r) :=
   tensorLineBundle _ (commonNeighborhoodRetainedGraphLine R V r)
     (commonNeighborhoodRetainedPoleLine R V r l m)
 
+/-- The comparison from the retained graph domain line to the restricted pencil line. -/
 def commonNeighborhoodRetainedPencilIso :
     (commonNeighborhoodGraphDomainLine R V r l m).val ≅
       (pullbackLineBundle (commonNeighborhoodRetainedInclusion R V r)
