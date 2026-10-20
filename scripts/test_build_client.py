@@ -101,13 +101,16 @@ sys.exit(int(os.environ.get('FIXTURE_EXIT','0')))
 
     def test_workflow_accepts_client_before_publishing(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        validation = workflow.index('id: build\n')
+        validation = workflow.index('id: checks\n')
         stage = workflow.index('id: native-stage')
         self.assertLess(validation, stage)
         validation_step = workflow[validation:stage]
-        self.assertIn('python3 scripts/validate.py --plan', validation_step)
+        self.assertIn('python3 scripts/shared_workflow.py native --state', validation_step)
+        self.assertIn('python3 scripts/shared_workflow.py finalize --state', validation_step)
         self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', validation_step)
         self.assertIn('mappings: ${{ runner.temp }}/native-outputs.jsonl', workflow[stage:])
+        self.assertIn('coverage: ${{ runner.temp }}/native-outputs.jsonl.coverage.json', workflow[stage:])
+        self.assertIn("steps.finalize.outcome == 'success'", workflow[stage:])
 
         (self.root / 'Motivic.lean').write_text('module\n')
         plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
@@ -120,10 +123,10 @@ sys.exit(int(os.environ.get('FIXTURE_EXIT','0')))
         # only after the complete reconstructed recipe (including client) passes.
         self.assertEqual([task['id'] for task in selected if task.get('mapping')], ['providers/build'])
         self.assertFalse(any('--export-only' in task['command'] for task in selected))
-        # Keep the existing GitHub cache path schema/version for both restore and save.
-        self.assertEqual(workflow.count('          path: .lake/build\n'), 2)
-        self.assertNotIn('path: examples/downstream/.lake/build', workflow)
-        self.assertNotIn('            examples/downstream/.lake/build', workflow)
+        # Root and independent-client progress survive failure; neither cache
+        # save requires successful finalization or publication.
+        self.assertEqual(workflow.count('            examples/downstream/.lake/build\n'), 2)
+        self.assertEqual(workflow.count('            .lake/build\n'), 2)
 
 
 if __name__ == '__main__':

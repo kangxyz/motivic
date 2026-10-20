@@ -15,10 +15,10 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-from ci_targets import CONFIG_INPUTS, ROOT, from_arguments, graph
+from ci_targets import CONFIG_INPUTS, ROOT, from_arguments, graph, make_plan
 from library_sources import lean_imports, source_modules
 
-POLICY = ('scripts/shared_workflow.py', 'scripts/validate.py', 'scripts/ci_targets.py',
+POLICY = ('scripts/shared_workflow.py', 'scripts/ci_policy.py', 'scripts/validate.py', 'scripts/ci_targets.py',
           'scripts/library_sources.py', 'scripts/check_repository.py',
           'scripts/lint_declarations.py', 'scripts/lint_style.py',
           'scripts/build_client.py', 'scripts/cache.py', 'scripts/cache_bootstrap.py',
@@ -27,11 +27,64 @@ DRIVERS = ('.lake/packages/batteries/scripts/runLinter.lean',
            '.lake/packages/mathlib/scripts/lint-style.lean')
 CLIENT = 'examples/downstream'
 GENERATED_MANIFEST = CLIENT + '/lake-manifest.json'
-# No inspected hosted witness closes the current unfinished Motivic upgrade.
-# The owner may admit an actual scoped/transitive coverage witness here after
-# mathematical delivery, using the shared EvidenceProtocol and exact attempts.
-BASELINE_PROTOCOL = None
-LEGACY_ATTEMPTS = frozenset()  # (source SHA, run id, attempt), when required by review
+# This migration has no historical complete native witness. Only the immediate
+# CI-only successor may enroll the complete local library and existing client.
+INITIAL_PARENT = '33af37716ce796f9863dbc33a5b9bfbb2cfab7d6'
+INITIAL_PATHS = frozenset({'.github/workflows/ci.yml', 'scripts/shared_workflow.py',
+    'scripts/ci_policy.py', 'scripts/test_hosted_ci.py', 'scripts/test_validate.py',
+    'scripts/test_ci_targets.py', 'scripts/test_build_client.py',
+    'docs/DEVELOPMENT.md', 'scripts/README.md'})
+
+
+def initial_identity(root, head):
+    """Recognize an explicit cutover commit, independently of API availability."""
+    from lean_ci.github import commit, git
+    head = commit(root, head)
+    header = git(root, 'cat-file', '-p', head).split('\n\n', 1)[0]
+    parents = [line.removeprefix('parent ') for line in header.splitlines()
+               if line.startswith('parent ')]
+    if parents != [INITIAL_PARENT]:
+        return False
+    # Preserve filename bytes: the text helper strips whitespace and would
+    # misidentify a leading-space path as an admitted owner.
+    paths = set(subprocess.check_output(['git', 'diff', '--no-renames', '--name-only', '-z',
+                INITIAL_PARENT, head, '--'], cwd=root).split(b'\0')) - {b''}
+    return bool(paths) and paths <= {path.encode() for path in INITIAL_PATHS}
+
+
+def initial_baseline(root, repository, default_branch, head):
+    if not initial_identity(root, head):
+        raise ValueError('Initial enrollment requires the exact CI-only cutover successor')
+    if repository != 'kangxyz/motivic' or default_branch != 'main':
+        raise ValueError('Initial enrollment requires the owning repository/default branch')
+    return dict(kind='initial-enrollment', head=head, repository=repository,
+                default_branch=default_branch, parent=INITIAL_PARENT,
+                selection_reason='One-time complete local enrollment; no historical verified base')
+
+
+def hosted_scope(root, baseline):
+    if baseline.get('kind') == 'initial-enrollment':
+        # Explicitly enumerate every local module, including leaves outside the
+        # curated facades. Keep the ordinary exact-origin declaration predicate.
+        scope = make_plan(Path(root), [], manual=sorted(source_modules(root)))
+        if not (Path(root) / CLIENT / 'MotivicClient.lean').is_file():
+            raise ValueError('Initial enrollment requires the existing independent client')
+        scope.update(kind='initial-enrollment', client=True, tool_tests=['test_*.py'])
+    else:
+        scope = selection(root, baseline['base'], default_branch=baseline['default_branch'])
+    return dict(scope, native=bool(scope['targets'] or scope['client']))
+
+
+def hosted_protocol(root, head, protocol=None):
+    """Require exact reviewed current workflow and supporting recipe identities."""
+    from ci_policy import PROTOCOL, TOOLING_REVISION
+    from lean_ci.github import git_file, reviewed_recipe, workflow_kind
+    protocol = protocol or PROTOCOL
+    if (os.environ.get('MOTIVIC_TOOLING_REVISION') != TOOLING_REVISION
+            or workflow_kind(git_file(root, head, protocol.workflow_path), protocol) != 'core'
+            or not reviewed_recipe(root, head, 'core', protocol)):
+        raise ValueError('Hosted workflow, owner recipe or independent tooling pin is not reviewed')
+    return protocol
 
 
 def shared_api():
@@ -261,46 +314,46 @@ class MotivicAdapter:
                       skip_cache=self.skip_cache, export=self.export or phase == 'native')
 
     def plan(self, root, repository, default_branch, head, requested_base=None, api=None):
-        baseline = admitted_baseline(root, repository, default_branch, head, requested_base,
-                                     api=api, protocol=self.protocol)
-        scope = selection(root, baseline['base'], full=self.full, default_branch=default_branch)
-        return {'baseline': baseline, 'scope': scope}
+        protocol = hosted_protocol(root, head, self.protocol)
+        if initial_identity(root, head):
+            if requested_base:
+                raise ValueError('Initial enrollment cannot accept a historical comparison base')
+            baseline = initial_baseline(root, repository, default_branch, head)
+        else:
+            baseline = admitted_baseline(root, repository, default_branch, head, requested_base,
+                                         api=api, protocol=protocol)
+        return {'baseline': baseline, 'scope': hosted_scope(root, baseline),
+                'tooling_revision': os.environ['MOTIVIC_TOOLING_REVISION']}
 
     def required_phases(self, root, plan):
         return ['source', 'native'] if plan['scope']['targets'] or plan['scope']['client'] else ['source']
 
     def validate_plan(self, root, plan):
         from lean_ci.github import ancestor
+        hosted_protocol(root, plan['head'], self.protocol)
+        if plan['tooling_revision'] != os.environ.get('MOTIVIC_TOOLING_REVISION'):
+            raise ValueError('Independent shared tooling pin drifted')
         baseline, scope = plan['baseline'], plan['scope']
+        if baseline.get('kind') == 'initial-enrollment':
+            if (baseline != initial_baseline(root, plan['repository'], baseline['default_branch'], plan['head'])
+                    or scope != hosted_scope(root, baseline)):
+                raise ValueError('Initial enrollment identity or complete local scope drifted')
+            return
+        if initial_identity(root, plan['head']):
+            raise ValueError('The exact initial cutover requires initial-enrollment mode')
         if (baseline['head'] != plan['head'] or baseline['repository'] != plan['repository']
                 or not ancestor(root, baseline['base'], baseline['verified_base'])
                 or not ancestor(root, baseline['verified_base'], plan['head'])
-                or scope != selection(root, baseline['base'], full=self.full,
-                                      default_branch=baseline['default_branch'])):
+                or scope != hosted_scope(root, baseline)):
             raise ValueError('CI selection advanced past its accepted complete baseline or drifted')
 
 
 def admitted_baseline(root, repository, default_branch, head, requested_base=None, *, api=None, protocol=None):
     """Use the existing reviewed evidence interface; no previous-push fallback."""
-    from lean_ci.github import BaselineError, GitHubAPI, select
-    protocol = protocol or BASELINE_PROTOCOL
-    if protocol is None:
-        raise BaselineError('Motivic shared CI cutover has no admitted native baseline covering the '
-            'unfinished upgrade. Recover an owner-reviewed hosted witness and configure the existing '
-            'EvidenceProtocol. Two-facade smoke, excluded optional failures and root/test-only bootstrap '
-            'runs do not close that range; event.before is not a fallback.')
-    actual_api = api or GitHubAPI(repository)
-    class AdmittedRuns:
-        def get(self, *args, **kwargs):
-            return actual_api.get(*args, **kwargs)
-        def pages(self, path, key, **query):
-            for run in actual_api.pages(path, key, **query):
-                if (key == 'workflow_runs' and LEGACY_ATTEMPTS
-                        and run.get('head_sha') in (protocol.legacy_heads or ())
-                        and (run.get('head_sha'), run.get('id'), run.get('run_attempt')) not in LEGACY_ATTEMPTS):
-                    continue
-                yield run
-    return select(root, repository, default_branch, head, requested_base, AdmittedRuns(), protocol=protocol)
+    from ci_policy import PROTOCOL
+    from lean_ci.github import select
+    return select(root, repository, default_branch, head, requested_base, api,
+                  protocol=protocol or PROTOCOL)
 
 
 def runtime_environment():
@@ -346,6 +399,14 @@ def create_native_application(root, package_cwd, source_mapping):
 
 
 def main():
+    if len(sys.argv) > 1 and sys.argv[1] in ('plan', 'source', 'native', 'finalize'):
+        # The same Application owns local, frozen and hosted task execution.
+        # The common CLI enforces clean committed source and external state.
+        sys.dont_write_bytecode = True
+        shared_api()
+        from lean_ci.cli import main as ci_main
+        return ci_main([*sys.argv[1:], '--root', str(ROOT),
+                        '--adapter', 'scripts/shared_workflow.py'])
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('operation', choices=['prepare-client'])
     parser.add_argument('--root', type=Path, default=ROOT)

@@ -5,17 +5,6 @@ on:
   push:
   pull_request:
   workflow_dispatch:
-    inputs:
-      targets:
-        description: Space-separated existing Motivic or MotivicTest module targets
-        required: false
-      base:
-        description: Git base for affected-scope selection (required without targets or full)
-        required: false
-      full:
-        description: Explicit diagnostic run of every local module
-        type: boolean
-        default: false
 
 permissions:
   contents: read
@@ -26,57 +15,22 @@ concurrency:
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
 jobs:
-  source:
-    runs-on: ubuntu-24.04
-    outputs:
-      lean: ${{ steps.scope.outputs.lean }}
-      targets_gzip_base64: ${{ steps.scope.outputs.targets_gzip_base64 }}
-      client: ${{ steps.scope.outputs.client }}
-      plan_gzip_base64: ${{ steps.scope.outputs.plan_gzip_base64 }}
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
-        with:
-          python-version: '3.13'
-      - name: Select affected validation and Lean targets
-        id: scope
-        env:
-          EVENT: ${{ github.event_name }}
-          BASE: ${{ inputs.base || github.event.pull_request.base.sha || github.event.before }}
-          HEAD_SHA: ${{ github.sha }}
-          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
-          FULL: ${{ inputs.full }}
-          MANUAL_TARGETS: ${{ inputs.targets }}
-        run: |
-          python3 scripts/ci_targets.py --github-output "$GITHUB_OUTPUT"
-      - name: Check affected source structure and pins
-        if: steps.scope.outputs.structural == 'true'
-        run: python3 scripts/check_repository.py
-      - name: Run affected tool fixtures at the CI acceptance boundary
-        if: steps.scope.outputs.tool_tests != ''
-        env:
-          TOOL_TESTS: ${{ steps.scope.outputs.tool_tests }}
-        run: |
-          read -r -a patterns <<< "$TOOL_TESTS"
-          for pattern in "${patterns[@]}"; do
-            python3 -m unittest discover -s scripts -p "$pattern"
-          done
-
-  lean:
-    needs: source
-    if: needs.source.outputs.lean == 'true'
+  library:
     outputs:
       native-artifact: ${{ steps.native-stage.outputs.artifact-name }}
     runs-on: ubuntu-24.04
     timeout-minutes: 360
     env:
       LEAN_NUM_THREADS: 1
+      LAKE_ARTIFACT_CACHE: 'true'
       MOTIVIC_BUILD_THREADS: 2
       MOTIVIC_LEAN_MEMORY_MB: 12800
       MOTIVIC_RSS_LIMIT_MB: 13824
       MOTIVIC_TOOLING_ROOT: ${{ github.workspace }}/.cache-tooling
+      MOTIVIC_TOOLING_REVISION: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
+      MOTIVIC_CI_STATE: ${{ runner.temp }}/motivic-ci-state
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONPATH: ${{ github.workspace }}/.cache-tooling/ci
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -85,27 +39,24 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: kangxyz/aglib
-          ref: c9863095f90b8bd312af807dbf0e378df82403b5
+          ref: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
           path: .cache-tooling
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.13'
-      - name: Materialize selected targets
+      - name: Select verified ancestor or exact initial enrollment before installing Lean
+        id: scope
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          python3 - <<'PY'
-          import base64
-          import gzip
-          import os
-          from pathlib import Path
-          encoded = "${{ needs.source.outputs.targets_gzip_base64 }}"
-          path = Path(os.environ['RUNNER_TEMP']) / 'selected-targets.txt'
-          path.write_bytes(gzip.decompress(base64.b64decode(encoded, validate=True)))
-          encoded_plan = "${{ needs.source.outputs.plan_gzip_base64 }}"
-          (path.parent / 'validation-plan.json').write_bytes(
-              gzip.decompress(base64.b64decode(encoded_plan, validate=True)))
-          PY
+          python3 scripts/shared_workflow.py plan --state "$MOTIVIC_CI_STATE" \
+            --repository "$GITHUB_REPOSITORY" --default-branch "${{ github.event.repository.default_branch }}" \
+            --head "$(git rev-parse HEAD)" --github-output "$GITHUB_OUTPUT"
+      - name: Check committed source and affected tooling fixtures
+        run: python3 scripts/shared_workflow.py source --state "$MOTIVIC_CI_STATE"
       - name: Install the pinned Lean toolchain
+        if: steps.scope.outputs.native == 'true'
         env:
           ELAN_HOME: ${{ runner.temp }}/elan
         run: |
@@ -116,66 +67,84 @@ jobs:
           echo "$ELAN_HOME/bin" >> "$GITHUB_PATH"
           "$ELAN_HOME/bin/elan" toolchain install "$(cat lean-toolchain)"
       - name: Restore pinned dependencies
+        if: steps.scope.outputs.native == 'true'
         id: dependencies
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake/packages
           key: dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: dependencies-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lake-manifest.json') }}-
-      - name: Fetch focused matching Mathlib artifacts
-        id: proof-cache
-        run: |
-          mapfile -t targets < "$RUNNER_TEMP/selected-targets.txt"
-          python3 scripts/cache.py --guarded --resolve-deps --lint-runtime "${targets[@]}"
       - name: Restore shared native and public Aglib artifacts
+        if: steps.scope.outputs.native == 'true'
         id: native
         uses: ./.cache-tooling/.github/actions/lake-cache
         with:
           mode: restore
           repositories: kangxyz/aglib
       - name: Restore incremental project outputs
+        if: steps.scope.outputs.native == 'true'
         id: project
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .lake/build
-          key: motivic-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-${{ hashFiles('*.lean', 'Motivic/**/*.lean', 'MotivicTest/**/*.lean') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            .lake/build
+            examples/downstream/.lake/build
+          key: motivic-build-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-${{ hashFiles('*.lean', 'Motivic/**/*.lean', 'MotivicTest/**/*.lean', 'examples/downstream/**/*.lean', '!examples/downstream/.lake/**') }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
+            motivic-build-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
             motivic-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
       - name: Validate selected providers before affected consumers and client
-        id: build
+        if: steps.scope.outputs.native == 'true'
+        id: checks
+        timeout-minutes: 300
+        run: python3 scripts/shared_workflow.py native --state "$MOTIVIC_CI_STATE"
+      - name: Finalize required check coverage
+        id: finalize
         run: |
-          python3 scripts/validate.py --plan "$RUNNER_TEMP/validation-plan.json" \
-            --skip-static --skip-cache --receipt-dir .lake/verification/ci \
+          python3 scripts/shared_workflow.py finalize --state "$MOTIVIC_CI_STATE" \
             --outputs "$RUNNER_TEMP/native-outputs.jsonl"
       - name: Stage native artifacts for downstream dependencies
         id: native-stage
-        if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+        if: ${{ steps.scope.outputs.native == 'true' && steps.finalize.outcome == 'success' && github.event_name == 'push' && github.ref == 'refs/heads/main' }}
         uses: ./.cache-tooling/.github/actions/lake-cache
         with:
           mode: publish
           mappings: ${{ runner.temp }}/native-outputs.jsonl
-      - name: Save dependency progress
-        if: ${{ always() && steps.proof-cache.outcome == 'success' && steps.dependencies.outputs.cache-primary-key != '' }}
+          coverage: ${{ runner.temp }}/native-outputs.jsonl.coverage.json
+      - name: Save dependency progress, including partial failed checks
+        if: ${{ always() && steps.checks.outcome != 'skipped' && steps.dependencies.outputs.cache-primary-key != '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: .lake/packages
           key: ${{ steps.dependencies.outputs.cache-primary-key }}
-      - name: Save incremental project progress
-        if: ${{ always() && steps.build.outcome != 'skipped' && steps.project.outputs.cache-primary-key != '' }}
+      - name: Save incremental project progress, including partial failed checks
+        if: ${{ always() && steps.checks.outcome != 'skipped' && steps.project.outputs.cache-primary-key != '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: .lake/build
+          path: |
+            .lake/build
+            examples/downstream/.lake/build
           key: ${{ steps.project.outputs.cache-primary-key }}
-      - name: Save native progress
+      - name: Save native progress, including partial failed checks
         if: ${{ always() && steps.native.outputs.cache-key != '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ${{ steps.native.outputs.cache-path }}
           key: ${{ steps.native.outputs.cache-key }}
+      - name: Retain guarded phase and check receipts
+        if: ${{ always() && steps.scope.outcome == 'success' }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: motivic-check-receipts-${{ github.run_id }}-${{ github.run_attempt }}
+          include-hidden-files: true
+          if-no-files-found: ignore
+          path: |
+            ${{ runner.temp }}/motivic-ci-state/**/*.json
+            ${{ runner.temp }}/motivic-ci-state/**/*.log
 
   publish-cache:
-    needs: lean
-    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    needs: library
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && needs.library.outputs.native-artifact != '' }}
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -185,11 +154,11 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: kangxyz/aglib
-          ref: c9863095f90b8bd312af807dbf0e378df82403b5
+          ref: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
           path: .cache-tooling
           persist-credentials: false
       - name: Publish immutable public native cache asset
         uses: ./.cache-tooling/.github/actions/lake-cache
         with:
           mode: release
-          artifact: ${{ needs.lean.outputs.native-artifact }}
+          artifact: ${{ needs.library.outputs.native-artifact }}

@@ -302,3 +302,43 @@ skipped during ordinary Python-only checks and never performs a library build.
 no-build export and explicit tooling admission without invoking Lean. Run these
 Python fixtures with the reviewed shared package on `PYTHONPATH` (its `ci/`
 directory); ordinary native style fixtures remain opt-in.
+
+Hosted CI uses the same `Application` and task recipe as local validation and
+frozen execution, through `scripts/shared_workflow.py plan|source|native|finalize`.
+It pins shared tooling separately at
+`3a4d549981ced306d89d3ed55418c9e6a25f86c4`; mathematical pins are unchanged.
+The workflow exports that checkout's `ci` directory in `PYTHONPATH` for source
+fixtures and keeps all committed-phase state under `$RUNNER_TEMP`, outside the
+checkout. Each phase rechecks committed source, the tooling pin, admitted recipe,
+and selected scope. `scripts/ci_policy.py` holds exact reviewed workflow and
+owner recipe hashes; adding hashes is not source review. It admits no legacy
+smoke workflow or arbitrary historical recipe.
+
+Initial enrollment is permitted only for the single-parent CI-only successor of
+`33af37716ce796f9863dbc33a5b9bfbb2cfab7d6`, restricted to `INITIAL_PATHS` in
+`shared_workflow.py`. Selection of this mode depends on that identity, never on
+an unsuccessful evidence search. Its explicit `initial-enrollment` plan includes
+all local modules and tests plus the existing client, without claiming any
+historical `verified_base`. Removing an optional or orphan source from that
+scope fails validation. Later commits use `EvidenceProtocol` to require an exact
+successful native job and finalizer in an admitted ancestor run attempt.
+
+For a clean admitted committed checkout with the independent tooling environment
+configured, the hosted entry is:
+
+```sh
+python3 scripts/shared_workflow.py plan --state /absolute/scratch/ci-state \
+  --repository kangxyz/motivic --default-branch main --head "$(git rev-parse HEAD)"
+python3 scripts/shared_workflow.py source --state /absolute/scratch/ci-state
+python3 scripts/shared_workflow.py native --state /absolute/scratch/ci-state
+python3 scripts/shared_workflow.py finalize --state /absolute/scratch/ci-state \
+  --outputs /absolute/scratch/native-outputs.jsonl
+```
+
+Skip `native` only when the plan requires source alone. Finalization reconstructs
+all required task receipts before writing native mappings and the matching
+`.coverage.json` sidecar. Publication requires successful finalization; partial
+failed native checks still save dependency, root/client build and native cache
+progress. Cached outputs alone supply no verification evidence. Initial full
+enrollment can expose pre-existing optional-leaf failures; such a failure blocks
+the first baseline and publication while preserving partial progress.

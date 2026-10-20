@@ -418,9 +418,10 @@ class TargetTransportTests(unittest.TestCase):
 
     def test_workflow_gates_every_native_step_and_uses_exact_plan(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        self.assertIn("if: needs.source.outputs.lean == 'true'", workflow)
-        self.assertIn('--plan "$RUNNER_TEMP/validation-plan.json"', workflow)
-        self.assertIn('plan_gzip_base64: ${{ steps.scope.outputs.plan_gzip_base64 }}', workflow)
+        self.assertIn("if: steps.scope.outputs.native == 'true'", workflow)
+        for phase in ('plan', 'source', 'native', 'finalize'):
+            self.assertIn(f'python3 scripts/shared_workflow.py {phase} --state "$MOTIVIC_CI_STATE"', workflow)
+        self.assertNotIn('github.event.before', workflow)
         self.assertNotIn('export_targets=', workflow)
         self.assertNotIn('default: Motivic MotivicTest', workflow)
         self.assertNotIn("needs.source.outputs.client == 'true' ||", workflow)

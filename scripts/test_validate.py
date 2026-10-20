@@ -122,13 +122,13 @@ class ValidationOrderTests(unittest.TestCase):
                                                   targets=[], progress=None, outputs=None)
         run.assert_not_called()
 
-    def test_missing_baseline_does_not_query_api_or_fall_back_to_previous_push(self):
+    def test_missing_baseline_never_falls_back_to_previous_push(self):
         from lean_ci.github import BaselineError
         api = unittest.mock.Mock()
-        with self.assertRaisesRegex(BaselineError, 'unfinished upgrade'):
-            admitted_baseline(self.root, 'kangxyz/motivic', 'main', 'f' * 40, api=api)
-        api.get.assert_not_called()
-        api.pages.assert_not_called()
+        with patch('lean_ci.github.select', side_effect=BaselineError('No verified native CI ancestor')) as select:
+            with self.assertRaisesRegex(BaselineError, 'No verified native CI ancestor'):
+                admitted_baseline(self.root, 'kangxyz/motivic', 'main', 'f' * 40, api=api)
+        select.assert_called_once()
 
     def test_remote_profile_alias_and_resource_controls_are_declared(self):
         config = resource_config()

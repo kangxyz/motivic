@@ -111,15 +111,25 @@ untracked edits are included. Alternatively pass explicit `--manual-targets`
 (existing local modules); `--full` is an opt-in diagnostic over all occupied
 modules. Local missing bases use a trusted fetched default-branch merge-base or a true
 initial root diff; unresolvable bases fail actionably. Shared committed CI uses
-the existing reviewed evidence protocol and cannot fall back to `event.before`
-or silently advance an unfinished dependency-upgrade comparison. No admitted
-Motivic witness currently closes that comparison; CI cutover remains pending.
+the reviewed `EvidenceProtocol` and cannot fall back to `event.before` or a
+previous push. There is no admitted historical complete native Motivic baseline.
+The one-time cutover is explicit: only a commit with exactly one parent,
+`33af37716ce796f9863dbc33a5b9bfbb2cfab7d6`, and a nonempty diff confined to the
+enumerated CI-owned paths in `scripts/shared_workflow.py` may use
+`initial-enrollment`. That plan has no historical `verified_base`; it enrolls
+every local production module, every local test (including orphan leaves outside
+the facades), and the existing independent client. Production providers precede
+the remaining tests and client, retaining the ordinary exact-origin declaration
+and selected-source style predicates. All tooling fixtures run at enrollment.
+Only the successful native phase plus finalization can supply the first future
+baseline. Every later head requires a genuinely verified native ancestor;
+missing or skipped native/finalizer evidence cannot trigger enrollment.
 Pin changes and manual dispatch have no full fallback.
 Pin changes require explicit affected scope and matching caches. An Aglib upgrade
 can commit the reviewed configuration hashes and local seeds in
 `.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
 the checked format used by automatic CI. Documentation-only changes run static
-checks without a Lean job. Execution-script and CI-workflow changes run affected
+checks without installing Lean. Execution-script and CI-workflow changes run affected
 tooling fixtures and, when no native scope is already selected, compile and
 declaration/style-lint the exact curated `Motivic` and `MotivicTest` facade
 modules and check the independent client. This smoke uses module selectors,
