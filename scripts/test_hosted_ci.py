@@ -12,7 +12,7 @@ import unittest
 from unittest.mock import patch
 
 from ci_policy import CORE_ENTRYPOINTS, PROTOCOL, TOOLING_REVISION
-from shared_workflow import (INITIAL_PARENT, INITIAL_PATHS, REPAIR_PARENT, REPAIR_TOOL_PATHS,
+from shared_workflow import (INITIAL_PARENT, INITIAL_PATHS, REPAIR_PARENT, FOLLOWUP_PARENT, REPAIR_TOOL_PATHS,
                              MotivicAdapter, admitted_baseline, hosted_scope, initial_identity)
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -147,8 +147,30 @@ class HostedEnrollmentTests(unittest.TestCase):
 
     def test_exact_repair_parent_is_fixed_and_pins_are_not_admitted_owners(self):
         self.assertEqual(REPAIR_PARENT, 'c793b96eb87eee540e665058e83e5f05d5c95683')
+        self.assertEqual(FOLLOWUP_PARENT, 'cc5c5d57e05a51ec7b1e7d6994646b306059130e')
         self.assertNotIn('lake-manifest.json', REPAIR_TOOL_PATHS)
         self.assertNotIn('.github/dependency-scope.json', REPAIR_TOOL_PATHS)
+
+    def test_explicit_followup_keeps_complete_enrollment_without_api_fallback(self):
+        followup_parent = self.head
+        self.write('scripts/test_validate.py', '# repaired task-shape fixture\n')
+        self.commit('repair source fixtures after failed enrollment')
+        self.head = self.git('rev-parse', 'HEAD')
+        with patch('shared_workflow.FOLLOWUP_PARENT', followup_parent), \
+                patch('shared_workflow.admitted_baseline', side_effect=AssertionError('API fallback')):
+            plan = self.plan()
+            self.application().validate_plan(plan)
+        self.assertEqual(plan['baseline']['parent'], followup_parent)
+        self.assertEqual(plan['baseline']['kind'], 'initial-enrollment')
+        self.assertIn('repair', plan['baseline']['selection_reason'])
+        self.assertNotIn('base', plan['baseline'])
+        self.assertNotIn('verified_base', plan['baseline'])
+        self.assertEqual(plan['scope']['targets'], ['Motivic', 'Motivic.Orphan',
+                                                  'MotivicTest', 'MotivicTest.Orphan'])
+        self.assertEqual(plan['scope']['lint'], plan['scope']['targets'])
+        self.assertEqual(plan['scope']['tool_tests'], ['test_*.py'])
+        self.assertTrue(plan['scope']['client'])
+        self.assertEqual(plan['required_phases'], ['source', 'native'])
 
     def test_direct_repair_admits_only_the_exact_new_batch_fixture_owner(self):
         from shared_workflow import repair_path

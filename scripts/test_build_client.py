@@ -117,7 +117,13 @@ sys.exit(int(os.environ.get('FIXTURE_EXIT','0')))
         selected = recipe(self.root, plan, 'check', self.root / 'receipts',
                           export=True, skip_static=True, skip_cache=True)
         ids = [task['id'] for task in selected]
-        self.assertLess(ids.index('providers/declarations'), ids.index('client/build'))
+        provider_checks = [task for task in selected
+                           if task['id'].startswith('providers/declarations/')]
+        self.assertEqual([task['modules'] for task in provider_checks],
+                         [[name] for name in plan['providers']])
+        self.assertTrue(provider_checks)
+        self.assertTrue(all(ids.index(task['id']) < ids.index('client/build')
+                            for task in provider_checks))
         self.assertEqual(ids[-1], 'client/build')
         # Mappings come from the original builds. Application releases export
         # only after the complete reconstructed recipe (including client) passes.

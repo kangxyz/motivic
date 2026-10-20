@@ -20,7 +20,7 @@ CORE_ENTRYPOINTS = {
     'scripts/library_sources.py': '1fe323386e801d2bb9c8d3fa1f64fce4564f00dac6e5392f241a5424d8cf8369',
     'scripts/lint_declarations.py': '6013e20c073904e077ad27c1e17d651e95d9c2c00db0dd3af6c9a35d15f5ed2b',
     'scripts/lint_style.py': '1733a915dddfaf185702dd250568bd63b88cb4a4b0f95d9e6f1a43a028cd522e',
-    'scripts/shared_workflow.py': '1d7156fa1ae930464d09ae5be0bb050016c3d2327a4aaace058619dc9318040c',
+    'scripts/shared_workflow.py': '731b1c8ce21a31e467d9a896fcfb3ed510c7635081207eb36e596557dc97945d',
     'scripts/validate.py': 'efc5e29da391aadf95ee168e4491949224b9bc344895d9831222fa0d91f0d05f',
 }
 PROTOCOL = EvidenceProtocol(

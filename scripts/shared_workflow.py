@@ -37,6 +37,9 @@ INITIAL_PATHS = frozenset({'.github/workflows/ci.yml', 'scripts/shared_workflow.
 # The first complete enrollment failed declaration lint. Its single repair
 # successor may retry complete enrollment; API failure never selects this mode.
 REPAIR_PARENT = 'c793b96eb87eee540e665058e83e5f05d5c95683'
+# The integrated repair still has no complete hosted baseline. Its explicit
+# direct follow-up uses the same bounded repair admission and complete scope.
+FOLLOWUP_PARENT = 'cc5c5d57e05a51ec7b1e7d6994646b306059130e'
 REPAIR_TOOL_PATHS = frozenset({*INITIAL_PATHS, *POLICY,
     'scripts/build.py', 'scripts/build_modules.py', 'scripts/generate_imports.py',
     'scripts/test_build.py', 'scripts/test_declaration_batch.py', 'scripts/test_repository.py',
@@ -58,7 +61,7 @@ def enrollment_parent(root, head):
     header = git(root, 'cat-file', '-p', head).split('\n\n', 1)[0]
     parents = [line.removeprefix('parent ') for line in header.splitlines()
                if line.startswith('parent ')]
-    if len(parents) != 1 or parents[0] not in {INITIAL_PARENT, REPAIR_PARENT}:
+    if len(parents) != 1 or parents[0] not in {INITIAL_PARENT, REPAIR_PARENT, FOLLOWUP_PARENT}:
         return None
     parent = parents[0]
     # Preserve filename bytes; whitespace lookalikes are not admitted owners.
@@ -94,7 +97,7 @@ def initial_baseline(root, repository, default_branch, head):
     return dict(kind='initial-enrollment', head=head, repository=repository,
                 default_branch=default_branch, parent=parent,
                 selection_reason=('Explicit repair of failed complete enrollment; no historical verified base'
-                                  if parent == REPAIR_PARENT else
+                                  if parent in {REPAIR_PARENT, FOLLOWUP_PARENT} else
                                   'One-time complete local enrollment; no historical verified base'))
 
 

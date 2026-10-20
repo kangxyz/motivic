@@ -434,7 +434,7 @@ class DeclarationOriginTests(unittest.TestCase):
         tasks = recipe(self.root, plan, 'check', self.receipts, skip_static=True, skip_cache=True)
         checks = [t for t in tasks if t.get('check_kind', '').startswith('declaration')]
         self.assertEqual([t['modules'] for t in checks],
-                         [['Motivic.Provider'], ['Motivic.Consumer', 'MotivicTest.Selected']])
+                         [['Motivic.Provider'], ['Motivic.Consumer'], ['MotivicTest.Selected']])
         self.assertTrue(all(t['check_kind'] == 'declaration-exact-origin' for t in checks))
         plan['full'] = True
         tasks = recipe(self.root, plan, 'check', self.receipts, skip_static=True, skip_cache=True)
