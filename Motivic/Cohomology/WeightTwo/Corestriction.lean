@@ -96,7 +96,7 @@ instance sourceMap_surjective (r : ℕ) : Surjective (sourceMap (k := k) (E := E
 
 omit [Module.Finite k E] in
 /-- The coefficient projection retains the literal first projection. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem ambientMap_fst (r q : ℕ) :
     ambientMap (k := k) (E := E) r q ≫
       pullback.fst (source k r).hom (target k q).hom =
@@ -121,6 +121,18 @@ theorem ambientMap_fst (r q : ℕ) :
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun f => f ≫ pullback.fst (source k r).hom φ) h').trans
       (Category.assoc _ _ _))
+
+omit [Module.Finite k E] in
+@[reassoc (attr := simp)]
+theorem ambientMap_fst_simp (r q : ℕ) :
+    ambientMap (k := k) (E := E) r q ≫
+      pullback.fst
+        (pullback.fst (SmoothSite.base (Spec (.of k))).hom
+          (_root_.AlgebraicSimplex.smoothSiteObj k r).hom ≫
+          (SmoothSite.base (Spec (.of k))).hom)
+        (target k q).hom =
+      pullback.fst (source E r).hom (target E q).hom ≫ sourceMap (k := k) (E := E) r :=
+  ambientMap_fst (k := k) (E := E) r q
 
 /-- The actual integral finite image is still an admissible correspondence support. -/
 def imageGenerator (r q : ℕ)

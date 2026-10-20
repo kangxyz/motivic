@@ -30,8 +30,8 @@ This is only a coefficient identity above a target generic point. It does not
 assert that all source generic points map to target generic points or identify
 global fundamental cycles under arbitrary base change.
 
-SOURCE-ONLY: the residue-tensor consumer and branch-transport prerequisite have
-not yet been accepted, and this module and its consumer have not been compiled.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

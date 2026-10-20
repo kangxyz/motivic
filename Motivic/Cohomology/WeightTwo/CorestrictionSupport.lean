@@ -44,7 +44,7 @@ theorem supportMap_inclusion :
   Scheme.Hom.toImage_imageι _
 
 /-- The actual map of supports preserves the original source-projection square. -/
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp↓)]
 theorem supportMap_projection :
     supportMap (k := k) r q A ≫ (imageGenerator (k := k) r q A).projection =
       A.projection ≫ sourceMap (k := k) (E := E) r := by

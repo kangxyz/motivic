@@ -7,10 +7,10 @@ needs to be irreducible, reduced, Noetherian, or nonempty. Finiteness alone does
 not give the component assertion.
 
 The native namespace is `AlgebraicGeometry.Scheme.Hom`. The leaf reuses the
-existing generic-point generalization theorem, currently in the downstream
-`Motivic.Aglib.AlgebraicGeometry.Morphisms.Generalizing.GenericPoints` module; extracting that
-prerequisite is a separate ownership task. The current consumer is the full
-finite-flat correspondence assembly, which retains all components and lengths.
+existing [generic-point generalization theorem](../Generalizing/GenericPoints.lean)
+in `Motivic.Aglib.AlgebraicGeometry.Morphisms.Generalizing.GenericPoints`.
+Both leaves are general candidates. The host finite-flat correspondence assembly
+consumes them while retaining all components and lengths.
 
 ## Whole finite charts, marked fibers and generic norms
 

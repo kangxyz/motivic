@@ -62,11 +62,16 @@ theorem fieldBaseChangeTargetProjection_fst :
         A.fieldBaseChangeSupportToOriginal φ ≫ A.targetProjection :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeTargetProjection_snd :
     A.fieldBaseChangeTargetProjection φ ≫
       ((SmoothSite.fieldBaseChange φ).obj Y).hom = A.fieldBaseChangeSupportHom φ :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeTargetProjection_snd_simp :
+    A.fieldBaseChangeTargetProjection φ ≫
+      (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))) = A.fieldBaseChangeSupportHom φ :=
+  fieldBaseChangeTargetProjection_snd φ A
 
 /-- The new whole product is literally the product of the two whole supports over `L`. -/
 abbrev fieldBaseChangeSupportProduct : Scheme.{u} :=

@@ -36,7 +36,7 @@ equations, without choosing new sections or frames.
 `MatchingPairExtension` takes the actual correspondences and four simultaneous
 action relations as inputs, preserving the correction sign. It constructs
 neither their geometric witnesses nor a curve-gluing theorem. See the
-[conditional whole-cylinder and middle-lift guide](../../../Cohomology/A1/Sheafification/README.md)
+[whole-cylinder and middle-lift guide](../../../Cohomology/A1/Sheafification/README.md)
 for its exact role, and [original actions](../Actions/README.md) for the distinct
 norm/principal/pencil interfaces.
 
@@ -69,13 +69,12 @@ retains their actual source/puncture restrictions to the native refined sites.
 `originalRefinedSource_representative_image` and
 `originalRefinedPuncture_representative_image` preserve the original
 sheafification-image equations, and `originalRefined_representatives_matching`
-compares the same two restrictions over the literal overlap. These statements
-construct no section of the image over the whole original cylinder. The
-[original E3 difference-zero, E5 and native refined-cover interfaces](../Actions/README.md)
-still need their common-witness binding to these original representatives,
-followed by the producer of `ModelWholeCylinderLifting`. The
-[difference-form middle-lift adapter](../../../Cohomology/A1/README.md) retains
-the cover and E2/E3-difference/E4/E5 relations as premises. Its additive
-implication and verification of a formal supplier do not supply those joins.
-Arbitrary-HI-presheaf sheafification-HI and its strict A1 consumer retain that
-OPEN boundary.
+compares the same two restrictions over the literal overlap. These restriction statements alone do not construct an image section over
+the whole cylinder. The [original-history action assembly](../Actions/README.md)
+now binds the actual E3/E5 suppliers and native cover to those same
+representatives. The [whole-cylinder producer](../../../Cohomology/A1/Sheafification/README.md)
+constructs `ModelWholeCylinderLifting P` from `P.IsA1Invariant` and derives HI
+of the actual Nisnevich sheafification over a field. With perfectness and
+ordinary HasExt it also gives strict ordinary cohomological invariance.
+The conditional middle-lift adapter remains usable with its explicit cover
+and signed simultaneous action relations.

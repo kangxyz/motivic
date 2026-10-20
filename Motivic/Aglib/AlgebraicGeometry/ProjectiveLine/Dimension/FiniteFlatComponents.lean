@@ -24,7 +24,8 @@ assumption is made. No relative-dimension predicate or fiber comparison is
 introduced here.
 
 Intended upstream module: `Aglib.AlgebraicGeometry.ProjectiveLine.Dimension.FiniteFlatComponents`.
-Standalone API; no current external import consumer.
+Current direct import consumer:
+`Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Dimension.FiberComponents`.
 The interfaces and exact hypotheses are given in the declarations below.
 -/
 

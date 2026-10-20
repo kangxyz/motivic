@@ -39,7 +39,7 @@ variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   (B : FiniteCorrespondenceGenerator Y.hom Z.hom)
 
 /-- The whole support's ambient inclusion retains its literal new target coordinate. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeInclusion_snd :
     A.fieldBaseChangeInclusion φ ≫
       pullback.snd ((SmoothSite.fieldBaseChange φ).obj X).hom
@@ -60,6 +60,13 @@ theorem fieldBaseChangeInclusion_snd :
       fieldBaseChangeAmbientInclusion_snd]
     exact (A.fieldBaseChangeTargetProjection_snd φ).symm
 
+@[reassoc (attr := simp)] theorem fieldBaseChangeInclusion_snd_simp :
+    A.fieldBaseChangeInclusion φ ≫
+      pullback.snd (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))) =
+      A.fieldBaseChangeTargetProjection φ :=
+  fieldBaseChangeInclusion_snd φ A
+
 /-- The original reduced component and its actual closed image are canonically isomorphic. -/
 def fieldBaseChangeComponentSchemeIso (a : genericPoints (A.fieldBaseChangeSupport φ)) :
     (IntegralClosedSubscheme.pointClosure a.1).val.subscheme ≅
@@ -75,7 +82,7 @@ theorem fieldBaseChangeComponentSchemeIso_hom_inclusion
         (IntegralClosedSubscheme.pointClosure a.1).val.subschemeι ≫ A.fieldBaseChangeInclusion φ :=
   Scheme.Hom.toImage_imageι _
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeComponentSchemeIso_hom_projection
     (a : genericPoints (A.fieldBaseChangeSupport φ)) :
     (A.fieldBaseChangeComponentSchemeIso φ a).hom ≫
@@ -85,7 +92,20 @@ theorem fieldBaseChangeComponentSchemeIso_hom_projection
   change _ ≫ (A.fieldBaseChangeComponentGenerator φ a).inclusion ≫ _ = _
   rw [fieldBaseChangeComponentSchemeIso_hom_inclusion_assoc, fieldBaseChangeInclusion_fst]
 
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp)] theorem fieldBaseChangeComponentSchemeIso_hom_projection_simp
+    (a : genericPoints (A.fieldBaseChangeSupport φ)) :
+    (A.fieldBaseChangeComponentSchemeIso φ a).hom ≫
+      @FiniteCorrespondenceGenerator.projection (Spec (.of L))
+          ((SmoothSite.fieldBaseChange φ).obj X).left
+          ((SmoothSite.fieldBaseChange φ).obj Y).left
+          (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))
+          (A.fieldBaseChangeComponentGenerator φ a) =
+        (IntegralClosedSubscheme.pointClosure a.1).val.subschemeι ≫
+          A.fieldBaseChangeProjection φ :=
+  fieldBaseChangeComponentSchemeIso_hom_projection φ A a
+
+@[reassoc]
 theorem fieldBaseChangeComponentSchemeIso_hom_targetProjection
     (a : genericPoints (A.fieldBaseChangeSupport φ)) :
     (A.fieldBaseChangeComponentSchemeIso φ a).hom ≫
@@ -94,6 +114,19 @@ theorem fieldBaseChangeComponentSchemeIso_hom_targetProjection
           A.fieldBaseChangeTargetProjection φ := by
   change _ ≫ (A.fieldBaseChangeComponentGenerator φ a).inclusion ≫ _ = _
   rw [fieldBaseChangeComponentSchemeIso_hom_inclusion_assoc, fieldBaseChangeInclusion_snd]
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeComponentSchemeIso_hom_targetProjection_simp
+    (a : genericPoints (A.fieldBaseChangeSupport φ)) :
+    (A.fieldBaseChangeComponentSchemeIso φ a).hom ≫
+      @FiniteCorrespondenceGenerator.targetProjection (Spec (.of L))
+          ((SmoothSite.fieldBaseChange φ).obj X).left
+          ((SmoothSite.fieldBaseChange φ).obj Y).left
+          (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))
+          (A.fieldBaseChangeComponentGenerator φ a) =
+        (IntegralClosedSubscheme.pointClosure a.1).val.subschemeι ≫
+          A.fieldBaseChangeTargetProjection φ :=
+  fieldBaseChangeComponentSchemeIso_hom_targetProjection φ A a
 
 /-- The actual generator support embeds back into the whole pulled-back support. -/
 def fieldBaseChangeComponentToWhole (a : genericPoints (A.fieldBaseChangeSupport φ)) :
@@ -162,7 +195,7 @@ instance fieldBaseChangeGeneratorPairInclusion_isClosedImmersion :
   unfold fieldBaseChangeGeneratorPairInclusion
   infer_instance
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeComponentPairMap_fst :
     A.fieldBaseChangeComponentPairMap φ B a b ≫
       pullback.fst
@@ -177,7 +210,31 @@ theorem fieldBaseChangeComponentPairMap_fst :
           B.fieldBaseChangeSupportHom φ) ≫ (A.fieldBaseChangeComponentSchemeIso φ a).hom :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp)] theorem fieldBaseChangeComponentPairMap_fst_simp :
+    A.fieldBaseChangeComponentPairMap φ B a b ≫
+      pullback.fst
+        (@FiniteCorrespondenceGenerator.targetProjection (Spec (.of L))
+          ((SmoothSite.fieldBaseChange φ).obj X).left
+          ((SmoothSite.fieldBaseChange φ).obj Y).left
+          (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))
+          (A.fieldBaseChangeComponentGenerator φ a) ≫
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+        (@FiniteCorrespondenceGenerator.projection (Spec (.of L))
+          ((SmoothSite.fieldBaseChange φ).obj Y).left
+          ((SmoothSite.fieldBaseChange φ).obj Z).left
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Z.hom (Spec.map (CommRingCat.ofHom φ)))
+          (B.fieldBaseChangeComponentGenerator φ b) ≫
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))) =
+      pullback.fst
+        ((IntegralClosedSubscheme.pointClosure a.1).val.subschemeι ≫
+          A.fieldBaseChangeSupportHom φ)
+        ((IntegralClosedSubscheme.pointClosure b.1).val.subschemeι ≫
+          B.fieldBaseChangeSupportHom φ) ≫ (A.fieldBaseChangeComponentSchemeIso φ a).hom :=
+  fieldBaseChangeComponentPairMap_fst φ A B a b
+
+@[reassoc]
 theorem fieldBaseChangeComponentPairMap_snd :
     A.fieldBaseChangeComponentPairMap φ B a b ≫
       pullback.snd
@@ -191,6 +248,30 @@ theorem fieldBaseChangeComponentPairMap_snd :
         ((IntegralClosedSubscheme.pointClosure b.1).val.subschemeι ≫
           B.fieldBaseChangeSupportHom φ) ≫ (B.fieldBaseChangeComponentSchemeIso φ b).hom :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeComponentPairMap_snd_simp :
+    A.fieldBaseChangeComponentPairMap φ B a b ≫
+      pullback.snd
+        (@FiniteCorrespondenceGenerator.targetProjection (Spec (.of L))
+          ((SmoothSite.fieldBaseChange φ).obj X).left
+          ((SmoothSite.fieldBaseChange φ).obj Y).left
+          (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))
+          (A.fieldBaseChangeComponentGenerator φ a) ≫
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+        (@FiniteCorrespondenceGenerator.projection (Spec (.of L))
+          ((SmoothSite.fieldBaseChange φ).obj Y).left
+          ((SmoothSite.fieldBaseChange φ).obj Z).left
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Z.hom (Spec.map (CommRingCat.ofHom φ)))
+          (B.fieldBaseChangeComponentGenerator φ b) ≫
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ)))) =
+      pullback.snd
+        ((IntegralClosedSubscheme.pointClosure a.1).val.subschemeι ≫
+          A.fieldBaseChangeSupportHom φ)
+        ((IntegralClosedSubscheme.pointClosure b.1).val.subschemeι ≫
+          B.fieldBaseChangeSupportHom φ) ≫ (B.fieldBaseChangeComponentSchemeIso φ b).hom :=
+  fieldBaseChangeComponentPairMap_snd φ A B a b
 
 @[reassoc (attr := simp)]
 theorem fieldBaseChangeGeneratorPairInclusion_fst :

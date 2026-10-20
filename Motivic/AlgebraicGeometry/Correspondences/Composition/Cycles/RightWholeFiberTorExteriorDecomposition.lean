@@ -23,7 +23,8 @@ original G,H point closure, pushed by its actual closed inclusion. All original
 labels and exterior branches remain, including disconnected and empty cases.
 There is no image-degree, remaining-diagonal, or associativity claim here.
 
-Source-only candidate: no compilation, diagnostic success, or acceptance claimed.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

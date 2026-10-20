@@ -36,6 +36,7 @@ open WeightTwoSymbols WeightTwoPolynomialTransfer WeightTwoCorestriction
 
 variable {k : Type u} [Field k]
 
+/-- The field structure on `R ⧸ q.asIdeal` supplied by maximality of `q`. -/
 local instance quotientField {R : Type u} [CommRing R] (q : MaximalSpectrum R) :
     Field (R ⧸ q.asIdeal) := Ideal.Quotient.field q.asIdeal
 

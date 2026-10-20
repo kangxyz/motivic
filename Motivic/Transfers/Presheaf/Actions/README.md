@@ -52,11 +52,11 @@ and its zero/one graph endpoints give the null action; no sheaf condition or
 HI of sheafification is assumed. The open sibling preserves the same original
 open, section and canonical function-field germ.
 
-These original-presheaf actions do not construct the simultaneous four actions
-on the [actual unit image](../Sheafification/README.md), their common geometric
-witnesses, or the input of the [conditional A1 assembly](../../../Cohomology/A1/Sheafification/README.md).
-The latter guide owns the open whole-cylinder boundary. General norm geometry
-and zero-cycle maps have their [candidate owners](../../../Aglib/AlgebraicGeometry/Morphisms/Finite/README.md).
+The principal-action leaves supply individual relations. The original-history
+assembly below joins them on the [actual unit image](../Sheafification/README.md)
+using the same geometric witnesses. The [A1 sheafification guide](../../../Cohomology/A1/Sheafification/README.md)
+owns the resulting whole-cylinder producer. General norm geometry and zero-cycle
+maps have their [candidate owners](../../../Aglib/AlgebraicGeometry/Morphisms/Finite/README.md).
 
 ## Native R3/R5 principal actions from fixed section records
 
@@ -181,25 +181,29 @@ coverage is recorded separately in
 [provenance](../../../../docs/provenance/normalization-recovery-20261019/README.md)
 under every displayed premise.
 
-## Refined covers and the remaining original-goal joins
+## Refined covers and the original-history joins
 
 [Components/NisnevichImage](Components/NisnevichImage.lean) detects transfer
 equality on a given Nisnevich or open cover.
 [NativeOriginalComponentActions](Pencils/NativeOriginalComponentActions.lean)
-uses the actual native component cover for that detection.
-[NativeOriginalRefinedCover](Norm/NativeRefinement/NativeOriginalRefinedCover.lean)
-retains the original source/puncture arrows, restriction squares, coefficient
-field lifting and whole-cylinder coordinates for its actual cover interface.
-The different legacy `OriginalRefinedCover` and `OriginalNativeFieldCompatibility`
-providers are deferred and absent from the admitted selection. The unused
-Lambda compatibility shim is omitted, and the expanded native E3 lambda
-endpoint and same-witness master are not supplied by this selection.
+uses the actual native component cover for that detection. The older individual
+refined-cover APIs retain their displayed coordinates and restriction premises.
 
-The [difference-form middle-lift adapter](../../../Cohomology/A1/README.md)
-retains an actual cover, E2/E3-difference/E4/E5 relations and original matching
-representatives as inputs. Its generic additive implication does not identify
-the admitted suppliers' inputs with one common geometric and representative
-choice. That actual same-witness transport and the producer of
-`ModelWholeCylinderLifting` remain open. Arbitrary original HI-presheaf
-sheafification/strict A1 remains OPEN; the perfect-field result for already-HI
-transfer sheaves has its distinct unchanged boundary.
+[OriginalHistory](Norm/NativeRefinement/OriginalHistory.lean) binds the actual
+source and target suppliers and the raw E3 difference to one normalization
+history. [OriginalHistoryMiddleRelations](Pencils/OriginalHistoryMiddleRelations.lean)
+then proves the simultaneous image-action relations on those same witnesses.
+[OriginalHistoryLine](Norm/NativeRefinement/OriginalHistoryLine.lean) and
+[OriginalHistoryRestrictions](Norm/NativeRefinement/OriginalHistoryRestrictions.lean)
+construct the native-owned cover and original restriction squares for the same
+line. The host lifting assembly consumes them with the original matching
+representatives, preserving the E3 difference sign and every graph/unit map.
+
+The [difference-form middle-lift adapter](../../../Cohomology/A1/Sheafification/README.md)
+continues to accept explicit cover and E2/E3-difference/E4/E5 relations. The
+original-history producer now discharges those inputs for an original HI
+presheaf, yielding `modelWholeCylinderLifting_of_isA1Invariant` and actual
+sheafification HI. Perfectness and ordinary HasExt give strict invariance in
+all degrees; nonperfect strict invariance remains outside this result.
+Superseded external comparison attempts and diagnostics are preserved in the
+[integration recovery archive](../../../../docs/provenance/hi-presheaf-sheafification-20261020/README.md).

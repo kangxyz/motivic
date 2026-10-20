@@ -17,9 +17,12 @@ vertical, so ambient smoothness and properness alone do not prove finiteness.
 
 The correspondence consumer is
 `Motivic.AlgebraicGeometry.Correspondences.Endpoints.Cartier.Divisor`. It retains
-boundary avoidance and the whole original divisor scheme. Standard-triple
-existence, line-bundle splitting, relative Picard comparison, and A¹-homotopies
-are separate unproved consumers, not hypotheses disguised as conclusions here.
+boundary avoidance and the whole original divisor scheme. This leaf supplies
+finiteness and finite local freeness. The
+[relative-curve](../RelativeCurve/README.md) and
+[normalization](../Normalization/README.md) families own the separate boundary
+frames and fixed-witness geometry; relative Picard comparisons and host
+A¹-homotopies require their own interfaces.
 
 ## Original graph and boundary frames
 

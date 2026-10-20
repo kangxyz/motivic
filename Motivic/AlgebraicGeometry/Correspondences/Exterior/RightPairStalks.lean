@@ -132,7 +132,7 @@ def correspondenceSecondDiagonalRightPairProjection : correspondenceSecondDiagon
     simp [correspondenceSixfoldSecondMiddlePair, pullback.map, correspondenceAmbientTarget]
 
 /-- The original Z coordinate is unchanged on the second diagonal. -/
-@[reassoc (attr := simp)] theorem correspondenceSecondDiagonalRightPairProjection_middle :
+@[reassoc] theorem correspondenceSecondDiagonalRightPairProjection_middle :
     correspondenceSecondDiagonalRightPairProjection f g h i ≫
       correspondenceTripleMiddle g h i =
     pullback.fst (correspondenceAmbientTarget f g h) (pullback.fst h i) ≫

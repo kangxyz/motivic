@@ -6,9 +6,12 @@
 | `Motivic.Cohomology.Diagonal.MilnorEquivalence` | Original Milnor symbol equivalence |
 | `Motivic.Cohomology.Diagonal.MilnorEquivalenceNaturality` | Actual field-map naturality |
 
-This family compares the original groups `Motivic.motivicCohomology k q q X`
-with canonical Milnor symbols in the stated diagonal setting. Characteristic-zero
-and ordinary derived-category hypotheses remain explicit. The comparison
+For `k : Type u`, `[Field k]`, `[CharZero k]` and `q : ℕ`, the equivalence
+`Motivic.DiagonalMilnorEquivalence.motivicEquiv` compares `MilnorK.K k q` with
+the original group `Motivic.motivicCohomology k q q (SmoothSite.base (Spec (.of k)))`.
+The smooth-site argument is the base object `Spec k`. Ordinary
+`HasDerivedCategory.{w}` for Nisnevich sheaves valued in `AddCommGrpCat.{u + 1}`
+remains explicit. The comparison
 consumes the current [Suslin–Voevodsky model](../SuslinVoevodsky/README.md)
 and independent Aglib's `MilnorK.K k q`; it does not define either object.
 

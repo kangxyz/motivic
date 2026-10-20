@@ -70,7 +70,7 @@ theorem toPresheaf_representable_obj (X : Cor k) (Y : SmoothSite (Spec (.of k)))
       AddCommGrpCat.of (FiniteCorrespondence Y.hom X.toSmoothSite.hom) := rfl
 
 /-- Ordinary restriction on a representable is precomposition by the actual graph cycle. -/
-@[simp]
+@[simp↓]
 theorem toPresheaf_representable_map_apply (X : Cor k)
     {Y Z : SmoothSite (Spec (.of k))} (f : Y ⟶ Z) (α : Cor.mk Z ⟶ X) :
     ((toPresheaf k).obj ((representable k).obj X)).map f.op α =

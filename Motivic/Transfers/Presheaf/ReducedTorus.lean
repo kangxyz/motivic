@@ -54,14 +54,14 @@ theorem representableLarge_sections (X Y : Cor k) :
       AddCommGrpCat.of (ULift.{u + 1} (Y ⟶ X)) := rfl
 
 /-- Every signed transfer remains literal precomposition of actual cycles. -/
-@[simp]
+@[simp↓]
 theorem representableLarge_transfer_apply {X Y Z : Cor k}
     (α : Y ⟶ Z) (β : Z ⟶ X) :
     transfer ((representableLarge k).obj X) α (ULift.up β) =
       ULift.up (α ≫ β) := rfl
 
 /-- Maps of representing objects remain literal postcomposition of cycles. -/
-@[simp]
+@[simp↓]
 theorem representableLarge_map_app_apply {X Y Z : Cor k}
     (α : X ⟶ Y) (β : Z ⟶ X) :
     ((representableLarge k).map α).hom.app (op Z) (ULift.up β) =
@@ -80,12 +80,29 @@ def torusIdentityAxis : (q : ℕ) → Fin q →
       ((Cor.graphFunctor k).map (SmoothSite.torusInsertOne (.of k) q i))
 
 /-- An identity axis is literally postcomposition with the actual graph cycle. -/
-@[simp]
 theorem torusIdentityAxis_app_apply (q : ℕ) (i : Fin (q + 1)) (X : Cor k)
     (α : X ⟶ Cor.mk (SmoothSite.torusPower (.of k) q)) :
     (torusIdentityAxis k (q + 1) i).hom.app (op X) (ULift.up α) =
       ULift.up (α ≫ (Cor.graphFunctor k).map
         (SmoothSite.torusInsertOne (.of k) q i)) := rfl
+
+@[simp] theorem torusIdentityAxis_app_apply_simp
+    (q : ℕ) (i : Fin (q + 1)) (X : Cor k)
+    (α : X ⟶ Cor.mk (SmoothSite.torusPower (.of k) q)) :
+    ConcreteCategory.hom
+      (X := AddCommGrpCat.of (ULift.{u + 1}
+        (FiniteCorrespondence X.toSmoothSite.hom (SmoothSite.torusPower (.of k) q).hom)))
+      (Y := AddCommGrpCat.of (ULift.{u + 1}
+        (FiniteCorrespondence X.toSmoothSite.hom
+          (pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.torusPower (.of k) q).hom ≫
+              Scheme.PolynomialLaurent.laurentProjection (.of k)))))
+      ((torusIdentityAxis k (q + 1) i).hom.app (op X))
+      (@ULift.up
+        (FiniteCorrespondence X.toSmoothSite.hom (SmoothSite.torusPower (.of k) q).hom) α) =
+      ULift.up (α ≫ (Cor.graphFunctor k).map
+        (SmoothSite.torusInsertOne (.of k) q i)) :=
+  torusIdentityAxis_app_apply k q i X α
 
 instance torus_hasBiproduct (q : ℕ) :
     HasBiproduct (fun _ : Fin q => (torusRepresentable k (q - 1)).obj) :=

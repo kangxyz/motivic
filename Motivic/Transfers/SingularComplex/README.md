@@ -18,6 +18,7 @@ complex so chain degree `r` in weight `q` occupies cochain degree `q-r`, with
 the original differential and shift signs. See
 [Suslin–Voevodsky cohomology](../../Cohomology/SuslinVoevodsky/README.md).
 
-Use exact lower leaves for implementation work. This construction does not
-supply a higher-Chow, motives or spectrum comparison, nor general
-HI-presheaf sheafification. Model comparisons retain separate maps and proofs.
+Use exact lower leaves for implementation work. The separate
+[HI-presheaf sheafification theorem](../../Cohomology/A1/Sheafification/README.md)
+proves HI of the actual sheafification from original coefficient HI. Higher-Chow,
+motives and spectrum comparisons retain their separate maps and proofs.

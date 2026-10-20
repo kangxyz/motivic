@@ -23,7 +23,7 @@ local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 
   hasExt_of_enoughInjectives _
 
 /-- The original Ext group is computed by actual right-derived neighborhood sections. -/
-def original_ordinary_sections
+def originalOrdinarySections
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) (n : ℕ) :
     _root_.CategoryTheory.Sheaf.LargeCohomology.H.{u + 1, u + 1, u, u + 1}
       (nisnevichTopology T) F n ((baseChange b).obj V) ≃+
@@ -32,7 +32,7 @@ def original_ordinary_sections
 
 open Lean in
 run_cmd do
-  for name in #[``original_ordinary_sections,
+  for name in #[``originalOrdinarySections,
       ``CategoryTheory.InjectiveResolution.extRightDerivedAddEquiv,
       ``CategoryTheory.InjectiveResolution.extRightDerivedAddEquiv_symm_hom,
       ``CategoryTheory.InjectiveResolution.extRightDerivedAddEquiv_naturality_left,

@@ -31,7 +31,7 @@ namespace MotivicTest.WeightOneBoundaryNorm
 variable {k : Type u} [Field k]
 
 /-- Raw singular degree zero is identified with the actual base object. -/
-def actual_degree_zero : Cor.simplexProduct (WeightOnePointNorm.point k) 0 ≅
+def actualDegreeZero : Cor.simplexProduct (WeightOnePointNorm.point k) 0 ≅
     WeightOnePointNorm.point k := zeroProductIso k
 
 /-- The selected actual first barycentric coordinate is the polynomial parameter. -/
@@ -61,7 +61,7 @@ theorem actual_support_free (Z : Generator k) : Module.Free k[X] (coordinateRing
   inferInstance
 
 /-- The whole geometric fiber is identified with the tensor fiber as a base-field algebra. -/
-def actual_fiber_algebra (Z : Generator k) (a : k) : Γ(fiber Z a, ⊤) ≃ₐ[k]
+def actualFiberAlgebra (Z : Generator k) (a : k) : Γ(fiber Z a, ⊤) ≃ₐ[k]
     Algebra.PolynomialFiber.Fiber (coordinateRing Z) a := fiberGlobalAlgEquiv Z a
 
 /-- This identification preserves the literal Laurent coordinate. -/
@@ -158,7 +158,7 @@ run_cmd do
       `Motivic.WeightOneBoundaryNorm.degreeZeroNorm,
       `Motivic.WeightOneBoundaryNorm.degreeZeroNorm_quotient,
       `Motivic.WeightOneBoundaryNorm.degreeZeroNorm_face_quotient,
-      `MotivicTest.WeightOneBoundaryNorm.actual_degree_zero,
+      `MotivicTest.WeightOneBoundaryNorm.actualDegreeZero,
       `MotivicTest.WeightOneBoundaryNorm.simplex_coordinate,
       `MotivicTest.WeightOneBoundaryNorm.actual_face_zero,
       `MotivicTest.WeightOneBoundaryNorm.actual_face_one,
@@ -166,7 +166,7 @@ run_cmd do
       `MotivicTest.WeightOneBoundaryNorm.actual_support_finite,
       `MotivicTest.WeightOneBoundaryNorm.actual_support_torsionFree,
       `MotivicTest.WeightOneBoundaryNorm.actual_support_free,
-      `MotivicTest.WeightOneBoundaryNorm.actual_fiber_algebra,
+      `MotivicTest.WeightOneBoundaryNorm.actualFiberAlgebra,
       `MotivicTest.WeightOneBoundaryNorm.actual_fiber_coordinate,
       `MotivicTest.WeightOneBoundaryNorm.actual_endpoint_norms,
       `MotivicTest.WeightOneBoundaryNorm.actual_endpoint_closed,

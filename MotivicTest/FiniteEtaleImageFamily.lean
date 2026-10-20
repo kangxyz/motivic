@@ -16,12 +16,12 @@ namespace MotivicTest.FiniteEtaleImageFamily
 variable {I : Type u} {X : Scheme.{u}} (S : I → Scheme.{u}) (b : ∀ i, S i ⟶ X)
 
 /-- The right adjoint is the actual product of ordinary direct images. -/
-def actual_family_adjunction : familyInverseImage S b ⊣ productDirectImage S b :=
+def actualFamilyAdjunction : familyInverseImage S b ⊣ productDirectImage S b :=
   familyImageAdjunction S b
 
 open Lean in
 run_cmd do
-  for name in #[``actual_family_adjunction,
+  for name in #[``actualFamilyAdjunction,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.familyImageHomEquiv,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.familyImageAdjunction] do
     for dependency in ← collectAxioms name do

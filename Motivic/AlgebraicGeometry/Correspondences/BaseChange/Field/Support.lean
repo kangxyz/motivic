@@ -89,19 +89,31 @@ def fieldBaseChangeAmbientInclusion : A.fieldBaseChangeSupport φ ⟶
         Category.assoc] using (pullback.condition (f := A.projection ≫ X.hom)
           (g := Spec.map (CommRingCat.ofHom φ))))
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeAmbientInclusion_fst :
     A.fieldBaseChangeAmbientInclusion φ ≫
       pullback.fst (SmoothSite.product X Y).hom (Spec.map (CommRingCat.ofHom φ)) =
         pullback.fst (A.projection ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) ≫ A.inclusion :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp)] theorem fieldBaseChangeAmbientInclusion_fst_simp :
+    A.fieldBaseChangeAmbientInclusion φ ≫
+      pullback.fst (pullback.fst X.hom Y.hom ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) =
+        pullback.fst (A.projection ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) ≫ A.inclusion :=
+  fieldBaseChangeAmbientInclusion_fst φ A
+
+@[reassoc]
 theorem fieldBaseChangeAmbientInclusion_snd :
     A.fieldBaseChangeAmbientInclusion φ ≫
       pullback.snd (SmoothSite.product X Y).hom (Spec.map (CommRingCat.ofHom φ)) =
         pullback.snd (A.projection ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeAmbientInclusion_snd_simp :
+    A.fieldBaseChangeAmbientInclusion φ ≫
+      pullback.snd (pullback.fst X.hom Y.hom ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) =
+        pullback.snd (A.projection ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) :=
+  fieldBaseChangeAmbientInclusion_snd φ A
 
 /-- The full support immersion is pulled back, without replacing its ideal by its radical. -/
 theorem fieldBaseChangeAmbientInclusion_isPullback :
@@ -133,7 +145,7 @@ instance fieldBaseChangeInclusion_isClosedImmersion :
   infer_instance
 
 /-- The new ambient inclusion has exactly the original base-changed source projection. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeInclusion_fst :
     A.fieldBaseChangeInclusion φ ≫
       pullback.fst ((SmoothSite.fieldBaseChange φ).obj X).hom
@@ -152,6 +164,12 @@ theorem fieldBaseChangeInclusion_fst :
     rfl
   · simp only [Category.assoc, SmoothSite.baseChange_map_snd,
       fieldBaseChangeAmbientInclusion_snd, fieldBaseChangeProjection_snd]
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeInclusion_fst_simp :
+    A.fieldBaseChangeInclusion φ ≫
+      pullback.fst (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))) = A.fieldBaseChangeProjection φ :=
+  fieldBaseChangeInclusion_fst φ A
 
 /-- Noetherianity comes from the new smooth source, not from finite type of `L/k`. -/
 instance fieldBaseChangeSupport_isNoetherian : IsNoetherian (A.fieldBaseChangeSupport φ) :=

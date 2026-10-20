@@ -222,7 +222,7 @@ instance exteriorIncidenceComponentAmbientMap_isFinite :
   unfold exteriorIncidenceComponentAmbientMap
   infer_instance
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIncidenceComponentAmbientMap_source_fst :
     A.exteriorIncidenceComponentAmbientMap B T x ≫
         pullback.fst (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -238,6 +238,16 @@ theorem exteriorIncidenceComponentAmbientMap_source_fst :
     incidenceMap_fst, exteriorIncidenceComponentSourceIso_fst_assoc]
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceComponentAmbientMap_source_fst_simp :
+    A.exteriorIncidenceComponentAmbientMap B T x ≫
+        pullback.fst (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.fst X.hom T.hom =
+      pullback.fst ((pointClosure x.1).val.subschemeι ≫
+        (A.incidenceSource B ≫ X.hom)) T.hom ≫
+          (pointClosure x.1).val.subschemeι ≫ A.incidenceSource B :=
+  exteriorIncidenceComponentAmbientMap_source_fst A B T x
+
+@[reassoc]
 theorem exteriorIncidenceComponentAmbientMap_source_snd :
     A.exteriorIncidenceComponentAmbientMap B T x ≫
         pullback.fst (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -250,6 +260,15 @@ theorem exteriorIncidenceComponentAmbientMap_source_snd :
     ExteriorPointClosure.map_snd, exteriorIncidenceComponentSourceIso_snd]
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceComponentAmbientMap_source_snd_simp :
+    A.exteriorIncidenceComponentAmbientMap B T x ≫
+        pullback.fst (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.snd X.hom T.hom =
+      pullback.snd ((pointClosure x.1).val.subschemeι ≫
+        (A.incidenceSource B ≫ X.hom)) T.hom :=
+  exteriorIncidenceComponentAmbientMap_source_snd A B T x
+
+@[reassoc]
 theorem exteriorIncidenceComponentAmbientMap_target_fst :
     A.exteriorIncidenceComponentAmbientMap B T x ≫
         pullback.snd (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -265,6 +284,16 @@ theorem exteriorIncidenceComponentAmbientMap_target_fst :
     incidenceMap_snd, exteriorIncidenceComponentSourceIso_fst_assoc]
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceComponentAmbientMap_target_fst_simp :
+    A.exteriorIncidenceComponentAmbientMap B T x ≫
+        pullback.snd (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.fst Z.hom T.hom =
+      pullback.fst ((pointClosure x.1).val.subschemeι ≫
+        (A.incidenceSource B ≫ X.hom)) T.hom ≫
+          (pointClosure x.1).val.subschemeι ≫ A.incidenceTarget B :=
+  exteriorIncidenceComponentAmbientMap_target_fst A B T x
+
+@[reassoc]
 theorem exteriorIncidenceComponentAmbientMap_target_snd :
     A.exteriorIncidenceComponentAmbientMap B T x ≫
         pullback.snd (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -275,6 +304,15 @@ theorem exteriorIncidenceComponentAmbientMap_target_snd :
     Category.assoc, exteriorIdentityInclusion_snd_assoc,
     exteriorIncidenceComponentTargetIso_target_snd,
     ExteriorPointClosure.map_snd, exteriorIncidenceComponentSourceIso_snd]
+
+@[reassoc (attr := simp)]
+theorem exteriorIncidenceComponentAmbientMap_target_snd_simp :
+    A.exteriorIncidenceComponentAmbientMap B T x ≫
+        pullback.snd (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.snd Z.hom T.hom =
+      pullback.snd ((pointClosure x.1).val.subschemeι ≫
+        (A.incidenceSource B ≫ X.hom)) T.hom :=
+  exteriorIncidenceComponentAmbientMap_target_snd A B T x
 
 variable [GeometricallyIntegral T.hom]
 
@@ -288,7 +326,7 @@ instance exteriorIncidenceAmbientMap_isFinite : IsFinite (A.exteriorIncidenceAmb
   unfold exteriorIncidenceAmbientMap
   infer_instance
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIncidenceAmbientMap_source_fst :
     A.exteriorIncidenceAmbientMap B T ≫
         pullback.fst (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -299,6 +337,14 @@ theorem exteriorIncidenceAmbientMap_source_fst :
   exact A.exteriorIdentityIncidenceIso_hom_source_fst B T
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceAmbientMap_source_fst_simp :
+    A.exteriorIncidenceAmbientMap B T ≫
+        pullback.fst (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.fst X.hom T.hom =
+      pullback.fst (A.incidenceSource B ≫ X.hom) T.hom ≫ A.incidenceSource B :=
+  exteriorIncidenceAmbientMap_source_fst A B T
+
+@[reassoc]
 theorem exteriorIncidenceAmbientMap_source_snd :
     A.exteriorIncidenceAmbientMap B T ≫
         pullback.fst (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -309,6 +355,14 @@ theorem exteriorIncidenceAmbientMap_source_snd :
   exact A.exteriorIdentityIncidenceIso_hom_source_snd B T
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceAmbientMap_source_snd_simp :
+    A.exteriorIncidenceAmbientMap B T ≫
+        pullback.fst (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.snd X.hom T.hom =
+      pullback.snd (A.incidenceSource B ≫ X.hom) T.hom :=
+  exteriorIncidenceAmbientMap_source_snd A B T
+
+@[reassoc]
 theorem exteriorIncidenceAmbientMap_target_fst :
     A.exteriorIncidenceAmbientMap B T ≫
         pullback.snd (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -319,6 +373,14 @@ theorem exteriorIncidenceAmbientMap_target_fst :
   exact A.exteriorIdentityIncidenceIso_hom_target_fst B T
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceAmbientMap_target_fst_simp :
+    A.exteriorIncidenceAmbientMap B T ≫
+        pullback.snd (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.fst Z.hom T.hom =
+      pullback.fst (A.incidenceSource B ≫ X.hom) T.hom ≫ A.incidenceTarget B :=
+  exteriorIncidenceAmbientMap_target_fst A B T
+
+@[reassoc]
 theorem exteriorIncidenceAmbientMap_target_snd :
     A.exteriorIncidenceAmbientMap B T ≫
         pullback.snd (SmoothSite.product X T).hom (SmoothSite.product Z T).hom ≫
@@ -327,6 +389,14 @@ theorem exteriorIncidenceAmbientMap_target_snd :
   dsimp only [exteriorIncidenceAmbientMap]
   rw [Category.assoc, incidenceMap_snd_assoc]
   exact A.exteriorIdentityIncidenceIso_hom_target_snd B T
+
+@[reassoc (attr := simp)]
+theorem exteriorIncidenceAmbientMap_target_snd_simp :
+    A.exteriorIncidenceAmbientMap B T ≫
+        pullback.snd (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Z.hom T.hom ≫ Z.hom) ≫
+          pullback.snd Z.hom T.hom =
+      pullback.snd (A.incidenceSource B ≫ X.hom) T.hom :=
+  exteriorIncidenceAmbientMap_target_snd A B T
 
 /-- Both routes preserve the original outer coordinates and the identical parameter. -/
 @[reassoc]

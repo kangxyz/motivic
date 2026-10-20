@@ -84,7 +84,7 @@ theorem cotangent_finrank_eq_trdeg_toNat
 
 /-- The native transcendence degree here is genuinely finite. -/
 theorem smooth_trdeg_lt_aleph0
-    (k R : Type u) [Field k] [CommRing R] [IsDomain R] [Algebra k R] [Smooth k R] :
+    (k R : Type u) [Field k] [CommRing R] [Algebra k R] [Smooth k R] :
     Algebra.trdeg k R < Cardinal.aleph0 :=
   trdeg_lt_aleph0_of_finiteType
 

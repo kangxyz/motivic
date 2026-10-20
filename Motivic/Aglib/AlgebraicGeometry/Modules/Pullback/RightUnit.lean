@@ -16,6 +16,7 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
 universe u
 namespace AlgebraicGeometry.Scheme.Modules
 
+/-- The canonical right-unit isomorphism for tensoring a module sheaf with the structure sheaf. -/
 def tensorSheafRightUnit (X : Scheme.{u}) (M : X.Modules) :
     tensorSheaf X M (SheafOfModules.unit X.ringCatSheaf) ≅ M :=
   (SheafOfModulesOfCommRing.tensorRightUnitIso X.sheaf).app M

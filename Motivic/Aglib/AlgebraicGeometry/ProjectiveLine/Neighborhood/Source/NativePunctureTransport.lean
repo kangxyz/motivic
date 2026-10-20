@@ -17,7 +17,8 @@ Intended upstream module:
 `Aglib.AlgebraicGeometry.ProjectiveLine.Neighborhood.Source.NativePunctureTransport`.
 
 The exact hypotheses are the section variables and declaration signatures below.
-This is a standalone API with no current direct import consumer.
+Current direct import consumer:
+`Normalization.Compactification.RelativeAffineLine.OriginalLocalizationHistory`.
 -/
 
 @[expose] public noncomputable section

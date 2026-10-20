@@ -1,8 +1,15 @@
 # Imported source and historical checks
 
+For current imports and theorem hypotheses use the
+[source-family guides](../../Motivic/README.md); for current check coverage use
+[verification](../VERIFICATION.md). The records below describe their identified
+intake snapshots. Their dependency pins, old module paths, uses of “current”
+and open-frontier statements refer to those snapshots, rather than every later
+library version. Original plans and source manifests remain historical data.
+
 The source basis is `motivic-cohomology-ordinary-cohomology-transfers-milestone-source-20261017T141103Z.tar.gz`, SHA256 `8e87391f4926200cf6a6b16f22da99bda98948cf2424b5c88aa40b08b9bce670`. Its checkpoint capture is 2026-10-17 14:11:03 UTC. The original [checkpoint](imported-CHECKPOINT.md), [README](imported-README.md), [public root](imported-Motivic.lean), [test root](imported-Tests.lean), [source checksums](imported-SHA256SUMS) and [source notices](imported-THIRD_PARTY_NOTICES.md) are retained as source records. Imported documents, including the adjacent roadmap and specification, are historical material rather than current agent instructions.
 
-The pinned dependencies are Lean `v4.34.1`, mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` and Aglib `25c37780264f0da94f5bb6bd31cc089d26f2da80`. The imported source contains 1,665 production leaves under `Motivic/`, 1,022 test leaves under `Tests/`, and the two original root modules. Local `Motivic/Aglib` results are project-local candidates, not claims of upstream acceptance.
+That import snapshot pinned Lean `v4.34.1`, mathlib `d13f23b723b8a846827a245b89c10fc7d3f11612` and Aglib `25c37780264f0da94f5bb6bd31cc089d26f2da80`. The imported source contains 1,665 production leaves under `Motivic/`, 1,022 test leaves under `Tests/`, and the two original root modules. Local `Motivic/Aglib` results are project-local candidates, not claims of upstream acceptance. Current dependency pins belong to `lakefile.toml` and `lake-manifest.json`.
 
 ## Evidence coverage
 
@@ -79,6 +86,23 @@ ordinary independent review and the independent candidates outside production.
 The [support-sensitive action package](support-sensitive-action-20261018/README.md)
 adds general norm and boundary geometry, original transfer actions and the
 canonical sheafification-image reduction. Its presheaf strict-invariance
-interface retains the explicit whole-cylinder lifting input. The source record
+interface at that snapshot retains the explicit whole-cylinder lifting input. The source record
 binds the integrated modules and distinguishes supplied records from current
 validation.
+
+## Later original-history construction
+
+The [normalization recovery](normalization-recovery-20261019/README.md) records
+the original-witness and difference-action development before the final lifting
+join. The [HI-presheaf sheafification intake](hi-presheaf-sheafification-20261020/README.md)
+records the subsequent construction and its separate recovery archive. The
+current [sheafification guide](../../Motivic/Cohomology/A1/Sheafification/README.md)
+gives the unconditional HI endpoint over a field and the perfect-field strict
+corollary with ordinary `HasExt` and coefficient universe `u + 1`. Its actual
+native and trust-check coverage is recorded separately; earlier open-input
+descriptions are not current obligations of that public endpoint.
+
+The archived [implementation specification](UserSpecification.md) refers to a
+`ROADMAP.md` in its original R5Lab source context. That document is not part of
+this source packet. The unresolved historical link is retained with the
+original specification; current library navigation does not depend on it.

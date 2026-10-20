@@ -23,7 +23,7 @@ namespace MotivicTest.SmoothSiteUnitSheafification
 variable (k : Type u) [Field k]
 
 /-- This consumer uses the original native singular sheaf complex in every degree. -/
-def actual_native_unit_homotopy_equiv :
+def actualNativeUnitHomotopyEquiv :
     HomotopyEquiv
       (sheafObj (nisnevichTopology (Spec (.of k)))
         (_root_.AlgebraicSimplex.cosimplicialSmoothSite k) (largeUnitsPresheaf (Spec (.of k))))
@@ -38,7 +38,7 @@ run_cmd do
       ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitUnderlying_d_app,
       ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitRawComplexIso,
       ``_root_.AlgebraicGeometry.Scheme.SmoothSite.unitSheafifiedSingularIso,
-          ``actual_native_unit_homotopy_equiv] do
+          ``actualNativeUnitHomotopyEquiv] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

@@ -18,7 +18,9 @@ complete standard-triple structure.
 
 Intended upstream module:
 `Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.CoefficientFlat`.
-Standalone API; no current external import consumer.
+Current direct import consumers:
+`Normalization.Compactification.RelativeAffineLine.CoefficientFiberDimension`,
+`Normalization.Compactification.RelativeAffineLine.TwoLocalizationGeometry`.
 The interfaces and exact hypotheses are given in the declarations below.
 -/
 

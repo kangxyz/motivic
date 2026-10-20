@@ -102,7 +102,7 @@ def torusMap (q : ℕ) : (target E q).left ⟶ (target k q).left :=
   (SmoothSite.torusPowerBaseChangeIso (CommRingCat.ofHom (algebraMap k E)) q).inv.left ≫
     pullback.fst (target k q).hom (Spec.map (CommRingCat.ofHom (algebraMap k E)))
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem ambientMap_snd (r q : ℕ) :
     ambientMap (k := k) (E := E) r q ≫
       pullback.snd (source k r).hom (target k q).hom =
@@ -127,6 +127,17 @@ theorem ambientMap_snd (r q : ℕ) :
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun f => f ≫ pullback.fst (target k q).hom φ) h').trans
       (Category.assoc _ _ _))
+
+@[reassoc (attr := simp)]
+theorem ambientMap_snd_simp (r q : ℕ) :
+    ambientMap (k := k) (E := E) r q ≫
+      pullback.snd
+        (pullback.fst (SmoothSite.base (Spec (.of k))).hom
+          (_root_.AlgebraicSimplex.smoothSiteObj k r).hom ≫
+          (SmoothSite.base (Spec (.of k))).hom)
+        (target k q).hom =
+      pullback.snd (source E r).hom (target E q).hom ≫ torusMap (k := k) (E := E) q :=
+  ambientMap_snd (k := k) (E := E) r q
 
 /-- Every target coordinate is the original Laurent coefficient projection. -/
 @[reassoc (attr := simp)]
@@ -156,7 +167,7 @@ theorem torusMap_projection (q : ℕ) :
     (MorphismProperty.Over.w
       (SmoothSite.torusPowerBaseChangeIso (CommRingCat.ofHom (algebraMap k E)) q).inv)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem sourceMap_projection (r : ℕ) :
     sourceMap (k := k) (E := E) r ≫ (source k r).hom =
       (source E r).hom ≫ Spec.map (CommRingCat.ofHom (algebraMap k E)) := by
@@ -164,6 +175,15 @@ theorem sourceMap_projection (r : ℕ) :
   rw [Category.assoc, pullback.condition, ← Category.assoc]
   exact congrArg (fun f => f ≫ Spec.map (CommRingCat.ofHom (algebraMap k E)))
     (MorphismProperty.Over.w (SmoothSite.baseSimplexFieldChangeIso (algebraMap k E) ⦋r⦌).inv)
+
+@[reassoc (attr := simp)]
+theorem sourceMap_projection_simp (r : ℕ) :
+    sourceMap (k := k) (E := E) r ≫
+      pullback.fst (SmoothSite.base (Spec (.of k))).hom
+        (_root_.AlgebraicSimplex.smoothSiteObj k r).hom ≫
+      (SmoothSite.base (Spec (.of k))).hom =
+      (source E r).hom ≫ Spec.map (CommRingCat.ofHom (algebraMap k E)) :=
+  sourceMap_projection (k := k) (E := E) r
 
 /-- The original two-coordinate point over the base, before taking its image. -/
 def scalarPoint (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2) :
@@ -176,17 +196,45 @@ def scalarPoint (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2) :
       change _ = 𝟙 _ ≫ _
       exact (Category.id_comp _).symm)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem scalarPoint_fst (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2) :
     scalarPoint (k := k) f ≫
       pullback.fst (SmoothSite.base (Spec (.of k))).hom (target k 2).hom =
         Spec.map (CommRingCat.ofHom (algebraMap k E)) := pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
+theorem scalarPoint_fst_simp (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2) :
+    scalarPoint (k := k) f ≫
+      pullback.fst (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      Spec.map (CommRingCat.ofHom (algebraMap k E)) :=
+  scalarPoint_fst (k := k) f
+
+@[reassoc]
 theorem scalarPoint_snd (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2) :
     scalarPoint (k := k) f ≫
       pullback.snd (SmoothSite.base (Spec (.of k))).hom (target k 2).hom =
         f.left ≫ torusMap (k := k) 2 := pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)]
+theorem scalarPoint_snd_simp (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2) :
+    scalarPoint (k := k) f ≫
+      pullback.snd (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      f.left ≫ torusMap (k := k) 2 :=
+  scalarPoint_snd (k := k) f
 
 variable [Module.Finite k E]
 
@@ -354,7 +402,7 @@ theorem pointAmbient_hom_ext {W : Scheme.{u}}
       exact (Category.assoc _ _ _).trans ((hc i).trans (Category.assoc _ _ _).symm)
 
 omit [Module.Finite k E] in
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem scalarPoint_coordinate (f : SmoothSite.base (Spec (.of E)) ⟶ target E 2)
     (i : Fin 2) : scalarPoint (k := k) f ≫
       pullback.snd (SmoothSite.base (Spec (.of k))).hom (target k 2).hom ≫
@@ -364,12 +412,23 @@ theorem scalarPoint_coordinate (f : SmoothSite.base (Spec (.of E)) ⟶ target E 
           (CommRingCat.ofHom (algebraMap k E))) := by
   rw [scalarPoint_snd_assoc, torusMap_coordinate]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem rationalPair_coordinate_left (F : Type u) [Field F] (a b : Fˣ) :
     (WeightTwoSymbols.rationalPair F a b).left ≫
       (SmoothSite.torusCoordinate (.of F) 2 0).left = (rationalTorusPoint F a).left :=
   congrArg (fun f => f.left) (SmoothSite.torusPowerLift_coordinate (.of F) 2
     ![rationalTorusPoint F a, rationalTorusPoint F b] 0)
+
+@[reassoc (attr := simp)]
+theorem rationalPair_coordinate_left_simp (F : Type u) [Field F] (a b : Fˣ) :
+    (WeightTwoSymbols.rationalPair F a b).left ≫
+      pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of F))
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of F))
+          (SmoothSite.base (Spec (.of F))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of F)) =
+      (rationalTorusPoint F a).left :=
+  rationalPair_coordinate_left F a b
 
 @[reassoc (attr := simp)]
 theorem rationalPair_coordinate_right (F : Type u) [Field F] (a b : Fˣ) :
@@ -378,7 +437,7 @@ theorem rationalPair_coordinate_right (F : Type u) [Field F] (a b : Fˣ) :
   congrArg (fun f => f.left) (SmoothSite.torusPowerLift_coordinate (.of F) 2
     ![rationalTorusPoint F a, rationalTorusPoint F b] 1)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem prependUnit_coordinate_left (F : Type u) [Field F] (a : Fˣ) :
     (WeightTwoSymbols.prependUnit F a).left ≫
       (SmoothSite.torusCoordinate (.of F) 2 0).left =
@@ -386,6 +445,17 @@ theorem prependUnit_coordinate_left (F : Type u) [Field F] (a : Fˣ) :
   congrArg (fun f => f.left) (SmoothSite.torusPowerLift_coordinate (.of F) 2
     ![SmoothSite.torusPowerToBase (.of F) 1 ≫ rationalTorusPoint F a,
       SmoothSite.torusCoordinate (.of F) 1 0] 0)
+
+@[reassoc (attr := simp)]
+theorem prependUnit_coordinate_left_simp (F : Type u) [Field F] (a : Fˣ) :
+    (WeightTwoSymbols.prependUnit F a).left ≫
+      pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of F))
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of F))
+          (SmoothSite.base (Spec (.of F))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of F)) =
+      (target F 1).hom ≫ (rationalTorusPoint F a).left :=
+  prependUnit_coordinate_left F a
 
 @[reassoc (attr := simp)]
 theorem prependUnit_coordinate_right (F : Type u) [Field F] (a : Fˣ) :
@@ -396,7 +466,7 @@ theorem prependUnit_coordinate_right (F : Type u) [Field F] (a : Fˣ) :
     ![SmoothSite.torusPowerToBase (.of F) 1 ≫ rationalTorusPoint F a,
       SmoothSite.torusCoordinate (.of F) 1 0] 1)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem appendUnit_coordinate_left (F : Type u) [Field F] (a : Fˣ) :
     (WeightTwoSymbols.appendUnit F a).left ≫
       (SmoothSite.torusCoordinate (.of F) 2 0).left =
@@ -404,6 +474,17 @@ theorem appendUnit_coordinate_left (F : Type u) [Field F] (a : Fˣ) :
   congrArg (fun f => f.left) (SmoothSite.torusPowerLift_coordinate (.of F) 2
     ![SmoothSite.torusCoordinate (.of F) 1 0,
       SmoothSite.torusPowerToBase (.of F) 1 ≫ rationalTorusPoint F a] 0)
+
+@[reassoc (attr := simp)]
+theorem appendUnit_coordinate_left_simp (F : Type u) [Field F] (a : Fˣ) :
+    (WeightTwoSymbols.appendUnit F a).left ≫
+      pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of F))
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of F))
+          (SmoothSite.base (Spec (.of F))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of F)) =
+      (SmoothSite.torusCoordinate (.of F) 1 0).left :=
+  appendUnit_coordinate_left F a
 
 @[reassoc (attr := simp)]
 theorem appendUnit_coordinate_right (F : Type u) [Field F] (a : Fˣ) :
@@ -415,7 +496,7 @@ theorem appendUnit_coordinate_right (F : Type u) [Field F] (a : Fˣ) :
       SmoothSite.torusPowerToBase (.of F) 1 ≫ rationalTorusPoint F a] 1)
 
 omit [Module.Finite k E] in
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp↓)]
 theorem unitPoint_snd_projection (b : Eˣ) :
     WeightOneFinitePointNorm.unitPoint (k := k) b ≫
       pullback.snd (SmoothSite.base (Spec (.of k))).hom (target k 1).hom ≫
@@ -424,13 +505,27 @@ theorem unitPoint_snd_projection (b : Eˣ) :
   exact Category.comp_id _
 
 omit [Module.Finite k E] in
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem unitPoint_coordinate (b : Eˣ) :
     WeightOneFinitePointNorm.unitPoint (k := k) b ≫
       pullback.snd (SmoothSite.base (Spec (.of k))).hom (target k 1).hom ≫
         (SmoothSite.torusCoordinate (.of k) 1 0).left =
       WeightOneFinitePointNorm.unitTorusPoint (k := k) b :=
   WeightOneFinitePointNorm.unitPoint_ambientCoordinate b
+
+omit [Module.Finite k E] in
+@[reassoc (attr := simp)]
+theorem unitPoint_coordinate_simp (b : Eˣ) :
+    WeightOneFinitePointNorm.unitPoint (k := k) b ≫
+      pullback.snd (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (SmoothSite.base (Spec (.of k))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+      pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom =
+      WeightOneFinitePointNorm.unitTorusPoint (k := k) b :=
+  unitPoint_coordinate (k := k) b
 
 omit [Module.Finite k E] in
 /-- The pushed mixed point is the whole finite unit point with its left coordinate adjoined. -/

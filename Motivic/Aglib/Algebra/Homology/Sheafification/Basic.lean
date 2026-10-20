@@ -12,7 +12,7 @@ public import Mathlib.Algebra.Homology.QuasiIso
 # Canonical sheafification of ordinary presheaf complexes
 
 On an arbitrary site, with abelian coefficients and an actual `HasSheafify`
-instance, `Motivic.Sheafification.functor` applies Mathlib's canonical
+instance, `CategoryTheory.Sheafification.functor` applies Mathlib's canonical
 `presheafToSheaf` in every degree. The differential and every chain-map
 component are the actual images under this functor. Its natural unit is the
 ordinary sheafification unit degree by degree.

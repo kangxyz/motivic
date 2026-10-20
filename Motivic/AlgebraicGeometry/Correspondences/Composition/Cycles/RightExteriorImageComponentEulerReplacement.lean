@@ -23,7 +23,10 @@ stalk scalars and the identical remaining list. No regularity of that list,
 reduced exterior, purity or component-incidence Tor identification is used.
 Noetherianity comes from the actual finite right exterior source map over
 the finite-type exterior base; the correspondence target projection is not
-assumed flat. This source-only candidate claims no compilation or acceptance.
+assumed flat.
+
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

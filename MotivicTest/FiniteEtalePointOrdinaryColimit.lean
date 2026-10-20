@@ -23,7 +23,7 @@ local instance : HasExt.{u + 1} (Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 
   hasExt_of_enoughInjectives _
 
 /-- Literal residue-field inverse image and original ordinary Ext diagram. -/
-def actual_residue_ordinary_colimit
+def actualResidueOrdinaryColimit
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) (n : ℕ) :
     ((inverseImage (S.fromSpecResidueField x)).obj
       (((directImage b).rightDerived n).obj F)).obj.obj
@@ -49,7 +49,7 @@ theorem actual_point_ordinary_colimit_naturality
 
 open Lean in
 run_cmd do
-  for name in #[``actual_residue_ordinary_colimit,
+  for name in #[``actualResidueOrdinaryColimit,
       ``actual_point_ordinary_colimit_naturality,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.ordinaryPointHomologyIso,
       ``derivedDirectImagePointOrdinaryColimitIso_naturality,

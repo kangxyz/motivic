@@ -25,8 +25,8 @@ Intended upstream module: `Aglib.RingTheory.Ideal.GoingDown.BaseChange`.
 The base, target and base-change algebra may occupy independent universes.
 The original inclusion retains faithfulness, integrality, integral closedness
 of the base and the domain hypothesis on the target. The current consumers are
-`Motivic.AlgebraicGeometry.Cycles.FiniteBaseChangeDominance` and
-`Motivic.AlgebraicGeometry.Cycles.FiniteBaseChangeGeneralizing`.
+`Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.BaseChange.Dominance` and
+`Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.BaseChange.Generalizing`.
 
 Extracted from `Motivic.RingTheory.GoingDown.BaseChange`, source SHA-256
 `adf1dd2b2b356e30e7ae322da32387dce5edfb681dc840cfbd22ea1c3b67ed6e`.

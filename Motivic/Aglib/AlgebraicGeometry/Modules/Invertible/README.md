@@ -102,3 +102,21 @@ The canonical pullback-composition maps appear in these equations; a dual
 of a newly chosen pulled section is not substituted for the original
 functional. Generic-fiber isomorphism comparisons and the
 [R3/R5 constructors](../../RelativeCurve/Pencils/README.md) consume these identities.
+
+## Marked frames after two fixed coefficient localizations
+
+[Frames/RelativeCurve/TwoLocalizationMarked](Frames/RelativeCurve/TwoLocalizationMarked.lean)
+uses `AlgebraicGeometry.RelativeProjectiveLine.TwoLocalizations` and its
+[literal source, retained curve and marked-product maps](../../ProjectiveLine/BaseChange/README.md).
+For a commutative `R : Type u`, fixed `r : R` and `s : Localization.Away r`,
+a finite projective-line map `F`, an open retained inclusion `j` and a marked
+map `z`, `markedIdealFrame` transports the supplied original marked ideal frame.
+`markedIdealFrame_coordinate` retains its exact scalar on the whole marked
+scheme. Neither localization element is required to be nonzero.
+
+`markedDivisorFrame` additionally requires relative smooth dimension one on
+the original retained curve. It dualizes the final original graph-ideal line
+to split the positive divisor line. Given the original disjoint boundary map,
+`exists_fullBoundaryDivisorFrame` glues this same marked frame with the canonical
+infinity frame and retains both coproduct equations. The original frame remains
+an explicit input; this interface supplies no global Picard comparison.

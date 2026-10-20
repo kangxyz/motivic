@@ -24,8 +24,8 @@ gives equality with the canonical triple Tor correspondence over an arbitrary
 field. The nested right pairing follows by its proved value on generator cycles.
 No flatness of F over Y is assumed. General associativity is not asserted here.
 
-Prepared as a source-only candidate. Compilation and formal acceptance remain
-separate checks, including for the imported pending weighted-cycle result.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

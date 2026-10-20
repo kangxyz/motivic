@@ -15,7 +15,7 @@ public import Mathlib.RingTheory.Ideal.Maps
 /-!
 # Coordinate rings of the algebraic simplex
 
-For a commutative ring `R`, `Motivic.AlgebraicSimplex.CoordinateRing R n` is the
+For a commutative ring `R`, `AlgebraicSimplex.CoordinateRing R n` is the
 canonical quotient `R[t₀, …, tₙ] / (∑ tᵢ - 1)` in every degree `n : ℕ`.
 Its universal map `lift` evaluates the barycentric coordinates at any tuple whose
 sum is one. The pullback along a map of finite ordinals sends each coordinate to

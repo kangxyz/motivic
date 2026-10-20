@@ -67,7 +67,7 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- Every weight uses the existing motivic cohomology, not a replacement group. -/
-def actual_derived_equivalence (q : ℕ) :
+def actualDerivedEquivalence (q : ℕ) :
     (chains k q 0 ⧸ (boundary k q).range) ≃+
       motivicCohomology k q q (SmoothSite.base (Spec (.of k))) :=
   quotientToMotivicEquiv k q
@@ -75,7 +75,7 @@ def actual_derived_equivalence (q : ℕ) :
 /-- The comparison preserves the original representative exactly. -/
 theorem actual_derived_coset (q : ℕ) (x : chains k q 0) :
     motivicRawBaseEvaluationComparison k q q
-      (actual_derived_equivalence k q (QuotientAddGroup.mk x)) = singularClass k q x :=
+      (actualDerivedEquivalence k q (QuotientAddGroup.mk x)) = singularClass k q x :=
   quotientToMotivicEquiv_mk k q x
 
 open Lean in
@@ -87,7 +87,7 @@ run_cmd do
       ``singularClass_surjective, ``singularClass_ker, ``quotientToRawEquiv,
       ``quotientToRawEquiv_mk, ``quotientToMotivicEquiv, ``quotientToMotivicEquiv_mk,
       ``actual_zero_iff_boundary, ``actual_odd_sign, ``actual_even_sign,
-      ``actual_zero_weight_sign, ``actual_derived_equivalence, ``actual_derived_coset] do
+      ``actual_zero_weight_sign, ``actualDerivedEquivalence, ``actual_derived_coset] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

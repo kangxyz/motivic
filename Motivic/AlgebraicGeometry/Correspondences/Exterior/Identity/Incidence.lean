@@ -104,7 +104,7 @@ def exteriorIncidenceToGenerators : A.exteriorIncidenceSupport B T ⟶
       simpa only [Category.assoc, exteriorIdentitySchemeIso_hom_targetProjection,
         exteriorIdentitySchemeIso_hom_projection] using A.exteriorIncidence_condition B T)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIncidenceToGenerators_fst :
     A.exteriorIncidenceToGenerators B T ≫
       (A.exteriorIdentityGenerator T).incidenceFst (B.exteriorIdentityGenerator T) =
@@ -112,11 +112,35 @@ theorem exteriorIncidenceToGenerators_fst :
   pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceToGenerators_fst_simp :
+    A.exteriorIncidenceToGenerators B T ≫
+      @FiniteCorrespondenceGenerator.incidenceFst (Spec (.of k))
+        (pullback X.hom T.hom) (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom)
+        (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (pullback.fst Z.hom T.hom ≫ Z.hom)
+        (A.exteriorIdentityGenerator T) (B.exteriorIdentityGenerator T) =
+        A.exteriorIncidenceFirst B T ≫ (A.exteriorIdentitySchemeIso T).hom :=
+  exteriorIncidenceToGenerators_fst A B T
+
+@[reassoc]
 theorem exteriorIncidenceToGenerators_snd :
     A.exteriorIncidenceToGenerators B T ≫
       (A.exteriorIdentityGenerator T).incidenceSnd (B.exteriorIdentityGenerator T) =
         A.exteriorIncidenceSecond B T ≫ (B.exteriorIdentitySchemeIso T).hom :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)]
+theorem exteriorIncidenceToGenerators_snd_simp :
+    A.exteriorIncidenceToGenerators B T ≫
+      @FiniteCorrespondenceGenerator.incidenceSnd (Spec (.of k))
+        (pullback X.hom T.hom) (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom)
+        (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (pullback.fst Z.hom T.hom ≫ Z.hom)
+        (A.exteriorIdentityGenerator T) (B.exteriorIdentityGenerator T) =
+        A.exteriorIncidenceSecond B T ≫ (B.exteriorIdentitySchemeIso T).hom :=
+  exteriorIncidenceToGenerators_snd A B T
 
 /-- The first exterior support read from the actual generator incidence. -/
 abbrev exteriorIncidenceFirstCoordinate :
@@ -254,7 +278,7 @@ def exteriorIdentityIncidenceIso :
         exteriorIncidenceFromGenerators_second_assoc, Iso.inv_hom_id,
         Category.comp_id, Category.id_comp]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityIncidenceIso_hom_fst :
     (A.exteriorIdentityIncidenceIso B T).hom ≫
       (A.exteriorIdentityGenerator T).incidenceFst (B.exteriorIdentityGenerator T) =
@@ -262,11 +286,35 @@ theorem exteriorIdentityIncidenceIso_hom_fst :
   A.exteriorIncidenceToGenerators_fst B T
 
 @[reassoc (attr := simp)]
+theorem exteriorIdentityIncidenceIso_hom_fst_simp :
+    (A.exteriorIdentityIncidenceIso B T).hom ≫
+      @FiniteCorrespondenceGenerator.incidenceFst (Spec (.of k))
+        (pullback X.hom T.hom) (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom)
+        (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (pullback.fst Z.hom T.hom ≫ Z.hom)
+        (A.exteriorIdentityGenerator T) (B.exteriorIdentityGenerator T) =
+        A.exteriorIncidenceFirst B T ≫ (A.exteriorIdentitySchemeIso T).hom :=
+  exteriorIdentityIncidenceIso_hom_fst A B T
+
+@[reassoc]
 theorem exteriorIdentityIncidenceIso_hom_snd :
     (A.exteriorIdentityIncidenceIso B T).hom ≫
       (A.exteriorIdentityGenerator T).incidenceSnd (B.exteriorIdentityGenerator T) =
         A.exteriorIncidenceSecond B T ≫ (B.exteriorIdentitySchemeIso T).hom :=
   A.exteriorIncidenceToGenerators_snd B T
+
+@[reassoc (attr := simp)]
+theorem exteriorIdentityIncidenceIso_hom_snd_simp :
+    (A.exteriorIdentityIncidenceIso B T).hom ≫
+      @FiniteCorrespondenceGenerator.incidenceSnd (Spec (.of k))
+        (pullback X.hom T.hom) (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom)
+        (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (pullback.fst Z.hom T.hom ≫ Z.hom)
+        (A.exteriorIdentityGenerator T) (B.exteriorIdentityGenerator T) =
+        A.exteriorIncidenceSecond B T ≫ (B.exteriorIdentitySchemeIso T).hom :=
+  exteriorIdentityIncidenceIso_hom_snd A B T
 
 /-- The displayed product is the actual Cartesian square of the two exterior supports. -/
 theorem exteriorIdentityIncidence_isPullback :
@@ -282,7 +330,7 @@ theorem exteriorIdentityIncidence_isPullback :
     (A.exteriorIdentityIncidenceIso_hom_fst B T)
     (A.exteriorIdentityIncidenceIso_hom_snd B T)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityIncidenceIso_hom_source_fst :
     (A.exteriorIdentityIncidenceIso B T).hom ≫
       (A.exteriorIdentityGenerator T).incidenceSource (B.exteriorIdentityGenerator T) ≫
@@ -292,7 +340,7 @@ theorem exteriorIdentityIncidenceIso_hom_source_fst :
     exteriorIdentitySchemeIso_hom_projection_assoc, exteriorIdentitySource_fst,
     exteriorIncidenceFirst_fst_assoc]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityIncidenceIso_hom_source_snd :
     (A.exteriorIdentityIncidenceIso B T).hom ≫
       (A.exteriorIdentityGenerator T).incidenceSource (B.exteriorIdentityGenerator T) ≫
@@ -302,7 +350,7 @@ theorem exteriorIdentityIncidenceIso_hom_source_snd :
     exteriorIdentitySchemeIso_hom_projection_assoc, exteriorIdentitySource_snd,
     exteriorIncidenceFirst_snd]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityIncidenceIso_hom_target_fst :
     (A.exteriorIdentityIncidenceIso B T).hom ≫
       (A.exteriorIdentityGenerator T).incidenceTarget (B.exteriorIdentityGenerator T) ≫
@@ -312,7 +360,7 @@ theorem exteriorIdentityIncidenceIso_hom_target_fst :
     exteriorIdentitySchemeIso_hom_targetProjection_assoc, exteriorIdentityTarget_fst,
     exteriorIncidenceSecond_fst_assoc]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityIncidenceIso_hom_target_snd :
     (A.exteriorIdentityIncidenceIso B T).hom ≫
       (A.exteriorIdentityGenerator T).incidenceTarget (B.exteriorIdentityGenerator T) ≫

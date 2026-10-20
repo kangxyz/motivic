@@ -40,7 +40,7 @@ def unitMap {R : Type u} [CommRing R] (c : k →+* R) (v : Rˣ) :
     Spec (.of R) ⟶ (SmoothSite.torus (.of k)).left :=
   Spec.map (CommRingCat.ofHom (LaurentPolynomial.eval₂ c v))
 
-@[reassoc (attr := simp)] theorem unitMap_structure {R : Type u} [CommRing R]
+@[reassoc] theorem unitMap_structure {R : Type u} [CommRing R]
     (c : k →+* R) (v : Rˣ) :
     unitMap c v ≫ (SmoothSite.torus (.of k)).hom = Spec.map (CommRingCat.ofHom c) := by
   change Spec.map _ ≫ Spec.map _ = Spec.map _
@@ -49,6 +49,12 @@ def unitMap {R : Type u} [CommRing R] (c : k →+* R) (v : Rˣ) :
   apply CommRingCat.hom_ext
   apply RingHom.ext
   exact LaurentPolynomial.eval₂_C c v
+
+@[reassoc (attr := simp)] theorem unitMap_structure_simp {R : Type u} [CommRing R]
+    (c : k →+* R) (v : Rˣ) :
+    unitMap c v ≫ Scheme.PolynomialLaurent.laurentProjection (.of k) =
+      Spec.map (CommRingCat.ofHom c) :=
+  unitMap_structure c v
 
 /-- A pair of units gives an actual map to the canonical two-fold torus,
 without requiring its source to be smooth. -/
@@ -59,10 +65,21 @@ def pairMap {R : Type u} [CommRing R] (c : k →+* R) (v w : Rˣ) :
       rw [Category.assoc, MorphismProperty.Over.w]
       simp only [unitMap_structure])
 
-@[reassoc (attr := simp)] theorem pairMap_first {R : Type u} [CommRing R]
+@[reassoc] theorem pairMap_first {R : Type u} [CommRing R]
     (c : k →+* R) (v w : Rˣ) :
     pairMap c v w ≫ (SmoothSite.torusCoordinate (.of k) 2 0).left = unitMap c v :=
   pullback.lift_fst _ _ _
+
+@[reassoc (attr := simp)] theorem pairMap_first_simp {R : Type u} [CommRing R]
+    (c : k →+* R) (v w : Rˣ) :
+    pairMap c v w ≫
+      pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of k))
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (SmoothSite.base (Spec (.of k))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      unitMap c v :=
+  pairMap_first c v w
 
 @[reassoc (attr := simp)] theorem pairMap_second {R : Type u} [CommRing R]
     (c : k →+* R) (v w : Rˣ) :
@@ -75,7 +92,7 @@ def pairMap {R : Type u} [CommRing R] (c : k →+* R) (v w : Rˣ) :
     (SmoothSite.torusPowerOneIso (.of k)).hom.left = 𝟙 _ at h
   rw [Category.assoc, h, Category.comp_id]
 
-@[reassoc (attr := simp)] theorem pairMap_structure {R : Type u} [CommRing R]
+@[reassoc] theorem pairMap_structure {R : Type u} [CommRing R]
     (c : k →+* R) (v w : Rˣ) :
     pairMap c v w ≫ (SmoothSite.torusPower (.of k) 2).hom =
       Spec.map (CommRingCat.ofHom c) := by
@@ -154,13 +171,41 @@ def inclusion (f : k[X][X]) (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) :
     rw [← Spec.map_comp]
     rfl)
 
-@[reassoc (attr := simp)] theorem inclusion_fst (f : k[X][X])
+@[reassoc] theorem inclusion_fst (f : k[X][X])
     (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) :
     inclusion f h0 h1 ≫ pullback.fst _ _ = projection f := pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem inclusion_snd (f : k[X][X])
+@[reassoc (attr := simp)] theorem inclusion_fst_simp (f : k[X][X])
+    (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) :
+    inclusion f h0 h1 ≫
+      pullback.fst (Spec.map (CommRingCat.ofHom (C : k →+* k[X])))
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      projection f :=
+  inclusion_fst f h0 h1
+
+@[reassoc] theorem inclusion_snd (f : k[X][X])
     (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) :
     inclusion f h0 h1 ≫ pullback.snd _ _ = targetMap f h0 h1 := pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem inclusion_snd_simp (f : k[X][X])
+    (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) :
+    inclusion f h0 h1 ≫
+      pullback.snd (Spec.map (CommRingCat.ofHom (C : k →+* k[X])))
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      targetMap f h0 h1 :=
+  inclusion_snd f h0 h1
 
 /-- Monicity gives finiteness of the whole projection. -/
 theorem projection_finite {f : k[X][X]} (hf : f.Monic) : IsFinite (projection f) := by
@@ -248,15 +293,43 @@ def polynomialInclusion (p : k[X]) (h0 : IsUnit (p.eval 0)) (h1 : IsUnit (p.eval
       change Spec.map _ ≫ 𝟙 _ = _
       rw [Category.comp_id, polynomialTargetMap, pairMap_structure])
 
-@[reassoc (attr := simp)] theorem polynomialInclusion_fst (p : k[X])
+@[reassoc] theorem polynomialInclusion_fst (p : k[X])
     (h0 : IsUnit (p.eval 0)) (h1 : IsUnit (p.eval 1)) :
     polynomialInclusion p h0 h1 ≫ pullback.fst _ _ =
       Spec.map (CommRingCat.ofHom (AdjoinRoot.of p)) := pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem polynomialInclusion_snd (p : k[X])
+@[reassoc (attr := simp)] theorem polynomialInclusion_fst_simp (p : k[X])
+    (h0 : IsUnit (p.eval 0)) (h1 : IsUnit (p.eval 1)) :
+    polynomialInclusion p h0 h1 ≫
+      pullback.fst (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      Spec.map (CommRingCat.ofHom (AdjoinRoot.of p)) :=
+  polynomialInclusion_fst p h0 h1
+
+@[reassoc] theorem polynomialInclusion_snd (p : k[X])
     (h0 : IsUnit (p.eval 0)) (h1 : IsUnit (p.eval 1)) :
     polynomialInclusion p h0 h1 ≫ pullback.snd _ _ = polynomialTargetMap p h0 h1 :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem polynomialInclusion_snd_simp (p : k[X])
+    (h0 : IsUnit (p.eval 0)) (h1 : IsUnit (p.eval 1)) :
+    polynomialInclusion p h0 h1 ≫
+      pullback.snd (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      polynomialTargetMap p h0 h1 :=
+  polynomialInclusion_snd p h0 h1
 
 /-- Endpoint schemes retain their entire original closed structure. -/
 instance polynomialInclusion_closed (p : k[X])
@@ -411,19 +484,47 @@ def fiberInclusion (f : k[X][X]) (h0 : IsUnit (f.eval 0))
   FiniteFlatCurveFamily.fiberInclusion (projection f) (inclusion f h0 h1)
     (inclusion_fst f h0 h1) s
 
-@[reassoc (attr := simp)] theorem fiberInclusion_fst (f : k[X][X])
+@[reassoc] theorem fiberInclusion_fst (f : k[X][X])
     (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) (s : k) :
     fiberInclusion f h0 h1 s ≫ pullback.fst _ _ =
       pullback.fst (FiniteFlatCurve.endpoint s) (projection f) :=
   FiniteFlatCurveFamily.fiberInclusion_fst _ _ _ _
 
-@[reassoc (attr := simp)] theorem fiberInclusion_snd (f : k[X][X])
+@[reassoc (attr := simp)] theorem fiberInclusion_fst_simp (f : k[X][X])
+    (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) (s : k) :
+    fiberInclusion f h0 h1 s ≫
+      pullback.fst (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      pullback.fst (FiniteFlatCurve.endpoint s) (projection f) :=
+  fiberInclusion_fst f h0 h1 s
+
+@[reassoc] theorem fiberInclusion_snd (f : k[X][X])
     (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) (s : k) :
     fiberInclusion f h0 h1 s ≫ pullback.snd _ _ =
       pullback.snd (FiniteFlatCurve.endpoint s) (projection f) ≫ targetMap f h0 h1 := by
   rw [fiberInclusion, FiniteFlatCurveFamily.fiberInclusion_snd]
   exact congrArg (fun t => pullback.snd (FiniteFlatCurve.endpoint s) (projection f) ≫ t)
     (inclusion_snd f h0 h1)
+
+@[reassoc (attr := simp)] theorem fiberInclusion_snd_simp (f : k[X][X])
+    (h0 : IsUnit (f.eval 0)) (h1 : IsUnit (f.eval 1)) (s : k) :
+    fiberInclusion f h0 h1 s ≫
+      pullback.snd (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      pullback.snd (FiniteFlatCurve.endpoint s) (projection f) ≫ targetMap f h0 h1 :=
+  fiberInclusion_snd f h0 h1 s
 
 /-- Every whole fiber remains a closed subscheme of the point-target product. -/
 theorem fiberInclusion_closed {f : k[X][X]} (hf : f.Monic)

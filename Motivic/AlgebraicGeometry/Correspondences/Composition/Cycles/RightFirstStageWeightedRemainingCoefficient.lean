@@ -33,8 +33,8 @@ the local chart and regular list, while actual finite-to-source generic support
 gives vanishing off the generic points. No iterated correspondence identity,
 bracket identification or associativity theorem is asserted.
 
-Prepared as a source-only candidate. No compilation, diagnostic success, or
-formal acceptance is asserted by this source or its companion consumer.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

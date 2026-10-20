@@ -29,9 +29,10 @@ This does not construct the finite-correspondence action on MVW's closed-point
 envelope, identify that envelope with a product of skyscrapers, or assert
 acyclicity of the underlying ordinary sheaf of a transfer-injective.
 
-This geometric consumer depends on the existing `SmoothSiteNisnevich` module
-and uses its native `Motivic.SmoothSite` namespace. Its location under
-`Motivic/Aglib` does not make it a standalone upstream extraction.
+This general geometric interface imports
+`Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Topology` and uses the
+native `AlgebraicGeometry.Scheme.SmoothSite` namespace. Its local candidate
+location does not assert standalone upstream acceptance.
 -/
 
 @[expose] public noncomputable section

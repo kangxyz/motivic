@@ -15,7 +15,7 @@ namespace MotivicTest.EtaleOriginalFiberCoproduct
 variable {X Y : Scheme.{u}} (f : X ⟶ Y) [Etale f] (y : Y)
 
 /-- No fiber-point residue field replaces the original residue field. -/
-def actual_decomposition :
+def actualDecomposition :
     (∐ fun x : f ⁻¹' {y} ↦ Spec (X.residueField x.1)) ≅ f.fiber y :=
   f.originalFiberCoproductIso y
 
@@ -34,7 +34,7 @@ theorem actual_structural_map (x : f ⁻¹' {y}) :
 
 open Lean in
 run_cmd do
-  for name in #[``actual_decomposition, ``actual_original_inclusion, ``actual_structural_map,
+  for name in #[``actualDecomposition, ``actual_original_inclusion, ``actual_structural_map,
       ``Scheme.Hom.originalFiberCofanIsColimit, ``Scheme.Hom.originalFiberComponent_apply] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

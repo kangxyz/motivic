@@ -20,7 +20,7 @@ variable {S T : Scheme.{u}} (b : T ⟶ S) (x : S)
 
 /-- The actual inverse-image evaluation of the higher direct image is computed by
 homology of the original neighborhood-fiber resolution groups. -/
-def actual_residue_higherDirectImage (n : ℕ) :
+def actualResidueHigherDirectImage (n : ℕ) :
     ((inverseImage (S.fromSpecResidueField x)).obj
       (((directImage b).rightDerived n).obj F)).obj.obj
         (Opposite.op (fieldObject (S.residueField x) (𝟙 _))) ≅
@@ -32,7 +32,7 @@ def actual_residue_higherDirectImage (n : ℕ) :
 
 open Lean in
 run_cmd do
-  for name in #[``actual_residue_higherDirectImage,
+  for name in #[``actualResidueHigherDirectImage,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.sheaf_enoughInjectives,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.sheaf_isGrothendieckAbelian,
       ``derivedDirectImagePointFiberIso_naturality,

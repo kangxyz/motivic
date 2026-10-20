@@ -120,7 +120,7 @@ def pointEquiv (a : k) :
     (pointEquiv S a x).val = (fiberInclusion (baseMap S) a x).asIdeal := rfl
 
 /-- The inverse also returns the same prime, not an isomorphic replacement. -/
-@[simp] theorem pointEquiv_symm_asIdeal (a : k)
+theorem pointEquiv_symm_asIdeal (a : k)
     (q : AdicCompletion.IdealBranch (endpointIdeal S a)) :
     (fiberInclusion (baseMap S) a ((pointEquiv S a).symm q)).asIdeal = q.val :=
   congrArg Subtype.val ((pointEquiv S a).apply_symm_apply q)
@@ -148,9 +148,16 @@ def fiberResidueEquiv (a : k) (x : fiber (baseMap S) a) :
 
 omit [IsDedekindDomain S] [FaithfulSMul k[X] S] in
 /-- This equivalence is literally the map induced by the closed immersion. -/
-@[simp] theorem fiberResidueEquiv_toRingHom (a : k) (x : fiber (baseMap S) a) :
+theorem fiberResidueEquiv_toRingHom (a : k) (x : fiber (baseMap S) a) :
     (fiberResidueEquiv S a x).toRingHom =
       ((fiberInclusion (baseMap S) a).residueFieldMap x).hom := rfl
+
+omit [IsDedekindDomain S] [FaithfulSMul k[X] S] in
+/-- The coercion normal form is the same actual residue-field map. -/
+@[simp] theorem fiberResidueEquiv_coe (a : k) (x : fiber (baseMap S) a) :
+    (fiberResidueEquiv S a x : _ →+* _) =
+      ((fiberInclusion (baseMap S) a).residueFieldMap x).hom :=
+  fiberResidueEquiv_toRingHom S a x
 
 omit [IsDedekindDomain S] [FaithfulSMul k[X] S] in
 /-- Original scalar reduction commutes with the actual fiber-inclusion stalk map. -/

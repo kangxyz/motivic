@@ -1,25 +1,34 @@
-# CategoryTheory / Sites / Hypercohomology
+# Unbounded hypercohomology from actual derived Hom
 
-Actual derived Hom from the degree-zero free abelian representable to the localized coefficient complex shifted by an arbitrary integer; maps are actual shifted localized maps, restrictions are precomposition.
+For `C : Type u` with `[Category.{v} C]`, a topology `J` and
+`[HasSheafify J AddCommGrpCat.{max v t}]`, the native namespace
+`CategoryTheory.Sheaf.Hypercohomology` constructs `freeAbelianSheafFunctor`.
+Its value at `X` is the universe-lifted free abelian representing sheaf for
+sections at `X`.
 
-Explicit category/site and coefficient universes; HasSheafify; HasDerivedCategory. Exact evaluation requires projectivity of the actual source. No bounded-below hypothesis or enough-injectives premise is inserted.
+With `[HasDerivedCategory.{w} (Sheaf J AddCommGrpCat.{max v t})]`,
+`H J K p X` is the group of derived morphisms from that sheaf in degree zero
+to the localization of `K` shifted by `p : ℤ`; its carrier lies in `Type w`.
+Coefficient maps are postcomposition with the actual shifted localized map,
+and restrictions are precomposition with the representing-sheaf map.
+`presheafFunctor` and `presheaf` retain these maps. No boundedness or
+enough-injectives hypothesis is built into this construction.
 
-| Exact import |
-| --- |
-| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic` |
-| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Evaluation` |
-| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Naturality` |
+| Exact import | Interface |
+| --- | --- |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic` | Representing sheaf, section equivalence, derived-Hom groups and presheaves. |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Evaluation` | `evaluationComparison` for a projective representing sheaf, with coefficient universe `max u v`. |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.EvaluationNaturality` | Compatibility of that comparison with coefficient maps. |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Naturality` | Restrictions and naturality on the actual coefficient complexes. |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Shift` | Actual shift isomorphisms and their restriction equations. |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison` | Comparison for a sheaf in degree zero, with coefficient universe `v` and the displayed `HasExt` premise. |
+| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.FreeSheafMonomorphisms` | Monomorphisms of the actual free abelian representing sheaves under its stated sheafification hypotheses. |
 
-Native interfaces:
+A geometric site supplies its own exact-evaluation proof before using
+`evaluationComparison`. The present Suslin–Voevodsky model consumes these
+interfaces for `Motivic.motivicCohomology` and its finite-coefficient variant;
+its coefficient construction has the [host owner](../../../../Cohomology/SuslinVoevodsky/README.md).
 
-- `CategoryTheory.Sheaf.Hypercohomology.freeAbelianSheafFunctor`
-- `CategoryTheory.Sheaf.Hypercohomology.H`
-- `CategoryTheory.Sheaf.Hypercohomology.presheaf`
-- `CategoryTheory.Sheaf.Hypercohomology.evaluationComparison`
-
-The present Suslin–Voevodsky model uses these interfaces for `Motivic.motivicCohomology` and its finite-coefficient variant.
-
-Intended upstream family: `Aglib.CategoryTheory.Sites.Hypercohomology`. Use exact lower
-imports; a current motivating consumer does not change the general hypotheses.
-Follow the [candidate policy](../../../README.md) and retain the actual maps and
-universes when extending these interfaces.
+Intended upstream family: `Aglib.CategoryTheory.Sites.Hypercohomology`.
+Follow the [candidate policy](../../../README.md), retaining the universes and
+hypotheses of the selected lower import.

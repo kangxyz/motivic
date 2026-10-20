@@ -23,7 +23,9 @@ identified with generic points of the exterior source SUPPORT scheme.
 This transports the resulting whole fiber through an isomorphism. It does not
 assert preservation of the original branches under arbitrary base change.
 There is no reducedness, single-branch, degree-balance or cycle-equality premise.
-SOURCE-ONLY: no compilation or mathematical admission is claimed.
+
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

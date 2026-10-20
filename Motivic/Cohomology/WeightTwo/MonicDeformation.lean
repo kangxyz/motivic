@@ -55,14 +55,42 @@ def targetMap (f : k[X][X]) (a b : (AdjoinRoot f)ˣ) :
     rw [pairMap_structure]
     exact rootMap_structure f)
 
-@[reassoc (attr := simp)] theorem targetMap_root (f : k[X][X])
+@[reassoc] theorem targetMap_root (f : k[X][X])
     (a b : (AdjoinRoot f)ˣ) :
     targetMap f a b ≫ pullback.fst _ _ = rootMap f := pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem targetMap_pair (f : k[X][X])
+@[reassoc (attr := simp)] theorem targetMap_root_simp (f : k[X][X])
+    (a b : (AdjoinRoot f)ˣ) :
+    targetMap f a b ≫
+      pullback.fst (SmoothSite.AffineLineField.line k).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      rootMap f :=
+  targetMap_root f a b
+
+@[reassoc] theorem targetMap_pair (f : k[X][X])
     (a b : (AdjoinRoot f)ˣ) :
     targetMap f a b ≫ pullback.snd _ _ = pairMap (constantMap f) a b :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem targetMap_pair_simp (f : k[X][X])
+    (a b : (AdjoinRoot f)ˣ) :
+    targetMap f a b ≫
+      pullback.snd (SmoothSite.AffineLineField.line k).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      pairMap (constantMap f) a b :=
+  targetMap_pair f a b
 
 @[reassoc (attr := simp)] theorem targetMap_structure (f : k[X][X])
     (a b : (AdjoinRoot f)ˣ) :
@@ -121,15 +149,43 @@ def polynomialTargetMap (p : k[X]) (a b : (AdjoinRoot p)ˣ) :
     rw [pairMap_structure]
     exact polynomialRootMap_structure p)
 
-@[reassoc (attr := simp)] theorem polynomialTargetMap_root (p : k[X])
+@[reassoc] theorem polynomialTargetMap_root (p : k[X])
     (a b : (AdjoinRoot p)ˣ) :
     polynomialTargetMap p a b ≫ pullback.fst _ _ = polynomialRootMap p :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem polynomialTargetMap_pair (p : k[X])
+@[reassoc (attr := simp)] theorem polynomialTargetMap_root_simp (p : k[X])
+    (a b : (AdjoinRoot p)ˣ) :
+    polynomialTargetMap p a b ≫
+      pullback.fst (SmoothSite.AffineLineField.line k).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      polynomialRootMap p :=
+  polynomialTargetMap_root p a b
+
+@[reassoc] theorem polynomialTargetMap_pair (p : k[X])
     (a b : (AdjoinRoot p)ˣ) :
     polynomialTargetMap p a b ≫ pullback.snd _ _ = pairMap (AdjoinRoot.of p) a b :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem polynomialTargetMap_pair_simp (p : k[X])
+    (a b : (AdjoinRoot p)ˣ) :
+    polynomialTargetMap p a b ≫
+      pullback.snd (SmoothSite.AffineLineField.line k).hom
+        (pullback.fst
+          (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (pullback.fst
+            (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+            Scheme.PolynomialLaurent.laurentProjection (.of k)) ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      pairMap (AdjoinRoot.of p) a b :=
+  polynomialTargetMap_pair p a b
 
 /-- The original point-target ambient with retained root. -/
 abbrev pointAmbient (k : Type u) [Field k] : Scheme.{u} :=

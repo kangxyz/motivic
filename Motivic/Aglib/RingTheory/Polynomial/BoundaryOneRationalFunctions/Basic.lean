@@ -164,19 +164,29 @@ def ringMap (φ : R →+* S) : Ring R →+* Ring S :=
   unfold ringMap
   apply IsLocalization.map_eq
 
-@[simp] theorem ringMap_polynomialUnit (φ : R →+* S) (p : denominators R) :
+theorem ringMap_polynomialUnit (φ : R →+* S) (p : denominators R) :
     Units.map (ringMap φ).toMonoidHom (polynomialUnit p) =
       polynomialUnit (denominatorMap φ p) := by
   apply Units.ext
   simp [denominatorMap]
 
-@[simp] theorem ringMap_fraction (φ : R →+* S) (p q : denominators R) :
+@[simp] theorem ringMap_polynomialUnit_coe (φ : R →+* S) (p : denominators R) :
+    Units.map (ringMap φ : Ring R →* Ring S) (polynomialUnit p) =
+      polynomialUnit (denominatorMap φ p) :=
+  ringMap_polynomialUnit φ p
+
+theorem ringMap_fraction (φ : R →+* S) (p q : denominators R) :
     Units.map (ringMap φ).toMonoidHom (fraction p q) =
       fraction (denominatorMap φ p) (denominatorMap φ q) := by
   simp only [fraction, map_div]
   congr 1
   · exact ringMap_polynomialUnit φ p
   · exact ringMap_polynomialUnit φ q
+
+@[simp] theorem ringMap_fraction_coe (φ : R →+* S) (p q : denominators R) :
+    Units.map (ringMap φ : Ring R →* Ring S) (fraction p q) =
+      fraction (denominatorMap φ p) (denominatorMap φ q) :=
+  ringMap_fraction φ p q
 
 /-- Restriction of actual rational functions along arbitrary coefficient maps. -/
 def map (φ : R →+* S) : group R →* group S where

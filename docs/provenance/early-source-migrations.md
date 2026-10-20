@@ -8,8 +8,11 @@ only in the original imported snapshot.
 ## Degree-two Milnor theory
 
 Original revision: `1e2b2a1a27c19ecbb9575ef9eeb57d0ae46f520e`.
-The implementations now live under `Aglib.KTheory.MilnorK.K2`; the original
-Motivic module paths are import adapters. Earlier source paths and hashes follow.
+The implementations now live under `Aglib.KTheory.MilnorK.K2` and are exposed
+through the current [Milnor entry](../../Motivic/KTheory/MilnorK.lean).
+The [family guide](../../Motivic/KTheory/MilnorK/README.md) lists the maintained
+imports. Earlier source paths below identify historical implementations; they
+are not a promise that every former Motivic module path remains an adapter.
 
 - Basic: original path `lean/R5Lab/KTheory/MilnorK2/Basic.lean`,
   Git blob `50f041a15e0cfb0272fb20a84a30a22ff236e951`,

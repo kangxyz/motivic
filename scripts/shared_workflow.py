@@ -16,7 +16,7 @@ import sys
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from ci_targets import CONFIG_INPUTS, ROOT, from_arguments, graph, make_plan
-from library_sources import lean_imports, source_modules
+from library_sources import ROOTS, lean_imports, source_modules
 
 POLICY = ('scripts/shared_workflow.py', 'scripts/ci_policy.py', 'scripts/validate.py', 'scripts/ci_targets.py',
           'scripts/library_sources.py', 'scripts/check_repository.py',
@@ -27,39 +27,75 @@ DRIVERS = ('.lake/packages/batteries/scripts/runLinter.lean',
            '.lake/packages/mathlib/scripts/lint-style.lean')
 CLIENT = 'examples/downstream'
 GENERATED_MANIFEST = CLIENT + '/lake-manifest.json'
-# This migration has no historical complete native witness. Only the immediate
-# CI-only successor may enroll the complete local library and existing client.
+# This migration has no historical complete native witness. Explicit cutover
+# and repair successors enroll the complete local library and existing client.
 INITIAL_PARENT = '0fcc528c48128a37a04f3a6db8b4833cedb4d891'
 INITIAL_PATHS = frozenset({'.github/workflows/ci.yml', 'scripts/shared_workflow.py',
     'scripts/ci_policy.py', 'scripts/test_hosted_ci.py', 'scripts/test_validate.py',
     'scripts/test_ci_targets.py', 'scripts/test_build_client.py',
     'docs/DEVELOPMENT.md', 'scripts/README.md'})
+# The first complete enrollment failed declaration lint. Its single repair
+# successor may retry complete enrollment; API failure never selects this mode.
+REPAIR_PARENT = 'c793b96eb87eee540e665058e83e5f05d5c95683'
+REPAIR_TOOL_PATHS = frozenset({*INITIAL_PATHS, *POLICY,
+    'scripts/build.py', 'scripts/build_modules.py', 'scripts/generate_imports.py',
+    'scripts/test_build.py', 'scripts/test_declaration_batch.py', 'scripts/test_repository.py',
+    'scripts/test_generate_imports.py'}) - CONFIG_INPUTS - {'.github/dependency-scope.json'}
 
 
-def initial_identity(root, head):
-    """Recognize an explicit cutover commit, independently of API availability."""
+def repair_path(path):
+    """Admit only the assigned mathematical/documentation and exact CI owners."""
+    return (path in REPAIR_TOOL_PATHS
+            or path in {'Motivic.lean', 'MotivicTest.lean', 'README.md', 'AGENTS.md', 'CONTRIBUTING.md'}
+            or (path.startswith(('Motivic/', 'MotivicTest/')) and path.endswith(('.lean', '.md')))
+            or (path.startswith('docs/') and path.endswith('.md')))
+
+
+def enrollment_parent(root, head):
+    """Return only an explicitly admitted direct parent, never a verified base."""
     from lean_ci.github import commit, git
     head = commit(root, head)
     header = git(root, 'cat-file', '-p', head).split('\n\n', 1)[0]
     parents = [line.removeprefix('parent ') for line in header.splitlines()
                if line.startswith('parent ')]
-    if parents != [INITIAL_PARENT]:
-        return False
-    # Preserve filename bytes: the text helper strips whitespace and would
-    # misidentify a leading-space path as an admitted owner.
-    paths = set(subprocess.check_output(['git', 'diff', '--no-renames', '--name-only', '-z',
-                INITIAL_PARENT, head, '--'], cwd=root).split(b'\0')) - {b''}
-    return bool(paths) and paths <= {path.encode() for path in INITIAL_PATHS}
+    if len(parents) != 1 or parents[0] not in {INITIAL_PARENT, REPAIR_PARENT}:
+        return None
+    parent = parents[0]
+    # Preserve filename bytes; whitespace lookalikes are not admitted owners.
+    raw_paths = set(subprocess.check_output(['git', 'diff', '--no-renames', '--name-only', '-z',
+                    parent, head, '--'], cwd=root).split(b'\0')) - {b''}
+    if parent == INITIAL_PARENT:
+        return parent if raw_paths and raw_paths <= {p.encode() for p in INITIAL_PATHS} else None
+    try:
+        paths = {path.decode('utf-8') for path in raw_paths}
+    except UnicodeError:
+        return None
+    deleted = set(subprocess.check_output(['git', 'diff', '--no-renames', '--diff-filter=D',
+                  '--name-only', '-z', parent, head, '--'], cwd=root).split(b'\0')) - {b''}
+    if any(path.endswith(b'.lean') for path in deleted):
+        return None
+    # Configuration changes, unrecognized owners and empty retries fail closed.
+    # Existing source enrollment cannot shrink through deletion. The path guard
+    # also protects absent lakefile.lean and the dependency-scope record.
+    return parent if paths and all(repair_path(path) for path in paths) else None
+
+
+def initial_identity(root, head):
+    """Recognize explicit cutover/recovery identity without API fallback."""
+    return enrollment_parent(root, head) is not None
 
 
 def initial_baseline(root, repository, default_branch, head):
-    if not initial_identity(root, head):
-        raise ValueError('Initial enrollment requires the exact CI-only cutover successor')
+    parent = enrollment_parent(root, head)
+    if parent is None:
+        raise ValueError('Initial enrollment requires the exact cutover or admitted repair successor')
     if repository != 'kangxyz/motivic' or default_branch != 'main':
         raise ValueError('Initial enrollment requires the owning repository/default branch')
     return dict(kind='initial-enrollment', head=head, repository=repository,
-                default_branch=default_branch, parent=INITIAL_PARENT,
-                selection_reason='One-time complete local enrollment; no historical verified base')
+                default_branch=default_branch, parent=parent,
+                selection_reason=('Explicit repair of failed complete enrollment; no historical verified base'
+                                  if parent == REPAIR_PARENT else
+                                  'One-time complete local enrollment; no historical verified base'))
 
 
 def hosted_scope(root, baseline):
@@ -105,8 +141,8 @@ def shared_api():
         raise ValueError('Shared tooling HEAD differs from MOTIVIC_TOOLING_REVISION')
     package = tooling / 'ci/lean_ci'
     paths = sorted(package.glob('*.py'))
-    if not paths or not (package / 'recipe.py').is_file() or not (package / 'local.py').is_file():
-        raise ValueError('Pinned tooling lacks the shared local-check/recipe API; adopt the reviewed common tooling commit')
+    if not paths or any(not (package / name).is_file() for name in ('recipe.py', 'local.py', 'batch.py')):
+        raise ValueError('Pinned tooling lacks the shared batch/local-check/recipe API; adopt the reviewed common tooling commit')
     expected = {path for path in repository_bytes('ls-tree', '-r', '--name-only', revision, '--',
                                                 'ci/lean_ci').decode().splitlines() if path.endswith('.py')}
     if {path.relative_to(tooling).as_posix() for path in paths} != expected:
@@ -169,13 +205,26 @@ def checked_scope(root, scope):
 def declaration_check(root, names, label, full):
     if not names:
         return []
-    command = (['lake', 'env', 'lean', '--run', DRIVERS[0], '--no-build', *names] if full else
-               [sys.executable, str(root / 'scripts/lint_declarations.py'), '--root', str(root), '--no-build', *names])
-    return [dict(id=label + '/declarations', kind='check', command=command,
-                 check_kind='declaration-native-package' if full else 'declaration-exact-origin',
-                 modules=names, capped=True,
-                 environment_boundary={'mode': 'separate-import-environment-per-origin', 'origins': names,
-                     'declarations': 'native-package-prefix' if full else 'exact-defining-origin'})]
+    if full:
+        return [dict(id=label + '/declarations', kind='check',
+                     command=['lake', 'env', 'lean', '--run', DRIVERS[0], '--no-build', *names],
+                     check_kind='declaration-native-package', modules=names, capped=True,
+                     environment_boundary={'mode': 'separate-import-environment-per-origin',
+                         'origins': names, 'declarations': 'native-package-prefix'})]
+    from lean_ci.resources import remote_profile
+    profile = remote_profile(runtime_environment(), resource_config())
+    batch = {'id': label + '/declarations', 'jobs': min(8, profile['jobs']) if profile else 1,
+             'read_only': True, 'single_process': True}
+    command = [sys.executable, str(root / 'scripts/lint_declarations.py'),
+               '--root', str(root), '--no-build']
+    # The unchanged checker still imports one exact origin in its own process.
+    # Individual bindings/progress retain valid peers after failure or interruption.
+    return [dict(id=label + '/declarations/' + origin, kind='check',
+                 command=[*command, origin], check_kind='declaration-exact-origin',
+                 modules=[origin], capped=True, check_batch=dict(batch),
+                 environment_boundary={'mode': 'separate-import-environment-per-origin',
+                     'origins': [origin], 'declarations': 'exact-defining-origin'})
+            for origin in names]
 
 
 def recipe(root, scope, phase, directory, *, skip_static=False, skip_cache=False, export=False):
@@ -222,6 +271,42 @@ def recipe(root, scope, phase, directory, *, skip_static=False, skip_cache=False
                          exports=exports, phase=phase)
 
 
+def _native_source_graph(root, observations):
+    """Memoize pure graph parsing inside its whole-source observation lifetime."""
+    if observations is None:
+        return graph(root)
+    from lean_ci.state import InputDrift
+    whole = getattr(observations, 'whole', observations)
+    whole.assert_stable()
+    cache = getattr(whole, '_motivic_source_graphs', None)
+    if cache is None:
+        cache = whole._motivic_source_graphs = {}
+    key = root.resolve()
+    if key not in cache:
+        excluded = ('.lake', '.git', '__pycache__')
+        # Root enrolls the optional facades and source prefixes. Descendant
+        # inventories stay inside the actual source prefixes, never parents.
+        whole.observe_directory(root, excluded=excluded)
+        for prefix in ROOTS:
+            for directory, children, _ in os.walk(root / prefix):
+                # source_modules includes ignored-name subdirectories inside
+                # source prefixes; guard that same enrollment domain exactly.
+                whole.observe_directory(Path(directory))
+        sources = source_modules(root)
+        for path in sources.values():
+            whole.hash_file(path)
+        snapshot = graph(root)
+        if snapshot[0] != sources:
+            raise InputDrift('Source enrollment changed while reading the native graph')
+        whole.assert_stable()
+        cache[key] = (root, snapshot)
+    original, (sources, imports) = cache[key]
+    whole.assert_stable()
+    if original != root:
+        sources = {name: root / path.relative_to(original) for name, path in sources.items()}
+    return sources, imports
+
+
 def binding(root, task, toolchain, reflection=None, observations=None):
     from lean_ci.state import check_binding, file_hash
     root = Path(root)
@@ -252,7 +337,7 @@ def binding(root, task, toolchain, reflection=None, observations=None):
     else:
         # Declaration checks consume compiled subject environments and their
         # local source dependencies; retain the existing native binding there.
-        sources, imports = graph(root)
+        sources, imports = _native_source_graph(root, observations)
         pending, closure = list(names), set()
         while pending:
             name = pending.pop()

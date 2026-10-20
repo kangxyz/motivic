@@ -12,18 +12,20 @@ public import Motivic.Cohomology.A1.Sheafification.StrictInvariance
 import all Motivic.Transfers.Presheaf.Sheafification.Image
 import all Motivic.Cohomology.A1.Sheafification.DenseDetection
 import all Motivic.Cohomology.A1.Sheafification.CylinderCriterion
+import all Motivic.Cohomology.A1.Sheafification.HomotopyInvariance
+import all Motivic.Cohomology.A1.Sheafification.WholeCylinderLifting
 import all Motivic.Cohomology.A1.Sheafification.StrictInvariance
 import Mathlib.Tactic.Linter
 import Mathlib.Tactic.Linter.TextBased
 
 
 /-!
-# Original HI-presheaf sheafification reduction consumers
+# Original HI-presheaf sheafification consumers
 
-The image and dense-detection assertions are unconditional for an original HI
-presheaf. The HI and strict-cohomological conclusions explicitly retain the
-whole-cylinder lifting hypothesis. This test does not claim the full
-HI-presheaf sheafification theorem.
+The actual image, dense detection, constructed whole-cylinder lifting and
+sheafification HI start from an original HI presheaf over a field. Strict
+ordinary cohomological invariance additionally assumes perfectness and HasExt.
+The conditional assembly interfaces remain independently usable.
 -/
 
 open _root_.AlgebraicGeometry.Scheme (SmoothSite)
@@ -74,6 +76,31 @@ theorem actual_image_local_generation (P : PresheafWithTransfers.{u + 1} k) :
     Presheaf.IsLocallySurjective (SmoothSite.nisnevichTopology (Spec (.of k)))
       ((toPresheaf k).map (nisnevichImageι P)) := inferInstance
 
+/-- The lifting premise is produced from the original presheaf's HI alone. -/
+theorem wholeCylinder_input_isConstructed
+    (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant) :
+    ModelWholeCylinderLifting P :=
+  modelWholeCylinderLifting_of_isA1Invariant P hP
+
+/-- The actual sheafification is HI without any lifting or target-HI premise. -/
+theorem actual_sheafification_isA1Invariant
+    (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant) :
+    ((nisnevichSheafify k).obj P).obj.IsA1Invariant :=
+  nisnevichSheafify_isA1Invariant P hP
+
+/-- Ordinary degree zero needs HasExt but no perfectness assumption. -/
+theorem original_degreeZero_projection_isIso
+    [HasExt.{u + 1}
+      (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+    (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant)
+    (X : SmoothSite (Spec (.of k))) :
+    IsIso ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (SmoothSite.nisnevichTopology (Spec (.of k)))
+        ((SheafWithTransfers.toSheaf k).obj ((nisnevichSheafify k).obj P)) 0).map
+          (SmoothSite.a1Projection (.of k) X).op) :=
+  SheafWithTransfers.degreeZero_isInvariant ((nisnevichSheafify k).obj P)
+    (nisnevichSheafify_isA1Invariant P hP) X
+
 /-- The literal dense-open restriction of the canonical target is injective. -/
 theorem original_dense_restriction_injective
     (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant)
@@ -112,6 +139,16 @@ variable [PerfectField k]
   [HasExt.{u + 1}
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
+/-- Every natural degree uses the literal ordinary cohomology projection. -/
+theorem original_cohomology_projection_isIso
+    (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant) (n : ℕ)
+    (X : SmoothSite (Spec (.of k))) :
+    IsIso ((_root_.CategoryTheory.Sheaf.LargeCohomology.presheaf.{u + 1, u + 1, u, u + 1}
+      (SmoothSite.nisnevichTopology (Spec (.of k)))
+        ((SheafWithTransfers.toSheaf k).obj ((nisnevichSheafify k).obj P)) n).map
+          (SmoothSite.a1Projection (.of k) X).op) :=
+  nisnevichSheafify_isStrictA1Invariant P hP n X
+
 /-- Conditional strict invariance preserves every original ordinary projection. -/
 theorem original_cohomology_projection_isIso_of_lifting
     (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant)
@@ -142,6 +179,8 @@ run_cmd do
     `Motivic.Transfers.Presheaf.Sheafification.Image,
     `Motivic.Cohomology.A1.Sheafification.DenseDetection,
     `Motivic.Cohomology.A1.Sheafification.CylinderCriterion,
+    `Motivic.Cohomology.A1.Sheafification.HomotopyInvariance,
+    `Motivic.Cohomology.A1.Sheafification.WholeCylinderLifting,
     `Motivic.Cohomology.A1.Sheafification.StrictInvariance]
   for sourceModule in sourceModules do
     unless env.header.moduleNames.contains sourceModule do
@@ -179,6 +218,8 @@ run_cmd do
     `Motivic.Transfers.Presheaf.Sheafification.Image,
     `Motivic.Cohomology.A1.Sheafification.DenseDetection,
     `Motivic.Cohomology.A1.Sheafification.CylinderCriterion,
+    `Motivic.Cohomology.A1.Sheafification.HomotopyInvariance,
+    `Motivic.Cohomology.A1.Sheafification.WholeCylinderLifting,
     `Motivic.Cohomology.A1.Sheafification.StrictInvariance,
     `MotivicTest.HIPresheafSheafificationReduction]
   let errors ← lintModules options #[] modules .humanReadable false
@@ -186,6 +227,6 @@ run_cmd do
   let filenameErrors ← modulesOSForbidden options modules
   unless errors == 0 && casingErrors == 0 && filenameErrors == 0 do
     throwError "Exact-file source text/style checks failed."
-  logInfo "Pinned text/style checks passed for the five selected modules."
+  logInfo "Pinned text/style checks passed for the seven selected modules."
 
 end MotivicTest.HIPresheafSheafificationReduction

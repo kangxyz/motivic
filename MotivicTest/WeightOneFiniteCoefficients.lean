@@ -35,7 +35,7 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- No restriction on the coefficient level or the field characteristic is required. -/
-def actual_equivalence_all_levels (n : ℕ) :
+def actualEquivalenceAllLevels (n : ℕ) :
     motivicFiniteCohomology k 1 1 n (SmoothSite.base (Spec (.of k))) ≃+
       Additive (kˣ ⧸ (powMonoidHom n).range) := weightOneFiniteEquiv k n
 
@@ -66,14 +66,14 @@ theorem actual_reduction_kernel_powers (n : ℕ)
 /-- The actual reduction takes the norm to its own unit coset, without inversion. -/
 theorem actual_reduction_norm_coset (n : ℕ)
     (x : motivicCohomology k 1 1 (SmoothSite.base (Spec (.of k)))) :
-    actual_equivalence_all_levels k n (motivicBaseIntegralReduction k 1 1 n x) =
+    actualEquivalenceAllLevels k n (motivicBaseIntegralReduction k 1 1 n x) =
       Additive.ofMul (QuotientGroup.mk (motivicNorm k x).toMul :
         kˣ ⧸ (powMonoidHom n).range) :=
   weightOneFiniteEquiv_integralReduction k n x
 
 /-- Inverse cosets retain the actual rational graph class and its comparison. -/
 theorem actual_inverse_graph (n : ℕ) (a : kˣ) :
-    (actual_equivalence_all_levels k n).symm
+    (actualEquivalenceAllLevels k n).symm
         (Additive.ofMul (QuotientGroup.mk a : kˣ ⧸ (powMonoidHom n).range)) =
       motivicBaseIntegralReduction k 1 1 n
         ((motivicRawBaseEvaluationComparison k 1 1).symm (graphUnitClass k a)) :=
@@ -85,12 +85,12 @@ theorem actual_level_one_zero
   @Subsingleton.elim _ (subsingleton_level_one k) _ _
 
 /-- Level one is covered by the same literal units-modulo-powers equivalence. -/
-def actual_level_one_equivalence :
+def actualLevelOneEquivalence :
     motivicFiniteCohomology k 1 1 1 (SmoothSite.base (Spec (.of k))) ≃+
       Additive (kˣ ⧸ (powMonoidHom 1).range) := weightOneFiniteEquiv k 1
 
 /-- Composite levels require no primality or invertibility assumption. -/
-def actual_level_twelve_equivalence :
+def actualLevelTwelveEquivalence :
     motivicFiniteCohomology k 1 1 12 (SmoothSite.base (Spec (.of k))) ≃+
       Additive (kˣ ⧸ (powMonoidHom 12).range) := weightOneFiniteEquiv k 12
 
@@ -110,14 +110,14 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of (ZMod 2)))) AddCommGrpCat.{1})]
 
 /-- The coefficient level equals the characteristic, so no prime-to-characteristic caveat hides. -/
-def actual_characteristic_two_level_two :
+def actualCharacteristicTwoLevelTwo :
     motivicFiniteCohomology (ZMod 2) 1 1 2
         (SmoothSite.base (Spec (.of (ZMod 2)))) ≃+
       Additive ((ZMod 2)ˣ ⧸ (powMonoidHom 2).range) :=
   weightOneFiniteEquiv (ZMod 2) 2
 
 /-- A composite coefficient level divisible by the characteristic is covered too. -/
-def actual_characteristic_two_level_six :
+def actualCharacteristicTwoLevelSix :
     motivicFiniteCohomology (ZMod 2) 1 1 6
         (SmoothSite.base (Spec (.of (ZMod 2)))) ≃+
       Additive ((ZMod 2)ˣ ⧸ (powMonoidHom 6).range) :=
@@ -153,13 +153,13 @@ run_cmd do
       ``weightOneFiniteEquiv, ``weightOneFiniteEquiv_symm_mk,
       ``weightOneFiniteEquiv_unitReduction, ``weightOneFiniteEquiv_integralReduction,
       ``weightOneFiniteEquiv_symm_graph, ``subsingleton_level_one,
-      ``actual_equivalence_all_levels, ``actual_integral_two_vanishes,
+      ``actualEquivalenceAllLevels, ``actual_integral_two_vanishes,
       ``actual_reduction_surjective, ``actual_reduction_kernel_multiples,
       ``actual_reduction_kernel_powers, ``actual_reduction_norm_coset,
-      ``actual_inverse_graph, ``actual_level_one_zero, ``actual_level_one_equivalence,
-      ``actual_level_twelve_equivalence, ``actual_level_twelve_torsion,
-      ``actual_positive_bockstein_zero, ``actual_characteristic_two_level_two,
-      ``actual_characteristic_two_level_six, ``actual_rational_minus_one_nonzero] do
+      ``actual_inverse_graph, ``actual_level_one_zero, ``actualLevelOneEquivalence,
+      ``actualLevelTwelveEquivalence, ``actual_level_twelve_torsion,
+      ``actual_positive_bockstein_zero, ``actualCharacteristicTwoLevelTwo,
+      ``actualCharacteristicTwoLevelSix, ``actual_rational_minus_one_nonzero] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

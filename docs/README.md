@@ -13,7 +13,7 @@ reading routes and the scope of recorded evidence.
 | [Development](DEVELOPMENT.md) | Locked setup, incremental compilation, lint, tests and clients |
 | [Developer tools](../scripts/README.md) | Selected-target cache/build commands and check coverage |
 | [Verification](VERIFICATION.md) | Dated validation milestones and their limits |
-| [Provenance](provenance/README.md) | Immutable imported source and evidence records |
+| [Provenance](provenance/README.md) | Imported source identities, historical evidence and recovery records |
 
 ## Choose a source owner
 
@@ -23,7 +23,7 @@ reading routes and the scope of recorded evidence.
 | General theory intended for Aglib | [Candidate guide](../Motivic/Aglib/README.md) |
 | Finite correspondences and transfer actions | [Correspondences](../Motivic/AlgebraicGeometry/Correspondences/README.md), then [transfers](../Motivic/Transfers/README.md) |
 | Current motivic model and computations | [Cohomology](../Motivic/Cohomology/README.md) |
-| Strict invariance and remaining inputs | [A1 family](../Motivic/Cohomology/A1/README.md) |
+| HI-presheaf sheafification and strict invariance | [Sheafification](../Motivic/Cohomology/A1/Sheafification/README.md), then [A1 family](../Motivic/Cohomology/A1/README.md) |
 | Public/trust consumers | [Tests](../MotivicTest/README.md) and [separate client](../examples/downstream/README.md) |
 
 Find a theorem through its family guide, exact import and native declaration

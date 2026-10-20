@@ -22,7 +22,7 @@ variable {S T : Scheme.{u}} (b : S ⟶ T) (K : Type u) [Field K]
   (q : Spec (.of K) ⟶ S) [Etale q] [IsSeparated q] [QuasiCompact q]
 
 /-- The target is evaluation of the existing inverse image of the original ordinary sheaf. -/
-def actual_inverse_image_evaluation
+def actualInverseImageEvaluation
     (F : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :
     (relativeFieldPoint b K q).sheafFiber.obj F ≅
       ((inverseImage b).obj F).obj.obj (op (fieldObject K q)) :=
@@ -30,7 +30,7 @@ def actual_inverse_image_evaluation
 
 open Lean in
 run_cmd do
-  for name in #[``actual_inverse_image_evaluation,
+  for name in #[``actualInverseImageEvaluation,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldObject_cover_lifting,
       ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldPoint,
           ``_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.fieldPointPresheafFiberIso,

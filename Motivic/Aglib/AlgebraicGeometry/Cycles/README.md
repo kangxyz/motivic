@@ -1,8 +1,17 @@
-# AlgebraicGeometry / Cycles
+# Integral cycles, generic multiplicities and finite pushforward
 
-Integral closed subschemes are the actual ideal sheaves whose subschemes are integral. IntegralCycle is their integer Finsupp group. Finite pushforward uses actual scheme-theoretic images and residue-field degrees, and intertwines the faithful generic-point dictionary. Fundamental cycles retain lengths of original, potentially nonreduced generic stalks.
+For `X : Scheme.{u}`, `IntegralClosedSubscheme X` consists of ideal sheaves
+whose actual closed subschemes are integral, and `IntegralCycle X` is their
+integer-valued `Finsupp` group. Finite pushforward uses the scheme-theoretic
+image and residue-field degree of each original component. Its point-cycle
+comparison retains the faithful generic-point dictionary.
 
-Integral cycles and finite pushforward are over arbitrary schemes with the displayed finite-morphism premise. FundamentalCycle requires IsNoetherian; generic-stalk finiteness uses IsLocallyNoetherian; reducedness proves coefficient one. genericMultiplicity is a toNat construction even outside finite length, and is only identified with actual length under its finiteness hypotheses.
+Integral cycles are defined on arbitrary schemes; `finitePushforward` requires
+the actual morphism to be finite. `fundamentalCycle` requires `[IsNoetherian X]`
+and retains lengths of the original, potentially nonreduced generic stalks.
+Generic-stalk finiteness uses `[IsLocallyNoetherian X]`; reducedness gives
+coefficient one. `genericMultiplicity` takes `toNat` even outside finite length,
+so its identification with length retains the displayed finiteness hypotheses.
 
 | Exact import |
 | --- |
@@ -17,7 +26,11 @@ Native interfaces:
 - `AlgebraicGeometry.Scheme.IntegralCycle.finitePushforward`
 - `AlgebraicGeometry.Scheme.fundamentalCycle`
 
-Mathlib.AlgebraicGeometry.AlgebraicCycle.Basic defines AlgebraicGeometry.AlgebraicCycle as locallyFinsupp, not this finite-support ideal-sheaf basis. Do not replace either object or assert a comparison without an explicit future mathematical interface. Existing Scheme.Hom.residueDegree is reused; infinite residue degree is natural-valued zero.
+Mathlib's `AlgebraicGeometry.AlgebraicCycle`, in
+`Mathlib.AlgebraicGeometry.AlgebraicCycle.Basic`, uses `locallyFinsupp`.
+A comparison with this finite-support ideal-sheaf basis requires its own map
+and theorem. The existing `Scheme.Hom.residueDegree` is reused; an infinite
+residue-field degree has natural-valued degree zero.
 
 Host consumers include `Motivic.FiniteCorrespondence`, finite-flat correspondence cycles and fundamental-cycle pushforward.
 

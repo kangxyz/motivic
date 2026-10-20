@@ -35,7 +35,6 @@ def correspondenceGermHom (x : X.left) :
         (SmoothSite.nisnevichPointFiberCocone X x F).pt) :=
   Finsupp.liftAddHom (fun A => zmultiplesHom _ (generatorGermHom k P hP A x))
 
-@[simp]
 theorem correspondenceGermHom_cycle
     (A : FiniteCorrespondenceGenerator X.hom Y.hom) (x : X.left) :
     correspondenceGermHom k P hP x A.cycle = generatorGermHom k P hP A x := by
@@ -43,6 +42,15 @@ theorem correspondenceGermHom_cycle
   change (Finsupp.single A (1 : ℤ)).sum
     (fun B m => m • generatorGermHom k P hP B x) = _
   rw [Finsupp.sum_single_index (zero_zsmul _), one_zsmul]
+
+@[simp] theorem correspondenceGermHom_cycle_simp
+    (A : FiniteCorrespondenceGenerator X.hom Y.hom) (x : X.left) :
+    @DFunLike.coe
+      ((Cor.mk X ⟶ Cor.mk Y) →+
+        ((∀ y : Y.left, ((Y.nisnevichPoint y).presheafFiber (A := AddCommGrpCat.{u + 1})).obj F) →+
+          ((X.nisnevichPoint x).presheafFiber (A := AddCommGrpCat.{u + 1})).obj F))
+      _ _ _ (correspondenceGermHom k P hP x) A.cycle = generatorGermHom k P hP A x :=
+  correspondenceGermHom_cycle k P hP A x
 
 /-- The signed evaluation is computed by the actual integer coefficients of the
 original finite correspondence. -/

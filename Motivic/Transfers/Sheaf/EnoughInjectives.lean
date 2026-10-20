@@ -31,7 +31,7 @@ namespace Motivic.SheafWithTransfers
 variable (k : Type u) [Field k]
 
 /-- The actual transfer-preserving Nisnevich adjunction is a reflection. -/
-instance forget_reflective : Reflective (forget.{u + 1} k) where
+instance forgetReflective : Reflective (forget.{u + 1} k) where
   L := PresheafWithTransfers.nisnevichSheafify k
   adj := PresheafWithTransfers.nisnevichSheafificationAdjunction k
 

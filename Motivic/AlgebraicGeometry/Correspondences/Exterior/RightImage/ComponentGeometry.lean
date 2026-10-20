@@ -29,8 +29,8 @@ ambient diagonal map, and the actual coefficient stalk map. It transports the
 same arbitrary remaining list; it makes no regularity or Euler/Tor claim.
 All products retain their full scheme structures and possible nilpotents.
 
-Source-only candidate, with a pending frozen shared prerequisite. No compiler
-run, diagnostic success, live promotion, or acceptance is claimed.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

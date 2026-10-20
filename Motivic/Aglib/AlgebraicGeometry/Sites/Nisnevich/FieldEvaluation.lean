@@ -20,7 +20,7 @@ public import Mathlib.CategoryTheory.Abelian.Exact
 Local surjectivity becomes surjectivity on sections over `Spec K`, since every
 covering sieve there is maximal. This applies to any topology `J` coarser than
 the field-lifting topology; the Nisnevich specialization is in
-`NisnevichEvaluation.lean`. For abelian-group-valued sheaves,
+`Evaluation.lean`. For abelian-group-valued sheaves,
 this proves that evaluation preserves epimorphisms and, together with left
 exactness, preserves homology and exact sequences.
 

@@ -6,13 +6,16 @@ Authors: kangxyz
 module
 
 public import Motivic.Cohomology.A1.Sheafification.CylinderCriterion
+public import Motivic.Cohomology.A1.Sheafification.HomotopyInvariance
 public import Motivic.Cohomology.A1.StrictInvariance.PerfectField
 
-/-! # Conditional strict invariance of the actual Nisnevich sheafification
+/-! # Strict invariance of the actual Nisnevich sheafification
 
-Whole-cylinder lifting and homotopy invariance of the original presheaf give
-strict invariance over a perfect field. Every degree retains the literal ordinary
-cohomology projection, coefficient universe and ordinary `HasExt` hypothesis.
+An HI presheaf with transfers has strictly invariant Nisnevich sheafification
+over a perfect field. Whole-cylinder lifting is constructed from the original
+presheaf. Every degree retains the literal ordinary cohomology projection,
+coefficient universe and ordinary `HasExt` hypothesis. The conditional assembly
+is also available for callers supplying their own lifting datum.
 -/
 
 @[expose] public noncomputable section
@@ -31,6 +34,14 @@ namespace Motivic.PresheafWithTransfers
 variable {k : Type u} [Field k] [PerfectField k]
   [HasExt.{u + 1}
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
+
+/-- Over a perfect field, the actual Nisnevich sheafification of an HI presheaf
+with transfers is strictly invariant for its original ordinary cohomology. -/
+theorem nisnevichSheafify_isStrictA1Invariant
+    (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant) :
+    ((nisnevichSheafify k).obj P).IsStrictA1Invariant :=
+  SheafWithTransfers.isStrictA1Invariant_of_perfect ((nisnevichSheafify k).obj P)
+    (nisnevichSheafify_isA1Invariant P hP)
 
 /-- Whole-cylinder lifting gives strict invariance for every original ordinary
 cohomology projection of the actual Nisnevich sheafification. -/

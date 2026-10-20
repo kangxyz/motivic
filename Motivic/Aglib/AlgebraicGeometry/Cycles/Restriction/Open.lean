@@ -23,7 +23,8 @@ therefore retains nilpotent multiplicities. Finite pushforward commutes with
 restriction by the actual morphismRestrict square and its residue-field tower.
 No finite morphism is presumed to preserve component generic points.
 
-SOURCE-ONLY PROPOSAL: no compilation or acceptance is claimed.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

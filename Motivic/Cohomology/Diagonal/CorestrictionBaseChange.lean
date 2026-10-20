@@ -62,7 +62,7 @@ def pointAmbientProjection : pointAmbient L n ⟶ pointAmbient k n :=
       (Spec.map (CommRingCat.ofHom (algebraMap k L)))
 
 /-- The new base projection is exactly the other projection of the whole pullback. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem pointAmbientIso_inv_base :
     (pointAmbientIso (k := k) (L := L)).inv.left ≫
       pullback.snd (SmoothSite.product (SmoothSite.base (Spec (.of k)))
@@ -77,6 +77,17 @@ theorem pointAmbientIso_inv_base :
     pullback.fst (SmoothSite.base (Spec (.of L))).hom (SmoothSite.torusPower (.of L) n).hom ≫ 𝟙
     _ at h
   simpa only [Category.comp_id] using h
+
+@[reassoc (attr := simp)]
+theorem pointAmbientIso_inv_base_simp :
+    (pointAmbientIso (k := k) (L := L)).inv.left ≫
+      pullback.snd
+        (pullback.fst (SmoothSite.base (Spec (.of k))).hom
+            (SmoothSite.torusPower (.of k) n).hom ≫
+          (SmoothSite.base (Spec (.of k))).hom)
+        (Spec.map (CommRingCat.ofHom (algebraMap k L))) =
+      pullback.fst (SmoothSite.base (Spec (.of L))).hom (SmoothSite.torusPower (.of L) n).hom :=
+  pointAmbientIso_inv_base (n := n) (k := k) (L := L)
 
 /-- The old base projection is the literal coefficient-field map. -/
 @[reassoc (attr := simp)]

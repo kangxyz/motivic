@@ -7,11 +7,17 @@ stays outside the candidate closure.
 
 | Exact import | Interface and boundary |
 | --- | --- |
-| `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial` | Retains the original finite-extension objects, polynomial witnesses and displayed hypotheses. |
-| `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial` | Retains the original finite-extension objects, polynomial witnesses and displayed hypotheses. |
-| `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.WholeFiber` | Retains the original finite-extension objects, polynomial witnesses and displayed hypotheses. |
-| `Motivic.Aglib.FieldTheory.FiniteExtension.CoprimeTensorField` | Retains the original finite-extension objects, polynomial witnesses and displayed hypotheses. |
-| `Motivic.Aglib.FieldTheory.FiniteExtension.PrimeDegrees` | Retains the original finite-extension objects, polynomial witnesses and displayed hypotheses. |
+| `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.Polynomial` | A nonzero polynomial in finitely many variables has a nonzero value in a finite field whose cardinality exceeds its total degree. Over a finite ground field, every sufficiently large positive extension degree works. |
+| `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.ResiduePolynomial` | A parameter makes the original residue polynomial a unit on the entire tensor fiber; a finite family uses one common parameter and the product of its norm polynomials. |
+| `Motivic.Aglib.FieldTheory.FiniteExtension.Avoidance.WholeFiber` | For a finite free domain over the original polynomial ring, nonzero determinant norm gives a unit on the whole evaluation fiber, including all branches and nilpotents. |
+| `Motivic.Aglib.FieldTheory.FiniteExtension.CoprimeTensorField` | `Algebra.TensorProduct.isField_of_coprime_finrank` makes the entire tensor algebra a field under the displayed coprimality condition; the canonical finite-field extension has its own specialization. |
+| `Motivic.Aglib.FieldTheory.FiniteExtension.PrimeDegrees` | `Nat.exists_two_large_prime_degrees_coprime` supplies two distinct primes above a bound, coprime to each other and a prescribed nonzero natural degree; no field object is needed. |
+
+The avoidance leaves use native `MvPolynomial` and `Algebra` namespaces, with
+explicit independent field, coefficient-algebra and variable universes. Finite
+residue extensions and finite parameter families remain hypotheses of their
+respective interfaces. These leaves do not construct a geometric parameter
+algebra or its finite free presentation.
 
 Already accepted Sylow fixed-field, rational-function and Milnor interfaces use
 pinned Aglib directly. A statement for an explicitly supplied finite polynomial

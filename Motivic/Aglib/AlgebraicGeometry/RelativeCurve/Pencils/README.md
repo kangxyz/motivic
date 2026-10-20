@@ -13,6 +13,21 @@ Cartesian marked square, exact complements and finite thickened boundary.
 The normalization constructor that supplies this fixed geometry is documented
 in the [normalization guide](../../Normalization/README.md).
 
+[Data/OriginalMiddleInput](Data/OriginalMiddleInput.lean) owns
+`AlgebraicGeometry.Scheme.RelativeCurvePencil.OriginalMiddleInput`: the complete
+original schemes, maps, `BoundarySectionData` and target sections, with five
+smooth sites and their `pSite`, `wSite` and `uSite` maps. It contains no transfer
+action or lifting conclusion.
+[Correction/OriginalTargetSectionWitnesses](Correction/OriginalTargetSectionWitnesses.lean)
+owns `OriginalTargetSectionWitnesses` in
+`AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification`.
+Its eight fields retain the original line bundle, section pair, finite-flat
+divisors, full-boundary frame equation and both units.
+`nonempty_originalTargetSectionWitnesses` packages the existing target supplier
+without choosing a second pair. The general consumers are
+`NativeOriginalMiddleInput` and `OriginalLocalizationHistory` in the
+[normalization family](../../Normalization/README.md).
+
 [Norm/OriginalRetainedNormMaps](Norm/OriginalRetainedNormMaps.lean)
 uses the native `Scheme.Hom.normProductMap` for the finite map on the second
 factor. Its retained-source/target square commutes; it is not declared Cartesian
@@ -140,4 +155,4 @@ provides the two-pair finite/identity diagram;
 keeps its general schemes and smooth-site maps in native `Scheme.Hom` and
 `Scheme.RelativeCurvePencil` namespaces. The
 [host action guide](../../../../Transfers/Presheaf/Actions/README.md) records the
-separate transfer conclusions and remaining assembly boundary.
+separate transfer conclusions and whole-cylinder assembly.

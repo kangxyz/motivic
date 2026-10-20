@@ -16,10 +16,13 @@ universe u
 namespace AlgebraicGeometry.Scheme.GenericSection
 variable (R B : Type u) [CommRing R] [IsDomain R] [CommRing B] [Algebra R B]
 
+/-- The canonical spectrum map `Spec R[1/r] ⟶ Spec R` for localization at `r`. -/
 abbrev awayMap (r : R) : Spec (.of (Localization.Away r)) ⟶ Spec (.of R) :=
   Spec.map (CommRingCat.ofHom (algebraMap R (Localization.Away r)))
+/-- The base change of `Spec B ⟶ Spec R` along the principal localization at `r`. -/
 abbrev awayFiber (r : R) := pullback (baseMap R B) (awayMap R r)
 
+/-- The canonical ring map `R[1/r] → FractionRing R` for a nonzero `r`. -/
 def awayToFraction (r : R) (hr : r ≠ 0) : Localization.Away r →+* FractionRing R :=
   IsLocalization.Away.lift r (IsUnit.mk0 _ ((map_ne_zero_iff _
     (IsFractionRing.injective R (FractionRing R))).mpr hr))

@@ -56,12 +56,12 @@ theorem representable_sections (X Y : Cor k) :
       AddCommGrpCat.of (FiniteCorrespondence Y.toSmoothSite.hom X.toSmoothSite.hom) := rfl
 
 /-- Transfer on a representable is actual incidence Tor precomposition. -/
-@[simp]
+@[simp↓]
 theorem representable_transfer_apply {X Y Z : Cor k} (α : Y ⟶ Z) (β : Z ⟶ X) :
     transfer ((representable k).obj X) α β = α ≫ β := rfl
 
 /-- The representing-object functor acts by actual incidence Tor postcomposition. -/
-@[simp]
+@[simp↓]
 theorem representable_map_app_apply {X Y Z : Cor k} (α : X ⟶ Y) (β : Z ⟶ X) :
     ((representable k).map α).hom.app (op Z) β = β ≫ α := rfl
 

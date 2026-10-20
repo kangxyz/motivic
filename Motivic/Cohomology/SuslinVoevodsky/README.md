@@ -14,8 +14,10 @@ The current model is the sheafified Suslin complex of the reduced torus.
 `Motivic.motivicComplex k q` and `Motivic.motivicComplexFunctor k q` retain
 complexes of transfer sheaves in coefficient universe `u+1` for a field
 `k : Type u` and weight `q : ℕ`. No perfection or characteristic assumption is
-part of these constructors. Singular chain degree `r` occupies cochain degree
-`q-r`; preserve the original differential and shift signs.
+part of these constructors. The defining signed cochain shift is `[-q]`.
+Singular chain degree `r` occupies cochain degree `q-r`; the comparison
+`motivicComplexPlacementIso` with the sign-preserving placement has component
+sign `(-1)^(q*r)`. Preserve the original differential and shift signs.
 
 `Motivic.motivicSheafComplex` is the underlying ordinary Nisnevich sheaf complex.
 Its actual unbounded hypercohomology defines

@@ -34,10 +34,11 @@ Entries below are exact suffixes of `Motivic.Cohomology.A1`.
 | `StrictInvariance.PerfectField` | Unified perfect-field theorem using the finite and infinite branches |
 | `CartierBoundary` | Genuine higher-direct-image theorem retaining its stated current-degree HI and Epi inputs |
 
-The strict theorem closes the perfect-field transfer-sheaf endpoint. General
-HI-presheaf sheafification, nonperfect fields, derived continuity, full canonical
-purity and the separate global principal-family/norm/Picard program keep their
-own boundaries. Positive-characteristic diagonal, higher-Chow and spectrum
+The strict theorem closes the perfect-field transfer-sheaf endpoint. The
+[presheaf-entry theorem](Sheafification/README.md) proves HI of actual
+Nisnevich sheafification and then applies this endpoint. Nonperfect strict
+invariance, derived continuity, full canonical purity and the separate global
+principal-family/norm/Picard program keep their own boundaries. Positive-characteristic diagonal, higher-Chow and spectrum
 comparisons remain separate.
 
 [Source and verification records](../../../docs/provenance/perfect-strict-20261018/README.md)
@@ -92,28 +93,17 @@ candidate leaf directly.
 
 ## Original HI-presheaf sheafification
 
-The [sheafification reduction guide](Sheafification/README.md) records the
-actual-unit image, dense detection, whole-cylinder input and conditional
-middle-lift assembly. It distinguishes that open presheaf-entry problem from
-the already-HI Nisnevich transfer-sheaf strict theorem above.
+Import `Motivic.Cohomology.A1.Sheafification.HomotopyInvariance` for
+`Motivic.PresheafWithTransfers.nisnevichSheafify_isA1Invariant`, starting
+from an original HI presheaf `P : PresheafWithTransfers.{u + 1} k` over any
+field `k : Type u`. Import
+`Motivic.Cohomology.A1.Sheafification.StrictInvariance` for
+`nisnevichSheafify_isStrictA1Invariant`, additionally assuming perfectness and
+the ordinary `HasExt.{u + 1}` above. The target is the actual transfer-preserving
+Nisnevich sheafification, and all degrees use the original ordinary projections.
 
-[Sheafification.MiddleLiftDifference](Sheafification/MiddleLiftDifference.lean)
-supplies
-`nisnevichImage_wholeCylinder_lift_of_middle_difference_relations` in
-`Motivic.PresheafWithTransfers`. For `k : Type u`, `[Field k]` and
-`P : PresheafWithTransfers.{u+1} k`, it retains the original nonempty base-open
-restriction, whole-cylinder map and its equation, actual two-arrow Nisnevich
-cover, source/puncture restriction maps, correspondences and matching image
-representatives. The E2 and E4 relations, the E5 signed relation and
-
-`transfer(λB ; graph(bA) − graph(v′) ; λA) = 0`
-
-are explicit inputs. Additivity changes only this E3 difference-zero input
-into the equality required by the existing middle-lift theorem. The conclusion
-is an image section on the whole cylinder over the specified nonempty original
-base open, with its original sheafification-unit equation. This conditional
-adapter needs no additional A1-invariance premise, and constructs none of the
-cover or relation inputs. The [admitted action suppliers](../../Transfers/Presheaf/Actions/README.md)
-still require their actual common-witness transport to these representatives;
-the adapter is not a producer of `ModelWholeCylinderLifting` or a proof of
-general HI-presheaf sheafification-HI.
+The [sheafification guide](Sheafification/README.md) owns the precise maps,
+constructed whole-cylinder lifting and original-history action joins. Its
+conditional lifting and signed middle-relation adapters remain reusable with
+their displayed premises. The new public endpoints discharge those premises
+from the original presheaf HI rather than assuming target HI.

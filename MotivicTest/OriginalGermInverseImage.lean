@@ -19,7 +19,7 @@ variable {B : Scheme.{u}} [IsAffine B] {U X : SmoothSite B}
 
 /-- Both endpoints are the existing objects: the original point-fiber colimit and
 ordinary small-site inverse-image evaluation at the actual residue-field map. -/
-def actual_original_germ_inverse_image
+def actualOriginalGermInverseImage
     (F : Sheaf (nisnevichTopology B) AddCommGrpCat.{u + 1})
     (f : U ⟶ X) [Etale f.left] (u : U.left) :
     (nisnevichPointFiberCocone U u F.obj).pt ≅
@@ -34,7 +34,7 @@ def actual_original_germ_inverse_image
 
 open Lean in
 run_cmd do
-  for name in #[``actual_original_germ_inverse_image,
+  for name in #[``actualOriginalGermInverseImage,
       ``_root_.AlgebraicGeometry.Scheme.SmoothSite.originalGermInverseImageOfFactorization,
           ``_root_.AlgebraicGeometry.Scheme.SmoothSite.originalGermResidueInverseImageIso] do
     for dependency in ← collectAxioms name do

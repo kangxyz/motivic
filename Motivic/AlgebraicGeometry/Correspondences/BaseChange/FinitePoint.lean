@@ -95,7 +95,7 @@ theorem support_structure :
 
 omit [AlgebraicGeometry.IsNoetherian P] in
 /-- The full source retains its literal projection to the original ambient scheme. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem supportMap_original :
     supportMap φ m ≫
       (SmoothSite.baseChangeProductIso (Spec.map (CommRingCat.ofHom φ))
@@ -119,8 +119,22 @@ theorem supportMap_original :
   rw [Category.assoc, Scheme.Hom.toImage_imageι]
 
 omit [AlgebraicGeometry.IsNoetherian P] in
+@[reassoc (attr := simp)] theorem supportMap_original_simp :
+    supportMap φ m ≫
+      (SmoothSite.baseChangeProductIso (Spec.map (CommRingCat.ofHom φ))
+        (SmoothSite.base (Spec (.of k))) Y).inv.left ≫
+      pullback.fst (pullback.fst (SmoothSite.base (Spec (.of k))).hom Y.hom ≫
+        (SmoothSite.base (Spec (.of k))).hom)
+        (Spec.map (CommRingCat.ofHom φ)) =
+    pullback.fst
+      (m.toImage ≫ ((imageGenerator m).projection ≫
+        (SmoothSite.base (Spec (.of k))).hom))
+      (Spec.map (CommRingCat.ofHom φ)) ≫ m :=
+  supportMap_original φ m
+
+omit [AlgebraicGeometry.IsNoetherian P] in
 /-- The full source retains its literal projection to the changed base object. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem supportMap_base :
     supportMap φ m ≫
       pullback.fst
@@ -134,6 +148,20 @@ theorem supportMap_base :
   simp only [supportMap, Category.assoc, fieldBaseChangeInclusion_fst_assoc,
     SmoothSite.baseChangeBaseIso_hom_left]
   erw [(imageGenerator m).fieldBaseChangeProjection_snd φ, FinitePointBaseChange.map_snd]
+
+omit [AlgebraicGeometry.IsNoetherian P] in
+@[reassoc (attr := simp)] theorem supportMap_base_simp :
+    supportMap φ m ≫
+      pullback.fst
+        (pullback.snd (SmoothSite.base (Spec (.of k))).hom
+          (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))) ≫
+      pullback.snd (𝟙 (Spec (.of k))) (Spec.map (CommRingCat.ofHom φ)) =
+    pullback.snd
+      (m.toImage ≫ ((imageGenerator m).projection ≫
+        (SmoothSite.base (Spec (.of k))).hom))
+      (Spec.map (CommRingCat.ofHom φ)) :=
+  supportMap_base φ m
 
 omit [AlgebraicGeometry.IsNoetherian P] in
 /-- Actual scalar extension commutes with finite pushforward of an integral finite point.

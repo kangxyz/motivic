@@ -2,7 +2,7 @@
 
 `Motivic/Aglib/` contains maintained general theory developed here for later
 inclusion in Aglib. Follow the
-[shared candidate policy](https://github.com/kangxyz/aglib/blob/main/doc/DEVELOPMENT.md#downstream-candidates-for-aglib).
+[shared candidate policy](https://github.com/kangxyz/aglib/blob/main/docs/DEVELOPMENT.md#downstream-candidates-for-aglib).
 Candidates are ordinary Motivic production modules, checked with the same Lean
 options, lint, axiom policy and incremental build route.
 

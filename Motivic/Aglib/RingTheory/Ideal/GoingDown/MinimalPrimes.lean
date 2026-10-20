@@ -17,7 +17,7 @@ domain or reduced, and the two rings may occupy independent universes.
 The intended owner is `Aglib.RingTheory.Ideal.GoingDown.MinimalPrimes`.
 These zero-ideal interfaces specialize the pinned upstream theorem
 `Ideal.minimalPrime_map_under_of_goingDown`; the contraction is the actual
-`Ideal.under` along `algebraMap`. `Tests.GenericDominance` consumes them
+`Ideal.under` along `algebraMap`. `MotivicTest.GenericDominance` consumes them
 alongside the downstream generic-component dominance results.
 -/
 

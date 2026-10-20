@@ -1,5 +1,11 @@
 # Original normalization, difference actions and recovery source
 
+This dated intake records the original-history construction before its final
+whole-cylinder lifting join. For the later public HI and perfect-field strict
+endpoints use the [current sheafification guide](../../../Motivic/Cohomology/A1/Sheafification/README.md)
+and [subsequent intake](../hi-presheaf-sheafification-20261020/README.md).
+The remaining-goal and verification descriptions below retain their snapshot.
+
 This integration uses two identified archives based on raw commit
 `901f2e6fdfc55d7cd8842f46db2c890ec07b25a1`:
 

@@ -120,7 +120,7 @@ def IsA1Invariant (P : PresheafWithTransfers.{v} k) : Prop :=
       transfer P ((Cor.graphFunctor k).map (SmoothSite.a1Projection (.of k) X)) := rfl
 
 /-- On a representable transfer presheaf, the map is actual graph precomposition. -/
-@[simp] theorem a1ProjectionPullback_representable_apply (Y : Cor k)
+theorem a1ProjectionPullback_representable_apply (Y : Cor k)
     (X : SmoothSite (Spec (.of k))) (α : Cor.mk X ⟶ Y) :
     A1.projectionPullback (.of k) ((toPresheaf k).obj ((representable k).obj Y)) X α =
       (Cor.graphFunctor k).map (SmoothSite.a1Projection (.of k) X) ≫ α := rfl

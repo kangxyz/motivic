@@ -17,6 +17,10 @@ The original quotient algebra is used without reduction. Its actual finite-flat
 map to the one-simplex and invertible coordinate determine a finite morphism
 into the canonical simplex-torus product. All generic local lengths are kept
 when assembling its fundamental correspondence.
+
+The coordinate-facing projection lemmas retain their public rewrite statements.
+Their `_simp` variants expose the normalized torus-product parameters required
+by the simplifier, including the parameters of the component projections.
 -/
 
 @[expose] public noncomputable section
@@ -89,7 +93,7 @@ def targetMap (p : k[X]) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
     familyScheme p ⟶ (SmoothSite.torusPower (.of k) 1).left :=
   torusMap p hd h0 ≫ (SmoothSite.torusPowerOneIso (.of k)).inv.left
 
-@[reassoc (attr := simp)] theorem targetMap_coordinate (p : k[X])
+@[reassoc] theorem targetMap_coordinate (p : k[X])
     (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
     targetMap p hd h0 ≫ (SmoothSite.torusCoordinate (.of k) 1 0).left =
       torusMap p hd h0 := by
@@ -99,6 +103,13 @@ def targetMap (p : k[X]) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
   change (SmoothSite.torusPowerOneIso (.of k)).inv.left ≫
     (SmoothSite.torusPowerOneIso (.of k)).hom.left = 𝟙 _ at h
   rw [h, Category.comp_id]
+
+@[reassoc (attr := simp)] theorem targetMap_coordinate_simp (p : k[X])
+    (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
+    targetMap p hd h0 ≫ (SmoothSite.productFst (SmoothSite.torus (.of k))
+      (SmoothSite.base (Spec (.of k)))).left =
+      torusMap p hd h0 :=
+  targetMap_coordinate p hd h0
 
 /-- The parameter chart retains the original field map. -/
 theorem projection_structure (p : k[X]) :
@@ -144,13 +155,27 @@ def inclusion (p : k[X]) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
     familyScheme p ⟶ ambient k :=
   pullback.lift (projection p) (targetMap p hd h0) (projection_base p hd h0)
 
-@[reassoc (attr := simp)] theorem inclusion_fst (p : k[X])
+@[reassoc] theorem inclusion_fst (p : k[X])
     (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
     inclusion p hd h0 ≫ pullback.fst _ _ = projection p := pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem inclusion_snd (p : k[X])
+@[reassoc (attr := simp)] theorem inclusion_fst_simp (p : k[X])
+    (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
+    inclusion p hd h0 ≫ pullback.fst
+      (_root_.AlgebraicSimplex.smoothSiteObj k 1).hom (pullback.fst (laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom ≫ laurentProjection (.of k)) = projection p :=
+  inclusion_fst p hd h0
+
+@[reassoc] theorem inclusion_snd (p : k[X])
     (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
     inclusion p hd h0 ≫ pullback.snd _ _ = targetMap p hd h0 := pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem inclusion_snd_simp (p : k[X])
+    (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) :
+    inclusion p hd h0 ≫ pullback.snd
+      (_root_.AlgebraicSimplex.smoothSiteObj k 1).hom (pullback.fst (laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom ≫ laurentProjection (.of k)) = targetMap p hd h0 :=
+  inclusion_snd p hd h0
 
 /-- Finiteness holds for the whole map into the separated torus product. -/
 theorem inclusion_finite {p : k[X]} (hp : p.Monic) (hd : 1 ≤ p.natDegree)
@@ -335,7 +360,7 @@ def polynomialTargetMap (p : k[X]) (h0 : p.coeff 0 ≠ 0) :
     Spec (.of (AdjoinRoot p)) ⟶ (SmoothSite.torusPower (.of k) 1).left :=
   polynomialTorusMap p h0 ≫ (SmoothSite.torusPowerOneIso (.of k)).inv.left
 
-@[reassoc (attr := simp)] theorem polynomialTargetMap_coordinate (p : k[X])
+@[reassoc] theorem polynomialTargetMap_coordinate (p : k[X])
     (h0 : p.coeff 0 ≠ 0) :
     polynomialTargetMap p h0 ≫ (SmoothSite.torusCoordinate (.of k) 1 0).left =
       polynomialTorusMap p h0 := by
@@ -345,6 +370,13 @@ def polynomialTargetMap (p : k[X]) (h0 : p.coeff 0 ≠ 0) :
   change (SmoothSite.torusPowerOneIso (.of k)).inv.left ≫
     (SmoothSite.torusPowerOneIso (.of k)).hom.left = 𝟙 _ at h
   rw [h, Category.comp_id]
+
+@[reassoc (attr := simp)] theorem polynomialTargetMap_coordinate_simp (p : k[X])
+    (h0 : p.coeff 0 ≠ 0) :
+    polynomialTargetMap p h0 ≫ (SmoothSite.productFst (SmoothSite.torus (.of k))
+      (SmoothSite.base (Spec (.of k)))).left =
+      polynomialTorusMap p h0 :=
+  polynomialTargetMap_coordinate p h0
 
 /-- The endpoint map is over the original field with its actual quotient scalar map. -/
 theorem polynomialTargetMap_structure (p : k[X]) (h0 : p.coeff 0 ≠ 0) :
@@ -370,15 +402,31 @@ def polynomialInclusion (p : k[X]) (h0 : p.coeff 0 ≠ 0) :
       change Spec.map _ ≫ 𝟙 _ = _
       rw [Category.comp_id, polynomialTargetMap_structure])
 
-@[reassoc (attr := simp)] theorem polynomialInclusion_fst (p : k[X])
+@[reassoc] theorem polynomialInclusion_fst (p : k[X])
     (h0 : p.coeff 0 ≠ 0) :
     polynomialInclusion p h0 ≫ pullback.fst _ _ =
       Spec.map (CommRingCat.ofHom (AdjoinRoot.of p)) := pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem polynomialInclusion_snd (p : k[X])
+@[reassoc (attr := simp)] theorem polynomialInclusion_fst_simp (p : k[X])
+    (h0 : p.coeff 0 ≠ 0) :
+    polynomialInclusion p h0 ≫ pullback.fst
+      (SmoothSite.base (Spec (.of k))).hom (pullback.fst (laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom ≫ laurentProjection (.of k)) =
+      Spec.map (CommRingCat.ofHom (AdjoinRoot.of p)) :=
+  polynomialInclusion_fst p h0
+
+@[reassoc] theorem polynomialInclusion_snd (p : k[X])
     (h0 : p.coeff 0 ≠ 0) :
     polynomialInclusion p h0 ≫ pullback.snd _ _ =
       polynomialTargetMap p h0 := pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem polynomialInclusion_snd_simp (p : k[X])
+    (h0 : p.coeff 0 ≠ 0) :
+    polynomialInclusion p h0 ≫ pullback.snd
+      (SmoothSite.base (Spec (.of k))).hom (pullback.fst (laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom ≫ laurentProjection (.of k)) =
+      polynomialTargetMap p h0 :=
+  polynomialInclusion_snd p h0
 
 /-- The endpoint polynomial is its actual closed subscheme, not its reduction. -/
 instance polynomialInclusion_closed (p : k[X]) (h0 : p.coeff 0 ≠ 0) :
@@ -471,15 +519,30 @@ def fiberInclusion (p : k[X]) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) (a
     change _ = (pullback.snd _ _ ≫ projection p) ≫ (_root_.AlgebraicSimplex.smoothSiteObj k 1).hom
     rw [← pullback.condition, Category.assoc, MorphismProperty.Over.w])
 
-@[reassoc (attr := simp)] theorem fiberInclusion_fst (p : k[X])
+@[reassoc] theorem fiberInclusion_fst (p : k[X])
     (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) (a : k) :
     fiberInclusion p hd h0 a ≫ pullback.fst _ _ = fiberProjection p a :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)] theorem fiberInclusion_snd (p : k[X])
+@[reassoc (attr := simp)] theorem fiberInclusion_fst_simp (p : k[X])
+    (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) (a : k) :
+    fiberInclusion p hd h0 a ≫ pullback.fst
+      (SmoothSite.base (Spec (.of k))).hom (pullback.fst (laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom ≫ laurentProjection (.of k)) = fiberProjection p a :=
+  fiberInclusion_fst p hd h0 a
+
+@[reassoc] theorem fiberInclusion_snd (p : k[X])
     (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) (a : k) :
     fiberInclusion p hd h0 a ≫ pullback.snd _ _ = fiberToFamily p a ≫ targetMap p hd h0 :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem fiberInclusion_snd_simp (p : k[X])
+    (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0) (a : k) :
+    fiberInclusion p hd h0 a ≫ pullback.snd
+      (SmoothSite.base (Spec (.of k))).hom (pullback.fst (laurentProjection (.of k))
+        (SmoothSite.base (Spec (.of k))).hom ≫ laurentProjection (.of k)) =
+      fiberToFamily p a ≫ targetMap p hd h0 :=
+  fiberInclusion_snd p hd h0 a
 
 /-- Base change keeps the entire fiber finite over the field. -/
 theorem fiberProjection_finite {p : k[X]} (hp : p.Monic)
@@ -671,7 +734,7 @@ def componentSchemeIso {p : k[X]} (hp : p.Monic) (hd : 1 ≤ p.natDegree)
   have : IsClosedImmersion (inclusion p hd h0) := inclusion_closed hp hd h0
   exact asIso ((componentSupport p z).val.subschemeι ≫ inclusion p hd h0).toImage
 
-@[reassoc (attr := simp)] theorem componentSchemeIso_hom_projection {p : k[X]}
+@[reassoc] theorem componentSchemeIso_hom_projection {p : k[X]}
     (hp : p.Monic) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0)
     (z : genericPoints (familyScheme p)) :
     (componentSchemeIso hp hd h0 z).hom ≫ (componentGenerator hp hd h0 z).projection =
@@ -680,7 +743,20 @@ def componentSchemeIso {p : k[X]} (hp : p.Monic) (hd : 1 ≤ p.natDegree)
     ((componentSupport p z).val.subschemeι ≫ inclusion p hd h0).imageι ≫ pullback.fst _ _ = _
   rw [← Category.assoc, Scheme.Hom.toImage_imageι, Category.assoc, inclusion_fst]
 
-@[reassoc (attr := simp)] theorem componentSchemeIso_hom_target {p : k[X]}
+@[reassoc (attr := simp)] theorem componentSchemeIso_hom_projection_simp {p : k[X]}
+    (hp : p.Monic) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0)
+    (z : genericPoints (familyScheme p)) :
+    (componentSchemeIso hp hd h0 z).hom ≫
+      @FiniteCorrespondenceGenerator.projection (Spec (.of k))
+        (_root_.AlgebraicSimplex.smoothSiteObj k 1).left
+        (pullback (laurentProjection (.of k)) (SmoothSite.base (Spec (.of k))).hom)
+        (_root_.AlgebraicSimplex.smoothSiteObj k 1).hom
+        (pullback.fst (laurentProjection (.of k)) (SmoothSite.base (Spec (.of k))).hom ≫
+          laurentProjection (.of k)) (componentGenerator hp hd h0 z) =
+      (componentSupport p z).val.subschemeι ≫ projection p :=
+  componentSchemeIso_hom_projection hp hd h0 z
+
+@[reassoc] theorem componentSchemeIso_hom_target {p : k[X]}
     (hp : p.Monic) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0)
     (z : genericPoints (familyScheme p)) :
     (componentSchemeIso hp hd h0 z).hom ≫ (componentGenerator hp hd h0 z).targetProjection =
@@ -688,6 +764,19 @@ def componentSchemeIso {p : k[X]} (hp : p.Monic) (hd : 1 ≤ p.natDegree)
   change ((componentSupport p z).val.subschemeι ≫ inclusion p hd h0).toImage ≫
     ((componentSupport p z).val.subschemeι ≫ inclusion p hd h0).imageι ≫ pullback.snd _ _ = _
   rw [← Category.assoc, Scheme.Hom.toImage_imageι, Category.assoc, inclusion_snd]
+
+@[reassoc (attr := simp)] theorem componentSchemeIso_hom_target_simp {p : k[X]}
+    (hp : p.Monic) (hd : 1 ≤ p.natDegree) (h0 : p.coeff 0 ≠ 0)
+    (z : genericPoints (familyScheme p)) :
+    (componentSchemeIso hp hd h0 z).hom ≫
+      @FiniteCorrespondenceGenerator.targetProjection (Spec (.of k))
+        (_root_.AlgebraicSimplex.smoothSiteObj k 1).left
+        (pullback (laurentProjection (.of k)) (SmoothSite.base (Spec (.of k))).hom)
+        (_root_.AlgebraicSimplex.smoothSiteObj k 1).hom
+        (pullback.fst (laurentProjection (.of k)) (SmoothSite.base (Spec (.of k))).hom ≫
+          laurentProjection (.of k)) (componentGenerator hp hd h0 z) =
+      (componentSupport p z).val.subschemeι ≫ targetMap p hd h0 :=
+  componentSchemeIso_hom_target hp hd h0 z
 
 /-- The original reduced component's fiber is left wholly unreduced. -/
 abbrev componentFiber (p : k[X]) (z : genericPoints (familyScheme p)) (a : k) : Scheme.{u} :=
@@ -715,7 +804,7 @@ def componentFiberIso {p : k[X]} (hp : p.Monic) (hd : 1 ≤ p.natDegree)
       (componentGenerator hp hd h0 z).graphPullback
         (WeightOneBoundaryNorm.evaluationPoint k a).left :=
   asIso (pullback.map _ _ _ _ (𝟙 _) (componentSchemeIso hp hd h0 z).hom (𝟙 _)
-    (by simp) (by simpa using (componentSchemeIso_hom_projection hp hd h0 z).symm))
+    (by simp) (componentSchemeIso_hom_projection hp hd h0 z).symm)
 
 /-- The component fiber map to the point-torus product uses the same two original coordinates. -/
 theorem componentFiberIso_hom_inclusion {p : k[X]} (hp : p.Monic)

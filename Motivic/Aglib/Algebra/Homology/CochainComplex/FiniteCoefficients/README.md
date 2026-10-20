@@ -1,23 +1,27 @@
-# Algebra / Homology / CochainComplex / FiniteCoefficients
+# Mapping-cone finite coefficients and the positive Bockstein
 
-The actual mapping cone of n times the identity, for all natural n, retaining a=snd and positive Bockstein b=-fst, reduction/insertion maps and contraction at level one.
+For `K : CochainComplex C ℤ` and every `n : ℕ`,
+`CochainComplex.finiteCoefficients K n` is the mapping cone of `n • 𝟙 K`.
+Its signed coordinates are `a = snd` and `b = -fst`; for modules the differential
+is `(da - n b, -db)`. The connecting map is the positive Bockstein coordinate
+`b`, followed by the canonical shift identification. Reduction, insertion and
+the contraction at level one retain these signs in every integer degree.
 
-Original additive/biproduct/category assumptions; every integer degree is supported. No derived-tensor identification or invertibility of n is claimed.
+| Exact import | Interface and hypotheses |
+| --- | --- |
+| `Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Basic` | The cone, coefficient triangle, functorial maps, reduction and insertion; `[Category.{v} C] [Preadditive C] [HasBinaryBiproducts C]` for `C : Type u`. |
+| `Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Module` | Explicit pairs, differential and cocycle equations for modules over any ring, with independent ring and module universes. |
+| `Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Cohomology` | `bocksteinHomology` and its positive representative formula, additionally using `[CategoryWithHomology C]`. |
+| `Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Exact` | The exact coefficient sequence in an abelian category, including every natural coefficient level. |
 
-| Exact import |
-| --- |
-| `Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Basic` |
-| `Motivic.Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients.Exact` |
+The native interfaces are `CochainComplex.finiteCoefficients` and its
+`triangle`, `integral`, `bockstein`, `reduction` and `insertion` declarations.
+`Motivic.motivicFiniteComplex` specializes this same cone; the host
+[finite-coefficient family](../../../../../Cohomology/Coefficients/Finite/README.md)
+uses its original maps. No derived-tensor identification or invertibility of
+`n` is claimed.
 
-Native interfaces:
-
-- `CochainComplex.finiteCoefficients`
-- `CochainComplex.finiteCoefficients.triangle`
-- `CochainComplex.finiteCoefficients.bockstein`
-
-`Motivic.motivicFiniteComplex` specializes this cone; coefficient sequences consume its actual maps.
-
-Intended upstream family: `Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients`. Use exact lower
-imports; a current motivating consumer does not change the general hypotheses.
-Follow the [candidate policy](../../../../README.md) and retain the actual maps and
-universes when extending these interfaces.
+Intended upstream family:
+`Aglib.Algebra.Homology.CochainComplex.FiniteCoefficients`.
+Follow the [candidate policy](../../../../README.md), using the exact lower
+import and retaining its categorical assumptions and universes.

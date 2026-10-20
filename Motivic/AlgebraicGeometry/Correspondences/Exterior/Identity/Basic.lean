@@ -106,17 +106,31 @@ def exteriorIdentityInclusion : V.exteriorIdentitySupport T ⟶
     simpa only [Category.assoc] using
       congrArg (pullback.fst (V.projection ≫ X.hom) T.hom ≫ ·) V.projection_base)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityInclusion_fst :
     V.exteriorIdentityInclusion T ≫
       pullback.fst (SmoothSite.product X T).hom (SmoothSite.product Y T).hom =
         V.exteriorIdentitySource T := pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
+theorem exteriorIdentityInclusion_fst_simp :
+    V.exteriorIdentityInclusion T ≫
+      pullback.fst (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Y.hom T.hom ≫ Y.hom) =
+        V.exteriorIdentitySource T :=
+  exteriorIdentityInclusion_fst V T
+
+@[reassoc]
 theorem exteriorIdentityInclusion_snd :
     V.exteriorIdentityInclusion T ≫
       pullback.snd (SmoothSite.product X T).hom (SmoothSite.product Y T).hom =
         V.exteriorIdentityTarget T := pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)]
+theorem exteriorIdentityInclusion_snd_simp :
+    V.exteriorIdentityInclusion T ≫
+      pullback.snd (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Y.hom T.hom ≫ Y.hom) =
+        V.exteriorIdentityTarget T :=
+  exteriorIdentityInclusion_snd V T
 
 instance exteriorIdentityInclusion_isFinite : IsFinite (V.exteriorIdentityInclusion T) := by
   have : IsFinite (V.exteriorIdentityInclusion T ≫
@@ -182,13 +196,23 @@ instance exteriorIdentityInclusion_toImage_isIso :
   IsClosedImmersion.instIsIsoSchemeToImage _
 
 omit [GeometricallyIntegral T.hom] in
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentityInclusion_toImage_source :
     (V.exteriorIdentityInclusion T).toImage ≫
       correspondenceProjection (SmoothSite.product X T).hom (SmoothSite.product Y T).hom
         (V.exteriorIdentityInclusion T).ker = V.exteriorIdentitySource T := by
   simp only [correspondenceProjection, ← Category.assoc, Scheme.Hom.toImage_imageι,
     exteriorIdentityInclusion_fst]
+
+omit [GeometricallyIntegral T.hom] in
+@[reassoc (attr := simp)]
+theorem exteriorIdentityInclusion_toImage_source_simp :
+    @Scheme.Hom.toImage (V.exteriorIdentitySupport T)
+      (pullback (pullback.fst X.hom T.hom ≫ X.hom)
+        (pullback.fst Y.hom T.hom ≫ Y.hom)) (V.exteriorIdentityInclusion T) ≫
+      correspondenceProjection (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (V.exteriorIdentityInclusion T).ker = V.exteriorIdentitySource T :=
+  exteriorIdentityInclusion_toImage_source V T
 
 /-- The image ideal defines the genuine exterior finite-correspondence generator. -/
 def exteriorIdentityGenerator :
@@ -254,15 +278,35 @@ def exteriorIdentity : FiniteCorrespondence X.hom Y.hom →+
     FiniteCorrespondence (SmoothSite.product X T).hom (SmoothSite.product Y T).hom :=
   Finsupp.mapDomain.addMonoidHom (fun V => V.exteriorIdentityGenerator T)
 
-@[simp] theorem exteriorIdentity_single
+theorem exteriorIdentity_single
     (V : FiniteCorrespondenceGenerator X.hom Y.hom) (n : ℤ) :
     exteriorIdentity (X := X) (Y := Y) T (Finsupp.single V n) =
       Finsupp.single (V.exteriorIdentityGenerator T) n :=
   Finsupp.mapDomain_single
 
-@[simp] theorem exteriorIdentity_cycle
+@[simp] theorem exteriorIdentity_single_simp
+    (V : FiniteCorrespondenceGenerator X.hom Y.hom) (n : ℤ) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.fst X.hom T.hom ≫ X.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom))
+      _ _ _ (exteriorIdentity (X := X) (Y := Y) T) (Finsupp.single V n) =
+      Finsupp.single (V.exteriorIdentityGenerator T) n :=
+  exteriorIdentity_single T V n
+
+theorem exteriorIdentity_cycle
     (V : FiniteCorrespondenceGenerator X.hom Y.hom) :
     exteriorIdentity (X := X) (Y := Y) T V.cycle = (V.exteriorIdentityGenerator T).cycle :=
   exteriorIdentity_single (X := X) (Y := Y) T V 1
+
+@[simp] theorem exteriorIdentity_cycle_simp
+    (V : FiniteCorrespondenceGenerator X.hom Y.hom) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.fst X.hom T.hom ≫ X.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom))
+      _ _ _ (exteriorIdentity (X := X) (Y := Y) T) V.cycle =
+      (V.exteriorIdentityGenerator T).cycle :=
+  exteriorIdentity_cycle T V
 
 end Motivic.FiniteCorrespondence

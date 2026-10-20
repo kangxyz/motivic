@@ -23,8 +23,8 @@ the canonical triple Tor correspondence over an arbitrary field. The nested
 left pairing follows by its proved value on generator cycles. The right
 bracket and general associativity are not asserted here.
 
-Prepared as a source-only candidate. Compilation and formal acceptance remain
-separate checks, including for the imported pending weighted-cycle result.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

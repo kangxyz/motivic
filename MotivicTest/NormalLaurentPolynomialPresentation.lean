@@ -22,13 +22,15 @@ variable {R : Type u} [CommRing R] [IsDomain R] [IsIntegrallyClosed R]
   {S : Type v} [CommRing S] [IsDomain S] [Algebra R S]
   [Module.IsTorsionFree R S] [Module.Finite R S]
 
-def actual_finite_quotient (u : Sˣ)
+/-- The `R`-algebra equivalence from the minimal-polynomial quotient of `u` to `S`,
+for the given surjective Laurent evaluation. -/
+def actualFiniteQuotient (u : Sˣ)
     (hs : Function.Surjective (LaurentPolynomial.eval₂ (algebraMap R S) u)) :
     AdjoinRoot (minpoly R (u : S)) ≃ₐ[R] S := finiteQuotientEquiv u hs
 
 theorem actual_coordinate (u : Sˣ)
     (hs : Function.Surjective (LaurentPolynomial.eval₂ (algebraMap R S) u)) :
-    actual_finite_quotient u hs (AdjoinRoot.root (minpoly R (u : S))) = (u : S) :=
+    actualFiniteQuotient u hs (AdjoinRoot.root (minpoly R (u : S))) = (u : S) :=
   finiteQuotientEquiv_root u hs
 
 theorem actual_free_algebra (u : Sˣ)
@@ -42,7 +44,7 @@ run_cmd do
       ``aeval_surjective, ``minpoly_constant_isUnit, ``evaluation_kernel,
       ``quotientEquiv, ``quotientEquiv_root, ``finiteQuotientEquiv,
       ``finiteQuotientEquiv_root, ``finite_quotient_free, ``exists_monic_presentation,
-      ``actual_finite_quotient, ``actual_coordinate, ``actual_free_algebra] do
+      ``actualFiniteQuotient, ``actual_coordinate, ``actual_free_algebra] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

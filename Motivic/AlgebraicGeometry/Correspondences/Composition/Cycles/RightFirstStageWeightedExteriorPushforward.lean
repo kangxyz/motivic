@@ -25,7 +25,8 @@ incidence residue degree, even when distinct labels have the same image support.
 Only flatness of F.scheme over the field is used. There is no remaining-diagonal,
 right-bracket, or associativity claim.
 
-Source-only candidate: no compilation, diagnostic success, or acceptance claimed.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

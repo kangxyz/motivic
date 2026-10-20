@@ -1,19 +1,38 @@
-# Finite-variable polynomial integral closedness
+# Polynomial normality, graph and diagonal regularity
 
-`Motivic.Aglib.RingTheory.MvPolynomial.IsIntegrallyClosed` is the local source owner.
-A future upstream contribution is separate from its present reusable interface. Its native theorem
-`MvPolynomial.isIntegrallyClosed_fin` proves integral closedness of
-`MvPolynomial (Fin n) R` for every natural number `n`, assuming that the
-commutative coefficient ring is a domain and is integrally closed. Its ring
-universe is unrestricted; no Noetherianity or characteristic condition is added.
+These leaves extend the native `MvPolynomial`, `MvPolynomial.Graph` and
+`MvPolynomial.Diagonal` namespaces. Their import closure contains only Mathlib,
+Aglib and general candidates.
 
-The proof is the original induction using `MvPolynomial.isEmptyRingEquiv`
-and `MvPolynomial.finSuccEquiv`. The only import is
-`Mathlib.RingTheory.Polynomial.IsIntegral`, whose univariate integral-closedness
-instance supplies the induction step.
+## Finite-variable integral closedness
 
-The actual consumers are `Motivic.Aglib.RingTheory.Ideal.GoingDown.Polynomial`
-and `Motivic.Aglib.RingTheory.Smooth.Normal`. The latter imports this focused leaf
-without acquiring integral-extension going down. `MotivicTest.GoingDownBaseChange`
-checks the independent normality interface and its going-down consequences.
-The local leaf has no ordinary Motivic application dependency.
+`Motivic.Aglib.RingTheory.MvPolynomial.IsIntegrallyClosed` supplies
+`MvPolynomial.isIntegrallyClosed_fin`: for every `n : ℕ`,
+`MvPolynomial (Fin n) R` is integrally closed when the commutative ring `R`
+is a domain and integrally closed. The coefficient universe is unrestricted;
+no Noetherianity or characteristic premise is added.
+
+The induction uses `MvPolynomial.isEmptyRingEquiv`, `MvPolynomial.finSuccEquiv`
+and the univariate instance from its only import,
+`Mathlib.RingTheory.Polynomial.IsIntegral`. Current direct consumers are
+`Motivic.Aglib.RingTheory.Ideal.GoingDown.Polynomial` and
+`Motivic.Aglib.RingTheory.Smooth.Normal`; the latter does not acquire integral
+extension going down. `MotivicTest.GoingDownBaseChange` exercises these interfaces.
+
+## Original coordinate equations and Koszul resolutions
+
+| Exact import | Interface and boundary |
+| --- | --- |
+| `Motivic.Aglib.RingTheory.MvPolynomial.RegularSequence` | A duplicate-free finite list of variables is weakly regular over every commutative coefficient ring. |
+| `Motivic.Aglib.RingTheory.MvPolynomial.Graph` | Actual equations `X i - C (c i)`, their evaluation kernel and quotient equivalence; duplicate-free lists are weakly regular, and regular when the coefficient ring is nontrivial. |
+| `Motivic.Aglib.RingTheory.MvPolynomial.Diagonal` | Actual differences between the two variable copies, their evaluation kernel, quotient and translation equivalence, with the same list regularity conditions. |
+| `Motivic.Aglib.RingTheory.MvPolynomial.DiagonalFlat` | Weak regularity on a supplied flat ambient module or under a supplied flat algebra base change. |
+| `Motivic.Aglib.RingTheory.MvPolynomial.Diagonal.Koszul.Pair` | The genuine plane-diagonal projective resolution and categorical Tor calculation with arbitrary coefficient modules. |
+| `Motivic.Aglib.RingTheory.MvPolynomial.Diagonal.Koszul.Finite` | The finite-dimensional diagonal resolution in every `n : ℕ`, actual Tor/Koszul comparison and vanishing above `n`. |
+
+These equations and maps are reused by the general étale
+[diagonal](../TensorProduct/EtaleDiagonal.lean) and
+[graph](../TensorProduct/EtaleGraph.lean) interfaces. Ambient regularity or
+flatness does not imply flatness or regularity of an arbitrary support module.
+Intended upstream family: `Aglib.RingTheory.MvPolynomial`.
+Follow the [candidate policy](../../README.md) and use the exact lower import.

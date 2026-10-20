@@ -172,7 +172,7 @@ variable {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
   (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom]
 
 /-- Exterior extension preserves full actual graph cycles on arbitrary smooth objects. -/
-@[simp] theorem exteriorIdentity_componentGraphCycleOver (φ : X ⟶ Y) :
+theorem exteriorIdentity_componentGraphCycleOver (φ : X ⟶ Y) :
     exteriorIdentity (X := X) (Y := Y) T
         (componentGraphCycleOver (X := X.left) (Y := Y.left) φ.left (MorphismProperty.Over.w φ)) =
       componentGraphCycleOver (X := (SmoothSite.product X T).left)
@@ -207,6 +207,18 @@ variable {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
     simp only [dite_eq_left hC', dite_eq_left hCT, exteriorIdentity_cycle,
       componentGraphGeneratorOver_exteriorIdentityGenerator T φ C hC' hCT]
 
+@[simp] theorem exteriorIdentity_componentGraphCycleOver_simp (φ : X ⟶ Y) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.fst X.hom T.hom ≫ X.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom))
+      _ _ _ (exteriorIdentity (X := X) (Y := Y) T)
+        (componentGraphCycleOver (X := X.left) (Y := Y.left) φ.left (MorphismProperty.Over.w φ)) =
+      componentGraphCycleOver (X := (SmoothSite.product X T).left)
+        (Y := (SmoothSite.product Y T).left) (SmoothSite.productMap φ (𝟙 T)).left
+        (MorphismProperty.Over.w (SmoothSite.productMap φ (𝟙 T))) :=
+  exteriorIdentity_componentGraphCycleOver T φ
+
 end FiniteCorrespondence
 
 namespace Cor
@@ -215,13 +227,20 @@ open _root_.AlgebraicGeometry.Scheme
 variable {k : Type u} [Field k]
 
 /-- Actual exterior extension commutes with graphs of arbitrary smooth-site maps. -/
-@[simp] theorem simplexExterior_graph (n : ℕ)
+theorem simplexExterior_graph (n : ℕ)
     {X Y : SmoothSite (Spec (.of k))} (φ : X ⟶ Y) :
     simplexExterior n ((graphFunctor k).map φ) =
       (graphFunctor k).map
         (SmoothSite.productMap φ (𝟙 (_root_.AlgebraicSimplex.smoothSiteObj k n))) :=
   FiniteCorrespondence.exteriorIdentity_componentGraphCycleOver
     (_root_.AlgebraicSimplex.smoothSiteObj k n) φ
+
+@[simp] theorem simplexExterior_graph_simp (n : ℕ)
+    {X Y : SmoothSite (Spec (.of k))} (φ : X ⟶ Y) :
+    simplexExterior (X := ⟨X⟩) (Y := ⟨Y⟩) n ((graphFunctor k).map φ) =
+      (graphFunctor k).map
+        (SmoothSite.productMap φ (𝟙 (_root_.AlgebraicSimplex.smoothSiteObj k n))) :=
+  simplexExterior_graph n φ
 
 end Cor
 

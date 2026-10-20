@@ -27,9 +27,12 @@ retained. Quasi-finite reflection proves that those points are generic; the
 opposite generic-preservation assertion is neither used nor made. Every
 nonreduced generic-stalk length and every literal residue degree is retained.
 
-SOURCE-ONLY PROPOSAL: no compilation or acceptance is claimed. This module
+This module
 uses no exterior degree formula, remaining-diagonal devissage, iterated-pairing
 comparison, or associativity theorem.
+
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

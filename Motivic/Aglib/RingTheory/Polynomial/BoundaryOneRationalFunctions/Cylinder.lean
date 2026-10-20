@@ -155,7 +155,7 @@ variable (R : Type u) [CommRing R]
 abbrev algebraicSimplex : CosimplicialObject CommRingCat.{u}ᵒᵖ :=
   (_root_.AlgebraicSimplex.simplicialRing R).rightOp
 
-@[simp] theorem algebraicSimplex_interval_zero (n : SimplexCategory) :
+theorem algebraicSimplex_interval_zero (n : SimplexCategory) :
     ((algebraicSimplex R).map (SimplexCategory.const n ⦋1⦌ 0)).unop.hom
       (_root_.AlgebraicSimplex.coordinate R 1 1) = 0 := by
   change _root_.AlgebraicSimplex.pullback R
@@ -163,13 +163,25 @@ abbrev algebraicSimplex : CosimplicialObject CommRingCat.{u}ᵒᵖ :=
     (_root_.AlgebraicSimplex.coordinate R 1 1) = 0
   simp [_root_.AlgebraicSimplex.pullback_coordinate, SimplexCategory.const]
 
-@[simp] theorem algebraicSimplex_interval_one (n : SimplexCategory) :
+@[simp] theorem algebraicSimplex_interval_zero_simp (n : SimplexCategory) :
+    ((_root_.AlgebraicSimplex.simplicialRing R).map
+      (SimplexCategory.const n ⦋1⦌ 0).op).hom
+        (_root_.AlgebraicSimplex.coordinate R 1 1) = 0 :=
+  algebraicSimplex_interval_zero R n
+
+theorem algebraicSimplex_interval_one (n : SimplexCategory) :
     ((algebraicSimplex R).map (SimplexCategory.const n ⦋1⦌ 1)).unop.hom
       (_root_.AlgebraicSimplex.coordinate R 1 1) = 1 := by
   change _root_.AlgebraicSimplex.pullback R
     (SimplexCategory.const n ⦋1⦌ 1).toOrderHom
     (_root_.AlgebraicSimplex.coordinate R 1 1) = 1
   simp [_root_.AlgebraicSimplex.pullback_coordinate, SimplexCategory.const]
+
+@[simp] theorem algebraicSimplex_interval_one_simp (n : SimplexCategory) :
+    ((_root_.AlgebraicSimplex.simplicialRing R).map
+      (SimplexCategory.const n ⦋1⦌ 1).op).hom
+        (_root_.AlgebraicSimplex.coordinate R 1 1) = 1 :=
+  algebraicSimplex_interval_one R n
 
 /-- In every degree, the actual affine boundary-one rational-function complex
 on the actual algebraic simplices has zero homology. This is not yet the

@@ -7,7 +7,7 @@ No legacy Motivic smoke run is admitted as a complete native baseline.
 """
 from lean_ci.github import EvidenceProtocol
 
-TOOLING_REVISION = '3a4d549981ced306d89d3ed55418c9e6a25f86c4'
+TOOLING_REVISION = '0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1'
 CORE_ENTRYPOINTS = {
     'scripts/build.py': '2c982b802bc7b5a0dcb0d74de4e8ea39abbe0b41f1838757e1a7685f71de43c5',
     'scripts/build_client.py': 'c47886425b6b0dc0f341695dbd42e838f94434c9e0c626acfb3405632b937e9c',
@@ -20,13 +20,13 @@ CORE_ENTRYPOINTS = {
     'scripts/library_sources.py': '1fe323386e801d2bb9c8d3fa1f64fce4564f00dac6e5392f241a5424d8cf8369',
     'scripts/lint_declarations.py': '6013e20c073904e077ad27c1e17d651e95d9c2c00db0dd3af6c9a35d15f5ed2b',
     'scripts/lint_style.py': '1733a915dddfaf185702dd250568bd63b88cb4a4b0f95d9e6f1a43a028cd522e',
-    'scripts/shared_workflow.py': '2293b02b0337428a3b682a0dc6bef79819c677192396eebb354828f147bd32cf',
+    'scripts/shared_workflow.py': '1d7156fa1ae930464d09ae5be0bb050016c3d2327a4aaace058619dc9318040c',
     'scripts/validate.py': 'efc5e29da391aadf95ee168e4491949224b9bc344895d9831222fa0d91f0d05f',
 }
 PROTOCOL = EvidenceProtocol(
     workflow_path='.github/workflows/ci.yml', job_name='library',
     native_step='Validate selected providers before affected consumers and client',
     finalize_step='Finalize required check coverage',
-    workflows={'cd89da556991587df7671ebe0774cf303610da36f9b9fa8eedd70b38599d02bc': 'core'},
+    workflows={'239a524b2a18e4fbda6a5629f4106d9c0cdc28578bc6b0ea59f91fce59767f6a': 'core'},
     core_entrypoint_paths=tuple(CORE_ENTRYPOINTS),
     core_recipes=frozenset({tuple(CORE_ENTRYPOINTS.values())}))

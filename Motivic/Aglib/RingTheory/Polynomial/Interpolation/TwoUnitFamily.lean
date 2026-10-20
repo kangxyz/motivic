@@ -126,7 +126,7 @@ def endpointFiberEquiv (f : k[X][X]) (s : k) (p : k[X])
       (AdjoinRoot.root f)) = AdjoinRoot.root p := by
   simp [endpointFiberEquiv, AdjoinRoot.algEquivOfEq_root]
 
-@[simp] lemma endpointFiberEquiv_one_sub_root (f : k[X][X]) (s : k) (p : k[X])
+lemma endpointFiberEquiv_one_sub_root (f : k[X][X]) (s : k) (p : k[X])
     (hp : f.map (evalRingHom s) = p) :
     endpointFiberEquiv f s p hp (Algebra.PolynomialFiber.specialize (AdjoinRoot f) s
       (1 - AdjoinRoot.root f)) = 1 - AdjoinRoot.root p := by simp
@@ -281,11 +281,11 @@ def cubicFiberOneEquiv (a : k) :
     cubicEndpointOne a (AdjoinRoot.of (cubic a) r) =
       AdjoinRoot.of (cubicOne a) (r.eval 1) := endpoint_of _ _ _ _ _
 
-@[simp] lemma cubicFiberZeroEquiv_one_sub_root (a : k) :
+lemma cubicFiberZeroEquiv_one_sub_root (a : k) :
     cubicFiberZeroEquiv a (Algebra.PolynomialFiber.specialize (AdjoinRoot (cubic a)) 0
       (1 - AdjoinRoot.root (cubic a))) = 1 - AdjoinRoot.root (cubicZero a) := by simp
 
-@[simp] lemma cubicFiberOneEquiv_one_sub_root (a : k) :
+lemma cubicFiberOneEquiv_one_sub_root (a : k) :
     cubicFiberOneEquiv a (Algebra.PolynomialFiber.specialize (AdjoinRoot (cubic a)) 1
       (1 - AdjoinRoot.root (cubic a))) = 1 - AdjoinRoot.root (cubicOne a) := by simp
 

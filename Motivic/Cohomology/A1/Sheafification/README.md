@@ -1,58 +1,92 @@
-# Conditional HI-presheaf sheafification reduction
+# HI-presheaf sheafification and strict invariance
 
-| Exact import | Interface and boundary |
+| Exact import | Interface |
 | --- | --- |
-| `Motivic.Cohomology.A1.Sheafification.DenseDetection` | Original dense restrictions without assumed HI of the target sheafification |
-| `Motivic.Cohomology.A1.Sheafification.CylinderCriterion` | HI conditional on actual whole-cylinder lifting |
-| `Motivic.Cohomology.A1.Sheafification.MiddleLift` | Assembly from the simultaneous given image-action relations and actual cover |
-| `Motivic.Cohomology.A1.Sheafification.StrictInvariance` | Public strict corollary with the same explicit whole-cylinder input |
+| `Motivic.Cohomology.A1.Sheafification.HomotopyInvariance` | HI of the actual Nisnevich sheafification over a field |
+| `Motivic.Cohomology.A1.Sheafification.StrictInvariance` | Strict ordinary cohomological invariance over a perfect field |
+| `Motivic.Cohomology.A1.Sheafification.WholeCylinderLifting` | Constructed lifting on a whole cylinder over a nonempty base open |
+| `Motivic.Cohomology.A1.Sheafification.DenseDetection` | Original dense restrictions without assuming target HI |
+| `Motivic.Cohomology.A1.Sheafification.CylinderCriterion` | Reusable assembly from an explicit lifting datum |
+| `Motivic.Cohomology.A1.Sheafification.MiddleLiftDifference` | Signed action relations and actual-cover lifting |
 
-The [perfect-field theorem](../README.md) starts from an already-HI Nisnevich
-sheaf with transfers. The stronger problem starts from an original
-`P : PresheafWithTransfers.{u+1} k` over `k : Type u`, `[Field k]`, with
-`P.IsA1Invariant`, and asks for HI of its actual
-`G := ((nisnevichSheafify k).obj P).obj`. That step remains OPEN.
+## Public theorem and hypotheses
 
-The [actual-unit image](../../../Transfers/Presheaf/Sheafification/README.md)
-`I` is HI and Nisnevich-separated, with its original factorization and canonical
-unit comparison. Dense-open restriction of `G` is injective without assuming
-HI of `G`; the final dense-detection statement imposes no perfectness,
-connectedness, affineness or integrality condition on its smooth-site target.
+For `k : Type u`, `[Field k]` and
+`P : PresheafWithTransfers.{u + 1} k`, the theorem
+`Motivic.PresheafWithTransfers.nisnevichSheafify_isA1Invariant P hP`
+proves that `((nisnevichSheafify k).obj P).obj` is HI from
+`hP : P.IsA1Invariant`. The coefficient is the actual transfer-preserving
+Nisnevich sheafification of the original presheaf. Perfectness, target HI and
+a whole-cylinder lifting premise are absent from this statement.
 
-## The whole-cylinder input
+With `[PerfectField k]` and ordinary `HasExt.{u + 1}` on
+`Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}`,
+`Motivic.PresheafWithTransfers.nisnevichSheafify_isStrictA1Invariant P hP`
+proves `((nisnevichSheafify k).obj P).IsStrictA1Invariant`. Thus, for every
+`n : ℕ` and smooth-site `X`, the literal map
 
-`ModelWholeCylinderLifting P` takes an integral affine smooth `X` and every
-section of `G` on `X × A1`. It supplies an open immersion `U ⟶ X`, `Nonempty U.left`,
-and a lift in `I(U × A1)` after the original cylinder restriction. `U` is not
-required affine. The whole line over the nonempty original base open is retained;
-an arbitrary dense open of the total cylinder is insufficient.
+```lean
+(CategoryTheory.Sheaf.LargeCohomology.presheaf
+  (SmoothSite.nisnevichTopology (Spec (.of k)))
+  ((SheafWithTransfers.toSheaf k).obj ((nisnevichSheafify k).obj P)) n).map
+    (SmoothSite.a1Projection (.of k) X).op
+```
 
-The criterion derives HI of `G` from original coefficient HI and this explicit
-input. Additionally `[PerfectField k]` and ordinary `HasExt.{u+1}` on
-Nisnevich sheaves with coefficients in `AddCommGrpCat.{u+1}` give the public strict
-corollary for the literal original ordinary cohomology projection in every
-natural degree, including zero. The native theorem is
-`Motivic.PresheafWithTransfers.nisnevichSheafify_isStrictA1Invariant_of_modelWholeCylinderLifting`.
-This reduction provides no lifting producer.
+is an isomorphism, with the original degree and coefficient universes. This
+uses the [perfect-field transfer-sheaf theorem](../README.md) after proving
+HI of this very coefficient sheaf. Ordinary degree zero follows from HI over
+an arbitrary field with HasExt; perfectness is needed for the stated
+all-degree result. Nonperfect strict invariance, other coefficient universes,
+derived continuity, higher-Chow and spectrum comparisons have their separate
+boundaries.
 
-## Simultaneous middle relations
+## Constructed lifting and original maps
 
-The middle-lift assembly has no `hP` argument of its own. It takes the same three
-actual correspondences, four simultaneous action identities on `I`, an actual
-two-arrow Nisnevich cover, matching representatives and compatible original
-base/cylinder maps. It constructs `t := I.transfer λA sA`; it does not assume
-`I` is a sheaf. The actual sheaf `G` detects equality on the given cover.
+`modelWholeCylinderLifting_of_isA1Invariant P hP` constructs
+`ModelWholeCylinderLifting P`. Given an affine integral smooth `X` and a
+section of the actual sheafification on `X × A1`, it produces an open immersion
+`U ⟶ X`, `Nonempty U.left` and an image section on the **whole** `U × A1`,
+with the original sheafification-unit equation. The base open `U` need not be
+affine. A dense open of the total cylinder is not substituted for this output.
 
-The cover, four identities, and their uniform construction are not supplied.
-Original norm actions concern `P.obj.map` and do not by themselves supply these
-image-action and whole-cylinder inputs. See the [action guide](../../../Transfers/Presheaf/Actions/README.md).
-Curve middle gluing, compatible geometric choices, normalized full-boundary
-representatives and the actual action joins remain obligations; boundary Epi
-or a correction in the last arrow of a complex does not supply middle exactness.
+The proof follows one original normalization and section history:
 
-The [source record](../../../../docs/provenance/support-sensitive-action-20261018/README.md)
-separates the supplied four-file historical reduction record from new
-production-only/WIP sources and current integration checks. Its historical
-origin audit covers image, dense detection and the cylinder criterion, not the
-middle-lift or norm-action origins. Hash membership and old production records
-do not provide current kernel acceptance or close the stronger theorem.
+1. [OriginalHistory](../../../Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalHistory.lean)
+   binds the original source, target and raw-difference suppliers to the same
+   history and witnesses.
+2. [OriginalHistoryMiddleRelations](../../../Transfers/Presheaf/Actions/Pencils/OriginalHistoryMiddleRelations.lean)
+   derives the simultaneous image-action identities from those suppliers.
+3. [OriginalHistoryLine](../../../Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalHistoryLine.lean)
+   and [OriginalHistoryRestrictions](../../../Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalHistoryRestrictions.lean)
+   supply the native-owned line, actual Nisnevich cover and restriction squares.
+4. [OriginalHistoryLifting](OriginalHistoryLifting.lean) joins that diagram to
+   the original matching representatives; [WholeCylinderLifting](WholeCylinderLifting.lean)
+   constructs the choices and removes the lifting premise.
+5. [HomotopyInvariance](HomotopyInvariance.lean) applies dense detection and
+   the cylinder criterion. [StrictInvariance](StrictInvariance.lean) applies
+   the existing all-perfect-field result to the resulting HI sheaf.
+
+The actual-unit image remains HI and separated rather than being assumed a
+sheaf. The actual sheafification detects equality on the constructed cover;
+all original graph, restriction and unit maps and the E3 correction sign are
+retained. No raw-zero, middle-relations or target-HI hypothesis is added to
+the public theorem.
+
+## Reusable conditional interfaces and verification
+
+`nisnevichSheafify_isA1Invariant_of_modelWholeCylinderLifting` and
+`nisnevichSheafify_isStrictA1Invariant_of_modelWholeCylinderLifting` remain
+available for callers with an independently supplied lifting datum. The middle
+adapters likewise retain their explicit cover, representatives and simultaneous
+action relations. Their hypotheses describe those general interfaces; they
+are discharged by the original-history producer for the public theorem.
+
+[HIPresheafSheafificationReduction](../../../../MotivicTest/HIPresheafSheafificationReduction.lean)
+contains consumers of the unconditional HI, arbitrary-field degree-zero and
+perfect-field all-degree signatures, the conditional APIs and standard axioms.
+The [integration record](../../../../docs/provenance/hi-presheaf-sheafification-20261020/README.md)
+separates current validation from supplied historical receipts and indexes the
+preserved experiments. Ordinary mathematical review passed relative to its
+recorded baseline; current-pin native compilation, lint and trust validation
+remain in progress. No completed hosted CI or cache publication is claimed for
+this intake. Production imports no recovery snapshots or diagnostics.

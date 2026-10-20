@@ -57,7 +57,7 @@ def fieldBaseChangeIncidenceImageAmbientInclusion : FieldBaseChangePushforward.t
               (f := FieldBaseChangePushforward.originalTargetProjection A B x ≫ X.hom)
               (g := Spec.map (CommRingCat.ofHom φ))))
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeIncidenceImageAmbientInclusion_fst :
     A.fieldBaseChangeIncidenceImageAmbientInclusion φ B x ≫
       pullback.fst (SmoothSite.product X Z).hom (Spec.map (CommRingCat.ofHom φ)) =
@@ -66,13 +66,28 @@ theorem fieldBaseChangeIncidenceImageAmbientInclusion_fst :
             (IntegralClosedSubscheme.pointClosure (A.incidenceMap B x.1)).val.subschemeι :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp)] theorem fieldBaseChangeIncidenceImageAmbientInclusion_fst_simp :
+    A.fieldBaseChangeIncidenceImageAmbientInclusion φ B x ≫
+      pullback.fst (pullback.fst X.hom Z.hom ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) =
+        pullback.fst (FieldBaseChangePushforward.originalTargetProjection A B x ≫ X.hom)
+          (Spec.map (CommRingCat.ofHom φ)) ≫
+            (IntegralClosedSubscheme.pointClosure (A.incidenceMap B x.1)).val.subschemeι :=
+  fieldBaseChangeIncidenceImageAmbientInclusion_fst φ A B x
+
+@[reassoc]
 theorem fieldBaseChangeIncidenceImageAmbientInclusion_snd :
     A.fieldBaseChangeIncidenceImageAmbientInclusion φ B x ≫
       pullback.snd (SmoothSite.product X Z).hom (Spec.map (CommRingCat.ofHom φ)) =
         pullback.snd (FieldBaseChangePushforward.originalTargetProjection A B x ≫ X.hom)
           (Spec.map (CommRingCat.ofHom φ)) :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeIncidenceImageAmbientInclusion_snd_simp :
+    A.fieldBaseChangeIncidenceImageAmbientInclusion φ B x ≫
+      pullback.snd (pullback.fst X.hom Z.hom ≫ X.hom) (Spec.map (CommRingCat.ofHom φ)) =
+        pullback.snd (FieldBaseChangePushforward.originalTargetProjection A B x ≫ X.hom)
+          (Spec.map (CommRingCat.ofHom φ)) :=
+  fieldBaseChangeIncidenceImageAmbientInclusion_snd φ A B x
 
 /-- The whole image support is pulled back by its actual closed immersion. -/
 theorem fieldBaseChangeIncidenceImageAmbientInclusion_isPullback :
@@ -194,7 +209,7 @@ theorem fieldBaseChangeIncidenceComponentImageMap_pushforward_ambient :
     A.toIntegralCycle_fieldBaseChangeIncidenceImage φ B x]
 
 /-- The new image immersion retains the actual finite source projection. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeIncidenceImageInclusion_fst :
     A.fieldBaseChangeIncidenceImageInclusion φ B x ≫
       pullback.fst ((SmoothSite.fieldBaseChange φ).obj X).hom
@@ -216,8 +231,15 @@ theorem fieldBaseChangeIncidenceImageInclusion_fst :
       fieldBaseChangeIncidenceImageAmbientInclusion_snd,
       FieldBaseChangePushforward.targetProjection_snd]
 
+@[reassoc (attr := simp)] theorem fieldBaseChangeIncidenceImageInclusion_fst_simp :
+    A.fieldBaseChangeIncidenceImageInclusion φ B x ≫
+      pullback.fst (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Z.hom (Spec.map (CommRingCat.ofHom φ))) =
+      FieldBaseChangePushforward.targetProjection φ A B x :=
+  fieldBaseChangeIncidenceImageInclusion_fst φ A B x
+
 /-- The target coordinate is the unchanged original point-closure immersion. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeIncidenceImageInclusion_snd_original :
     A.fieldBaseChangeIncidenceImageInclusion φ B x ≫
       pullback.snd ((SmoothSite.fieldBaseChange φ).obj X).hom
@@ -244,6 +266,17 @@ theorem fieldBaseChangeIncidenceImageInclusion_snd_original :
       (pullback.fst (SmoothSite.product X Z).hom (Spec.map (CommRingCat.ofHom φ)))
       (pullback.snd X.hom Z.hom), fieldBaseChangeIncidenceImageAmbientInclusion_fst]
   exact Category.assoc _ _ _
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeIncidenceImageInclusion_snd_original_simp :
+    A.fieldBaseChangeIncidenceImageInclusion φ B x ≫
+      pullback.snd (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Z.hom (Spec.map (CommRingCat.ofHom φ))) ≫
+      pullback.fst Z.hom (Spec.map (CommRingCat.ofHom φ)) =
+        pullback.fst (FieldBaseChangePushforward.originalTargetProjection A B x ≫ X.hom)
+          (Spec.map (CommRingCat.ofHom φ)) ≫
+        (IntegralClosedSubscheme.pointClosure (A.incidenceMap B x.1)).val.subschemeι ≫
+          pullback.snd X.hom Z.hom :=
+  fieldBaseChangeIncidenceImageInclusion_snd_original φ A B x
 
 /-- Both component routes agree in the actual new source-target product. -/
 theorem fieldBaseChangeIncidenceComponentImageMap_ambient :

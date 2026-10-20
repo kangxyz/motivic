@@ -58,7 +58,7 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- The tensor map lands in the originally defined derived motivic group. -/
-def actual_derived_tensor_symbol :
+def actualDerivedTensorSymbol :
     (Additive kˣ ⊗[ℤ] Additive kˣ) →+
       motivicCohomology k 2 2 (SmoothSite.base (Spec (.of k))) :=
   motivicTensorSymbol k
@@ -66,7 +66,7 @@ def actual_derived_tensor_symbol :
 /-- The derived comparison carries the symbol back to its original graph class. -/
 theorem original_derived_graph (a b : kˣ) :
     motivicRawBaseEvaluationComparison k 2 2
-      (actual_derived_tensor_symbol k (Additive.ofMul a ⊗ₜ[ℤ] Additive.ofMul b)) =
+      (actualDerivedTensorSymbol k (Additive.ofMul a ⊗ₜ[ℤ] Additive.ofMul b)) =
       graphSymbol k a b := by
   exact motivicTensorSymbol_tmul_comparison k a b
 
@@ -84,7 +84,7 @@ run_cmd do
       ``tensorSymbol, ``tensorSymbol_tmul, ``motivicTensorSymbol,
       ``motivicTensorSymbol_tmul_comparison, ``original_left_relation,
       ``original_right_relation, ``original_axes, ``original_tensor_generator,
-      ``actual_derived_tensor_symbol, ``original_derived_graph] do
+      ``actualDerivedTensorSymbol, ``original_derived_graph] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

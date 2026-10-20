@@ -63,12 +63,25 @@ def imageGenerator : Generator k := by
     exact (irreducibleComponents_eq_singleton (X := Spec (.of k))) ▸ Set.mem_singleton _
 
 /-- The source-to-image map has the original structural scalar map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem imageGenerator_toImage_projection :
     j.toImage ≫ (imageGenerator j hj).projection =
       Spec.map (CommRingCat.ofHom (algebraMap k E)) := by
   simpa [imageGenerator, FiniteCorrespondenceGenerator.projection,
     correspondenceProjection] using hj
+
+@[reassoc (attr := simp)]
+theorem imageGenerator_toImage_projection_simp :
+    j.toImage ≫ @FiniteCorrespondenceGenerator.projection (Spec (.of k))
+        (SmoothSite.base (Spec (.of k))).left
+        (pullback (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (SmoothSite.base (Spec (.of k))).hom)
+        (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) (imageGenerator j hj) =
+      Spec.map (CommRingCat.ofHom (algebraMap k E)) :=
+  imageGenerator_toImage_projection j hj
 
 /-- The finite pushforward support is the actual scheme-theoretic image. -/
 theorem imageGenerator_support :
@@ -238,7 +251,7 @@ def unitTorusPoint (b : Eˣ) : Spec (.of E) ⟶ (SmoothSite.torus (.of k)).left 
 
 omit [Module.Finite k E] in
 /-- Laurent evaluation has precisely the given extension's structural map. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem unitTorusPoint_projection (b : Eˣ) :
     unitTorusPoint (k := k) b ≫ (SmoothSite.torus (.of k)).hom =
       Spec.map (CommRingCat.ofHom (algebraMap k E)) := by
@@ -247,6 +260,13 @@ theorem unitTorusPoint_projection (b : Eˣ) :
   congr 1
   ext r
   exact LaurentPolynomial.eval₂_C _ _ _
+
+omit [Module.Finite k E] in
+@[reassoc (attr := simp)]
+theorem unitTorusPoint_projection_simp (b : Eˣ) :
+    unitTorusPoint (k := k) b ≫ Scheme.PolynomialLaurent.laurentProjection (.of k) =
+      Spec.map (CommRingCat.ofHom (algebraMap k E)) :=
+  unitTorusPoint_projection (k := k) b
 
 /-- The actual extension-field unit point in the original source-target product. -/
 def unitPoint (b : Eˣ) : Spec (.of E) ⟶ ambient k :=
@@ -258,12 +278,22 @@ def unitPoint (b : Eˣ) : Spec (.of E) ⟶ ambient k :=
 
 omit [Module.Finite k E] in
 /-- The actual product point has the original scalar projection. -/
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem unitPoint_projection (b : Eˣ) :
     unitPoint (k := k) b ≫ pullback.fst (SmoothSite.base (Spec (.of k))).hom
         (SmoothSite.torusPower (.of k) 1).hom =
       Spec.map (CommRingCat.ofHom (algebraMap k E)) :=
   pullback.lift_fst _ _ _
+
+omit [Module.Finite k E] in
+@[reassoc (attr := simp)]
+theorem unitPoint_projection_simp (b : Eˣ) :
+    unitPoint (k := k) b ≫ pullback.fst (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k)) =
+      Spec.map (CommRingCat.ofHom (algebraMap k E)) :=
+  unitPoint_projection (k := k) b
 
 /-- Finiteness follows from the original finite extension, with no separability assumption. -/
 instance unitPoint_finite (b : Eˣ) : IsFinite (unitPoint (k := k) b) := by

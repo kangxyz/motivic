@@ -27,7 +27,7 @@ jobs:
       MOTIVIC_LEAN_MEMORY_MB: 12800
       MOTIVIC_RSS_LIMIT_MB: 13824
       MOTIVIC_TOOLING_ROOT: ${{ github.workspace }}/.cache-tooling
-      MOTIVIC_TOOLING_REVISION: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
+      MOTIVIC_TOOLING_REVISION: 0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONPATH: ${{ github.workspace }}/.cache-tooling/ci
     steps:
@@ -38,7 +38,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: kangxyz/aglib
-          ref: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
+          ref: 0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1
           path: .cache-tooling
           persist-credentials: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -94,11 +94,22 @@ jobs:
           restore-keys: |
             motivic-build-v2-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
             motivic-build-v1-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lake-manifest.json') }}-
+      - name: Restore compatible individual check progress
+        if: steps.scope.outputs.native == 'true'
+        id: check-progress
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/motivic-check-progress
+          key: motivic-check-progress-v1-${{ runner.os }}-${{ runner.arch }}-${{ env.MOTIVIC_TOOLING_REVISION }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json', 'scripts/ci_policy.py') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            motivic-check-progress-v1-${{ runner.os }}-${{ runner.arch }}-${{ env.MOTIVIC_TOOLING_REVISION }}-${{ hashFiles('lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json', 'scripts/ci_policy.py') }}-
       - name: Validate selected providers before affected consumers and client
         if: steps.scope.outputs.native == 'true'
         id: checks
         timeout-minutes: 300
-        run: python3 scripts/shared_workflow.py native --state "$MOTIVIC_CI_STATE"
+        run: |
+          python3 scripts/shared_workflow.py native --state "$MOTIVIC_CI_STATE" \
+            --progress "$RUNNER_TEMP/motivic-check-progress"
       - name: Finalize required check coverage
         id: finalize
         run: |
@@ -112,6 +123,12 @@ jobs:
           mode: publish
           mappings: ${{ runner.temp }}/native-outputs.jsonl
           coverage: ${{ runner.temp }}/native-outputs.jsonl.coverage.json
+      - name: Save individual check progress, including partial failed validation
+        if: ${{ always() && steps.check-progress.outputs.cache-primary-key != '' }}
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ runner.temp }}/motivic-check-progress
+          key: ${{ steps.check-progress.outputs.cache-primary-key }}
       - name: Save dependency progress, including partial failed checks
         if: ${{ always() && steps.checks.outcome != 'skipped' && steps.dependencies.outputs.cache-primary-key != '' }}
         uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
@@ -155,7 +172,7 @@ jobs:
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           repository: kangxyz/aglib
-          ref: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
+          ref: 0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1
           path: .cache-tooling
           persist-credentials: false
       - name: Publish immutable public native cache asset

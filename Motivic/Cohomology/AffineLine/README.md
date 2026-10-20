@@ -8,9 +8,9 @@ are original ordinary cohomology. These statements do not supply a general
 small-site comparison or strict invariance on arbitrary smooth schemes.
 
 `Motivic.Cohomology.AffineLine.GenericBase` selects classwise eventual higher
-vanishing for arbitrary ordinary coefficients over any field and smooth domain
-base, plus all-positive vanishing for HI transfer sheaves. It keeps the original
-whole line, restrictions, coefficient universe and `HasExt`; the base open may
+vanishing for arbitrary ordinary coefficients over any field and a smooth
+integral affine base, plus all-positive vanishing for HI transfer sheaves. It
+keeps the original whole line, restrictions, coefficient universe and `HasExt`; the base open may
 depend on the cohomology class. See
 [generic-base local vanishing](../A1/LocalVanishing/README.md).
 

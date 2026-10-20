@@ -151,10 +151,19 @@ def exteriorToGraphSupport : V.exteriorIdentitySupport T ⟶ A.scheme :=
   IsOpenImmersion.lift A.projection (V.exteriorIdentitySource T) hRange
 
 omit [GeometricallyIntegral T'.hom] in
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorToGraphSupport_projection :
     exteriorToGraphSupport V A hRange ≫ A.projection = V.exteriorIdentitySource T :=
   IsOpenImmersion.lift_fac _ _ _
+
+omit [GeometricallyIntegral T'.hom] in
+@[reassoc (attr := simp)]
+theorem exteriorToGraphSupport_projection_simp :
+    exteriorToGraphSupport V A hRange ≫ @FiniteCorrespondenceGenerator.projection (Spec (.of k))
+        (pullback X.hom T.hom) (pullback X.hom T'.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst X.hom T'.hom ≫ X.hom) A =
+      V.exteriorIdentitySource T :=
+  exteriorToGraphSupport_projection V A hRange
 
 /-- The source lift and the changed exterior parameter define actual incidence. -/
 def exteriorSupportToIncidence :
@@ -165,18 +174,38 @@ def exteriorSupportToIncidence :
         Category.assoc, V.exteriorIdentitySchemeIso_hom_projection,
         V.exteriorParameterMap_source])
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorSupportToIncidence_fst :
     exteriorSupportToIncidence u V A hA hRange ≫
       A.incidenceFst (V.exteriorIdentityGenerator T') = exteriorToGraphSupport V A hRange :=
   pullback.lift_fst _ _ _
 
 @[reassoc (attr := simp)]
+theorem exteriorSupportToIncidence_fst_simp :
+    exteriorSupportToIncidence u V A hA hRange ≫
+      @FiniteCorrespondenceGenerator.incidenceFst (Spec (.of k))
+        (pullback X.hom T.hom) (pullback X.hom T'.hom) (pullback Y.hom T'.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst X.hom T'.hom ≫ X.hom)
+        (pullback.fst Y.hom T'.hom ≫ Y.hom) A (V.exteriorIdentityGenerator T') =
+      exteriorToGraphSupport V A hRange :=
+  exteriorSupportToIncidence_fst u V A hA hRange
+
+@[reassoc]
 theorem exteriorSupportToIncidence_snd :
     exteriorSupportToIncidence u V A hA hRange ≫
       A.incidenceSnd (V.exteriorIdentityGenerator T') =
         V.exteriorParameterMap u ≫ (V.exteriorIdentitySchemeIso T').hom :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)]
+theorem exteriorSupportToIncidence_snd_simp :
+    exteriorSupportToIncidence u V A hA hRange ≫
+      @FiniteCorrespondenceGenerator.incidenceSnd (Spec (.of k))
+        (pullback X.hom T.hom) (pullback X.hom T'.hom) (pullback Y.hom T'.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst X.hom T'.hom ≫ X.hom)
+        (pullback.fst Y.hom T'.hom ≫ Y.hom) A (V.exteriorIdentityGenerator T') =
+        V.exteriorParameterMap u ≫ (V.exteriorIdentitySchemeIso T').hom :=
+  exteriorSupportToIncidence_snd u V A hA hRange
 
 /-- A compatible open graph support has precisely the original exterior incidence support. -/
 def exteriorIncidenceIso :
@@ -208,7 +237,7 @@ def exteriorIncidenceIso :
         incidenceToExteriorSupport_parameter_assoc]
       simp
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIncidenceIso_hom_source :
     (exteriorIncidenceIso u V A hA hRange).hom ≫
       A.incidenceSource (V.exteriorIdentityGenerator T') = V.exteriorIdentitySource T := by
@@ -217,6 +246,16 @@ theorem exteriorIncidenceIso_hom_source :
   rw [exteriorSupportToIncidence_fst_assoc, exteriorToGraphSupport_projection]
 
 @[reassoc (attr := simp)]
+theorem exteriorIncidenceIso_hom_source_simp :
+    (exteriorIncidenceIso u V A hA hRange).hom ≫
+      @FiniteCorrespondenceGenerator.incidenceSource (Spec (.of k))
+        (pullback X.hom T.hom) (pullback X.hom T'.hom) (pullback Y.hom T'.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst X.hom T'.hom ≫ X.hom)
+        (pullback.fst Y.hom T'.hom ≫ Y.hom) A (V.exteriorIdentityGenerator T') =
+      V.exteriorIdentitySource T :=
+  exteriorIncidenceIso_hom_source u V A hA hRange
+
+@[reassoc]
 theorem exteriorIncidenceIso_hom_target :
     (exteriorIncidenceIso u V A hA hRange).hom ≫
       A.incidenceTarget (V.exteriorIdentityGenerator T') =
@@ -225,6 +264,16 @@ theorem exteriorIncidenceIso_hom_target :
     A.incidenceSnd (V.exteriorIdentityGenerator T') ≫
       (V.exteriorIdentityGenerator T').targetProjection = _
   rw [exteriorSupportToIncidence_snd_assoc, V.exteriorIdentitySchemeIso_hom_targetProjection]
+
+@[reassoc (attr := simp)]
+theorem exteriorIncidenceIso_hom_target_simp :
+    (exteriorIncidenceIso u V A hA hRange).hom ≫
+      @FiniteCorrespondenceGenerator.incidenceTarget (Spec (.of k))
+        (pullback X.hom T.hom) (pullback X.hom T'.hom) (pullback Y.hom T'.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst X.hom T'.hom ≫ X.hom)
+        (pullback.fst Y.hom T'.hom ≫ Y.hom) A (V.exteriorIdentityGenerator T') =
+        V.exteriorParameterMap u ≫ V.exteriorIdentityTarget T' :=
+  exteriorIncidenceIso_hom_target u V A hA hRange
 
 end Motivic.SimplexExteriorGraph
 

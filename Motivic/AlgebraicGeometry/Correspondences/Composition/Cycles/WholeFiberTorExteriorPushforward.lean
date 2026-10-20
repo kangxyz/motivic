@@ -25,8 +25,8 @@ This is the left affine-open attachment targeted in plan §6A. The remaining
 diagonal realization, iterated incidence pairing, and associativity are outside
 this result. The original whole opens may be singular or nonreduced.
 
-SOURCE-ONLY PROPOSAL: this module, its consumer, and transitive exterior
-residue-tensor/branch/degree/decomposition prerequisites are not claimed accepted.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

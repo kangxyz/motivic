@@ -29,8 +29,8 @@ the original ambient residue degree. Its generic-preservation input is
 explicit; the companion actual SmoothSite pair consumer discharges it using
 the original smooth source and the actual pair component's dominance.
 
-SOURCE-ONLY: this module and its consumer have not been compiled. The
-residue-tensor and branch-transport prerequisites are not yet accepted.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

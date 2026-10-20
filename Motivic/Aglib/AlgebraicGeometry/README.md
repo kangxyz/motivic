@@ -28,6 +28,7 @@ candidates. The motivating motivic consumer does not weaken this condition.
 | `Motivic.Aglib.AlgebraicGeometry.Products.Diagonal.BaseChange` | Scheme products and actual diagonal ideals. |
 | `Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Charts.BaseChange` | Charts, coheight and affine/étale neighborhood constructions. |
 | `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.SchematicImage.GraphClosureEquations` | Twists, schematic images and graph closures. |
+| `Motivic.Aglib.AlgebraicGeometry.ProjectiveSpace.Boundary.SourceTargetFullAffineAmbients` | Literal two-localization affine ambients for whole source and target boundaries. |
 | `Motivic.Aglib.AlgebraicGeometry.QuasiAffine.FiniteNeighborhood` | Actual quasi-affine finite neighborhoods. |
 | `Motivic.Aglib.AlgebraicGeometry.Stalk.Dimension.SmoothStalkFiniteRank` | Original stalk, dimension and generic-component interfaces. |
 | `Motivic.Aglib.AlgebraicGeometry.Simplex.AffineBoundaryOneComplex` | Scheme realizations of the existing algebraic-simplex coordinate rings. |
@@ -47,7 +48,12 @@ Use the [cycle guide](Cycles/README.md), [site guide](Sites/README.md),
 [relative curves](RelativeCurve/README.md) and
 [Cartier divisors](EffectiveCartierDivisor/README.md) for detailed boundaries.
 The occupied [projective-line guide](ProjectiveLine/README.md) records its chart,
-flatness and dimension interfaces. Its [neighborhoods](ProjectiveLine/Neighborhood/README.md),
+flatness and dimension interfaces; the
+[two-localization guide](ProjectiveLine/BaseChange/README.md) fixes the native
+nested pullbacks used by normalization. The
+[normality guide](Properties/Normal/README.md) records inheritance along actual
+open immersions. Projective-line
+[neighborhoods](ProjectiveLine/Neighborhood/README.md),
 [open-factor boundary sections](Morphisms/OpenImmersion/README.md) and
 [coproduct boundary sections](Scheme/Sections/README.md) retain the actual
 coefficient squares and scheme-level section equalities used there.

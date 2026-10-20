@@ -30,8 +30,10 @@ geometry has its [candidate site owner](../../Aglib/AlgebraicGeometry/Sites/READ
 The [A1 family](../../Cohomology/A1/README.md) uses the cohomological boundary
 comparisons. Strict invariance over all perfect fields retains ordinary
 `HasExt.{u+1}` and HI transfer-sheaf coefficients in universe `u+1`.
-General HI-presheaf sheafification remains a separate obligation. Sheaf
-cokernels are not asserted to be objectwise cokernels.
+The [presheaf-entry theorem](../../Cohomology/A1/Sheafification/README.md)
+constructs HI of the actual Nisnevich sheafification in coefficient universe
+`u+1`; its strict corollary retains perfectness and ordinary HasExt. Sheaf
+cokernels retain their categorical construction.
 
 Use [singular complexes](../SingularComplex/README.md) for the parameter-complex
 construction and [transfer sheaves](../Sheaf/README.md) for the sheaf category.
@@ -43,5 +45,6 @@ construction and [transfer sheaves](../Sheaf/README.md) for the sheaf category.
 | [Image and representatives](Sheafification/README.md) | `Motivic.Transfers.Presheaf.Sheafification.Image` and focused representative leaves |
 | [Pencil, norm and principal actions](Actions/README.md) | Exact original actions and their geometric hypotheses |
 
-Use the [conditional A1 reduction](../../Cohomology/A1/Sheafification/README.md)
-for the separate sheafification-HI question. These families add no root facade.
+Use the [A1 sheafification guide](../../Cohomology/A1/Sheafification/README.md)
+for the public HI and strict-invariance entries and reusable conditional
+assemblies. These families add no root facade.

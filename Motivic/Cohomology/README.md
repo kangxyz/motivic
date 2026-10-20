@@ -11,11 +11,15 @@ cohomology type or rename `Motivic.motivicComplex` and
 | [Suslin–Voevodsky model](SuslinVoevodsky/README.md) | `Motivic.Cohomology.SuslinVoevodsky.Complex` and `.Hypercohomology`; field `k : Type u`, transfer coefficients `u+1`, integer cohomological degree, natural weight |
 | [Finite coefficients](Coefficients/Finite/README.md) | Actual cone and original integral/Bockstein maps; `Motivic.Cohomology.Coefficients.Finite.Complex` |
 | [A1 invariance](A1/README.md) | `Motivic.Cohomology.A1.StrictInvariance` for HI transfer sheaves over every perfect field, retaining ordinary `HasExt.{u+1}` |
+| [HI-presheaf sheafification](A1/Sheafification/README.md) | Actual Nisnevich sheafification HI over any field in coefficient universe `u+1`; strict invariance additionally retains perfectness and ordinary `HasExt.{u+1}` |
 | `Motivic.Cohomology.AffineLine` | Original ordinary higher vanishing and positive vanishing for HI transfer sheaves over arbitrary fields |
-| `Motivic.Cohomology.AffineLine.GenericBase` | Classwise eventual vanishing on the original whole line over a smooth domain base; original restrictions and class-dependent base open |
+| `Motivic.Cohomology.AffineLine.GenericBase` | Classwise eventual vanishing on the original whole line over a smooth integral affine base; original restrictions and class-dependent base open |
 | [Diagonal](Diagonal/README.md) | Original diagonal/Milnor comparison, retaining characteristic zero |
 | [Weight one](WeightOne/README.md) | Original ordinary unit-sheaf quasi-isomorphism and hypercohomology comparisons |
 | [Weight two](WeightTwo/README.md) | Implemented cycle, symbol and norm comparisons with each leaf's assumptions |
+
+The curated `Motivic.Cohomology` entry imports the model and finite-coefficient
+facades. The A1, affine-line and degree-computation entries are optional imports.
 
 General unbounded derived Hom lives in
 [hypercohomology candidates](../Aglib/CategoryTheory/Sites/Hypercohomology/README.md).
@@ -27,8 +31,8 @@ Their host applications preserve actual groups, restrictions, signs and maps.
 
 Ordinary cohomology with transfers lives in
 [Transfers/Cohomology](../Transfers/Cohomology/README.md). Exactness alone does
-not imply the required acyclicity or comparison. General HI-presheaf
-sheafification, nonperfect-field strict invariance, full canonical purity,
-derived continuity, positive-characteristic diagonal and higher-Chow/motives/
-spectrum comparisons retain separate proof obligations. See
+not imply the required acyclicity or comparison. Nonperfect-field strict
+invariance, full canonical purity, derived continuity, positive-characteristic
+diagonal and higher-Chow/motives/spectrum comparisons retain separate proof
+obligations. See
 [interfaces](../../docs/INTERFACES.md) for complete boundaries.

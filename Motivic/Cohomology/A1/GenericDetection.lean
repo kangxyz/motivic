@@ -15,7 +15,11 @@ on a smooth integral affine scheme that vanishes on an original nonempty open
 vanishes on actual affine neighborhoods covering every point. The original open
 need not be affine. No sheaf hypothesis is required.
 
-This entry retains local-zero conclusions. Arbitrary smooth objects and actual
-sheafification detection are handled in the separate `DenseOpenLocalDetection`
-and `PresheafGenericModelDetection` leaves. Finite fields remain a separate obligation.
+This infinite-field entry retains local-zero conclusions. The arbitrary-smooth
+and actual generic-model sheafification detection results have the separate
+`Motivic.Cohomology.A1.LocalVanishing.DenseOpen.Detection` and
+`Motivic.Cohomology.A1.LocalVanishing.Presheaf.GenericModel.Detection` owners.
+For finite-field local-zero results and their own coefficient-universe and
+good-open hypotheses, see
+`Motivic.Cohomology.A1.LocalVanishing.FiniteField.IntegralAffineLocalZero`.
 -/

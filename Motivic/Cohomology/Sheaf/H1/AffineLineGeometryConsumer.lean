@@ -34,19 +34,25 @@ structure AffineLineH1LiftData
     (F : Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})
     (x : H.{w, u + 1, u, u + 1} (SmoothSite.nisnevichTopology (Spec (.of k)))
       F 1 (SmoothSite.affineLine (.of k))) where
+  /-- A section of the original injective cokernel whose boundary is the class `x`. -/
   s : (cokernel (Injective.ι F)).obj.obj (op (SmoothSite.affineLine (.of k)))
   boundary : injectiveSectionBoundary (SmoothSite.nisnevichTopology (Spec (.of k)))
     F (SmoothSite.affineLine (.of k)) s = x
+  /-- The affine open containing the generic point of the original affine line. -/
   U : (line k).Opens
   generic_mem : genericPoint (line k) ∈ U
   affine_open : IsAffineOpen U
+  /-- A lift of the restriction of `s` to `openObject U` in the original injective sheaf. -/
   lU : (Injective.under F).obj.obj (op (openObject U))
   quotient_lU : (cokernel.π (Injective.ι F)).hom.app (op (openObject U)) lU =
     (cokernel (Injective.ι F)).obj.map (openInclusion U).op s
+  /-- The smooth-site object of the chosen étale neighborhood of the complement of `U`. -/
   Y : SmoothSite (Spec (.of k))
+  /-- The chosen étale map from `Y` to the original affine line. -/
   p : Y ⟶ SmoothSite.affineLine (.of k)
   etale : Etale p.left
   iso_complement : IsIso (pullback.snd p.left (inclusion U))
+  /-- A lift in the original injective sheaf of the restriction of `s` along `p`. -/
   lY : (Injective.under F).obj.obj (op Y)
   quotient_lY : (cokernel.π (Injective.ι F)).hom.app (op Y) lY =
     (cokernel (Injective.ι F)).obj.map p.op s

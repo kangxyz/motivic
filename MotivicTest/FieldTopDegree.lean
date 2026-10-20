@@ -48,7 +48,7 @@ theorem actual_top_reduction_surjective (q n : ℕ) :
   integralReduction_surjective k q n
 
 /-- This is the literal integral quotient, with the subgroup exposed. -/
-def actual_top_equivalence (q n : ℕ) :
+def actualTopEquivalence (q n : ℕ) :
     motivicFiniteCohomology k (q : ℤ) q n (SmoothSite.base (Spec (.of k))) ≃+
       (motivicCohomology k (q : ℤ) q (SmoothSite.base (Spec (.of k))) ⧸
         (n • AddMonoidHom.id
@@ -58,14 +58,14 @@ def actual_top_equivalence (q n : ℕ) :
 /-- The equivalence preserves the original integral reduction and its representative. -/
 theorem actual_top_reduction_coset (q n : ℕ)
     (x : motivicCohomology k (q : ℤ) q (SmoothSite.base (Spec (.of k)))) :
-    actual_top_equivalence k q n (motivicBaseIntegralReduction k (q : ℤ) q n x) =
+    actualTopEquivalence k q n (motivicBaseIntegralReduction k (q : ℤ) q n x) =
       (QuotientAddGroup.mk x : integralModulo k q n) :=
   topDegreeFiniteEquiv_integralReduction k q n x
 
 /-- The inverse is also pinned to the original map, so the isomorphism is not arbitrary. -/
 theorem actual_top_inverse_coset (q n : ℕ)
     (x : motivicCohomology k (q : ℤ) q (SmoothSite.base (Spec (.of k)))) :
-    (actual_top_equivalence k q n).symm
+    (actualTopEquivalence k q n).symm
         (QuotientAddGroup.mk x : integralModulo k q n) =
       motivicBaseIntegralReduction k (q : ℤ) q n x :=
   topDegreeFiniteEquiv_symm_mk k q n x
@@ -87,12 +87,12 @@ theorem actual_weight_zero_finite_one (n : ℕ)
   actual_finite_above k 1 0 n (by decide) x
 
 /-- Even level zero is covered by the top-degree integral quotient theorem. -/
-def actual_weight_zero_level_zero :
+def actualWeightZeroLevelZero :
     motivicFiniteCohomology k 0 0 0 (SmoothSite.base (Spec (.of k))) ≃+
       integralModulo k 0 0 := topDegreeFiniteEquiv k 0 0
 
 /-- Level one is covered without any nontriviality assumption on the quotient. -/
-def actual_weight_zero_level_one :
+def actualWeightZeroLevelOne :
     motivicFiniteCohomology k 0 0 1 (SmoothSite.base (Spec (.of k))) ≃+
       integralModulo k 0 1 := topDegreeFiniteEquiv k 0 1
 
@@ -107,7 +107,7 @@ theorem actual_weight_two_finite_three
   actual_finite_above k 3 2 12 (by decide) x
 
 /-- The top weight-two statement uses genuine integral classes, without a Milnor identification. -/
-def actual_weight_two_level_twelve :
+def actualWeightTwoLevelTwelve :
     motivicFiniteCohomology k 2 2 12 (SmoothSite.base (Spec (.of k))) ≃+
       integralModulo k 2 12 := topDegreeFiniteEquiv k 2 12
 
@@ -129,13 +129,13 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of (ZMod 2)))) AddCommGrpCat.{1})]
 
 /-- The top weight-two theorem includes a level equal to the characteristic. -/
-def actual_characteristic_two_level_two :
+def actualCharacteristicTwoLevelTwo :
     motivicFiniteCohomology (ZMod 2) 2 2 2
         (SmoothSite.base (Spec (.of (ZMod 2)))) ≃+
       integralModulo (ZMod 2) 2 2 := topDegreeFiniteEquiv (ZMod 2) 2 2
 
 /-- Composite levels divisible by the characteristic are included as well. -/
-def actual_characteristic_two_level_six :
+def actualCharacteristicTwoLevelSix :
     motivicFiniteCohomology (ZMod 2) 2 2 6
         (SmoothSite.base (Spec (.of (ZMod 2)))) ≃+
       integralModulo (ZMod 2) 2 6 := topDegreeFiniteEquiv (ZMod 2) 2 6
@@ -156,14 +156,14 @@ run_cmd do
       ``integralMultiples, ``mem_integralMultiples, ``integralReduction_ker, ``integralModulo,
       ``quotientToFiniteEquiv, ``topDegreeFiniteEquiv, ``topDegreeFiniteEquiv_symm_mk,
       ``topDegreeFiniteEquiv_integralReduction, ``actual_integral_above, ``actual_finite_above,
-      ``actual_top_reduction_surjective, ``actual_top_equivalence, ``actual_top_reduction_coset,
+      ``actual_top_reduction_surjective, ``actualTopEquivalence, ``actual_top_reduction_coset,
       ``actual_top_inverse_coset, ``actual_top_bockstein_zero, ``actual_weight_zero_integral_one,
-      ``actual_weight_zero_finite_one, ``actual_weight_zero_level_zero,
-      ``actual_weight_zero_level_one,
+      ``actual_weight_zero_finite_one, ``actualWeightZeroLevelZero,
+      ``actualWeightZeroLevelOne,
       ``actual_weight_two_integral_three, ``actual_weight_two_finite_three,
-      ``actual_weight_two_level_twelve, ``actual_weight_two_level_twelve_torsion,
-      ``actual_weight_two_kernel_twelve, ``actual_characteristic_two_level_two,
-      ``actual_characteristic_two_level_six, ``actual_characteristic_two_finite_three] do
+      ``actualWeightTwoLevelTwelve, ``actual_weight_two_level_twelve_torsion,
+      ``actual_weight_two_kernel_twelve, ``actualCharacteristicTwoLevelTwo,
+      ``actualCharacteristicTwoLevelSix, ``actual_characteristic_two_finite_three] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

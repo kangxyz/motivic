@@ -20,7 +20,7 @@ variable (k : Type u) [Field k] (P : SheafWithTransfers.{u + 1} k)
   (X : SmoothSite (Spec (.of k)))
 
 /-- The existing envelope, actual small restriction, and actual residue direct images. -/
-def actual_envelope_product :
+def actualEnvelopeProduct :
     (_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.restrict X AddCommGrpCat).obj
       ((SheafWithTransfers.toSheaf k).obj (SheafWithTransfers.originalGermEnvelope k P)) ≅
     ∏ᶜ fun x : X.left ↦ (_root_.AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType.directImage
@@ -44,7 +44,7 @@ theorem actual_transfer_injective_ordinary_acyclic [Injective P] (n : ℕ)
 
 open Lean in
 run_cmd do
-  for name in #[``actual_envelope_product, ``actual_transfer_injective_ordinary_acyclic,
+  for name in #[``actualEnvelopeProduct, ``actual_transfer_injective_ordinary_acyclic,
       ``SheafWithTransfers.originalGermEnvelope_H_succ_eq_zero,
       ``SheafWithTransfers.toOriginalGermEnvelope_product_unit,
       ``_root_.AlgebraicGeometry.Scheme.SmoothSite.originalFiberGermIso_naturality,

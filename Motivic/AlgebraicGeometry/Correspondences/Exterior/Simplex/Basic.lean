@@ -38,11 +38,24 @@ def simplexExterior (n : ℕ) : FiniteCorrespondence X.hom Y.hom →+
       (SmoothSite.product Y (_root_.AlgebraicSimplex.smoothSiteObj k n)).hom :=
   exteriorIdentity (X := X) (Y := Y) (_root_.AlgebraicSimplex.smoothSiteObj k n)
 
-@[simp] theorem simplexExterior_single (n : ℕ)
+theorem simplexExterior_single (n : ℕ)
     (V : FiniteCorrespondenceGenerator X.hom Y.hom) (m : ℤ) :
     simplexExterior (X := X) (Y := Y) n (Finsupp.single V m) =
       Finsupp.single (V.exteriorIdentityGenerator (_root_.AlgebraicSimplex.smoothSiteObj k n)) m :=
   exteriorIdentity_single (X := X) (Y := Y) _ V m
+
+@[simp] theorem simplexExterior_single_simp (n : ℕ)
+    (V : FiniteCorrespondenceGenerator X.hom Y.hom) (m : ℤ) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence
+          (CategoryTheory.Limits.pullback.fst X.hom
+            (_root_.AlgebraicSimplex.smoothSiteObj k n).hom ≫ X.hom)
+          (CategoryTheory.Limits.pullback.fst Y.hom
+            (_root_.AlgebraicSimplex.smoothSiteObj k n).hom ≫ Y.hom))
+      _ _ _ (simplexExterior (X := X) (Y := Y) n) (Finsupp.single V m) =
+      Finsupp.single (V.exteriorIdentityGenerator (_root_.AlgebraicSimplex.smoothSiteObj k n)) m :=
+  simplexExterior_single n V m
 
 end FiniteCorrespondence
 

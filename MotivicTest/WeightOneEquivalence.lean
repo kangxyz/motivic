@@ -71,14 +71,14 @@ variable [HasDerivedCategory.{w}
   (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
 /-- The requested equivalence uses the originally defined derived motivic group. -/
-def actual_weight_one_equivalence :
+def actualWeightOneEquivalence :
     motivicCohomology k 1 1 (SmoothSite.base (Spec (.of k))) ≃+ Additive kˣ :=
   weightOneEquiv k
 
 /-- Its forward map is precisely the actual derived norm. -/
 theorem actual_derived_norm_formula
     (x : motivicCohomology k 1 1 (SmoothSite.base (Spec (.of k)))) :
-    actual_weight_one_equivalence k x = motivicNorm k x := weightOneEquiv_apply k x
+    actualWeightOneEquivalence k x = motivicNorm k x := weightOneEquiv_apply k x
 
 /-- The original derived norm is bijective without any extra hypotheses. -/
 theorem actual_derived_norm_bijective : Function.Bijective (motivicNorm k) :=
@@ -86,7 +86,7 @@ theorem actual_derived_norm_bijective : Function.Bijective (motivicNorm k) :=
 
 /-- The original derived inverse transports the actual unit graph. -/
 theorem actual_derived_inverse_graph (a : kˣ) :
-    (actual_weight_one_equivalence k).symm (Additive.ofMul a) =
+    (actualWeightOneEquivalence k).symm (Additive.ofMul a) =
       (motivicRawBaseEvaluationComparison k 1 1).symm (graphUnitClass k a) :=
   weightOneEquiv_symm_apply k (Additive.ofMul a)
 
@@ -104,7 +104,7 @@ run_cmd do
       ``weightOneEquiv_symm_apply, ``actual_cycle_representatives,
       ``original_identity_relation, ``original_multiplication_relation,
       ``arbitrary_point_norm, ``actual_homology_kernel, ``inverse_graph,
-      ``actual_weight_one_equivalence, ``actual_derived_norm_formula,
+      ``actualWeightOneEquivalence, ``actual_derived_norm_formula,
       ``actual_derived_norm_bijective, ``actual_derived_inverse_graph] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

@@ -22,20 +22,20 @@ variable {S : Scheme.{u}} [IsAffine S] {U X : SmoothSite S}
   (F : (SmoothSite S)ᵒᵖ ⥤ AddCommGrpCat.{u + 1})
 
 /-- The right side is the original, not newly substituted, point fiber. -/
-def actual_original_fiber : colimit ((forget f u).op ⋙ F) ≅
+def actualOriginalFiber : colimit ((forget f u).op ⋙ F) ≅
     (nisnevichPointFiberCocone U u F).pt := originalFiberIso f u F
 
 /-- The actual representative maps agree under this comparison. -/
 theorem actual_representative (M : NisnevichNeighborhood U u) :
     colimit.ι ((forget f u).op ⋙ F) (op (compose f u M)) ≫
-        (actual_original_fiber f u F).hom =
+        (actualOriginalFiber f u F).hom =
       F.map ((composeForgetIso f u).app M).inv.op ≫
         (nisnevichPointFiberCocone U u F).ι.app (op M) :=
   originalFiberIso_ι f u F M
 
 open Lean in
 run_cmd do
-  for name in #[``actual_original_fiber, ``actual_representative,
+  for name in #[``actualOriginalFiber, ``actual_representative,
       ``composeFunctor_initial, ``originalFiberIso, ``originalFiberIso_ι] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do

@@ -18,6 +18,8 @@ namespace AlgebraicGeometry.Scheme.GenericSection
 open PolynomialOpenQuotient
 variable (R : Type u) [CommRing R] [IsDomain R] [IsNoetherianRing R]
 
+/-- The affine-line coefficient map `Spec R[1/r][X] ⟶ Spec R[X]` induced by
+localization at `r`. -/
 abbrev lineAwayMap (r : R) : Spec (.of (Localization.Away r)[X]) ⟶ Spec (.of R[X]) :=
   Spec.map (CommRingCat.ofHom (Polynomial.mapRingHom (algebraMap R (Localization.Away r))))
 

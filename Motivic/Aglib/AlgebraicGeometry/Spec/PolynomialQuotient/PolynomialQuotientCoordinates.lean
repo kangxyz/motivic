@@ -27,6 +27,7 @@ theorem ambient_isPullback :
   isPullback_SpecMap_of_isPushout _ _ _ _
     (CommRingCat.PolynomialLaurent.polynomial_isPushout (CommRingCat.ofHom σ))
 
+/-- The canonical isomorphism `Spec R[X] ≅ Spec R ×[Spec k] Spec k[X]` induced by `σ`. -/
 def ambientIso : Spec (.of R[X]) ≅
     pullback (Spec.map (CommRingCat.ofHom σ)) (polynomialProjection (.of k)) :=
   (ambient_isPullback σ).isoPullback

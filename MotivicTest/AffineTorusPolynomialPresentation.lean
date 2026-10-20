@@ -23,12 +23,14 @@ namespace MotivicTest.AffineTorusPolynomialPresentation
 variable {k R : Type u} [Field k] [CommRing R] [IsDomain R]
   [Algebra k R] [Algebra.Smooth k R] (Z : Generator k R)
 
-def actual_support_presentation :
+/-- The `R`-algebra presentation of the support coordinate ring by the minimal
+polynomial of its coordinate unit. -/
+def actualSupportPresentation :
     AdjoinRoot (minpoly R (coordinateUnit Z : coordinateRing Z)) ≃ₐ[R] coordinateRing Z :=
   polynomialEquiv Z
 
 theorem actual_support_coordinate :
-    actual_support_presentation Z
+    actualSupportPresentation Z
       (AdjoinRoot.root (minpoly R (coordinateUnit Z : coordinateRing Z))) =
         (coordinateUnit Z : coordinateRing Z) := polynomialEquiv_root Z
 
@@ -48,7 +50,7 @@ run_cmd do
       ``coordinateUnit, ``laurentPullback_C, ``laurent_eval_surjective,
       ``scalarMap_injective, ``coordinateTorsionFree, ``polynomialEquiv,
       ``polynomialEquiv_root, ``coordinatePolynomial_constant_isUnit, ``coordinateFree,
-      ``actual_support_presentation, ``actual_support_coordinate, ``actual_support_finite_free] do
+      ``actualSupportPresentation, ``actual_support_coordinate, ``actual_support_finite_free] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

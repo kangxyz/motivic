@@ -174,7 +174,7 @@ theorem fiber_all_generic [IsFinite f] (x : fiber f a) : x ∈ genericPoints (fi
     (Subsingleton.elim ((pullback.fst (endpoint a) f) x) (genericPoint (Spec (.of k))))
 
 /-- At an actual fiber point the singleton cut is Artinian with its full multiplicity. -/
-theorem scalar_cut_isArtinian [IsFinite f] [IsNoetherian P] (x : fiber f a) :
+theorem scalar_cut_isArtinian [IsFinite f] (x : fiber f a) :
     IsArtinianRing ((P.presheaf.stalk (fiberInclusion f a x)) ⧸
       (Ideal.ofList [scalar f a (fiberInclusion f a x)] ⊔ ⊥)) := by
   rw [sup_bot_eq, ← fiberInclusion_stalk, Scheme.Hom.ker_stalk]

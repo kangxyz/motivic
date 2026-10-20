@@ -7,7 +7,7 @@ one. The [architecture](docs/ARCHITECTURE.md), [naming](docs/NAMING.md) and
 [interface boundaries](docs/INTERFACES.md) govern source ownership.
 
 General theory intended for Aglib belongs in `Motivic/Aglib/`, under the
-[shared candidate policy](https://github.com/kangxyz/aglib/blob/main/doc/DEVELOPMENT.md#downstream-candidates-for-aglib).
+[shared candidate policy](https://github.com/kangxyz/aglib/blob/main/docs/DEVELOPMENT.md#downstream-candidates-for-aglib).
 Use native mathematical namespaces and a general dependency closure. State the
 intended upstream module, full hypotheses and current consumer in the module
 docstring; describe the actual interfaces in the occupied family guide.

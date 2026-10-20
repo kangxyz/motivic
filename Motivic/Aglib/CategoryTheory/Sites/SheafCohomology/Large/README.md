@@ -1,24 +1,31 @@
-# CategoryTheory / Sites / SheafCohomology / Large
+# Ordinary sheaf cohomology with larger coefficient universes
 
-Existing Ext bifunctor from the universe-lifted free abelian representing sheaf, compared to actual Mathlib cohomology when coefficient and site-Hom universes agree. Relative cokernels, restrictions, boundaries and naturality retain their original maps and signs.
+For `C : Type u` with `[Category.{v} C]`, a topology `J`,
+`[HasSheafify J AddCommGrpCat.{max v t}]` and
+`[HasExt.{w} (Sheaf J AddCommGrpCat.{max v t})]`,
+`CategoryTheory.Sheaf.LargeCohomology.H J F n X` is the actual Ext group from
+the universe-lifted free abelian representing sheaf to `F`, in degree `n : ℕ`.
+Its restrictions use the original representing-sheaf maps.
 
-HasSheafify/HasExt and all existing universe bounds remain explicit. Local triviality retains EnoughInjectives and WEqualsLocallyBijective. Sheaf.H and Sheaf.H prime from Mathlib are not replaced.
+`ordinaryComparison` compares the presheaf functors when the coefficient and
+site-Hom universes agree. `singleComparison` compares with unbounded derived
+Hom under its displayed `HasDerivedCategory` premise. `zeroSections` identifies
+degree zero with actual sections and preserves restrictions. Mathlib's
+`Sheaf.H` and `Sheaf.H'` remain unchanged.
 
-| Exact import |
-| --- |
-| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic` |
-| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Naturality` |
+| Exact import | Interface |
+| --- | --- |
+| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic` | `H`, `presheafFunctor`, `ordinaryComparison` and `singleComparison`. |
+| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Naturality` | Original cohomology maps and their naturality. |
+| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.DegreeZero` | `zeroSections`, natural in the sheaf and site object. |
+| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.LocalTriviality` | Positive-degree local effacement, retaining `EnoughInjectives` and `J.WEqualsLocallyBijective` where used. |
+| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.RestrictionSource` | Actual representing-source comparison for a continuous-site adjunction, in native `CategoryTheory.Sheaf.Hypercohomology`. |
 
-Native interfaces:
+The [relative cohomology family](../Relative/Basic.lean) owns the relative
+cokernel construction and its original boundary maps and signs. Host consumers
+construct ordinary cohomology with transfers and the weight-one ordinary
+hypercohomology comparison.
 
-- `CategoryTheory.Sheaf.LargeCohomology.H`
-- `CategoryTheory.Sheaf.LargeCohomology.presheafFunctor`
-- `CategoryTheory.Sheaf.LargeCohomology.ordinaryComparison`
-- `CategoryTheory.Sheaf.LargeCohomology.zeroSections`
-
-Host consumers construct ordinary cohomology with transfers and the weight-one ordinary hypercohomology comparison.
-
-Intended upstream family: `Aglib.CategoryTheory.Sites.SheafCohomology.Large`. Use exact lower
-imports; a current motivating consumer does not change the general hypotheses.
-Follow the [candidate policy](../../../../README.md) and retain the actual maps and
-universes when extending these interfaces.
+Intended upstream family: `Aglib.CategoryTheory.Sites.SheafCohomology.Large`.
+Follow the [candidate policy](../../../../README.md), retaining the actual maps,
+Ext premises and coefficient universes of the exact lower import.

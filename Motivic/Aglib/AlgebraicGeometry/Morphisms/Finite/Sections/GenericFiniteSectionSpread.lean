@@ -23,10 +23,13 @@ universe u
 namespace AlgebraicGeometry.Scheme.GenericSection
 variable (R B : Type u) [CommRing R] [IsDomain R] [CommRing B] [Algebra R B]
 
+/-- The affine scheme map `Spec B ⟶ Spec R` induced by the given algebra structure. -/
 abbrev baseMap : Spec (.of B) ⟶ Spec (.of R) :=
   Spec.map (CommRingCat.ofHom (algebraMap R B))
+/-- The canonical map from the spectrum of `FractionRing R` to `Spec R`. -/
 abbrev genericMap : Spec (.of (FractionRing R)) ⟶ Spec (.of R) :=
   Spec.map (CommRingCat.ofHom (algebraMap R (FractionRing R)))
+/-- The actual pullback of `Spec B ⟶ Spec R` along `genericMap R`. -/
 abbrev genericFiber := pullback (baseMap R B) (genericMap R)
 
 variable (p : PrimeSpectrum B) (hp : Ideal.comap (algebraMap R B) p.asIdeal = ⊥)

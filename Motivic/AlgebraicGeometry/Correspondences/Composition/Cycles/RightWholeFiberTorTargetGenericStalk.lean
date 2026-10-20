@@ -20,9 +20,10 @@ quasi-coherence of its ambient equalizer is never assumed. Full generic stalk
 lengths are preserved, with finiteness proved before integer conversion.
 The genuine smooth Z-diagonal bound gives finite degree support before the
 signed Euler comparison. Residue-degree sums and correspondence-cycle
-comparisons remain separate. This is an uncompiled source-only continuation;
-strict checks, full lint, transitive axiom gates and independent review are
-not yet run for this module.
+comparisons remain separate.
+
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

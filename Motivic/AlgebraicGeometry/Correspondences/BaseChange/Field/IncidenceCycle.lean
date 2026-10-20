@@ -58,7 +58,7 @@ def fieldBaseChangeIncidenceMap : A.fieldBaseChangeIncidence φ B ⟶
       simpa only [Category.assoc, fieldBaseChangeTargetProjection_snd,
         fieldBaseChangeProjection_hom] using h)
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem fieldBaseChangeIncidenceMap_fst :
     A.fieldBaseChangeIncidenceMap φ B ≫
       pullback.fst ((SmoothSite.fieldBaseChange φ).obj X).hom
@@ -66,13 +66,27 @@ theorem fieldBaseChangeIncidenceMap_fst :
       A.fieldBaseChangeIncidenceFst φ B ≫ A.fieldBaseChangeProjection φ :=
   pullback.lift_fst _ _ _
 
-@[reassoc (attr := simp)]
+@[reassoc (attr := simp)] theorem fieldBaseChangeIncidenceMap_fst_simp :
+    A.fieldBaseChangeIncidenceMap φ B ≫
+      pullback.fst (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Z.hom (Spec.map (CommRingCat.ofHom φ))) =
+      A.fieldBaseChangeIncidenceFst φ B ≫ A.fieldBaseChangeProjection φ :=
+  fieldBaseChangeIncidenceMap_fst φ A B
+
+@[reassoc]
 theorem fieldBaseChangeIncidenceMap_snd :
     A.fieldBaseChangeIncidenceMap φ B ≫
       pullback.snd ((SmoothSite.fieldBaseChange φ).obj X).hom
         ((SmoothSite.fieldBaseChange φ).obj Z).hom =
       A.fieldBaseChangeIncidenceSnd φ B ≫ B.fieldBaseChangeTargetProjection φ :=
   pullback.lift_snd _ _ _
+
+@[reassoc (attr := simp)] theorem fieldBaseChangeIncidenceMap_snd_simp :
+    A.fieldBaseChangeIncidenceMap φ B ≫
+      pullback.snd (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+        (pullback.snd Z.hom (Spec.map (CommRingCat.ofHom φ))) =
+      A.fieldBaseChangeIncidenceSnd φ B ≫ B.fieldBaseChangeTargetProjection φ :=
+  fieldBaseChangeIncidenceMap_snd φ A B
 
 instance fieldBaseChangeIncidenceMap_isFinite : IsFinite (A.fieldBaseChangeIncidenceMap φ B) := by
   have : IsFinite (A.fieldBaseChangeIncidenceMap φ B ≫

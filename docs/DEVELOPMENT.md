@@ -17,10 +17,12 @@ python3 scripts/validate.py --base BASE
 ```
 
 Final checks use the independently pinned shared `lean_ci` recipe and executor.
-Set `MOTIVIC_TOOLING_ROOT` and its exact reviewed `MOTIVIC_TOOLING_REVISION`; the
-[script guide](../scripts/README.md) owns tooling admission and command details.
+Configure `MOTIVIC_TOOLING_ROOT`, its exact reviewed `MOTIVIC_TOOLING_REVISION`
+and the Python environment using the [script guide](../scripts/README.md).
+That guide owns tooling admission and command details.
 Use an external `--progress` directory to retain compatible individual checks
-across final-check attempts. After a late failure, repair the failed category
+across final-check attempts. Each ordinary declaration origin has its own
+checkpoint, retaining compatible successes after a later failure. After a late failure, repair the failed category
 and retain compatible earlier results. For example, a repaired test can be compiled directly
 with `python3 scripts/build.py MotivicTest.OrdinaryCohomologyTransfers`; finish
 that changed source's applicable lint without restarting unchanged provider
@@ -63,9 +65,9 @@ Lake native artifact caching is enabled, including restoration of conventional
 build files. It preserves compatible work across checkouts; a current rehashed
 build decides reuse. The CI workflow uses separately pinned Aglib tooling to
 restore compatible public dependency artifacts without changing mathematical
-pins. Cache misses permit only ordinary selected-target builds. The hosted cutover remains pending a reviewed common tooling commit and native
-baseline covering the unfinished upgrade. In the shared candidate, mapping
-export reuses the original selected build outputs after all checks succeed.
+pins. Cache misses permit only ordinary selected-target builds. Hosted CI uses
+the reviewed common tooling commit; complete native enrollment has not passed.
+Mapping export reuses the original selected build outputs after all checks succeed.
 A missing export artifact fails delivery without compiling an extra closure. The canonical shared action stages native
 mappings; a separate release job publishes the exact same-run artifact with
 repository write permission. Build jobs and pull requests remain read-only.
@@ -91,6 +93,11 @@ Incremental validation covers all applicable categories, not compilation alone:
 | Source and structure | Affected import/enrollment, layout, pin, option, heartbeat and other source-policy checks |
 | Trust boundary | Axiom/input checks whose premises or coverage changed, reusing compatible unchanged evidence |
 
+The validation adapter does not run a package-wide transitive axiom audit.
+Selected test modules may audit their named declarations; separately recorded
+trust checks cover only their stated source, declarations and assumptions.
+The structural token scan and ordinary declaration lint do not supply that audit.
+
 Keep compiler-integrated checks enabled during development. Run independent
 lint and tests only in the task's final validation before delivery, covering its
 applicable categories with compatible retained evidence and focused new checks.
@@ -113,23 +120,32 @@ modules. Local missing bases use a trusted fetched default-branch merge-base or 
 initial root diff; unresolvable bases fail actionably. Shared committed CI uses
 the reviewed `EvidenceProtocol` and cannot fall back to `event.before` or a
 previous push. There is no admitted historical complete native Motivic baseline.
-The one-time cutover is explicit: only a commit with exactly one parent,
+The one-time cutover is explicit: a commit with exactly one parent,
 `0fcc528c48128a37a04f3a6db8b4833cedb4d891`, and a nonempty diff confined to the
 enumerated CI-owned paths in `scripts/shared_workflow.py` may use
-`initial-enrollment`. That plan has no historical `verified_base`; it enrolls
+`initial-enrollment`. The failed first attempt at
+`c793b96eb87eee540e665058e83e5f05d5c95683` also permits one direct repair
+successor with unchanged pins and only the explicitly admitted source,
+documentation and CI-tooling owners. Unknown paths, merges and grandchildren
+cannot select that repair mode; exact workflow/recipe/tooling admission still
+applies. Neither admission depends on a failed evidence search. The
+[script guide](../scripts/README.md) owns the precise path boundary.
+That plan has no historical `verified_base`; it enrolls
 every local production module, every local test (including orphan leaves outside
 the facades), and the existing independent client. Production providers precede
 the remaining tests and client, retaining the ordinary exact-origin declaration
 and selected-source style predicates. All tooling fixtures run at enrollment.
 Only the successful native phase plus finalization can supply the first future
-baseline. Every later head requires a genuinely verified native ancestor;
+baseline. Other heads require a genuinely verified native ancestor;
 missing or skipped native/finalizer evidence cannot trigger enrollment.
 Pin changes and manual dispatch have no full fallback.
 Pin changes require explicit affected scope and matching caches. An Aglib upgrade
 can commit the reviewed configuration hashes and local seeds in
 `.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
-the checked format used by automatic CI. Documentation-only changes run static
-checks without installing Lean. Execution-script and CI-workflow changes run affected
+the checked format used by automatic CI. With an admitted verified baseline,
+documentation-only affected scopes run static checks without installing Lean;
+initial enrollment always requires its complete native scope. Execution-script
+and CI-workflow changes run affected
 tooling fixtures and, when no native scope is already selected, compile and
 declaration/style-lint the exact curated `Motivic` and `MotivicTest` facade
 modules and check the independent client. This smoke uses module selectors,
@@ -147,7 +163,16 @@ Before native final checking, prepare ignored root `.lake` inputs and, for a
 selected client, run `python3 scripts/shared_workflow.py prepare-client`. This
 precedes the source snapshot and preserves strict absent-config observations.
 Batteries declaration checks still use separate environments per origin; no
-union-environment batch or equivalence is claimed. See
+union-environment batch or equivalence is claimed. The shared scheduler records
+each exact-origin check independently and admits read-only concurrency only
+inside an existing managed resource profile; the hosted/local path stays serial.
+The hosted workflow is configured to restore and save compatible check progress at
+an explicit external path, including after failed validation. Candidate records
+must match their complete current bindings before reuse; a partial phase still
+blocks finalization and publication. Manual reruns can resume matching records,
+with no automatic continuation loop. The native step retains its 300-minute
+limit inside a 360-minute job; this configuration does not promise complete
+first-run enrollment or establish complete hosted timing. See
 [tool commands](../scripts/README.md) for source boundaries and scoped export.
 
 For a transfer-interface change, a relevant final test is:
@@ -233,7 +258,7 @@ already compiles. Coordinate one implementation owner across downstream
 libraries. When an accepted upstream revision is pinned, retarget consumers
 and remove the local implementation in the same change, preserving native
 names and avoiding duplicate copies or default compatibility facades. Follow
-the [shared candidate policy](https://github.com/kangxyz/aglib/blob/main/doc/DEVELOPMENT.md#downstream-candidates-for-aglib).
+the [shared candidate policy](https://github.com/kangxyz/aglib/blob/main/docs/DEVELOPMENT.md#downstream-candidates-for-aglib).
 See [contribution guidance](../CONTRIBUTING.md).
 
 ## Documentation ownership

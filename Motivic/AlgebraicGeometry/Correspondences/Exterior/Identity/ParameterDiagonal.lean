@@ -137,7 +137,7 @@ theorem exteriorParameterDiagonal_exists_regular_kernel (z : A.exteriorParameter
 
 /-- Eliminate the literal image of a chosen parameter-diagonal list in every degree.
 The remaining list is arbitrary and is mapped through the actual stalk surjection. -/
-def exteriorParameterDiagonal_regularBlockHomologyIso
+def exteriorParameterDiagonalRegularBlockHomologyIso
     (z : A.exteriorParameterDiagonal T B)
     (t : List ((pullback T.hom T.hom).presheaf.stalk
       (pullback.diagonal T.hom

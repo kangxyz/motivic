@@ -15,7 +15,8 @@ lengths; conversion to a natural length retains its finiteness proof.
 | `Motivic.Aglib.RingTheory.Norm.FiniteFree.MarkedFiber` | Marked scalar/residual-one norm under actual split base change; the original algebra remains finite free, without separate residual finiteness or freeness. |
 
 See [going down](Ideal/GoingDown/README.md),
-[polynomial normality](MvPolynomial/README.md) and
+[polynomial normality and coordinate regularity](MvPolynomial/README.md),
+[finite-flat polynomial component dimension](KrullDimension/README.md) and
 [algebraic-simplex rings](AlgebraicSimplex/README.md). General finite-extension,
 Bertini, differential and norm prerequisites use their exact lower leaves;
 geometric scalar-extension specializations have their general geometry owner

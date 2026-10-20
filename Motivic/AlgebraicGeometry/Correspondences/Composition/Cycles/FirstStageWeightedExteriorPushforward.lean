@@ -24,8 +24,8 @@ image supports, all exterior branches, and nonreduced multiplicities remain.
 All finiteness, Noetherianity and flatness are derived over an arbitrary field.
 No remaining-diagonal, iterated-composition or associativity claim is made.
 
-Prepared as a source-only candidate. Compilation and acceptance are recorded
-separately; source presence alone certifies neither.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

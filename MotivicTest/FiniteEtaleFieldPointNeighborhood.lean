@@ -18,7 +18,7 @@ variable {S T : Scheme.{u}} (b : S ⟶ T) (K : Type u) [Field K]
   (q : Spec (.of K) ⟶ S) [Etale q] [IsSeparated q] [QuasiCompact q]
 
 /-- Direct consumer retaining the original inverse-image sheaf and literal neighborhood diagram. -/
-def actual_neighborhood_inverse_image
+def actualNeighborhoodInverseImage
     (G : Sheaf (nisnevichTopology T) AddCommGrpCat.{u + 1}) :
     colimit ((Functor.Elements.π
       (MorphismProperty.Over.forget _root_.AlgebraicGeometry.Scheme.etaleSeparatedFiniteType ⊤ T ⋙
@@ -28,7 +28,7 @@ def actual_neighborhood_inverse_image
 
 open Lean in
 run_cmd do
-  for name in #[``actual_neighborhood_inverse_image, ``fieldPointLiftEquiv,
+  for name in #[``actualNeighborhoodInverseImage, ``fieldPointLiftEquiv,
       ``relativeFieldPointFiberEquiv_naturality, ``pointElementsToNeighborhood_initial,
       ``fieldNeighborhoodFiberIso, ``fieldNeighborhoodInverseImageIso] do
     for dependency in ← collectAxioms name do

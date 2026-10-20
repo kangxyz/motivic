@@ -39,10 +39,12 @@ open _root_.Algebra.Smooth
 
 variable (k R : Type u) [Field k] [CommRing R] [Algebra k R]
 
+/-- An original integral finite correspondence from `Spec R` to the multiplicative line. -/
 abbrev Generator := FiniteCorrespondenceGenerator (baseMap k R) (laurentProjection (.of k))
 
 variable {k R} (Z : Generator k R)
 
+/-- The global section ring of the whole original integral support. -/
 abbrev coordinateRing : CommRingCat.{u} := Γ(Z.scheme, ⊤)
 
 instance supportAffine : IsAffine Z.scheme := isAffine_of_isAffineHom Z.projection

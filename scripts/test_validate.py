@@ -42,10 +42,11 @@ class ValidationOrderTests(unittest.TestCase):
         tasks = self.selected(['Motivic/Provider.lean'], export=True)
         ids = [task['id'] for task in tasks]
         for before, after in [('prepare/cache', 'providers/build'),
-                              ('providers/build', 'providers/declarations'),
-                              ('providers/declarations', 'selected/style'),
+                              ('providers/build', 'providers/declarations/Motivic.Provider'),
+                              ('providers/declarations/Motivic.Provider', 'selected/style'),
                               ('selected/style', 'consumers/build'),
-                              ('consumers/build', 'affected-consumers/declarations')]:
+                              ('consumers/build', 'affected-consumers/declarations/Motivic.Consumer'),
+                              ('consumers/build', 'affected-consumers/declarations/MotivicTest.Selected')]:
             self.assertLess(ids.index(before), ids.index(after))
         builds = [t for t in tasks if t['kind'] == 'build']
         self.assertEqual([t['modules'] for t in builds],
@@ -56,7 +57,7 @@ class ValidationOrderTests(unittest.TestCase):
             self.assertIn('mapping', task)
         checks = [t for t in tasks if t['kind'] == 'check']
         self.assertEqual([t['modules'] for t in checks],
-                         [['Motivic.Provider'], [], ['Motivic.Consumer', 'MotivicTest.Selected']])
+                         [['Motivic.Provider'], [], ['Motivic.Consumer'], ['MotivicTest.Selected']])
         self.assertEqual(checks[1]['source_modules'], ['Motivic.Provider'])
         self.assertEqual(checks[0]['environment_boundary']['mode'], 'separate-import-environment-per-origin')
         self.assertNotIn('export-only', ' '.join(' '.join(t['command']) for t in tasks))
@@ -80,7 +81,7 @@ class ValidationOrderTests(unittest.TestCase):
         self.write('examples/downstream/MotivicClient.lean', 'import Motivic\n')
         tasks = self.selected(['Motivic.lean'])
         ids = [t['id'] for t in tasks]
-        self.assertLess(ids.index('providers/declarations'), ids.index('prepare/client'))
+        self.assertLess(ids.index('providers/declarations/Motivic'), ids.index('prepare/client'))
         self.assertLess(ids.index('prepare/client'), ids.index('client/build'))
         setup = next(t for t in tasks if t['id'] == 'prepare/client')
         self.assertEqual(setup['established_paths'], ['examples/downstream/lake-manifest.json'])
@@ -169,7 +170,7 @@ class SharedLocalBoundaryTests(unittest.TestCase):
         from types import SimpleNamespace
         reflection = SimpleNamespace(closure=lambda roots: {'roots': sorted(set(roots)), 'digest': 'fixture'})
         task = next(t for t in self.selected(['Motivic/Provider.lean'])
-                    if t['id'] == 'affected-consumers/declarations')
+                    if t['id'] == 'affected-consumers/declarations/Motivic.Consumer')
         self.write('scripts/lint_declarations.py', '# original checker\n')
         with patch('lean_ci.state.module_identity', return_value={'depHash': 'fixture', 'outputs': {}}):
             before = binding(self.root, task, {}, reflection=reflection)
@@ -181,6 +182,52 @@ class SharedLocalBoundaryTests(unittest.TestCase):
         self.assertNotEqual(changed_source, changed_checker)
         self.assertIn('Motivic/Provider.lean', before['raw_inputs'])
         self.assertEqual(before['environment_boundary']['mode'], 'separate-import-environment-per-origin')
+
+
+class DeclarationCheckpointBindingTests(unittest.TestCase):
+    setUp = ValidationOrderTests.setUp
+    write = ValidationOrderTests.write
+    selected = ValidationOrderTests.selected
+
+    def test_real_binding_reuse_requires_exact_source_native_driver_and_compiler(self):
+        from shared_workflow import binding
+        from lean_ci.state import InputDrift, Progress, TemporalInputs
+        from types import SimpleNamespace
+        task = next(t for t in self.selected(['Motivic/Provider.lean'])
+                    if t['id'] == 'affected-consumers/declarations/Motivic.Consumer')
+        self.write('.lake/build/lib/lean/Motivic/Consumer.olean', 'native artifact v1\n')
+        self.write('.lake/packages/batteries/scripts/runLinter.lean', 'driver v1\n')
+        reflection = SimpleNamespace(closure=lambda roots: {'fixture-runtime': sorted(set(roots))})
+        def module(root, name, hash_file):
+            artifact = root / '.lake/build/lib/lean' / (name.replace('.', '/') + '.olean')
+            return {'fixture-native': hash_file(artifact)}
+        def current(compiler='compiler-v1'):
+            return binding(self.root, task, {'lean': compiler}, reflection, TemporalInputs())
+        with tempfile.TemporaryDirectory() as external, \
+                patch('lean_ci.state.module_identity', side_effect=module):
+            progress = Progress(external)
+            before = current()
+            receipt = dict(state='completed', exit_code=0, guard_failure=None,
+                           owned_group_gone=True, command=task['command'], cwd=str(self.root))
+            progress.save(before, receipt, task['command'])
+            self.assertIsNotNone(progress.lookup(current()))
+            # An unrelated source need not invalidate a compatible origin in a
+            # new attempt, although the whole-source observer rejects live drift.
+            observed = TemporalInputs()
+            binding(self.root, task, {'lean': 'compiler-v1'}, reflection, observed)
+            self.write('Motivic/Unrelated.lean', 'module\n-- unrelated change\n')
+            self.assertIsNotNone(progress.lookup(current()))
+            with self.assertRaises(InputDrift):
+                observed.assert_stable()
+            for path, contents in (
+                    ('Motivic/Provider.lean', 'import Mathlib.Algebra.Group.Basic\n-- changed dependency\n'),
+                    ('.lake/build/lib/lean/Motivic/Consumer.olean', 'native artifact v2\n'),
+                    ('.lake/packages/batteries/scripts/runLinter.lean', 'driver v2\n')):
+                self.write(path, contents)
+                changed = current()
+                self.assertIsNone(progress.lookup(changed), path)
+                progress.save(changed, receipt, task['command'])
+            self.assertIsNone(progress.lookup(current('compiler-v2')))
 
 
 class StyleBindingBoundaryTests(unittest.TestCase):

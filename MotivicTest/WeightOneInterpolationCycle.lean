@@ -43,11 +43,11 @@ theorem whole_family_cycle (p : k[X]) (hp : p.Monic)
   toIntegralCycle_fundamentalCorrespondence hp hd h0
 
 /-- The actual zero-fiber scheme is the entire original quotient. -/
-def whole_zero_fiber_iso (p : k[X]) : fiber p 0 ≅ Spec (.of (AdjoinRoot p)) :=
+def wholeZeroFiberIso (p : k[X]) : fiber p 0 ≅ Spec (.of (AdjoinRoot p)) :=
   fiberPolynomialSchemeIso p 0 p (fiberZeroEquiv p)
 
 /-- The actual one-fiber scheme keeps the complete repeated-factor quotient. -/
-def whole_one_fiber_iso (p : k[X]) : fiber p 1 ≅ Spec (.of (AdjoinRoot (target p))) :=
+def wholeOneFiberIso (p : k[X]) : fiber p 1 ≅ Spec (.of (AdjoinRoot (target p))) :=
   fiberPolynomialSchemeIso p 1 (target p) (fiberOneEquiv p)
 
 /-- Every original local multiplicity is retained in the zero endpoint. -/
@@ -125,8 +125,8 @@ run_cmd do
       ``singularCorrespondence, ``singularCorrespondence_face,
       ``singularCorrespondence_face_zero, ``singularCorrespondence_face_one,
       ``actual_graph_restrictions, ``actual_singular_cofaces,
-      ``whole_family_geometry, ``whole_family_cycle, ``whole_zero_fiber_iso,
-      ``whole_one_fiber_iso, ``whole_zero_endpoint, ``whole_one_endpoint] do
+      ``whole_family_geometry, ``whole_family_cycle, ``wholeZeroFiberIso,
+      ``wholeOneFiberIso, ``whole_zero_endpoint, ``whole_one_endpoint] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

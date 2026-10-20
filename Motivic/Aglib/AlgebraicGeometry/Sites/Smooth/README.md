@@ -1,8 +1,15 @@
-# AlgebraicGeometry / Sites / Smooth
+# Smooth sites, Nisnevich neighborhoods and coefficient restrictions
 
-The existing MorphismProperty.Over selection of smooth, separated, quasi-compact structural maps, with all maps over the base. Nisnevich covers use actual residue-field lifting. Generic original germs and inverse-image comparisons use the original neighborhood colimits.
+For `S : Scheme.{u}`, `Scheme.SmoothSite S` is the existing
+`MorphismProperty.Over` selection of smooth, separated and quasi-compact
+structure maps. Morphisms are all scheme maps over `S`. Nisnevich covers use
+actual residue-field lifting; original germs and inverse-image comparisons use
+the original neighborhood colimits.
 
-Smooth implies locally finite presentation; quasi-compactness supplies finite type. Topology proofs use cover-specific pullbacks, not arbitrary pullbacks in the smooth category. Noetherian/affine guards remain where present; no arbitrary field-extension object assumption.
+Smoothness supplies local finite presentation, and quasi-compactness gives
+finite type. Topology proofs use cover-specific pullbacks. Noetherian and
+affine hypotheses remain where stated; an arbitrary extension field is not
+assumed to define an object of a finite-type site.
 
 | Exact import |
 | --- |
@@ -105,6 +112,21 @@ inclusion. [OriginalCoefficientRestriction](AffineLine/OriginalCoefficientRestri
 retains the corresponding ordinary coefficient-open arrow and its literal
 line/cylinder coordinates.
 
+[NativeMiddleInput](AffineLine/NativeMiddleInput.lean) gives site constructions
+for the same input `N : NativeOriginalMiddleInput k`. With the explicit additional
+hypothesis `[Etale N.p]`, `nativeCover_mem_nisnevichTopology` proves membership
+of the actual two-arrow sieve after any chosen isomorphism from `N.toInput.siteX`
+to its target. It uses the stored open puncture, marked complement and section;
+source flatness alone is not substituted for étaleness.
+
+Genuine source and puncture restriction squares induce smooth-site maps with
+the same underlying scheme maps. `parameterRestriction` uses the underlying
+identity of `N.delta`, and `nativeTransport_compatible` derives the five stored
+compatibility equations from the two supplied restriction squares against one
+line map. It does not compare independently rebuilt sites or assert those
+restriction squares without proof. The application to original representatives
+and their whole-cylinder lift remains in the host layer.
+
 ## Field lifting after both coefficient restrictions
 
 [Nisnevich/NativeCoefficientCover](Nisnevich/NativeCoefficientCover.lean)
@@ -121,5 +143,5 @@ puncture, étale source map and a smooth separated quasi-compact structure
 map of the final line to `Spec k`; it concludes membership of the literal
 two-arrow sieve in the smooth Nisnevich topology. The
 [host refined-cover consumer](../../../../Transfers/Presheaf/Actions/README.md)
-must still bind these arrows to the original whole cylinder and representative
-restrictions. A field-lifting result alone does not close that assembly.
+binds these arrows to the original whole cylinder and representative restrictions.
+Its action-lifting conclusion uses those additional host interfaces.

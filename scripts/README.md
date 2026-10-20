@@ -12,8 +12,23 @@ invoke Lean, modify source, resolve dependencies or validate external proofs:
 
 ```sh
 python3 scripts/check_repository.py
+```
+
+For shared planning (including `validate.py --list`), native wrappers, hosted
+phases and Python tooling fixtures, first select an independently reviewed
+tooling checkout at the exact revision below:
+
+```sh
+export MOTIVIC_TOOLING_ROOT=/absolute/path/to/reviewed-aglib-tooling
+export MOTIVIC_TOOLING_REVISION=0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1
+export PYTHONPATH="$MOTIVIC_TOOLING_ROOT/ci${PYTHONPATH:+:$PYTHONPATH}"
 python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
+
+The tooling fixtures need both the shared package on `PYTHONPATH` and the
+explicit tooling identity for subprocess adapter checks. This environment does
+not change the mathematical dependency pins. The source checker above needs
+neither Lean nor shared tooling.
 
 `library_sources.py` inventories occupied `Motivic` and `MotivicTest` sources and
 provides the comment-aware Lean import parser adapted from Aglib at revision
@@ -84,7 +99,9 @@ python3 scripts/cache.py --list Motivic.Cor
 ```
 
 `--guarded` applies the reviewed Aglib resource guard and writes a private cache
-receipt. CI uses this mode with its separate tooling checkout and memory limits.
+receipt for a direct invocation. Shared local validation and CI instead run the
+focused cache command as a capped task under the shared executor, with their
+separate tooling checkout and memory limits.
 `cache_bootstrap.py` permits the cache executable's cold-start compiler fanout
 with one-thread compiler caps and the same finite heap and group RSS limits.
 It accepts only focused cache acquisition for existing Mathlib/Batteries leaves
@@ -140,8 +157,10 @@ python3 scripts/validate.py --manual-targets Motivic.Cor
 
 The checked-out revision must match `--head`. Local staged, unstaged and
 untracked files also enter the comparison. The selector keeps its plain target
-list stdout and optionally writes JSON. CI transports the plan and ordered
-target file using deterministic gzip/base64 outputs. The validation adapter
+list stdout and optionally writes JSON. The selector's optional `--github-output`
+also emits deterministic gzip/base64 target and plan outputs. The hosted shared
+workflow instead keeps its plan in runner-owned external state and emits the
+native-phase boolean to GitHub Actions. The local validation adapter
 reselects a transported plan against its recorded comparison before using it.
 A changed plan fails before native commands; select the current affected scope.
 `--list` prints shared task declarations without executing native tools, resolving dependencies,
@@ -157,9 +176,11 @@ actual local imports and client acceptance; a changed public import selects
 the independent client too. A root is selected when it is actually changed,
 required by the client, or reached as a consumer.
 
-Documentation and evidence JSON changes run static source checks without Lean
-installation, dependency resolution, compilation, lint, cache restoration or
-publication. Execution-script and CI-workflow changes select affected Python
+After a verified baseline has been admitted, documentation and evidence JSON
+changes select static source checks without Lean installation, dependency
+resolution, compilation, lint, cache restoration or publication. Explicit
+initial enrollment still requires every local native target and the client.
+Execution-script and CI-workflow changes select affected Python
 fixtures and static checks. If no native scope is already selected, they also
 compile the exact curated `Motivic` and `MotivicTest` facade modules, run their
 declaration/style checks, and check the independent client. The module build
@@ -230,6 +251,15 @@ origins may have zero declarations; this pinned Batteries version accepts empty
 input, while their compilation and style checks remain selected. `--full` keeps
 the native diagnostic route. The reviewed Batteries driver revision is
 `f2effa3d803fda822b1f97b806c47cf2adfbcbc2`; source drift fails before native execution.
+
+Ordinary declaration validation has one checkpoint task per defining origin,
+using the unchanged checker with `--root ROOT --no-build ORIGIN`. Every origin
+still imports into its own fresh Lean process. The shared executor may schedule
+an explicitly read-only batch at up to eight checks within an admitted managed
+profile's existing job cap; local execution, including the hosted workflow,
+uses one check at a time. Successful individual checks are recorded even when
+a later origin or an active peer fails. The phase remains failed until every
+required check succeeds. The full/native-package diagnostic is unchanged.
 `lint_style.py` reuses the published pinned Aglib runtime planner, cached namespace
 overlay and Lake environment. Its checksum-guarded temporary Mathlib driver
 adapter replaces only import expansion with the exact explicit selected source
@@ -247,8 +277,19 @@ selects only `+Batteries.Tactic.Lint` after matching cache acquisition; its
 resource receipt is separate from provider/proof compilation. One isolated
 style runtime checks all selected files before consumers. Missing prerequisites
 fail closed; they cannot trigger a root build.
+
+For a final-check repair on an already built origin, with matching linter
+runtime prerequisites prepared, the direct commands are:
+
+```sh
+python3 scripts/lint_declarations.py --no-build Motivic.Transfers.Cohomology.Basic
+python3 scripts/lint_style.py Motivic.Transfers.Cohomology.Basic
+```
+
 This is compiler/linter/test coverage, not independent kernel replay or a proof
-of theorem premises. `--skip-static` and `--skip-cache` reuse matching same-run
+of theorem premises. The recipe has no blanket transitive axiom-audit task;
+selected trust-test modules and separately recorded audits retain their named
+coverage. `--skip-static` and `--skip-cache` reuse matching same-run
 evidence retained by the caller; they do not establish that evidence themselves.
 
 The shared final check enrolls local source candidates, absent configurations,
@@ -258,6 +299,25 @@ Receipt state, optional `--progress` stores and `--outputs` exports must be
 outside the checkout; omitted state uses an external temporary directory.
 Keep the same external progress store when continuing compatible final checks.
 Unsupported reflective runtime metadata disables individual-check reuse.
+
+Hosted native validation passes `--progress "$RUNNER_TEMP/motivic-check-progress"`.
+The workflow restores and saves that directory in a separate cache namespace
+bound to runner OS/architecture, the reviewed tooling revision and the
+toolchain/configuration/CI-policy hashes, with a unique run/attempt key. The
+save step is configured to run after failed validation when a cache key was established.
+Restoration supplies candidate records only: each origin's complete current
+binding, including checker policy, source closure, native artifacts, reflected
+runtime and compiler identity, must match before reuse. Build caches do not
+substitute for check records. An incomplete phase cannot finalize or publish.
+Manual reruns can continue compatible successes; no automatic rerun loop is
+configured. The native step still has a 300-minute limit within a 360-minute
+job. Complete first-run enrollment is not promised to fit that interval, and
+actual complete hosted timing remains unmeasured.
+
+The parsed local import graph is memoized only within its guarded whole-source
+observer lifetime. Source-directory enrollment and every source byte are
+observed before parsing; additions, removals or source drift reject that
+attempt. Individual source/native/runtime bindings remain separate and current.
 
 Native final checking requires a prepared ignored `.lake` directory. When the
 independent client is selected, prepare its ignored directories and inherited
@@ -272,24 +332,22 @@ export adds no proof compilation or second export build. Partial mappings cover
 only their selected closure.
 
 The reviewed common tooling commit for this migration is
-`3a4d549981ced306d89d3ed55418c9e6a25f86c4`; select it as `MOTIVIC_TOOLING_REVISION`.
+`0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1`; select it as `MOTIVIC_TOOLING_REVISION`.
 
-This isolated migration candidate has not cut over the hosted workflow.
-The current workflow's tooling commit predates this API. Adoption requires the
-new common tooling commit, mathematical delivery and write handoff, and an
-owner-reviewed native baseline covering the unfinished upgrade. The adapter's
-`BASELINE_PROTOCOL` is intentionally unset and strict CI planning fails with
-an actionable missing-evidence message. The existing `EvidenceProtocol` owns
-reviewed workflow/entrypoint identities; an exact legacy run/attempt allowlist
-may restrict an admitted witness. No extra admission file is needed. A green
+Hosted CI is configured to use this shared API and reviewed tooling commit.
+The first complete enrollment at `c793b96eb87eee540e665058e83e5f05d5c95683`
+failed declaration lint; it supplies no verified native baseline. The existing
+`EvidenceProtocol` owns reviewed workflow/entrypoint identities. A green
 two-facade smoke, a run excluding failed optional leaves, or a root/test-only
-bootstrap cannot close the unfinished upgrade. No `event.before` fallback
-advances that range. Local final checking requires no GitHub lookup.
+bootstrap cannot close complete enrollment. No `event.before` fallback advances
+that range. Local final checking requires no GitHub lookup.
 
 `test_ci_targets.py` covers affected graphs, docs/tools/pins, optional modules,
 renames/deletions, missing bases, explicit manual/full scope and compressed
 transport. `test_validate.py` covers shared recipe ordering and predicates, local enrollment,
 client workspace setup, source-only checks and fail-closed baseline selection.
+`test_declaration_batch.py` covers the per-origin command and resource boundary,
+partial-success retention, guarded graph memoization and batch-capable loader.
 An opt-in native fixture uses `MOTIVIC_NATIVE_STYLE_ROOT` naming a prepared
 owned-output package with `Motivic.Smoke.StyleSelected` importing the trailing-
 whitespace-bad `Motivic.Smoke.StyleUnrelated`, and a directly bad
@@ -306,7 +364,7 @@ directory); ordinary native style fixtures remain opt-in.
 Hosted CI uses the same `Application` and task recipe as local validation and
 frozen execution, through `scripts/shared_workflow.py plan|source|native|finalize`.
 It pins shared tooling separately at
-`3a4d549981ced306d89d3ed55418c9e6a25f86c4`; mathematical pins are unchanged.
+`0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1`; mathematical pins are unchanged.
 The workflow exports that checkout's `ci` directory in `PYTHONPATH` for source
 fixtures and keeps all committed-phase state under `$RUNNER_TEMP`, outside the
 checkout. Each phase rechecks committed source, the tooling pin, admitted recipe,
@@ -314,13 +372,21 @@ and selected scope. `scripts/ci_policy.py` holds exact reviewed workflow and
 owner recipe hashes; adding hashes is not source review. It admits no legacy
 smoke workflow or arbitrary historical recipe.
 
-Initial enrollment is permitted only for the single-parent CI-only successor of
+Initial enrollment admits the single-parent CI-only successor of
 `0fcc528c48128a37a04f3a6db8b4833cedb4d891`, restricted to `INITIAL_PATHS` in
-`shared_workflow.py`. Selection of this mode depends on that identity, never on
-an unsuccessful evidence search. Its explicit `initial-enrollment` plan includes
+`shared_workflow.py`, and one explicit direct repair successor of the failed
+`c793b96eb87eee540e665058e83e5f05d5c95683` attempt. The repair permits only
+`Motivic`/`MotivicTest` Lean and Markdown files, package/source correspondence
+documentation, and the enumerated CI tooling owners in `REPAIR_TOOL_PATHS`.
+Dependency/toolchain configurations, dependency-scope records, client changes,
+unknown paths, source deletions, merges and further descendants cannot select
+repair enrollment.
+Current workflow/recipe and independent tooling identities remain exact.
+Selection of this mode depends on that identity, never on an unsuccessful
+evidence search. Its explicit `initial-enrollment` plan includes
 all local modules and tests plus the existing client, without claiming any
 historical `verified_base`. Removing an optional or orphan source from that
-scope fails validation. Later commits use `EvidenceProtocol` to require an exact
+scope fails validation. Other commits use `EvidenceProtocol` to require an exact
 successful native job and finalizer in an admitted ancestor run attempt.
 
 For a clean admitted committed checkout with the independent tooling environment

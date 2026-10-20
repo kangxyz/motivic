@@ -269,7 +269,7 @@ variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
   {X Y : SmoothSite.overField k}
 
 /-- Arbitrary field change preserves the full actual graph on any smooth source. -/
-@[simp] theorem fieldBaseChange_componentGraphCycleOver (f : X ⟶ Y) :
+theorem fieldBaseChange_componentGraphCycleOver (f : X ⟶ Y) :
     fieldBaseChange (X := X) (Y := Y) φ
         (componentGraphCycleOver f.left (MorphismProperty.Over.w f)) =
       componentGraphCycleOver ((SmoothSite.fieldBaseChange φ).map f).left
@@ -301,13 +301,33 @@ variable {k L : Type u} [Field k] [Field L] (φ : k →+* L)
     _ = ∑ x, H x := (FieldBaseChangeGraph.sourceGenericEquiv φ f).sum_comp H
     _ = _ := (componentGraphCycleOver_eq_generic_sum ((SmoothSite.fieldBaseChange φ).map f)).symm
 
+@[simp] theorem fieldBaseChange_componentGraphCycleOver_simp (f : X ⟶ Y) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := Y) φ)
+        (componentGraphCycleOver f.left (MorphismProperty.Over.w f)) =
+      componentGraphCycleOver ((SmoothSite.fieldBaseChange φ).map f).left
+        (MorphismProperty.Over.w ((SmoothSite.fieldBaseChange φ).map f)) :=
+  fieldBaseChange_componentGraphCycleOver φ f
+
 /-- The entire diagonal, including every disconnected component, is preserved. -/
-@[simp] theorem fieldBaseChange_componentIdentityCycle (X : SmoothSite.overField k) :
+theorem fieldBaseChange_componentIdentityCycle (X : SmoothSite.overField k) :
     fieldBaseChange (X := X) (Y := X) φ (componentIdentityCycle X.hom) =
       componentIdentityCycle ((SmoothSite.fieldBaseChange φ).obj X).hom := by
   have h := fieldBaseChange_componentGraphCycleOver φ (𝟙 X)
   rw [(SmoothSite.fieldBaseChange φ).map_id] at h
   exact h
+
+@[simp] theorem fieldBaseChange_componentIdentityCycle_simp (X : SmoothSite.overField k) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom X.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := X) φ) (componentIdentityCycle X.hom) =
+      componentIdentityCycle ((SmoothSite.fieldBaseChange φ).obj X).hom :=
+  fieldBaseChange_componentIdentityCycle φ X
 
 end FiniteCorrespondence
 

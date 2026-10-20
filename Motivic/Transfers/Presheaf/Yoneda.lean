@@ -49,7 +49,7 @@ def sectionHom (P : PresheafWithTransfers.{u} k) (X : Cor k) (s : sections P X) 
         rw [transfer_comp]
         rfl }
 
-@[simp]
+@[simp↓]
 theorem sectionHom_app (P : PresheafWithTransfers.{u} k) (X Y : Cor k)
     (s : sections P X) (α : Y ⟶ X) :
     (sectionHom P X s).hom.app (op Y) α = transfer P α s := rfl

@@ -29,7 +29,7 @@ def imageFirstObstruction
     P ⟶ (R.rightDerived N).obj Y :=
   (DerivedCategory.singleFunctorCompHomologyFunctorIso C (N : ℤ)).inv.app P ≫
     (DerivedCategory.homologyFunctor C (N : ℤ)).map f ≫
-      (I.imageTriangle_target_homology_iso R N).hom
+      (I.imageTriangleTargetHomologyIso R N).hom
 
 omit [PreservesFiniteLimits R] in
 /-- The obstruction is natural in the original coefficient source. -/
@@ -60,7 +60,7 @@ theorem imageFirstObstruction_eq_zero_iff
     have hH : (DerivedCategory.homologyFunctor C (N : ℤ)).map f = 0 := by
       apply (cancel_epi
         ((DerivedCategory.singleFunctorCompHomologyFunctorIso C (N : ℤ)).inv.app P)).mp
-      apply (cancel_mono (I.imageTriangle_target_homology_iso R N).hom).mp
+      apply (cancel_mono (I.imageTriangleTargetHomologyIso R N).hom).mp
       simpa only [imageFirstObstruction, Category.assoc,
         Limits.zero_comp, Limits.comp_zero] using hf
     apply (DerivedCategory.single_lift_iff_first_homology_obstruction_zero

@@ -1,14 +1,15 @@
 # Verification scope
 
 > Current navigation: see the [documentation index](README.md) and
-> [perfect-field strict-invariance guide](../Motivic/Cohomology/A1/README.md).
+> [A1 guide](../Motivic/Cohomology/A1/README.md), including the
+> [HI-presheaf sheafification interface](../Motivic/Cohomology/A1/Sheafification/README.md).
 > Current guides retain `Motivic/Aglib` as maintained general-theory candidates
 > and distinguish their native interfaces from host applications. This notice
 > adds navigation only; the chronology below retains its original evidence basis.
 > The sections below retain their identified source snapshots, historical paths,
 > pins and validation limits. Source reorganization does not relabel those checks
-> as validation of later bytes. The latest perfect-field milestone supersedes
-> earlier strict-invariance frontiers only under its stated hypotheses.
+> as validation of later bytes. Later interfaces supersede historical open
+> frontiers only under their stated hypotheses and recorded evidence boundaries.
 
 This bootstrap preserves the supplied mathematical implementation and changes
 package organization, public import selection, test-root names and developer
@@ -362,9 +363,9 @@ in the Milnor integration section below.
 All 43 source adaptations within the strict consumer closure already belong to
 the Milnor migration's selected downstream validation scope. The two newly
 adapted helpers are outside that closure. A separate full strict-closure replay
-would duplicate that integration work. Finite-field descent and the separate
-frame/standard-triple/norm/Picard program remain open; higher-Chow and spectrum
-comparisons remain separate.
+would duplicate that integration work. At this snapshot, finite-field descent
+and the separate frame/standard-triple/norm/Picard program remained open;
+higher-Chow and spectrum comparisons were separate.
 
 ## General Milnor K-theory upstream integration
 
@@ -430,8 +431,8 @@ where 43 canonical declarations were unavailable after their former test-import
 paths moved upstream. Four precise public Aglib imports restore reachability of
 their 25 defining modules. All 417 audit entries and all non-import source bytes
 are preserved. Dependency, project and native progress were saved; no Aglib or
-Mathlib module compiled. The aggregate audit is selected for cached hosted
-acceptance after this import repair.
+Mathlib module compiled. The aggregate audit was selected for cached hosted
+acceptance after this import repair; this entry does not record its completion.
 
 ## Perfect-field strict invariance, 18 October 2026
 
@@ -448,9 +449,9 @@ arbitrary-coefficient-universe finite local-zero construction and the perfect-fi
 strict endpoint. The finite boundary theorem itself requires neither HasExt nor
 sheafness. The existing infinite-field branch and its reviewed background are
 retained. Other admitted supporting families keep their explicit local
-principal-face conditions and supplied correction/frame witnesses; no global
-principal-A1, non-flat norm, Picard or general HI-presheaf sheafification result
-is inferred.
+principal-face conditions and supplied correction/frame witnesses. This
+milestone inferred no global principal-A1, non-flat norm, Picard or general
+HI-presheaf sheafification result.
 
 The admitted delta contains 131 new production sources, 21 tests and one
 Coherence proof factorization with unchanged public statements. All 153 sources
@@ -463,8 +464,9 @@ boundaries preserved.
 binds the archive, source hashes, unchanged pins and selected supplied Linux
 receipts. Its final finite scope reports 322 exact-origin declarations over
 19 sources; the perfect-field terminal reports four over two sources. Supplied
-evidence and current checks are distinguished. Current affected compilation and
-consumers remain selected for integration CI with matching caches.
+evidence and current checks are distinguished. At this snapshot, affected
+compilation and consumers were selected for integration CI with matching caches;
+this entry does not record their completion.
 
 ## Topic layout and support-sensitive original action, 19 October 2026
 
@@ -482,9 +484,10 @@ includes 956 affected modules and three unchanged prerequisites; other unchanged
 tests retain their recorded evidence. Remote tests used matching production and
 dependency caches.
 
-The arbitrary HI-presheaf sheafification corollary retains its explicit
-whole-cylinder lifting input. The perfect-field strict-invariance entry retains
-its HI transfer-sheaf, ordinary HasExt and coefficient-universe hypotheses.
+At this snapshot, the arbitrary HI-presheaf sheafification corollary retained
+its explicit whole-cylinder lifting input. The perfect-field strict-invariance
+entry retained its HI transfer-sheaf, ordinary HasExt and coefficient-universe
+hypotheses. The later unconditional presheaf entry is recorded below.
 
 ## Original normalization recovery, 19 October 2026
 
@@ -507,9 +510,9 @@ guarded no-build/rehash acceptance.
 The original E5 action endpoints retain their sections, maps and signs. The E3
 original-difference zero results and generic middle-difference lifting adapter
 retain all their displayed premises. Expanded E3 action wrappers and the actual
-common-witness master transport are deferred. Arbitrary HI-presheaf
-sheafification and strict A1 remain open; the existing perfect-field theorem for
-already-HI transfer sheaves is unchanged.
+common-witness master transport were deferred. At this snapshot, arbitrary
+HI-presheaf sheafification and its strict A1 corollary remained open; the existing
+perfect-field theorem for already-HI transfer sheaves was unchanged.
 
 ## Aglib dependency upgrade, 20 October 2026
 
@@ -534,3 +537,34 @@ Structural checks, provider compilation and declaration lint, selected text/styl
 checks and the two changed-declaration axiom checks passed. The remaining
 affected-consumer checks and independent client check are pending at this
 upgrade's initial push.
+
+## HI-presheaf sheafification, 20 October 2026
+
+The [intake and recovery record](provenance/hi-presheaf-sheafification-20261020/README.md)
+identifies the incoming archive based on `522c7256` and its integration onto
+`c793b96`. Superseded proof experiments and historical evidence are preserved
+in a separate recovery archive outside the production import graph; no supplied
+file was deleted. Conditional lifting APIs remain maintained reusable interfaces.
+
+The new source entry
+`Motivic.Cohomology.A1.Sheafification.HomotopyInvariance` contains
+`Motivic.PresheafWithTransfers.nisnevichSheafify_isA1Invariant`. It takes
+`P : PresheafWithTransfers.{u + 1} k` over a field `k : Type u` and `P.IsA1Invariant`,
+with no perfectness, target-HI or lifting premise. The whole-cylinder lifting
+producer is constructed from those original inputs. The separate
+`Motivic.Cohomology.A1.Sheafification.StrictInvariance` entry adds perfectness
+and ordinary `HasExt.{u + 1}` on Nisnevich sheaves valued in
+`AddCommGrpCat.{u + 1}`. Its strict-invariance conclusion retains the actual
+ordinary cohomology projections in every natural degree. The
+[family guide](../Motivic/Cohomology/A1/Sheafification/README.md) owns the exact
+declarations, proof route and original-map conditions.
+
+Independent ordinary mathematical review passed the central argument relative
+to the accepted mathematical dependency snapshot at `c793b96`. It is not a new
+review of the entire earlier perfect-field proof or a complete native CI
+baseline. Current-pin native validation, transitive axiom auditing and scoped
+replay remain in progress. Historical receipts do not claim completion of
+those current checks, cache publication or hosted CI. Nonperfect
+strict invariance, derived continuity, full canonical purity,
+positive-characteristic diagonal, higher-Chow and spectrum comparisons retain
+their separate boundaries.

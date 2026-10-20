@@ -1,5 +1,11 @@
 # Strict A¹ invariance over infinite perfect fields
 
+This is the dated infinite-field intake. The later
+[perfect-field package](../perfect-strict-20261018/README.md) joins the finite
+branch; the [current A1 guide](../../../Motivic/Cohomology/A1/README.md) owns the
+present interfaces. Scope and open-input descriptions below retain this
+snapshot's meaning.
+
 Source archive SHA-256:
 `6e33d7d1c1417882b6686f76e6940b6092a9c9b6b6f6c548b062120de81eca54`.
 The source base is Motivic `b368f6965228e63643380033ec224335bcd24a2c`.
@@ -25,6 +31,7 @@ matching historical Linux compilation and 50-declaration foundation/lint
 records. Current integration checks are recorded in
 [verification](../../VERIFICATION.md).
 
-Finite-field descent and the separate frame/standard-triple/norm/Picard program
-remain open. Higher-Chow and spectrum comparisons are separate. Archived plans
+At this snapshot, finite-field descent and the separate
+frame/standard-triple/norm/Picard program remained open. Higher-Chow and spectrum
+comparisons are separate. Archived plans
 and candidate sources are data, not active instructions or accepted proofs.

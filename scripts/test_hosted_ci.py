@@ -12,8 +12,8 @@ import unittest
 from unittest.mock import patch
 
 from ci_policy import CORE_ENTRYPOINTS, PROTOCOL, TOOLING_REVISION
-from shared_workflow import (INITIAL_PARENT, INITIAL_PATHS, MotivicAdapter,
-                             admitted_baseline, hosted_scope, initial_identity)
+from shared_workflow import (INITIAL_PARENT, INITIAL_PATHS, REPAIR_PARENT, REPAIR_TOOL_PATHS,
+                             MotivicAdapter, admitted_baseline, hosted_scope, initial_identity)
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -110,7 +110,11 @@ class HostedEnrollmentTests(unittest.TestCase):
         self.assertEqual(plan['required_phases'], ['source', 'native'])
         tasks = self.adapter.tasks(self.root, plan, 'native', Path(self.tmp.name) / 'native')
         ids = [t['id'] for t in tasks]
-        self.assertLess(ids.index('providers/declarations'), ids.index('consumers/build'))
+        provider_checks = [task for task in tasks if task['id'].startswith('providers/declarations/')]
+        self.assertEqual([task['modules'] for task in provider_checks],
+                         [[name] for name in scope['providers']])
+        self.assertTrue(all(ids.index(task['id']) < ids.index('consumers/build')
+                            for task in provider_checks))
         self.assertLess(ids.index('consumers/build'), ids.index('client/build'))
         self.assertTrue(all(t['check_kind'] == 'declaration-exact-origin'
                             for t in tasks if t.get('check_kind', '').startswith('declaration')))
@@ -140,6 +144,117 @@ class HostedEnrollmentTests(unittest.TestCase):
             with self.assertRaisesRegex(BaselineError, 'missing history'):
                 self.adapter.plan(self.root, 'kangxyz/motivic', 'main', later)
         select.assert_called_once()
+
+    def test_exact_repair_parent_is_fixed_and_pins_are_not_admitted_owners(self):
+        self.assertEqual(REPAIR_PARENT, 'c793b96eb87eee540e665058e83e5f05d5c95683')
+        self.assertNotIn('lake-manifest.json', REPAIR_TOOL_PATHS)
+        self.assertNotIn('.github/dependency-scope.json', REPAIR_TOOL_PATHS)
+
+    def test_direct_repair_admits_only_the_exact_new_batch_fixture_owner(self):
+        from shared_workflow import repair_path
+        self.assertIn('scripts/test_declaration_batch.py', REPAIR_TOOL_PATHS)
+        self.assertFalse(repair_path('scripts/test_declaration_batch_extra.py'))
+        repair_parent = self.head
+        self.write('scripts/test_declaration_batch.py', '# owned batch fixture\n')
+        self.commit('enroll exact batch fixture')
+        with patch('shared_workflow.REPAIR_PARENT', repair_parent):
+            self.assertTrue(initial_identity(self.root, self.git('rev-parse', 'HEAD')))
+
+    def test_explicit_direct_repair_enrolls_complete_scope_without_api_or_fake_base(self):
+        repair_parent = self.head
+        self.write('Motivic/New.lean', 'module\n')
+        self.write('MotivicTest/New.lean', 'module\n')
+        self.write('docs/RECOVERY.md', 'Source correspondence\n')
+        self.write('AGENTS.md', 'Updated interface summary\n')
+        self.commit('explicit enrollment repair')
+        self.head = self.git('rev-parse', 'HEAD')
+        with patch('shared_workflow.REPAIR_PARENT', repair_parent), \
+                patch('shared_workflow.admitted_baseline', side_effect=AssertionError('API fallback')):
+            plan = self.plan()
+            self.application().validate_plan(plan)
+            baseline, scope = plan['baseline'], plan['scope']
+            self.assertEqual(baseline['kind'], 'initial-enrollment')
+            self.assertEqual(baseline['parent'], repair_parent)
+            self.assertNotIn('verified_base', baseline)
+            self.assertNotIn('base', baseline)
+            self.assertIn('Motivic.New', scope['providers'])
+            self.assertIn('Motivic.Orphan', scope['providers'])
+            self.assertIn('MotivicTest.New', scope['targets'])
+            self.assertIn('MotivicTest.Orphan', scope['targets'])
+            self.assertEqual(scope['lint'], scope['targets'])
+            self.assertEqual(scope['tool_tests'], ['test_*.py'])
+            self.assertTrue(scope['client'])
+            self.assertFalse(scope['full'])
+            for key in ('targets', 'providers', 'lint'):
+                bad = copy.deepcopy(plan)
+                bad['scope'][key].remove('Motivic.Orphan')
+                with self.subTest(key=key), self.assertRaises(ValueError):
+                    self.adapter.validate_plan(self.root, bad)
+            tasks = self.adapter.tasks(self.root, plan, 'native', Path(self.tmp.name) / 'repair-native')
+            self.assertTrue(all(t['check_kind'] == 'declaration-exact-origin'
+                                for t in tasks if t.get('check_kind', '').startswith('declaration')))
+            style = next(t for t in tasks if t.get('check_kind') == 'style-exact-source')
+            self.assertEqual(style['source_modules'], scope['targets'])
+
+    def test_repair_rejects_changed_pins_unrecognized_paths_and_lookalikes(self):
+        repair_parent = self.head
+        tree = self.git('rev-parse', 'HEAD^{tree}')
+        for path in ('lean-toolchain', 'lakefile.toml', 'lakefile.lean', 'lake-manifest.json',
+                     '.github/dependency-scope.json', 'scripts/unreviewed.py',
+                     'examples/downstream/MotivicClient.lean', ' docs/RECOVERY.md',
+                     'Motivic/opaque.bin', 'unexpected.txt'):
+            with self.subTest(path=path):
+                self.git('read-tree', '--reset', '-u', tree)
+                self.write(path, 'Unadmitted change\n')
+                self.git('add', '.')
+                changed_tree = self.git('write-tree')
+                head = self.git('commit-tree', changed_tree, '-p', repair_parent, '-m', 'rejected repair')
+                with patch('shared_workflow.REPAIR_PARENT', repair_parent):
+                    self.assertFalse(initial_identity(self.root, head))
+
+    def test_repair_rejects_merges_empty_changes_and_grandchildren(self):
+        repair_parent = self.head
+        tree = self.git('rev-parse', 'HEAD^{tree}')
+        empty = self.git('commit-tree', tree, '-p', repair_parent, '-m', 'empty repair')
+        self.write('Motivic/Orphan.lean', 'module\n-- repaired\n')
+        self.commit('repair')
+        repair = self.git('rev-parse', 'HEAD')
+        tree = self.git('rev-parse', 'HEAD^{tree}')
+        merge = self.git('commit-tree', tree, '-p', repair_parent, '-p', self.parent, '-m', 'merge repair')
+        self.write('docs/RECOVERY.md', 'Later documentation\n')
+        self.commit('later head')
+        later = self.git('rev-parse', 'HEAD')
+        with patch('shared_workflow.REPAIR_PARENT', repair_parent):
+            self.assertTrue(initial_identity(self.root, repair))
+            for head in (empty, merge, later):
+                with self.subTest(head=head):
+                    self.assertFalse(initial_identity(self.root, head))
+            from lean_ci.github import BaselineError
+            with patch('shared_workflow.admitted_baseline', side_effect=BaselineError('missing history')) as select:
+                with self.assertRaisesRegex(BaselineError, 'missing history'):
+                    self.adapter.plan(self.root, 'kangxyz/motivic', 'main', later)
+            select.assert_called_once()
+
+    def test_repair_cannot_delete_an_existing_orphan_source(self):
+        repair_parent = self.head
+        self.git('rm', 'Motivic/Orphan.lean')
+        self.commit('delete enrolled orphan')
+        with patch('shared_workflow.REPAIR_PARENT', repair_parent):
+            self.assertFalse(initial_identity(self.root, self.git('rev-parse', 'HEAD')))
+
+    def test_repair_still_requires_exact_reviewed_workflow_and_recipe(self):
+        repair_parent = self.head
+        for path in (PROTOCOL.workflow_path, 'scripts/lint_declarations.py'):
+            with self.subTest(path=path):
+                self.write(path, (self.root / path).read_text() + '\n')
+                self.git('add', '.')
+                tree = self.git('write-tree')
+                head = self.git('commit-tree', tree, '-p', repair_parent, '-m', 'unreviewed repair')
+                with patch('shared_workflow.REPAIR_PARENT', repair_parent):
+                    self.assertTrue(initial_identity(self.root, head))
+                    with self.assertRaisesRegex(ValueError, 'not reviewed'):
+                        self.adapter.plan(self.root, 'kangxyz/motivic', 'main', head)
+                self.git('checkout', repair_parent, '--', path)
 
     def test_cutover_with_unowned_diff_or_merge_cannot_enroll(self):
         self.write('Motivic/Orphan.lean', 'module\n-- changed\n')
@@ -226,6 +341,43 @@ class HostedWorkflowTests(unittest.TestCase):
         self.assertNotIn('github.event.before', workflow)
         self.assertNotIn('scripts/validate.py', workflow)
         self.assertEqual(workflow.count('ref: ' + TOOLING_REVISION), 2)
+
+    def test_progress_cache_restores_exact_namespace_and_saves_failed_prefix(self):
+        from lean_ci.cli import main as cli_main
+        # The actual core CLI accepts the same explicit path used by the action.
+        application = unittest.mock.Mock()
+        application.run_phase.return_value = {'status': 'completed'}
+        with patch('builtins.print'):
+            self.assertEqual(cli_main(['native', '--state', '/tmp/state',
+                                       '--progress', '/tmp/motivic-check-progress'],
+                                      application=application), 0)
+        application.run_phase.assert_called_once_with(
+            Path('/tmp/state'), 'native', Path('/tmp/motivic-check-progress'))
+        workflow = (ROOT / PROTOCOL.workflow_path).read_text()
+        restore = workflow.split('      - name: Restore compatible individual check progress\n', 1)[1]
+        restore = restore.split('      - name:', 1)[0]
+        save = workflow.split('      - name: Save individual check progress,', 1)[1]
+        save = save.split('      - name:', 1)[0]
+        native = workflow.split('      - name: Validate selected providers', 1)[1]
+        native = native.split('      - name:', 1)[0]
+        path = '${{ runner.temp }}/motivic-check-progress'
+        self.assertIn('path: ' + path, restore)
+        self.assertIn('path: ' + path, save)
+        self.assertIn('--progress "$RUNNER_TEMP/motivic-check-progress"', native)
+        primary = next(line.strip()[5:] for line in restore.splitlines() if line.strip().startswith('key: '))
+        prefix = restore.split('restore-keys: |\n', 1)[1].strip()
+        self.assertEqual(primary, prefix + '${{ github.run_id }}-${{ github.run_attempt }}')
+        for value in ('motivic-check-progress-v1-', 'runner.os', 'runner.arch',
+                      'env.MOTIVIC_TOOLING_REVISION', 'lean-toolchain', 'lakefile.toml',
+                      'lakefile.lean', 'lake-manifest.json', 'scripts/ci_policy.py'):
+            self.assertIn(value, prefix)
+        self.assertIn("always() && steps.check-progress.outputs.cache-primary-key != ''", save)
+        self.assertIn('key: ${{ steps.check-progress.outputs.cache-primary-key }}', save)
+        self.assertNotIn('checks.outcome', save)
+        self.assertNotIn('finalize.outcome', save)
+        self.assertIn('timeout-minutes: 300', native)
+        self.assertIn('timeout-minutes: 360', workflow)
+        self.assertNotIn('workflow_run:', workflow)
 
 
 if __name__ == '__main__':

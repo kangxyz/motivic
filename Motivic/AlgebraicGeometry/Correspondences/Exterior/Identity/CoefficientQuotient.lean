@@ -148,7 +148,7 @@ theorem exteriorParameterPullbackIso_hom_parameter :
           A.exteriorIdentityParameter T :=
   (A.exteriorParameterPullback_isPullback B T).isoPullback_hom_fst
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorCoefficientBaseIso_inv_fst :
     (A.exteriorCoefficientBaseIso B T).inv ≫
       pullback.fst
@@ -159,6 +159,24 @@ theorem exteriorCoefficientBaseIso_inv_fst :
   simp [exteriorCoefficientBaseIso, pullback.congrHom_inv, pullback.map]
 
 @[reassoc (attr := simp)]
+theorem exteriorCoefficientBaseIso_inv_fst_simp :
+    (A.exteriorCoefficientBaseIso B T).inv ≫
+      pullback.fst
+        ((@FiniteCorrespondenceGenerator.targetProjection (Spec (.of k))
+          (pullback X.hom T.hom) (pullback Y.hom T.hom)
+          (pullback.fst X.hom T.hom ≫ X.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom)
+          (A.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom))
+        ((@FiniteCorrespondenceGenerator.projection (Spec (.of k))
+          (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom)
+          (pullback.fst Z.hom T.hom ≫ Z.hom)
+          (B.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom)) =
+      pullback.fst (A.exteriorIdentityParameter T ≫ T.hom)
+        (B.exteriorIdentityParameter T ≫ T.hom) :=
+  exteriorCoefficientBaseIso_inv_fst A B T
+
+@[reassoc]
 theorem exteriorCoefficientBaseIso_inv_snd :
     (A.exteriorCoefficientBaseIso B T).inv ≫
       pullback.snd
@@ -167,6 +185,24 @@ theorem exteriorCoefficientBaseIso_inv_snd :
       pullback.snd (A.exteriorIdentityParameter T ≫ T.hom)
         (B.exteriorIdentityParameter T ≫ T.hom) := by
   simp [exteriorCoefficientBaseIso, pullback.congrHom_inv, pullback.map]
+
+@[reassoc (attr := simp)]
+theorem exteriorCoefficientBaseIso_inv_snd_simp :
+    (A.exteriorCoefficientBaseIso B T).inv ≫
+      pullback.snd
+        ((@FiniteCorrespondenceGenerator.targetProjection (Spec (.of k))
+          (pullback X.hom T.hom) (pullback Y.hom T.hom)
+          (pullback.fst X.hom T.hom ≫ X.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom)
+          (A.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom))
+        ((@FiniteCorrespondenceGenerator.projection (Spec (.of k))
+          (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+          (pullback.fst Y.hom T.hom ≫ Y.hom)
+          (pullback.fst Z.hom T.hom ≫ Z.hom)
+          (B.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom)) =
+      pullback.snd (A.exteriorIdentityParameter T ≫ T.hom)
+        (B.exteriorIdentityParameter T ≫ T.hom) :=
+  exteriorCoefficientBaseIso_inv_snd A B T
 
 @[reassoc (attr := simp)]
 theorem exteriorSupportParameterPullbackIso_hom_fst :
@@ -232,7 +268,7 @@ theorem exteriorFirstTargetProductIso_hom_old_fst :
         pullback.fst (A.targetProjection ≫ Y.hom) T.hom := by
   simp [exteriorFirstTargetProductIso, Category.assoc, pullback.congrHom_hom, pullback.map]
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorCoefficientQuotientIso_hom_first :
     (A.exteriorCoefficientQuotientIso B T).hom ≫
       A.exteriorParameterDiagonalInclusion T B ≫
@@ -250,6 +286,26 @@ theorem exteriorCoefficientQuotientIso_hom_first :
     exteriorFirstTargetProductIso_hom_old_fst, exteriorCoefficientProductIso_hom_first]
 
 @[reassoc (attr := simp)]
+theorem exteriorCoefficientQuotientIso_hom_first_simp :
+    (A.exteriorCoefficientQuotientIso B T).hom ≫
+      A.exteriorParameterDiagonalInclusion T B ≫
+        pullback.fst
+          ((@FiniteCorrespondenceGenerator.targetProjection (Spec (.of k))
+            (pullback X.hom T.hom) (pullback Y.hom T.hom)
+            (pullback.fst X.hom T.hom ≫ X.hom)
+            (pullback.fst Y.hom T.hom ≫ Y.hom)
+            (A.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom))
+          ((@FiniteCorrespondenceGenerator.projection (Spec (.of k))
+            (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+            (pullback.fst Y.hom T.hom ≫ Y.hom)
+            (pullback.fst Z.hom T.hom ≫ Z.hom)
+            (B.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom)) ≫
+            (A.exteriorIdentitySchemeIso T).inv ≫ pullback.fst (A.projection ≫ X.hom) T.hom =
+      pullback.fst _ T.hom ≫
+        pullback.fst (A.targetProjection ≫ Y.hom) (B.projection ≫ Y.hom) :=
+  exteriorCoefficientQuotientIso_hom_first A B T
+
+@[reassoc]
 theorem exteriorCoefficientQuotientIso_hom_second :
     (A.exteriorCoefficientQuotientIso B T).hom ≫
       A.exteriorParameterDiagonalInclusion T B ≫
@@ -265,6 +321,26 @@ theorem exteriorCoefficientQuotientIso_hom_second :
     pullback.lift_snd_assoc, Category.comp_id,
     exteriorSupportParameterPullbackIso_hom_snd_assoc,
     Iso.hom_inv_id_assoc, exteriorCoefficientProductIso_hom_second]
+
+@[reassoc (attr := simp)]
+theorem exteriorCoefficientQuotientIso_hom_second_simp :
+    (A.exteriorCoefficientQuotientIso B T).hom ≫
+      A.exteriorParameterDiagonalInclusion T B ≫
+        pullback.snd
+          ((@FiniteCorrespondenceGenerator.targetProjection (Spec (.of k))
+            (pullback X.hom T.hom) (pullback Y.hom T.hom)
+            (pullback.fst X.hom T.hom ≫ X.hom)
+            (pullback.fst Y.hom T.hom ≫ Y.hom)
+            (A.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom))
+          ((@FiniteCorrespondenceGenerator.projection (Spec (.of k))
+            (pullback Y.hom T.hom) (pullback Z.hom T.hom)
+            (pullback.fst Y.hom T.hom ≫ Y.hom)
+            (pullback.fst Z.hom T.hom ≫ Z.hom)
+            (B.exteriorIdentityGenerator T)) ≫ (pullback.fst Y.hom T.hom ≫ Y.hom)) ≫
+            (B.exteriorIdentitySchemeIso T).inv ≫ pullback.fst (B.projection ≫ Y.hom) T.hom =
+      pullback.fst _ T.hom ≫
+        pullback.snd (A.targetProjection ≫ Y.hom) (B.projection ≫ Y.hom) :=
+  exteriorCoefficientQuotientIso_hom_second A B T
 
 /-- The actual coefficient quotient projects flatly to the original support product. -/
 def exteriorCoefficientQuotientProjection :

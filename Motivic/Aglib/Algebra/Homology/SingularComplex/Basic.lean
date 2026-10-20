@@ -12,7 +12,7 @@ public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 # The singular complex of a presheaf
 
 For a cosimplicial object `Δ` of a category `C` and a presheaf `P` with values in a
-preadditive category, `Motivic.SingularComplex.obj Δ P` is the actual unbounded
+preadditive category, `CategoryTheory.SingularComplex.obj Δ P` is the actual unbounded
 nonnegative chain complex with term `P(Δⁿ)` and alternating face differential.
 The construction is covariant in the presheaf and contravariant in `Δ`.
 In particular it applies to presheaves of abelian groups.

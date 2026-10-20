@@ -19,14 +19,21 @@ mathematical objects.
 | `Motivic.Cohomology.SuslinVoevodsky` | Current complex and ordinary hypercohomology; [model guide](Cohomology/SuslinVoevodsky/README.md) |
 | `Motivic.Cohomology.Coefficients.Finite` | Actual cone, hypercohomology and original coefficient maps; [guide](Cohomology/Coefficients/Finite/README.md) |
 | `Motivic.Cohomology.A1.StrictInvariance` | Every-perfect-field strict invariance, HI transfer sheaves, coefficient `u+1`, ordinary `HasExt.{u+1}`; [A1 guide](Cohomology/A1/README.md) |
+| `Motivic.Cohomology.A1.Sheafification.HomotopyInvariance` | Actual Nisnevich sheafification of HI transfer presheaves over any field, coefficient universe `u + 1`; [guide](Cohomology/A1/Sheafification/README.md) |
+| `Motivic.Cohomology.A1.Sheafification.StrictInvariance` | Strict invariance of that canonical sheaf over perfect fields, retaining ordinary `HasExt.{u+1}`; [guide](Cohomology/A1/Sheafification/README.md) |
 | `Motivic.Cohomology.A1.GenericDetection` | Infinite-field affine local-zero detection for original HI presheaves |
 | `Motivic.Cohomology.AffineLine` | Ordinary higher vanishing and positive vanishing for HI transfer sheaves |
-| `Motivic.Cohomology.AffineLine.GenericBase` | Classwise generic-base vanishing with the original whole line and restrictions |
+| `Motivic.Cohomology.AffineLine.GenericBase` | Classwise generic-base vanishing over a smooth integral affine base, with the original whole line and restrictions |
 | `Motivic.Cohomology.A1.CartierBoundary` | Genuine higher direct-image vanishing retaining stated current-degree HI and boundary-Epi inputs |
 | `Motivic.KTheory.MilnorK.Norms` | Aglib characteristic-zero finite-extension norms with original tower data |
 | `Motivic.Cohomology.Diagonal` | Optional characteristic-zero diagonal comparison; [guide](Cohomology/Diagonal/README.md) |
 | `Motivic.Cohomology.WeightOne` | Optional original unit-sheaf and hypercohomology comparisons; [guide](Cohomology/WeightOne/README.md) |
 | `Motivic.Cohomology.WeightTwo` | Opt-in implemented weight-two computation family; [family guide](Cohomology/WeightTwo/README.md) |
+
+The [20 October sheafification intake](../docs/provenance/hi-presheaf-sheafification-20261020/README.md)
+records the source identities, ordinary mathematical review relative to its
+recorded baseline and ongoing current-pin validation of those new entries.
+The conditional whole-cylinder lifting interfaces remain available.
 
 ## General foundations and host applications
 

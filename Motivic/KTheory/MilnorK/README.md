@@ -17,8 +17,8 @@ theories. Retain valuation/uniformizer conditions for residues and
 characteristic-zero, algebra, finite-dimensional and scalar-tower conditions
 for general finite-extension norms.
 
-Use [Aglib's family guide](https://github.com/kangxyz/aglib/blob/main/Aglib/KTheory/MilnorK/README.md)
-for current general imports, with the revision fixed by this package's manifest.
+Use [Aglib's pinned family guide](https://github.com/kangxyz/aglib/blob/52e09db47998f139064acf48a2d3a64494d0dd9a/Aglib/KTheory/MilnorK/README.md)
+for general imports at the revision fixed by this package's manifest.
 Diagonal and weight-two applications live under
 [cohomology](../../Cohomology/README.md), with actual endpoint maps and stated
 normalization hypotheses. General curve/frame prerequisites have their

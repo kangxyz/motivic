@@ -12,9 +12,10 @@ focused leaves add finite-flat and relative-divisor producers on that category.
 | `Spans.FiniteFlat.Basic` | `Motivic.Cor.ofFiniteFlatSpan` and its faithful cycle equation |
 | `Endpoints.Cartier.Divisor` | Original divisor correspondence and boundary lift |
 
-The focused facade `Motivic.AlgebraicGeometry.Correspondences` exports the first
-three leaves. Smooth sites, signed integral cycles and lower ring/Tor identities
-precede their geometric composition and incidence applications.
+The public facade is `Motivic.Cor`. It selects the category, graph and coproduct
+interfaces together with the Nisnevich and additive-presheaf entries listed in
+[Cor.lean](../../Cor.lean). Smooth sites, signed integral cycles and lower
+ring/Tor identities precede their geometric composition and incidence applications.
 
 ## Public consumer
 
@@ -38,9 +39,11 @@ not be reduced; its map to the product need not be a closed immersion. Every
 generic component contributes its original local length times the actual residue
 degree. Components with the same image contribute by addition.
 
-The lower `FiniteFlatCorrespondence.cycleAssembly` works over arbitrary schemes
-with the stated finite, flat, separated-target, finite-type-target, and Noetherian
-support hypotheses. Generic-image admissibility is proved from finite flatness;
+The lower `FiniteFlatCorrespondence.cycleAssembly` uses an actual map
+`j : D ⟶ X ×[S] Y` with `j ≫ fst = f`, where `f : D ⟶ X` is finite flat,
+`Y ⟶ S` is separated and locally of finite type, `D` is Noetherian and `j`
+is finite. The last condition follows from `f` and target separatedness by
+`isFinite_productMap`. Generic-image admissibility uses finite flatness;
 finite morphisms alone do not preserve generic components.
 
 `MotivicTest/FiniteFlatCorrespondence.lean` checks the actual category endpoint, empty

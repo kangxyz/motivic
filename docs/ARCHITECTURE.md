@@ -9,7 +9,7 @@ source structure and dependency direction, not the detailed interfaces.
 
 Reuse Mathlib first, then the pinned Aglib extension. General theory intended
 for Aglib is maintained in `Motivic/Aglib/`, following the
-[shared candidate policy](https://github.com/kangxyz/aglib/blob/main/doc/DEVELOPMENT.md#downstream-candidates-for-aglib).
+[shared candidate policy](https://github.com/kangxyz/aglib/blob/main/docs/DEVELOPMENT.md#downstream-candidates-for-aglib).
 This is an active source layer of the Motivic library, with the temporary
 module prefix `Motivic.Aglib`; it is neither a separate package nor a claim of
 upstream acceptance. Never create a package-root `Aglib/` shadow.
@@ -39,7 +39,7 @@ Motivic/
     Coefficients/Finite/
     A1/
       Contraction/  Boundary/  LocalVanishing/
-      StrictInvariance/  Purity/  HigherImages/
+      Sheafification/  StrictInvariance/  Purity/  HigherImages/
     Diagonal/  WeightOne/  WeightTwo/
   RingTheory/LocalLength/
   KTheory/MilnorK/

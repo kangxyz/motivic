@@ -22,12 +22,12 @@ variable {S : Scheme.{u}} [IsAffine S] {U X : SmoothSite S}
   (F : (SmoothSite S)ᵒᵖ ⥤ AddCommGrpCat.{u + 1})
 
 /-- The literal small-site field-valued diagram computes the existing original point fiber. -/
-def actual_small_original_fiber : colimit ((smallForget f u).op ⋙ F) ≅
+def actualSmallOriginalFiber : colimit ((smallForget f u).op ⋙ F) ≅
     (nisnevichPointFiberCocone U u F).pt := smallOriginalFiberIso f u F
 
 open Lean in
 run_cmd do
-  for name in #[``actual_small_original_fiber, ``toSmall_initial, ``smallOriginalFiberIso] do
+  for name in #[``actualSmallOriginalFiber, ``toSmall_initial, ``smallOriginalFiberIso] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

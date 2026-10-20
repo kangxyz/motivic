@@ -140,15 +140,35 @@ def fieldBaseChange : FiniteCorrespondence X.hom Y.hom →+
       map_zero' := by simp
       map_add' := by intro m n; exact add_zsmul _ _ _ }
 
-@[simp] theorem fieldBaseChange_single
+theorem fieldBaseChange_single
     (A : FiniteCorrespondenceGenerator X.hom Y.hom) (n : ℤ) :
     fieldBaseChange (X := X) (Y := Y) φ (Finsupp.single A n) = n • A.fieldBaseChangeCycle φ :=
   Finsupp.liftAddHom_apply_single _ _ _
 
-@[simp] theorem fieldBaseChange_cycle
+@[simp] theorem fieldBaseChange_single_simp
+    (A : FiniteCorrespondenceGenerator X.hom Y.hom) (n : ℤ) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := Y) φ) (Finsupp.single A n) =
+      n • A.fieldBaseChangeCycle φ :=
+  fieldBaseChange_single φ A n
+
+theorem fieldBaseChange_cycle
     (A : FiniteCorrespondenceGenerator X.hom Y.hom) :
     fieldBaseChange (X := X) (Y := Y) φ A.cycle = A.fieldBaseChangeCycle φ := by
   simp only [FiniteCorrespondenceGenerator.cycle, fieldBaseChange_single, one_zsmul]
+
+@[simp] theorem fieldBaseChange_cycle_simp
+    (A : FiniteCorrespondenceGenerator X.hom Y.hom) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := Y) φ) A.cycle =
+      A.fieldBaseChangeCycle φ :=
+  fieldBaseChange_cycle φ A
 
 /-- All original signed coefficients multiply the whole-support fundamental cycles. -/
 theorem toIntegralCycle_fieldBaseChange_single
@@ -171,17 +191,45 @@ theorem toIntegralCycle_fieldBaseChange (α : FiniteCorrespondence X.hom Y.hom) 
   intro A _
   exact toIntegralCycle_fieldBaseChange_single φ A (α A)
 
-@[simp] theorem fieldBaseChange_add (α β : FiniteCorrespondence X.hom Y.hom) :
+theorem fieldBaseChange_add (α β : FiniteCorrespondence X.hom Y.hom) :
     fieldBaseChange (X := X) (Y := Y) φ (α + β) =
       fieldBaseChange (X := X) (Y := Y) φ α +
         fieldBaseChange (X := X) (Y := Y) φ β := map_add _ _ _
 
-@[simp] theorem fieldBaseChange_neg (α : FiniteCorrespondence X.hom Y.hom) :
+@[simp] theorem fieldBaseChange_add_simp (α β : FiniteCorrespondence X.hom Y.hom) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := Y) φ) (α + β) =
+      fieldBaseChange (X := X) (Y := Y) φ α +
+        fieldBaseChange (X := X) (Y := Y) φ β :=
+  fieldBaseChange_add φ α β
+
+theorem fieldBaseChange_neg (α : FiniteCorrespondence X.hom Y.hom) :
     fieldBaseChange (X := X) (Y := Y) φ (-α) = -fieldBaseChange (X := X) (Y := Y) φ α := map_neg _ _
 
-@[simp] theorem fieldBaseChange_zsmul (n : ℤ) (α : FiniteCorrespondence X.hom Y.hom) :
+@[simp] theorem fieldBaseChange_neg_simp (α : FiniteCorrespondence X.hom Y.hom) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := Y) φ) (-α) =
+      -fieldBaseChange (X := X) (Y := Y) φ α :=
+  fieldBaseChange_neg φ α
+
+theorem fieldBaseChange_zsmul (n : ℤ) (α : FiniteCorrespondence X.hom Y.hom) :
     fieldBaseChange (X := X) (Y := Y) φ (n • α) =
       n • fieldBaseChange (X := X) (Y := Y) φ α := map_zsmul _ _ _
+
+@[simp] theorem fieldBaseChange_zsmul_simp (n : ℤ) (α : FiniteCorrespondence X.hom Y.hom) :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom Y.hom →+
+        FiniteCorrespondence (pullback.snd X.hom (Spec.map (CommRingCat.ofHom φ)))
+          (pullback.snd Y.hom (Spec.map (CommRingCat.ofHom φ))))
+      _ _ _ (fieldBaseChange (X := X) (Y := Y) φ) (n • α) =
+      n • fieldBaseChange (X := X) (Y := Y) φ α :=
+  fieldBaseChange_zsmul φ n α
 
 end FiniteCorrespondence
 

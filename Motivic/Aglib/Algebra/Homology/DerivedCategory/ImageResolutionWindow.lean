@@ -62,7 +62,7 @@ theorem imageTriangle_target_homology_negative (i : ℤ) (hi : i < 0) :
   exact (DerivedCategory.homologyFunctorFactors D i).app _
 
 /-- Positive image-resolution homology is the genuine right-derived functor. -/
-def imageTriangle_target_homology_iso (n : ℕ) :
+def imageTriangleTargetHomologyIso (n : ℕ) :
     (DerivedCategory.homologyFunctor D (n : ℤ)).obj (I.imageTriangle R).obj₂ ≅
       (R.rightDerived n).obj Y :=
   (DerivedCategory.homologyFunctorFactors D (n : ℤ)).app _ ≪≫
@@ -83,7 +83,7 @@ theorem imageTriangle_cone_homology_zero (N : ℕ)
         by_cases hn : i < 0
         · exact I.imageTriangle_target_homology_negative R i hn
         · obtain ⟨q, rfl⟩ := Int.eq_ofNat_of_zero_le (by omega : 0 ≤ i)
-          exact (hR q (by omega) (by omega)).of_iso (I.imageTriangle_target_homology_iso R q)
+          exact (hR q (by omega) (by omega)).of_iso (I.imageTriangleTargetHomologyIso R q)
       have := hs.isIso ht ((DerivedCategory.homologyFunctor D i).map
         (I.imageTriangle R).mor₁)
       infer_instance

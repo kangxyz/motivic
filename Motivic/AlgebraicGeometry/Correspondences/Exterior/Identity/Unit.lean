@@ -147,7 +147,7 @@ variable {k : Type u} [Field k] {X : SmoothSite (Spec (.of k))}
   (T : SmoothSite (Spec (.of k))) [GeometricallyIntegral T.hom]
 
 /-- Exterior extension preserves the full identity, including disconnected and empty sources. -/
-@[simp] theorem exteriorIdentity_componentIdentityCycle :
+theorem exteriorIdentity_componentIdentityCycle :
     exteriorIdentity (X := X) (Y := X) T (componentIdentityCycle (X := X.left) X.hom) =
       componentIdentityCycle (X := (SmoothSite.product X T).left)
         (SmoothSite.product X T).hom := by
@@ -179,6 +179,16 @@ variable {k : Type u} [Field k] {X : SmoothSite (Spec (.of k))}
         irreducibleComponents (SmoothSite.product X T).left := (e ⟨C, hC'⟩).2
     simp only [dite_eq_left hC', dite_eq_left hCT, exteriorIdentity_cycle,
       componentIdentityGenerator_exteriorIdentityGenerator T C hC' hCT]
+
+@[simp] theorem exteriorIdentity_componentIdentityCycle_simp :
+    @DFunLike.coe
+      (FiniteCorrespondence X.hom X.hom →+
+        FiniteCorrespondence (pullback.fst X.hom T.hom ≫ X.hom)
+          (pullback.fst X.hom T.hom ≫ X.hom))
+      _ _ _ (exteriorIdentity (X := X) (Y := X) T) (componentIdentityCycle (X := X.left) X.hom) =
+      componentIdentityCycle (X := (SmoothSite.product X T).left)
+        (SmoothSite.product X T).hom :=
+  exteriorIdentity_componentIdentityCycle T
 
 end FiniteCorrespondence
 

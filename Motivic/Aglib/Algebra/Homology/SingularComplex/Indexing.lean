@@ -12,13 +12,15 @@ public import Mathlib.Algebra.Category.Grp.Zero
 /-!
 # Singular and higher-Chow degree conventions
 
-`Motivic.Indexing.singularDegree q r` places singular chain degree `r` in cochain
-degree `q - r`. `Motivic.SingularComplex.cochainObj` realizes this placement as
+`CategoryTheory.SingularComplex.Indexing.singularDegree q r` places singular chain degree `r` in
+cochain
+degree `q - r`. `CategoryTheory.SingularComplex.cochainObj` realizes this placement as
 an actual integer-indexed cochain complex, extended by zero above weight `q`.
 Its differential is the original alternating-face differential, transported
-through the specified term isomorphisms. This is explicit degree placement,
-not a proved identification with mathlib's signed shift functor; that separate
-identification must account for the shift sign.
+through the specified term isomorphisms. This file supplies explicit degree placement. The separate
+comparison with
+Mathlib's signed shift functor is constructed in `SignedShift.lean`, including
+the factor `(-1)^(q*r)` in chain degree `r`.
 
 For comparison only, Bloch's convention uses chain degree `2q - i` in cochain
 degree `i`. In weight two, cochain degrees one and two therefore use singular

@@ -1,7 +1,8 @@
 # Milnor import compatibility
 
 General Milnor K-theory is maintained by independent
-[Aglib](https://github.com/kangxyz/aglib/blob/main/Aglib/KTheory/MilnorK/README.md).
+[Aglib](https://github.com/kangxyz/aglib/blob/52e09db47998f139064acf48a2d3a64494d0dd9a/Aglib/KTheory/MilnorK/README.md)
+at the revision pinned in this package's manifest.
 Motivic retains exactly two public Milnor import bridges:
 
 | Import | Canonical upstream entry |

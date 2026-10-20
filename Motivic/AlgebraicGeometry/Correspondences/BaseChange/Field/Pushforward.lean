@@ -52,7 +52,7 @@ abbrev originalSourceProjection :=
 abbrev originalTargetProjection :=
   (pointClosure (A.incidenceMap B x.1)).val.subschemeι ≫ pullback.fst X.hom Z.hom
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem pointClosureMap_source :
     pointClosureMap (A.incidenceMap B) x.1 ≫ originalTargetProjection A B x =
       originalSourceProjection A B x := by

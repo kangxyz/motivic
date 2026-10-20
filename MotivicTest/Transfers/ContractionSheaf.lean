@@ -61,7 +61,7 @@ theorem literal_underlying_presheaf (F : SheafWithTransfers.{v} k)
       PresheafWithTransfers.contraction F.obj := rfl
 
 /-- Section values remain the literal Laurent quotient, without sheafifying the quotient. -/
-def actual_sections_quotient (F : SheafWithTransfers.{v} k)
+def actualSectionsQuotient (F : SheafWithTransfers.{v} k)
     (hF : F.obj.IsA1Invariant) (X : Cor k) :
     PresheafWithTransfers.sections (SheafWithTransfers.contraction F hF).obj X ≅
       AddCommGrpCat.of (PresheafWithTransfers.sections
@@ -70,7 +70,7 @@ def actual_sections_quotient (F : SheafWithTransfers.{v} k)
   PresheafWithTransfers.contractionSectionsIsoQuotient F.obj X
 
 /-- The same sections are the kernel of restriction along the actual unit section. -/
-def actual_sections_unit_kernel (F : SheafWithTransfers.{v} k)
+def actualSectionsUnitKernel (F : SheafWithTransfers.{v} k)
     (hF : F.obj.IsA1Invariant) (X : Cor k) :
     PresheafWithTransfers.sections (SheafWithTransfers.contraction F hF).obj X ≅
       kernel (PresheafWithTransfers.transfer F.obj ((Cor.graphFunctor k).map

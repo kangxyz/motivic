@@ -81,12 +81,26 @@ def WeightOneFundamentalNorm.fieldGenerator : Generator k := by
     rw [Set.range_eq_univ.mpr hs]
     exact (irreducibleComponents_eq_singleton (X := Spec (.of k))) ▸ Set.mem_singleton _
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem WeightOneFundamentalNorm.fieldGenerator_toImage_projection :
     j.toImage ≫ (WeightOneFundamentalNorm.fieldGenerator j hj).projection =
       Spec.map (CommRingCat.ofHom (algebraMap k L)) := by
   simpa [WeightOneFundamentalNorm.fieldGenerator, FiniteCorrespondenceGenerator.projection,
     correspondenceProjection] using hj
+
+@[reassoc (attr := simp)]
+theorem WeightOneFundamentalNorm.fieldGenerator_toImage_projection_simp :
+    j.toImage ≫ @FiniteCorrespondenceGenerator.projection (Spec (.of k))
+        (SmoothSite.base (Spec (.of k))).left
+        (pullback (Scheme.PolynomialLaurent.laurentProjection (.of k))
+          (SmoothSite.base (Spec (.of k))).hom)
+        (SmoothSite.base (Spec (.of k))).hom
+        (pullback.fst (Scheme.PolynomialLaurent.laurentProjection (.of k))
+            (SmoothSite.base (Spec (.of k))).hom ≫
+          Scheme.PolynomialLaurent.laurentProjection (.of k))
+        (WeightOneFundamentalNorm.fieldGenerator j hj) =
+      Spec.map (CommRingCat.ofHom (algebraMap k L)) :=
+  WeightOneFundamentalNorm.fieldGenerator_toImage_projection j hj
 
 /-- The field support's actual global sections are the literal field branch,
 with precisely the scalar map used by `generatorNorm`. -/

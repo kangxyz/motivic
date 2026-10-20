@@ -32,7 +32,7 @@ theorem actual_face_preservation (φ : R →+* S) (f : group R)
   homotopy_preserves_face_one φ f hf
 
 /-- There are no nontriviality or injectivity side conditions on the functor. -/
-def actual_functor : CommRingCat.{u} ⥤ AddCommGrpCat.{u} := functor
+def actualFunctor : CommRingCat.{u} ⥤ AddCommGrpCat.{u} := functor
 
 open Lean in
 run_cmd do
@@ -43,7 +43,7 @@ run_cmd do
       ``ringMap_parameter, ``homotopy_natural, ``homotopy_preserves_face_one,
       ``functor, ``functor_map_apply, ``functor_map_eq_zero_iff,
       ``actual_zero_endpoint, ``actual_one_endpoint, ``actual_face_preservation,
-      ``actual_functor] do
+      ``actualFunctor] do
     for dependency in ← collectAxioms name do
       unless #[``propext, ``Classical.choice, ``Quot.sound].contains dependency do
         throwError "{name} depends on unsupported assumption {dependency}"

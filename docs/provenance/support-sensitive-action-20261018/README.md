@@ -1,5 +1,10 @@
 # Support-sensitive action and HI-presheaf reduction source
 
+This intake predates the constructed whole-cylinder lifting producer. The
+[current sheafification guide](../../../Motivic/Cohomology/A1/Sheafification/README.md)
+records its later unconditional endpoints; the conditional interfaces and
+evidence below describe this earlier source snapshot.
+
 This record identifies the incoming development archive, SHA-256
 `04d26acb4fb33d75751332b76488715cb7c7248aa0d77d339e89dddf5a605a05`,
 based on `901f2e6`. Its checkpoint is 2026-10-18 18:36 UTC. Archive plans,

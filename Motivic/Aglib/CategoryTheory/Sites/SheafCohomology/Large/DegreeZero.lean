@@ -9,13 +9,12 @@ public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 
 /-!
-# Degree-zero cohomology and actual signed transfers
+# Degree-zero ordinary cohomology and sections
 
-The genuine Ext-based degree-zero cohomology agrees naturally with sections,
-including restriction along every actual site morphism. Conjugating the signed
-correspondence action by this equivalence gives degree-zero cohomological
-transfers. In particular graph transfers agree with the actual ordinary
-cohomology restriction, rather than only with an abstractly isomorphic group.
+The actual Ext-based degree-zero cohomology agrees naturally with sections.
+The section equivalence retains restriction along every site morphism and
+naturality in the coefficient sheaf. Transfer actions are supplied by host
+consumers; they are not constructed in this general cohomology leaf.
 -/
 
 @[expose] public noncomputable section

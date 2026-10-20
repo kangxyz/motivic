@@ -7,6 +7,7 @@ general results. Keep the entire dependency closure general.
 | Exact import | Interface and boundary |
 | --- | --- |
 | `Motivic.Aglib.CategoryTheory.AdditiveFunctorLimits` | Actual limits of additive functors under the stated target limits. |
+| `Motivic.Aglib.CategoryTheory.Limits.Shapes.Pullback.CompLift` | The literal lift from the pullback of a composite to the intermediate pullback is itself Cartesian. |
 | `Motivic.Aglib.CategoryTheory.AdditiveFunctorAbelian` | Actual additive-functor abelian category and finite-limit/colimit preservation. |
 | `Motivic.Aglib.CategoryTheory.AdditiveFunctorAB5` | Specified-size filtered colimits and inherited exactness. |
 | `Motivic.Aglib.CategoryTheory.AdditiveFunctorGrothendieck` | Existing separator and AB5 assembled into a Grothendieck structure. |
@@ -28,3 +29,11 @@ presheaf cokernels. Additivity in source arrows differs from addition of natural
 transformations. Exactness alone does not supply acyclicity or the original
 cohomological comparison. Host [transfer sheaves](../../Transfers/Sheaf/README.md)
 and their cohomology are current consumers. See the [candidate policy](../README.md).
+
+The canonical-pullback lemma `CategoryTheory.Limits.pullback.isPullback_lift_comp`
+requires only a category and the two displayed pullbacks of `b ≫ f` and `f`.
+It retains the native `pullback.lift`, proving its square with `b` by
+`IsPullback.of_bot`; no comparison object or isomorphism is supplied as a
+premise. The immediate consumer is the
+[whole boundary-factor transport](../AlgebraicGeometry/ProjectiveLine/README.md)
+through the two actual coefficient localizations.

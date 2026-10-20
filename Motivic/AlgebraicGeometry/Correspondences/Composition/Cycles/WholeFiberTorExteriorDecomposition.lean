@@ -35,7 +35,8 @@ whole first-stage Tor cycle with the restricted Tor-weighted component sum.
 This stops before finite-image/open-restriction compatibility, the remaining
 diagonal, or identification with an iterated incidence pairing.
 
-SOURCE-ONLY PROPOSAL: no elaboration, compilation, or acceptance is claimed.
+Validation scope and recorded evidence are maintained in
+`docs/VERIFICATION.md`.
 -/
 
 @[expose] public section

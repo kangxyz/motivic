@@ -20,7 +20,7 @@ Intended upstream module: `Aglib.RingTheory.MvPolynomial.IsIntegrallyClosed`.
 The coefficient ring has arbitrary universe and retains both `IsDomain` and
 `IsIntegrallyClosed`. Current consumers are polynomial going down in
 `Motivic.Aglib.RingTheory.Ideal.GoingDown.Polynomial` and smooth normality in
-`Motivic.RingTheory.Smooth.Normal`.
+`Motivic.Aglib.RingTheory.Smooth.Normal`.
 
 Extracted from `Motivic.RingTheory.GoingDown.Polynomial`, source SHA-256
 `45bcfecc8de5aff09198f68b09c269c4ff45a4a2e380c83f0a29fbc1b98939d1`.

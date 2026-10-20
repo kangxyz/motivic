@@ -10,10 +10,10 @@ public import Motivic.Aglib.Algebra.Homology.SingularComplex.Parameters
 /-!
 # Singular chains as a complex of presheaves
 
-`Motivic.SingularComplex.presheafObj Δ P` is an actual chain complex in the
+`CategoryTheory.SingularComplex.presheafObj Δ P` is an actual chain complex in the
 presheaf category. Its degree-`n` presheaf sends `U` to `P(U × Δⁿ)`, with the
 alternating face differential and the contravariant restriction maps already
-constructed in `SingularComplexParameters`.
+constructed in `Parameters.lean`.
 
 This form of the construction can subsequently be passed to an additive
 sheafification functor. No topology, transfer structure, or sheafification is

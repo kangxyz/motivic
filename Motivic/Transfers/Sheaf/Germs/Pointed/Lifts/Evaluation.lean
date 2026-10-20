@@ -31,16 +31,22 @@ local notation "F" => ((toPresheaf k).obj P)
 /-- A finite actual lift diagram with representatives of an original germ tuple. -/
 structure PointedGermLiftWitness (δ : Cor.mk X ⟶ Cor.mk Y) (x : X.left)
     (a : ∀ y : Y.left, (SmoothSite.nisnevichPointFiberCocone Y y F).pt) where
+  /-- The chosen pointed Nisnevich neighborhood of the source point `x`. -/
   source : SmoothSite.NisnevichNeighborhood X x
+  /-- The number of branches in the finite lift diagram. -/
   size : ℕ
+  /-- The target point selected for each branch. -/
   point : Fin size → Y.left
+  /-- The chosen pointed Nisnevich neighborhoods of the selected target points. -/
   target : ∀ i, SmoothSite.NisnevichNeighborhood Y (point i)
+  /-- The correspondences from the source neighborhood to the chosen target neighborhoods. -/
   branch : ∀ i, Cor.mk ((SmoothSite.nisnevichNeighborhoodFunctor X x).obj source) ⟶
     Cor.mk ((SmoothSite.nisnevichNeighborhoodFunctor Y (point i)).obj (target i))
   graph_eq : (∑ i, branch i ≫ (Cor.graphFunctor k).map (target i).toBase) =
     (Cor.graphFunctor k).map source.toBase ≫ δ
   center_control : ∀ i A, A ∈ (branch i).support → ∀ z : A.scheme,
     A.projection z = source.center → A.targetProjection z = (target i).center
+  /-- Presheaf sections on the target neighborhoods representing the selected germs of `a`. -/
   representative : ∀ i, (F).obj
     (op ((SmoothSite.nisnevichNeighborhoodFunctor Y (point i)).obj (target i)))
   represents : ∀ i, (SmoothSite.nisnevichPointFiberCocone Y (point i) F).ι.app

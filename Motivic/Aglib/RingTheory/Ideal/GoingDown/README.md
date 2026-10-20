@@ -63,9 +63,10 @@ these candidates; they do not supply candidate prerequisites.
 
 ## Prime heights
 
-`Motivic.Aglib.RingTheory.Ideal.GoingDown.Height` retains the actual contraction
-of prime ideals and proves equality of heights for integral maps satisfying
-going down, hence for finite flat algebras. Both rings are Noetherian; neither
+`Motivic.Aglib.RingTheory.Ideal.GoingDown.Height`, in native `PrimeSpectrum`,
+retains the actual contraction of prime ideals. Its
+`height_comap_eq_of_isIntegral_of_hasGoingDown` proves equality of heights
+for integral maps satisfying going down, hence for finite flat algebras. Both rings are Noetherian; neither
 is required to be a domain, reduced, connected or nontrivial. This is a lower
 height input for regular-principal whole zero-cycle calculations, not a change
 to the stronger premises of the polynomial/base-change interfaces above.

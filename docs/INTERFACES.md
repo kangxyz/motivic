@@ -11,6 +11,7 @@ those owners; it does not assign mathematical proof status.
 | Transfer sheaves and exactness | [Transfer sheaves](../Motivic/Transfers/Sheaf/README.md) |
 | Original ordinary cohomology with transfers | [Transfer cohomology](../Motivic/Transfers/Cohomology/README.md) |
 | Affine-line cohomology | [Affine-line guide](../Motivic/Cohomology/AffineLine/README.md) |
+| HI-presheaf Nisnevich sheafification and its perfect-field strict corollary | [Sheafification guide](../Motivic/Cohomology/A1/Sheafification/README.md) |
 | Strict invariance and retained inputs | [A1 guide](../Motivic/Cohomology/A1/README.md) |
 | Local-zero suppliers and generic bases | [Local vanishing](../Motivic/Cohomology/A1/LocalVanishing/README.md) |
 | Canonical contraction/boundary maps | [Boundary guide](../Motivic/Cohomology/A1/Boundary/README.md) |

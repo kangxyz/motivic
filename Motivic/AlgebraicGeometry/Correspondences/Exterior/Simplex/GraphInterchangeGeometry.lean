@@ -39,7 +39,7 @@ def exteriorIdentitySchemeIso (T : SmoothSite (Spec (.of k)))
     V.exteriorIdentitySupport T ≅ (V.exteriorIdentityGenerator T).scheme :=
   asIso (V.exteriorIdentityInclusion T).toImage
 
-@[reassoc (attr := simp)]
+@[reassoc]
 theorem exteriorIdentitySchemeIso_hom_projection (T : SmoothSite (Spec (.of k)))
     [GeometricallyIntegral T.hom] :
     (V.exteriorIdentitySchemeIso T).hom ≫ (V.exteriorIdentityGenerator T).projection =
@@ -47,6 +47,17 @@ theorem exteriorIdentitySchemeIso_hom_projection (T : SmoothSite (Spec (.of k)))
   V.exteriorIdentityInclusion_toImage_source T
 
 @[reassoc (attr := simp)]
+theorem exteriorIdentitySchemeIso_hom_projection_simp (T : SmoothSite (Spec (.of k)))
+    [GeometricallyIntegral T.hom] :
+    (V.exteriorIdentitySchemeIso T).hom ≫
+      @FiniteCorrespondenceGenerator.projection (Spec (.of k))
+        (pullback X.hom T.hom) (pullback Y.hom T.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (V.exteriorIdentityGenerator T) =
+      V.exteriorIdentitySource T :=
+  V.exteriorIdentitySchemeIso_hom_projection T
+
+@[reassoc]
 theorem exteriorIdentitySchemeIso_hom_targetProjection (T : SmoothSite (Spec (.of k)))
     [GeometricallyIntegral T.hom] :
     (V.exteriorIdentitySchemeIso T).hom ≫ (V.exteriorIdentityGenerator T).targetProjection =
@@ -54,6 +65,17 @@ theorem exteriorIdentitySchemeIso_hom_targetProjection (T : SmoothSite (Spec (.o
   change (V.exteriorIdentityInclusion T).toImage ≫
     (V.exteriorIdentityInclusion T).imageι ≫ _ = _
   rw [← Category.assoc, Scheme.Hom.toImage_imageι, exteriorIdentityInclusion_snd]
+
+@[reassoc (attr := simp)]
+theorem exteriorIdentitySchemeIso_hom_targetProjection_simp (T : SmoothSite (Spec (.of k)))
+    [GeometricallyIntegral T.hom] :
+    (V.exteriorIdentitySchemeIso T).hom ≫
+      @FiniteCorrespondenceGenerator.targetProjection (Spec (.of k))
+        (pullback X.hom T.hom) (pullback Y.hom T.hom)
+        (pullback.fst X.hom T.hom ≫ X.hom) (pullback.fst Y.hom T.hom ≫ Y.hom)
+        (V.exteriorIdentityGenerator T) =
+      V.exteriorIdentityTarget T :=
+  V.exteriorIdentitySchemeIso_hom_targetProjection T
 
 @[reassoc (attr := simp)]
 theorem exteriorIdentitySchemeIso_inv_source (T : SmoothSite (Spec (.of k)))
