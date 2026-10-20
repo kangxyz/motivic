@@ -114,7 +114,7 @@ initial root diff; unresolvable bases fail actionably. Shared committed CI uses
 the reviewed `EvidenceProtocol` and cannot fall back to `event.before` or a
 previous push. There is no admitted historical complete native Motivic baseline.
 The one-time cutover is explicit: only a commit with exactly one parent,
-`33af37716ce796f9863dbc33a5b9bfbb2cfab7d6`, and a nonempty diff confined to the
+`0fcc528c48128a37a04f3a6db8b4833cedb4d891`, and a nonempty diff confined to the
 enumerated CI-owned paths in `scripts/shared_workflow.py` may use
 `initial-enrollment`. That plan has no historical `verified_base`; it enrolls
 every local production module, every local test (including orphan leaves outside

@@ -28,7 +28,6 @@ jobs:
       MOTIVIC_RSS_LIMIT_MB: 13824
       MOTIVIC_TOOLING_ROOT: ${{ github.workspace }}/.cache-tooling
       MOTIVIC_TOOLING_REVISION: 3a4d549981ced306d89d3ed55418c9e6a25f86c4
-      MOTIVIC_CI_STATE: ${{ runner.temp }}/motivic-ci-state
       PYTHONDONTWRITEBYTECODE: '1'
       PYTHONPATH: ${{ github.workspace }}/.cache-tooling/ci
     steps:
@@ -45,6 +44,8 @@ jobs:
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
           python-version: '3.13'
+      - name: Configure runner-owned CI state
+        run: echo "MOTIVIC_CI_STATE=$RUNNER_TEMP/motivic-ci-state" >> "$GITHUB_ENV"
       - name: Select verified ancestor or exact initial enrollment before installing Lean
         id: scope
         env:

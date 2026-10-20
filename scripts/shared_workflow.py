@@ -29,7 +29,7 @@ CLIENT = 'examples/downstream'
 GENERATED_MANIFEST = CLIENT + '/lake-manifest.json'
 # This migration has no historical complete native witness. Only the immediate
 # CI-only successor may enroll the complete local library and existing client.
-INITIAL_PARENT = '33af37716ce796f9863dbc33a5b9bfbb2cfab7d6'
+INITIAL_PARENT = '0fcc528c48128a37a04f3a6db8b4833cedb4d891'
 INITIAL_PATHS = frozenset({'.github/workflows/ci.yml', 'scripts/shared_workflow.py',
     'scripts/ci_policy.py', 'scripts/test_hosted_ci.py', 'scripts/test_validate.py',
     'scripts/test_ci_targets.py', 'scripts/test_build_client.py',

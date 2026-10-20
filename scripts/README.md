@@ -315,7 +315,7 @@ owner recipe hashes; adding hashes is not source review. It admits no legacy
 smoke workflow or arbitrary historical recipe.
 
 Initial enrollment is permitted only for the single-parent CI-only successor of
-`33af37716ce796f9863dbc33a5b9bfbb2cfab7d6`, restricted to `INITIAL_PATHS` in
+`0fcc528c48128a37a04f3a6db8b4833cedb4d891`, restricted to `INITIAL_PATHS` in
 `shared_workflow.py`. Selection of this mode depends on that identity, never on
 an unsuccessful evidence search. Its explicit `initial-enrollment` plan includes
 all local modules and tests plus the existing client, without claiming any

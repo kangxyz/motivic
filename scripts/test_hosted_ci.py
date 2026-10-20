@@ -3,6 +3,7 @@
 import copy
 import hashlib
 import os
+import re
 from pathlib import Path
 import shutil
 import subprocess
@@ -87,7 +88,7 @@ class HostedEnrollmentTests(unittest.TestCase):
                                        Path(self.tmp.name) / 'state')
 
     def test_fixed_cutover_parent_and_exact_owned_paths(self):
-        self.assertEqual(INITIAL_PARENT, '33af37716ce796f9863dbc33a5b9bfbb2cfab7d6')
+        self.assertEqual(INITIAL_PARENT, '0fcc528c48128a37a04f3a6db8b4833cedb4d891')
         self.assertTrue(initial_identity(self.root, self.head))
         self.assertIn('scripts/test_hosted_ci.py', INITIAL_PATHS)
         self.assertNotIn('lake-manifest.json', INITIAL_PATHS)
@@ -202,6 +203,13 @@ class HostedEnrollmentTests(unittest.TestCase):
 
 
 class HostedWorkflowTests(unittest.TestCase):
+    def test_job_environment_uses_only_server_available_contexts(self):
+        workflow = (ROOT / PROTOCOL.workflow_path).read_text()
+        environment = workflow.split('    env:\n', 1)[1].split('    steps:\n', 1)[0]
+        contexts = set(re.findall(r'\$\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\.', environment))
+        self.assertLessEqual(contexts, {'github', 'needs', 'strategy', 'matrix', 'vars', 'secrets', 'inputs'})
+        self.assertIn('echo "MOTIVIC_CI_STATE=$RUNNER_TEMP/motivic-ci-state" >> "$GITHUB_ENV"', workflow)
+
     def test_publication_requires_finalization_and_cache_saves_keep_partial_progress(self):
         workflow = (ROOT / PROTOCOL.workflow_path).read_text()
         stage = workflow.split('      - name: Stage native artifacts', 1)[1].split('      - name:', 1)[0]
