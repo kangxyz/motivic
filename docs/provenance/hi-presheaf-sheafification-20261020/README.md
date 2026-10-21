@@ -13,7 +13,7 @@ The archive includes cumulative proof snapshots, superseded site-comparison atte
 
 The maintained extraction keeps each new general record in one native owner and retains the selected original-history, native-cover, restriction and action proofs. Five obsolete external helper-module prefixes are omitted from the production extraction; their original sources are preserved in the recovery archive. General geometry and intentionally conditional lifting interfaces remain maintained because they have independent mathematical uses.
 
-The current proof route and hypotheses are in the [sheafification guide](../../../Motivic/Cohomology/A1/Sheafification/README.md). Current compilation, lint and trust coverage will be recorded below after validation. Historical metadata in this directory is evidence, not an instruction to execute archived workflows.
+The current proof route and hypotheses are in the [sheafification guide](../../../Motivic/Cohomology/A1/Sheafification/README.md). Current compilation, lint and trust coverage is recorded below. Historical metadata in this directory is evidence, not an instruction to execute archived workflows.
 
 ## Incoming maintained source identity
 
@@ -69,49 +69,84 @@ These are incoming hashes before current-pin repairs and documentation updates; 
 
 ## Review and current validation
 
-Independent ordinary mathematical review passed the central construction and
-its strict corollary relative to the accepted mathematical dependency snapshot
-at `c793b96`. The review checked witness existence, same-witness E3, correction
-signs, the original restriction squares and all five native site-compatibility
-equations. It found no additional lifting, raw-zero, middle-relations or target-HI
-premise in the public endpoints. The earlier perfect-field transfer-sheaf proof
-is a baseline dependency, rather than a fresh whole-proof review in this intake.
+For `k : Type u` with `[Field k]` and `P : PresheafWithTransfers.{u + 1} k`,
+`nisnevichSheafify_isA1Invariant` derives HI of the actual transfer-preserving
+Nisnevich sheafification from `P.IsA1Invariant`. The whole-cylinder lifting
+producer is constructed from those inputs. The strict corollary additionally
+requires `[PerfectField k]` and ordinary `HasExt.{u + 1}` on Nisnevich sheaves
+valued in `AddCommGrpCat.{u + 1}`; it uses the original ordinary cohomology
+projection maps in every natural degree. The [family guide](../../../Motivic/Cohomology/A1/Sheafification/README.md)
+owns the exact declarations and proof route.
+
+Independent ordinary mathematical/source-applicability review passed the central
+construction and strict corollary relative to the accepted dependency snapshot
+at `c793b96`. The earlier perfect-field transfer-sheaf proof remains a baseline
+dependency. A separate ordinary affected review passed the two unused-premise
+removals: ambient `IsNoetherian P` from
+`AlgebraicGeometry.FiniteFlatCurve.scalar_cut_isArtinian`, and `IsDomain R` from
+`Algebra.smooth_trdeg_lt_aleph0`. Their proof bodies and conclusions are unchanged.
 Twenty incoming general helpers outside the central proof closure retain their
-separate source and verification scope.
+separate scope. These ordinary reviews retain their recorded source identities
+and do not assign a new established status.
 
-Current native checks remain in progress. The required changed-source selection
-has 539 targets, 98 selected source-style files and the independent downstream
-client. The failed first hosted enrollment also leaves complete declaration
-and style coverage pending. Its current scope is 3403 targets, split into 3293
-independent targets and 110 deferred targets so the long whole-cylinder
-prerequisites are not compiled twice. Both parts retain the enabled exact-origin
-predicates and their actual import environments. Planned trust coverage is the
-68 changed or new Lean origins, including private and generated declarations.
-Source presence, historical receipt names and progress counters are not
-completion evidence for these checks.
+The supplied archive retains SHA-256
+`2a9e3ef53c9a754602c949e5492324178929bc24f872a28f1efacf25246c81dd`.
+The separate recovery archive preserves 3549 files with SHA-256
+`d4dee156aac831ce1582bdc7d9f50dbc54ce610645a1231b882bca1921890123`;
+no supplied file was deleted. Reusable general geometry and conditional lifting
+APIs remain maintained. The naming repair comprises 40 declaration renames,
+including `forget_reflective` to `forgetReflective`, with the downstream search
+scopes recorded below.
 
-The latest hosted failure was the definition-name predicate in
-[run 39358336765](https://github.com/kangxyz/motivic/actions/runs/39358336765).
-The naming repair retains every enabled predicate and changes 39 definitions
-and their references; most are test-local data consumers. The explicit recovery
-entry admits only a direct repair successor of `c793b96`, with unchanged pins,
-complete production/test/client enrollment and no fabricated verified baseline.
-It rejects unknown paths, source deletion, merge parents and later descendants.
-Current local/transport checking and future hosted enrollment remain distinct.
+The recorded native checks use independent tooling
+`0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1`; mathematical Aglib remains
+`52e09db47998f139064acf48a2d3a64494d0dd9a`, with Lean and Mathlib pins unchanged.
+The 15 configured declaration linters and exact defining-origin selection are
+retained. Historical successful checks retain their original isolated import
+environments; the final repaired and deferred batches each import their union
+once and use one shared imported environment, as requested. Each v2 origin
+retains its own ordinary 200000-heartbeat accounting context without
+reimporting that environment. Shared simp/typeclass
+behavior is reported with that environment boundary. Compatible source-bound
+checkpoints are retained; compilation builds missing or invalidated artifacts. The recorded 31 focused integration/recovery/progress tests passed.
+Their receipts retain their tested source scope. Later CI repairs and hosted
+results are handled separately from the mathematical checks recorded here.
+
+The declaration selection contains all 3403 local production and test defining
+origins. Compatible source-bound checks are retained, and only failed or changed
+closures are checked again.
+
+| Check | Result |
+| --- | --- |
+| Accepted declaration coverage | Complete: 3403/3403 production and test defining origins. Earlier compatible checkpoints cover 3287; shared batches cover six repaired tests and 109 deferred origins; the final replacement covers the remaining origin. All 15 configured linters and the original failed attempts are preserved. |
+| Affected source style | Compatible recorded checks cover 3402/3403 current sources. The final one-file source-style check was stopped by a process-count guard; no text-style failure is inferred from that guard. Its focused result is recorded separately. |
+| Transitive axiom audit: 110 origins, including private/generated declarations | The transitive standard-axiom predicate passed for 3294 declarations from 110 exact origins, including private/generated declarations. Its process later failed on 12 generated-script formatting diagnostics; that failure is preserved. Five later field docstrings preserve every existing code byte. The optional extra normal replay was stopped and supplies no successful replay verdict. Native compilation retains Lean's configured kernel checks. |
+| Consumers and independent client | The selected 91 production modules, 19 deferred tests and six repaired tests compiled successfully; compatible earlier consumer results are retained. NativeMiddleInput compiled after its five field docstrings were added. The independent client check was cancelled at the user's request. No current client or R5Lab compilation is claimed. |
+| Hosted execution and cache publication | User-owned CI and hosted cache publication are reported separately; no hosted success or cache release is claimed by these receipts. |
+
+The delivered evidence records the current source vector, exact check scopes,
+input bindings and runtime identities outside this library, under
+`tmp/output/motivic-sheafification-20261020/validation-evidence/` in the surrounding
+research workspace. Historical receipts retain their original scopes. Current
+results are summarized in [verification](../../VERIFICATION.md).
+Nonperfect strict invariance, derived continuity, full canonical purity,
+positive-characteristic diagonal, higher-Chow and spectrum comparisons retain
+their separate boundaries.
 
 ## R5Lab archival guard
 
-The downstream audit includes current tracked and untracked R5Lab formal
+The recorded downstream audit covered tracked and untracked R5Lab formal
 sources, root facades, essays, tests, checks and blueprints, plus maintained
-code/documentation references. It found 17 direct Motivic import occurrences
+code/documentation references at its source snapshot. It found 17 direct Motivic import occurrences
 across 12 Lean files (16 distinct module names). No reference to the archived
-recovery-module stems or recovery paths, or to the 39 renamed old definition
-names, was found. No production Motivic or MotivicTest module path is deleted
+recovery-module stems or recovery paths, or to the first 39 renamed old declaration
+names, was found. A separate current-R5Lab-Lean-source scan also found no use of
+`forget_reflective`, the fortieth renamed identifier. No production Motivic or MotivicTest module path is deleted
 or renamed by this integration. Potentially reusable general theory and
 conditional APIs remain in the maintained source tree.
 
 Two direct import paths are present in the current library, the `c793b96`
-comparison, the actual downstream pin `522c7256b172f89d734b078cabc43404d9765338`
+comparison, the then-recorded downstream pin `522c7256b172f89d734b078cabc43404d9765338`
 and the supplied source snapshot:
 
 - `Motivic.Cohomology.Diagonal.MilnorEquivalenceNaturality`;
@@ -119,8 +154,8 @@ and the supplied source snapshot:
 
 The other 15 import occurrences refer to 14 distinct paths absent from all
 four of those source snapshots. These are existing downstream bridge-source
-gaps; they were not moved into this recovery archive. The actual pin was checked
-through its available Git tree even though R5Lab has no materialized
+gaps; they were not moved into this recovery archive. The recorded pin was checked
+through its available Git tree while the audited R5Lab snapshot had no materialized
 `.lake/packages/Motivic` checkout. This is a static archival/reference audit,
 not a successful downstream compilation or a claim that the unfinished bridges
 are compatible. Their source identities and missing-path list are retained in

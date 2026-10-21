@@ -87,6 +87,7 @@ perfect-field all-degree signatures, the conditional APIs and standard axioms.
 The [integration record](../../../../docs/provenance/hi-presheaf-sheafification-20261020/README.md)
 separates current validation from supplied historical receipts and indexes the
 preserved experiments. Ordinary mathematical review passed relative to its
-recorded baseline; current-pin native compilation, lint and trust validation
-remain in progress. No completed hosted CI or cache publication is claimed for
-this intake. Production imports no recovery snapshots or diagnostics.
+recorded baseline. The integration record gives current compilation, exact-origin
+lint and transitive standard-axiom coverage at their recorded source snapshots.
+Hosted execution is reported separately. Production imports no recovery
+snapshots or diagnostics.

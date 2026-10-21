@@ -540,31 +540,31 @@ upgrade's initial push.
 
 ## HI-presheaf sheafification, 20 October 2026
 
-The [intake and recovery record](provenance/hi-presheaf-sheafification-20261020/README.md)
-identifies the incoming archive based on `522c7256` and its integration onto
-`c793b96`. Superseded proof experiments and historical evidence are preserved
-in a separate recovery archive outside the production import graph; no supplied
-file was deleted. Conditional lifting APIs remain maintained reusable interfaces.
+For `k : Type u`, `[Field k]` and `P : PresheafWithTransfers.{u + 1} k` with
+`P.IsA1Invariant`, `nisnevichSheafify_isA1Invariant` gives HI of the actual
+transfer-preserving Nisnevich sheafification. Its strict corollary adds
+`[PerfectField k]` and ordinary `HasExt.{u + 1}` on Nisnevich sheaves valued in
+`AddCommGrpCat.{u + 1}`, retaining the original cohomology projections in every
+natural degree. The [family guide](../Motivic/Cohomology/A1/Sheafification/README.md)
+owns exact declarations and maps.
 
-The new source entry
-`Motivic.Cohomology.A1.Sheafification.HomotopyInvariance` contains
-`Motivic.PresheafWithTransfers.nisnevichSheafify_isA1Invariant`. It takes
-`P : PresheafWithTransfers.{u + 1} k` over a field `k : Type u` and `P.IsA1Invariant`,
-with no perfectness, target-HI or lifting premise. The whole-cylinder lifting
-producer is constructed from those original inputs. The separate
-`Motivic.Cohomology.A1.Sheafification.StrictInvariance` entry adds perfectness
-and ordinary `HasExt.{u + 1}` on Nisnevich sheaves valued in
-`AddCommGrpCat.{u + 1}`. Its strict-invariance conclusion retains the actual
-ordinary cohomology projections in every natural degree. The
-[family guide](../Motivic/Cohomology/A1/Sheafification/README.md) owns the exact
-declarations, proof route and original-map conditions.
+Ordinary mathematical review passed relative to `c793b96`; separate ordinary
+affected review passed two unused-premise removals. The earlier perfect-field
+proof remains a baseline dependency. These verdicts retain their recorded scope.
 
-Independent ordinary mathematical review passed the central argument relative
-to the accepted mathematical dependency snapshot at `c793b96`. It is not a new
-review of the entire earlier perfect-field proof or a complete native CI
-baseline. Current-pin native validation, transitive axiom auditing and scoped
-replay remain in progress. Historical receipts do not claim completion of
-those current checks, cache publication or hosted CI. Nonperfect
-strict invariance, derived continuity, full canonical purity,
+| Check | Result |
+| --- | --- |
+| Declaration coverage | Complete: 3403/3403 production and test defining origins. Earlier compatible checkpoints cover 3287; shared batches cover six repaired tests and 109 deferred origins; the final replacement covers the remaining origin. All 15 configured linters and the original failed attempts are preserved. |
+| Affected style | Compatible recorded checks cover 3402/3403 current sources. The final one-file source-style check was stopped by a process-count guard; no text-style failure is inferred from that guard. Its focused result is recorded separately. |
+| Axiom audit: 110 origins; extra replay boundary | The transitive standard-axiom predicate passed for 3294 declarations from 110 exact origins, including private/generated declarations. Its process later failed on 12 generated-script formatting diagnostics; that failure is preserved. Five later field docstrings preserve every existing code byte. The optional extra normal replay was stopped and supplies no successful replay verdict. Native compilation retains Lean's configured kernel checks. |
+| Consumers/client | The selected 91 production modules, 19 deferred tests and six repaired tests compiled successfully; compatible earlier consumer results are retained. NativeMiddleInput compiled after its five field docstrings were added. The independent client check was cancelled at the user's request. No current client or R5Lab compilation is claimed. |
+| Hosted/cache | User-owned CI and hosted cache publication are reported separately; no hosted success or cache release is claimed by these receipts. |
+
+The [intake record](provenance/hi-presheaf-sheafification-20261020/README.md) identifies
+the preserved archives, naming repairs, independent tooling and current source
+vector. Compatible checks are reused incrementally; exact scopes and receipts
+are delivered under the research workspace's
+`tmp/output/motivic-sheafification-20261020/validation-evidence/`.
+Nonperfect strict invariance, derived continuity, full canonical purity,
 positive-characteristic diagonal, higher-Chow and spectrum comparisons retain
-their separate boundaries.
+separate boundaries.
