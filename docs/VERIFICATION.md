@@ -11,13 +11,6 @@
 > as validation of later bytes. Later interfaces supersede historical open
 > frontiers only under their stated hypotheses and recorded evidence boundaries.
 
-Current CI is configured by `.github/lean-ci.toml` and the pinned reusable
-workflow. Operating commands are in the [development guide](DEVELOPMENT.md).
-Legacy script names and run observations below are historical evidence on their
-stated snapshots; they are not current commands or evidence for the common
-runtime-first declaration-lint predicate. The CI migration itself supplies no
-new mathematical proof status or production-wide native-check result.
-
 This bootstrap preserves the supplied mathematical implementation and changes
 package organization, public import selection, test-root names and developer
 tooling. It does not assign a new mathematical proof status.
