@@ -115,10 +115,15 @@ variable {k : Type u} [Field k]
 /-- The five existing maps transporting one original refined diagram to one native input. -/
 structure SiteLiftTransport (N : NativeOriginalMiddleInput k)
     (A Y A' Y' X' : SmoothSite (Spec (.of k))) where
+  /-- The comparison from `Y'` to the native source object. -/
   sourceComparison : Y' ⟶ N.toInput.siteY
+  /-- The comparison from `A'` to the native puncture object. -/
   punctureComparison : A' ⟶ N.toInput.siteA
+  /-- The comparison from `X'` to the native affine-line object. -/
   cylinderComparison : X' ⟶ N.toInput.siteX
+  /-- The restriction from the native source object to `Y`. -/
   sourceRestriction : N.toInput.siteY ⟶ Y
+  /-- The restriction from the native parameter object to `A`. -/
   parameterRestriction : N.toInput.siteQ ⟶ A
 
 namespace SiteLiftTransport
