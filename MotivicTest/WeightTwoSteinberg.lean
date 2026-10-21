@@ -22,7 +22,8 @@ namespace MotivicTest.WeightTwoSteinberg
 
 variable (k : Type u) [Field k] [CharZero k]
 
-local instance : HasDerivedCategory
+/-- The standard derived-category structure used by these Steinberg consumers. -/
+local instance testHasDerivedCategory : HasDerivedCategory
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1}) :=
   HasDerivedCategory.standard _
 

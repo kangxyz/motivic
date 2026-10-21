@@ -33,6 +33,7 @@ namespace MotivicTest.WeightTwoPolynomialTransfer
 
 variable {k : Type u} [Field k]
 
+/-- The canonical field structure on a maximal quotient used by these consumers. -/
 local instance quotientField {R : Type u} [CommRing R] (q : MaximalSpectrum R) :
     Field (R ⧸ q.asIdeal) := Ideal.Quotient.field q.asIdeal
 

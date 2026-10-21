@@ -15,7 +15,7 @@ namespace MotivicTest.MonicGenericSectionSpread
 
 theorem whole_monic_divisor (R : Type u) [CommRing R] [IsDomain R] [IsNoetherianRing R]
     (p : R[X]) (hp : p.Monic) {Y : Scheme.{u}}
-    (f : Y ⟶ Spec (.of (AdjoinRoot p))) [Etale f] [IsSeparated f]
+    (f : Y ⟶ Spec (.of (AdjoinRoot p))) [Etale f]
     (s : genericFiber R (AdjoinRoot p) ⟶ Y)
     (hs : s ≫ f = pullback.fst (baseMap R (AdjoinRoot p)) (genericMap R)) :
     ∃ (r : R) (hr : r ≠ 0) (t : awayFiber R (AdjoinRoot p) r ⟶ Y),

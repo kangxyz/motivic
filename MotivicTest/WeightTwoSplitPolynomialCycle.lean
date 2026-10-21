@@ -125,6 +125,7 @@ theorem actual_factored_graph_symbols (p : k[X]) (hp : p.Monic)
   cycleClass_eq_three_graphSymbol_of_factorization p hp h0 h1 a a' b b' c c'
     hfactor ha' hb' hc'
 
+/-- The canonical field structure on a maximal quotient used by these consumers. -/
 local instance quotientField {R : Type u} [CommRing R] (q : MaximalSpectrum R) :
     Field (R ⧸ q.asIdeal) := Ideal.Quotient.field q.asIdeal
 
