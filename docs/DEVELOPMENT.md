@@ -6,229 +6,123 @@ In a prepared checkout, keep a coherent proof and its compiler repair with one
 author. Compile the changed leaf or actual interface consumer:
 
 ```sh
-python3 scripts/build.py Motivic.Transfers.Cohomology.Basic
+lake build +Motivic.Transfers.Cohomology.Basic
 ```
 
-At the task's final validation, run the selected provider/lint/consumer checks
-once, comparing with its starting revision (omit `--head` for working changes):
+Keep compiler-integrated checks enabled. At the task's final validation, compare
+with its starting revision through the common CLI:
 
 ```sh
-python3 scripts/validate.py --base BASE
+python3 -m lean_ci check --config .github/lean-ci.toml --root . \
+  --requested-base BASE --progress /absolute/scratch/motivic-check-progress
 ```
 
-Final checks use the independently pinned shared `lean_ci` recipe and executor.
-Configure `MOTIVIC_TOOLING_ROOT`, its exact reviewed `MOTIVIC_TOOLING_REVISION`
-and the Python environment using the [script guide](../scripts/README.md).
-That guide owns tooling admission and command details.
-Use an external `--progress` directory to retain compatible individual checks
-across final-check attempts. Each ordinary declaration origin has its own
-checkpoint, retaining compatible successes after a later failure. After a late failure, repair the failed category
-and retain compatible earlier results. For example, a repaired test can be compiled directly
-with `python3 scripts/build.py MotivicTest.OrdinaryCohomologyTransfers`; finish
-that changed source's applicable lint without restarting unchanged provider
-checks. The [script guide](../scripts/README.md) owns direct lint/client commands.
-Source/option changes still invalidate their actual dependent coverage.
+Use the independently pinned tooling core selected by the reusable workflow;
+the [script guide](../scripts/README.md#common-ci) owns setup and phase commands.
+Successful individual checks remain reusable after later failures when their
+actual inputs still match. Compile a repaired Test directly with
+`lake build +MotivicTest.OrdinaryCohomologyTransfers`, then check its affected
+obligations. A helper return, internal commit or merge does not start a new
+final-validation phase.
 
-Use the environment/cache reference below only for a missing dependency or a
-changed setup. A prepared proof loop does not start by resolving dependencies,
-fetching caches, extracting inventories or updating documentation. Documentation
-and tooling work select their own affected checks under [verification](#verification-by-scope).
+A prepared proof loop does not start by resolving dependencies, fetching caches,
+extracting inventories or updating documentation. Select those operations only
+for an actual missing input or changed interface.
 
 ## Environment and dependencies
 
 Run commands from the repository root. `lean-toolchain`, `lakefile.toml` and
 `lake-manifest.json` pin Lean, Mathlib and Aglib. Use the elan `lake` selected
 by this directory. Do not run `lake update` during ordinary proof work.
-`lake resolve-deps` materializes the committed dependency snapshot without
-choosing new revisions.
-
-For a selected target, fetch its reachable Mathlib cache and build incrementally:
+`lake resolve-deps` materializes the committed snapshot without choosing new
+revisions. The common native phase prepares the selected dependency/cache and
+checker-runtime inputs with common resource guards. For a missing setup input:
 
 ```sh
-lake resolve-deps
-python3 scripts/cache.py --guarded --resolve-deps Motivic.Cor
-python3 scripts/build.py Motivic.Cor
+python3 -m lean_ci prepare --config .github/lean-ci.toml --root . \
+  --requested-base BASE --target Motivic.Transfers.Cohomology.Basic
 ```
 
+Recover compatible artifacts before compiling genuinely missing dependencies; never link another
+checkout's mutable build tree.
+
 General Milnor implementation work belongs in the independent Aglib checkout.
-The two public `Motivic.KTheory.MilnorK` and `.Norms` entries are import bridges; use
-Aglib's focused build and cache route when changing the shared theory.
+The public `Motivic.KTheory.MilnorK` and `.Norms` entries are import bridges;
+change shared theory through Aglib's own focused route.
 
-
-The build wrapper uses the independently pinned shared resource-capped build
-helper with bare module names and explicit Lake module selection. Exact commands and CLI options are available with
-`--help`. Direct-build receipts may stay under this checkout's `.lake/`; shared final-check
-state, progress and delivered mappings use external directories.
-Never symlink another checkout's mutable build tree into this one.
-
-Lake native artifact caching is enabled, including restoration of conventional
-build files. It preserves compatible work across checkouts; a current rehashed
-build decides reuse. The CI workflow uses separately pinned Aglib tooling to
-restore compatible public dependency artifacts without changing mathematical
-pins. Cache misses permit only ordinary selected-target builds. Hosted CI uses
-the reviewed common tooling commit; complete native enrollment has not passed.
-Mapping export reuses the original selected build outputs after all checks succeed.
-A missing export artifact fails delivery without compiling an extra closure. The canonical shared action stages native
-mappings; a separate release job publishes the exact same-run artifact with
-repository write permission. Build jobs and pull requests remain read-only.
-A configured producer is not a claim that its first remote release succeeded.
+The reusable workflow pins its compatible tooling core independently of the
+mathematical Aglib pin. Native artifacts and individual progress survive failed
+runs. Cache misses permit selected-target builds; changed tooling, publication,
+relocation or a missing receipt does not justify a clean rebuild.
 
 ## Verification by scope
 
-All normal workflows must use incremental checks, including maintenance, review,
-merge, integration and publication. During development, compile changed leaves
-and needed affected consumers and handle their diagnostics:
+All normal maintenance, review, integration and publication use incremental
+checks. Compilation covers changed modules, missing required dependencies and
+actual affected consumers. Source-style selection follows changed files or its
+checker policy. Declaration, builtin and trust checks cover their selected
+origins under fixed checker inputs. Positive Tests are elaborated as selected
+Lake modules; the independent client is built in its own package.
+
+The shared selector includes optional leaves outside the curated facades and
+uses both old and new import edges for deletions or renames. Exact package paths
+and roles are data in `.github/lean-ci.toml`; the library supplies no adapter,
+callback or alternate check loop. Selected providers and their checks precede
+affected consumers, Tests and client. Keep all applicable mandatory categories.
+Independent lint and tests belong to final validation; after repairs rerun only
+failed or newly affected obligations and retain matching successes.
+
+For an exact final-check scope:
 
 ```sh
-python3 scripts/build.py Motivic.Transfers.Cohomology.Basic
+python3 -m lean_ci check --config .github/lean-ci.toml --root . \
+  --target MotivicTest.OrdinaryCohomologyTransfers \
+  --progress /absolute/scratch/motivic-check-progress
 ```
 
-Incremental validation covers all applicable categories, not compilation alone:
+This Test checks graph/composition maps, ordinary group identity and standard
+axiom dependencies. Select `MotivicTest.PublicAPI` or the independent client
+when its interface is affected. Source token checks and declaration lint do not
+replace an independent transitive axiom audit or kernel replay. Preserve
+incremental LeanChecker for an explicitly assigned formal acceptance milestone.
 
-| Category | Incremental coverage |
-|---|---|
-| Compilation | Changed modules, genuinely missing required dependencies, and needed affected consumers |
-| Lint | Compiler-integrated lint, declaration checks for affected defining origins, and text/style checks for selected source files |
-| Tests and clients | Affected `MotivicTest` regression/property modules and meaningful public/downstream client tests; affected tooling tests when tools change |
-| Source and structure | Affected import/enrollment, layout, pin, option, heartbeat and other source-policy checks |
-| Trust boundary | Axiom/input checks whose premises or coverage changed, reusing compatible unchanged evidence |
+The common phase API is `plan`, `source`, `native`, `finalize`, local `check`, and scoped `prepare`.
+Source/preflight is independent of a long native execution. Finalization checks
+required/reused coverage and exports the already selected artifacts without
+recompiling them. An incomplete run saves matching individual progress but
+cannot become a complete verified baseline or qualified public cache.
 
-The validation adapter does not run a package-wide transitive axiom audit.
-Selected test modules may audit their named declarations; separately recorded
-trust checks cover only their stated source, declarations and assumptions.
-The structural token scan and ordinary declaration lint do not supply that audit.
+Initialization reconciles the current obligation universe with compatible
+inherited coverage and per-check successes. Uncovered obligations remain pending
+across repairs; no parent-commit whitelist or prior-push reset defines coverage.
+A new canonical declaration-lint predicate is checked afresh where no compatible
+result exists. Existing compilation artifacts may still be reused by Lake.
+Configuration alone does not claim completed native initialization.
 
-Keep compiler-integrated checks enabled during development. Run independent
-lint and tests only in the task's final validation before delivery, covering its
-applicable categories with compatible retained evidence and focused new checks.
-A helper return, internal commit or merge does not start that phase. Compilation
-covers only the lint or tests it actually runs. After final-check repairs, rerun
-only failed or newly affected checks. Unchanged behavior needs no new tests;
-documentation-only changes use static source/link checks and changed examples.
-
-For the final phase, the shared adapter uses the existing affected-scope selector:
-
-```sh
-python3 scripts/validate.py --base BASE --head HEAD --list
-python3 scripts/validate.py --base BASE --head HEAD
-```
-
-Use a comparison identifying the current checkout; staged, unstaged and
-untracked edits are included. Alternatively pass explicit `--manual-targets`
-(existing local modules); `--full` is an opt-in diagnostic over all occupied
-modules. Local missing bases use a trusted fetched default-branch merge-base or a true
-initial root diff; unresolvable bases fail actionably. Shared committed CI uses
-the reviewed `EvidenceProtocol` and cannot fall back to `event.before` or a
-previous push. There is no admitted historical complete native Motivic baseline.
-The one-time cutover is explicit: a commit with exactly one parent,
-`0fcc528c48128a37a04f3a6db8b4833cedb4d891`, and a nonempty diff confined to the
-enumerated CI-owned paths in `scripts/shared_workflow.py` may use
-`initial-enrollment`. The failed first attempt at
-`c793b96eb87eee540e665058e83e5f05d5c95683` also permits one direct repair
-successor with unchanged pins and only the explicitly admitted source,
-documentation and CI-tooling owners. Unknown paths, merges and grandchildren
-cannot select that repair mode; exact workflow/recipe/tooling admission still
-applies. Neither admission depends on a failed evidence search. The
-[script guide](../scripts/README.md) owns the precise path boundary.
-That plan has no historical `verified_base`; it enrolls
-every local production module, every local test (including orphan leaves outside
-the facades), and the existing independent client. Production providers precede
-the remaining tests and client, retaining the ordinary exact-origin declaration
-and selected-source style predicates. All tooling fixtures run at enrollment.
-Only the successful native phase plus finalization can supply the first future
-baseline. Other heads require a genuinely verified native ancestor;
-missing or skipped native/finalizer evidence cannot trigger enrollment.
-Pin changes and manual dispatch have no full fallback.
-Pin changes require explicit affected scope and matching caches. An Aglib upgrade
-can commit the reviewed configuration hashes and local seeds in
-`.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
-the checked format used by automatic CI. With an admitted verified baseline,
-documentation-only affected scopes run static checks without installing Lean;
-initial enrollment always requires its complete native scope. Execution-script
-and CI-workflow changes run affected
-tooling fixtures and, when no native scope is already selected, compile and
-declaration/style-lint the exact curated `Motivic` and `MotivicTest` facade
-modules and check the independent client. This smoke uses module selectors,
-without whole-library expansion or unchanged test-prerequisite expansion.
-Existing Lean, pin-upgrade and manual native scopes remain exact; tool changes
-do not add extra roots to those selections. Pure Python fixture changes retain
-their affected fixture checks without native smoke.
-The final route compiles and declaration/style-lints providers before expensive
-affected consumers, tests and clients. It also declaration-lints the remaining
-affected origins after their builds; text/style selection has its own narrower
-file scope. Test-only edits retain their direct
-production prerequisite checks. Linter runtime setup selects only its actual tooling prerequisites, with
-separate guarded receipts; missing remaining prerequisites fail closed.
-Before native final checking, prepare ignored root `.lake` inputs and, for a
-selected client, run `python3 scripts/shared_workflow.py prepare-client`. This
-precedes the source snapshot and preserves strict absent-config observations.
-Batteries declaration checks still use separate environments per origin; no
-union-environment batch or equivalence is claimed. The shared scheduler records
-each exact-origin check independently and admits read-only concurrency only
-inside an existing managed resource profile; the hosted/local path stays serial.
-The hosted workflow is configured to restore and save compatible check progress at
-an explicit external path, including after failed validation. Candidate records
-must match their complete current bindings before reuse; a partial phase still
-blocks finalization and publication. Manual reruns can resume matching records,
-with no automatic continuation loop. The native step retains its 300-minute
-limit inside a 360-minute job; this configuration does not promise complete
-first-run enrollment or establish complete hosted timing. See
-[tool commands](../scripts/README.md) for source boundaries and scoped export.
-
-For a transfer-interface change, a relevant final test is:
-
-```sh
-python3 scripts/build.py MotivicTest.OrdinaryCohomologyTransfers
-```
-
-This consumer checks actual graph/composition maps, original ordinary group
-identity and standard-axiom dependencies. Select `MotivicTest.PublicAPI` or the
-independent client below when its public-import interface is affected.
-
-The repository-wide structural diagnostic `python3 scripts/check_repository.py`
-verifies names, pins, imports, cycles and forbidden proof placeholders. Select
-it for an actual structural question; it is not a per-edit or merge gate and
-does not supply kernel validation or request a library build. Report the scope
-actually covered by a selected checker.
-
-Build changed leaves and needed affected consumers. Preserve compatible source
-and trust evidence and match dependency identities before reuse. Do not delete
-caches or rebuild the whole library merely for publication, relocation, a new
-receipt, or a changed pin. A missing artifact first calls for a matching cache;
-compile genuinely missing required dependencies when no matching cache exists.
-Whole-library rebuilding or full dependency replay belongs only to an explicit
-request for that exact scope or exceptional recovery from diagnosed incompatible,
-corrupt or untrustworthy artifacts in that closure with no usable matching cache.
-Keep recovery inside the actual invalidated owned scope. Complete publication
-coverage may combine compatible existing evidence and new affected-scope checks;
-it does not require reexecuting unchanged checks. Historical successful logs
-remain historical; file existence alone is not a stale-source build check.
-
-The normal package targets `Motivic` and `MotivicTest` select curated core and
-public consumers. They do not build all retained research leaves. CI uses the affected import graph; required roots remain selected when actually
-changed or reached as consumers. Manual runs require a Git base, explicit
-targets, or the explicit full diagnostic. A configured workflow is not evidence that it passed.
+The normal `Motivic` and `MotivicTest` entries remain curated. Ordinary proof
+iteration uses `lake build +MODULE`, never an unqualified library build merely
+to prepare lint. Whole-library rebuild/replay requires an explicit request for
+that scope or diagnosed untrustworthy artifacts without matching usable cache.
+Historical logs retain their identified source and input basis.
 
 ## Public client
 
 `examples/downstream` is a separate Lake package requiring this repository by
 relative path. Its `Motivic` import checks the public correspondence category
-and the canonical Milnor degree-zero equivalence. After the guarded public
-build, compile the independent package with the same pinned dependencies:
+and canonical Milnor degree-zero equivalence. Common CI prepares its locked
+inherited dependencies and keeps its build outputs in the client's own
+`.lake/build`. Client source/configuration changes and affected imports select
+the client after provider checks. Its failure blocks qualified publication.
+
+To select its library interface explicitly:
 
 ```sh
-python3 scripts/build.py Motivic
-python3 scripts/build_client.py
+python3 -m lean_ci check --config .github/lean-ci.toml --root . \
+  --target Motivic --progress /absolute/scratch/motivic-check-progress
 ```
 
-The client helper prepares an inherited manifest, shares this checkout's canonical
-package directory, and keeps its build outputs in the client's own `.lake/build`.
-It uses the same resource caps and rehashed native cache checks as the library
-build; it does not link another checkout's mutable outputs. CI and local final validation check it after provider checks and selected public
-builds when client source/configuration or its public import is affected.
-Publication reuses those checks and exact selected outputs; it adds no client
-or core-root replay. An affected client failure blocks publication. For a consumer changing to a
-Git dependency, pin a reviewed repository commit rather than a moving branch.
+Publication reuses the checked selected outputs. For distribution, replace the
+relative dependency with the repository URL and an exact reviewed commit.
 
 ## Source and contribution conventions
 
