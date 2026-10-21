@@ -81,9 +81,12 @@ python3 -m unittest discover -s scripts -p 'test_generate_imports.py'
 
 Both commands accept `--root PATH`. The check command and repository checker
 report stale enrolled facades without writing. There is no implicit directory
-or root enrollment: `Motivic.lean` keeps its four manually selected core imports
-and `MotivicTest.lean` its two focused consumers. Topic generation never expands
-these curated roots. Choose individual leaves for smaller dependency closures.
+or root enrollment in this topic generator. The native Mathlib `mk_all` tool
+owns the complete `Motivic.lean` production entry. `lake test` discovers the
+`MotivicTest.+` library without a maintained `MotivicTest.lean` file. Topic
+generation remains limited to its existing marked facades.
+The separate global legacy diagnostic is `Audits/Motivic.lean`, outside native
+Test discovery; invoke it explicitly with `lake env lean Audits/Motivic.lean`.
 `test_generate_imports.py` uses temporary fixtures for ownership, add/remove
 tracking, curated roots, prospective cycles and repository enrollment.
 

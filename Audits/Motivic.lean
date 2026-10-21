@@ -5,7 +5,8 @@ Authors: kangxyz
 -/
 
 import Motivic
-import MotivicTest
+import MotivicTest.PublicAPI
+import MotivicTest.OrdinaryCohomologyTransfers
 import Lean.Util.CollectAxioms
 import Aglib.CategoryTheory.Adjunction.Mates
 import Aglib.Algebra.Homology.Embedding.MapExtend

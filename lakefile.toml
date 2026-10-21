@@ -2,8 +2,11 @@ name = "Motivic"
 version = "0.1.0"
 description = "Motivic cohomology, finite correspondences, and transfers in Lean."
 keywords = ["math", "motivic-cohomology", "algebraic-geometry", "transfers"]
-defaultTargets = ["Motivic", "MotivicTest"]
+defaultTargets = ["Motivic"]
 testDriver = "MotivicTest"
+lintDriver = "batteries/runLinter"
+lintDriverArgs = ["--no-build", "Motivic"]
+builtinLint = true
 enableArtifactCache = true
 restoreAllArtifacts = true
 
@@ -13,6 +16,7 @@ leanOptions = {autoImplicit = false, maxHeartbeats = 200000, weak.linter.mathlib
 
 [[lean_lib]]
 name = "MotivicTest"
+globs = ["MotivicTest.+"]
 leanOptions = {autoImplicit = false, maxHeartbeats = 200000, warningAsError = true}
 
 [[require]]
