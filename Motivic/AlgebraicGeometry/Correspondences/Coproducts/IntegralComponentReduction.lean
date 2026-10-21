@@ -31,11 +31,15 @@ universe u v
 
 namespace Motivic
 
-local instance {k : Type u} [Field k] (X : SmoothSite (Spec (.of k))) :
+/-- The Noetherian instance used in this module. -/
+local instance integralComponentReductionNoetherian
+    {k : Type u} [Field k] (X : SmoothSite (Spec (.of k))) :
     IsNoetherian ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsNoetherian X.left)
 
-local instance {k : Type u} [Field k] (X : SmoothSite (Spec (.of k))) :
+/-- The reduced scheme instance used in this module. -/
+local instance integralComponentReductionReduced
+    {k : Type u} [Field k] (X : SmoothSite (Spec (.of k))) :
     IsReduced ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsReduced X.left)
 

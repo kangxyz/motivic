@@ -96,7 +96,9 @@ variable {B : Scheme.{u}} [IsAffine B]
   {k : Type u} [Field k] (Pst : PresheafWithTransfers.{w} k)
   (t : Spec (.of R) ⟶ Spec (.of k)) [Smooth t]
 
-local instance : SmoothOfRelativeDimension 1 ((a ≫ chart R 0) ≫
+/-- The relative-dimension instance used in this module. -/
+local instance nativeSectionPairActionConversionSmoothRelativeDimension
+    : SmoothOfRelativeDimension 1 ((a ≫ chart R 0) ≫
     ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) := by
   rw [Category.assoc]
   exact inferInstanceAs (SmoothOfRelativeDimension (0 + 1) _)

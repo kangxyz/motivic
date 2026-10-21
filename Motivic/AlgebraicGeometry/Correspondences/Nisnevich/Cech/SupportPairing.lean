@@ -35,10 +35,14 @@ open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Hom
 variable (k : Type u) [Field k]
   {T Y V : SmoothSite (Spec (.of k))}
 
-local instance (X : SmoothSite (Spec (.of k))) : IsNoetherian ((𝟭 Scheme).obj X.left) :=
+/-- The Noetherian instance used in this module. -/
+local instance supportPairingNoetherian
+    (X : SmoothSite (Spec (.of k))) : IsNoetherian ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsNoetherian X.left)
 
-local instance (X : SmoothSite (Spec (.of k))) : IsReduced ((𝟭 Scheme).obj X.left) :=
+/-- The reduced scheme instance used in this module. -/
+local instance supportPairingReduced
+    (X : SmoothSite (Spec (.of k))) : IsReduced ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsReduced X.left)
 
 section FiniteImage

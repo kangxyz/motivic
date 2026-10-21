@@ -116,12 +116,15 @@ theorem rightImageIncidenceTorCycleCoefficient_eq_finsum
     (fun w => F.tripleToRightImageIncidence G H w.1 = y)]
   simp only [finsum_eq_if, finsum_eq_sum_of_fintype]
 
-local instance : IsLocallyNoetherian
+/-- The local Noetherian instance used in this module. -/
+local instance cyclesRightWholeFiberTorCycleCoefficientLocallyNoetherian : IsLocallyNoetherian
     (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom) :=
   isLocallyNoetherian_correspondenceSixfoldAmbient (S := Spec (.of k))
     X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian (F.rightIntermediateImageProduct G H) := by
+/-- The local Noetherian instance used in this module. -/
+local instance cyclesRightWholeFiberTorCycleCoefficientRightImageLocallyNoetherian
+    : IsLocallyNoetherian (F.rightIntermediateImageProduct G H) := by
   have : IsLocallyNoetherian Y.left :=
     LocallyOfFiniteType.isLocallyNoetherian (Y := Spec (.of k)) Y.hom
   have : IsLocallyNoetherian (pullback Y.hom W.hom) :=

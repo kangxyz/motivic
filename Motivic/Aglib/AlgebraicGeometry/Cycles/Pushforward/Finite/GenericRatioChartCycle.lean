@@ -38,7 +38,9 @@ namespace AlgebraicGeometry.Scheme
 attribute [local instance] Scheme.functionField_openImmersion_dominant
   Scheme.functionField_nonempty_preimage
 
-local instance {X : Scheme.{u}} [IsIntegral X] : Nonempty (⊤ : X.Opens) :=
+/-- The nonempty open instance used in this module. -/
+local instance genericRatioChartCycleNonempty
+    {X : Scheme.{u}} [IsIntegral X] : Nonempty (⊤ : X.Opens) :=
   ⟨⟨genericPoint X, trivial⟩⟩
 
 private theorem fromSpec_functionFieldMap_germ

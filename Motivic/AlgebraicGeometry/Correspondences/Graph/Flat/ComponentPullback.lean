@@ -27,9 +27,11 @@ variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (B : FiniteCorrespondenceGenerator Y.hom Z.hom)
   (φ : X.left ⟶ Y.left) (wφ : φ ≫ Y.hom = X.hom)
 
-local instance : IsNoetherian ((𝟭 Scheme).obj X.left) :=
+/-- The Noetherian instance used in this module. -/
+local instance componentPullbackNoetherian : IsNoetherian ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsNoetherian X.left)
-local instance : IsReduced ((𝟭 Scheme).obj X.left) :=
+/-- The reduced scheme instance used in this module. -/
+local instance componentPullbackReduced : IsReduced ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsReduced X.left)
 
 instance componentGraphPullbackMap_finite

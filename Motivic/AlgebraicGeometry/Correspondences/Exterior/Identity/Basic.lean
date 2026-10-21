@@ -41,7 +41,8 @@ variable {k : Type u} [Field k]
   (V : FiniteCorrespondenceGenerator X.hom Y.hom)
   (T : SmoothSite (Spec (.of k)))
 
-local instance : IsNoetherian ((𝟭 Scheme).obj X.left) :=
+/-- The Noetherian instance used in this module. -/
+local instance identityBasicNoetherian : IsNoetherian ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsNoetherian X.left)
 
 /-- The genuine exterior support before assigning any cycle. -/

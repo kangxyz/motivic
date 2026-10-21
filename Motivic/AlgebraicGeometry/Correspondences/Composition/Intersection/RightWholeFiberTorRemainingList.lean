@@ -48,7 +48,9 @@ variable {S X Y Z W : Scheme.{u}}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
   (H : FiniteCorrespondenceGenerator h i)
 
-local instance : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance intersectionRightWholeFiberTorRemainingListSeparated
+    : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated f g h i
 
 /-- The existing supported geometric first-stage Tor with its original support-stalk action. -/

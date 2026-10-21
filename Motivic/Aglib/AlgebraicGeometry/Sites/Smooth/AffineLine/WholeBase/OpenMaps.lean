@@ -24,7 +24,8 @@ open Scheme.Hom
 universe w u
 namespace AlgebraicGeometry.Scheme.Hom
 
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance openMapsSmooth {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 
 variable (k : Type u) [Field k] (R : Type u) [CommRing R]

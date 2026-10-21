@@ -24,7 +24,9 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic
 open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance originalPairNormDictionarySmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 
 variable (k : Type u) [Field k] {S X Y A B Z C D V : Scheme.{u}}

@@ -27,9 +27,12 @@ open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom RelativeProjectiveLine
 universe u w
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 
-local instance {X Y : Scheme.{u}} (g : X ⟶ Y) [SmoothOfRelativeDimension 1 g] :
+/-- The smoothness instance used in this module. -/
+local instance nativeOriginalRestrictionActionsSmooth
+    {X Y : Scheme.{u}} (g : X ⟶ Y) [SmoothOfRelativeDimension 1 g] :
     Smooth g := SmoothOfRelativeDimension.smooth 1 g
-local instance (R : Type u) [CommRing R] :
+/-- The relative-dimension instance used in this module. -/
+local instance nativeOriginalRestrictionActionsSmoothRelativeDimension (R : Type u) [CommRing R] :
     SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
   Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R
 local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)

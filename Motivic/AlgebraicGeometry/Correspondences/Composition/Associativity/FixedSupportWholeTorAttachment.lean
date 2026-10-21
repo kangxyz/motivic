@@ -208,10 +208,13 @@ variable {k : Type u} [Field k] {X Y Z W : SmoothSite (Spec (.of k))}
   (H : FiniteCorrespondenceGenerator Z.hom W.hom)
   (V : (F.leftIntermediateImageProduct G H).affineOpens)
 
-local instance : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance fixedSupportWholeTorAttachmentSeparated
+    : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated (S := Spec (.of k)) X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian
+/-- The local Noetherian instance used in this module. -/
+local instance fixedSupportWholeTorAttachmentLocallyNoetherian : IsLocallyNoetherian
     (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom) :=
   isLocallyNoetherian_correspondenceSixfoldAmbient (S := Spec (.of k))
     X.hom Y.hom Z.hom W.hom

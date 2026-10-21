@@ -82,7 +82,8 @@ variable (R : CommRingCat.{u}) {U Y : SmoothSite (Spec R)} (j : U ⟶ Y)
   [HasExt.{u + 1}
     (Sheaf (SmoothSite.nisnevichTopology (Spec R)) AddCommGrpCat.{u + 1})]
 
-local instance (S : Scheme.{u}) :
+/-- The ordinary Ext instance used in this module. -/
+local instance pointComparisonHasExt (S : Scheme.{u}) :
     HasExt.{u + 1} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
 

@@ -39,7 +39,8 @@ variable {k : Type u} [Field k] [PerfectField k]
   [HasExt.{u + 1}
     (Sheaf (SmoothSite.nisnevichTopology (Spec (.of k))) AddCommGrpCat.{u + 1})]
 
-local instance (Y : Scheme.{u}) :
+/-- The ordinary Ext instance used in this module. -/
+local instance positiveRankReductionHasExt (Y : Scheme.{u}) :
     HasExt.{u + 1} (Sheaf (nisnevichTopology Y) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
 

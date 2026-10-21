@@ -37,10 +37,14 @@ open _root_.AlgebraicGeometry.Scheme _root_.AlgebraicGeometry.Scheme.Hom
 variable (k : Type u) [Field k]
   {X Y U : SmoothSite (Spec (.of k))}
 
-local instance (T : SmoothSite (Spec (.of k))) : IsNoetherian ((𝟭 Scheme).obj T.left) :=
+/-- The Noetherian instance used in this module. -/
+local instance familiesGeneratorLiftNoetherian
+    (T : SmoothSite (Spec (.of k))) : IsNoetherian ((𝟭 Scheme).obj T.left) :=
   inferInstanceAs (IsNoetherian T.left)
 
-local instance (T : SmoothSite (Spec (.of k))) : IsReduced ((𝟭 Scheme).obj T.left) :=
+/-- The reduced scheme instance used in this module. -/
+local instance familiesGeneratorLiftReduced
+    (T : SmoothSite (Spec (.of k))) : IsReduced ((𝟭 Scheme).obj T.left) :=
   inferInstanceAs (IsReduced T.left)
 
 variable (A : FiniteCorrespondenceGenerator X.hom Y.hom)

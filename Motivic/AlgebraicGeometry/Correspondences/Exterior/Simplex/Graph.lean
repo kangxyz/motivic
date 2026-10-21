@@ -34,10 +34,12 @@ universe u
 namespace Motivic
 open _root_.AlgebraicGeometry.Scheme
 
-local instance {k : Type u} [Field k] (U : SmoothSite (Spec (.of k))) :
+/-- The Noetherian instance used in this module. -/
+local instance simplexGraphNoetherian {k : Type u} [Field k] (U : SmoothSite (Spec (.of k))) :
     IsNoetherian ((𝟭 Scheme).obj U.left) := inferInstanceAs (IsNoetherian U.left)
 
-local instance {k : Type u} [Field k] (U : SmoothSite (Spec (.of k))) :
+/-- The reduced scheme instance used in this module. -/
+local instance simplexGraphReduced {k : Type u} [Field k] (U : SmoothSite (Spec (.of k))) :
     IsReduced ((𝟭 Scheme).obj U.left) := inferInstanceAs (IsReduced U.left)
 
 namespace FiniteCorrespondenceGenerator

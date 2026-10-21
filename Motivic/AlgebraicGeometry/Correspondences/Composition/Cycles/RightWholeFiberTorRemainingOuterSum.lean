@@ -45,7 +45,9 @@ variable {S X Y Z W : Scheme.{u}}
   (V : (F.rightIntermediateImageProduct G H).affineOpens)
   (p : Spec Γ(F.rightIntermediateImageProduct G H, V))
 
-local instance : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance cyclesRightWholeFiberTorRemainingOuterSumSeparated
+    : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated f g h i
 
 /-- The original section map gives the whole localized coefficient action. -/

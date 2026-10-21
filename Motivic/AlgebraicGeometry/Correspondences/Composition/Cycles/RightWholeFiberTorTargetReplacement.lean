@@ -111,7 +111,9 @@ theorem rightTargetRemainingList_support_isArtinian [IsSeparated g]
 
 variable [S.IsSeparated] [IsSeparated f] [IsSeparated g] [IsSeparated h] [IsSeparated i]
 
-local instance : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance cyclesRightWholeFiberTorTargetReplacementSeparated
+    : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated f g h i
 
 variable (V : (F.rightIntermediateImageProduct G H).affineOpens)

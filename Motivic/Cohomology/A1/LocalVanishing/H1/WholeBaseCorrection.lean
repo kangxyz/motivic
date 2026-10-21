@@ -19,7 +19,9 @@ open _root_.CategoryTheory.Sheaf.LargeCohomology _root_.Motivic.SheafCohomology
 universe w u
 namespace AlgebraicGeometry.Scheme.Hom
 open _root_.AlgebraicGeometry.Scheme.SmoothSite (nisnevichTopology)
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance wholeBaseCorrectionSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)
   {X Y A C : Scheme.{u}} [IsAffine X] [IsAffine Y] [IsAffine A]

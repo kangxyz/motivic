@@ -29,17 +29,20 @@ open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom RelativeProjectiveLine
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 
-local instance (B : Type u) [CommRing B] :
+/-- The relative-dimension instance used in this module. -/
+local instance nativeTargetCorrectionSectionsSmoothRelativeDimension1 (B : Type u) [CommRing B] :
     SmoothOfRelativeDimension 1 (boundaryLineProjection B) :=
   Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one B
 
-local instance (B : Type u) [CommRing B] :
+/-- The relative-dimension instance used in this module. -/
+local instance nativeTargetCorrectionSectionsSmoothRelativeDimension2 (B : Type u) [CommRing B] :
     SmoothOfRelativeDimension 1
       (chart B 0 ≫ toSpec B (ULift.{u} (Fin 2))) := by
   rw [chart_toSpec]
   infer_instance
 
-local instance (B : Type u) [CommRing B] :
+/-- The relative-dimension instance used in this module. -/
+local instance nativeTargetCorrectionSectionsSmoothRelativeDimension3 (B : Type u) [CommRing B] :
     SmoothOfRelativeDimension 1
       (chart B 0 ≫ ((𝟙 _) ≫ toSpec B (ULift.{u} (Fin 2)))) := by
   simpa only [Category.id_comp] using

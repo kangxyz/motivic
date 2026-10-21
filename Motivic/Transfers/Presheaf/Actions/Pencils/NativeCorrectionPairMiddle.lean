@@ -32,7 +32,9 @@ open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 universe u
 namespace Motivic.Cor
 
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance nativeCorrectionPairMiddleSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 
 /-- The existing marked-product theorem's left-hand expression, with no norm

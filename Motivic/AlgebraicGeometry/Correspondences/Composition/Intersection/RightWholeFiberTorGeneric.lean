@@ -57,14 +57,19 @@ local instance rightGenericBaseIsSeparated :
     ((Functor.fromPUnit (Spec (.of k))).obj X.right).IsSeparated :=
   inferInstanceAs (Spec (.of k)).IsSeparated
 
-local instance : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance intersectionRightWholeFiberTorGenericSeparated
+    : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated (S := Spec (.of k)) X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian
+/-- The local Noetherian instance used in this module. -/
+local instance intersectionRightWholeFiberTorGenericLocallyNoetherian1 : IsLocallyNoetherian
     (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom) :=
   isLocallyNoetherian_correspondenceSixfoldAmbient (S := Spec (.of k)) X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian (F.rightIntermediateSupportProduct G H) :=
+/-- The local Noetherian instance used in this module. -/
+local instance intersectionRightWholeFiberTorGenericLocallyNoetherian2
+    : IsLocallyNoetherian (F.rightIntermediateSupportProduct G H) :=
   LocallyOfFiniteType.isLocallyNoetherian (F.rightIntermediateAmbientInclusion G H)
 
 /-- The entire actual inverse-image open of the right finite image-product map. -/

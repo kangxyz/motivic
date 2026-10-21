@@ -33,13 +33,18 @@ local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
     IsOpenImmersion (boundaryBaseCoverInclusion q p π j hj U V) :=
   boundaryBaseCoverInclusion_open q p π j hj U V
 
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance nativeSimultaneousSectionChoiceSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
-local instance (R : Type u) [CommRing R] :
+/-- The relative-dimension instance used in this module. -/
+local instance nativeSimultaneousSectionChoiceSmoothRelativeDimension1 (R : Type u) [CommRing R] :
     SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
   Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R
 
-local instance (R : Type u) [CommRing R] : SmoothOfRelativeDimension 1
+/-- The relative-dimension instance used in this module. -/
+local instance nativeSimultaneousSectionChoiceSmoothRelativeDimension2
+    (R : Type u) [CommRing R] : SmoothOfRelativeDimension 1
     (chart R 0 ≫ ((𝟙 _) ≫ toSpec R (ULift.{u} (Fin 2)))) := by
   simpa only [Category.id_comp, chart_toSpec] using
     Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R

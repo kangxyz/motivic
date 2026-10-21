@@ -8,7 +8,9 @@ open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 open _root_.AlgebraicGeometry.Scheme.SmoothSite
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance relativeCurveSerrePencilDataSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R]
   (ι : Type u) (m : ℕ) (eι : ι ≃ Fin (m + 1)) [Finite ι]

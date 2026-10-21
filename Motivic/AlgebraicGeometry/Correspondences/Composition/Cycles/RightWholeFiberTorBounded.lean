@@ -67,7 +67,9 @@ variable {S X Y Z W : Scheme.{u}}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
   (H : FiniteCorrespondenceGenerator h i)
 
-local instance : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance cyclesRightWholeFiberTorBoundedSeparated
+    : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated f g h i
 
 /-- The actual right-first-stage compatible-sections equalizer on its original support scheme. -/
