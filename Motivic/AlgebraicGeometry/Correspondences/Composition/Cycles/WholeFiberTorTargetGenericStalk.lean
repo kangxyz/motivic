@@ -50,7 +50,9 @@ variable {S X Y Z W : Scheme.{u}}
   (F : FiniteCorrespondenceGenerator f g) (G : FiniteCorrespondenceGenerator g h)
   (H : FiniteCorrespondenceGenerator h i)
 
-local instance : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance cyclesWholeFiberTorTargetGenericStalkSeparated
+    : (correspondenceSixfoldAmbient f g h i).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated f g h i
 
 variable (V : (F.leftIntermediateImageProduct G H).affineOpens)

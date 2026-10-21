@@ -50,14 +50,19 @@ variable {k : Type u} [Field k]
   (H : FiniteCorrespondenceGenerator Z.hom W.hom)
   (V : (F.leftIntermediateImageProduct G H).affineOpens)
 
-local instance : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance intersectionWholeFiberTorGenericSeparated
+    : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated (S := Spec (.of k)) X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian
+/-- The local Noetherian instance used in this module. -/
+local instance intersectionWholeFiberTorGenericLocallyNoetherian1 : IsLocallyNoetherian
     (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom) :=
   isLocallyNoetherian_correspondenceSixfoldAmbient (S := Spec (.of k)) X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian (F.leftIntermediateSupportProduct G H) :=
+/-- The local Noetherian instance used in this module. -/
+local instance intersectionWholeFiberTorGenericLocallyNoetherian2
+    : IsLocallyNoetherian (F.leftIntermediateSupportProduct G H) :=
   LocallyOfFiniteType.isLocallyNoetherian (F.leftIntermediateAmbientInclusion G H)
 
 /-- The actual whole finite inverse image, retaining every source branch. -/

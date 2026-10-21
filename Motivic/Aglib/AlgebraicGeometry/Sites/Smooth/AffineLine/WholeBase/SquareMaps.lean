@@ -14,7 +14,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry ProjectiveSpace
 open Scheme.Hom
 universe u
 namespace AlgebraicGeometry.Scheme.Hom
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance squareMapsSmooth {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)
   {X Y A C : Scheme.{u}} [IsAffine X] [IsAffine Y] [IsAffine A]

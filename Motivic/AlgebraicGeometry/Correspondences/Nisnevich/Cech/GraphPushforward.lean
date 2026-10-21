@@ -32,10 +32,14 @@ open _root_.AlgebraicGeometry.Scheme
 
 variable (k : Type u) [Field k] {T Y V : SmoothSite (Spec (.of k))}
 
-local instance (X : SmoothSite (Spec (.of k))) : IsNoetherian ((𝟭 Scheme).obj X.left) :=
+/-- The Noetherian instance used in this module. -/
+local instance graphPushforwardNoetherian
+    (X : SmoothSite (Spec (.of k))) : IsNoetherian ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsNoetherian X.left)
 
-local instance (X : SmoothSite (Spec (.of k))) : IsReduced ((𝟭 Scheme).obj X.left) :=
+/-- The reduced scheme instance used in this module. -/
+local instance graphPushforwardReduced
+    (X : SmoothSite (Spec (.of k))) : IsReduced ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsReduced X.left)
 
 /-- Graph postcomposition changes the finite support map while preserving

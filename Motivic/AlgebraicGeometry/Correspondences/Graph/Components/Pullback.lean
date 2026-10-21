@@ -36,9 +36,11 @@ variable {k : Type u} [Field k] {X Y Z : SmoothSite (Spec (.of k))}
   (φ : X.left ⟶ Y.left) (wφ : φ ≫ Y.hom = X.hom)
   (C : Set X.left) (hC : C ∈ irreducibleComponents X.left)
 
-local instance : IsNoetherian ((𝟭 Scheme).obj X.left) :=
+/-- The Noetherian instance used in this module. -/
+local instance componentsPullbackNoetherian : IsNoetherian ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsNoetherian X.left)
-local instance : IsReduced ((𝟭 Scheme).obj X.left) :=
+/-- The reduced scheme instance used in this module. -/
+local instance componentsPullbackReduced : IsReduced ((𝟭 Scheme).obj X.left) :=
   inferInstanceAs (IsReduced X.left)
 
 /-- The original component incidence maps into the whole support pullback. -/

@@ -38,14 +38,17 @@ variable (k R L : Type u) [Field k] [CommRing R] [Field L]
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
 
-local instance : Algebra.Smooth L (R ⊗[k] L) :=
+/-- The smoothness instance used in this module. -/
+local instance scalarPolynomialCoordinatesSmooth1 : Algebra.Smooth L (R ⊗[k] L) :=
   Algebra.Smooth.of_equiv (Algebra.TensorProduct.commRight k L R)
 
-local instance : Algebra.Smooth k (Polynomial R) := by
+/-- The smoothness instance used in this module. -/
+local instance scalarPolynomialCoordinatesSmooth2 : Algebra.Smooth k (Polynomial R) := by
   let : Algebra.Smooth R (Polynomial R) := {}
   exact Algebra.Smooth.comp k R (Polynomial R)
 
-local instance : Algebra.Smooth L ((Polynomial R) ⊗[k] L) :=
+/-- The smoothness instance used in this module. -/
+local instance scalarPolynomialCoordinatesSmooth3 : Algebra.Smooth L ((Polynomial R) ⊗[k] L) :=
   Algebra.Smooth.of_equiv (Algebra.TensorProduct.commRight k L (Polynomial R))
 
 omit [Algebra.Smooth k R] in

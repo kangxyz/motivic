@@ -20,9 +20,13 @@ open CategoryTheory CategoryTheory.Limits Opposite AlgebraicGeometry
 universe u v
 namespace Motivic.FiniteCorrespondenceGenerator
 open _root_.AlgebraicGeometry.Scheme
-local instance {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
+/-- The Noetherian instance used in this module. -/
+local instance transfersPointedGermLiftGraphNoetherian
+    {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
     IsNoetherian ((𝟭 Scheme).obj T.left) := inferInstanceAs (IsNoetherian T.left)
-local instance {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
+/-- The reduced scheme instance used in this module. -/
+local instance transfersPointedGermLiftGraphReduced
+    {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
     IsReduced ((𝟭 Scheme).obj T.left) := inferInstanceAs (IsReduced T.left)
 variable {k : Type u} [Field k] {X Y : SmoothSite (Spec (.of k))}
 

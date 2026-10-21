@@ -26,11 +26,14 @@ universe u
 namespace Motivic
 open _root_.AlgebraicGeometry.Scheme
 
-local instance {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
+/-- The Noetherian instance used in this module. -/
+local instance graphInterchangeRightNoetherian
+    {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
     IsNoetherian ((𝟭 Scheme).obj T.left) :=
   inferInstanceAs (IsNoetherian T.left)
 
-local instance {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
+/-- The reduced scheme instance used in this module. -/
+local instance graphInterchangeRightReduced {k : Type u} [Field k] (T : SmoothSite (Spec (.of k))) :
     IsReduced ((𝟭 Scheme).obj T.left) :=
   inferInstanceAs (IsReduced T.left)
 

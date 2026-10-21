@@ -90,15 +90,20 @@ local instance genericWeightBaseIsSeparated :
     ((Functor.fromPUnit (Spec (.of k))).obj X.right).IsSeparated :=
   inferInstanceAs (Spec (.of k)).IsSeparated
 
-local instance : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
+/-- The separatedness instance used in this module. -/
+local instance cyclesWholeFiberTorGenericCycleWeightSeparated
+    : (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom).IsSeparated :=
   correspondenceSixfoldAmbient_isSeparated (S := Spec (.of k)) X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian
+/-- The local Noetherian instance used in this module. -/
+local instance cyclesWholeFiberTorGenericCycleWeightLocallyNoetherian : IsLocallyNoetherian
     (correspondenceSixfoldAmbient X.hom Y.hom Z.hom W.hom) :=
   isLocallyNoetherian_correspondenceSixfoldAmbient (S := Spec (.of k))
     X.hom Y.hom Z.hom W.hom
 
-local instance : IsLocallyNoetherian (F.leftIntermediateImageProduct G H) := by
+/-- The local Noetherian instance used in this module. -/
+local instance cyclesWholeFiberTorGenericCycleWeightLeftImageLocallyNoetherian
+    : IsLocallyNoetherian (F.leftIntermediateImageProduct G H) := by
   have : IsLocallyNoetherian X.left :=
     LocallyOfFiniteType.isLocallyNoetherian (Y := Spec (.of k)) X.hom
   have : IsLocallyNoetherian (pullback X.hom Z.hom) :=

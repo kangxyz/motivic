@@ -41,7 +41,8 @@ namespace AlgebraicGeometry.Scheme
 variable {C T : Scheme.{u}} [IsIntegral T] [IsNoetherian T]
   (f : C ⟶ T) [IsFinite f]
 
-local instance {X : Scheme.{u}} [IsNoetherian X]
+/-- The Noetherian instance used in this module. -/
+local instance genericRatioNormCycleNoetherian {X : Scheme.{u}} [IsNoetherian X]
     {M : X.Modules} (φ : M ⟶ (show X.Modules from SheafOfModules.unit X.ringCatSheaf)) :
     IsNoetherian (Scheme.Modules.Hom.zeroScheme φ) :=
   _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (Scheme.Modules.Hom.zeroInclusion φ)

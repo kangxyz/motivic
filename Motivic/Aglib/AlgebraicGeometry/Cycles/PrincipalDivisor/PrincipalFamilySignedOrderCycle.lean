@@ -37,7 +37,9 @@ universe u
 
 namespace AlgebraicGeometry.Scheme
 
-local instance {P : Scheme.{u}} [IsIntegral P] : Nonempty (⊤ : P.Opens) :=
+/-- The nonempty open instance used in this module. -/
+local instance principalFamilySignedOrderCycleNonempty1
+    {P : Scheme.{u}} [IsIntegral P] : Nonempty (⊤ : P.Opens) :=
   ⟨⟨genericPoint P, TopologicalSpace.Opens.mem_top (genericPoint P)⟩⟩
 
 /-- The literal signed zero-divisor cycle has the native fraction's order
@@ -70,7 +72,9 @@ namespace AlgebraicGeometry.PrincipalFamilyUnitOpen
 attribute [local instance] Scheme.functionField_nonempty_preimage
   Scheme.functionField_openImmersion_dominant Scheme.nonempty_image_open
 
-local instance {P : Scheme.{u}} [IsIntegral P] : Nonempty (⊤ : P.Opens) :=
+/-- The nonempty open instance used in this module. -/
+local instance principalFamilySignedOrderCycleNonempty2
+    {P : Scheme.{u}} [IsIntegral P] : Nonempty (⊤ : P.Opens) :=
   ⟨⟨genericPoint P, TopologicalSpace.Opens.mem_top (genericPoint P)⟩⟩
 
 /-- The two actual zero schemes on the prescribed chart recover the original

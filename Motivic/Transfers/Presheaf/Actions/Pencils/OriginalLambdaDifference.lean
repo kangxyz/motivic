@@ -82,16 +82,20 @@ local notation "siteY" => (lambdaSourceSite k t (F ≫ π) jB)
 local notation "siteX" => (lambdaSourceSite k t π jA)
 local notation "siteQ" => (relativeTargetSite k t π (a ≫ jA))
 local notation "siteV" => (relativeTargetSite k t (F ≫ π) (vB ≫ jB))
-local instance : IsAffine (siteK).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalLambdaDifferenceAffineSiteK : IsAffine (siteK).left := by
   change IsAffine K
   infer_instance
-local instance : IsAffine (siteY).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalLambdaDifferenceAffineSiteY : IsAffine (siteY).left := by
   change IsAffine Y
   infer_instance
-local instance : IsAffine (siteX).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalLambdaDifferenceAffineSiteX : IsAffine (siteX).left := by
   change IsAffine X
   infer_instance
-local instance : IsAffine (siteQ).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalLambdaDifferenceAffineSiteQ : IsAffine (siteQ).left := by
   change IsAffine A
   infer_instance
 

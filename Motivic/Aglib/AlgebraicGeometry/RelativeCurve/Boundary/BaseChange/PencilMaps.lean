@@ -13,7 +13,9 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits AlgebraicGeometry ProjectiveSpace
 universe u
 namespace AlgebraicGeometry.Scheme.Hom
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance baseChangePencilMapsSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] (ι : Type u)
   {X Y A C T : Scheme.{u}} [IsAffine X] [IsAffine Y] [IsAffine A]

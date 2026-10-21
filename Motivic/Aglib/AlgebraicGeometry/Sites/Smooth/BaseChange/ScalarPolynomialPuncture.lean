@@ -38,14 +38,17 @@ variable (k R L : Type u) [Field k] [CommRing R] [Field L]
 
 attribute [local instance] Algebra.TensorProduct.rightAlgebra
 
-local instance : Algebra.Smooth L (R ⊗[k] L) :=
+/-- The smoothness instance used in this module. -/
+local instance scalarPolynomialPunctureSmooth1 : Algebra.Smooth L (R ⊗[k] L) :=
   Algebra.Smooth.of_equiv (Algebra.TensorProduct.commRight k L R)
 
-local instance : Algebra.Smooth k (Polynomial R) := by
+/-- The smoothness instance used in this module. -/
+local instance scalarPolynomialPunctureSmooth2 : Algebra.Smooth k (Polynomial R) := by
   let : Algebra.Smooth R (Polynomial R) := {}
   exact Algebra.Smooth.comp k R (Polynomial R)
 
-local instance : Algebra.Smooth L ((Polynomial R) ⊗[k] L) :=
+/-- The smoothness instance used in this module. -/
+local instance scalarPolynomialPunctureSmooth3 : Algebra.Smooth L ((Polynomial R) ⊗[k] L) :=
   Algebra.Smooth.of_equiv (Algebra.TensorProduct.commRight k L (Polynomial R))
 
 /-- The actual scalar puncture is the original polynomial basic open over the

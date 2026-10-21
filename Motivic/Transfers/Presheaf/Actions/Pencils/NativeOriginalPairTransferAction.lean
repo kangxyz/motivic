@@ -391,7 +391,9 @@ end Motivic.PresheafWithTransfers
 namespace Motivic.Cor
 
 open Scheme Scheme.RelativeCurvePencil Scheme.Hom
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance nativeOriginalPairTransferActionSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 
 variable {k : Type u} [Field k]
@@ -471,19 +473,23 @@ local instance : Flat cB := by
 local instance : Flat cA := by
   let : Flat (α ≫ p) := inferInstance
   infer_instance
-local instance : IsAffine (siteK).left := by
+/-- The affine scheme instance used in this module. -/
+local instance nativeOriginalPairTransferActionAffineSiteK : IsAffine (siteK).left := by
   change IsAffine K
   infer_instance
 local instance : IsIntegral (siteK).left := by
   change IsIntegral K
   infer_instance
-local instance : IsAffine (siteY).left := by
+/-- The affine scheme instance used in this module. -/
+local instance nativeOriginalPairTransferActionAffineSiteY : IsAffine (siteY).left := by
   change IsAffine Y
   infer_instance
-local instance : IsAffine (siteX).left := by
+/-- The affine scheme instance used in this module. -/
+local instance nativeOriginalPairTransferActionAffineSiteX : IsAffine (siteX).left := by
   change IsAffine X
   infer_instance
-local instance : IsAffine (siteQ).left := by
+/-- The affine scheme instance used in this module. -/
+local instance nativeOriginalPairTransferActionAffineSiteQ : IsAffine (siteQ).left := by
   change IsAffine A
   infer_instance
 

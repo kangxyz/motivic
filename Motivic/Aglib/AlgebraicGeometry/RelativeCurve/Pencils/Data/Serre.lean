@@ -12,7 +12,8 @@ open Scheme.Modules Scheme.Modules.Invertible PolynomialBoundaryPencil
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 open _root_.AlgebraicGeometry.Scheme.SmoothSite
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance dataSerreSmooth {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 /-- Native whole-boundary twist coefficient frames on an unchanged affine source. -/
 def affineBoundaryTwistFrames

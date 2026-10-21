@@ -36,7 +36,8 @@ open AlgebraicGeometry.Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme
 
-local instance {X : Scheme.{u}} [IsNoetherian X]
+/-- The Noetherian instance used in this module. -/
+local instance affineSchemeSectionNormCycleNoetherian {X : Scheme.{u}} [IsNoetherian X]
     {M : X.Modules} (φ : M ⟶ (show X.Modules from SheafOfModules.unit X.ringCatSheaf)) :
     IsNoetherian (Scheme.Modules.Hom.zeroScheme φ) :=
   _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (Scheme.Modules.Hom.zeroInclusion φ)

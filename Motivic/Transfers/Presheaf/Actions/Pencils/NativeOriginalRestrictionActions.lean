@@ -35,7 +35,9 @@ local instance nativeOriginalRestrictionActionsSmooth
 local instance nativeOriginalRestrictionActionsSmoothRelativeDimension (R : Type u) [CommRing R] :
     SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
   Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R
-local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
+/-- The open immersion instance used in this module. -/
+local instance nativeOriginalRestrictionActionsOpenImmersion
+    {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
     (π : C ⟶ S) (j : Y ⟶ C) [IsOpenImmersion j] (hq : j ≫ π = p ≫ q)
     (U : X.Opens) (V : S.Opens) :
     IsOpenImmersion (boundaryBaseCoverInclusion q p π j hq U V) :=

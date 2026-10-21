@@ -13,7 +13,8 @@ open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 open _root_.AlgebraicGeometry.Scheme.SmoothSite
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance coreSmooth {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 /-- Internal literal assembly; the geometric producer supplies every divisor and family fact. -/
 def relativeSectionPencilDataOfSections

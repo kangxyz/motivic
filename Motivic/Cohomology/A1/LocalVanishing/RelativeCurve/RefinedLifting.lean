@@ -20,7 +20,8 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic ProjectiveSp
 open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance refinedLiftingSmooth {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] [IsNoetherianRing R]
   (ι : Type u) (m : ℕ) (eι : ι ≃ Fin (m + 1)) [Finite ι]

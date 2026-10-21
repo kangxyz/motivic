@@ -64,10 +64,12 @@ variable {C T : Scheme.{u}} [IsIntegral T] [IsLocallyNoetherian T]
 local instance : IsAffine (Limits.pullback f hU.fromSpec) :=
   isAffine_of_isAffineHom (Limits.pullback.snd f hU.fromSpec)
 
-local instance : IsNoetherian (Limits.pullback f hU.fromSpec) :=
+/-- The Noetherian instance used in this module. -/
+local instance genericRatioChartCycleNoetherian1 : IsNoetherian (Limits.pullback f hU.fromSpec) :=
   _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (Limits.pullback.snd f hU.fromSpec)
 
-local instance {X : Scheme.{u}} [IsNoetherian X]
+/-- The Noetherian instance used in this module. -/
+local instance genericRatioChartCycleNoetherian2 {X : Scheme.{u}} [IsNoetherian X]
     {M : X.Modules} (φ : M ⟶ (show X.Modules from SheafOfModules.unit X.ringCatSheaf)) :
     IsNoetherian (Scheme.Modules.Hom.zeroScheme φ) :=
   _root_.AlgebraicGeometry.Scheme.isNoetherian_of_finiteType (Scheme.Modules.Hom.zeroInclusion φ)

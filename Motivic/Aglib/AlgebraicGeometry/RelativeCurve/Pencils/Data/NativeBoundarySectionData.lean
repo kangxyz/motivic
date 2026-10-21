@@ -26,7 +26,8 @@ open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom RelativeProjectiveLine
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 
-local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
+/-- The open immersion instance used in this module. -/
+local instance nativeBoundarySectionDataOpenImmersion {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
     (π : C ⟶ S) (j : Y ⟶ C) [IsOpenImmersion j] (hj : j ≫ π = p ≫ q)
     (U : X.Opens) (V : S.Opens) :
     IsOpenImmersion (boundaryBaseCoverInclusion q p π j hj U V) :=

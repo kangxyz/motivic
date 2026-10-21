@@ -36,7 +36,9 @@ theorem hasRestrictionDifferenceLifting_of_data {k : Type u} [Field k]
 end Motivic.PresheafWithTransfers
 
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance relativeCurveLocalLiftingSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R]
   (ι : Type u) (m : ℕ) (eι : ι ≃ Fin (m + 1)) [Finite ι]

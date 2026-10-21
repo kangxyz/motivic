@@ -69,7 +69,9 @@ structure BoundarySectionData where
   d_unit : IsIso (pullbackSectionMap (psiBoundaryInclusion q π j p hq a z s hs d) dS)
 end Sections
 
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance boundarySectionDataSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] {S X Y A B Z C D V : Scheme.{u}}
   [IsAffine S] [IsAffine Y] [IsAffine A] [IsAffine B] [IsAffine V]

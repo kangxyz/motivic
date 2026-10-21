@@ -104,19 +104,23 @@ local instance : Flat cB := by
 local instance : Flat cA := by
   let : Flat (α ≫ p) := inferInstance
   infer_instance
-local instance : IsAffine (siteK).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalComponentLambdaDifferenceAffineSiteK : IsAffine (siteK).left := by
   change IsAffine K
   infer_instance
 local instance : IsIntegral (siteK).left := by
   change IsIntegral K
   infer_instance
-local instance : IsAffine (siteY).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalComponentLambdaDifferenceAffineSiteY : IsAffine (siteY).left := by
   change IsAffine Y
   infer_instance
-local instance : IsAffine (siteX).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalComponentLambdaDifferenceAffineSiteX : IsAffine (siteX).left := by
   change IsAffine X
   infer_instance
-local instance : IsAffine (siteQ).left := by
+/-- The affine scheme instance used in this module. -/
+local instance originalComponentLambdaDifferenceAffineSiteQ : IsAffine (siteQ).left := by
   change IsAffine A
   infer_instance
 

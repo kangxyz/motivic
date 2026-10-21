@@ -11,7 +11,9 @@ open Scheme.Modules Scheme.Modules.Invertible PolynomialBoundaryPencil
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 open _root_.AlgebraicGeometry.Scheme.SmoothSite
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance dataBoundarySectionsSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] {S X Y A B Z C D V : Scheme.{u}}
   [IsAffine S] [IsAffine Y] [IsAffine A] [IsAffine B] [IsAffine V]

@@ -126,7 +126,9 @@ end AlgebraicGeometry.Scheme.RelativeCurvePencil
 namespace Motivic.PresheafWithTransfers
 open Scheme.RelativeCurvePencil
 
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance nativeSectionPairTransferActionSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 
 local instance nativeSectionPair_small_smooth

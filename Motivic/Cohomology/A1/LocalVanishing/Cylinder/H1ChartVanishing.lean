@@ -71,7 +71,8 @@ theorem chartProduct_restrictionToDirectImage_mono :
     (SmoothSite.contractionChartOpen_denseRange (.of k)
       (SmoothSite.a1Cylinder (.of k) X) b₁ j₁ q₁ hpb₁)
 
-local instance (S : Scheme.{u}) :
+/-- The ordinary Ext instance used in this module. -/
+local instance h1ChartVanishingHasExt (S : Scheme.{u}) :
     HasExt.{u + 1} (Sheaf (nisnevichTopology S) AddCommGrpCat.{u + 1}) :=
   hasExt_of_enoughInjectives _
 
