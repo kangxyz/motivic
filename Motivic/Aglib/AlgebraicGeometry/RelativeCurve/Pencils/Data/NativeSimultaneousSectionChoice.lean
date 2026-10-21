@@ -27,9 +27,7 @@ open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom RelativeProjectiveLine
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 
-/-- The boundary base cover inclusion is an open immersion. -/
-local instance nativeSimultaneousSectionChoiceIsOpenImmersion
-    {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
+local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
     (π : C ⟶ S) (j : Y ⟶ C) [IsOpenImmersion j] (hj : j ≫ π = p ≫ q)
     (U : X.Opens) (V : S.Opens) :
     IsOpenImmersion (boundaryBaseCoverInclusion q p π j hj U V) :=

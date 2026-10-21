@@ -26,20 +26,15 @@ open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom RelativeProjectiveLine
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 
-/-- The boundary base cover inclusion is an open immersion. -/
-local instance nativeBoundarySectionDataIsOpenImmersion
-    {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
+local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
     (π : C ⟶ S) (j : Y ⟶ C) [IsOpenImmersion j] (hj : j ≫ π = p ≫ q)
     (U : X.Opens) (V : S.Opens) :
     IsOpenImmersion (boundaryBaseCoverInclusion q p π j hj U V) :=
   boundaryBaseCoverInclusion_open q p π j hj U V
 
-/-- A smooth morphism of relative dimension one is smooth. -/
-local instance nativeBoundarySectionDataSmooth
-    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
-/-- The native boundary line projection is smooth of relative dimension one. -/
-local instance nativeBoundarySectionDataSmoothProjection (R : Type u) [CommRing R] :
+local instance (R : Type u) [CommRing R] :
     SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
   Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R
 

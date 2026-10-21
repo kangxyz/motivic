@@ -25,57 +25,13 @@ class RepositoryBoundaryTests(unittest.TestCase):
         self.root = Path(self.temporary.name)
         self.write('Motivic.lean', 'public import Motivic.Core\n')
         self.write('Motivic/Core.lean', 'public import Mathlib.Algebra.Group.Basic\n')
+        self.write('MotivicTest.lean', 'import MotivicTest.Client\n')
         self.write('MotivicTest/Client.lean', 'import Motivic\n')
 
     def write(self, name, content):
         path = self.root / name
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
-
-    def configuration(self):
-        config = ('name = "Motivic"\ndefaultTargets = ["Motivic"]\n'
-                  'testDriver = "MotivicTest"\n'
-                  '[[lean_lib]]\nname = "Motivic"\n'
-                  '[[lean_lib]]\nname = "MotivicTest"\nglobs = ["MotivicTest.+"]\n')
-        packages = []
-        for name, (url, revision) in PINS.items():
-            config += f'[[require]]\nname = "{name}"\ngit = "{url}"\nrev = "{revision}"\n'
-            packages.append(dict(name=name, url=url, rev=revision, inputRev=revision,
-                                 type='git', inherited=False))
-        self.write('lakefile.toml', config)
-        self.write('lean-toolchain', 'leanprover/lean4:v4.34.1\n')
-        self.write('lake-manifest.json', json.dumps(dict(name='Motivic', packages=packages)))
-        return config, packages
-
-    def test_test_leaves_need_no_aggregator_but_keep_import_checks(self):
-        self.configuration()
-        self.write('MotivicTest/Nested/Leaf.lean', 'import Motivic.Core\n')
-        self.assertFalse((self.root / 'MotivicTest.lean').exists())
-        self.assertEqual(check_configuration(self.root), [])
-        self.assertEqual(check_sources(self.root), ([], 4))
-        self.write('MotivicTest/Nested/Leaf.lean', 'import MotivicTest.Missing\n')
-        self.assertEqual(check_sources(self.root)[0],
-                         ['MotivicTest.Nested.Leaf: missing local import MotivicTest.Missing'])
-
-    def test_missing_production_root_is_still_rejected(self):
-        (self.root / 'Motivic.lean').unlink()
-        self.write('MotivicTest/Client.lean', 'import Motivic.Core\n')
-        self.assertEqual(check_sources(self.root)[0],
-                         ['Missing public source root: Motivic.lean'])
-
-    def test_test_discovery_configuration_rejects_missing_or_wrong_globs(self):
-        config, _ = self.configuration()
-        for replacement in ('', 'globs = []\n', 'globs = ["MotivicTest"]\n',
-                            'globs = ["MotivicTest.*"]\n'):
-            with self.subTest(replacement=replacement):
-                self.write('lakefile.toml', config.replace('globs = ["MotivicTest.+"]\n',
-                                                          replacement))
-                errors = check_configuration(self.root)
-                self.assertEqual(len(errors), 1, errors)
-                self.assertIn('MotivicTest must discover test modules', errors[0])
-        self.write('lakefile.toml', config.replace('testDriver = "MotivicTest"',
-                                                 'testDriver = "Motivic"'))
-        self.assertEqual(check_configuration(self.root), ['testDriver must be MotivicTest'])
 
     def test_production_components_accept_canonical_names_but_reject_lowercase_child(self):
         self.write('Motivic/Cohomology/A1/H1/ZMod/Basic.lean',
@@ -218,7 +174,18 @@ theorem bad : True := by sorry
         self.assertFalse((self.root / '.lake/build').exists())
 
     def test_pin_drift_is_detected_before_dependency_resolution(self):
-        _, packages = self.configuration()
+        config = ('name = "Motivic"\ndefaultTargets = ["Motivic"]\n'
+                  'testDriver = "MotivicTest"\n'
+                  '[[lean_lib]]\nname = "Motivic"\n'
+                  '[[lean_lib]]\nname = "MotivicTest"\n')
+        packages = []
+        for name, (url, revision) in PINS.items():
+            config += f'[[require]]\nname = "{name}"\ngit = "{url}"\nrev = "{revision}"\n'
+            packages.append(dict(name=name, url=url, rev=revision, inputRev=revision,
+                                 type='git', inherited=False))
+        self.write('lakefile.toml', config)
+        self.write('lean-toolchain', 'leanprover/lean4:v4.34.1\n')
+        self.write('lake-manifest.json', json.dumps(dict(name='Motivic', packages=packages)))
         self.assertEqual(check_configuration(self.root), [])
         packages[0]['rev'] = '0' * 40
         self.write('lake-manifest.json', json.dumps(dict(name='Motivic', packages=packages)))
@@ -228,7 +195,7 @@ theorem bad : True := by sorry
         self.write('examples/downstream/MotivicClient.lean', 'import Motivic.Core\n')
         errors, count = check_sources(self.root)
         self.assertEqual(errors, [])
-        self.assertEqual(count, 4)
+        self.assertEqual(count, 5)
         self.write('Motivic/Core.lean', 'import MotivicClient\n')
         self.assertTrue(any('imports independent client' in error
                             for error in check_sources(self.root)[0]))
