@@ -17,7 +17,7 @@ jobs:
   lean:
     permissions:
       contents: write
-    uses: kangxyz/aglib/.github/workflows/lean-ci.yml@109ffea7389e88ae2660b795091ef2b9888a5915
+    uses: kangxyz/aglib/.github/workflows/lean-ci.yml@2e40760000c3e87eb987e469fc6346fc46cb0e91
     with:
       package-directory: .
       build-targets: Motivic

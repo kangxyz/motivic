@@ -24,13 +24,17 @@ open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 
-private local instance {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
+/-- The boundary base cover inclusion is an open immersion. -/
+local instance boundaryBaseSectionDataIsOpenImmersion
+    {S X Y C : Scheme.{u}} (q : X ⟶ S) (p : Y ⟶ X)
     (π : C ⟶ S) (j : Y ⟶ C) [IsOpenImmersion j] (hj : j ≫ π = p ≫ q)
     (U : X.Opens) (V : S.Opens) :
     IsOpenImmersion (boundaryBaseCoverInclusion q p π j hj U V) :=
   boundaryBaseCoverInclusion_open q p π j hj U V
 
-private local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- A smooth morphism of relative dimension one is smooth. -/
+local instance boundaryBaseSectionDataSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] [IsNoetherianRing R]
   (ι : Type u) (m : ℕ) (eι : ι ≃ Fin (m + 1)) [Finite ι]
