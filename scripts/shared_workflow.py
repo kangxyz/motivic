@@ -21,14 +21,12 @@ from library_sources import ROOTS, lean_imports, source_modules
 POLICY = ('scripts/shared_workflow.py', 'scripts/ci_policy.py', 'scripts/validate.py', 'scripts/ci_targets.py',
           'scripts/library_sources.py', 'scripts/check_repository.py',
           'scripts/lint_declarations.py', 'scripts/lint_style.py',
-          'scripts/build_client.py', 'scripts/cache.py', 'scripts/cache_bootstrap.py',
+          'scripts/cache.py', 'scripts/cache_bootstrap.py',
           '.github/dependency-scope.json')
 DRIVERS = ('.lake/packages/batteries/scripts/runLinter.lean',
            '.lake/packages/mathlib/scripts/lint-style.lean')
-CLIENT = 'examples/downstream'
-GENERATED_MANIFEST = CLIENT + '/lake-manifest.json'
 # This migration has no historical complete native witness. Explicit cutover
-# and repair successors enroll the complete local library and existing client.
+# and repair successors enroll the complete local library.
 INITIAL_PARENT = '0fcc528c48128a37a04f3a6db8b4833cedb4d891'
 INITIAL_PATHS = frozenset({'.github/workflows/ci.yml', 'scripts/shared_workflow.py',
     'scripts/ci_policy.py', 'scripts/test_hosted_ci.py', 'scripts/test_validate.py',
@@ -106,12 +104,10 @@ def hosted_scope(root, baseline):
         # Explicitly enumerate every local module, including leaves outside the
         # curated facades. Keep the ordinary exact-origin declaration predicate.
         scope = make_plan(Path(root), [], manual=sorted(source_modules(root)))
-        if not (Path(root) / CLIENT / 'MotivicClient.lean').is_file():
-            raise ValueError('Initial enrollment requires the existing independent client')
-        scope.update(kind='initial-enrollment', client=True, tool_tests=['test_*.py'])
+        scope.update(kind='initial-enrollment', tool_tests=['test_*.py'])
     else:
         scope = selection(root, baseline['base'], default_branch=baseline['default_branch'])
-    return dict(scope, native=bool(scope['targets'] or scope['client']))
+    return dict(scope, native=bool(scope['targets']))
 
 
 def hosted_protocol(root, head, protocol=None):
@@ -171,18 +167,15 @@ def local_inputs(root, requested_base=None, targets=()):
     root = Path(root)
     paths = set(POLICY) | set(CONFIG_INPUTS)
     paths.update(('Motivic.lean', 'MotivicTest.lean', 'Motivic', 'MotivicTest',
-                  'scripts', '.github', '.github/workflows', CLIENT,
-                  CLIENT + '/lakefile.toml', CLIENT + '/lakefile.lean', CLIENT + '/lean-toolchain'))
-    for directory in ('Motivic', 'MotivicTest', 'scripts', '.github', CLIENT):
+                  'scripts', '.github', '.github/workflows'))
+    for directory in ('Motivic', 'MotivicTest', 'scripts', '.github'):
         base = root / directory
         for path in base.rglob('*'):
             relative = path.relative_to(root)
             if '.lake' in relative.parts or '__pycache__' in relative.parts:
                 continue
             if path.is_dir() or path.suffix in {'.lean', '.py', '.sh', '.yml', '.yaml', '.json'}:
-                # The inherited ignored client manifest is established by setup.
-                if relative.as_posix() != GENERATED_MANIFEST:
-                    paths.add(relative.as_posix())
+                paths.add(relative.as_posix())
     return [({'path': path, 'exclude': ['.lake', '__pycache__']} if (root / path).is_dir() else path)
             for path in sorted(paths)]
 
@@ -195,6 +188,8 @@ def selection(root, requested_base=None, targets=(), *, full=False, default_bran
 
 
 def checked_scope(root, scope):
+    if scope.get('client') is not False:
+        raise ValueError('Separate client diagnostics are outside incremental in-package validation')
     sources = source_modules(root)
     for key in ('targets', 'providers', 'lint'):
         names = scope[key]
@@ -262,15 +257,10 @@ def recipe(root, scope, phase, directory, *, skip_static=False, skip_cache=False
                     checks=declaration_check(root, providers, 'providers', scope['full'])) if providers else None)
     workspace = dict(id='consumers', modules=consumers, before=style,
                      checks=declaration_check(root, consumers, 'affected-consumers', scope['full']))
-    clients = []
-    if scope['client']:
-        clients.append(dict(id='client', cwd=CLIENT, modules=['MotivicClient'], before=[task(
-            'prepare/client', [sys.executable, root / 'scripts/shared_workflow.py', 'prepare-client', '--root', root],
-            cwd=str(root), establishes_inputs=True, established_paths=[GENERATED_MANIFEST])]))
     exports = ([name for name, modules in (('providers', providers), ('consumers', consumers)) if modules]
                if export else [])
     return native_recipe(root, directory, source_checks=static, prepare=prepare,
-                         provider_gate=provider, root_workspace=workspace, clients=clients,
+                         provider_gate=provider, root_workspace=workspace,
                          exports=exports, phase=phase)
 
 
@@ -388,14 +378,10 @@ class MotivicAdapter:
                              full=basis['full'], default_branch=basis['default_branch'])
         if expected != scope:
             raise ValueError('Selected local source scope drifted during validation')
-        if scope['targets'] or scope['client']:
+        if scope['targets']:
             if not (Path(root) / '.lake').is_dir():
                 raise ValueError('Prepare this checkout\'s ignored .lake directory before shared final checking; '
                                  'absent configuration candidates remain under strict temporal observation')
-        if scope['client'] and (not (Path(root) / CLIENT / '.lake').is_dir()
-                                or not (Path(root) / GENERATED_MANIFEST).is_file()):
-            raise ValueError('Prepare the ignored client directories/manifest before shared final checking: '
-                             'python3 scripts/shared_workflow.py prepare-client')
 
     def tasks(self, root, plan, phase, directory):
         return recipe(root, plan['scope'], phase, directory, skip_static=self.skip_static,
@@ -414,7 +400,7 @@ class MotivicAdapter:
                 'tooling_revision': os.environ['MOTIVIC_TOOLING_REVISION']}
 
     def required_phases(self, root, plan):
-        return ['source', 'native'] if plan['scope']['targets'] or plan['scope']['client'] else ['source']
+        return ['source', 'native'] if plan['scope']['targets'] else ['source']
 
     def validate_plan(self, root, plan):
         from lean_ci.github import ancestor

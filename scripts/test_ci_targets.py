@@ -2,6 +2,8 @@
 # Authors: kangxyz
 from pathlib import Path
 import base64
+from contextlib import redirect_stdout, redirect_stderr
+import io
 import gzip
 import hashlib
 import json
@@ -10,8 +12,9 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
-from ci_targets import CONFIG_INPUTS, comparison_base, changed_paths, encode_targets, make_plan, select_client, select_targets, validation_scope
+from ci_targets import CONFIG_INPUTS, comparison_base, changed_paths, encode_targets, make_plan, select_targets, validation_scope
 
 
 class Fixture(unittest.TestCase):
@@ -46,12 +49,12 @@ class TargetSelectionTests(Fixture):
         self.assertEqual(plan['providers'], ['Motivic.Optional.Computation'])
         self.assertFalse(plan['client'])
 
-    def test_changed_public_dependency_retains_required_roots_and_client(self):
+    def test_changed_public_dependency_retains_required_in_package_roots(self):
         plan = make_plan(self.root, ['Motivic/Public/Core.lean'])
         self.assertEqual(plan['targets'], ['Motivic', 'Motivic.Public', 'Motivic.Public.Core',
                                           'MotivicTest', 'MotivicTest.PublicAPI'])
         self.assertEqual(plan['providers'], ['Motivic.Public.Core'])
-        self.assertTrue(plan['client'])
+        self.assertFalse(plan['client'])
 
     def test_deleted_provider_keeps_current_consumers_but_absent_name_is_not_built(self):
         (self.root / 'Motivic/Public/Core.lean').unlink()
@@ -65,7 +68,7 @@ class TargetSelectionTests(Fixture):
             self.assertEqual(select_targets(self.root, [path]), [], path)
         self.assertEqual(validation_scope(['docs/evidence.json']), (True, []))
 
-    def test_runtime_tool_only_changes_select_exact_curated_module_smoke_and_client(self):
+    def test_runtime_tool_only_changes_select_fixtures_without_facade_fallback(self):
         for path in ('scripts/build.py', 'scripts/build_modules.py', 'scripts/build_client.py',
                      'scripts/cache.py', 'scripts/cache_bootstrap.py', 'scripts/resource_guard.py',
                      'scripts/lint_style.py', 'scripts/lint_declarations.py', 'scripts/validate.py',
@@ -73,11 +76,21 @@ class TargetSelectionTests(Fixture):
                      '.github/workflows/ci.yml', '.github/actions/lake-cache/action.yml'):
             with self.subTest(path=path):
                 plan = make_plan(self.root, [path])
-                self.assertEqual(plan['targets'], ['Motivic', 'MotivicTest'])
-                self.assertEqual(plan['providers'], ['Motivic'])
-                self.assertEqual(plan['lint'], ['Motivic', 'MotivicTest'])
-                self.assertTrue(plan['client'])
+                self.assertEqual(plan['targets'], [])
+                self.assertEqual(plan['providers'], [])
+                self.assertEqual(plan['lint'], [])
+                self.assertTrue(plan['tool_tests'])
+                self.assertFalse(plan['client'])
                 self.assertFalse(plan['full'])
+
+    def test_runtime_tool_changes_need_no_facade_sources(self):
+        (self.root / 'Motivic.lean').unlink()
+        (self.root / 'MotivicTest.lean').unlink()
+        plan = make_plan(self.root, ['scripts/validate.py'])
+        self.assertEqual(plan['targets'], [])
+        self.assertEqual(plan['lint'], [])
+        self.assertFalse(plan['client'])
+        self.assertTrue(plan['tool_tests'])
 
     def test_docs_and_pure_fixture_changes_remain_static_only(self):
         for path in ('README.md', 'docs/evidence.json', 'scripts/README.md',
@@ -126,13 +139,14 @@ class TargetSelectionTests(Fixture):
         self.assertIn('Motivic.Public', plan['targets'])
         self.assertIn('Motivic.Public', plan['lint'])
 
-    def test_client_input_checks_its_real_imports_and_no_optional_leaf(self):
-        plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
-        self.assertTrue(plan['client'])
-        self.assertEqual(plan['providers'], ['Motivic'])
-        self.assertEqual(plan['targets'], ['Motivic'])
-        self.assertNotIn('Motivic.Optional.Computation', plan['targets'])
-        self.assertFalse(select_client(self.root, ['examples/downstream/README.md'], []))
+    def test_client_changes_do_not_select_in_package_or_client_work(self):
+        for path in ('examples/downstream/MotivicClient.lean',
+                     'examples/downstream/lakefile.toml', 'examples/downstream/README.md'):
+            plan = make_plan(self.root, [path])
+            self.assertFalse(plan['client'])
+            self.assertEqual(plan['providers'], [])
+            self.assertEqual(plan['targets'], [])
+            self.assertEqual(plan['lint'], [])
 
     def test_tools_select_their_affected_fixtures(self):
         for path in ('scripts/build.py', 'scripts/build_modules.py'):
@@ -264,7 +278,7 @@ class DependencyScopeTests(GitFixture):
     def save_record(self):
         self.write('.github/dependency-scope.json', json.dumps(self.record))
 
-    def test_accepted_transition_selects_reviewed_provider_consumers_tests_and_client(self):
+    def test_accepted_transition_selects_reviewed_provider_consumers_and_tests(self):
         plan_path = self.root / 'plan.json'
         result = self.cli('--base', self.base, '--plan', str(plan_path))
         self.assertEqual(result.returncode, 0, result.stderr)
@@ -272,7 +286,7 @@ class DependencyScopeTests(GitFixture):
         self.assertEqual(plan['targets'], ['Motivic', 'Motivic.Public', 'Motivic.Public.Core',
                                            'MotivicTest', 'MotivicTest.PublicAPI'])
         self.assertEqual(plan['providers'], ['Motivic.Public.Core'])
-        self.assertTrue(plan['client'])
+        self.assertFalse(plan['client'])
         self.assertFalse(plan['full'])
         self.assertEqual(plan['dependency_scope_sha256'], hashlib.sha256(
             (self.root / '.github/dependency-scope.json').read_bytes()).hexdigest())
@@ -397,13 +411,22 @@ class DependencyScopeTests(GitFixture):
         self.assertEqual(result.returncode, 0, result.stderr)
         validate = Path(__file__).with_name('validate.py')
         argv = [sys.executable, str(validate), '--root', str(self.root), '--plan', str(plan), '--list']
-        accepted = subprocess.run(argv, capture_output=True, text=True)
-        self.assertEqual(accepted.returncode, 0, accepted.stderr)
+        from validate import main as validate_main
+        def invoke():
+            stdout, stderr = io.StringIO(), io.StringIO()
+            # Exercise the public CLI with the already loaded fixture core;
+            # independent production Git admission is covered separately.
+            with patch.object(sys, 'argv', argv[1:]), patch('validate.shared_api'), \
+                    redirect_stdout(stdout), redirect_stderr(stderr):
+                status = validate_main()
+            return status, stdout.getvalue(), stderr.getvalue()
+        status, _, error = invoke()
+        self.assertEqual(status, 0, error)
         path = self.root / '.github/dependency-scope.json'
         path.write_text(path.read_text() + '\n')
-        rejected = subprocess.run(argv, capture_output=True, text=True)
-        self.assertNotEqual(rejected.returncode, 0)
-        self.assertIn('selection changed', rejected.stderr)
+        status, _, error = invoke()
+        self.assertNotEqual(status, 0)
+        self.assertIn('selection changed', error)
         self.assertFalse((self.root / '.lake').exists())
 
 
@@ -416,15 +439,15 @@ class TargetTransportTests(unittest.TestCase):
         self.assertEqual(gzip.decompress(base64.b64decode(encoded, validate=True)).decode().splitlines(), targets)
         self.assertEqual(encoded, encode_targets(targets))
 
-    def test_workflow_gates_every_native_step_and_uses_exact_plan(self):
+    def test_public_workflow_passes_production_root_to_pinned_native_entry(self):
         workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        self.assertIn("if: steps.scope.outputs.native == 'true'", workflow)
-        for phase in ('plan', 'source', 'native', 'finalize'):
-            self.assertIn(f'python3 scripts/shared_workflow.py {phase} --state "$MOTIVIC_CI_STATE"', workflow)
-        self.assertNotIn('github.event.before', workflow)
-        self.assertNotIn('export_targets=', workflow)
-        self.assertNotIn('default: Motivic MotivicTest', workflow)
-        self.assertNotIn("needs.source.outputs.client == 'true' ||", workflow)
+        self.assertRegex(workflow,
+                         r'(?m)^    uses: kangxyz/aglib/\.github/workflows/lean-ci\.yml@[0-9a-f]{40}$')
+        self.assertIn('package-directory: .', workflow)
+        self.assertIn('build-targets: Motivic', workflow)
+        self.assertNotIn('scripts/shared_workflow.py', workflow)
+        self.assertNotIn('scripts/validate.py', workflow)
+        self.assertNotIn('cancel-in-progress: true', workflow)
 
 
 if __name__ == '__main__':

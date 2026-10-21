@@ -16,17 +16,8 @@ import tomllib
 from library_sources import lean_imports, module_name, source_modules
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULTS = ('Motivic', 'MotivicTest')
 CONFIG_INPUTS = {'lakefile.toml', 'lakefile.lean', 'lake-manifest.json', 'lean-toolchain'}
-CLIENT = 'examples/downstream/'
 DEPENDENCY_SCOPE = '.github/dependency-scope.json'
-
-
-def runtime_tool_input(path: str) -> bool:
-    """Execution scripts and CI actions need native smoke coverage beyond fixtures."""
-    return ((path.startswith('scripts/') and path.endswith(('.py', '.sh'))
-             and not Path(path).name.startswith('test_'))
-            or (path.startswith('.github/') and path.endswith(('.yml', '.yaml', '.py', '.sh'))))
 
 
 def dependency_scope(root: Path, base: str) -> tuple[list[str], str]:
@@ -86,18 +77,6 @@ def dependency_scope(root: Path, base: str) -> tuple[list[str], str]:
     return targets, hashlib.sha256(raw).hexdigest()
 
 
-def client_input(path: str) -> bool:
-    return path.startswith(CLIENT) and (path.endswith('.lean')
-        or path[len(CLIENT):] in CONFIG_INPUTS)
-
-
-def select_client(root: Path, changed: list[str], targets: list[str]) -> bool:
-    if any(client_input(path) for path in changed):
-        return True
-    source = root / CLIENT / 'MotivicClient.lean'
-    return source.is_file() and any(name in targets for name in lean_imports(source.read_text()))
-
-
 def validation_scope(changed: list[str], *, setup: bool = False,
                      manual: bool = False) -> tuple[bool, list[str]]:
     """Static checks need no toolchain; fixtures follow current tool ownership."""
@@ -154,11 +133,6 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
     selected.update(module_name(path) for path in changed if path.endswith('.lean')
                     and (path in {'Motivic.lean', 'MotivicTest.lean'}
                          or path.startswith(('Motivic/', 'MotivicTest/'))))
-    required = set()
-    if any(client_input(path) for path in changed):
-        source = root / CLIENT / 'MotivicClient.lean'
-        if source.is_file():
-            required.update(name for name in lean_imports(source.read_text()) if name in sources)
     reverse = {}
     for name, imported in imports.items():
         for dependency in imported:
@@ -169,21 +143,16 @@ def select_targets(root: Path, changed: list[str], *, full: bool = False,
             if consumer not in affected:
                 affected.add(consumer)
                 pending.append(consumer)
-    return sorted((affected | required) & sources.keys())
+    return sorted(affected & sources.keys())
 
 
 def make_plan(root: Path, changed: list[str], *, full: bool = False,
               manual: list[str] | None = None, initial: bool = False,
               dependency_upgrade: bool = False) -> dict:
     targets = select_targets(root, changed, full=full, manual=manual, initial=initial)
-    client = select_client(root, changed, targets)
     sources, imports = graph(root)
     changed_modules = {module_name(path) for path in changed if path.endswith('.lean')}
     seeds = set(targets) if full else changed_modules | set(manual or [])
-    if any(client_input(path) for path in changed):
-        source = root / CLIENT / 'MotivicClient.lean'
-        if source.is_file():
-            seeds.update(name for name in lean_imports(source.read_text()) if name in sources)
     providers = {name for name in seeds if name in sources
                  and name.split('.')[0] == 'Motivic'}
     # Unchanged dependency-affected tests do not make unrelated imports changed providers.
@@ -202,16 +171,9 @@ def make_plan(root: Path, changed: list[str], *, full: bool = False,
     targets = sorted(set(targets) | providers)
     structural, tests = validation_scope(changed, setup=full, manual=manual is not None)
     lint = sorted((providers | (seeds & sources.keys())) & set(targets))
-    if not targets and not client and any(runtime_tool_input(path) for path in changed):
-        if any(name not in sources for name in DEFAULTS):
-            raise ValueError('Runtime-tool smoke requires the existing Motivic and MotivicTest facade modules')
-        # These are module smoke targets, not source edits or graph-expansion seeds.
-        targets = list(DEFAULTS)
-        providers = {'Motivic'}
-        lint = list(DEFAULTS)
-        client = True
+    # Retain the transport field without selecting separate client diagnostics.
     return dict(targets=targets, providers=sorted(providers), lint=lint,
-                client=client, structural=structural,
+                client=False, structural=structural,
                 tool_tests=tests, full=full)
 
 
@@ -309,7 +271,7 @@ def main() -> int:
             args.plan.write_text(json.dumps(plan, indent=2) + '\n')
         if args.github_output:
             with args.github_output.open('a') as output:
-                for name, value in dict(lean=str(bool(targets) or plan['client']).lower(),
+                for name, value in dict(lean=str(bool(targets)).lower(),
                         targets=' '.join(targets), targets_gzip_base64=encode_targets(targets),
                         plan_gzip_base64=base64.b64encode(gzip.compress(json.dumps(plan).encode(), mtime=0)).decode(),
                         client=str(plan['client']).lower(), structural=str(plan['structural']).lower(),

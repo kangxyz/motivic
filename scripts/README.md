@@ -20,7 +20,7 @@ tooling checkout at the exact revision below:
 
 ```sh
 export MOTIVIC_TOOLING_ROOT=/absolute/path/to/reviewed-aglib-tooling
-export MOTIVIC_TOOLING_REVISION=0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1
+export MOTIVIC_TOOLING_REVISION=2fa27fe14c4df3b0fd8bc02d3e80181ad7f1bf95
 export PYTHONPATH="$MOTIVIC_TOOLING_ROOT/ci${PYTHONPATH:+:$PYTHONPATH}"
 python3 -m unittest discover -s scripts -p 'test_*.py'
 ```
@@ -174,23 +174,17 @@ consumer is selected, including implementations, public facades, tests with
 declarations and optional leaves outside curated roots. Deleted/renamed names
 remain graph seeds, but absent sources are never build targets. Unrelated roots
 and tests are excluded. Test-only changes retain their direct production
-prerequisites for provider checking. Client source/configuration selects its
-actual local imports and client acceptance; a changed public import selects
-the independent client too. A root is selected when it is actually changed,
-required by the client, or reached as a consumer.
+prerequisites for provider checking. Client-only changes do not seed root
+builds or client execution; client diagnostics remain a separate specific request.
+A root is selected when it is actually changed or reached as an in-package consumer.
 
 After a verified baseline has been admitted, documentation and evidence JSON
 changes select static source checks without Lean installation, dependency
 resolution, compilation, lint, cache restoration or publication. Explicit
-initial enrollment still requires every local native target and the client.
-Execution-script and CI-workflow changes select affected Python
-fixtures and static checks. If no native scope is already selected, they also
-compile the exact curated `Motivic` and `MotivicTest` facade modules, run their
-declaration/style checks, and check the independent client. The module build
-adapter uses `+` selectors; this smoke check does not select whole libraries or
-expand unchanged test prerequisites. Existing Lean, pin-upgrade and manual
-native scopes keep their exact target, provider, style and client selection.
-Markdown and pure `test_*.py` fixture changes do not request this native smoke.
+initial enrollment retains every local native target. Execution-script and
+CI-workflow changes select affected Python fixtures and static checks without
+adding unrelated facade builds. Existing Lean, pin-upgrade and manual native
+scopes keep their exact target, provider and style selection.
 Shared parser/workflow and unknown Python/shell tools select all current tooling fixtures. Build, cache, client
 and selector changes also select `test_validate.py`. Missing push bases use an available trusted default-branch merge-base, or the
 root diff of a true initial commit. CI supplies the repository default branch;
@@ -226,7 +220,7 @@ existing local module seeds whose dependency impact has been reviewed. The
 selector verifies the old bytes at the resolved Git comparison base, the new
 checkout bytes, and both Aglib pins in the lakefile and manifest. Missing,
 malformed or mismatched records fail closed. Accepted seeds join changed Lean
-sources and use the ordinary reverse-consumer and client selection. Unchanged
+sources and use the ordinary in-package reverse-consumer selection. Unchanged
 test seeds retain their compilation and lint coverage without adding unrelated
 production prerequisites; actually edited tests still select those prerequisites,
 as do ordinary explicit manual test targets. The transported plan binds the
@@ -236,14 +230,21 @@ The record is consulted only for a non-initial configuration change without
 explicit manual targets or `--full`. Later pushes without configuration changes
 ignore a retained record; replace it when reviewing the next pin transition.
 
-`validate.py` runs final acceptance only when requested. The thin
+`validate.py` runs selected final checks only when requested. Routine
+formalization is incremental native build, selected declaration/style lint and
+relevant in-package tests, preserving source correctness and resource limits.
+Do not automatically add kernel replay, downstream client preparation/build/audit
+or separate execution-acceptance chains, including for `--full`, merge,
+publication or adoption. Existing standalone diagnostics require a specific
+request. Independent mathematical review and writing acceptance remain unchanged.
+The thin
 `shared_workflow.py` adapter declares scope and predicates through
 `lean_ci.recipe.native_recipe`; `Application.check` owns execution, resource
 guarding, receipt verification and compatible individual-check continuation: static checks and affected tooling fixtures, focused
 matching cache acquisition, provider compilation, provider declaration and style
 lint, affected consumer/test compilation, remaining affected declaration-origin
-lint, then the affected client. The latter includes unchanged consumer sources
-whose imported environments changed, and reuses completed provider lint.
+lint. Declaration-origin checks include unchanged consumer sources whose imported
+environments changed, and reuse completed provider lint.
 Text/style checks retain their changed-source scope. A failure stops dependent phases. For declaration lint,
 `lint_declarations.py` adds a checksum-guarded exact defining-module filter to
 the pinned Batteries driver, with explicit origins and `--no-build`. Its native
@@ -292,7 +293,10 @@ python3 scripts/lint_style.py Motivic.Transfers.Cohomology.Basic
 This is compiler/linter/test coverage, not independent kernel replay or a proof
 of theorem premises. The recipe has no blanket transitive axiom-audit task;
 selected trust-test modules and separately recorded audits retain their named
-coverage. `--skip-static` and `--skip-cache` reuse matching same-run
+coverage. This legacy adapter limit does not waive existing production axiom
+auditing or the [mathematical trust](../docs/DEVELOPMENT.md#mathematical-trust)
+requirements. Preserve compatible coverage and check affected or uncovered closure
+through the existing audit path, without replay or a new acceptance chain. `--skip-static` and `--skip-cache` reuse matching same-run
 evidence retained by the caller; they do not establish that evidence themselves.
 
 The shared final check enrolls local source candidates, absent configurations,
@@ -322,20 +326,19 @@ observer lifetime. Source-directory enrollment and every source byte are
 observed before parsing; additions, removals or source drift reject that
 attempt. Individual source/native/runtime bindings remain separate and current.
 
-Native final checking requires a prepared ignored `.lake` directory. When the
-independent client is selected, prepare its ignored directories and inherited
-manifest first with `python3 scripts/shared_workflow.py prepare-client`.
+Native final checking requires a prepared ignored root `.lake` directory.
+Routine validation never prepares or builds the separate downstream client.
 This preparation must precede the source snapshot: absent configuration names
 retain strict temporal guards. Final checking does not update mathematical pins.
 
 `validate.py --outputs FILE` releases mappings only after all selected checks
-and the affected client succeed. Provider and consumer mappings are collected
+succeed. Provider and consumer mappings are collected
 from their original successful builds and validated/merged by the shared core;
 export adds no proof compilation or second export build. Partial mappings cover
 only their selected closure.
 
 The reviewed common tooling commit for this migration is
-`0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1`; select it as `MOTIVIC_TOOLING_REVISION`.
+`2fa27fe14c4df3b0fd8bc02d3e80181ad7f1bf95`; select it as `MOTIVIC_TOOLING_REVISION`.
 
 Hosted CI is configured to use this shared API and reviewed tooling commit.
 The first complete enrollment at `c793b96eb87eee540e665058e83e5f05d5c95683`
@@ -348,7 +351,7 @@ that range. Local final checking requires no GitHub lookup.
 `test_ci_targets.py` covers affected graphs, docs/tools/pins, optional modules,
 renames/deletions, missing bases, explicit manual/full scope and compressed
 transport. `test_validate.py` covers shared recipe ordering and predicates, local enrollment,
-client workspace setup, source-only checks and fail-closed baseline selection.
+absence of automatic client execution, source-only checks and fail-closed baseline selection.
 `test_declaration_batch.py` covers the per-origin command and resource boundary,
 partial-success retention, guarded graph memoization and batch-capable loader.
 An opt-in native fixture uses `MOTIVIC_NATIVE_STYLE_ROOT` naming a prepared
@@ -367,7 +370,7 @@ directory); ordinary native style fixtures remain opt-in.
 Hosted CI uses the same `Application` and task recipe as local validation and
 frozen execution, through `scripts/shared_workflow.py plan|source|native|finalize`.
 It pins shared tooling separately at
-`0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1`; mathematical pins are unchanged.
+`2fa27fe14c4df3b0fd8bc02d3e80181ad7f1bf95`; mathematical pins are unchanged.
 The workflow exports that checkout's `ci` directory in `PYTHONPATH` for source
 fixtures and keeps all committed-phase state under `$RUNNER_TEMP`, outside the
 checkout. Each phase rechecks committed source, the tooling pin, admitted recipe,
@@ -387,7 +390,7 @@ repair enrollment.
 Current workflow/recipe and independent tooling identities remain exact.
 Selection of this mode depends on that identity, never on an unsuccessful
 evidence search. Its explicit `initial-enrollment` plan includes
-all local modules and tests plus the existing client, without claiming any
+all local modules and tests, without claiming any
 historical `verified_base`. Removing an optional or orphan source from that
 scope fails validation. Other commits use `EvidenceProtocol` to require an exact
 successful native job and finalizer in an admitted ancestor run attempt.
@@ -407,7 +410,7 @@ python3 scripts/shared_workflow.py finalize --state /absolute/scratch/ci-state \
 Skip `native` only when the plan requires source alone. Finalization reconstructs
 all required task receipts before writing native mappings and the matching
 `.coverage.json` sidecar. Publication requires successful finalization; partial
-failed native checks still save dependency, root/client build and native cache
+failed native checks still save dependency, root build and native cache
 progress. Cached outputs alone supply no verification evidence. Initial full
 enrollment can expose pre-existing optional-leaf failures; such a failure blocks
 the first baseline and publication while preserving partial progress.

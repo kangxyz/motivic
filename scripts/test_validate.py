@@ -76,19 +76,29 @@ class ValidationOrderTests(unittest.TestCase):
         self.assertFalse(tasks[0]['native'])
         self.assertFalse(self.receipts.exists())
 
-    def test_client_has_own_workspace_and_setup_before_build(self):
+    def test_public_root_change_never_prepares_builds_checks_or_exports_a_client(self):
         self.write('Motivic.lean', 'import Motivic.Provider\n')
         self.write('examples/downstream/MotivicClient.lean', 'import Motivic\n')
-        tasks = self.selected(['Motivic.lean'])
-        ids = [t['id'] for t in tasks]
-        self.assertLess(ids.index('providers/declarations/Motivic'), ids.index('prepare/client'))
-        self.assertLess(ids.index('prepare/client'), ids.index('client/build'))
-        setup = next(t for t in tasks if t['id'] == 'prepare/client')
-        self.assertEqual(setup['established_paths'], ['examples/downstream/lake-manifest.json'])
-        client = next(t for t in tasks if t['id'] == 'client/build')
-        self.assertEqual(client['cwd'], str(self.root / 'examples/downstream'))
-        self.assertEqual(client['modules'], ['MotivicClient'])
-        self.assertEqual(client['command'], ['lake', '--rehash', 'build', '+MotivicClient'])
+        tasks = self.selected(['Motivic.lean'], export=True)
+        self.assertTrue(any(t['id'] == 'providers/build' for t in tasks))
+        self.assertTrue(any(t.get('check_kind') == 'declaration-exact-origin' for t in tasks))
+        self.assertFalse(any('client' in t['id'] or 'examples/downstream' in t['cwd'] for t in tasks))
+        self.assertFalse(any('MotivicClient' in ' '.join(t['command']) for t in tasks))
+        inputs = [p['path'] if isinstance(p, dict) else p for p in local_inputs(self.root)]
+        self.assertFalse(any(p.startswith('examples/downstream') for p in inputs))
+
+    def test_stale_client_selection_is_rejected(self):
+        scope = make_plan(self.root, ['Motivic/Provider.lean'])
+        scope['client'] = True
+        with self.assertRaisesRegex(ValueError, 'Separate client diagnostics'):
+            recipe(self.root, scope, 'check', self.receipts)
+
+    def test_runtime_tool_only_changes_do_not_initialize_lean(self):
+        for path in ('scripts/build.py', 'scripts/validate.py', '.github/workflows/ci.yml'):
+            tasks = self.selected([path], export=True)
+            self.assertTrue(tasks)
+            self.assertTrue(all(not task['native'] for task in tasks))
+            self.assertTrue(all(task['id'].startswith('source/') for task in tasks))
 
     def test_enrollment_precedes_selection_and_includes_untracked_and_absent_candidates(self):
         self.write('Motivic/New/Untracked.lean', 'module\n')

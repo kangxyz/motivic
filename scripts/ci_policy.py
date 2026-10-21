@@ -7,7 +7,7 @@ No legacy Motivic smoke run is admitted as a complete native baseline.
 """
 from lean_ci.github import EvidenceProtocol
 
-TOOLING_REVISION = '0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1'
+TOOLING_REVISION = '2fa27fe14c4df3b0fd8bc02d3e80181ad7f1bf95'
 CORE_ENTRYPOINTS = {
     'scripts/build.py': '2c982b802bc7b5a0dcb0d74de4e8ea39abbe0b41f1838757e1a7685f71de43c5',
     'scripts/build_client.py': 'c47886425b6b0dc0f341695dbd42e838f94434c9e0c626acfb3405632b937e9c',

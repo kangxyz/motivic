@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Authors: kangxyz
-"""Run Motivic final checks through the independently pinned shared Lean recipe."""
+"""Run incremental in-package checks through the pinned shared Lean recipe."""
 import argparse
 import json
 from pathlib import Path

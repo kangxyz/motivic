@@ -1,5 +1,19 @@
 # Development
 
+## Mathematical trust
+
+Claimed closed results require source correspondence, explicit hypotheses and
+foundation inputs, no transitive `sorry`, and axiom dependencies limited to
+`propext`, `Classical.choice`, and `Quot.sound`. Custom and native-computation
+axioms cannot discharge a proof. Preserve production dependency boundaries and
+identify the source, pinned toolchain/dependencies and successful build. Retain
+the existing selected-origin transitive axiom audit in ordinary final validation;
+reuse compatible unchanged evidence and check changed or uncovered closure.
+Source token checks and ordinary lint do not supply transitive axiom coverage.
+This is an existing mathematical trust predicate, not kernel replay or an added
+acceptance stage. Independent mathematical review and writing acceptance retain
+their governing requirements; conditional theorems retain their premises.
+
 ## Normal task
 
 In a prepared checkout, keep a coherent proof and its compiler repair with one
@@ -83,13 +97,20 @@ and needed affected consumers and handle their diagnostics:
 python3 scripts/build.py Motivic.Transfers.Cohomology.Basic
 ```
 
-Incremental validation covers all applicable categories, not compilation alone:
+Routine formalization uses incremental native builds, selected declaration/style
+lint and relevant in-package tests, retaining source correctness, no-placeholder
+checks and process/resource limits. Do not automatically add kernel replay,
+client preparation/build/audit or separate execution-acceptance chains, including
+for `--full`, merge, publication or adoption. Independent mathematical review and
+writing acceptance are unchanged.
+
+Incremental validation covers the applicable categories:
 
 | Category | Incremental coverage |
 |---|---|
 | Compilation | Changed modules, genuinely missing required dependencies, and needed affected consumers |
 | Lint | Compiler-integrated lint, declaration checks for affected defining origins, and text/style checks for selected source files |
-| Tests and clients | Affected `MotivicTest` regression/property modules and meaningful public/downstream client tests; affected tooling tests when tools change |
+| Tests | Relevant affected `MotivicTest` regression/property modules; affected tooling fixtures when tools change |
 | Source and structure | Affected import/enrollment, layout, pin, option, heartbeat and other source-policy checks |
 | Trust boundary | Axiom/input checks whose premises or coverage changed, reusing compatible unchanged evidence |
 
@@ -97,6 +118,10 @@ The validation adapter does not run a package-wide transitive axiom audit.
 Selected test modules may audit their named declarations; separately recorded
 trust checks cover only their stated source, declarations and assumptions.
 The structural token scan and ordinary declaration lint do not supply that audit.
+These legacy adapter limits do not waive the production axiom-closure requirement
+or the existing public native CI audit. Reuse compatible evidence or cover the
+changed/uncovered closure through the existing audit path; do not add replay,
+client checks or another acceptance chain.
 
 Keep compiler-integrated checks enabled during development. Run independent
 lint and tests only in the task's final validation before delivery, covering its
@@ -132,8 +157,8 @@ applies. Neither admission depends on a failed evidence search. The
 [script guide](../scripts/README.md) owns the precise path boundary.
 That plan has no historical `verified_base`; it enrolls
 every local production module, every local test (including orphan leaves outside
-the facades), and the existing independent client. Production providers precede
-the remaining tests and client, retaining the ordinary exact-origin declaration
+the facades). Production providers precede
+the remaining tests, retaining the ordinary exact-origin declaration
 and selected-source style predicates. All tooling fixtures run at enrollment.
 Only the successful native phase plus finalization can supply the first future
 baseline. Other heads require a genuinely verified native ancestor;
@@ -144,23 +169,17 @@ can commit the reviewed configuration hashes and local seeds in
 `.github/dependency-scope.json`; the [script guide](../scripts/README.md) defines
 the checked format used by automatic CI. With an admitted verified baseline,
 documentation-only affected scopes run static checks without installing Lean;
-initial enrollment always requires its complete native scope. Execution-script
-and CI-workflow changes run affected
-tooling fixtures and, when no native scope is already selected, compile and
-declaration/style-lint the exact curated `Motivic` and `MotivicTest` facade
-modules and check the independent client. This smoke uses module selectors,
-without whole-library expansion or unchanged test-prerequisite expansion.
-Existing Lean, pin-upgrade and manual native scopes remain exact; tool changes
-do not add extra roots to those selections. Pure Python fixture changes retain
-their affected fixture checks without native smoke.
+initial enrollment retains its explicit local native scope. Execution-script
+and CI-workflow changes run affected tooling fixtures and source checks;
+they do not add unrelated native roots. Existing Lean, pin-upgrade and manual
+native scopes retain their exact in-package selection.
 The final route compiles and declaration/style-lints providers before expensive
-affected consumers, tests and clients. It also declaration-lints the remaining
+affected in-package consumers and tests. It also declaration-lints the remaining
 affected origins after their builds; text/style selection has its own narrower
 file scope. Test-only edits retain their direct
 production prerequisite checks. Linter runtime setup selects only its actual tooling prerequisites, with
 separate guarded receipts; missing remaining prerequisites fail closed.
-Before native final checking, prepare ignored root `.lake` inputs and, for a
-selected client, run `python3 scripts/shared_workflow.py prepare-client`. This
+Before native final checking, prepare ignored root `.lake` inputs. This
 precedes the source snapshot and preserves strict absent-config observations.
 Batteries declaration checks still use separate environments per origin; no
 union-environment batch or equivalence is claimed. The shared scheduler records
@@ -182,8 +201,8 @@ python3 scripts/build.py MotivicTest.OrdinaryCohomologyTransfers
 ```
 
 This consumer checks actual graph/composition maps, original ordinary group
-identity and standard-axiom dependencies. Select `MotivicTest.PublicAPI` or the
-independent client below when its public-import interface is affected.
+identity and standard-axiom dependencies. Select the in-package
+`MotivicTest.PublicAPI` when its public-import interface is affected.
 
 The repository-wide structural diagnostic `python3 scripts/check_repository.py`
 verifies names, pins, imports, cycles and forbidden proof placeholders. Select
@@ -196,8 +215,7 @@ and trust evidence and match dependency identities before reuse. Do not delete
 caches or rebuild the whole library merely for publication, relocation, a new
 receipt, or a changed pin. A missing artifact first calls for a matching cache;
 compile genuinely missing required dependencies when no matching cache exists.
-Whole-library rebuilding or full dependency replay belongs only to an explicit
-request for that exact scope or exceptional recovery from diagnosed incompatible,
+Whole-library rebuilding belongs only to an explicit request for that exact scope or exceptional recovery from diagnosed incompatible,
 corrupt or untrustworthy artifacts in that closure with no usable matching cache.
 Keep recovery inside the actual invalidated owned scope. Complete publication
 coverage may combine compatible existing evidence and new affected-scope checks;
@@ -213,8 +231,8 @@ targets, or the explicit full diagnostic. A configured workflow is not evidence 
 
 `examples/downstream` is a separate Lake package requiring this repository by
 relative path. Its `Motivic` import checks the public correspondence category
-and the canonical Milnor degree-zero equivalence. After the guarded public
-build, compile the independent package with the same pinned dependencies:
+and the canonical Milnor degree-zero equivalence. For an explicitly requested
+client diagnostic, compile it with the same pinned dependencies:
 
 ```sh
 python3 scripts/build.py Motivic
@@ -224,11 +242,11 @@ python3 scripts/build_client.py
 The client helper prepares an inherited manifest, shares this checkout's canonical
 package directory, and keeps its build outputs in the client's own `.lake/build`.
 It uses the same resource caps and rehashed native cache checks as the library
-build; it does not link another checkout's mutable outputs. CI and local final validation check it after provider checks and selected public
-builds when client source/configuration or its public import is affected.
-Publication reuses those checks and exact selected outputs; it adds no client
-or core-root replay. An affected client failure blocks publication. For a consumer changing to a
-Git dependency, pin a reviewed repository commit rather than a moving branch.
+build; it does not link another checkout's mutable outputs. This is a standalone
+diagnostic for a specific client-check request. Routine validation, `--full`,
+merge, publication and adoption do not select or prepare this client.
+For a consumer changing to a Git dependency, pin a reviewed repository commit
+rather than a moving branch.
 
 ## Source and contribution conventions
 

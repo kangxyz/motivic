@@ -1,11 +1,11 @@
 # Authors: kangxyz
 """Committed hosted migration fixtures; no Lean, network or external caches."""
 import copy
+from functools import lru_cache
 import hashlib
 import os
 import re
 from pathlib import Path
-import shutil
 import subprocess
 import tempfile
 import unittest
@@ -16,6 +16,15 @@ from shared_workflow import (INITIAL_PARENT, INITIAL_PATHS, REPAIR_PARENT, FOLLO
                              MotivicAdapter, admitted_baseline, hosted_scope, initial_identity)
 
 ROOT = Path(__file__).resolve().parents[1]
+# The retired adapter policy admits this committed producer only. These bytes
+# exercise historical admission/orchestration; they do not admit current edits.
+HISTORICAL_PRODUCER = '3df0a472157b88195fd8a1fc318f4766634825c2'
+HISTORICAL_TOOLING_REVISION = '0caa3a890c9cbeb7ade5e4f804203b31b5b0b3b1'
+
+
+@lru_cache(maxsize=None)
+def historical_file(path):
+    return subprocess.check_output(['git', 'show', HISTORICAL_PRODUCER + ':' + path], cwd=ROOT)
 
 
 class API:
@@ -53,7 +62,7 @@ class HostedEnrollmentTests(unittest.TestCase):
         for path in [*CORE_ENTRYPOINTS, PROTOCOL.workflow_path, 'scripts/ci_policy.py']:
             target = self.root / path
             target.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(ROOT / path, target)
+            target.write_bytes(historical_file(path))
         self.git('init', '-q')
         self.git('config', 'user.name', 'CI fixture')
         self.git('config', 'user.email', 'fixture@example.invalid')
@@ -64,7 +73,8 @@ class HostedEnrollmentTests(unittest.TestCase):
         self.head = self.git('rev-parse', 'HEAD')
         self.addCleanup(patch.stopall)
         patch('shared_workflow.INITIAL_PARENT', self.parent).start()
-        patch.dict(os.environ, MOTIVIC_TOOLING_REVISION=TOOLING_REVISION).start()
+        patch('ci_policy.TOOLING_REVISION', HISTORICAL_TOOLING_REVISION).start()
+        patch.dict(os.environ, MOTIVIC_TOOLING_REVISION=HISTORICAL_TOOLING_REVISION).start()
         self.adapter = MotivicAdapter()
 
     def write(self, path, value):
@@ -94,7 +104,7 @@ class HostedEnrollmentTests(unittest.TestCase):
         self.assertNotIn('lake-manifest.json', INITIAL_PATHS)
         self.assertNotIn('Motivic/Orphan.lean', INITIAL_PATHS)
 
-    def test_initial_scope_enrolls_orphan_modules_tests_and_client_without_fake_history(self):
+    def test_initial_scope_enrolls_orphan_modules_and_tests_without_client_or_fake_history(self):
         with patch('shared_workflow.admitted_baseline', side_effect=AssertionError('API fallback')):
             plan = self.plan()
         self.assertEqual(plan['baseline']['kind'], 'initial-enrollment')
@@ -105,7 +115,7 @@ class HostedEnrollmentTests(unittest.TestCase):
         self.assertEqual(scope['providers'], ['Motivic', 'Motivic.Orphan'])
         self.assertEqual(scope['lint'], scope['targets'])
         self.assertEqual(scope['tool_tests'], ['test_*.py'])
-        self.assertTrue(scope['client'])
+        self.assertFalse(scope['client'])
         self.assertFalse(scope['full'])
         self.assertEqual(plan['required_phases'], ['source', 'native'])
         tasks = self.adapter.tasks(self.root, plan, 'native', Path(self.tmp.name) / 'native')
@@ -115,9 +125,17 @@ class HostedEnrollmentTests(unittest.TestCase):
                          [[name] for name in scope['providers']])
         self.assertTrue(all(ids.index(task['id']) < ids.index('consumers/build')
                             for task in provider_checks))
-        self.assertLess(ids.index('consumers/build'), ids.index('client/build'))
+        self.assertFalse(any('client' in task['id'] for task in tasks))
         self.assertTrue(all(t['check_kind'] == 'declaration-exact-origin'
                             for t in tasks if t.get('check_kind', '').startswith('declaration')))
+
+    def test_initial_scope_needs_no_client_and_keeps_every_in_package_module(self):
+        (self.root / 'examples/downstream/MotivicClient.lean').unlink()
+        scope = hosted_scope(self.root, {'kind': 'initial-enrollment'})
+        self.assertEqual(scope['targets'], ['Motivic', 'Motivic.Orphan', 'MotivicTest', 'MotivicTest.Orphan'])
+        self.assertEqual(scope['lint'], scope['targets'])
+        self.assertFalse(scope['client'])
+        self.assertTrue(scope['native'])
 
     def test_initial_scope_and_repository_revalidated_at_every_phase(self):
         plan = self.plan()
@@ -169,7 +187,7 @@ class HostedEnrollmentTests(unittest.TestCase):
                                                   'MotivicTest', 'MotivicTest.Orphan'])
         self.assertEqual(plan['scope']['lint'], plan['scope']['targets'])
         self.assertEqual(plan['scope']['tool_tests'], ['test_*.py'])
-        self.assertTrue(plan['scope']['client'])
+        self.assertFalse(plan['scope']['client'])
         self.assertEqual(plan['required_phases'], ['source', 'native'])
 
     def test_direct_repair_admits_only_the_exact_new_batch_fixture_owner(self):
@@ -205,7 +223,7 @@ class HostedEnrollmentTests(unittest.TestCase):
             self.assertIn('MotivicTest.Orphan', scope['targets'])
             self.assertEqual(scope['lint'], scope['targets'])
             self.assertEqual(scope['tool_tests'], ['test_*.py'])
-            self.assertTrue(scope['client'])
+            self.assertFalse(scope['client'])
             self.assertFalse(scope['full'])
             for key in ('targets', 'providers', 'lint'):
                 bad = copy.deepcopy(plan)
@@ -305,7 +323,7 @@ class HostedEnrollmentTests(unittest.TestCase):
 
     def test_clean_source_and_independent_tooling_pin_guards_remain_strict(self):
         plan = self.plan()
-        self.assertEqual(plan['tooling_revision'], TOOLING_REVISION)
+        self.assertEqual(plan['tooling_revision'], HISTORICAL_TOOLING_REVISION)
         self.assertIn('lake-manifest.json', plan['source_files'])
         self.assertIn('scripts/ci_policy.py', plan['source_files'])
         before = (self.root / 'lake-manifest.json').read_bytes()
@@ -328,27 +346,37 @@ class HostedEnrollmentTests(unittest.TestCase):
         self.assertFalse(output.exists())
         self.assertFalse(sidecar.exists())
 
-    def test_current_identity_is_exact_and_old_workflow_is_not_admitted(self):
+    def test_historical_identity_is_exact_and_current_caller_is_not_legacy_admitted(self):
         from lean_ci.github import workflow_kind
-        workflow = (ROOT / PROTOCOL.workflow_path).read_bytes()
+        workflow = historical_file(PROTOCOL.workflow_path)
         self.assertEqual(workflow_kind(workflow, PROTOCOL), 'core')
         self.assertIsNone(workflow_kind(workflow + b'\n', PROTOCOL))
-        old = subprocess.check_output(['git', 'show', INITIAL_PARENT + ':' + PROTOCOL.workflow_path], cwd=ROOT)
-        self.assertIsNone(workflow_kind(old, PROTOCOL))
+        self.assertIsNone(workflow_kind((ROOT / PROTOCOL.workflow_path).read_bytes(), PROTOCOL))
         for path, expected in CORE_ENTRYPOINTS.items():
-            self.assertEqual(hashlib.sha256((ROOT / path).read_bytes()).hexdigest(), expected, path)
+            self.assertEqual(hashlib.sha256(historical_file(path)).hexdigest(), expected, path)
+
 
 
 class HostedWorkflowTests(unittest.TestCase):
-    def test_job_environment_uses_only_server_available_contexts(self):
+    def test_current_public_entry_is_the_unchanged_native_caller(self):
         workflow = (ROOT / PROTOCOL.workflow_path).read_text()
+        self.assertIn('uses: kangxyz/aglib/.github/workflows/lean-ci.yml@'
+                      '2fa27fe14c4df3b0fd8bc02d3e80181ad7f1bf95', workflow)
+        self.assertEqual(TOOLING_REVISION, '2fa27fe14c4df3b0fd8bc02d3e80181ad7f1bf95')
+        self.assertIn('build-targets: Motivic', workflow)
+        self.assertNotIn('scripts/shared_workflow.py', workflow)
+        self.assertNotIn('prepare-client', workflow)
+        self.assertNotIn('cancel-in-progress: true', workflow)
+
+    def test_historical_job_environment_uses_only_server_available_contexts(self):
+        workflow = historical_file(PROTOCOL.workflow_path).decode()
         environment = workflow.split('    env:\n', 1)[1].split('    steps:\n', 1)[0]
         contexts = set(re.findall(r'\$\{\{\s*([A-Za-z_][A-Za-z0-9_]*)\.', environment))
         self.assertLessEqual(contexts, {'github', 'needs', 'strategy', 'matrix', 'vars', 'secrets', 'inputs'})
         self.assertIn('echo "MOTIVIC_CI_STATE=$RUNNER_TEMP/motivic-ci-state" >> "$GITHUB_ENV"', workflow)
 
-    def test_publication_requires_finalization_and_cache_saves_keep_partial_progress(self):
-        workflow = (ROOT / PROTOCOL.workflow_path).read_text()
+    def test_historical_publication_requires_finalization_and_cache_saves_keep_partial_progress(self):
+        workflow = historical_file(PROTOCOL.workflow_path).decode()
         stage = workflow.split('      - name: Stage native artifacts', 1)[1].split('      - name:', 1)[0]
         self.assertIn("steps.finalize.outcome == 'success'", stage)
         self.assertIn('coverage: ${{ runner.temp }}/native-outputs.jsonl.coverage.json', stage)
@@ -362,9 +390,9 @@ class HostedWorkflowTests(unittest.TestCase):
             self.assertNotIn("steps.checks.outcome == 'success'", condition)
         self.assertNotIn('github.event.before', workflow)
         self.assertNotIn('scripts/validate.py', workflow)
-        self.assertEqual(workflow.count('ref: ' + TOOLING_REVISION), 2)
+        self.assertEqual(workflow.count('ref: ' + HISTORICAL_TOOLING_REVISION), 2)
 
-    def test_progress_cache_restores_exact_namespace_and_saves_failed_prefix(self):
+    def test_historical_progress_cache_restores_exact_namespace_and_saves_failed_prefix(self):
         from lean_ci.cli import main as cli_main
         # The actual core CLI accepts the same explicit path used by the action.
         application = unittest.mock.Mock()
@@ -375,7 +403,7 @@ class HostedWorkflowTests(unittest.TestCase):
                                       application=application), 0)
         application.run_phase.assert_called_once_with(
             Path('/tmp/state'), 'native', Path('/tmp/motivic-check-progress'))
-        workflow = (ROOT / PROTOCOL.workflow_path).read_text()
+        workflow = historical_file(PROTOCOL.workflow_path).decode()
         restore = workflow.split('      - name: Restore compatible individual check progress\n', 1)[1]
         restore = restore.split('      - name:', 1)[0]
         save = workflow.split('      - name: Save individual check progress,', 1)[1]
