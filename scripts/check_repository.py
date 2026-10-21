@@ -39,6 +39,10 @@ def check_configuration(root: Path) -> list[str]:
             errors.append('Lean libraries must be exactly Motivic and MotivicTest')
         if config.get('testDriver') != 'MotivicTest':
             errors.append('testDriver must be MotivicTest')
+        test_libraries = [entry for entry in config.get('lean_lib', [])
+                          if entry.get('name') == 'MotivicTest']
+        if len(test_libraries) != 1 or test_libraries[0].get('globs') != ['MotivicTest.+']:
+            errors.append('MotivicTest must discover test modules with globs = ["MotivicTest.+"]')
         defaults = config.get('defaultTargets', [])
         if 'Motivic' not in defaults or not set(defaults) <= libraries:
             errors.append('defaultTargets must include Motivic and use only declared libraries')
@@ -96,9 +100,8 @@ def check_sources(root: Path) -> tuple[list[str], int]:
     sources = source_modules(root)
     clients = client_sources(root)
     client_roots = {name.split('.')[0] for name in clients}
-    for name in ('Motivic', 'MotivicTest'):
-        if name not in sources:
-            errors.append(f'Missing public source root: {name}.lean')
+    if 'Motivic' not in sources:
+        errors.append('Missing public source root: Motivic.lean')
     for name, path in sorted(sources.items()):
         source = path.read_text()
         clean = strip_comments_and_strings(source)
