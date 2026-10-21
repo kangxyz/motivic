@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Cohomology.A1.LocalVanishing.H1.Pencil.Transport
 public import Motivic.AlgebraicGeometry.Correspondences.Pencils.NormalizedCurve.CorrectingEndpoints

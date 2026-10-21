@@ -89,12 +89,14 @@ canonical upstream reuse and actual consumers.
 
 ## Public surface and model extension
 
-`Motivic.lean` selects four curated entries: `Motivic.Cor`, `Motivic.Transfers`,
-`Motivic.Cohomology` and `Motivic.KTheory.MilnorK`. Keep these small. Facades
-contain precise public imports and a scope comment; implementation leaves
-import the exact lower leaves they use. Optional computations and stronger
-theorems have focused entries. Tests, separate clients, provenance and scratch
-never supply production prerequisites.
+`Motivic.lean` is the generated entry for all enrolled production modules; CI
+checks it with Mathlib's `mk_all`. The focused core entries are `Motivic.Cor`,
+`Motivic.Transfers`, `Motivic.Cohomology` and `Motivic.KTheory.MilnorK`.
+Family facades contain precise public imports and a scope comment;
+implementation leaves import the exact lower leaves they use. Computations
+and stronger theorems have focused entries with their own hypotheses.
+Tests, separate clients, provenance and scratch never supply production
+prerequisites.
 
 The current model lives under `Cohomology/SuslinVoevodsky`. Generic coefficient
 operations have their general owners; the current model's finite-coefficient

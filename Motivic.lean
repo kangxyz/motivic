@@ -1229,6 +1229,8 @@ public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Endpoints
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Field
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Laurent
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.LaurentChart
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.LocalizationHistory
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeCover
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeMiddleInput
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalBase
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeOriginalCylinder
@@ -1297,6 +1299,7 @@ public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.GermRestric
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.HenselianEvaluation
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientCover
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.NativeCoefficientFieldLifting
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.OriginalNativeCover
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.Basic
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.ChosenLifting
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.Nisnevich.Point.CommonRefinement

@@ -31,7 +31,7 @@ universe u w
 namespace Motivic.PresheafWithTransfers
 open Motivic.Cor
 
-attribute [local instance] Cor.instSmoothOfSmoothOfRelativeDimensionOfNatNat
+attribute [local instance] Cor.nativeOriginalPairTransferActionSmooth
 
 variable (R₀ : Type u) [CommRing R₀] [IsDomain R₀] [IsIntegrallyClosed R₀]
   [IsNoetherianRing R₀] {Y₀ : Scheme.{u}} [IsAffine Y₀]

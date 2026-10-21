@@ -5,7 +5,6 @@ Authors: kangxyz
 -/
 module
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.PencilMaps
-public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.PencilMaps
 
 /-! # Literal smooth-site squares of the base-only affine-line restriction -/
 @[expose] public noncomputable section

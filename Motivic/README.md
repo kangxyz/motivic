@@ -1,18 +1,18 @@
 # Source families and public imports
 
-[Motivic.lean](../Motivic.lean) selects four curated entries. Use an exact lower
-leaf for implementation work or a focused facade for its public interface.
-Module paths identify source owners; native declaration namespaces identify
-mathematical objects.
+[Motivic.lean](../Motivic.lean) is the generated entry for all production modules.
+Use an exact lower leaf for implementation work or a focused facade for its
+public interface. Module paths identify source owners; native declaration
+namespaces identify mathematical objects.
 
-| Core import | Actual interface |
+| Focused core import | Actual interface |
 | --- | --- |
 | `Motivic.Cor` | Signed finite correspondences on smooth separated finite-type schemes over a field; [guide](AlgebraicGeometry/Correspondences/README.md) |
 | `Motivic.Transfers` | Original ordinary Nisnevich cohomology with transfers in every natural degree, retaining ordinary `HasExt`; [guide](Transfers/README.md) |
 | `Motivic.Cohomology` | Curated cohomology interface and the current motivic model; [guide](Cohomology/README.md) |
 | `Motivic.KTheory.MilnorK` | Small bridge to independent Aglib's canonical Milnor theory; [guide](KTheory/README.md) |
 
-## Focused optional imports
+## Focused theorem and computation imports
 
 | Exact import | Scope and conditions |
 | --- | --- |
@@ -26,9 +26,9 @@ mathematical objects.
 | `Motivic.Cohomology.AffineLine.GenericBase` | Classwise generic-base vanishing over a smooth integral affine base, with the original whole line and restrictions |
 | `Motivic.Cohomology.A1.CartierBoundary` | Genuine higher direct-image vanishing retaining stated current-degree HI and boundary-Epi inputs |
 | `Motivic.KTheory.MilnorK.Norms` | Aglib characteristic-zero finite-extension norms with original tower data |
-| `Motivic.Cohomology.Diagonal` | Optional characteristic-zero diagonal comparison; [guide](Cohomology/Diagonal/README.md) |
-| `Motivic.Cohomology.WeightOne` | Optional original unit-sheaf and hypercohomology comparisons; [guide](Cohomology/WeightOne/README.md) |
-| `Motivic.Cohomology.WeightTwo` | Opt-in implemented weight-two computation family; [family guide](Cohomology/WeightTwo/README.md) |
+| `Motivic.Cohomology.Diagonal` | Characteristic-zero diagonal comparison; [guide](Cohomology/Diagonal/README.md) |
+| `Motivic.Cohomology.WeightOne` | Original unit-sheaf and hypercohomology comparisons; [guide](Cohomology/WeightOne/README.md) |
+| `Motivic.Cohomology.WeightTwo` | Implemented weight-two computation family; [family guide](Cohomology/WeightTwo/README.md) |
 
 The [20 October sheafification intake](../docs/provenance/hi-presheaf-sheafification-20261020/README.md)
 records the source identities, ordinary mathematical review relative to its
@@ -53,5 +53,6 @@ are host constructions. Their applications consume general primitives.
 
 Use the [documentation routes](../docs/README.md) for theorem search, extension
 and validation. [Verification](../docs/VERIFICATION.md) and
-[provenance](../docs/provenance/README.md) retain identified evidence boundaries;
-the curated root does not import or certify every retained leaf.
+[provenance](../docs/provenance/README.md) retain identified evidence boundaries.
+Source-family guides record theorem hypotheses and remaining inputs;
+verification records identify the checks actually run.

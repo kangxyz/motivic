@@ -143,11 +143,13 @@ def MiddleRelations (aSite : G.siteA ⟶ G.siteX) (delta : G.siteA ⟶ G.siteQ)
 end AlgebraicGeometry.Scheme.RelativeCurvePencil.OriginalMiddleInput
 
 namespace AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
-local instance (R : Type u) [CommRing R] :
+/-- The relative-dimension instance used in this module. -/
+local instance pencilsOriginalMiddleInputSmoothRelativeDimension1 (R : Type u) [CommRing R] :
     SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
   Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R
 
-local instance (R : Type u) [CommRing R] :
+/-- The relative-dimension instance used in this module. -/
+local instance pencilsOriginalMiddleInputSmoothRelativeDimension2 (R : Type u) [CommRing R] :
     SmoothOfRelativeDimension 1 (chart R 0 ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) := by
   rw [chart_toSpec]
   infer_instance

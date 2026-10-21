@@ -189,15 +189,29 @@ equality on a given Nisnevich or open cover.
 uses the actual native component cover for that detection. The older individual
 refined-cover APIs retain their displayed coordinates and restriction premises.
 
-[OriginalHistory](Norm/NativeRefinement/OriginalHistory.lean) binds the actual
-source and target suppliers and the raw E3 difference to one normalization
-history. [OriginalHistoryMiddleRelations](Pencils/OriginalHistoryMiddleRelations.lean)
-then proves the simultaneous image-action relations on those same witnesses.
-[OriginalHistoryLine](Norm/NativeRefinement/OriginalHistoryLine.lean) and
+[OriginalHistory](Norm/NativeRefinement/OriginalHistory.lean) packages the
+representative geometry, first-localization hypotheses and final coefficient
+choice in `OriginalRepresentativeGeometry`, `OriginalHistorySeedData` and
+`OriginalHistoryData`. Their namespace is
+`Motivic.PresheafWithTransfers.OriginalHistorySiteLifting`.
+`OriginalHistorySeedData.toSeed` and `OriginalHistoryData.history` reuse the
+generic `OriginalLocalizationSeed` and `OriginalLocalizationHistory` records.
+`OriginalHistoryContext` binds `data`, `boundary`, `source` and `target` once;
+its `fieldMap`, `native` and `ancestry` retain that same history and its maps.
+
+[OriginalHistoryMiddleRelations](Pencils/OriginalHistoryMiddleRelations.lean)
+uses `NativeOriginalMiddleInput.transfer_rawDifference_zero_of_twoLocalizations`
+with the actual two-localization source. Its abstract-history specialization
+discharges the source equality by `rfl` and supplies the simultaneous
+image-action relations. [OriginalHistoryLine](Norm/NativeRefinement/OriginalHistoryLine.lean),
 [OriginalHistoryRestrictions](Norm/NativeRefinement/OriginalHistoryRestrictions.lean)
-construct the native-owned cover and original restriction squares for the same
-line. The host lifting assembly consumes them with the original matching
-representatives, preserving the E3 difference sign and every graph/unit map.
+consume one `C : OriginalHistoryContext k`. The host lifting assembly accepts
+`OriginalHistoryData`, its boundary and the existing `SourceSections` and
+`TargetSections` suppliers. It packages their witnesses into that context while
+the data is abstract; the concrete whole-cylinder producer passes its original
+suppliers directly.
+They retain the same line, native-owned cover, original restriction squares and
+matching representatives, with the E3 difference sign and every graph/unit map.
 
 The [difference-form middle-lift adapter](../../../Cohomology/A1/Sheafification/README.md)
 continues to accept explicit cover and E2/E3-difference/E4/E5 relations. The
@@ -207,3 +221,11 @@ sheafification HI. Perfectness and ordinary HasExt give strict invariance in
 all degrees; nonperfect strict invariance remains outside this result.
 Superseded external comparison attempts and diagnostics are preserved in the
 [integration recovery archive](../../../../docs/provenance/hi-presheaf-sheafification-20261020/README.md).
+
+The [abstract-history refactor record](../../../../docs/provenance/hi-presheaf-sheafification-20261020/README.md#abstract-history-refactor)
+separates the preserved concrete adapters and their validation from the changed
+source. The rewritten history, middle relations and both lifting consumers
+compile successfully. Incremental library/package-test builds, shared declaration
+lint, builtin lint, generated-entry and production text-style checks pass within
+the recorded source scopes.
+The public theorem signatures retain their stated hypotheses.

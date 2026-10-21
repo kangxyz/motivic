@@ -34,7 +34,7 @@ universe u w
 namespace Motivic.PresheafWithTransfers
 open Motivic.Cor
 
-attribute [local instance] Cor.instSmoothOfSmoothOfRelativeDimensionOfNatNat
+attribute [local instance] Cor.nativeOriginalPairTransferActionSmooth
 
 variable (R₀ : Type u) [CommRing R₀] [IsDomain R₀] [IsIntegrallyClosed R₀]
   [IsNoetherianRing R₀] {Y₀ : Scheme.{u}} [IsAffine Y₀]
@@ -126,7 +126,7 @@ variable {B : Scheme.{u}} [IsAffine B]
   (t : Spec (.of R) ⟶ Spec (.of k)) [Smooth t]
 
 attribute [local instance]
-  instSmoothOfRelativeDimensionOfNatNatCompSchemeChartULiftFinToSpec_1
+  nativeSectionPairDifferenceZeroSmoothRelativeDimension
 
 include hret hcover hbI hbE hFa hFb hpairA hsmall hcoverA in
 /-- Descend the zero action of the unchanged global original difference.

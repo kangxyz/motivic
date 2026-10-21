@@ -33,7 +33,7 @@ universe u w
 namespace Motivic.PresheafWithTransfers
 open Scheme.RelativeCurvePencil
 
-attribute [local instance] Cor.instSmoothOfSmoothOfRelativeDimensionOfNatNat
+attribute [local instance] Cor.nativeOriginalPairTransferActionSmooth
 
 attribute [local instance] nativeSectionPair_small_smooth
 

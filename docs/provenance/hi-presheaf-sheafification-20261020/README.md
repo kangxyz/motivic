@@ -13,7 +13,8 @@ The archive includes cumulative proof snapshots, superseded site-comparison atte
 
 The maintained extraction keeps each new general record in one native owner and retains the selected original-history, native-cover, restriction and action proofs. Five obsolete external helper-module prefixes are omitted from the production extraction; their original sources are preserved in the recovery archive. General geometry and intentionally conditional lifting interfaces remain maintained because they have independent mathematical uses.
 
-The current proof route and hypotheses are in the [sheafification guide](../../../Motivic/Cohomology/A1/Sheafification/README.md). Current compilation, lint and trust coverage is recorded below. Historical metadata in this directory is evidence, not an instruction to execute archived workflows.
+The current proof route and hypotheses are in the [sheafification guide](../../../Motivic/Cohomology/A1/Sheafification/README.md). Source-bound compilation, lint and trust coverage is recorded below; the
+abstract-history refactor has its own validation boundary. Historical metadata in this directory is evidence, not an instruction to execute archived workflows.
 
 ## Incoming maintained source identity
 
@@ -67,7 +68,83 @@ These are incoming hashes before current-pin repairs and documentation updates; 
 | `Motivic/Transfers/Presheaf/Actions/Pencils/OriginalHistoryMiddleRelations.lean` | `b3d2c2bf2b866d16650c59dbfb9e7da4d479fd890280275829453cb1c637deac` |
 | `Motivic/Transfers/Presheaf/Actions/Pencils/OriginalMiddleInput.lean` | `e887d807441116388f3adcfe677b099564018960d4957b64ce6a425aa36a6dc9` |
 
+## Abstract-history refactor
+
+The concrete adapters before abstraction are preserved as non-imported
+`.lean.txt` recovery copies in [history-before-abstraction](history-before-abstraction/README.md).
+That snapshot records HEAD `57e94dc5db72b38129032ed2d39a2fd5117e9f9e` plus the
+then-current CI repairs and gives each copied source's SHA-256. It is the
+pre-refactor source basis for the successful incremental library and package-test
+run (8006 jobs), Batteries shared declaration lint and Lake builtin lint. Two
+source-script checks initially lacked Cli/ImportGraph tool artifacts; those
+artifacts were subsequently prepared. Preparation alone supplies no successful
+source-script check result.
+
+The maintained adapters now use `OriginalRepresentativeGeometry`,
+`OriginalHistorySeedData`, `OriginalHistoryData` and `OriginalHistoryContext` in
+`Motivic.PresheafWithTransfers.OriginalHistorySiteLifting`. The context stores
+`data`, `boundary`, `source` and `target` and supplies their common `fieldMap`,
+`native` and `ancestry`. The generic `OriginalLocalizationHistory` and
+`OriginalLocalizationInput` interfaces are reused. Line and restriction adapters
+take one context. The history's `SourceSections` and `TargetSections` name the
+unchanged rich supplier predicates. The lifting producer packages their witnesses
+over abstract `OriginalHistoryData`; `WholeCylinderLifting` passes its original
+suppliers directly, without unpacking the witness records in its concrete context.
+The generic [localization endpoint provider](../../../Motivic/Aglib/AlgebraicGeometry/Sites/Smooth/AffineLine/LocalizationHistory.lean)
+proves `SourceWitnesses.toNative_lineSite_eq` and `toNative_sourceMap_eq` on
+abstract witnesses. The middle-relations adapter uses
+`NativeOriginalMiddleInput.transfer_rawDifference_zero_of_twoLocalizations`;
+the history's source equality is discharged by `rfl`.
+
+Fresh native checks passed for the complete affected chain in run
+`remote-95df3fc6263f42f3b1d78b428daa2120`: shared history and endpoint providers,
+`OriginalHistoryLine` (51 seconds), `OriginalHistoryRestrictions` (5.8 seconds),
+middle relations (4.6 seconds), native-action lifting (8.9 seconds), history
+lifting (36 seconds) and whole-cylinder lifting (141 seconds).
+The retained Lean source content has SHA-256
+`395417e19b32e9ec4e4b7b68a60bc01a16ed44ea9d56c4b8d7a5b9681e3ad237`.
+Final native validation passed on this retained source in one batch,
+`remote-fede19f54895450987a8a984342dfe57`. It reused compatible artifacts,
+rebuilt the affected library/test closure and imported the production umbrella
+once per declaration-linter framework. No clean build or extra replay/client
+chain was added.
+
+| Check | Checked scope | Result |
+| --- | --- | --- |
+| Incremental library and package tests | `lake --rehash build Motivic MotivicTest`, 8007 jobs | Exit 0 |
+| Generated production entry | Native Mathlib `mk_all --lib Motivic --check` | Exit 0 |
+| Production text style | Native Mathlib `lint-style Motivic` | Exit 0 |
+| Shared declaration lint | Native Batteries `runLinter --no-build Motivic --trace` | Exit 0 |
+| Builtin lint | `lake --no-build lint --builtin-only Motivic` | Exit 0 |
+
+The native checker executables were reused read-only after matching Lean
+4.34.1, the dependency revisions and exact driver sources against this
+workspace. Mathlib is `d13f23b723b8a846827a245b89c10fc7d3f11612`; Batteries is
+`f2effa3d803fda822b1f97b806c47cf2adfbcbc2`. The batch records the three driver
+hashes. Initial source-script launch failures and the separate performance
+probe are not successful checks. Hosted CI is reported separately.
+
+The [performance guide](../../PERFORMANCE.md) records earlier repairs, timing
+comparisons, the supplier repair and unsuccessful constructor variants. Earlier
+compilation, lint and
+review evidence below retains its original source basis and does not assign
+established status to this refactor.
+The public HI and strict-HI signatures retain `PresheafWithTransfers.{u + 1} k`,
+arbitrary-field HI, and perfect-field strict invariance with ordinary
+`HasExt.{u + 1}`.
+
+The refactor's static downstream inventory found no direct target-module imports
+or namespace-qualified target-API references in the scanned current R5Lab
+sources. It covered `lean/R5Lab`, `lean/Essays` and maintained source/documentation
+files at R5Lab HEAD `1975606f2364115944158fb62048354b80dd7dac` with its live
+working tree, excluding `.lake`, `.git` and generated/build output. Generated
+projections and indirect aliases were not exhaustively enumerated. This is a
+source-text inventory; no downstream compilation is claimed.
+
 ## Review and current validation
+
+The review and validation recorded in this section precede the abstract-history
+refactor above and retain their original source identities and checked scopes.
 
 For `k : Type u` with `[Field k]` and `P : PresheafWithTransfers.{u + 1} k`,
 `nisnevichSheafify_isA1Invariant` derives HI of the actual transfer-preserving

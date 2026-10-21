@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Cohomology.A1.LocalVanishing.RelativeCurve.LocalLifting
 /-! # Literal section lifting from the original relative Serre pencil -/
@@ -8,7 +13,7 @@ open Scheme.Modules Scheme.Modules.Invertible
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeCurvePencil
 /-- The smoothness instance used in this module. -/
-local instance relativeCurveLocalLiftingSmooth
+local instance testRelativeCurveLocalLiftingSmooth
     {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
 variable (k : Type u) [Field k] (R : Type u) [CommRing R]

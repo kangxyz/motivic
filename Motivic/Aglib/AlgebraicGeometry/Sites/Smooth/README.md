@@ -119,6 +119,15 @@ of the actual two-arrow sieve after any chosen isomorphism from `N.toInput.siteX
 to its target. It uses the stored open puncture, marked complement and section;
 source flatness alone is not substituted for étaleness.
 
+[AffineLine/LocalizationHistory](AffineLine/LocalizationHistory.lean) identifies
+the endpoints while `OriginalLocalizationHistory` and its source, boundary and
+target witnesses are abstract. For a smooth final coefficient-to-field map `t`,
+`SourceWitnesses.toNative_lineSite_eq` identifies the native line with
+`SmoothSite.mk (boundaryLineProjection Γ(H.V.toScheme, ⊤) ≫ t)`, and
+`SourceWitnesses.toNative_sourceMap_eq` identifies its source map with `H.p₂`.
+These equalities are proved before the host specializes its representative
+geometry; the generic localization and native-input records remain unchanged.
+
 Genuine source and puncture restriction squares induce smooth-site maps with
 the same underlying scheme maps. `parameterRestriction` uses the underlying
 identity of `N.delta`, and `nativeTransport_compatible` derives the five stored
@@ -126,6 +135,37 @@ compatibility equations from the two supplied restriction squares against one
 line map. It does not compare independently rebuilt sites or assert those
 restriction squares without proof. The application to original representatives
 and their whole-cylinder lift remains in the host layer.
+
+[AffineLine/NativeCover](AffineLine/NativeCover.lean) constructs the original
+source and puncture before specializing their coefficient data. Over a native
+`R : CommRingCat.{u}` and two affine coefficient opens,
+`originalAffineRefinedSourceScheme` and `originalAffineRefinedPunctureScheme`
+retain the actual restricted schemes; their `Map` declarations retain the two
+literal `sourceNativeCoverMap` restrictions. Affineness and étaleness are proved
+for those schemes and maps before constructing smooth-site objects. The
+`originalAffineRefinedSourceSite` and `originalAffineRefinedPunctureSite`
+adapters use a smooth separated quasi-compact structure map from the final line
+to the chosen base scheme. They retain the first original restriction, its
+coordinate isomorphism and the source's original containment witness. The source
+adapter requires the original étale map and affine chosen source open; the
+puncture adapter requires an affine original puncture and its open immersion.
+`affineEtaleOverArrow` packages the literal map over the actual target site
+object, and its composite lemmas retain the underlying map and étaleness after
+the chosen target isomorphism.
+
+The same provider composes restriction squares and constructs their morphisms
+over the base. [Nisnevich/OriginalNativeCover](Nisnevich/OriginalNativeCover.lean)
+proves the resulting cover using the original closed complement and Cartesian
+marked lift, followed by the specified target isomorphism. The host source,
+puncture and cover declarations specialize these interfaces without changing
+their maps or adding a lifting assumption.
+
+For nested coefficient data, prove the construction and its properties over
+the native ring object first. At specialization, use the final line's stored
+smoothness, separatedness and quasi-compactness proofs rather than searching
+again through the coefficient tower. Infer the constructed arrow before
+composing it with the cylinder isomorphism so that the concrete goal does not
+drive elaboration of its generic arguments.
 
 ## Field lifting after both coefficient restrictions
 

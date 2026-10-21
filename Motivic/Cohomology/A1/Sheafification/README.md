@@ -52,16 +52,25 @@ affine. A dense open of the total cylinder is not substituted for this output.
 The proof follows one original normalization and section history:
 
 1. [OriginalHistory](../../../Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalHistory.lean)
-   binds the original source, target and raw-difference suppliers to the same
-   history and witnesses.
+   stores the original geometry and chosen localizations in
+   `OriginalHistoryData`, reusing the generic localization records.
+   `OriginalHistoryContext` packages that data with its boundary, source and
+   target witnesses and exposes their common `fieldMap`, `native` and `ancestry`.
 2. [OriginalHistoryMiddleRelations](../../../Transfers/Presheaf/Actions/Pencils/OriginalHistoryMiddleRelations.lean)
-   derives the simultaneous image-action identities from those suppliers.
+   specializes `NativeOriginalMiddleInput.transfer_rawDifference_zero_of_twoLocalizations`
+   to the abstract history, with its source equality discharged by `rfl`, and
+   derives the simultaneous image-action identities on those witnesses.
 3. [OriginalHistoryLine](../../../Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalHistoryLine.lean)
    and [OriginalHistoryRestrictions](../../../Transfers/Presheaf/Actions/Norm/NativeRefinement/OriginalHistoryRestrictions.lean)
-   supply the native-owned line, actual Nisnevich cover and restriction squares.
-4. [OriginalHistoryLifting](OriginalHistoryLifting.lean) joins that diagram to
-   the original matching representatives; [WholeCylinderLifting](WholeCylinderLifting.lean)
-   constructs the choices and removes the lifting premise.
+   take the same `C : OriginalHistoryContext k` and supply the native-owned
+   line and restriction squares. The lifting adapter obtains the actual
+   Nisnevich cover from `NativeOriginalMiddleInput.nativeCover_mem_nisnevichTopology`.
+4. [OriginalHistoryLifting](OriginalHistoryLifting.lean) accepts abstract
+   `OriginalHistoryData`, its boundary and the existing `SourceSections` and
+   `TargetSections` suppliers. It packages their witnesses into one context and
+   joins the diagram to the original matching representatives.
+   [WholeCylinderLifting](WholeCylinderLifting.lean) constructs the data once,
+   passes its original suppliers directly and removes the lifting premise.
 5. [HomotopyInvariance](HomotopyInvariance.lean) applies dense detection and
    the cylinder criterion. [StrictInvariance](StrictInvariance.lean) applies
    the existing all-perfect-field result to the resulting HI sheaf.
@@ -80,6 +89,8 @@ available for callers with an independently supplied lifting datum. The middle
 adapters likewise retain their explicit cover, representatives and simultaneous
 action relations. Their hypotheses describe those general interfaces; they
 are discharged by the original-history producer for the public theorem.
+The witness-based `OriginalLocalizationHistory.SourceWitnesses.wholeCylinder_lift`
+interface in [NativeActionLifting](NativeActionLifting.lean) also remains available.
 
 [HIPresheafSheafificationReduction](../../../../MotivicTest/HIPresheafSheafificationReduction.lean)
 contains consumers of the unconditional HI, arbitrary-field degree-zero and
@@ -89,5 +100,11 @@ separates current validation from supplied historical receipts and indexes the
 preserved experiments. Ordinary mathematical review passed relative to its
 recorded baseline. The integration record gives current compilation, exact-origin
 lint and transitive standard-axiom coverage at their recorded source snapshots.
-Hosted execution is reported separately. Production imports no recovery
-snapshots or diagnostics.
+The [abstract-history refactor record](../../../../docs/provenance/hi-presheaf-sheafification-20261020/README.md#abstract-history-refactor)
+records the changed interface and fresh compilation separately from that earlier
+evidence. The rewritten history, middle relations and both lifting consumers
+compile successfully. Incremental library/package-test builds, shared declaration
+lint, builtin lint, generated-entry and production text-style checks pass within
+the recorded source scopes.
+Hosted execution is reported separately. Production
+imports no recovery snapshots or diagnostics.

@@ -348,8 +348,8 @@ local instance (H : OriginalLocalizationHistory.{u}) : IsFinite H.F₂ :=
 
 namespace SourceWitnesses
 attribute [local instance]
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatBoundaryLineProjection_2
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatCompChartULiftFinToSpec
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension1
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension2
 variable {H : OriginalLocalizationHistory.{u}} {B : H.BoundaryWitnesses}
   {k : Type u} [Field k] (W : H.SourceWitnesses B) (T : H.TargetWitnesses)
   (t : Spec Γ(H.V.toScheme, ⊤) ⟶ Spec (.of k)) [Smooth t]

@@ -22,7 +22,7 @@ open Scheme Scheme.Hom Scheme.RelativeCurvePencil
 open AlgebraicGeometry.FiniteSchemeNormBaseChange
 universe u
 namespace Motivic.PresheafWithTransfers
-attribute [local instance] Cor.instSmoothOfSmoothOfRelativeDimensionOfNatNat
+attribute [local instance] Cor.nativeOriginalPairTransferActionSmooth
 
 variable {k : Type u} [Field k] {S C P X Y K A : Scheme.{u}}
   [IsAffine S] [IsAffine Y] [IsAffine K] [IsAffine A]
@@ -57,7 +57,7 @@ theorem sectionPair_principal_native_eq_canonical
     (hbNative hbCor : jT ≫ q ≫ (b ≫ t) = g ≫ (((a ≫ jA) ≫ π) ≫ t)) :
     (letI : ∀ {B D : Scheme.{u}} (v : B ⟶ D)
         [SmoothOfRelativeDimension 1 v], Smooth v :=
-      @Motivic.PresheafWithTransfers.instSmoothOfSmoothOfRelativeDimensionOfNatNat_1
+      @Motivic.PresheafWithTransfers.nativeSectionPairTransferActionSmooth
      (PrincipalOrderCorrespondence.correspondence
        (X := relativeCommonSite k t (f ≫ π) j α)
        (Y := relativeTargetSite k t π (a ≫ jA))

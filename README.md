@@ -6,7 +6,8 @@ A Lean library for motivic cohomology, correspondences and transfer sheaves, wit
 import Motivic
 ```
 
-The [library guide](Motivic/README.md) gives focused and optional imports.
+The generated package entry reexports all production modules.
+The [library guide](Motivic/README.md) gives focused family and theorem imports.
 Lean and dependencies are pinned in `lean-toolchain` and `lake-manifest.json`.
 
 ## Documentation

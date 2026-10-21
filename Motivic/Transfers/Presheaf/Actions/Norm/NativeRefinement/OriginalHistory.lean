@@ -5,21 +5,18 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.OriginalLocalizationHistory
+public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.OriginalLocalizationInput
+public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.NativeMiddleInput
 public import Motivic.Transfers.Presheaf.Sheafification.Representatives.SectionChosen
 public import Motivic.Transfers.Presheaf.Actions.Norm.NativeRefinement.NativeOriginalRefinedCover
 
-/-! # Canonical history of original representatives
+/-! # Shared data for the original localization history
 
-Over a field, package the original affine coefficient and source refinements into the
-existing `OriginalLocalizationSeed` and `OriginalLocalizationHistory` records.
-The same etale source, puncture, whole finite marked scheme, marked lift and
-chosen affine coefficient opens are stored as data.
-
-The normal Noetherian coefficient domain, etale/separated/quasi-compact map,
-finite marked map, marked pullback square and projection equations remain explicit.
-`originalHistorySeed` fixes the first stage; `originalHistory` adds the supplied
-final affine open without selecting replacement representatives or sections.
+The original geometry, its localizations and its section witnesses are stored
+once. Line comparisons, restrictions and lifting are proved for a variable
+`OriginalHistoryContext`; the original representative producer instantiates
+that context at its boundary. The original maps and geometric hypotheses are
+retained as fields rather than repeatedly expanded argument lists.
 -/
 
 @[expose] public noncomputable section
@@ -27,178 +24,211 @@ set_option autoImplicit false
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-open CategoryTheory CategoryTheory.Limits AlgebraicGeometry TopologicalSpace Opposite
-open Scheme Scheme.Hom Scheme.Modules Scheme.Modules.Invertible
-open Scheme.RelativeAffineLineEtaleCompactification Scheme.RelativeCurvePencil
-open RelativeProjectiveLine AlgebraicGeometry.FiniteSchemeNormBaseChange
-open Motivic Motivic.PresheafWithTransfers
-universe u v w
-open AlgebraicGeometry.FiniteSchemeNormBaseChange
-open AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates
+
+open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Opposite
+open Scheme Scheme.Hom Scheme.RelativeAffineLineEtaleCompactification
+open RelativeProjectiveLine AlgebraicGeometry.Scheme.SmoothSite.AffineCoordinates
+
+universe u
 
 namespace Motivic.PresheafWithTransfers.OriginalHistorySiteLifting
--- These are caller-local instances, not assumed exports of a native action leaf.
-local instance sharedInputSmoothOfRelativeDimension {X Y : Scheme.{u}} (f : X ⟶ Y)
-    [SmoothOfRelativeDimension 1 f] : Smooth f :=
-  SmoothOfRelativeDimension.smooth 1 f
 
-local instance (R : Type u) [CommRing R] :
-    SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
-  Scheme.AffineLineEtaleCompactification.polynomialProjection_smooth_one R
+/-- Original representatives and their first affine coefficient and source restrictions. -/
+structure OriginalRepresentativeGeometry (k : Type u) [Field k] where
+  /-- The original smooth base. -/
+  U : SmoothSite (Spec (.of k))
+  /-- Affineness of that base. -/
+  [affineU : IsAffine U.left]
+  /-- The original cylinder representative. -/
+  Tc : SmoothSite (Spec (.of k))
+  /-- Its given comparison with the whole original cylinder. -/
+  eT : Tc ≅ SmoothSite.a1Cylinder (.of k) U
+  /-- The original puncture representative. -/
+  A : SmoothSite (Spec (.of k))
+  /-- Affineness of the puncture representative. -/
+  [affineA : IsAffine A.left]
+  /-- The original source representative. -/
+  Y : SmoothSite (Spec (.of k))
+  /-- The given puncture inclusion. -/
+  a : A ⟶ Tc
+  /-- The puncture inclusion is open. -/
+  [openA : IsOpenImmersion a.left]
+  /-- The given source map. -/
+  p : Y ⟶ Tc
+  /-- The whole marked complement. -/
+  Z : Scheme.{u}
+  /-- Its original marking in the cylinder representative. -/
+  z : Z ⟶ Tc.left
+  /-- The first coefficient open. -/
+  B₀ : (Spec Γ(U.left, ⊤)).Opens
+  /-- Affineness of that coefficient open. -/
+  [affineB : IsAffine B₀.toScheme]
+  /-- The original affine source open. -/
+  W : Y.left.Opens
+  /-- Affineness of that source open. -/
+  [affineW : IsAffine W.toScheme]
+  /-- The original containment witness. -/
+  hW : W ≤ p.left ⁻¹ᵁ ((originalRepresentativeCoefficientMap U Tc eT) ⁻¹ᵁ B₀)
+  /-- The original marked lift into that same source open. -/
+  s₀ : ((z ≫ originalRepresentativeCoefficientMap U Tc eT) ⁻¹ᵁ B₀).toScheme ⟶ W.toScheme
+  /-- The marking is the full puncture complement. -/
+  hcomp : Set.range z = (Set.range a.left)ᶜ
+  /-- The first chosen localization of the coefficient ring. -/
+  O : (Spec Γ(B₀.toScheme, ⊤)).Opens
+  /-- Affineness of the chosen localization. -/
+  [affineO : IsAffine O.toScheme]
 
-local instance (R : Type u) [CommRing R] :
-    SmoothOfRelativeDimension 1
-      (chart R 0 ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) := by
-  rw [chart_toSpec]
-  infer_instance
+attribute [local instance] OriginalRepresentativeGeometry.affineU
+  OriginalRepresentativeGeometry.affineA OriginalRepresentativeGeometry.openA
+  OriginalRepresentativeGeometry.affineB OriginalRepresentativeGeometry.affineW
+  OriginalRepresentativeGeometry.affineO
 
+namespace OriginalRepresentativeGeometry
+variable {k : Type u} [Field k] (D : OriginalRepresentativeGeometry k)
 
-variable {k : Type u} [Field k]
-  (U Tc : SmoothSite (Spec (.of k))) [IsAffine U.left]
-  (eT : Tc ≅ SmoothSite.a1Cylinder (.of k) U)
-  (A Y : SmoothSite (Spec (.of k))) [IsAffine A.left]
-  (a : A ⟶ Tc) [IsOpenImmersion a.left] (p : Y ⟶ Tc) [Etale p.left]
-  {Z : Scheme.{u}} (z : Z ⟶ Tc.left)
-  (B₀ : (Spec Γ(U.left, ⊤)).Opens) [IsAffine B₀.toScheme]
-  (W : Y.left.Opens) [IsAffine W.toScheme]
+/-- The original coefficient map, with no replacement representative. -/
+abbrev coefficientMap := originalRepresentativeCoefficientMap D.U D.Tc D.eT
 
+/-- The original affine-line coordinate comparison. -/
+abbrev coordinateIso := originalCylinderNativeIso D.U D.Tc D.eT
 
-variable (hW : W ≤ p.left ⁻¹ᵁ ((originalRepresentativeCoefficientMap U Tc eT) ⁻¹ᵁ B₀))
+/-- The literal native map on the original chosen source open. -/
+abbrev nativeSourceMap := Scheme.originalAffineRefinedNativeMap Γ(D.U.left, ⊤)
+  D.coordinateIso D.coefficientMap
+  (originalCylinderNativeIso_projection D.U D.Tc D.eT) D.B₀ D.p.left D.W D.hW
 
+/-- The literal native marked map. -/
+abbrev nativeMarkedMap := Scheme.originalAffineRefinedNativeMarked Γ(D.U.left, ⊤)
+  D.coordinateIso D.coefficientMap
+  (originalCylinderNativeIso_projection D.U D.Tc D.eT) D.B₀ D.z
 
-variable (s₀ : ((z ≫ (originalRepresentativeCoefficientMap U Tc eT)) ⁻¹ᵁ B₀).toScheme ⟶ W.toScheme)
-  (hcomp : Set.range z = (Set.range a.left)ᶜ)
-  (hd₀ : IsDomain ((B₀.toScheme.presheaf.obj (Opposite.op ⊤)))) (hn₀ : IsIntegrallyClosed
-      ((B₀.toScheme.presheaf.obj (Opposite.op ⊤)))) (hno₀ : IsNoetherianRing
-      ((B₀.toScheme.presheaf.obj (Opposite.op ⊤))))
-  (hp₀ : Etale (Scheme.originalAffineRefinedNativeMap
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ p.left W hW)) (hqc₀ : QuasiCompact (Scheme.originalAffineRefinedNativeMap
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ p.left W hW)) (hsep₀ : IsSeparated (Scheme.originalAffineRefinedNativeMap
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ p.left W hW))
-  (hzc₀ : IsClosedImmersion (Scheme.originalAffineRefinedNativeMarked
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ z)) (hzf₀ : IsFinite ((Scheme.originalAffineRefinedNativeMarked
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ z) ≫ boundaryLineProjection ((B₀.toScheme.presheaf.obj (Opposite.op ⊤)))))
-  (hsN : s₀ ≫ (Scheme.originalAffineRefinedNativeMap
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ p.left W hW) = (Scheme.originalAffineRefinedNativeMarked
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ z)) (HN : IsPullback s₀ (𝟙 _) (Scheme.originalAffineRefinedNativeMap
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ p.left W hW) (Scheme.originalAffineRefinedNativeMarked
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ z))
-  (O : (Spec (.of ((B₀.toScheme.presheaf.obj (Opposite.op ⊤))))).Opens) [IsAffine O.toScheme]
+/-- The literal native puncture map. -/
+abbrev nativePunctureMap := Scheme.originalAffineRefinedNativePuncture Γ(D.U.left, ⊤)
+  D.coordinateIso D.coefficientMap
+  (originalCylinderNativeIso_projection D.U D.Tc D.eT) D.B₀ D.a.left
 
-/-- The original refined geometry, stored once in the existing seed record. -/
-def originalHistorySeed : OriginalLocalizationSeed.{u} where
-  R := ((B₀.toScheme.presheaf.obj (Opposite.op ⊤)))
-  commRing := inferInstance
-  domain := hd₀
-  normal := hn₀
-  noetherian := hno₀
-  Y := W.toScheme
-  A := ((a.left ≫ (originalRepresentativeCoefficientMap U Tc eT)) ⁻¹ᵁ B₀).toScheme
-  Z := ((z ≫ (originalRepresentativeCoefficientMap U Tc eT)) ⁻¹ᵁ B₀).toScheme
-  affineY := inferInstance
-  affineA := Scheme.originalAffineRefinedNativePuncture_affine
-    Γ(U.left, ⊤) (originalCylinderNativeIso U Tc eT) (originalRepresentativeCoefficientMap U Tc
-      eT) (originalCylinderNativeIso_projection U Tc eT) B₀ a.left
-  p := (Scheme.originalAffineRefinedNativeMap
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ p.left W hW)
-  etaleP := hp₀
-  quasiCompactP := hqc₀
-  separatedP := hsep₀
-  a := (Scheme.originalAffineRefinedNativePuncture
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ a.left)
+end OriginalRepresentativeGeometry
+
+/-- The geometric hypotheses of the original first localization, stored once. -/
+structure OriginalHistorySeedData (k : Type u) [Field k]
+    extends OriginalRepresentativeGeometry k where
+  /-- The first coefficient ring is a domain. -/
+  hd₀ : IsDomain Γ(B₀.toScheme, ⊤)
+  /-- It is integrally closed. -/
+  hn₀ : IsIntegrallyClosed Γ(B₀.toScheme, ⊤)
+  /-- It is Noetherian. -/
+  hno₀ : IsNoetherianRing Γ(B₀.toScheme, ⊤)
+  /-- The original restricted source map is étale. -/
+  hp₀ : Etale toOriginalRepresentativeGeometry.nativeSourceMap
+  /-- That source map is quasi-compact. -/
+  hqc₀ : QuasiCompact toOriginalRepresentativeGeometry.nativeSourceMap
+  /-- That source map is separated. -/
+  hsep₀ : IsSeparated toOriginalRepresentativeGeometry.nativeSourceMap
+  /-- The restricted original marking is closed. -/
+  hzc₀ : IsClosedImmersion toOriginalRepresentativeGeometry.nativeMarkedMap
+  /-- The whole marking is finite over the coefficient base. -/
+  hzf₀ : IsFinite (toOriginalRepresentativeGeometry.nativeMarkedMap ≫
+    boundaryLineProjection Γ(B₀.toScheme, ⊤))
+  /-- The marked lift retains its original equation. -/
+  hsN : s₀ ≫ toOriginalRepresentativeGeometry.nativeSourceMap =
+    toOriginalRepresentativeGeometry.nativeMarkedMap
+  /-- The original marked square is Cartesian. -/
+  HN : IsPullback s₀ (𝟙 _) toOriginalRepresentativeGeometry.nativeSourceMap
+    toOriginalRepresentativeGeometry.nativeMarkedMap
+
+namespace OriginalHistorySeedData
+variable {k : Type u} [Field k] (D : OriginalHistorySeedData k)
+
+/-- Package the same first-stage geometry into the generic localization seed. -/
+def toSeed : OriginalLocalizationSeed.{u} where
+  R := (Γ(D.B₀.toScheme, ⊤)).carrier
+  commRing := (Γ(D.B₀.toScheme, ⊤)).commRing
+  domain := D.hd₀
+  normal := D.hn₀
+  noetherian := D.hno₀
+  Y := D.W.toScheme
+  A := ((D.a.left ≫ D.toOriginalRepresentativeGeometry.coefficientMap) ⁻¹ᵁ D.B₀).toScheme
+  Z := ((D.z ≫ D.toOriginalRepresentativeGeometry.coefficientMap) ⁻¹ᵁ D.B₀).toScheme
+  affineY := D.affineW
+  affineA := Scheme.originalAffineRefinedNativePuncture_affine Γ(D.U.left, ⊤)
+    D.toOriginalRepresentativeGeometry.coordinateIso
+    D.toOriginalRepresentativeGeometry.coefficientMap
+    (originalCylinderNativeIso_projection D.U D.Tc D.eT) D.B₀ D.a.left
+  p := D.toOriginalRepresentativeGeometry.nativeSourceMap
+  etaleP := D.hp₀
+  quasiCompactP := D.hqc₀
+  separatedP := D.hsep₀
+  a := D.toOriginalRepresentativeGeometry.nativePunctureMap
   openA := inferInstance
-  z := (Scheme.originalAffineRefinedNativeMarked
-  (U.left.presheaf.obj (Opposite.op ⊤)) (originalCylinderNativeIso U Tc eT)
-      (originalRepresentativeCoefficientMap U Tc eT) (originalCylinderNativeIso_projection U Tc
-      eT) B₀ z)
-  closedZ := hzc₀
-  finiteZ := hzf₀
-  s := s₀
-  hs := hsN
-  H := HN
-  hz := Scheme.originalAffineRefinedNative_complement
-    Γ(U.left, ⊤) (originalCylinderNativeIso U Tc eT) (originalRepresentativeCoefficientMap U Tc
-      eT) (originalCylinderNativeIso_projection U Tc eT) B₀ a.left z hcomp
-  O := O
-  affineO := inferInstance
+  z := D.toOriginalRepresentativeGeometry.nativeMarkedMap
+  closedZ := D.hzc₀
+  finiteZ := D.hzf₀
+  s := D.s₀
+  hs := D.hsN
+  H := D.HN
+  hz := Scheme.originalAffineRefinedNative_complement Γ(D.U.left, ⊤)
+    D.toOriginalRepresentativeGeometry.coordinateIso
+    D.toOriginalRepresentativeGeometry.coefficientMap
+    (originalCylinderNativeIso_projection D.U D.Tc D.eT) D.B₀ D.a.left D.z D.hcomp
+  O := D.O
+  affineO := D.affineO
 
 
-variable (V : (Spec Γ(O.toScheme, ⊤)).Opens) [IsAffine V.toScheme]
-  (hq₁ : ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).j₁ ≫
-      (((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).F₁ ≫
-      ProjectiveSpace.toSpec ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).R₁ (ULift.{u}
-      (Fin 2))) =
-    ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).p₁ ≫
-      boundaryLineProjection ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).R₁)
-  (hs₁ : ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).s₁ ≫
-      ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).p₁ =
-      ((originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))).z₁)
+end OriginalHistorySeedData
 
-/-- The same common second open and its original equations. -/
-def originalHistory : OriginalLocalizationHistory.{u} where
-  seed := (originalHistorySeed
-  (U := U) (Tc := Tc) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-  (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-  (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-  (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O))
-  V := V
-  affineV := inferInstance
-  hq₁ := hq₁
-  hs₁ := hs₁
+/-- The same two chosen coefficient opens and their original common-choice equations. -/
+structure OriginalHistoryData (k : Type u) [Field k] extends OriginalHistorySeedData k where
+  /-- The final chosen coefficient open. -/
+  V : (Spec Γ(O.toScheme, ⊤)).Opens
+  /-- Affineness of the final open. -/
+  [affineV : IsAffine V.toScheme]
+  /-- The first retained source square over the common coefficient ring. -/
+  hq₁ : toOriginalHistorySeedData.toSeed.j₁ ≫
+      (toOriginalHistorySeedData.toSeed.F₁ ≫ ProjectiveSpace.toSpec
+        toOriginalHistorySeedData.toSeed.R₁ (ULift.{u} (Fin 2))) =
+    toOriginalHistorySeedData.toSeed.p₁ ≫
+      boundaryLineProjection toOriginalHistorySeedData.toSeed.R₁
+  /-- The original marked equation on that common choice. -/
+  hs₁ : toOriginalHistorySeedData.toSeed.s₁ ≫ toOriginalHistorySeedData.toSeed.p₁ =
+    toOriginalHistorySeedData.toSeed.z₁
 
+attribute [local instance] OriginalHistoryData.affineV
 
+namespace OriginalHistoryData
+variable {k : Type u} [Field k] (D : OriginalHistoryData k)
+
+/-- The generic two-localization history of the stored original data. -/
+def history : OriginalLocalizationHistory.{u} where
+  seed := D.toOriginalHistorySeedData.toSeed
+  V := D.V
+  affineV := D.affineV
+  hq₁ := D.hq₁
+  hs₁ := D.hs₁
+
+end OriginalHistoryData
+
+/-- One fixed history together with its boundary, source and target section witnesses. -/
+structure OriginalHistoryContext (k : Type u) [Field k] where
+  /-- The original geometry and chosen localizations. -/
+  data : OriginalHistoryData k
+  /-- Boundary witnesses for that history. -/
+  boundary : data.history.BoundaryWitnesses
+  /-- Source witnesses using that same boundary. -/
+  source : data.history.SourceWitnesses boundary
+  /-- Target witnesses for that same history. -/
+  target : data.history.TargetWitnesses
+
+namespace OriginalHistoryContext
+variable {k : Type u} [Field k] (C : OriginalHistoryContext k)
+
+/-- The literal final coefficient-to-field map of the stored original base. -/
+abbrev fieldMap := SmoothSite.nativeOriginalFinalFieldMap C.data.U C.data.B₀ C.data.O C.data.V
+
+/-- The native middle input of this variable history. -/
+def native : NativeOriginalMiddleInput k := C.source.toNative C.target C.fieldMap
+
+/-- Its two actual localization restrictions. -/
+def ancestry : C.native.NativeAncestry := C.source.toNativeAncestry C.target C.fieldMap
+
+end OriginalHistoryContext
 end Motivic.PresheafWithTransfers.OriginalHistorySiteLifting

@@ -114,12 +114,43 @@ theorem modelWholeCylinderLifting_of_isA1Invariant
   let : IsAffine O.toScheme := hO
   obtain ⟨V, hV, hxV, hVtop, hq₁, hs₁, Hsource, Htarget⟩ := Hcommon
   let : IsAffine V.toScheme := hV
-  let Hist := OriginalHistorySiteLifting.originalHistory
-    (U := U) (Tc := T) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-    (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-    (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-    (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O)
-    (V := V) (hq₁ := hq₁) (hs₁ := hs₁)
+  let historyData : OriginalHistorySiteLifting.OriginalHistoryData k :=
+    { U := U
+      affineU := hUa
+      Tc := T
+      eT := eT
+      A := A
+      affineA := hAa
+      Y := Y
+      a := a
+      openA := ha
+      p := p
+      Z := Z
+      z := z
+      B₀ := B₀
+      affineB := inferInstance
+      W := W
+      affineW := hWa
+      hW := hW
+      s₀ := s₀
+      hcomp := hcomp
+      O := O
+      affineO := hO
+      hd₀ := hd₀
+      hn₀ := hn₀
+      hno₀ := hno₀
+      hp₀ := hp₀
+      hqc₀ := hqc₀
+      hsep₀ := hsep₀
+      hzc₀ := hzc₀
+      hzf₀ := hzf₀
+      hsN := hsN
+      HN := HN
+      V := V
+      affineV := hV
+      hq₁ := hq₁
+      hs₁ := hs₁ }
+  let Hist := historyData.history
   let Bounds : Hist.BoundaryWitnesses :=
     { hηO := hηO
       x := x
@@ -136,18 +167,10 @@ theorem modelWholeCylinderLifting_of_isA1Invariant
       hbI := hbI₁
       bE := bE₁
       hbE := hbE₁ }
-  have sourceTuple := Hist.nonempty_sourceWitnesses Bounds Hsource
-  obtain ⟨Wsrc⟩ := sourceTuple
-  have targetTuple := Hist.nonemptyTargetWitnesses Htarget
-  obtain ⟨Tsec⟩ := targetTuple
   refine ⟨SmoothSite.nativeOriginalBaseSite U B₀ O V,
     SmoothSite.nativeOriginalBaseInclusion U B₀ O V ≫ jU, ?_⟩
   exact NativeOwnedOriginalHistorySiteLifting.wholeCylinder_lift
-    (U := U) (Tc := T) (eT := eT) (A := A) (Y := Y) (a := a) (p := p)
-    (z := z) (B₀ := B₀) (W := W) (hW := hW) (s₀ := s₀) (hcomp := hcomp)
-    (hd₀ := hd₀) (hn₀ := hn₀) (hno₀ := hno₀) (hp₀ := hp₀) (hqc₀ := hqc₀)
-    (hsep₀ := hsep₀) (hzc₀ := hzc₀) (hzf₀ := hzf₀) (hsN := hsN) (HN := HN) (O := O)
-    (V := V) (hq₁ := hq₁) (hs₁ := hs₁)
-    Bounds Wsrc Tsec P hP jU bAorig bYorig HB g sA sY hm hgA hgY
+    historyData Bounds Hsource Htarget
+    P hP jU bAorig bYorig HB g sA sY hm hgA hgY
 
 end Motivic.PresheafWithTransfers

@@ -35,8 +35,8 @@ universe u
 namespace AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
 
 attribute [local instance]
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatBoundaryLineProjection_2
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatCompChartULiftFinToSpec
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension1
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension2
 
 variable (R : Type u) [CommRing R] {Z D WA : Scheme.{u}}
   (z : Z ⟶ Spec (.of (Polynomial R)))
@@ -98,8 +98,8 @@ end AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
 namespace AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
 
 attribute [local instance]
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatBoundaryLineProjection_2
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatCompChartULiftFinToSpec
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension1
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension2
 
 
 /-- Package the same original target supplier once, without rebuilding its eight types

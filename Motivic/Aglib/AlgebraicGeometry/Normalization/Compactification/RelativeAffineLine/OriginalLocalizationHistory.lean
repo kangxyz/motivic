@@ -586,23 +586,30 @@ theorem hφorig : H.φorig ≫ (H.vB ≫ H.j₂) = H.αorig ≫ H.j₂ := by
     (pullback.fst H.seed.p₁ H.seed.a₁ ≫ H.seed.j₁) (𝟙 _) (Category.id_comp _)
 
 
-/-- Apply the existing original supplier once on this same history. -/
-theorem nonemptyTargetWitnesses
-    (h : NativeTargetBoundarySections (R := H.seed.R₁) (z := H.seed.z₁)
+/-- The rich target supplier on the fixed first and second coefficient choices. -/
+abbrev TargetSections :=
+  NativeTargetBoundarySections (R := H.seed.R₁) (z := H.seed.z₁)
       (V := H.V) (d₀ := H.dA₁) (hd₀ := H.hdA₁)
-      (v₀ := H.seed.a₁ ≫ chart H.seed.R₁ 0)) :
+      (v₀ := H.seed.a₁ ≫ chart H.seed.R₁ 0)
+
+/-- Apply the existing original supplier once on this same history. -/
+theorem nonemptyTargetWitnesses (h : H.TargetSections) :
     Nonempty H.TargetWitnesses := by
   exact (nonempty_originalTargetSectionWitnesses H.seed.R₁ H.V H.seed.z₁
       H.dA₁ H.hdA₁ (H.seed.a₁ ≫ chart H.seed.R₁ 0) h)
 
-/-- Package the original rich source supplier without another section choice. -/
-theorem nonempty_sourceWitnesses (H : OriginalLocalizationHistory.{u}) (B : H.BoundaryWitnesses)
-    (h : NativeSourceBoundarySections
+/-- The rich source supplier uses the boundary and maps of this same history. -/
+abbrev SourceSections (B : H.BoundaryWitnesses) :=
+  NativeSourceBoundarySections
       (R := H.seed.R₁) (ι := ULift.{u} (Fin 2))
       (p := H.seed.p₁) (a := H.seed.a₁) (f := H.seed.F₁) (j := H.seed.j₁)
       (hj := H.hq₁) (z := H.seed.z₁) (s := H.seed.s₁) (hs := H.hs₁)
       (H := sourceNativeCoverLift_isPullback H.seed.R H.seed.O H.seed.z H.seed.p
-        H.seed.s H.seed.hs H.seed.H) (d := B.d) (V := H.V)) :
+        H.seed.s H.seed.hs H.seed.H) (d := B.d) (V := H.V)
+
+/-- Package the original rich source supplier without another section choice. -/
+theorem nonempty_sourceWitnesses (H : OriginalLocalizationHistory.{u}) (B : H.BoundaryWitnesses)
+    (h : H.SourceSections B) :
     Nonempty (H.SourceWitnesses B) := by
   obtain ⟨hqn, han, hdn, hframe, ⟨c⟩, hdual⟩ := h
   exact ⟨{ hqn := hqn, han := han, hdn := hdn, source := c }⟩

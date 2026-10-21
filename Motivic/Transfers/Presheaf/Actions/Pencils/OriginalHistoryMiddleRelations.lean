@@ -34,102 +34,74 @@ open Scheme Scheme.Hom Scheme.Modules Scheme.Modules.Invertible
 open Scheme.RelativeAffineLineEtaleCompactification Scheme.RelativeCurvePencil
 open RelativeProjectiveLine AlgebraicGeometry.FiniteSchemeNormBaseChange
 open Motivic Motivic.PresheafWithTransfers
-universe u v w
+universe u
 
-namespace Motivic.PresheafWithTransfers
+namespace AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
+namespace NativeOriginalMiddleInput
+attribute [local instance] commRing domain integrallyClosed noetherian affineY affineA affineV
+  affineB finiteF openJ smoothJ flatP openA closedZChart openVB affineDA openIA
+  smoothAlpha flatBeta smoothT
+  Cor.nativeOriginalPairTransferActionSmooth
+  nativeSectionPairDifferenceZeroSmoothRelativeDimension
+  nativeOriginalMiddleInputSmooth nativeOriginalMiddleInputSmoothRelativeDimension1
+  nativeOriginalMiddleInputSmoothRelativeDimension2
 
-attribute [local instance] Cor.instSmoothOfSmoothOfRelativeDimensionOfNatNat
+variable {k : Type u} [Field k] (N : NativeOriginalMiddleInput k)
 
-variable (R₀ : Type u) [CommRing R₀] [IsDomain R₀] [IsIntegrallyClosed R₀]
-  [IsNoetherianRing R₀] {Y₀ : Scheme.{u}} [IsAffine Y₀]
-  (p₀ : Y₀ ⟶ Spec (.of (Polynomial R₀))) [Etale p₀] [QuasiCompact p₀] [IsSeparated p₀]
-  (O₀ : (Spec (.of R₀)).Opens) [IsAffine O₀.toScheme]
-  (V₀ : (Spec Γ(O₀.toScheme, ⊤)).Opens) [IsAffine V₀.toScheme]
-
-variable (R : Type u) [CommRing R]
-
-variable {A Z C D V WA : Scheme.{u}} [IsAffine A] [IsAffine V]
-  [SmoothOfRelativeDimension 1 (boundaryLineProjection R)] [SmoothOfRelativeDimension 1 ((chart R
-    0) ≫ (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))))]
-  (f : C ⟶ (ProjectiveSpace R (ULift.{u} (Fin 2)))) [IsFinite f] (j : (finalOriginalSource R₀ p₀
-    O₀ V₀) ⟶ C) [IsOpenImmersion j]
-  [SmoothOfRelativeDimension 1 (j ≫ (f ≫ (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))))]
-  (p : (finalOriginalSource R₀ p₀ O₀ V₀) ⟶ (Spec (CommRingCat.of (Polynomial R)))) [Flat p] (hq
-    : j ≫ (f ≫
-    (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))) = p ≫ (boundaryLineProjection R))
-  (hret : j ≫ f = p ≫ (chart R 0))
-  (a : A ⟶ (Spec (CommRingCat.of (Polynomial R)))) [IsOpenImmersion a]
-  (z : Z ⟶ (Spec (CommRingCat.of (Polynomial R)))) [IsClosedImmersion (z ≫ (chart R 0))]
-  (s : Z ⟶ (finalOriginalSource R₀ p₀ O₀ V₀)) (hs : s ≫ p = z) (H : IsPullback s (𝟙 Z) p z)
-  (hsK : (s ≫ j) ≫ f = z ≫ (chart R 0))
-  (e : SheafOfModules.unit (pullback (boundaryLineProjection R) (z ≫ (boundaryLineProjection
-    R))).ringCatSheaf ≅
-    Hom.idealModule (Hom.boundaryGraphTarget (boundaryLineProjection R) z))
-  (ha : Disjoint (Set.range a) (Set.range z))
-  (d : D ⟶ C) (hd : Disjoint (Set.range j) (Set.range d))
-  (c : BoundarySectionData (boundaryLineProjection R) (f ≫ (ProjectiveSpace.toSpec R (ULift.{u}
-    (Fin 2)))) j p hq a z s hs H e ha d hd)
-  (vB : V ⟶ finalOriginalSource R₀ p₀ O₀ V₀) [IsOpenImmersion vB]
-  (vA : V ⟶ A) (hsmall : vB ≫ p = vA ≫ a)
-  [SmoothOfRelativeDimension 1 ((vB ≫ j) ≫
-    (f ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))))]
-  (hcover : ∀ x : C, x ∈ Set.range (vB ≫ j) ∨ x ∈ Set.range d ∨
-    x ∈ Set.range (s ≫ j))
-  {DA : Scheme.{u}} (dA : DA ⟶ (ProjectiveSpace R (ULift.{u} (Fin 2)))) [IsAffineHom dA]
-  (hdA : Disjoint (Set.range (chart R 0)) (Set.range dA))
-  (bI : pullback f dA ⟶ D) (hbI : bI ≫ d = pullback.fst f dA)
-  (bE : (Scheme.residualMarkedFiberOpen f j (z ≫ (chart R 0)) s hsK).toScheme ⟶ D)
-  (hbE : bE ≫ d = Scheme.residualMarkedFiberMap f j (z ≫ (chart R 0)) s hsK)
-  (iA : WA ⟶ pullback ((chart R 0) ≫ ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
-    (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))) [IsOpenImmersion iA]
-  (T : OriginalTargetSectionWitnesses R z e dA hdA iA)
-
-attribute [local instance] OriginalTargetSectionWitnesses.unitA OriginalTargetSectionWitnesses.unitB
-
-variable {B : Scheme.{u}} [IsAffine B]
-  (αorig : B ⟶ finalOriginalSource R₀ p₀ O₀ V₀) [Smooth αorig]
-  (βorig : B ⟶ A) [Flat βorig] (horig : αorig ≫ p = βorig ≫ a)
-  (φorig : B ⟶ V) (hφorig : φorig ≫ (vB ≫ j) = αorig ≫ j)
-  (hcoverA : ∀ x : ProjectiveSpace R (ULift.{u} (Fin 2)),
-    x ∈ Set.range (a ≫ chart R 0) ∨ x ∈ Set.range dA ∨ x ∈ Set.range (z ≫ chart R 0))
-  {k : Type u} [Field k] (Pst : PresheafWithTransfers.{w} k) (hPst : Pst.IsA1Invariant)
-  (t : Spec (.of R) ⟶ Spec (.of k)) [Smooth t]
-
-attribute [local instance]
-  instSmoothOfRelativeDimensionOfNatNatCompSchemeChartULiftFinToSpec_1
-
-include hret hcover hbI hbE hsmall hcoverA in
-/-- The original raw supplier, applied once to the unchanged target bundle. -/
-theorem transfer_originalDifference_zero_from_targetBundle
-    (P : PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant)
-    (hfree : ∀ k : ULift.{u} (Fin 2),
-      let : Algebra (Polynomial R) Γ(pullback f (chart R k), ⊤) :=
-        (scalarMap (pullback.snd f (chart R k))).toAlgebra
-      Module.Free (Polynomial R) Γ(pullback f (chart R k), ⊤)) :
-    let π := ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))
-    let : IsIso (pullbackSectionMap (fullBoundaryProductMap π (chart R 0) dA z) T.aA) :=
-      T.unitA
-    (nisnevichImage P).transfer (Cor.originalLambdaDifference
-      (t := t) (qX := boundaryLineProjection R) (π := π) (F := f) (jB := j)
-      (jA := chart R 0) (p := p) (hret := hret) (hbase := hq)
-      (a := a) (vB := vB) (vA := vA) (hsmall := hsmall)
-      (αorig := αorig) (βorig := βorig) (horig := horig)
-      (φorig := φorig) (hφorig := hφorig) (z := z) (s := s) (hs := hs)
-      (H := H) (e := e) (ha := ha) (dB := d) (hdB := hd) (dA := dA)
-      (hcoverB := hcover) (hcoverA := hcoverA) (source := c)
-      (LA := T.LA) (aA := T.aA) (bA := T.bA)) = 0 := by
+/-- The raw action vanishes on an abstract native input
+with its original two-localization source. -/
+theorem transfer_rawDifference_zero_of_twoLocalizations
+    (R₀ : Type u) [CommRing R₀] [IsDomain R₀] [IsIntegrallyClosed R₀]
+    [IsNoetherianRing R₀] {Y₀ : Scheme.{u}} [IsAffine Y₀]
+    (p₀ : Y₀ ⟶ Spec (.of (Polynomial R₀))) [Etale p₀] [QuasiCompact p₀] [IsSeparated p₀]
+    (O₀ : (Spec (.of R₀)).Opens) [IsAffine O₀.toScheme]
+    (V₀ : (Spec Γ(O₀.toScheme, ⊤)).Opens) [IsAffine V₀.toScheme]
+    (hY : N.Y = finalOriginalSource R₀ p₀ O₀ V₀)
+    (P : Motivic.PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant) :
+    (nisnevichImage P).transfer N.toInput.rawDifference = 0 := by
+  let := N.smoothA
+  let := N.smoothVB
+  rcases N with @⟨R, commRing, domain, integrallyClosed, noetherian, Y, A, Z, C, D, V, WA, DA,
+    B, affineY, affineA, affineV, affineB, F, finiteF, j, openJ, smoothJ, p, flatP, hq, hret,
+    a, openA, z, closedZChart, s, hs, H, hsK, e, ha, d, hd, source, vB, openVB, vA, hsmall,
+    hcover, dA, affineDA, hdA, bI, hbI, bE, hbE, iA, openIA, target, αorig, smoothAlpha,
+    βorig, flatBeta, horig, φorig, hφorig, hcoverA, t, smoothT, hpuncture, hfree⟩
+  let := commRing
+  let := domain
+  let := integrallyClosed
+  let := noetherian
+  let := affineY
+  let := affineA
+  let := affineV
+  let := affineB
+  let := finiteF
+  let := openJ
+  let := smoothJ
+  let := flatP
+  let := openA
+  let := closedZChart
+  let := openVB
+  let := affineDA
+  let := openIA
+  let := smoothAlpha
+  let := flatBeta
+  let := smoothT
+  dsimp only at hY
+  subst Y
   let : IsIso (pullbackSectionMap
       (coprod.desc (infinityProductMap (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2)))
         (chart R 0) dA) (graphBoundaryRestriction
-          (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) (chart R 0) z)) T.aA) := T.unitA
-  let := T.unitB
-  exact (nisnevichImage_transfer_nativeSectionPair_originalDifference_zero
-    R₀ p₀ O₀ V₀ R f j p hq hret a z s hs H hsK e ha d hd c
-    vB vA hsmall hcover dA hdA bI hbI bE hbE T.LA T.aA T.bA iA T.hFa T.hFb
-    (T.hpairA)
-    αorig βorig horig φorig hφorig hcoverA t P hP hfree)
+          (ProjectiveSpace.toSpec R (ULift.{u} (Fin 2))) (chart R 0) z)) target.aA) :=
+    target.unitA
+  let := target.unitB
+  exact nisnevichImage_transfer_nativeSectionPair_originalDifference_zero
+    R₀ p₀ O₀ V₀ R F j p hq hret a z s hs H hsK e ha d hd source
+    vB vA hsmall hcover dA hdA bI hbI bE hbE target.LA target.aA target.bA iA
+    target.hFa target.hFb target.hpairA
+    αorig βorig horig φorig hφorig hcoverA t P hP hfree
 
-end Motivic.PresheafWithTransfers
+end NativeOriginalMiddleInput
+end AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
 
 namespace AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
 attribute [local instance] OriginalLocalizationSeed.commRing OriginalLocalizationSeed.domain
@@ -153,9 +125,10 @@ local instance (H : OriginalLocalizationHistory.{u}) : IsFinite H.F₂ :=
   boundaryBaseProjectiveMap_finite H.seed.R₁ (ULift.{u} (Fin 2)) H.seed.F₁ H.V
 
 namespace SourceWitnesses
-attribute [local instance]
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatBoundaryLineProjection_2
-  Scheme.RelativeCurvePencil.instSmoothOfRelativeDimensionOfNatNatCompChartULiftFinToSpec
+attribute [local instance] Cor.nativeOriginalPairTransferActionSmooth
+  nativeSectionPairDifferenceZeroSmoothRelativeDimension
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension1
+  Scheme.RelativeCurvePencil.nativeTargetCorrectionSectionsSmoothRelativeDimension2
 variable {H : OriginalLocalizationHistory.{u}} {B : H.BoundaryWitnesses}
   {k : Type u} [Field k] (W : H.SourceWitnesses B) (T : H.TargetWitnesses)
   (t : Spec Γ(H.V.toScheme, ⊤) ⟶ Spec (.of k)) [Smooth t]
@@ -163,30 +136,9 @@ variable {H : OriginalLocalizationHistory.{u}} {B : H.BoundaryWitnesses}
 theorem transfer_rawDifference_zero
     (P : Motivic.PresheafWithTransfers.{u + 1} k) (hP : P.IsA1Invariant) :
     (nisnevichImage P).transfer (W.toNative T t).toInput.rawDifference = 0 := by
-  let : CommRing (Γ(H.V.toScheme, ⊤)).carrier := (Γ(H.V.toScheme, ⊤)).commRing
   let N := W.toNative T t
-  let := N.smoothA
-  let := N.smoothVB
-  let : SmoothOfRelativeDimension 1
-      (H.j₂ ≫ (H.F₂ ≫ ProjectiveSpace.toSpec (Γ(H.V.toScheme, ⊤)).carrier
-        (ULift.{u} (Fin 2)))) := H.sourceSmooth
-  let : IsClosedImmersion (H.z₂ ≫ chart (Γ(H.V.toScheme, ⊤)).carrier 0) :=
-    H.finalProjectiveMarked
-  let : SmoothOfRelativeDimension 1
-      ((H.vB ≫ H.j₂) ≫ (H.F₂ ≫ ProjectiveSpace.toSpec (Γ(H.V.toScheme, ⊤)).carrier
-        (ULift.{u} (Fin 2)))) := N.smoothVB
-  have hRawNative := ((@transfer_originalDifference_zero_from_targetBundle
-      H.seed.R H.seed.commRing H.seed.domain H.seed.normal H.seed.noetherian
-      H.seed.Y H.seed.affineY H.seed.p H.seed.etaleP H.seed.quasiCompactP
-      H.seed.separatedP H.seed.O H.seed.affineO H.V H.affineV
-      (Γ(H.V.toScheme, ⊤)).carrier (Γ(H.V.toScheme, ⊤)).commRing)
-      H.F₂ H.j₂ H.p₂ W.hqn H.hret₂
-      H.a₂ H.z₂ H.s₂ H.hs₂ H.markedSquare H.hsK₂ H.e₂ W.han
-      B.d₂ W.hdn (W.source)
-      H.vB H.vA H.hsmall B.hc₂ H.dA₂ H.hdA₂ B.bI₂ B.hbI₂ B.bE₂ B.hbE₂
-      H.iA (T)
-      H.αorig H.βorig H.horig H.φorig H.hφorig H.hcoverA t P hP B.hfree₂)
-  exact (hRawNative)
+  exact N.transfer_rawDifference_zero_of_twoLocalizations
+    H.seed.R H.seed.p H.seed.O H.V rfl P hP
 
 /-- The actual raw supplier supplies the missing E3 relation on this same input. -/
 theorem middleRelations (P : Motivic.PresheafWithTransfers.{u + 1} k)

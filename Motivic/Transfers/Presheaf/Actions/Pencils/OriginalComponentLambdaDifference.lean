@@ -25,7 +25,7 @@ open _root_.AlgebraicGeometry.Scheme (SmoothSite)
 universe u w
 namespace Motivic.Cor
 open Scheme Scheme.RelativeCurvePencil Scheme.Hom
-attribute [local instance] Motivic.Cor.instSmoothOfSmoothOfRelativeDimensionOfNatNat
+attribute [local instance] Motivic.Cor.nativeOriginalPairTransferActionSmooth
 
 variable {k : Type u} [Field k]
   {S C P X Y K A V B Z DB DA : Scheme.{u}}

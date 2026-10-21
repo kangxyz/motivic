@@ -18,9 +18,13 @@ open CategoryTheory CategoryTheory.Limits AlgebraicGeometry Motivic ProjectiveSp
 open Scheme.Modules Scheme.Modules.Invertible Scheme.Hom
 universe u
 namespace AlgebraicGeometry.Scheme.RelativeAffineLineEtaleCompactification
-local instance {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
+/-- The smoothness instance used in this module. -/
+local instance nisnevichLiftingSmooth
+    {X Y : Scheme.{u}} (f : X ⟶ Y) [SmoothOfRelativeDimension 1 f] :
     Smooth f := SmoothOfRelativeDimension.smooth 1 f
-local instance (R : Type u) [CommRing R] : SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
+/-- The relative-dimension instance used in this module. -/
+local instance nisnevichLiftingSmoothRelativeDimension
+    (R : Type u) [CommRing R] : SmoothOfRelativeDimension 1 (boundaryLineProjection R) :=
   AffineLineEtaleCompactification.polynomialProjection_smooth_one R
 variable (k : Type u) [Field k] (R : Type u) [CommRing R] [IsDomain R]
   [IsIntegrallyClosed R] [IsNoetherianRing R]
