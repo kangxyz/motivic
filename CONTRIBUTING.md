@@ -29,8 +29,8 @@ to repair one declaration.
 
 Use [incremental validation](docs/DEVELOPMENT.md#verification-by-scope) throughout
 normal work, including merge and publication. It covers applicable compilation,
-declaration/text-style lint, affected `MotivicTest` and client tests, and
-source/trust checks. During development, build the changed leaf and needed
+declaration/text-style lint, in-package `MotivicTest` tests and production axiom closure, and
+source/trust checks. Separate downstream clients remain explicitly requested diagnostics. During development, build the changed leaf and needed
 affected consumers and handle compiler diagnostics. Run independent lint and
 tests only in the task's final validation before delivery; helper returns,
 internal commits and merges do not trigger them. Reuse compatible evidence and

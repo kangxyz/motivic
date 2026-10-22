@@ -96,9 +96,8 @@ def check_sources(root: Path) -> tuple[list[str], int]:
     sources = source_modules(root)
     clients = client_sources(root)
     client_roots = {name.split('.')[0] for name in clients}
-    for name in ('Motivic', 'MotivicTest'):
-        if name not in sources:
-            errors.append(f'Missing public source root: {name}.lean')
+    if 'Motivic' not in sources:
+        errors.append('Missing public source root: Motivic.lean')
     for name, path in sorted(sources.items()):
         source = path.read_text()
         clean = strip_comments_and_strings(source)

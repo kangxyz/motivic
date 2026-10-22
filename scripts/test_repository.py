@@ -33,6 +33,20 @@ class RepositoryBoundaryTests(unittest.TestCase):
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(content)
 
+    def test_native_test_globs_need_no_umbrella_and_retain_source_boundaries(self):
+        (self.root / 'MotivicTest.lean').unlink()
+        self.assertEqual(check_sources(self.root)[0], [])
+        self.write('Motivic/Core.lean', 'import MotivicTest.Client\n')
+        self.assertTrue(any('production imports test MotivicTest.Client' in error
+                            for error in check_sources(self.root)[0]))
+        self.write('Motivic/Core.lean', 'import Mathlib.Algebra.Group.Basic\n')
+        self.write('MotivicTest/Client.lean', 'import Motivic.Missing\n')
+        self.assertTrue(any('missing local import Motivic.Missing' in error
+                            for error in check_sources(self.root)[0]))
+        self.write('MotivicTest/Client.lean', 'import Motivic\n')
+        (self.root / 'Motivic.lean').unlink()
+        self.assertIn('Missing public source root: Motivic.lean', check_sources(self.root)[0])
+
     def test_production_components_accept_canonical_names_but_reject_lowercase_child(self):
         self.write('Motivic/Cohomology/A1/H1/ZMod/Basic.lean',
                    'module\npublic import Mathlib.lowercase\nnamespace lowercase\nend lowercase\n')

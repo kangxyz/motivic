@@ -64,10 +64,11 @@ class BuildForwardingTests(unittest.TestCase):
             self.assertEqual(build_modules.main(argv), 1)
         load.assert_not_called()
 
-    def test_tooling_identity_is_explicit_and_cannot_use_ambient_package(self):
-        with patch.dict(os.environ, {}, clear=True):
-            with self.assertRaisesRegex(ValueError, 'MOTIVIC_TOOLING_REVISION'):
-                shared_api()
+    def test_tooling_loader_does_not_require_git_or_revision_policy(self):
+        with patch.dict(os.environ, {}, clear=True), \
+                patch('shared_workflow.importlib.import_module', return_value='installed') as load:
+            self.assertEqual(shared_api(), 'installed')
+        load.assert_called_once_with('lean_ci')
 
 
 if __name__ == '__main__':

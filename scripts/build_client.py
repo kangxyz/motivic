@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def prepare(root: Path) -> Path:
-    """Adapt Aglib's prepare_downstream route; never replace an existing cache."""
+    """Prepare an explicitly requested client; preserve existing cache ownership."""
     client = root / 'examples/downstream'
     config = tomllib.loads((client / 'lakefile.toml').read_text())
     if not (client / 'MotivicClient.lean').is_file():
@@ -54,13 +54,6 @@ def prepare(root: Path) -> Path:
     return client
 
 
-def command(root: Path, receipts: Path, tooling: Path | None = None) -> list[str]:
-    helper = (tooling or root / '.lake/packages/Aglib') / 'scripts/build_serial.py'
-    if not helper.is_file():
-        raise ValueError('Missing guarded Aglib build helper; resolve pins or set MOTIVIC_TOOLING_ROOT')
-    return [sys.executable, str(helper.resolve()), '--root', str(root / 'examples/downstream'),
-            '--rehash', '--receipt-dir', str(receipts), 'MotivicClient']
-
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -76,11 +69,13 @@ def main() -> int:
     for name in ('BUILD_THREADS', 'LEAN_MEMORY_MB', 'RSS_LIMIT_MB'):
         if 'MOTIVIC_' + name in environment:
             environment['AGLIB_' + name] = environment['MOTIVIC_' + name]
-    tooling = environment.get('MOTIVIC_TOOLING_ROOT')
     try:
-        argv = command(root, receipts, Path(tooling) if tooling else None)
+        from shared_workflow import shared_api, resource_config, runtime_environment
+        shared_api()
+        from lean_ci.build import build
         client = prepare(root)
-        return subprocess.run(argv, cwd=client, env=environment).returncode
+        return build(client, ['MotivicClient'], receipts, rehash=True,
+                     config=resource_config(), environment=runtime_environment(), selection='module')
     except (OSError, ValueError) as error:
         print(f'Independent client build failed: {error}', file=sys.stderr)
         return 1

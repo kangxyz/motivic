@@ -9,8 +9,6 @@ import tempfile
 import unittest
 
 from build_client import prepare
-from ci_targets import make_plan
-from shared_workflow import recipe
 
 
 class ClientBuildTests(unittest.TestCase):
@@ -74,65 +72,17 @@ path = "../.."
         with self.assertRaisesRegex(ValueError, 'owned directories'):
             prepare(self.root)
 
-    def test_guarded_helper_receives_client_root_caps_and_failure_is_fatal(self):
-        helper = self.root / 'tooling/scripts/build_serial.py'
-        helper.parent.mkdir(parents=True)
-        helper.write_text('''import json,os,sys
-from pathlib import Path
-print(json.dumps({'args':sys.argv[1:], 'cwd':str(Path.cwd()),
- 'caps':[os.environ.get('AGLIB_'+n) for n in ['BUILD_THREADS','LEAN_MEMORY_MB','RSS_LIMIT_MB']]}))
-sys.exit(int(os.environ.get('FIXTURE_EXIT','0')))
-''')
-        env = dict(os.environ, MOTIVIC_TOOLING_ROOT=str(self.root / 'tooling'),
-                   MOTIVIC_BUILD_THREADS='2', MOTIVIC_LEAN_MEMORY_MB='12800',
-                   MOTIVIC_RSS_LIMIT_MB='13824')
-        command = [sys.executable, str(Path(__file__).with_name('build_client.py')),
-                   '--root', str(self.root), '--receipt-dir', '.lake/verification/client']
-        for code in (0, 23):
-            with self.subTest(exit_code=code):
-                result = subprocess.run(command, env=dict(env, FIXTURE_EXIT=str(code)),
-                                        capture_output=True, text=True)
-                self.assertEqual(result.returncode, code, result.stderr)
-                got = json.loads(result.stdout)
-                self.assertEqual(got['cwd'], str(self.client))
-                self.assertEqual(got['caps'], ['2', '12800', '13824'])
-                self.assertEqual(got['args'], ['--root', str(self.client), '--rehash',
-                    '--receipt-dir', str(self.root / '.lake/verification/client'), 'MotivicClient'])
-
-    def test_workflow_accepts_client_before_publishing(self):
-        workflow = (Path(__file__).resolve().parents[1] / '.github/workflows/ci.yml').read_text()
-        validation = workflow.index('id: checks\n')
-        stage = workflow.index('id: native-stage')
-        self.assertLess(validation, stage)
-        validation_step = workflow[validation:stage]
-        self.assertIn('python3 scripts/shared_workflow.py native --state', validation_step)
-        self.assertIn('python3 scripts/shared_workflow.py finalize --state', validation_step)
-        self.assertIn('--outputs "$RUNNER_TEMP/native-outputs.jsonl"', validation_step)
-        self.assertIn('mappings: ${{ runner.temp }}/native-outputs.jsonl', workflow[stage:])
-        self.assertIn('coverage: ${{ runner.temp }}/native-outputs.jsonl.coverage.json', workflow[stage:])
-        self.assertIn("steps.finalize.outcome == 'success'", workflow[stage:])
-
-        (self.root / 'Motivic.lean').write_text('module\n')
-        plan = make_plan(self.root, ['examples/downstream/MotivicClient.lean'])
-        selected = recipe(self.root, plan, 'check', self.root / 'receipts',
-                          export=True, skip_static=True, skip_cache=True)
-        ids = [task['id'] for task in selected]
-        provider_checks = [task for task in selected
-                           if task['id'].startswith('providers/declarations/')]
-        self.assertEqual([task['modules'] for task in provider_checks],
-                         [[name] for name in plan['providers']])
-        self.assertTrue(provider_checks)
-        self.assertTrue(all(ids.index(task['id']) < ids.index('client/build')
-                            for task in provider_checks))
-        self.assertEqual(ids[-1], 'client/build')
-        # Mappings come from the original builds. Application releases export
-        # only after the complete reconstructed recipe (including client) passes.
-        self.assertEqual([task['id'] for task in selected if task.get('mapping')], ['providers/build'])
-        self.assertFalse(any('--export-only' in task['command'] for task in selected))
-        # Root and independent-client progress survive failure; neither cache
-        # save requires successful finalization or publication.
-        self.assertEqual(workflow.count('            examples/downstream/.lake/build\n'), 2)
-        self.assertEqual(workflow.count('            .lake/build\n'), 2)
+    def test_explicit_client_uses_shared_module_builder(self):
+        import build_client
+        from unittest.mock import patch
+        receipt = self.root / 'receipt'
+        with patch.object(sys, 'argv', ['build_client.py', '--root', str(self.root),
+                                       '--receipt-dir', str(receipt)]), \
+                patch('shared_workflow.shared_api'), patch('lean_ci.build.build', return_value=9) as build:
+            self.assertEqual(build_client.main(), 9)
+        self.assertEqual(build.call_args.args, (self.client, ['MotivicClient'], receipt))
+        self.assertEqual(build.call_args.kwargs['selection'], 'module')
+        self.assertTrue(build.call_args.kwargs['rehash'])
 
 
 if __name__ == '__main__':

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # Authors: kangxyz
-"""Refresh existing opt-in topic facades, preserving the curated package roots.
+"""Refresh existing opt-in topic facades; native tools own production/test discovery.
 
 Ownership-marker convention adapted from kangxyz/aglib scripts/generate_imports.py,
 revision 3c571e67a3180565bfb4e6e634fb17d0e5b0b9e1, Apache-2.0. Copyright (c) 2026 Algebraic geometry contributors;
@@ -125,7 +125,7 @@ def main() -> int:
         print(f'Import generation failed: {error}', file=sys.stderr)
         return 1
     print(f'Generated topic facades {"checked" if args.check else "written"}: {len(outputs)}; '
-          'Motivic and MotivicTest roots remain curated.')
+          'Native mk_all owns Motivic.lean; MotivicTest leaves are discovered by Lake globs.')
     return 0
 
 
