@@ -95,7 +95,8 @@ package directory and keeps client outputs owned in its own `.lake/build`.
 Routine validation does not call it. See the existing client README.
 
 With the selected shared package on `PYTHONPATH`, run the existing bounded
-Python fixtures with `python3 -m unittest discover -s scripts -p 'test_*.py'`.
+Python fixtures in `scripts/tests/` with
+`PYTHONPATH="scripts${PYTHONPATH:+:$PYTHONPATH}" python3 -m unittest discover -s scripts/tests`.
 They exercise thin-entry forwarding, source boundaries, import generation,
 focused build/export and explicit client/cache ownership with stand-ins. Shared
 native-command failure/reuse checks live in the common tooling package; these
