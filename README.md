@@ -1,5 +1,7 @@
 # Motivic
 
+[![CI](https://github.com/kangxyz/motivic/actions/workflows/ci.yml/badge.svg?branch=main&event=push)](https://github.com/kangxyz/motivic/actions/workflows/ci.yml?query=branch%3Amain)
+
 A Lean library for motivic cohomology, correspondences and transfer sheaves, with maintained general-theory candidates for Aglib.
 
 ```lean
