@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic
+public import Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
 public import Mathlib.Algebra.Homology.DerivedCategory.KProjective
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplexSingle
 
@@ -34,12 +34,6 @@ namespace CategoryTheory.Sheaf.Hypercohomology
 section HomComplex
 
 variable {A : Type u} [Category.{v} A] [Abelian A] [HasDerivedCategory.{w} A]
-
-/-- Transport of derived morphisms along specified isomorphisms is additive. -/
-def homCongrAddEquiv {P P' Q Q' : DerivedCategory A} (eP : P ≅ P') (eQ : Q ≅ Q') :
-    (P ⟶ Q) ≃+ (P' ⟶ Q') where
-  toEquiv := Iso.homCongr eP eQ
-  map_add' f g := by simp [Iso.homCongr]
 
 /-- For a K-projective source, the actual Hom-complex cohomology computes unbounded derived Hom. -/
 def homComplexDerivedEquiv (P K : CochainComplex A ℤ) [P.IsKProjective] (p : ℤ) :

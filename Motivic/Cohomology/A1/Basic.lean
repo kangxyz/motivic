@@ -7,7 +7,7 @@ module
 
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Smooth.AffineLine.Projection
 public import Motivic.Transfers.Sheaf.Basic
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 /-!
 # Homotopy invariance for actual projection maps

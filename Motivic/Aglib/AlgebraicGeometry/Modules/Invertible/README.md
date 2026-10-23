@@ -71,6 +71,14 @@ constructions remain outside this interface.
 | `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Frames.Prescribed.FunctionalCoordinate` | Exact ideal-functional coordinates in the same prescribed affine frame extension. |
 | `Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.Boundary.RationalUnitGluing` | Gluing original representatives of one rational germ on their unchanged union, with actual boundary values. |
 
+`Frames/Prescribed/Neighborhood/General.lean` names the affine
+sections-to-scalar-extension comparison `affinePullbackTensorIso`. Its source
+is the pullback of the original quasicoherent module and its target is the
+tilde of the scalar extension of its actual global sections. Aglib's
+`pullbackTensorIso` instead compares the pullback of a tensor product with
+the tensor product of the pullbacks. Prescribed boundary coordinates keep
+the former comparison and its reconstruction equation.
+
 The finite-source frame interface does not impose source-domain or reducedness
 hypotheses. The zero-support regularity bridge uses the original chart
 coefficient's unit opens; finite flatness of a zero scheme alone is not a

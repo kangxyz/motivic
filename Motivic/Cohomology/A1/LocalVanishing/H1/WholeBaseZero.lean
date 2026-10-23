@@ -8,7 +8,7 @@ module
 public import Motivic.Cohomology.A1.LocalVanishing.H1.WholeBaseCorrection
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Boundary.BaseChange.WholeComplement
 public import Motivic.Aglib.AlgebraicGeometry.Normalization.Compactification.RelativeAffineLine.FullOverlap
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 public import Motivic.Cohomology.A1.LocalVanishing.AffineLine.NisnevichLifting
 
 /-! # Base-only correction for an original whole affine-line Nisnevich square -/

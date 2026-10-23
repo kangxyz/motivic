@@ -7,7 +7,7 @@ module
 
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Point.FilteredHomology
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 /-! # Original ordinary Ext and actual right-derived neighborhood sections -/
 @[expose] public noncomputable section

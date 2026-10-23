@@ -1,6 +1,7 @@
 /-
 Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
@@ -63,7 +64,7 @@ equations are the original boundary and open section maps. -/
 theorem exists_finiteBoundary_numerator_denominator
     (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
     (n : ℕ) (e : ι ≃ Fin (n + 1))
-    {C U Z : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+    {C U Z : Scheme.{u}} [IsNoetherian C]
     (k : C ⟶ ProjectiveSpace R ι) [IsClosedImmersion k]
     (j : U ⟶ C) [IsOpenImmersion j] (i : Z ⟶ U) [IsClosedImmersion (i ≫ j)]
     [IsFinite (((i ≫ j) ≫ k) ≫ toSpec R ι)]

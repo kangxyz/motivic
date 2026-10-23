@@ -15,7 +15,7 @@ degree zero with actual sections and preserves restrictions. Mathlib's
 
 | Exact import | Interface |
 | --- | --- |
-| `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic` | `H`, `presheafFunctor`, `ordinaryComparison` and `singleComparison`. |
+| `Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic` | `H`, `presheafFunctor`, `ordinaryComparison` and `singleComparison`. |
 | `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Naturality` | Original cohomology maps and their naturality. |
 | `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.DegreeZero` | `zeroSections`, natural in the sheaf and site object. |
 | `Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.LocalTriviality` | Positive-degree local effacement, retaining `EnoughInjectives` and `J.WEqualsLocallyBijective` where used. |
@@ -26,6 +26,9 @@ cokernel construction and its original boundary maps and signs. Host consumers
 construct ordinary cohomology with transfers and the weight-one ordinary
 hypercohomology comparison.
 
-Intended upstream family: `Aglib.CategoryTheory.Sites.SheafCohomology.Large`.
+The basic larger-universe Ext construction is supplied by pinned Aglib.
+Local naturality, degree-zero, restriction-source and local-triviality leaves
+extend it without replacing the underlying representing sheaf or Ext group.
+The remaining candidates target `Aglib.CategoryTheory.Sites.SheafCohomology.Large`.
 Follow the [candidate policy](../../../../README.md), retaining the actual maps,
 Ext premises and coefficient universes of the exact lower import.

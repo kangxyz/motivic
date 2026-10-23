@@ -36,7 +36,7 @@ theorem of_polynomial_differential_basis
     intro j
     simp only [LinearEquiv.coe_coe, Basis.equiv_apply, Equiv.refl_apply, hb]
     simp [bP, mapBaseChange_tmul, map_D]
-  apply FormallyEtale.of_bijective_mapBaseChange k (MvPolynomial ι k) R
+  apply FormallyEtale.of_bijective_mapBaseChange_of_subsingleton_h1 k (MvPolynomial ι k) R
   rw [he]
   exact (bP.equiv b (Equiv.refl ι)).bijective
 

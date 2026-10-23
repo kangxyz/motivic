@@ -13,6 +13,7 @@ public import Motivic.Aglib.Algebra.Homology.HomotopyCategory.HomComplexNaturali
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
+attribute [local instance] CategoryTheory.enoughInjectives_of_hasInjectiveResolutions
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Preadditive
 open HomologicalComplex
 universe w v u
@@ -64,13 +65,14 @@ theorem homComplexHomologyRightDerivedIso_naturality_left :
   change (homologyFunctor AddCommGrpCat (ComplexShape.up ℤ) (n : ℤ)).map
     (CochainComplex.HomComplex.map ((CochainComplex.singleFunctor C 0).map f) (𝟙 _)) ≫ _ = _
   rw [I.rightDerived_app_eq]
-  dsimp only [homComplexHomologyRightDerivedIso, Iso.trans_hom, Iso.symm_hom,
-    Functor.mapIso_hom]
+  dsimp only [homComplexHomologyRightDerivedIso, isoRightDerivedObjCochain,
+    cochainComplex, Iso.trans_hom, Iso.symm_hom, Iso.trans_inv, Iso.symm_inv,
+    Functor.mapIso_hom, Functor.mapIso_inv]
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
   rw [← Functor.map_comp_assoc, CochainComplex.homComplexSingleIso_naturality]
   simp only [Functor.map_comp, Functor.map_id, Category.comp_id, Category.assoc]
   rw [cancel_epi]
-  rw [← Functor.map_comp_assoc, mapExtendIso_naturality_functor]
+  rw [← Functor.map_comp_assoc, mapExtendIso_hom_natTrans]
   simp only [Functor.map_comp, Category.assoc]
   rw [cancel_epi, ← Category.assoc, ← Category.assoc, cancel_mono]
   exact extendHomologyIso_hom_naturality
@@ -89,8 +91,9 @@ theorem homComplexHomologyRightDerivedIso_naturality_right
         ((preadditiveCoyoneda.obj (Opposite.op P)).rightDerived n).map g := by
   change (homologyFunctor AddCommGrpCat (ComplexShape.up ℤ) (n : ℤ)).map
     (CochainComplex.HomComplex.map (𝟙 _) (extendMap φ ComplexShape.embeddingUpNat)) ≫ _ = _
-  dsimp only [homComplexHomologyRightDerivedIso, Iso.trans_hom, Iso.symm_hom,
-    Functor.mapIso_hom]
+  dsimp only [homComplexHomologyRightDerivedIso, isoRightDerivedObjCochain,
+    cochainComplex, Iso.trans_hom, Iso.symm_hom, Iso.trans_inv, Iso.symm_inv,
+    Functor.mapIso_hom, Functor.mapIso_inv]
   simp only [Category.assoc]
   rw [I.isoRightDerivedObj_inv_naturality g J φ hφ]
   rw [← Functor.map_comp_assoc]

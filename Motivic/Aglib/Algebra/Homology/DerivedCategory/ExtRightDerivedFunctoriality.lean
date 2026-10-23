@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ExtSourceNaturality
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedNaturality
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedMap
 
@@ -13,6 +14,7 @@ public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedMap
 set_option backward.defeqAttrib.useBackward true
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
+attribute [local instance] CategoryTheory.enoughInjectives_of_hasInjectiveResolutions
 open CategoryTheory CategoryTheory.Limits CategoryTheory.Preadditive
 open HomologicalComplex CochainComplex.HomComplex
 universe w v u
@@ -52,14 +54,5 @@ theorem extRightDerivedAddEquiv_symm_naturality_left
   rw [hy, homologyAddEquiv_naturality, CohomologyClass.derivedHomAddEquiv_naturality]
   change DerivedCategory.Q.map ((CochainComplex.singleFunctor C 0).map f) ≫ _ = _
   simp [Category.assoc]
-
-/-- Forward form of source naturality for the original Ext comparison. -/
-theorem extRightDerivedAddEquiv_naturality_left (x : Abelian.Ext.{w} X Y n) :
-    I.extRightDerivedAddEquiv X' n ((Abelian.Ext.mk₀ f).comp x (zero_add n)) =
-      (NatTrans.rightDerived (preadditiveCoyoneda.map f.op) n).app Y
-        (I.extRightDerivedAddEquiv X n x) := by
-  obtain ⟨y, rfl⟩ := (I.extRightDerivedAddEquiv X n).symm.surjective x
-  rw [I.extRightDerivedAddEquiv_symm_naturality_left f n]
-  rw [AddEquiv.apply_symm_apply, AddEquiv.apply_symm_apply]
 
 end CategoryTheory.InjectiveResolution

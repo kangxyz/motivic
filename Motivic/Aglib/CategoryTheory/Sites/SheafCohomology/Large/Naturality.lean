@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 /-!
 # Actual maps in the ordinary-cohomology and hypercohomology comparison

@@ -16,12 +16,12 @@ enough-injectives hypothesis is built into this construction.
 
 | Exact import | Interface |
 | --- | --- |
-| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic` | Representing sheaf, section equivalence, derived-Hom groups and presheaves. |
+| `Aglib.CategoryTheory.Sites.Hypercohomology.Basic` | Representing sheaf, section equivalence, derived-Hom groups and presheaves. |
 | `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Evaluation` | `evaluationComparison` for a projective representing sheaf, with coefficient universe `max u v`. |
 | `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.EvaluationNaturality` | Compatibility of that comparison with coefficient maps. |
 | `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Naturality` | Restrictions and naturality on the actual coefficient complexes. |
 | `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Shift` | Actual shift isomorphisms and their restriction equations. |
-| `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison` | Comparison for a sheaf in degree zero, with coefficient universe `v` and the displayed `HasExt` premise. |
+| `Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison` | Comparison for a sheaf in degree zero, with coefficient universe `v` and the displayed `HasExt` premise. |
 | `Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.FreeSheafMonomorphisms` | Monomorphisms of the actual free abelian representing sheaves under its stated sheafification hypotheses. |
 
 A geometric site supplies its own exact-evaluation proof before using
@@ -29,6 +29,11 @@ A geometric site supplies its own exact-evaluation proof before using
 interfaces for `Motivic.motivicCohomology` and its finite-coefficient variant;
 its coefficient construction has the [host owner](../../../../Cohomology/SuslinVoevodsky/README.md).
 
-Intended upstream family: `Aglib.CategoryTheory.Sites.Hypercohomology`.
+The representing-sheaf construction and single-sheaf comparisons are supplied
+by pinned Aglib. Local evaluation, restriction, shift and monomorphism leaves
+extend those same objects; no local copy of the upstream basic construction
+or single-sheaf comparison is retained.
+
+The remaining candidates target `Aglib.CategoryTheory.Sites.Hypercohomology`.
 Follow the [candidate policy](../../../README.md), retaining the universes and
 hypotheses of the selected lower import.

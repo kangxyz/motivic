@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.FunctionField.AffineCharts
 public import Aglib.AlgebraicGeometry.FunctionField.Map
 public import Motivic.Aglib.AlgebraicGeometry.Scheme.FunctionField.NonzeroAffineFraction
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.PolynomialFamily.PrincipalFamilyEndpointCuts
@@ -74,20 +75,6 @@ theorem functionFieldMap_germ_open {X Y : Scheme.{u}} [IsIntegral X] [IsIntegral
       (Y.presheaf.stalkSpecializes _ ≫ f.stalkMap _) = _
   rw [← Category.assoc, TopCat.Presheaf.germ_stalkSpecializes,
     Scheme.Hom.germ_stalkMap]
-
-/-- Native function-field maps compose through the actual scheme morphisms. -/
-theorem functionFieldMap_comp {X Y Z : Scheme.{u}}
-    [IsIntegral X] [IsIntegral Y] [IsIntegral Z]
-    (f : X ⟶ Y) (g : Y ⟶ Z) [IsDominant f] [IsDominant g] :
-    functionFieldMap (f ≫ g) = (functionFieldMap f).comp (functionFieldMap g) := by
-  apply CommRingCat.hom_ext_iff.mp
-  change Z.presheaf.stalkSpecializes _ ≫ (f ≫ g).stalkMap _ =
-    (Z.presheaf.stalkSpecializes _ ≫ g.stalkMap _) ≫
-      (Y.presheaf.stalkSpecializes _ ≫ f.stalkMap _)
-  rw [Scheme.Hom.stalkMap_comp]
-  simp only [Category.assoc]
-  rw [← Category.assoc (g.stalkMap _), ← Scheme.Hom.stalkSpecializes_stalkMap]
-  simp only [← Category.assoc, TopCat.Presheaf.stalkSpecializes_comp]
 
 /-- Open-immersion transport preserves the specified section's native rational germ. -/
 theorem functionFieldMap_germ_appIso {X Y : Scheme.{u}}

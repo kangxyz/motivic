@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
 public import Motivic.Aglib.Algebra.Homology.HomotopyCategory.HomComplexNaturality
 public import Mathlib.Algebra.Homology.HomotopyCategory.HomComplexSingle
 public import Mathlib.CategoryTheory.Preadditive.Yoneda.Basic
@@ -18,23 +19,6 @@ open CategoryTheory CategoryTheory.Limits
 universe v u
 namespace CochainComplex
 variable {C : Type u} [Category.{v} C] [Preadditive C] [HasZeroObject C]
-
-/-- This isomorphism evaluates a cochain at the original object in degree zero. -/
-def homComplexSingleIso (X : C) (K : CochainComplex C ℤ) :
-    HomComplex ((singleFunctor C 0).obj X) K ≅
-      ((preadditiveCoyoneda.obj (Opposite.op X)).mapHomologicalComplex _).obj K :=
-  HomologicalComplex.Hom.isoOfComponents
-    (fun n => (HomComplex.Cochain.fromSingleEquiv (X := X) (K := K)
-      (show (0 : ℤ) + n = n by simp)).toAddCommGrpIso)
-    (by
-      intro i j hij
-      ext α
-      obtain ⟨f, rfl⟩ := HomComplex.Cochain.fromSingleMk_surjective α i (by simp)
-      symm
-      simpa using congrArg
-        (HomComplex.Cochain.fromSingleEquiv (X := X) (K := K)
-          (show (0 : ℤ) + j = j by simp))
-        (HomComplex.Cochain.δ_fromSingleMk f (show (0 : ℤ) + i = i by simp) j j (by simp)))
 
 /-- Evaluation at the original object respects actual source and coefficient maps. -/
 @[reassoc]

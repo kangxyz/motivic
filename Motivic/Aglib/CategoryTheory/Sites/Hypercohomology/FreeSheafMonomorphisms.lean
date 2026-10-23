@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.CategoryTheory.UliftYonedaMono
-public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic
+public import Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.EpiMono
 
 /-!

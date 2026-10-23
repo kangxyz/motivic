@@ -5,6 +5,7 @@ Authors: kangxyz
 -/
 module
 
+public import Aglib.AlgebraicGeometry.Dimension.OpenCover
 public import Motivic.Aglib.RingTheory.KrullDimension.PolynomialFiniteFlatComponents
 public import Motivic.Aglib.AlgebraicGeometry.Morphisms.Finite.Norm.FiniteSchemeNormBaseChange
 public import Motivic.Aglib.AlgebraicGeometry.ProjectiveLine.Charts.Basic
@@ -52,25 +53,6 @@ theorem sections_flat
 
 end AlgebraicGeometry.FiniteSchemeNormBaseChange
 
-namespace AlgebraicGeometry.Scheme
-
-/-- A dimension upper bound on a native open cover bounds the whole scheme.
-The proof transports actual stalks and does not require nonempty charts. -/
-theorem topologicalKrullDim_le_of_openCover
-    {X : Scheme.{u}} (𝒰 : Scheme.OpenCover.{v} X) {n : WithBot ℕ∞}
-    (h𝒰 : ∀ i, topologicalKrullDim (𝒰.X i) ≤ n) :
-    topologicalKrullDim X ≤ n := by
-  rw [topologicalKrullDim_eq_iSup_stalk]
-  apply iSup_le
-  intro x
-  obtain ⟨i, y, rfl⟩ := 𝒰.exists_eq x
-  rw [(asIso ((𝒰.f i).stalkMap y)).commRingCatIsoToRingEquiv.ringKrullDim]
-  refine (le_iSup (fun z : 𝒰.X i ↦ ringKrullDim ((𝒰.X i).presheaf.stalk z)) y).trans ?_
-  rw [← topologicalKrullDim_eq_iSup_stalk]
-  exact h𝒰 i
-
-end AlgebraicGeometry.Scheme
-
 namespace AlgebraicGeometry.RelativeProjectiveLine
 
 open FiniteSchemeNormBaseChange
@@ -104,7 +86,7 @@ theorem topologicalKrullDim_le_one_of_isFinite
     (K : Type u) [Field K] {C : Scheme.{u}}
     (g : C ⟶ ProjectiveSpace K (ULift.{u} (Fin 2))) [IsFinite g] :
     topologicalKrullDim C ≤ 1 := by
-  apply Scheme.topologicalKrullDim_le_of_openCover (polynomialPreimageSpecCover K g)
+  apply Scheme.topologicalKrullDim_le_of_openCover (polynomialPreimageSpecCover K g) 1
   intro i
   let T := pullback g (chart K i)
   let q : T ⟶ Spec (.of (Polynomial K)) := pullback.snd g (chart K i)

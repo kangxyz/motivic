@@ -7,7 +7,7 @@ module
 
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.ImageExact
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.FiniteEdge
-public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic
+public import Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 public import Lean.Util.CollectAxioms
 
 /-! Actual small-site injectives and the original ordinary cohomology source. -/
