@@ -74,6 +74,7 @@ class FacadeGenerationTests(unittest.TestCase):
         content = outputs[Path('Motivic/Topic.lean')]
         self.assertTrue(uses_module_system(content))
         self.assertTrue(is_import_surface(content))
+        self.assertEqual(content.count('set_option linter.style.longFile 0'), 1)
         self.assertEqual(lean_imports(content), ['Motivic.Topic.Manual',
                          'Motivic.Topic.Nested.Alpha', 'Motivic.Topic.Zebra'])
         self.assertEqual(stale_files(self.root), [])
@@ -81,8 +82,13 @@ class FacadeGenerationTests(unittest.TestCase):
         (self.root / 'Motivic/Topic/Zebra.lean').unlink()
         self.assertEqual(stale_files(self.root), [Path('Motivic/Topic.lean')])
         self.refresh()
-        self.assertEqual(lean_imports((self.root / 'Motivic/Topic.lean').read_text()),
+        grown = (self.root / 'Motivic/Topic.lean').read_text()
+        self.assertEqual(lean_imports(grown),
                          ['Motivic.Topic.Added', 'Motivic.Topic.Manual', 'Motivic.Topic.Nested.Alpha'])
+        self.assertEqual(grown.count('set_option linter.style.longFile 0'), 1)
+        self.assertEqual(stale_files(self.root), [])
+        for name, content in self.curated.items():
+            self.assertEqual((self.root / name).read_text(), content)
 
     def test_no_implicit_facade_or_manual_takeover_or_curated_root_expansion(self):
         self.topic()

@@ -61,8 +61,9 @@ tooling, and does not prove external imports or mathematical statements.
 inventory, adapted from Aglib `c9863095f90b8bd312af807dbf0e378df82403b5`,
 Apache-2.0. `generate_imports.py` owns only existing thematic facades with its
 exact generated marker; native `mathlib/mk_all` owns `Motivic.lean`. Test globs
-replace generated Test umbrellas. Preserve contributor notices and manually
-owned files.
+replace generated Test umbrellas. Generated topic entries always contain
+`set_option linter.style.longFile 0`, so source growth does not require a new
+line allowance. Preserve contributor notices and manually owned files.
 
 ## Focused compilation and cache recovery
 

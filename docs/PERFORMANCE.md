@@ -25,6 +25,15 @@ existing validation evidence, source links and remaining limits. Separate
 observations from a proposed cause. Reuse existing measurements and compatible
 checks; this adds no per-edit diary, mandatory benchmark or acceptance cycle.
 
+## Generated import entries
+
+A fixed line allowance on an import-only entry can expire as the source graph
+grows; see the [Aglib failure and pinned-linter reproduction](https://github.com/kangxyz/aglib/blob/main/docs/PERFORMANCE.md#generated-import-entries-and-file-length-limits).
+The existing opt-in topic generator now writes `set_option linter.style.longFile 0`
+for every generated entry. Fixtures cover new and growing topics, repeated
+refresh and preservation of native roots and manually owned files. No current
+Motivic topic is enrolled; native defaults and CI commands are unchanged.
+
 ## Observed module costs
 
 Module names in the first four rows have prefix

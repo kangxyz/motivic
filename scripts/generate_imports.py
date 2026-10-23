@@ -60,7 +60,9 @@ def generated_files(root: Path) -> dict[Path, str]:
         outputs[relative] = (ownership_prefix(source) + GENERATED_MARKER + 'module\n\n'
                              + ''.join(f'public import {child}\n' for child in children)
                              + '\n/-!\nAll modules in this family.\n\n'
-                             'Import individual leaves for a smaller dependency closure.\n-/\n')
+                             'Import individual leaves for a smaller dependency closure.\n-/\n'
+                             '\n-- Generated import entries grow with the source graph.\n'
+                             'set_option linter.style.longFile 0\n')
     # Only proposed facade edges need a new cycle check; the repository checker
     # already diagnoses the actual graph. Include all proposed updates together.
     graph = {name: set(lean_imports(outputs.get(path.relative_to(root), texts[name])))
