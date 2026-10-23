@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Aglib.AlgebraicGeometry.Modules.Invertible.DualTensor.PairingLaw
 /-! # The canonical dual comparison supplied by an actual perfect line pairing -/

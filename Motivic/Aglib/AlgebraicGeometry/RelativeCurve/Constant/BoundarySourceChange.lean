@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 kangxyz. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Constant.CurveSourceChange
 /-! # Literal source change of both components of a constant curve boundary -/
