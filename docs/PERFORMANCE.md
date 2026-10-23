@@ -10,6 +10,21 @@ frontend limit and the ordinary 200000-heartbeat budget. These are observations
 from incremental runs with different active dependency jobs, not a controlled
 whole-library benchmark. A cached job supplies no fresh timing.
 
+## Repair workflow
+
+For serious compilation trouble, consult the relevant findings here before
+further experiments or budget changes. When they do not cover the failure, use
+the shared [reference-search method](https://github.com/kangxyz/aglib/blob/main/docs/PERFORMANCE.md#repair-workflow):
+search the corresponding GitHub issues, PRs, discussions and official documents
+by diagnostic, public symbol and version, then check the pinned source and
+applicability of the proposed repair.
+
+After a fix passes its relevant incremental check, add the reusable lesson here:
+symptom, affected declarations and versions/conditions, effective change,
+existing validation evidence, source links and remaining limits. Separate
+observations from a proposed cause. Reuse existing measurements and compatible
+checks; this adds no per-edit diary, mandatory benchmark or acceptance cycle.
+
 ## Observed module costs
 
 Module names in the first four rows have prefix
