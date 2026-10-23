@@ -7,7 +7,7 @@ module
 
 public import Motivic.Cohomology.WeightOne.SheafComparison
 public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Shift
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 /-! # Weight-one motivic cohomology on all smooth schemes
 

@@ -24,7 +24,7 @@ variable (R S T : Type*) [CommRing R] [CommRing S] [CommRing T]
   [Algebra R S] [Algebra R T] [Algebra S T] [IsScalarTower R S T]
 
 /-- The Jacobi–Zariski criterion for formal étaleness over an intermediate ring. -/
-theorem FormallyEtale.of_bijective_mapBaseChange
+theorem FormallyEtale.of_bijective_mapBaseChange_of_subsingleton_h1
     [Subsingleton (H1Cotangent R T)]
     (h : Function.Bijective (KaehlerDifferential.mapBaseChange R S T)) :
     FormallyEtale S T := by
@@ -47,6 +47,6 @@ theorem Etale.of_bijective_mapBaseChange
     [Subsingleton (H1Cotangent R T)] [FinitePresentation S T]
     (h : Function.Bijective (KaehlerDifferential.mapBaseChange R S T)) :
     Etale S T where
-  formallyEtale := FormallyEtale.of_bijective_mapBaseChange R S T h
+  formallyEtale := FormallyEtale.of_bijective_mapBaseChange_of_subsingleton_h1 R S T h
 
 end Algebra

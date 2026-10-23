@@ -59,7 +59,7 @@ theorem pullbackUnitMap_comp {X Y Z : Scheme.{u}} (f : X ⟶ Y) (g : Y ⟶ Z)
 /-- The original affine pullback is identified with the tensor of its actual
 sections. The counit and pullback comparisons are retained, rather than
 replacing the line bundle by an unrelated isomorphic model. -/
-def pullbackTensorIso (R S : CommRingCat.{u}) [Algebra R S]
+def affinePullbackTensorIso (R S : CommRingCat.{u}) [Algebra R S]
     (M : (Spec R).Modules) [M.IsQuasicoherent] :
     (Scheme.Modules.pullback (Spec.map (CommRingCat.ofHom (algebraMap R S)))).obj M ≅
       tilde (ModuleCat.of S (S ⊗[R] moduleSpecΓFunctor.obj M)) :=
@@ -79,7 +79,7 @@ def prescribedBoundaryCoordinate (R S : CommRingCat.{u}) [Algebra R S]
       SheafOfModules.unit (Spec S).ringCatSheaf) :
     S ⊗[R] moduleSpecΓFunctor.obj M ≃ₗ[S] S :=
   ((tilde.functor S).preimageIso
-    ((pullbackTensorIso R S M).symm ≪≫ e ≪≫ tildeSelf.symm)).toLinearEquiv
+    ((affinePullbackTensorIso R S M).symm ≪≫ e ≪≫ tildeSelf.symm)).toLinearEquiv
 
 /-- Reconstruction is equality with the specified isomorphism itself,
 not just existence of some boundary trivialization. -/
@@ -88,15 +88,15 @@ theorem prescribedBoundaryCoordinate_reconstruct (R S : CommRingCat.{u}) [Algebr
     (e : (Scheme.Modules.pullback
         (Spec.map (CommRingCat.ofHom (algebraMap R S)))).obj M ≅
       SheafOfModules.unit (Spec S).ringCatSheaf) :
-    pullbackTensorIso R S M ≪≫
+    affinePullbackTensorIso R S M ≪≫
         (tilde.functor S).mapIso (prescribedBoundaryCoordinate R S M e).toModuleIso ≪≫
         tildeSelf = e := by
   apply Iso.ext
-  change (pullbackTensorIso R S M).hom ≫
+  change (affinePullbackTensorIso R S M).hom ≫
     (tilde.functor S).map ((tilde.functor S).preimage
-      ((pullbackTensorIso R S M).inv ≫ e.hom ≫ tildeSelf.inv)) ≫ tildeSelf.hom = e.hom
+      ((affinePullbackTensorIso R S M).inv ≫ e.hom ≫ tildeSelf.inv)) ≫ tildeSelf.hom = e.hom
   have h := (tilde.functor S).map_preimage
-    ((pullbackTensorIso R S M).inv ≫ e.hom ≫ tildeSelf.inv)
+    ((affinePullbackTensorIso R S M).inv ≫ e.hom ≫ tildeSelf.inv)
   erw [h]
   simp
 

@@ -9,7 +9,7 @@ public import Mathlib.CategoryTheory.Sites.Point.Skyscraper
 public import Mathlib.Algebra.Category.Grp.AB
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.MapAdjunction
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.EnoughProjectives
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
+public import Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 
 /-!
 # Ordinary cohomological acyclicity of a point skyscraper

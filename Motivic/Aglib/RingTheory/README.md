@@ -14,6 +14,13 @@ lengths; conversion to a natural length retains its finiteness proof.
 | `Motivic.Aglib.RingTheory.AlgebraicSimplex.Basic` | Actual polynomial quotient defining the algebraic-simplex coordinate ring. |
 | `Motivic.Aglib.RingTheory.Norm.FiniteFree.MarkedFiber` | Marked scalar/residual-one norm under actual split base change; the original algebra remains finite free, without separate residual finiteness or freeness. |
 
+`Etale/DifferentialCriterion.lean` retains the Jacobi–Zariski criterion
+`Algebra.FormallyEtale.of_bijective_mapBaseChange_of_subsingleton_h1` under
+vanishing first cotangent homology. This is weaker than requiring formal
+smoothness, which is the premise of Aglib's
+`Algebra.FormallyEtale.of_bijective_mapBaseChange`. The finite-presentation
+corollary retains its actual algebra tower and differential map.
+
 See [going down](Ideal/GoingDown/README.md),
 [polynomial normality and coordinate regularity](MvPolynomial/README.md),
 [finite-flat polynomial component dimension](KrullDimension/README.md) and

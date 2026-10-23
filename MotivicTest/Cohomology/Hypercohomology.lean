@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
+public import Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Hypercohomology.FieldEvaluation
 
 /-!

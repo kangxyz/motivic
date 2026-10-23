@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.Algebra.Homology.HomotopyCategory.HomComplexSingleIso
-public import Motivic.Aglib.Algebra.Homology.Embedding.MapExtend
+public import Aglib.Algebra.Homology.Embedding.MapExtend.Naturality
 public import Mathlib.Algebra.Homology.DerivedCategory.KInjective
 public import Mathlib.Algebra.Homology.DerivedCategory.Ext.Basic
 public import Mathlib.CategoryTheory.Abelian.RightDerived
@@ -61,33 +61,15 @@ def derivedHomAddEquiv : CohomologyClass K L n ≃+
 
 end CochainComplex.HomComplex.CohomologyClass
 
-namespace CategoryTheory.InjectiveResolution
-variable {C : Type u} [Category.{v} C] [Abelian C] [HasInjectiveResolutions C]
-  [HasExt.{w} C] {Y : C} (I : InjectiveResolution Y) (X : C) (n : ℕ)
+namespace CategoryTheory
 
-/-- Integer Hom-complex homology computes the original Nat-index derived Hom functor. -/
-def homComplexHomologyRightDerivedIso :
-    (CochainComplex.HomComplex ((CochainComplex.singleFunctor C 0).obj X)
-      (I.cocomplex.extend ComplexShape.embeddingUpNat)).homology (n : ℤ) ≅
-      ((preadditiveCoyoneda.obj (Opposite.op X)).rightDerived n).obj Y :=
-  (HomologicalComplex.homologyFunctor _ _ (n : ℤ)).mapIso
-      (CochainComplex.homComplexSingleIso X _) ≪≫
-    (HomologicalComplex.homologyFunctor _ _ (n : ℤ)).mapIso
-      (I.cocomplex.mapExtendIso (preadditiveCoyoneda.obj (Opposite.op X))
-        ComplexShape.embeddingUpNat) ≪≫
-    (((preadditiveCoyoneda.obj (Opposite.op X)).mapHomologicalComplex _).obj
-      I.cocomplex).extendHomologyIso ComplexShape.embeddingUpNat (j := n) rfl ≪≫
-    (I.isoRightDerivedObj (preadditiveCoyoneda.obj (Opposite.op X)) n).symm
+/-- Existing injective resolutions already supply injective presentations.
+Use this locally when calling the canonical enough-injectives comparisons. -/
+theorem enoughInjectives_of_hasInjectiveResolutions
+    {C : Type u} [Category.{v} C] [Abelian C] [HasInjectiveResolutions C] :
+    EnoughInjectives C where
+  presentation X :=
+    let I := injectiveResolution X
+    ⟨{ J := I.cocomplex.X 0, f := I.ι.f 0 }⟩
 
-/-- Derived-category Ext is computed by the actual Nat-index injective resolution. -/
-def extRightDerivedAddEquiv : Abelian.Ext.{w} X Y n ≃+
-    ((preadditiveCoyoneda.obj (Opposite.op X)).rightDerived n).obj Y := by
-  let := HasDerivedCategory.standard C
-  exact Abelian.Ext.homAddEquiv.trans
-    ((Iso.homCongrAddEquiv (Iso.refl _)
-      ((shiftFunctor _ (n : ℤ)).mapIso (asIso (DerivedCategory.Q.map I.extendedι)))).trans
-      ((CochainComplex.HomComplex.CohomologyClass.derivedHomAddEquiv _ _ (n : ℤ)).symm.trans
-        ((CochainComplex.HomComplex.homologyAddEquiv _ _ (n : ℤ)).symm.trans
-          (I.homComplexHomologyRightDerivedIso X n).addCommGroupIsoToAddEquiv)))
-
-end CategoryTheory.InjectiveResolution
+end CategoryTheory

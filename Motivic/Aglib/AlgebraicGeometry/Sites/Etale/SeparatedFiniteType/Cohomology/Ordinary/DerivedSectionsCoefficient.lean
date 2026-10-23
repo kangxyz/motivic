@@ -6,7 +6,7 @@ Authors: kangxyz
 module
 
 public import Motivic.Aglib.AlgebraicGeometry.Sites.Etale.SeparatedFiniteType.Cohomology.Ordinary.DerivedSections
-public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedCoefficient
+public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedFunctoriality
 
 /-! # Genuine coefficient naturality of ordinary derived neighborhood sections -/
 @[expose] public noncomputable section
@@ -52,9 +52,10 @@ theorem ordinaryNeighborhoodDerivedSections_naturality_right
   change ordinaryNeighborhoodDerivedSections b V J n
     (x.comp (Abelian.Ext.mk₀ g) (add_zero n)) = _
   dsimp only [ordinaryNeighborhoodDerivedSections, AddEquiv.trans_apply]
-  erw [I.extRightDerivedAddEquiv_naturality_right J g φ hφ
-    (Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
-      (nisnevichTopology T) ((baseChange b).obj V)) n x]
+  erw [I.extRightDerivedAddEquiv_naturality_right
+    (X := Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
+      (nisnevichTopology T) ((baseChange b).obj V))
+    (n := n) ⟨φ, by simpa only [CochainComplex.single₀_map_f_zero] using hφ⟩ x]
   exact pulledBackNeighborhoodDerivedSectionsRepresented_coeff_apply b V g n _
 
 end AlgebraicGeometry.Scheme.EtaleSeparatedFiniteType

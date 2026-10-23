@@ -83,9 +83,11 @@ theorem ordinaryNeighborhoodDerivedSections_naturality_left (n : ℕ)
         (ordinaryNeighborhoodDerivedSections b W I n x) := by
   dsimp only [ordinaryNeighborhoodDerivedSections, AddEquiv.trans_apply]
   rw [LargeCohomology.restriction_apply]
-  erw [I.extRightDerivedAddEquiv_naturality_left
+  erw [InjectiveResolution.extRightDerivedAddEquiv_naturality_left
+    (X := Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}
+      (nisnevichTopology T) ((baseChange b).obj W)) (I := I) (n := n)
     ((Hypercohomology.freeAbelianSheafFunctor (nisnevichTopology T)).map
-      ((baseChange b).map f)) n x]
+      ((baseChange b).map f)) x]
   convert! pulledBackNeighborhoodDerivedSectionsRepresented_naturality_apply b f n F
     (I.extRightDerivedAddEquiv
       (Hypercohomology.freeAbelianSheaf.{u + 1, u, u + 1}

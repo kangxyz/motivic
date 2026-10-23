@@ -14,6 +14,17 @@ contains only Mathlib, Aglib and designated general candidates.
 | `Motivic.Aglib.Algebra.Homology.SingularComplex.Presheaf` | The same construction as a complex of presheaves, retaining actual product restriction maps. |
 | `Motivic.Aglib.Algebra.Homology.Sheafification.Basic` | Degreewise canonical sheafification of presheaf complexes, in native `CategoryTheory.Sheafification`, with `[HasSheafify J A]` and abelian coefficients. |
 
+Pinned Aglib supplies `Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived`
+and `Aglib.Algebra.Homology.Embedding.MapExtend.Naturality`. The local Ext
+extensions use those original resolution comparisons and retain the additional
+K-injective derived-Hom API. A local injective-presentation argument preserves
+the existing `HasInjectiveResolutions` hypotheses when using an upstream
+comparison stated with `EnoughInjectives`; no global reverse instance is added.
+Source naturality is supplied by
+`Aglib.CategoryTheory.Sites.SheafCohomology.Continuity.ExtSourceNaturality`.
+Coefficient naturality consumes the native `InjectiveResolution.Hom` built
+from the supplied cocomplex map and its augmentation equation.
+
 Shared Koszul basics use canonical `ChainComplex.Koszul` in pinned Aglib.
 Do not copy its objects or introduce a second core implementation. Higher
 Koszul/Tor extensions consume those objects. Preserve degree indexing,

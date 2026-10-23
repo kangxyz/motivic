@@ -1,3 +1,8 @@
+/-
+Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
+-/
 module
 public import Motivic.Aglib.AlgebraicGeometry.RelativeCurve.Pencils.Normalized.Common.GraphIdeal
 /-! # The actual common compactification is covered by retained overlap and full boundary -/

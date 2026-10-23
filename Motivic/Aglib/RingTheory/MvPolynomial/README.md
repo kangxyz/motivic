@@ -23,7 +23,7 @@ extension going down. `MotivicTest.GoingDownBaseChange` exercises these interfac
 
 | Exact import | Interface and boundary |
 | --- | --- |
-| `Motivic.Aglib.RingTheory.MvPolynomial.RegularSequence` | A duplicate-free finite list of variables is weakly regular over every commutative coefficient ring. |
+| `Aglib.RingTheory.MvPolynomial.RegularSequence` | A duplicate-free finite list of variables is weakly regular over every commutative coefficient ring. |
 | `Motivic.Aglib.RingTheory.MvPolynomial.Graph` | Actual equations `X i - C (c i)`, their evaluation kernel and quotient equivalence; duplicate-free lists are weakly regular, and regular when the coefficient ring is nontrivial. |
 | `Motivic.Aglib.RingTheory.MvPolynomial.Diagonal` | Actual differences between the two variable copies, their evaluation kernel, quotient and translation equivalence, with the same list regularity conditions. |
 | `Motivic.Aglib.RingTheory.MvPolynomial.DiagonalFlat` | Weak regularity on a supplied flat ambient module or under a supplied flat algebra base change. |

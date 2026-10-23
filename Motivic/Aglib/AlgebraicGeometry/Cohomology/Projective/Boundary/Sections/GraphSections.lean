@@ -1,6 +1,7 @@
 /-
 Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
@@ -68,7 +69,7 @@ instance graphInclusion_mono (h : Γ(U, ⊤)) : Mono (graphInclusion j h) := by
 /-- An actual coherent graph extension, retaining the exact numerator and
  denominator on the whole specified open. No invertibility claim is made
  about the global denominator's image. -/
-theorem exists_coherent_graph_extension [IsNoetherian C] [IsLocallyNoetherian U]
+theorem exists_coherent_graph_extension [IsNoetherian C]
     (h : Γ(U, ⊤)) :
     ∃ (G : FiniteTypeSheaves C)
       (b : G.obj ⟶ ((SheafOfModules.unit C.ringCatSheaf) ⊞
@@ -242,7 +243,7 @@ structure GraphExtension {U C : Scheme.{u}} (j : U ⟶ C) [IsOpenImmersion j]
 
 /-- The coherent extension exists by actual subobject extension, without
 assuming any global numerator or denominator in advance. -/
-def extendGraph {U C : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+def extendGraph {U C : Scheme.{u}} [IsNoetherian C]
     (j : U ⟶ C) [IsOpenImmersion j] (h : Γ(U, ⊤)) : GraphExtension j h := by
   have hex : Nonempty (GraphExtension j h) := by
     obtain ⟨G, b, hb, e, ha, hc⟩ := exists_coherent_graph_extension j h
@@ -407,7 +408,7 @@ construction has trivialized the restricted positive twist. -/
 theorem exists_prescribed_graph_pair
     (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
     (n : ℕ) (e : ι ≃ Fin (n + 1))
-    {C U Z : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+    {C U Z : Scheme.{u}} [IsNoetherian C]
     (k : C ⟶ ProjectiveSpace R ι) [IsClosedImmersion k]
     (j : U ⟶ C) [IsOpenImmersion j] (i : Z ⟶ U) [IsClosedImmersion (i ≫ j)]
     (h : Γ(U, ⊤)) :
@@ -521,7 +522,7 @@ sheaf, global section, or invertible denominator ideal is an input. -/
 theorem exists_prescribed_numerator_denominator
     (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
     (n : ℕ) (e : ι ≃ Fin (n + 1))
-    {C U Z : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+    {C U Z : Scheme.{u}} [IsNoetherian C]
     (k : C ⟶ ProjectiveSpace R ι) [IsClosedImmersion k]
     (j : U ⟶ C) [IsOpenImmersion j] (i : Z ⟶ U) [IsClosedImmersion (i ≫ j)]
     (h : Γ(U, ⊤)) :

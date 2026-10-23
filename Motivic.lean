@@ -73,7 +73,6 @@ public import Motivic.Aglib.Algebra.Homology.DerivedCategory.AdjunctionImageEdge
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.AdjunctionShiftedEdgeWindow
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ConeHomologyWindow
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerived
-public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedCoefficient
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedFunctoriality
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedMap
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ExtRightDerivedNaturality
@@ -90,7 +89,6 @@ public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ImageResolutionWind
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.KInjectiveAdjunction
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.KInjectiveAdjunctionMap
 public import Motivic.Aglib.Algebra.Homology.DerivedCategory.ResolutionExtendedMap
-public import Motivic.Aglib.Algebra.Homology.Embedding.MapExtend
 public import Motivic.Aglib.Algebra.Homology.Embedding.MapExtension
 public import Motivic.Aglib.Algebra.Homology.Embedding.SignedShift
 public import Motivic.Aglib.Algebra.Homology.FiniteSupport.ShortExact
@@ -1395,18 +1393,15 @@ public import Motivic.Aglib.CategoryTheory.Sites.AbelianCechDescent
 public import Motivic.Aglib.CategoryTheory.Sites.AbelianSquareDescent
 public import Motivic.Aglib.CategoryTheory.Sites.DistinguishedSquare
 public import Motivic.Aglib.CategoryTheory.Sites.FreeAbelianSheafPushout
-public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Basic
 public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Evaluation
 public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.EvaluationNaturality
 public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.FreeSheafMonomorphisms
 public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Naturality
-public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.SheafComparison
 public import Motivic.Aglib.CategoryTheory.Sites.Hypercohomology.Shift
 public import Motivic.Aglib.CategoryTheory.Sites.ParameterProduct
 public import Motivic.Aglib.CategoryTheory.Sites.Point.SkyscraperCohomology
 public import Motivic.Aglib.CategoryTheory.Sites.PointLocallyZero
 public import Motivic.Aglib.CategoryTheory.Sites.RestrictionSourceNaturality
-public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Basic
 public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.DegreeZero
 public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.LocalTriviality
 public import Motivic.Aglib.CategoryTheory.Sites.SheafCohomology.Large.Naturality
@@ -1607,7 +1602,6 @@ public import Motivic.Aglib.RingTheory.MvPolynomial.Diagonal.Koszul.Pair
 public import Motivic.Aglib.RingTheory.MvPolynomial.DiagonalFlat
 public import Motivic.Aglib.RingTheory.MvPolynomial.Graph
 public import Motivic.Aglib.RingTheory.MvPolynomial.IsIntegrallyClosed
-public import Motivic.Aglib.RingTheory.MvPolynomial.RegularSequence
 public import Motivic.Aglib.RingTheory.NoetherNormalization.Centered
 public import Motivic.Aglib.RingTheory.NoetherNormalization.Differential.Coordinates
 public import Motivic.Aglib.RingTheory.NoetherNormalization.Differential.Projection

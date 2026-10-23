@@ -1,6 +1,7 @@
 /-
 Copyright (c) 2026 Motivic Cohomology contributors. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
+Authors: kangxyz
 -/
 module
 
@@ -30,7 +31,7 @@ without assuming a closed projective embedding. -/
 theorem finiteMap_exists_prescribed_graph_pair_principal
     (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
     (n : ℕ) (e : ι ≃ Fin (n + 1))
-    {C U Z : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+    {C U Z : Scheme.{u}} [IsNoetherian C]
     (k : C ⟶ ProjectiveSpace R ι) [IsFinite k]
     (j : U ⟶ C) [IsOpenImmersion j] (i : Z ⟶ U) [IsClosedImmersion (i ≫ j)]
     (h : Γ(U, ⊤)) :
@@ -88,7 +89,7 @@ without assuming a closed projective embedding. -/
 theorem finiteMap_exists_prescribed_numerator_denominator_principal
     (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
     (n : ℕ) (e : ι ≃ Fin (n + 1))
-    {C U Z : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+    {C U Z : Scheme.{u}} [IsNoetherian C]
     (k : C ⟶ ProjectiveSpace R ι) [IsFinite k]
     (j : U ⟶ C) [IsOpenImmersion j] (i : Z ⟶ U) [IsClosedImmersion (i ≫ j)]
     (h : Γ(U, ⊤)) :
@@ -118,7 +119,7 @@ without assuming a closed projective embedding. -/
 theorem finiteMap_exists_finiteBoundary_numerator_denominator
     (R : Type u) [CommRing R] [IsNoetherianRing R] (ι : Type u)
     (n : ℕ) (e : ι ≃ Fin (n + 1))
-    {C U Z : Scheme.{u}} [IsNoetherian C] [IsLocallyNoetherian U]
+    {C U Z : Scheme.{u}} [IsNoetherian C]
     (k : C ⟶ ProjectiveSpace R ι) [IsFinite k]
     (j : U ⟶ C) [IsOpenImmersion j] (i : Z ⟶ U) [IsClosedImmersion (i ≫ j)]
     [IsFinite (((i ≫ j) ≫ k) ≫ toSpec R ι)]

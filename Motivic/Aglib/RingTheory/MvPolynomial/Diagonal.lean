@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.MvPolynomial.RegularSequence
+public import Aglib.RingTheory.MvPolynomial.RegularSequence
 public import Mathlib.Algebra.MvPolynomial.Rename
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 
@@ -124,7 +124,7 @@ theorem translation_X_right (i : σ) : translation R σ (X (Sum.inr i)) = differ
 /-- Every distinct finite list of diagonal differences is weakly regular. -/
 theorem isWeaklyRegular_differences (l : List σ) (hl : l.Nodup) :
     IsWeaklyRegular (Ambient R σ) (l.map (difference R σ)) := by
-  have h := isWeaklyRegular_X (R := R) (σ := σ ⊕ σ)
+  have h := isWeaklyRegular_X (R := R) (I := σ ⊕ σ)
     (l.map Sum.inr) (hl.map Sum.inr_injective)
   let e := (translation R σ).toRingEquiv
   let := RingHomInvPair.of_ringEquiv e

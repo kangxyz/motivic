@@ -5,7 +5,7 @@ Authors: kangxyz
 -/
 module
 
-public import Motivic.Aglib.RingTheory.MvPolynomial.RegularSequence
+public import Aglib.RingTheory.MvPolynomial.RegularSequence
 public import Mathlib.RingTheory.Ideal.Quotient.Operations
 
 /-!
