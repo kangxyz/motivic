@@ -32,11 +32,12 @@ Test's optional Actions restore misses or fails. This includes unpublished
 upstream leaves compiled by Build, before the mandatory current-run root
 overlay and unchanged no-build verification. The [shared repair and bounded
 native evidence](https://github.com/kangxyz/aglib/blob/main/docs/PERFORMANCE.md#test-dependency-handoff-and-native-resource-limits)
-record the failure, successful transport and remaining Linux-run validation.
+record the failure, successful transport, hosted startup and remaining full-CI
+validation.
 The mathematical dependency pins are unchanged. This package retains weak
-`-M12800 -j2` frontend arguments without changing native artifact traces;
-existing dependency packages retain their own flags, while the workflow's
-aggregate memory scope also bounds them. No CPU-utilization improvement or
+`-M12800 -j4` frontend arguments without changing native artifact traces;
+Lake retains `LEAN_NUM_THREADS=1`. Existing dependency packages retain their
+own flags, while the workflow's aggregate memory scope also bounds them. No CPU-utilization improvement or
 cause of the earlier runner shutdown is claimed.
 
 ## Generated import entries
