@@ -25,6 +25,20 @@ existing validation evidence, source links and remaining limits. Separate
 observations from a proposed cause. Reuse existing measurements and compatible
 checks; this adds no per-edit diary, mandatory benchmark or acceptance cycle.
 
+## CI dependency handoff and native resource limits
+
+The shared workflow now transfers Build's native dependency snapshot when
+Test's optional Actions restore misses or fails. This includes unpublished
+upstream leaves compiled by Build, before the mandatory current-run root
+overlay and unchanged no-build verification. The [shared repair and bounded
+native evidence](https://github.com/kangxyz/aglib/blob/main/docs/PERFORMANCE.md#test-dependency-handoff-and-native-resource-limits)
+record the failure, successful transport and remaining Linux-run validation.
+The mathematical dependency pins are unchanged. This package retains weak
+`-M12800 -j2` frontend arguments without changing native artifact traces;
+existing dependency packages retain their own flags, while the workflow's
+aggregate memory scope also bounds them. No CPU-utilization improvement or
+cause of the earlier runner shutdown is claimed.
+
 ## Generated import entries
 
 A fixed line allowance on an import-only entry can expire as the source graph
