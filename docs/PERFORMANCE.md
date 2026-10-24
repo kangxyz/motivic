@@ -1,35 +1,39 @@
 # Lean performance findings
 
-Use this page to find a relevant method and this library's
-[local cases](performance/local-cases.md). Current preparation and validation
-belong to [development](DEVELOPMENT.md#normal-task) and
-[the toolkit entry guide](../scripts/README.md).
+This page keeps key guidance. The [case folder and index](performance/README.md)
+preserve all earlier records, including measured jobs, unsuccessful variants and
+the complete source/run table. Their [original context](performance/original-context.md)
+retains toolchain, dependency and resource conditions.
 
-| Problem | Read |
+| Problem | Original records |
 | --- | --- |
-| Concrete geometric conversions or repeated supplier construction | [Shared conversion methods](https://github.com/kangxyz/aglib/blob/main/docs/performance/conversion-boundaries.md), [shared constructions](https://github.com/kangxyz/aglib/blob/main/docs/performance/shared-constructions.md), [local history/cover cases](performance/local-cases.md#history-context-and-complete-supplier-conversion) |
-| Instance, parent-structure or universe mismatch | [Instances and universes](https://github.com/kangxyz/aglib/blob/main/docs/performance/instances-and-universes.md) |
-| Unexpected compile/lint coverage or checker startup | [Header case](performance/local-cases.md#cached-command-lint-coverage), [compiled checker](performance/local-cases.md#compiled-checker-startup), [common build/check lessons](https://github.com/kangxyz/aglib/blob/main/docs/performance/build-and-check-costs.md) |
-| Explicitly requested cause or timing investigation | [Diagnosis and evidence](https://github.com/kangxyz/aglib/blob/main/docs/performance/diagnosis-and-evidence.md) |
+| Concrete cover/history/supplier conversion | [Abstract-object repair](performance/prove-over-abstract-objects-then-specialize.md), [module-cost observations](performance/observed-module-costs.md) |
+| A wrapper or constructor regresses | [Failed history-context variants](performance/observed-module-costs.md) |
+| Cached compilation does not cover a command linter | [Copyright-header case](performance/copyright-headers-and-cached-command-lint.md) |
+| Repeated checker startup or driver launch failure | [Build-environment case](performance/reuse-the-build-environment.md) |
+| Source/run evidence | [Complete evidence table](performance/source-and-log-evidence.md) |
 
-Keep the original maps, rich suppliers, signs, universes and public hypotheses.
-The recorded constructor regressions show that a context wrapper alone does
-not guarantee a cheaper consumer. Preserve compatible artifacts and check
-results; a cached module supplies no new timing or command-linter coverage.
+Retain original maps, witnesses, E3 sign, coefficient universes and public
+hypotheses. More packaging is not automatically cheaper; module-job durations
+are not a whole-build speedup. Common key guidance is in
+[Aglib](https://github.com/kangxyz/aglib/blob/main/docs/PERFORMANCE.md).
 
 ## Repair workflow
 
-For serious compilation trouble, read the matching topic and its conditions
-before further experiments or budget changes. If they do not cover the failure,
-use the shared
-[upstream reference search](https://github.com/kangxyz/aglib/blob/main/docs/performance/diagnosis-and-evidence.md#search-upstream-references)
-and check the pinned implementation. Ordinary proof iteration stays incremental;
-profiling and probes are explicitly requested diagnostics. Retain the existing
-[source and finite-budget policy](DEVELOPMENT.md#source-and-contribution-conventions).
+For serious compilation trouble, read the matching case and its conditions before
+further experiments or budget changes. Current commands, source/budget policy and
+validation remain in [development](DEVELOPMENT.md#source-and-contribution-conventions)
+and [the toolkit entry guide](../scripts/README.md). Historical commands inside
+records retain their original scope.
 
-When a validated repair adds new reusable knowledge, update the matching topic
-in `docs/performance/`. Merge repeated experience and retain the symptom,
-conditions, effective change, important failed alternative or limit, and existing
-source/build evidence. Another run or pass of a known method needs no entry.
-Common methods have one Aglib owner; keep local cases here and this page short.
-Recording experience creates no new benchmark, build or acceptance cycle.
+If no case covers the failure, search upstream by diagnostic, public symbol,
+phase and version and check the pinned source. Ordinary proof iteration stays
+incremental; profiling and probes are explicitly requested diagnostics.
+
+## Preserve cases
+
+Save each reusable repair in `docs/performance/`, retaining its conditions,
+failed alternatives, effective change and existing source/build evidence.
+Update the same case for follow-ups and its folder-index link. Refine key
+guidance here without deleting the underlying case or replacing it by a summary
+or Git-history link. Recording experience adds no benchmark, build or acceptance.
