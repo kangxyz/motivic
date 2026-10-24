@@ -10,7 +10,7 @@ cycle.
 
 Install the current shared `lean-incremental-ci` distribution or explicitly
 select its tooling checkout independently of mathematical dependencies. The
-checkout provides `scripts/lean_ci`. Install it with
+checkout provides `scripts/lean_tools`. Install it with
 `python3 -m pip install /path/to/aglib/scripts`, or set the checkout path below:
 
 ```sh
@@ -21,10 +21,10 @@ python3 scripts/validate.py --base BASE --head HEAD
 ```
 
 `validate.py` forwards to the installed toolkit's `check` action. The toolkit
-selects `lean_ci.motivic.options` from the Lake package name. All source policy,
-generation, focused build/cache and explicit client implementation lives in
-`lean_ci.motivic`; local scripts only select the installed or explicitly chosen
-package and forward arguments. `MOTIVIC_TOOLING_REVISION` does not admit executable
+selects shared library configuration from the Lake package name.
+`lean_tools.motivic` retains source policy, topic generation and the explicit
+client helper. Check/build/cache execution and resources use the same shared
+implementation as the other libraries; local scripts forward arguments. `MOTIVIC_TOOLING_REVISION` does not admit executable
 code, and selecting tooling does not alter the mathematical dependency pins.
 
 Options belong to the shared CLI: `--root PACKAGE`, repeatable `--production
@@ -56,8 +56,8 @@ build. They do not by themselves record lint or audit coverage.
 `python3 scripts/check_repository.py` checks local imports/cycles, generated
 thematic facades, production/test/client separation, reusable-candidate closure,
 source tokens and accepted mathematical pins. It needs the shared Python toolkit, but no Lean runtime, and does not prove
-external imports or mathematical statements. `lean_ci.motivic.sources` retains
-the occupied project/client inventory and uses the shared `lean_ci.source`
+external imports or mathematical statements. `lean_tools.motivic.sources` retains
+the occupied project/client inventory and uses the shared `lean_tools.source`
 comment-aware Lean header grammar. `generate_imports.py` owns only existing thematic facades with its
 exact generated marker; native `mathlib/mk_all` owns `Motivic.lean`. Test globs
 replace generated Test umbrellas. Generated topic entries always contain
@@ -72,12 +72,12 @@ python3 scripts/build.py --export-only --outputs /absolute/scratch/modules.jsonl
 python3 scripts/cache.py --guarded --resolve-deps Motivic.Cor
 ```
 
-`build.py` forwards semantic module names to `lean_ci.motivic.build`, which
-uses the shared `lean_ci.build` API. Already-rendered `+MODULE` names are rejected by that
+`build.py` forwards semantic module names to `lean_tools.motivic.build`, which
+uses the shared `lean_tools.build` API. Already-rendered `+MODULE` names are rejected by that
 wrapper; direct Lake commands use `lake --rehash build +MODULE`. Export-only uses
-`--no-build` and fails on missing outputs, without a compile fallback. The cache
+`--no-build` and fails on missing outputs, without a compile fallback. The shared `lean_tools.cache`
 helper follows only reachable Mathlib leaves and has an explicit guarded
-bootstrap through `lean-ci run --bootstrap-cache`. Dependency resolution/cache acquisition are setup and recovery work,
+bootstrap through `lean-tools run --bootstrap-cache`. Dependency resolution/cache acquisition are setup and recovery work,
 not automatic preliminaries to a prepared proof loop. Mathematical pins remain
 unchanged.
 
