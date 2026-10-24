@@ -11,7 +11,7 @@ reading routes and the scope of recorded evidence.
 | [Naming](NAMING.md) | Native namespaces, subject names, leaves and facades |
 | [Interface routes](INTERFACES.md) | Links to mathematical interfaces and retained input boundaries |
 | [Development](DEVELOPMENT.md) | Locked setup, incremental compilation, lint, tests and clients |
-| [Performance](PERFORMANCE.md) | Measured compilation bottlenecks, abstraction repairs and batch execution |
+| [Performance](PERFORMANCE.md) | Symptom lookup, key methods and focused cases under `performance/` |
 | [Developer tools](../scripts/README.md) | Selected-target cache/build commands and check coverage |
 | [Verification](VERIFICATION.md) | Dated validation milestones and their limits |
 | [Provenance](provenance/README.md) | Imported source identities, historical evidence and recovery records |
