@@ -20,10 +20,10 @@ def shared_api(tooling_root=None):
         sys.path.insert(0, str(package))
     try:
         package = importlib.import_module('lean_tools')
-        importlib.import_module('lean_tools.motivic')
+        importlib.import_module('lean_tools.policy')
         return package
     except ImportError as error:
-        raise ValueError('Install lean-incremental-ci 0.3.1 or newer, or select its checkout with MOTIVIC_TOOLING_ROOT') from error
+        raise ValueError('Install lean-incremental-ci 0.4 or newer, or select its checkout with MOTIVIC_TOOLING_ROOT') from error
 
 
 
@@ -32,9 +32,8 @@ def forward(action, argv=None, tooling_root=None):
         shared_api(tooling_root)
         from lean_tools.cli import main
         arguments = list(sys.argv[1:] if argv is None else argv)
-        if action == 'check':
-            return main(['check', *arguments], root=ROOT)
-        return main(['motivic', action, '--root', str(ROOT), *arguments])
+        operation = 'source' if action == 'repository' else action
+        return main([operation, '--root', str(ROOT), *arguments])
     except (OSError, ValueError, ImportError, subprocess.SubprocessError) as error:
         print('Lean toolkit command failed: ' + str(error), file=sys.stderr)
         return 2
