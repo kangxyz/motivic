@@ -20,12 +20,12 @@ python3 scripts/validate.py --list
 python3 scripts/validate.py --base BASE --head HEAD
 ```
 
-`validate.py` forwards to `lean_ci.cli.main(['check', ...], root=PACKAGE,
-production=('Motivic',), source_checks=...)`. `shared_workflow.py` retains only
-installed/explicit tooling loading and existing resource/environment overrides;
-it has no plan, phase, recipe, scheduler, source-hash allowlist or hosted API.
-`MOTIVIC_TOOLING_REVISION` is not an executable-admission mechanism. Existing
-older installed versions are not modified by a source migration.
+`validate.py` forwards to the installed toolkit's `check` action. The toolkit
+selects `lean_ci.motivic.options` from the Lake package name. All source policy,
+generation, focused build/cache and explicit client implementation lives in
+`lean_ci.motivic`; local scripts only select the installed or explicitly chosen
+package and forward arguments. `MOTIVIC_TOOLING_REVISION` does not admit executable
+code, and selecting tooling does not alter the mathematical dependency pins.
 
 Options belong to the shared CLI: `--root PACKAGE`, repeatable `--production
 ROOT` and optional `--check-target TARGET`, `--base`, `--head`, `--full`,
@@ -55,11 +55,10 @@ build. They do not by themselves record lint or audit coverage.
 
 `python3 scripts/check_repository.py` checks local imports/cycles, generated
 thematic facades, production/test/client separation, reusable-candidate closure,
-source tokens and accepted mathematical pins. It needs neither Lean nor shared
-tooling, and does not prove external imports or mathematical statements.
-`library_sources.py` retains its comment-aware parser and occupied source
-inventory, adapted from Aglib `c9863095f90b8bd312af807dbf0e378df82403b5`,
-Apache-2.0. `generate_imports.py` owns only existing thematic facades with its
+source tokens and accepted mathematical pins. It needs the shared Python toolkit, but no Lean runtime, and does not prove
+external imports or mathematical statements. `lean_ci.motivic.sources` retains
+the occupied project/client inventory and uses the shared `lean_ci.source`
+comment-aware Lean header grammar. `generate_imports.py` owns only existing thematic facades with its
 exact generated marker; native `mathlib/mk_all` owns `Motivic.lean`. Test globs
 replace generated Test umbrellas. Generated topic entries always contain
 `set_option linter.style.longFile 0`, so source growth does not require a new
@@ -73,12 +72,12 @@ python3 scripts/build.py --export-only --outputs /absolute/scratch/modules.jsonl
 python3 scripts/cache.py --guarded --resolve-deps Motivic.Cor
 ```
 
-`build.py` forwards semantic module names through `build_modules.py` to the
-shared `lean_ci.build` API. Already-rendered `+MODULE` names are rejected by that
+`build.py` forwards semantic module names to `lean_ci.motivic.build`, which
+uses the shared `lean_ci.build` API. Already-rendered `+MODULE` names are rejected by that
 wrapper; direct Lake commands use `lake --rehash build +MODULE`. Export-only uses
 `--no-build` and fails on missing outputs, without a compile fallback. The cache
 helper follows only reachable Mathlib leaves and has an explicit guarded
-bootstrap. Dependency resolution/cache acquisition are setup and recovery work,
+bootstrap through `lean-ci run --bootstrap-cache`. Dependency resolution/cache acquisition are setup and recovery work,
 not automatic preliminaries to a prepared proof loop. Mathematical pins remain
 unchanged.
 
@@ -96,8 +95,8 @@ package directory and keeps client outputs owned in its own `.lake/build`.
 Routine validation does not call it. See the existing client README.
 
 With the selected shared package on `PYTHONPATH`, run the existing bounded
-Python fixtures in `scripts/tests/` with
-`PYTHONPATH="scripts${PYTHONPATH:+:$PYTHONPATH}" python3 -m unittest discover -s scripts/tests`.
+Python fixtures from the tooling checkout with
+`PYTHONPATH=scripts python3 -m unittest discover -s scripts/tests/motivic`.
 They exercise thin-entry forwarding, source boundaries, import generation,
 focused build/export and explicit client/cache ownership with stand-ins. Shared
 native-command failure/reuse checks live in the common tooling package; these

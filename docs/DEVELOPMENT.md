@@ -28,8 +28,10 @@ python3 scripts/validate.py --base BASE --head HEAD
 python3 scripts/validate.py --progress /absolute/scratch/check-progress
 ```
 
-The thin entry calls `lean_ci.cli.main` with production root `Motivic` and the
-existing repository source checker. Install the current shared package or select
+The thin entry calls the toolkit `check` action. The Lake package name selects
+`lean_ci.motivic.options`, including production root `Motivic` and the repository
+source checker. Source policy, import generation and focused build/cache/client
+helpers live in the installable toolkit. Install the current shared package or select
 an explicit tooling checkout with `MOTIVIC_TOOLING_ROOT` (or
 `LEAN_CI_TOOLING_ROOT`). The tooling checkout provides `scripts/lean_ci` and is
 installed from `scripts/pyproject.toml`. Its executable is independent of
