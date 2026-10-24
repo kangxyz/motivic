@@ -44,7 +44,10 @@ missing tool dependency rather than rebuilding unrelated mathematics.
 
 1. Locate the phase using existing feedback. Read the matching method/case and
    its original dependency/resource conditions before further experiments or
-   budget changes.
+   budget changes. At a bottleneck, actively use targeted compiler diagnostics,
+   scoped traces, profiling or scratch probes when feedback cannot guide the
+   next repair. Normal troubleshooting and targeted diagnosis need no separate
+   user approval.
 2. Keep the actual maps, target objects, coefficient structures and witness
    equations. Choose a bounded representation repair; compare its concrete
    specialization with the interface the real consumer needs.
@@ -53,8 +56,6 @@ missing tool dependency rather than rebuilding unrelated mathematics.
    starting a new run does not itself justify whole-library recompilation.
 4. If the cases do not apply, use Aglib's
    [upstream reference search](https://github.com/kangxyz/aglib/blob/main/docs/PERFORMANCE.md#search-upstream-references).
-   Profiling, probes and matched timing comparisons are explicitly requested
-   investigations, with the original source and output conditions retained.
 5. When a validated repair adds new reusable knowledge, preserve a complete
    case or update its existing file, then refine the applicable method here
    while keeping the raw case and its index.
